@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Helpers\Constants;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use MoonShine\Models\MoonshineUserRole;
@@ -13,13 +14,12 @@ class MoonshineUserRoleSeeder extends Seeder
      */
     public function run(): void
     {
-        // Define default roles
-        $roles = [
-            ['name' => 'Admin'],  // Admin role
-            ['name' => 'Moderator'], // Editor role
-        ];
+        $roles = [];
 
-        // Insert roles into the database
+        foreach (Constants::ROLES as $k => $v) {
+            $roles[] = ['name' => $k];
+        }
+
         foreach ($roles as $role) {
             MoonshineUserRole::updateOrCreate(
                 ['name' => $role['name']],

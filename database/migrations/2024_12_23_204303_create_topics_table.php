@@ -11,18 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hotels', function (Blueprint $table) {
+        Schema::create('topics', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
-            $table->string('codename')->nullable();
-            $table->string('category')->nullable();
-            $table->decimal('latitude', 10, 8)->nullable();
-            $table->decimal('longitude', 11, 8)->nullable();
-            $table->decimal('price', 10, 3);
-            $table->string('main_image')->nullable();
-            $table->json('gallery')->nullable();
+            $table->text('body');
+            $table->string('image')->nullable();
             $table->boolean('active')->default(false);
+            $table->foreignId('topic_category_id')
+                ->nullable()
+                ->constrained('topic_categories')
+                ->nullOnDelete();
             $table->foreignId('created_by')
                 ->nullable()
                 ->constrained('moonshine_users')
@@ -36,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('hotels');
+        Schema::dropIfExists('topics');
     }
 };
