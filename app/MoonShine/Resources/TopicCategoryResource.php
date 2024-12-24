@@ -7,6 +7,7 @@ namespace App\MoonShine\Resources;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\TopicCategory;
 
+use MoonShine\Attributes\Icon;
 use MoonShine\Fields\Text;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
@@ -17,6 +18,7 @@ use MoonShine\Components\MoonShineComponent;
 /**
  * @extends ModelResource<TopicCategory>
  */
+#[Icon('heroicons.list-bullet')]
 class TopicCategoryResource extends ModelResource
 {
     protected string $model = TopicCategory::class;

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TopicController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/topics/{topicId}/like', [TopicController::class, 'likeTopic']);
+Route::get('/topics/{topicId}/likes', [TopicController::class, 'getLikes']);

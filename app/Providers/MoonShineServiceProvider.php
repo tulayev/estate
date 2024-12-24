@@ -6,12 +6,12 @@ namespace App\Providers;
 
 
 use App\Helpers\Constants;
-use App\Models\Hotel;
 use App\MoonShine\Resources\FeatureResource;
 use App\MoonShine\Resources\FloorResource;
 use App\MoonShine\Resources\HotelResource;
 use App\MoonShine\Resources\MoonshineUserResource;
 use App\MoonShine\Resources\TagResource;
+use App\MoonShine\Resources\TopicCategoryResource;
 use App\MoonShine\Resources\TopicResource;
 use Illuminate\Http\Request;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
@@ -88,6 +88,14 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
             )
                 ->canSee(function (Request $request) {
                     return $request->user('moonshine')?->moonshine_user_role_id !== Constants::ROLES['Developer'];
+                }),
+
+            MenuItem::make(
+                static fn() => 'Topic Categories',
+                new TopicCategoryResource()
+            )
+                ->canSee(function (Request $request) {
+                    return $request->user('moonshine')?->moonshine_user_role_id === Constants::ROLES['Admin'];
                 }),
         ];
     }

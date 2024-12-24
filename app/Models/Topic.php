@@ -16,6 +16,7 @@ class Topic extends Model
         'body',
         'image',
         'active',
+        'topic_category_id',
         'created_by',
     ];
 
@@ -36,6 +37,11 @@ class Topic extends Model
 
     public function category()
     {
-        return $this->belongsTo(TopicCategory::class);
+        return $this->belongsTo(TopicCategory::class, 'topic_category_id');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 }

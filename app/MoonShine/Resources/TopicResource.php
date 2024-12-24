@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources;
 
 use App\Helpers\Constants;
-use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Topic;
 
@@ -92,5 +92,10 @@ class TopicResource extends ModelResource
             'body' => 'required|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ];
+    }
+
+    public function search(): array
+    {
+        return ['title', 'category.title'];
     }
 }
