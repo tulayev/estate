@@ -13,6 +13,7 @@ use MoonShine\Attributes\Icon;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\Image;
 use MoonShine\Fields\Relationships\BelongsTo;
+use MoonShine\Fields\Slug;
 use MoonShine\Fields\Switcher;
 use MoonShine\Fields\Text;
 use MoonShine\Fields\TinyMce;
@@ -62,6 +63,9 @@ class TopicResource extends ModelResource
 
                 Text::make('Title', 'title')
                     ->required(),
+
+                Slug::make('Slug', 'slug')
+                    ->from('title'),
 
                 BelongsTo::make('Category', 'category', 'title', resource: new TopicCategoryResource())
                     ->searchable()

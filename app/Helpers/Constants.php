@@ -13,4 +13,8 @@ class Constants
         'Moderator' => 2,
         'Developer' => 3,
     ];
+
+    public const IDENTICAL_COLOR_PAGES = [
+        'home',
+    ];
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TopicController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::post('/topics/{topicId}/like', [TopicController::class, 'likeTopic']);
-Route::get('/topics/{topicId}/likes', [TopicController::class, 'getLikes']);
+Route::prefix('topics')->group(function() {
+    Route::post('/{topicId}/like', [TopicController::class, 'likeTopic']);
+    Route::get('/{topicId}/likes', [TopicController::class, 'getLikes']);
+});

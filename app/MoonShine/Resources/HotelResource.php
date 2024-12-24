@@ -13,6 +13,7 @@ use MoonShine\Attributes\Icon;
 use MoonShine\Fields\Image;
 use MoonShine\Fields\Number;
 use MoonShine\Fields\Relationships\BelongsToMany;
+use MoonShine\Fields\Slug;
 use MoonShine\Fields\Switcher;
 use MoonShine\Fields\Text;
 use MoonShine\Fields\TinyMce;
@@ -73,6 +74,9 @@ class HotelResource extends ModelResource
                 Text::make('Title', 'title')
                     ->required()
                     ->sortable(),
+
+                Slug::make('Slug', 'slug')
+                    ->from('title'),
 
                 TinyMce::make('Description', 'description')
                     ->required(),
