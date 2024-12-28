@@ -32,6 +32,11 @@ class Hotel extends Model
         'longitude' => 'float',
     ];
 
+    public function scopeActive($query)
+    {
+        return $query->where('active', true);
+    }
+
     protected static function boot()
     {
         parent::boot();

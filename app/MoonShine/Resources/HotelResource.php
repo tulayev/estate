@@ -76,7 +76,8 @@ class HotelResource extends ModelResource
                     ->sortable(),
 
                 Slug::make('Slug', 'slug')
-                    ->from('title'),
+                    ->from('title')
+                    ->unique(),
 
                 TinyMce::make('Description', 'description')
                     ->required(),
@@ -129,10 +130,10 @@ class HotelResource extends ModelResource
         return [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'codename' => 'string|max:255',
-            'category' => 'string|max:255',
-            'latitude' => 'numeric|between:-90,90',
-            'longitude' => 'numeric|between:-180,180',
+            'codename' => 'nullable|string|max:255',
+            'category' => 'nullable|string|max:255',
+            'latitude' => 'nullable|numeric|between:-90,90',
+            'longitude' => 'nullable|numeric|between:-180,180',
             'price' => 'required|numeric|min:0|regex:/^\d+(\.\d{1,3})?$/',
             'main_image' => 'nullable|image|max:2048',
             'gallery' => 'nullable|array',

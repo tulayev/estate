@@ -21,6 +21,11 @@ class Topic extends Model
         'created_by',
     ];
 
+    public function scopeActive($query)
+    {
+        return $query->where('active', true);
+    }
+
     protected static function boot()
     {
         parent::boot();
