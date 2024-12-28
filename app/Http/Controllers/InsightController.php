@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Like;
+use App\Models\TopicLike;
 use App\Models\Topic;
 use Illuminate\Http\Request;
 
@@ -30,7 +30,7 @@ class InsightController extends Controller
         ]);
     }
 
-    public function likeTopic(Request $request, $topicId)
+    public function like(Request $request, $topicId)
     {
         $topic = Topic::findOrFail($topicId);
 
@@ -42,8 +42,8 @@ class InsightController extends Controller
         $userId = auth()->check() ? auth()->user()->id : null;
         $ipAddress = $request->ip();
 
-        // Check if the user/IP has already liked the post
-        $existingLike = Like::where('topic_id', $topicId)
+        // Check if the user/IP has already liked the topic
+        $existingLike = TopicLike::where('topic_id', $topicId)
             ->when($userId, function ($query) use ($userId) {
                 $query->where('liked_by', $userId);
             })
@@ -53,21 +53,24 @@ class InsightController extends Controller
             ->first();
 
         if ($existingLike) {
+            // Remove the existing like
+            $existingLike->delete();
+
             return response()
-                ->json(['message' => 'You have already liked this post'], 409);
+                ->json(['message' => 'Like removed successfully']);
         }
 
-        Like::create([
-            'post_id' => $topicId,
-            'user_id' => $userId,
+        TopicLike::create([
+            'topic_id' => $topicId,
+            'liked_by' => $userId,
             'ip_address' => $userId ? null : $ipAddress,
         ]);
 
         return response()
-            ->json(['message' => 'Post liked successfully'], 201);
+            ->json(['message' => 'Topic liked successfully'], 201);
     }
 
-    public function topicLikes($topicId)
+    public function likes($topicId)
     {
         $topic = Topic::findOrFail($topicId);
 

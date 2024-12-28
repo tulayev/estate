@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('likes', function (Blueprint $table) {
+        Schema::create('hotel_likes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('topic_id')
-                ->constrained('topics')
+            $table->foreignId('hotel_id')
+                ->constrained('hotels')
                 ->onDelete('cascade');
             $table->foreignId('liked_by')
                 ->nullable()
@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('ip_address', 45)->nullable();
             $table->timestamps();
 
-            $table->unique(['topic_id', 'liked_by']); // Unique for authenticated users
-            $table->unique(['topic_id', 'ip_address']); // Unique for unauthenticated users
+            $table->unique(['hotel_id', 'liked_by']); // Unique for authenticated users
+            $table->unique(['hotel_id', 'ip_address']); // Unique for unauthenticated users
         });
     }
 

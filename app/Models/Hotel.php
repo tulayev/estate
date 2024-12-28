@@ -95,6 +95,11 @@ class Hotel extends Model
         return $this->belongsToMany(Feature::class, 'hotel_feature');
     }
 
+    public function likes()
+    {
+        return $this->hasMany(HotelLike::class);
+    }
+
     public function getAreaAttribute()
     {
         return $this->floors()->sum('area');

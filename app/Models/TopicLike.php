@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Like extends Model
+class TopicLike extends Model
 {
     use HasFactory;
 
@@ -14,9 +14,4 @@ class Like extends Model
         'liked_by',
         'ip_address'
     ];
-
-    public function topic()
-    {
-        return $this->belongsTo(Topic::class);
-    }
 }
