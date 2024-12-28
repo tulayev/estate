@@ -14,4 +14,9 @@ class TopicLike extends Model
         'liked_by',
         'ip_address'
     ];
+
+    public function topic()
+    {
+        return $this->belongsTo(Topic::class);
+    }
 }

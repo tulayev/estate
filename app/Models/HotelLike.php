@@ -14,4 +14,9 @@ class HotelLike extends Model
         'liked_by',
         'ip_address'
     ];
+
+    public function hotel()
+    {
+        return $this->belongsTo(Hotel::class);
+    }
 }

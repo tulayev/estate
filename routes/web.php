@@ -28,8 +28,9 @@ Route::get('/storage-link', function () {
 Route::get('/', [HomeController::class, 'index'])->name('pages.home.index');
 
 Route::prefix('listings')->group(function () {
-   Route::get('/', [ListingController::class, 'index'])->name('pages.listing.index');
-   Route::get('/{slug}', [ListingController::class, 'show'])->name('pages.listing.show');
+    Route::get('/', [ListingController::class, 'index'])->name('pages.listing.index');
+    Route::get('/likedByUser', [ListingController::class, 'likedByUser']);
+    Route::get('/{slug}', [ListingController::class, 'show'])->name('pages.listing.show');
     Route::get('/{hotelId}/like', [ListingController::class, 'like']);
     Route::get('/{hotelId}/likes', [ListingController::class, 'likes']);
 });
@@ -38,6 +39,7 @@ Route::get('/club', [ClubController::class, 'index'])->name('pages.club.index');
 
 Route::prefix('insights')->group(function() {
     Route::get('/', [InsightController::class, 'index'])->name('pages.insight.index');
+    Route::get('/likedByUser', [InsightController::class, 'likedByUser']);
     Route::get('/{slug}', [InsightController::class, 'show'])->name('pages.insight.show');
     Route::get('/{topicId}/like', [InsightController::class, 'like']);
     Route::get('/{topicId}/likes', [InsightController::class, 'likes']);
