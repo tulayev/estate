@@ -4,6 +4,6 @@
 
     <x-layout.search />
 
-    <x-pages.listing.items :hotels="$hotels" />
+    <x-pages.listing.objects.index :hotels="$hotels" />
 
 </x-layout.app>

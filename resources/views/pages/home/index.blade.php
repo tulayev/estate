@@ -10,7 +10,7 @@
 
     <x-pages.home.verified />
 
-    <x-pages.home.values />
+    <x-pages.home.value />
 
     <x-pages.home.clients />
 

@@ -31,7 +31,7 @@ class HotelResource extends ModelResource
 {
     protected string $model = Hotel::class;
 
-    protected string $title = 'Hotels';
+    protected string $title = 'Objects';
 
     public function query(): Builder
     {
@@ -77,14 +77,15 @@ class HotelResource extends ModelResource
 
                 Slug::make('Slug', 'slug')
                     ->from('title')
-                    ->unique(),
+                    ->unique()
+                    ->readonly(),
 
                 TinyMce::make('Description', 'description')
                     ->required(),
 
-                Text::make('Code Name', 'codename'),
+                Text::make('Type', 'type'),
 
-                Text::make('Category', 'category'),
+                Text::make('Code Name', 'codename'),
 
                 Number::make('Latitude', 'latitude')
                     ->step(0.000001),
@@ -131,7 +132,7 @@ class HotelResource extends ModelResource
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'codename' => 'nullable|string|max:255',
-            'category' => 'nullable|string|max:255',
+            'type' => 'nullable|string|max:255',
             'latitude' => 'nullable|numeric|between:-90,90',
             'longitude' => 'nullable|numeric|between:-180,180',
             'price' => 'required|numeric|min:0|regex:/^\d+(\.\d{1,3})?$/',

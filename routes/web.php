@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InsightController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\TopicController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/storage-link', function () {
+    Artisan::call('storage:link');
+    return redirect()->route('pages.home.index');
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('pages.home.index');
 

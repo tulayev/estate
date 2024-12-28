@@ -210,7 +210,8 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Constants' => \App\Helpers\Constants::class,
+        'ImagePathResolver' => \App\Helpers\ImagePathResolver::class,
     ])->toArray(),
 
 ];

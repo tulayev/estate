@@ -66,7 +66,8 @@ class TopicResource extends ModelResource
 
                 Slug::make('Slug', 'slug')
                     ->from('title')
-                    ->unique(),
+                    ->unique()
+                    ->readonly(),
 
                 BelongsTo::make('Category', 'category', 'title', resource: new TopicCategoryResource())
                     ->searchable()

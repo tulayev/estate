@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('floors', function (Blueprint $table) {
             $table->id();
-            $table->text('description');
+            $table->json('description');
             $table->string('image')->nullable();
-            $table->integer('beds');
-            $table->integer('baths');
-            $table->decimal('square');
-            $table->foreignId('hotel_id')->constrained()->onDelete('cascade');
+            $table->integer('bedrooms');
+            $table->integer('bathrooms');
+            $table->decimal('area');
+            $table->foreignId('hotel_id')
+                ->constrained()
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -13,8 +13,14 @@ return new class extends Migration
     {
         Schema::create('hotel_tag', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('hotel_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('tag_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('hotel_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
+            $table->foreignId('tag_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
             $table->timestamps();
         });
     }

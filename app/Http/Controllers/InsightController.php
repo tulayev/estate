@@ -19,14 +19,14 @@ class InsightController extends Controller
 
     public function show($slug)
     {
-        $hotel = Topic::active()->where('slug', $slug)->first();
+        $topic = Topic::active()->where('slug', $slug)->first();
 
-        if (!$hotel) {
+        if (!$topic) {
             abort(404);
         }
 
         return view('pages.insight.show', [
-            'hotel' => $hotel,
+            'topic' => $topic,
         ]);
     }
 

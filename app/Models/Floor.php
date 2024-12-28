@@ -6,17 +6,22 @@ use App\Helpers\Constants;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Translatable\HasTranslations;
 
 class Floor extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslations;
 
     protected $fillable = [
-        'hotel_id',
+        'description',
         'image',
-        'beds',
-        'baths',
-        'square',
+        'bedrooms',
+        'bathrooms',
+        'area',
+        'hotel_id',
+    ];
+
+    protected $translatable = [
         'description',
     ];
 
@@ -34,5 +39,10 @@ class Floor extends Model
     public function hotel()
     {
         return $this->belongsTo(Hotel::class);
+    }
+
+    public function getFormattedAreaAttribute()
+    {
+        return number_format($this->area, 2);
     }
 }

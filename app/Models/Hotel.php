@@ -6,17 +6,19 @@ use App\Helpers\Constants;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use MoonShine\Models\MoonshineUser;
+use Spatie\Translatable\HasTranslations;
 
 class Hotel extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslations;
 
     protected $fillable = [
         'title',
         'slug',
         'description',
+        'type',
         'codename',
-        'category',
         'latitude',
         'longitude',
         'price',
@@ -24,6 +26,11 @@ class Hotel extends Model
         'gallery',
         'active',
         'created_by',
+    ];
+
+    protected $translatable = [
+        'description',
+        'type',
     ];
 
     protected $casts = [
@@ -68,6 +75,11 @@ class Hotel extends Model
         });
     }
 
+    public function author()
+    {
+        return $this->belongsTo(MoonshineUser::class, 'created_by');
+    }
+
     public function floors()
     {
         return $this->hasMany(Floor::class);
@@ -81,5 +93,30 @@ class Hotel extends Model
     public function features()
     {
         return $this->belongsToMany(Feature::class, 'hotel_feature');
+    }
+
+    public function getAreaAttribute()
+    {
+        return $this->floors()->sum('area');
+    }
+
+    public function getBedroomsAttribute()
+    {
+        return $this->floors()->sum('bedrooms');
+    }
+
+    public function getBathroomsAttribute()
+    {
+        return $this->floors()->sum('bathrooms');
+    }
+
+    public function getFormattedAreaAttribute()
+    {
+        return number_format($this->area, 2);
+    }
+
+    public function getFormattedPriceAttribute()
+    {
+        return number_format($this->price, 3);
     }
 }

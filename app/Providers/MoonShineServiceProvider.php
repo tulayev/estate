@@ -57,7 +57,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 }),
 
             MenuItem::make(
-                static fn() => 'Hotels',
+                static fn() => 'Objects',
                 new HotelResource()
             ),
 

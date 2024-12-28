@@ -51,13 +51,13 @@ class FloorResource extends ModelResource
                     ->searchable()
                     ->required(),
 
-                Number::make('Beds', 'beds')
+                Number::make('Bedrooms', 'bedrooms')
                     ->required(),
 
-                Number::make('Baths', 'baths')
+                Number::make('Bathrooms', 'bathrooms')
                     ->required(),
 
-                Number::make('Square', 'square')
+                Number::make('Area', 'area')
                     ->step(0.01)
                     ->required(),
 
@@ -79,12 +79,12 @@ class FloorResource extends ModelResource
     public function rules(Model $item): array
     {
         return [
-            'hotel_id' => 'required|exists:hotels,id',
-            'image' => 'nullable|image|max:2048',
-            'beds' => 'required|integer|min:0',
-            'baths' => 'required|integer|min:0',
-            'square' => 'required|numeric|min:0',
             'description' => 'required|string',
+            'image' => 'nullable|image|max:2048',
+            'bedrooms' => 'required|integer|min:0',
+            'bathrooms' => 'required|integer|min:0',
+            'area' => 'required|numeric|min:0|regex:/^\d+(\.\d{1,2})?$/',
+            'hotel_id' => 'required|exists:hotels,id',
         ];
     }
 }

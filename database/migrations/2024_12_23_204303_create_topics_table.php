@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('topics', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->json('title');
             $table->string('slug')->unique();
-            $table->text('body');
+            $table->json('body');
             $table->string('image')->nullable();
             $table->boolean('active')->default(false);
             $table->foreignId('topic_category_id')

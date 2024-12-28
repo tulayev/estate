@@ -6,10 +6,11 @@ use App\Helpers\Constants;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Translatable\HasTranslations;
 
 class Topic extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslations;
 
     protected $fillable = [
         'title',
@@ -19,6 +20,11 @@ class Topic extends Model
         'active',
         'topic_category_id',
         'created_by',
+    ];
+
+    protected $translatable = [
+        'title',
+        'body',
     ];
 
     public function scopeActive($query)
