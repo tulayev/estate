@@ -52,24 +52,69 @@ class HotelResource extends ModelResource
         return '';
     }
 
+    public function getPublishedField(): Switcher | null
+    {
+        return auth()->user()->moonshine_user_role_id === Constants::ROLES['Admin']
+            ? Switcher::make('Published', 'active')
+                ->default(true)
+            : null;
+    }
+
     /**
      * @return list<MoonShineComponent|Field>
      */
-    public function fields(): array
+    public function indexFields(): array
     {
-        $activeField = auth()->user()->moonshine_user_role_id === Constants::ROLES['Admin']
-            ? Switcher::make('Published', 'active')
-                ->default(true)
-                ->sortable(function (Builder $query) {
-                    $query->orderBy('created_at', 'desc');
-                })
-            : null;
+        return [
+            ID::make()->sortable(),
 
+            Text::make('Title', 'title')->sortable(),
+
+            Image::make('Main Image', 'main_image'),
+
+            $this->getPublishedField()->sortable(),
+        ];
+    }
+
+    public function detailFields(): array
+    {
+        return [
+            ID::make(),
+
+            Text::make('Title', 'title'),
+
+            Slug::make('Slug', 'slug'),
+
+            Text::make('Description', 'description'),
+
+            Text::make('Type', 'type'),
+
+            Text::make('Code Name', 'codename'),
+
+            Number::make('Latitude', 'latitude'),
+
+            Number::make('Longitude', 'longitude'),
+
+            Number::make('Price', 'price'),
+
+            BelongsToMany::make('Tags', 'tags', 'name', resource: new TagResource()),
+
+            BelongsToMany::make('Features', 'features', 'name', resource: new FeatureResource()),
+
+            Image::make('Main Image', 'main_image'),
+
+            Image::make('Gallery', 'gallery')
+                ->multiple(),
+
+            $this->getPublishedField(),
+        ];
+    }
+
+    public function formFields(): array
+    {
         return [
             Block::make('General Information', [
                 ID::make()->sortable(),
-
-                $activeField,
 
                 Text::make('Title', 'title')
                     ->required()
@@ -101,6 +146,8 @@ class HotelResource extends ModelResource
                 BelongsToMany::make('Tags', 'tags', 'name', resource: new TagResource()),
 
                 BelongsToMany::make('Features', 'features', 'name', resource: new FeatureResource()),
+
+                $this->getPublishedField(),
             ]),
 
             Block::make('Media', [

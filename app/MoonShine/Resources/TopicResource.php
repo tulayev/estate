@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources;
 
 use App\Helpers\Constants;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Topic;
 
@@ -42,24 +41,52 @@ class TopicResource extends ModelResource
         return '';
     }
 
+    public function getPublishedField(): Switcher | null
+    {
+        return auth()->user()->moonshine_user_role_id === Constants::ROLES['Admin']
+            ? Switcher::make('Published', 'active')
+                ->default(true)
+            : null;
+    }
+
     /**
      * @return list<MoonShineComponent|Field>
      */
-    public function fields(): array
+    public function indexFields(): array
     {
-        $activeField = auth()->user()->moonshine_user_role_id === Constants::ROLES['Admin']
-            ? Switcher::make('Published', 'active')
-                ->default(true)
-                ->sortable(function (Builder $query) {
-                    $query->orderBy('created_at', 'desc');
-                })
-            : null;
+        return [
+            ID::make()->sortable(),
 
+            Text::make('Title', 'title')->sortable(),
+
+            Image::make('Image', 'image'),
+
+            $this->getPublishedField()->sortable(),
+        ];
+    }
+
+    public function detailFields(): array
+    {
+        return [
+            ID::make(),
+
+            Text::make('Title', 'title'),
+
+            BelongsTo::make('Category', 'category', 'title', resource: new TopicCategoryResource()),
+
+            Text::make('Body', 'body'),
+
+            Image::make('Image', 'image'),
+
+            $this->getPublishedField(),
+        ];
+    }
+
+    public function formFields(): array
+    {
         return [
             Block::make([
                 ID::make()->sortable(),
-
-                $activeField,
 
                 Text::make('Title', 'title')
                     ->required(),
@@ -81,6 +108,8 @@ class TopicResource extends ModelResource
                     ->dir(Constants::UPLOAD_PATH)
                     ->allowedExtensions(['jpg', 'jpeg', 'png'])
                     ->removable(),
+
+                $this->getPublishedField(),
             ])
         ];
     }

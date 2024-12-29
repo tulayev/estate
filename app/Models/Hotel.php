@@ -44,6 +44,92 @@ class Hotel extends Model
         return $query->where('active', true);
     }
 
+    public function scopeSearch($query, $keyword)
+    {
+        if (!empty($keyword)) {
+            $query->where('title', 'LIKE', '%' . $keyword . '%')
+                ->orWhere('type', 'LIKE', '%' . $keyword . '%');
+        }
+        return $query;
+    }
+
+    public function scopeFilterByPrice($query, $min = null, $max = null)
+    {
+        if ($min !== null) {
+            $query->where('price', '>=', $min);
+        }
+        if ($max !== null) {
+            $query->where('price', '<=', $max);
+        }
+        return $query;
+    }
+
+    public function scopeFilterByBedrooms($query, $min = null, $max = null)
+    {
+        if ($min !== null) {
+            $query->where(function ($q) use ($min) {
+                $q->whereRaw(
+                    '(SELECT SUM(bedrooms) FROM floors WHERE floors.hotel_id = hotels.id) >= ?',
+                    [$min]
+                );
+            });
+        }
+
+        if ($max !== null) {
+            $query->where(function ($q) use ($max) {
+                $q->whereRaw(
+                    '(SELECT SUM(bedrooms) FROM floors WHERE floors.hotel_id = hotels.id) <= ?',
+                    [$max]
+                );
+            });
+        }
+
+        return $query;
+    }
+
+    public function scopeFilterByBathrooms($query, $min = null, $max = null)
+    {
+        if ($min !== null) {
+            $query->where(function ($q) use ($min) {
+                $q->whereRaw(
+                    '(SELECT SUM(bathrooms) FROM floors WHERE floors.hotel_id = hotels.id) >= ?',
+                    [$min]
+                );
+            });
+        }
+
+        if ($max !== null) {
+            $query->where(function ($q) use ($max) {
+                $q->whereRaw(
+                    '(SELECT SUM(bathrooms) FROM floors WHERE floors.hotel_id = hotels.id) <= ?',
+                    [$max]
+                );
+            });
+        }
+
+        return $query;
+    }
+
+    public function scopeFilterByTags($query, $tags)
+    {
+        if (!empty($tags)) {
+            $query->whereHas('tags', function ($q) use ($tags) {
+                $q->whereIn('tags.id', $tags); // Specify `tags.id`
+            });
+        }
+        return $query;
+    }
+
+    public function scopeFilterByFeatures($query, $features)
+    {
+        if (!empty($features)) {
+            $query->whereHas('features', function ($q) use ($features) {
+                $q->whereIn('features.id', $features); // Specify `features.id`
+            });
+        }
+        return $query;
+    }
+
     protected static function boot()
     {
         parent::boot();

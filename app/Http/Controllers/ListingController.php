@@ -2,18 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Feature;
 use App\Models\Hotel;
 use App\Models\HotelLike;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class ListingController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $hotels = Hotel::active()->get();
+        $tags = Tag::all();
+        $features = Feature::all();
+
+        $hotels = Hotel::query()
+            ->with(['floors', 'tags', 'features'])
+            ->search($request->input('search'))
+            ->filterByPrice($request->input('price_min'), $request->input('price_max'))
+            ->filterByBedrooms($request->input('bedrooms_min'), $request->input('bedrooms_max'))
+            ->filterByBathrooms($request->input('bathrooms_min'), $request->input('bathrooms_max'))
+            ->filterByTags($request->input('tags', []))
+            ->filterByFeatures($request->input('features', []))
+            ->active()
+            ->get();
 
         return view('pages.listing.index', [
             'hotels' => $hotels,
+            'tags' => $tags,
+            'features' => $features,
         ]);
     }
 
