@@ -15,21 +15,21 @@ class ListingController extends Controller
         $tags = Tag::all();
         $features = Feature::all();
 
-        $hotels = Hotel::query()
-            ->with(['floors', 'tags', 'features'])
-            ->search($request->input('search'))
-            ->filterByPrice($request->input('price_min'), $request->input('price_max'))
-            ->filterByBedrooms($request->input('bedrooms_min'), $request->input('bedrooms_max'))
-            ->filterByBathrooms($request->input('bathrooms_min'), $request->input('bathrooms_max'))
-            ->filterByTags($request->input('tags', []))
-            ->filterByFeatures($request->input('features', []))
-            ->active()
-            ->get();
+        $hotels = $this->applyFilters($request)->get();
 
         return view('pages.listing.index', [
             'hotels' => $hotels,
             'tags' => $tags,
             'features' => $features,
+        ]);
+    }
+
+    public function count(Request $request) // API call only
+    {
+        $count = $this->applyFilters($request)->count();
+
+        return response()->json([
+            'count' => $count,
         ]);
     }
 
@@ -72,8 +72,9 @@ class ListingController extends Controller
             // Remove the existing like
             $existingLike->delete();
 
-            return response()
-                ->json(['message' => 'Like removed successfully']);
+            return response()->json([
+                'message' => 'Like removed successfully'
+            ]);
         }
 
         HotelLike::create([
@@ -82,8 +83,9 @@ class ListingController extends Controller
             'ip_address' => $userId ? null : $ipAddress,
         ]);
 
-        return response()
-            ->json(['message' => 'Object liked successfully'], 201);
+        return response()->json([
+            'message' => 'Object liked successfully'
+        ], 201);
     }
 
     public function likes($hotelId)
@@ -97,8 +99,9 @@ class ListingController extends Controller
 
         $likesCount = $hotel->likes()->count();
 
-        return response()
-            ->json(['likes_count' => $likesCount]);
+        return response()->json([
+            'likes_count' => $likesCount
+        ]);
     }
 
     public function likedByUser(Request $request)
@@ -118,5 +121,18 @@ class ListingController extends Controller
             ->get();
 
         return response()->json($likedHotels);
+    }
+
+    private function applyFilters(Request $request)
+    {
+        return Hotel::query()
+            ->with(['floors', 'tags', 'features'])
+            ->search($request->input('search'))
+            ->filterByPrice($request->input('price_min'), $request->input('price_max'))
+            ->filterByBedrooms($request->input('bedrooms_min'), $request->input('bedrooms_max'))
+            ->filterByBathrooms($request->input('bathrooms_min'), $request->input('bathrooms_max'))
+            ->filterByTags($request->input('tags', []))
+            ->filterByFeatures($request->input('features', []))
+            ->active();
     }
 }
