@@ -1,8 +1,9 @@
 <?php
 
+use App\MoonShine\Forms\LoginForm;
 use App\MoonShine\Layouts\MoonShineLayout;
+use App\MoonShine\Pages\Dashboard;
 use MoonShine\Exceptions\MoonShineNotFoundException;
-use MoonShine\Forms\LoginForm;
 use MoonShine\Http\Middleware\Authenticate;
 use MoonShine\Http\Middleware\SecurityHeadersMiddleware;
 use MoonShine\Models\MoonshineUser;
@@ -12,9 +13,9 @@ return [
     'dir' => 'app/MoonShine',
     'namespace' => 'App\MoonShine',
 
-    'title' => env('MOONSHINE_TITLE', 'MoonShine'),
-    'logo' => env('MOONSHINE_LOGO'),
-    'logo_small' => env('MOONSHINE_LOGO_SMALL'),
+    'title' => env('MOONSHINE_TITLE', 'Ignatev Estate'),
+    'logo' => env('MOONSHINE_LOGO', '/assets/common/logo-white.svg'),
+    'logo_small' => env('MOONSHINE_LOGO_SMALL', '/assets/common/logo-white.svg'),
 
     'route' => [
         'domain' => env('MOONSHINE_URL', ''),
@@ -57,7 +58,7 @@ return [
     ],
 
     'pages' => [
-        'dashboard' => App\MoonShine\Pages\Dashboard::class,
+        'dashboard' => Dashboard::class,
         'profile' => ProfilePage::class
     ],
 
@@ -90,6 +91,7 @@ return [
         ],
         'pipelines' => [],
     ],
+
     'locales' => [
         'en',
         'ru',

@@ -35,7 +35,13 @@ class ListingController extends Controller
 
     public function show($slug)
     {
-        $hotel = Hotel::active()->where('slug', $slug)->first();
+        $hotel = Hotel::active()
+            ->where('slug', $slug)
+            ->first();
+        $similarHotels = Hotel::active()
+            ->inRandomOrder()
+            ->limit(10)
+            ->get();
 
         if (!$hotel) {
             abort(404);
@@ -43,6 +49,7 @@ class ListingController extends Controller
 
         return view('pages.listing.show', [
             'hotel' => $hotel,
+            'similarHotels' => $similarHotels,
         ]);
     }
 

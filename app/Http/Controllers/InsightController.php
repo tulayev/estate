@@ -19,7 +19,14 @@ class InsightController extends Controller
 
     public function show($slug)
     {
-        $topic = Topic::active()->where('slug', $slug)->first();
+        $topic = Topic::active()
+            ->where('slug', $slug)
+            ->first();
+
+        $similarTopics = Topic::active()
+            ->inrandomOrder()
+            ->limit(10)
+            ->get();
 
         if (!$topic) {
             abort(404);
@@ -27,6 +34,7 @@ class InsightController extends Controller
 
         return view('pages.insight.show', [
             'topic' => $topic,
+            'similarTopics' => $similarTopics,
         ]);
     }
 
