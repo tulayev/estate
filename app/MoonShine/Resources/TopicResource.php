@@ -61,7 +61,7 @@ class TopicResource extends ModelResource
 
             Image::make('Image', 'image'),
 
-            $this->getPublishedField()->sortable(),
+            $this->getPublishedField()?->sortable(),
         ];
     }
 

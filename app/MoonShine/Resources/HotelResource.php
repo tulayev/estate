@@ -72,7 +72,7 @@ class HotelResource extends ModelResource
 
             Image::make('Main Image', 'main_image'),
 
-            $this->getPublishedField()->sortable(),
+            $this->getPublishedField()?->sortable(),
         ];
     }
 

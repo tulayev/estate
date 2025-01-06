@@ -24,6 +24,11 @@ Route::get('/storage-link', function () {
     return redirect()->route('pages.home.index');
 });
 
+Route::get('/change-locale/{locale}', function($locale) {
+    session()->put('locale', $locale);
+    return redirect()->back();
+})->name('change-locale');
+
 Route::get('/', [HomeController::class, 'index'])->name('pages.home.index');
 
 Route::prefix('listings')->group(function () {
