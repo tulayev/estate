@@ -1,7 +1,3 @@
-@props([
-    'tags' => null,
-])
-
 <div class="hidden absolute left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 text-[#C6C6C6] z-[99] bg-white font-600 uppercase rounded-full sm:flex items-center px-3 w-[90vw] lg:w-[70vw] h-[50px] xl:h-[70px] text-sm xl:text-base xlWide:text-xl">
     <div>
         <img
@@ -51,7 +47,7 @@
 <!-- Search Modal -->
 <div
     id="searchModal"
-    class="w-[89%] m-auto bg-white rounded-[31px]"
+    class="w-[85%] m-auto bg-white rounded-[31px]"
     uk-modal
 >
     <div class="px-11 py-9">
@@ -72,15 +68,15 @@
         </div>
 
         <!-- Type -->
-        <h3 class="mt-14 modal-subtitle text-primary">Type | x </h3>
+        <div>
+            <h3 class="mt-14 modal-subtitle text-primary">Type | x </h3>
 
-        <div class="uk-child-width-1-3 mt-12" uk-grid>
-            <div>
-                <a href="#">
-                    <h4 class="bg-primary rounded-[25px] text-4xl text-white text-center font-900 uppercase p-6">
+            <div class="uk-child-width-1-3 mt-12" uk-grid>
+                <div>
+                    <div class="modal-subtitle bg-primary cursor-pointer p-6 rounded-[25px] text-4xl text-white text-center">
                         primary
-                    </h4>
-                </a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -94,142 +90,109 @@
                     <input
                         name="keywords"
                         type="text"
-                        class="modal-subtitle text-primary placeholder-primary w-full py-4 border-b-[2px] border-borderColor focus:outline-none focus:border-blue-500"
+                        class="modal-subtitle text-primary placeholder-secondary w-full py-4 border-b-[2px] border-borderColor focus:outline-none focus:border-blue-500"
                         placeholder="For example"
                     />
                 </div>
             </div>
             <!-- Price Range -->
-            <div
-                id="priceRangeWrapper"
-                x-data="priceRange()"
-                x-init="mintrigger(); maxtrigger()"
-            >
-                <h3 class="modal-subtitle text-primary">Price range</h3>
+            <div>
+                <x-ui.input-range
+                    :fromInputName="'price_from'"
+                    :toInputName="'price_to'"
+                    :minLength="7"
+                    :maxLength="7"
+                    :step="1000"
+                    :minValue="1"
+                    :maxValue="1000000"
+                />
+            </div>
+        </div>
 
-                <div class="uk-child-width-1-2" uk-grid>
-                    <div class="mt-6">
-                        <input
-                            name="price_from"
-                            type="text"
-                            class="modal-subtitle text-primary placeholder-primary w-full py-4 border-b-[2px] border-borderColor focus:outline-none focus:border-blue-500"
-                            placeholder="From"
-                            maxlength="7"
-                            x-on:input.debounce="mintrigger"
-                            x-model="minprice"
-                            wire:model.debounce.300="minprice"
+        <!-- Features -->
+        <div x-data="features()">
+            <h3 class="mt-14 modal-subtitle text-primary">
+                Facilities | x
+                <span
+                    id="selectedFeatures"
+                    x-text="selectedFeatures.join(', ')"
+                ></span>
+            </h3>
+            <div class="mt-6 features flex">
+                <div
+                    class="feature mr-9 shadow-feature-card rounded-[25px] px-10 py-5 flex justify-center items-center cursor-pointer"
+                    :class="selectedFeatures.includes('gym') ? 'bg-primary' : 'bg-white'"
+                    @click="toggleFeature('gym')"
+                >
+                    <div>
+                        <img
+                            src="{{ asset('assets/images/gym.png') }}"
+                            alt=""
+                            class="block"
                         />
-                    </div>
-                    <div class="mt-6">
-                        <input
-                            name="price_to"
-                            type="text"
-                            class="modal-subtitle text-primary placeholder-primary w-full py-4 border-b-[2px] border-borderColor focus:outline-none focus:border-blue-500"
-                            placeholder="To"
-                            maxlength="7"
-                            x-on:input.debounce.300="maxtrigger"
-                            x-model="maxprice"
-                            wire:model.debounce="maxprice"
-                        />
-                    </div>
-                </div>
-                <div class="mt-12 flex justify-center items-center">
-                    <div class="relative w-full">
-                        <div>
-                            <!-- Range Inputs -->
-                            <input
-                                type="range"
-                                step="100"
-                                x-bind:min="min"
-                                x-bind:max="max"
-                                x-on:input="mintrigger"
-                                x-model="minprice"
-                                class="absolute pointer-events-none appearance-none z-20 h-2 w-full opacity-0 cursor-pointer"
-                            />
-                            <input
-                                type="range"
-                                step="100"
-                                x-bind:min="min"
-                                x-bind:max="max"
-                                x-on:input="maxtrigger"
-                                x-model="maxprice"
-                                class="absolute pointer-events-none appearance-none z-20 h-2 w-full opacity-0 cursor-pointer"
-                            />
-                            <!-- Thumbs -->
-                            <div class="relative z-10 h-2">
-                                <div class="absolute z-10 left-0 right-0 bottom-0 top-0 rounded-md bg-primary"></div>
-                                <div
-                                    class="absolute z-20 top-0 bottom-0 rounded-md bg-primary"
-                                    x-bind:style="'right:'+maxthumb+'%; left:'+minthumb+'%'"
-                                ></div>
-                                <div
-                                    class="absolute z-30 w-6 h-6 top-0 left-0 bg-primary rounded-full -mt-2"
-                                    x-bind:style="'left: '+minthumb+'%'"
-                                ></div>
-                                <div
-                                    class="absolute z-30 w-6 h-6 top-0 right-0 bg-primary rounded-full -mt-2"
-                                    x-bind:style="'right: '+maxthumb+'%'"
-                                ></div>
-                            </div>
-                        </div>
+                        <p
+                            class="modal-subtitle text-center"
+                            :class="selectedFeatures.includes('gym') ? 'text-white' : 'text-primary'"
+                        >
+                            gym
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Tags -->
-        <h3 class="mt-14 modal-subtitle text-primary">Tags | x </h3>
-
-        <div class="mt-6 tags flex">
-            <div class="tag modal-subtitle bg-primary text-white text-center p-3 rounded-[25px]">
-                research
+        @if ($tags)
+            <div x-data="tags()">
+                <h3 class="mt-14 modal-subtitle text-primary">
+                    Tags | x
+                    <span
+                        id="selectedTags"
+                        x-text="selectedTags.join(', ')"
+                    ></span>
+                </h3>
+                <div class="mt-6 tags flex">
+                    @foreach($tags as $tag)
+                        <div
+                            class="tag mr-2 modal-subtitle cursor-pointer text-white text-center p-3 rounded-[25px]"
+                            :class="getRandomColor()"
+                            @click="addTag('{{ $tag->name }}')"
+                        >
+                            {{ $tag->name }}
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div>
+        @endif
     </div>
 </div>
 
-<script defer>
-    // Price Range using Alpine JS
-    function priceRange() {
+<script>
+    function tags() {
         return {
-            minprice: 0,
-            maxprice: 1000000,
-            min: 0,
-            max: 1000000,
-            minthumb: 0,
-            maxthumb: 0,
-            mintrigger() {
-                this.validation();
-                this.minprice = Math.min(this.minprice, this.maxprice - 500);
-                this.minthumb = ((this.minprice - this.min) / (this.max - this.min)) * 100;
-            },
-            maxtrigger() {
-                this.validation();
-                this.maxprice = Math.max(this.maxprice, this.minprice + 200);
-                this.maxthumb = 100 - (((this.maxprice - this.min) / (this.max - this.min)) * 100);
-            },
-            validation() {
-                if (/^\d*$/.test(this.minprice)) {
-                    if (this.minprice > this.max) {
-                        this.minprice = 9500;
-                    }
-                    if (this.minprice < this.min) {
-                        this.minprice = this.min;
-                    }
-                } else {
-                    this.minprice = 0;
+            selectedTags: [],
+            colors: ['bg-tag-1', 'bg-tag-2', 'bg-tag-3', 'bg-tag-4'],
+            addTag(tag) {
+                if (!this.selectedTags.includes(tag)) {
+                    this.selectedTags.push(tag);
                 }
-                if (/^\d*$/.test(this.maxprice)) {
-                    if (this.maxprice > this.max) {
-                        this.maxprice = this.max;
-                    }
-                    if (this.maxprice < this.min) {
-                        this.maxprice = 200;
-                    }
-                } else {
-                    this.maxprice = 10000;
-                }
+            },
+            getRandomColor() {
+                return this.colors[Math.floor(Math.random() * this.colors.length)];
             }
+        }
+    }
+
+    function features() {
+        return {
+            selectedFeatures: [],
+            toggleFeature(feature) {
+                if (this.selectedFeatures.includes(feature)) {
+                    this.selectedFeatures = this.selectedFeatures.filter(f => f !== feature);
+                } else {
+                    this.selectedFeatures.push(feature);
+                }
+            },
         }
     }
 </script>

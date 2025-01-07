@@ -39,4 +39,16 @@
     .modal-subtitle {
         @apply text-primary uppercase text-lg font-700 xl:font-900;
     }
+    .bg-tag-1 {
+        @apply bg-[#69A8A4];
+    }
+    .bg-tag-2 {
+        @apply bg-[#5A6BC9];
+    }
+    .bg-tag-3 {
+        @apply bg-[#584B7D];
+    }
+    .bg-tag-4 {
+        @apply bg-[#767E94];
+    }
 }

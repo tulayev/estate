@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Feature;
+use App\Models\Tag;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +22,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        View::composer('components.layout.search', function ($view) {
+            $view
+                ->with('tags', Tag::all())
+                ->with('features', Feature::all());
+        });
     }
 }
