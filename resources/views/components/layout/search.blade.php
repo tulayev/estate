@@ -155,7 +155,7 @@
                     @foreach($tags as $tag)
                         <div
                             class="tag mr-2 modal-subtitle cursor-pointer text-white text-center p-3 rounded-[25px]"
-                            :class="getRandomColor()"
+                            :class="[getRandomColor(), isTagSelected('{{ $tag->name }}') ? 'hidden' : '']"
                             @click="addTag('{{ $tag->name }}')"
                         >
                             {{ $tag->name }}
@@ -168,6 +168,19 @@
 </div>
 
 <script>
+    function features() {
+        return {
+            selectedFeatures: [],
+            toggleFeature(feature) {
+                if (this.selectedFeatures.includes(feature)) {
+                    this.selectedFeatures = this.selectedFeatures.filter(f => f !== feature);
+                } else {
+                    this.selectedFeatures.push(feature);
+                }
+            },
+        }
+    }
+
     function tags() {
         return {
             selectedTags: [],
@@ -179,19 +192,9 @@
             },
             getRandomColor() {
                 return this.colors[Math.floor(Math.random() * this.colors.length)];
-            }
-        }
-    }
-
-    function features() {
-        return {
-            selectedFeatures: [],
-            toggleFeature(feature) {
-                if (this.selectedFeatures.includes(feature)) {
-                    this.selectedFeatures = this.selectedFeatures.filter(f => f !== feature);
-                } else {
-                    this.selectedFeatures.push(feature);
-                }
+            },
+            isTagSelected(tagName) {
+                return this.selectedTags.includes(tagName);
             },
         }
     }
