@@ -1,37 +1,37 @@
-* {
+*, *::before, *::after {
     padding: 0;
     margin: 0;
     list-style-type: none;
     box-sizing: border-box;
-    scrollbar-width: thin;
-    scrollbar-color: #0F1F3D transparent;
-}
-
-html {
-    background-color: #f4f4f4;
     scroll-behavior: smooth;
 }
 
-html::-webkit-scrollbar {
+/* Browser Scrollbar */
+*::-webkit-scrollbar {
     width: 12px;
     height: 7px;
     margin-right: 2px;
 }
 
-html::-webkit-scrollbar-thumb {
-    background: linear-gradient(60deg, #1A236E 43%, #1A236E 49%);
+*::-webkit-scrollbar-thumb {
+    cursor: pointer;
+    background: #0F1F3D;
     border-radius: 12px;
 }
 
-html::-webkit-scrollbar-thumb:hover {
+*::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(13deg, #1A236E 14%, #1A236E 64%);
 }
 
-html::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
     background: rgba(245, 245, 245, 0.88);
     border-radius: 10px;
     -webkit-box-shadow: inset 0px 0px 0px rgba(245, 245, 245, 0.88);
     box-shadow: inset 0px 0px 0px rgba(245, 245, 245, 0.88);
+}
+
+html {
+    background-color: #f4f4f4;
 }
 
 .uk-section {
