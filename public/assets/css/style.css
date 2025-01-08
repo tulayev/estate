@@ -1,29 +1,54 @@
 * {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #0F1F3D transparent;
 }
 
 html {
-  background-color: #f4f4f4;
+    background-color: #f4f4f4;
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+    width: 12px;
+    height: 7px;
+    margin-right: 2px;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: linear-gradient(60deg, #1A236E 43%, #1A236E 49%);
+    border-radius: 12px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(13deg, #1A236E 14%, #1A236E 64%);
+}
+
+html::-webkit-scrollbar-track {
+    background: rgba(245, 245, 245, 0.88);
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0px 0px 0px rgba(245, 245, 245, 0.88);
+    box-shadow: inset 0px 0px 0px rgba(245, 245, 245, 0.88);
 }
 
 .uk-section {
-  padding: 0 !important;
+    padding: 0 !important;
 }
 
 .card-shadow {
-  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px 0px rgba(16, 24, 40, 0.06);
+    box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px 0px rgba(16, 24, 40, 0.06);
 }
 
 .u-swiper-slider {
-  color: #fff;
-  background: #030c18;
-  padding: 42px 35px;
-  border: 2px solid rgba(255, 255, 255, 0.42);
-  min-height: 260px;
-  max-height: 260px;
+    color: #fff;
+    background: #030c18;
+    padding: 42px 35px;
+    border: 2px solid rgba(255, 255, 255, 0.42);
+    min-height: 260px;
+    max-height: 260px;
 }
 
 .uk-nav-parent-icon>.uk-parent>a::after {
@@ -35,7 +60,7 @@ html {
 }
 
 .uk-modal {
-  padding: 0;
+    padding: 0;
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -43,289 +68,288 @@ input[type=range]::-webkit-slider-thumb {
     width: 24px;
     height: 24px;
     -webkit-appearance: none;
-
-    /* @apply w-6 h-6 appearance-none pointer-events-auto; */
 }
 
 @media (max-width: 1280px) {
-  .u-swiper-slider {
-    min-height: 300px;
-    max-height: 300px;
-  }
+    .u-swiper-slider {
+        min-height: 300px;
+        max-height: 300px;
+    }
 }
 
 @media (max-width: 960px) {
-  .u-swiper-slider {
-    min-height: 350px;
-    max-height: 350px;
-  }
+    .u-swiper-slider {
+        min-height: 350px;
+        max-height: 350px;
+    }
 }
 
 @media (max-width: 640px) {
-  .u-swiper-slider {
-    padding: 52px 18px;
-  }
+    .u-swiper-slider {
+        padding: 52px 18px;
+    }
 }
 
 .u-swiper-slider h3 {
-  margin: 22px 0 12px 0;
+    margin: 22px 0 12px 0;
 }
 
 .media-card {
-  background-color: white;
-  height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 30px;
-  border-radius: 24px;
+    background-color: white;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+    border-radius: 24px;
 }
 
 @media (max-width: 768px) {
-  .media-card {
-    height: 100px;
-  }
+    .media-card {
+        height: 100px;
+    }
 }
 
 .mini-container {
-  width: 70vw;
-  margin: 0 auto;
+    width: 70vw;
+    margin: 0 auto;
 }
 
 @media (max-width: 1280px) {
-  .mini-container {
-    width: 100%;
-    padding: 0 22px;
-  }
+    .mini-container {
+        width: 100%;
+        padding: 0 22px;
+    }
 }
 
 .custom-btn,
 .custom-btn-white {
-  background-color: #0f1f3d;
-  color: #f4f4f4;
-  padding: 0 16px;
-  border-radius: 24px;
-  height: 40px;
-  text-transform: uppercase;
-  font-weight: 600;
+    background-color: #0f1f3d;
+    color: #f4f4f4;
+    padding: 0 16px;
+    border-radius: 24px;
+    height: 40px;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 @media (max-width: 768px) {
-  .custom-btn,
-  .custom-btn-white {
-    height: 30px;
-    padding: 0 8px;
-  }
+    .custom-btn,
+    .custom-btn-white {
+        height: 30px;
+        padding: 0 8px;
+    }
 }
 
 .custom-btn-white {
-  background-color: white;
-  color: #0f1f3d;
+    background-color: white;
+    color: #0f1f3d;
 }
 
 .image-linear {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(15, 31, 61, 0.8);
-  z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 31, 61, 0.8);
+    z-index: 2;
 }
 
 .form-input-anim {
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
 
 .form-input-anim label {
-  position: absolute;
-  left: 30px;
-  width: 100%;
-  top: -20px;
-  height: 100%;
-  pointer-events: none;
+    position: absolute;
+    left: 30px;
+    width: 100%;
+    top: -20px;
+    height: 100%;
+    pointer-events: none;
 }
 
 .form-input-anim .input {
-  height: 80px;
-  font-size: 18px;
-  font-weight: 700;
-  color: #030c18;
+    height: 80px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #030c18;
 }
 
 .form-input-anim.textarea-wrapper label {
-  top: -330px;
+    top: -330px;
 }
 
 .form-input-anim.textarea-wrapper .textarea {
-  height: auto;
-  padding: 30px;
+    height: auto;
+    padding: 30px;
 }
 
 .form-input-anim .content-name {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  padding-bottom: 5px;
-  transition: all 0.3s ease;
-  font-size: 18px;
-  font-weight: 700;
-  color: #c6c6c6;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+    font-size: 18px;
+    font-weight: 700;
+    color: #c6c6c6;
 }
 
 .form-input-anim .input:focus + .label-name .content-name,
 .form-input-anim .input:valid + .label-name .content-name {
-  transform: translateY(-90%);
-  font-size: 18px;
-  left: 0px;
+    transform: translateY(-90%);
+    font-size: 18px;
+    left: 0px;
 }
 
 .form-input-anim .input:focus + .label-name::after,
 .form-input-anim .form .input:valid + .label-name::after {
-  transform: translateX(0%);
+    transform: translateX(0%);
 }
 
 .text-navbar {
-  font-weight: 700;
-  color: white;
+    font-weight: 700;
+    color: white;
 }
 
 .line-animation {
-  position: relative;
-  width: auto;
-  display: inline-block;
+    position: relative;
+    width: auto;
+    display: inline-block;
 }
 
 .line-animation:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .line-animation::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background-color: white;
-  bottom: -7px;
-  left: 0;
-  border-radius: 10px;
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    bottom: -7px;
+    left: 0;
+    border-radius: 10px;
 }
 
 .line-animation:hover {
-  color: white !important;
+    color: white !important;
 }
 
 .line-animation:hover::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: white !important;
-  bottom: -7px;
-  left: 0%;
-  border-radius: 10px;
-  -webkit-transition: width 0.3s;
-  transition: width 0.3s;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: white !important;
+    bottom: -7px;
+    left: 0%;
+    border-radius: 10px;
+    -webkit-transition: width 0.3s;
+    transition: width 0.3s;
 }
 
 .swiper-pagination {
-  bottom: 40px !important;
+    bottom: 40px !important;
 }
 
 .swiper-pagination .swiper-pagination-bullet {
-  background-color: #4f4f4f;
-  opacity: 1;
+    background-color: #4f4f4f;
+    opacity: 1;
 }
 
 .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
-  background-color: #b4b3b3;
-  width: 40px;
-  border-radius: 12px;
+    background-color: #b4b3b3;
+    width: 40px;
+    border-radius: 12px;
 }
 
 .mySwiper .swiper-wrapper {
-  position: relative;
+    position: relative;
 }
 .mySwiper .swiper-wrapper .swiper-slide::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));
-  z-index: 1;
-  pointer-events: none;
-  border-radius: 28px;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 28px;
 }
 
 @media (max-width: 768px) {
-  .mySwiper .swiper-wrapper .swiper-slide::before {
-    border-radius: 12px;
-  }
+    .mySwiper .swiper-wrapper .swiper-slide::before {
+        border-radius: 12px;
+    }
 }
 
 .card-mini {
-  border-radius: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .card-mini .text-wrapper {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 99;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
 }
 
 .card-mini .text-wrapper .title {
-  color: white;
-  font-size: 45px;
-  font-weight: 700;
-  text-transform: uppercase;
+    color: white;
+    font-size: 45px;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .card-mini .content-wrapper {
-  position: absolute;
-  left: 20px;
-  z-index: 99;
+    position: absolute;
+    left: 20px;
+    z-index: 99;
 }
 
 .card-mini .content-wrapper .title {
-  color: white;
-  font-size: 30px;
-  font-weight: 700;
-  text-transform: uppercase;
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .card-mini .content-wrapper .text {
-  color: white;
-  font-size: 24px;
+    color: white;
+    font-size: 24px;
 }
 
 .card-mini::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));
-  z-index: 1;
-  pointer-events: none;
-  border-radius: 28px;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 28px;
 }
 
 @media (max-width: 768px) {
-  .card-mini {
-    border-radius: 12px;
-  }
-  .card-mini::after {
-    border-radius: 12px;
-  }
+    .card-mini {
+        border-radius: 12px;
+    }
+
+    .card-mini::after {
+        border-radius: 12px;
+    }
 }

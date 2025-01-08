@@ -1,8 +1,6 @@
 @props([
-    'inputsHidden' => false,
     'fromInputName' => '',
     'toInputName' => '',
-    'type' => 'text',
     'minLength' => 0,
     'maxLength' => 0,
     'step' => 1,
@@ -16,13 +14,14 @@
 >
     <h3 class="modal-subtitle text-primary">Price range</h3>
 
-    <div class="uk-child-width-1-2 {{ $inputsHidden ? 'hidden' : '' }}" uk-grid>
+    <div class="uk-child-width-1-2" uk-grid>
         <div class="mt-6">
             <input
                 name="{{ $fromInputName }}"
-                type="{{ $type }}"
+                type="text"
                 class="modal-subtitle text-primary placeholder-primary placeholder-opacity-50 w-full py-4 border-b-[2px] border-borderColor focus:outline-none focus:border-blue-500"
                 placeholder="From"
+                minlength="{{ $minLength }}"
                 maxlength="{{ $maxLength }}"
                 x-on:input.debounce="minPriceTrigger"
                 x-model="minPrice"
@@ -32,9 +31,10 @@
         <div class="mt-6">
             <input
                 name="{{ $toInputName }}"
-                type="{{ $type }}"
+                type="text"
                 class="modal-subtitle text-primary placeholder-primary placeholder-opacity-50 w-full py-4 border-b-[2px] border-borderColor focus:outline-none focus:border-blue-500"
                 placeholder="To"
+                minlength="{{ $minLength }}"
                 maxlength="{{ $maxLength }}"
                 x-on:input.debounce.300="maxPriceTrigger"
                 x-model="maxPrice"
@@ -104,37 +104,31 @@
             max: {{ $maxValue }},
             minPriceThumb: 0,
             maxPriceThumb: 0,
+
             minPriceTrigger() {
-                this.validation();
-                this.minPrice = Math.min(this.minPrice, this.maxPrice - 500);
-                this.minPriceThumb = ((this.minPrice - this.min) / (this.max - this.min)) * 100;
+                this.validatePrices();
+                this.minPrice = Math.min(this.minPrice, this.maxPrice - 1); // Ensure minPrice < maxPrice
+                this.updateThumbs();
             },
+
             maxPriceTrigger() {
-                this.validation();
-                this.maxPrice = Math.max(this.maxPrice, this.minPrice + 200);
-                this.maxPriceThumb = 100 - (((this.maxPrice - this.min) / (this.max - this.min)) * 100);
+                this.validatePrices();
+                this.maxPrice = Math.max(this.maxPrice, this.minPrice + 1); // Ensure maxPrice > minPrice
+                this.updateThumbs();
             },
-            validation() {
-                if (/^\d*$/.test(this.minPrice)) {
-                    if (this.minPrice > this.max) {
-                        this.minPrice = 9500;
-                    }
-                    if (this.minPrice < this.min) {
-                        this.minPrice = this.min;
-                    }
-                } else {
-                    this.minPrice = 0;
-                }
-                if (/^\d*$/.test(this.maxPrice)) {
-                    if (this.maxPrice > this.max) {
-                        this.maxPrice = this.max;
-                    }
-                    if (this.maxPrice < this.min) {
-                        this.maxPrice = 200;
-                    }
-                } else {
-                    this.maxPrice = 10000;
-                }
+
+            validatePrices() {
+                // Clamp minPrice to valid range
+                this.minPrice = Math.max(this.min, Math.min(this.minPrice, this.max));
+
+                // Clamp maxPrice to valid range
+                this.maxPrice = Math.max(this.min, Math.min(this.maxPrice, this.max));
+            },
+
+            updateThumbs() {
+                // Calculate thumb positions after validation
+                this.minPriceThumb = ((this.minPrice - this.min) / (this.max - this.min)) * 100;
+                this.maxPriceThumb = 100 - (((this.maxPrice - this.min) / (this.max - this.min)) * 100);
             }
         }
     }
