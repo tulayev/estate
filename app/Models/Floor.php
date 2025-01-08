@@ -6,23 +6,18 @@ use App\Helpers\Constants;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
-use Spatie\Translatable\HasTranslations;
 
 class Floor extends Model
 {
-    use HasFactory, HasTranslations;
+    use HasFactory;
 
     protected $fillable = [
-        'description',
+        'floor',
         'image',
         'bedrooms',
         'bathrooms',
         'area',
         'hotel_id',
-    ];
-
-    protected $translatable = [
-        'description',
     ];
 
     protected static function boot()

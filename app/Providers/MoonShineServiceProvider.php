@@ -13,6 +13,7 @@ use App\MoonShine\Resources\MoonshineUserResource;
 use App\MoonShine\Resources\TagResource;
 use App\MoonShine\Resources\TopicCategoryResource;
 use App\MoonShine\Resources\TopicResource;
+use App\MoonShine\Resources\TypeResource;
 use Illuminate\Http\Request;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
 use MoonShine\Menu\MenuGroup;
@@ -65,6 +66,14 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 static fn() => 'Floors',
                 new FloorResource()
             ),
+
+            MenuItem::make(
+                static fn() => 'Types',
+                new TypeResource()
+            )
+                ->canSee(function (Request $request) {
+                    return $request->user('moonshine')?->moonshine_user_role_id === Constants::ROLES['Admin'];
+                }),
 
             MenuItem::make(
                 static fn() => 'Tags',

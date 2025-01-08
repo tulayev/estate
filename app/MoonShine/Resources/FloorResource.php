@@ -44,7 +44,7 @@ class FloorResource extends ModelResource
             Block::make([
                 ID::make()->sortable(),
 
-                Text::make('Description', 'description')
+                Number::make('Floor', 'floor')
                     ->required(),
 
                 $hotels
@@ -79,7 +79,7 @@ class FloorResource extends ModelResource
     public function rules(Model $item): array
     {
         return [
-            'description' => 'required|string',
+            'floor' => 'required|integer|min:1',
             'image' => 'nullable|image|max:2048',
             'bedrooms' => 'required|integer|min:0',
             'bathrooms' => 'required|integer|min:0',

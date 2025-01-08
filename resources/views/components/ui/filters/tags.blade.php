@@ -9,17 +9,17 @@
             class="font-700 cursor-pointer"
             @click="resetTags"
         >
-                        x
-                    </span>
+            x
+        </span>
         <span
             id="selectedTags"
             x-text="selectedTags.join(', ')"
         ></span>
     </h3>
-    <div class="mt-6 tags flex">
+    <div class="mt-6 tags flex flex-wrap gap-4">
         @foreach($tags as $tag)
             <div
-                class="tag mr-2 modal-subtitle cursor-pointer text-white text-center p-3 rounded-[25px]"
+                class="tag modal-subtitle cursor-pointer text-white text-center p-3 rounded-[25px]"
                 :class="[getRandomColor(), isTagSelected('{{ $tag->name }}') ? 'hidden' : '']"
                 @click="addTag('{{ $tag->name }}')"
             >

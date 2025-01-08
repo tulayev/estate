@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/uikit.min.css') }}" />
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/font/fonts.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/font/stylesheet.css') }}" />
     <!-- Uikit js -->
     <script defer src="{{ asset('assets/js/uikit-icons.min.js') }}"></script>
     <script defer src="{{ asset('assets/js/uikit.min.js') }}"></script>

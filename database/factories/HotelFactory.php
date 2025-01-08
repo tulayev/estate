@@ -23,10 +23,6 @@ class HotelFactory extends Factory
                 'en' => $this->faker->paragraph,
                 'ru' => $this->faker->paragraph,
             ],
-            'type' => [
-                'en' => $this->faker->randomElement(['Luxury', 'Standard', 'Budget']),
-                'ru' => $this->faker->randomElement(['Люкс', 'Стандарт', 'Эконом']),
-            ],
             'codename' => $this->faker->optional()->word,
             'latitude' => $this->faker->latitude,
             'longitude' => $this->faker->longitude,

@@ -17,10 +17,7 @@ class FloorFactory extends Factory
     public function definition(): array
     {
         return [
-            'description' => [
-                'en' => $this->faker->sentence,
-                'ru' => $this->faker->sentence,
-            ],
+            'floor' => $this->faker->numberBetween(1, 5),
             'bedrooms' => $this->faker->numberBetween(1, 5),
             'bathrooms' => $this->faker->numberBetween(1, 3),
             'area' => $this->faker->randomFloat(2, 50, 500),

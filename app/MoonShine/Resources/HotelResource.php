@@ -97,6 +97,8 @@ class HotelResource extends ModelResource
 
             Number::make('Price', 'price'),
 
+            BelongsToMany::make('Types', 'types', 'name', resource: new TypeResource()),
+
             BelongsToMany::make('Tags', 'tags', 'name', resource: new TagResource()),
 
             BelongsToMany::make('Features', 'features', 'name', resource: new FeatureResource()),
@@ -143,6 +145,8 @@ class HotelResource extends ModelResource
                     ->min(0)
                     ->step(0.001),
 
+                BelongsToMany::make('Types', 'types', 'name', resource: new TypeResource()),
+
                 BelongsToMany::make('Tags', 'tags', 'name', resource: new TagResource()),
 
                 BelongsToMany::make('Features', 'features', 'name', resource: new FeatureResource()),
@@ -179,7 +183,6 @@ class HotelResource extends ModelResource
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'codename' => 'nullable|string|max:255',
-            'type' => 'nullable|string|max:255',
             'latitude' => 'nullable|numeric|between:-90,90',
             'longitude' => 'nullable|numeric|between:-180,180',
             'price' => 'required|numeric|min:0|regex:/^\d+(\.\d{1,3})?$/',

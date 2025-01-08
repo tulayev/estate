@@ -6,6 +6,7 @@ use App\Models\Feature;
 use App\Models\Floor;
 use App\Models\Hotel;
 use App\Models\Tag;
+use App\Models\Type;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
@@ -18,12 +19,13 @@ class HotelSeeder extends Seeder
     {
         // Disable model events to bypass the creating and deleting events
         Hotel::withoutEvents(function () {
-            // Create tags and features
+            // Create types, tags and features
+            $types = Type::factory(3)->create(); // Create 3 types
             $tags = Tag::factory(10)->create(); // Create 10 tags
             $features = Feature::factory(10)->create(); // Create 10 features
 
             // Create 20 hotels
-            Hotel::factory(20)->create()->each(function ($hotel) use ($tags, $features) {
+            Hotel::factory(20)->create()->each(function ($hotel) use ($types, $tags, $features) {
                 // Manually set the created_at and updated_at fields
                 $createdAt = Carbon::now()->subDays(rand(0, 30)); // Random date in the last 30 days
                 $updatedAt = Carbon::now()->subDays(rand(0, 30)); // Random date in the last 30 days
@@ -35,10 +37,13 @@ class HotelSeeder extends Seeder
                 ]);
 
                 // Attach random tags
-                $hotel->tags()->attach($tags->random(rand(1, 3))->pluck('id')->toArray());
+                $hotel->types()->attach($types->random(rand(1, 3))->pluck('id')->toArray());
+
+                // Attach random tags
+                $hotel->tags()->attach($tags->random(rand(1, 10))->pluck('id')->toArray());
 
                 // Attach random features
-                $hotel->features()->attach($features->random(rand(2, 5))->pluck('id')->toArray());
+                $hotel->features()->attach($features->random(rand(1, 10))->pluck('id')->toArray());
 
                 // Create floors for each hotel
                 Floor::factory(rand(1, 5))->create(['hotel_id' => $hotel->id]);

@@ -72,29 +72,9 @@
         </div>
 
         <!-- Type -->
-        <div>
-            <h3 class="mt-16 modal-subtitle text-primary">
-                Type | <span class="font-700">x</span>
-            </h3>
-
-            <div class="uk-child-width-1-3 mt-12" uk-grid>
-                <div>
-                    <div class="modal-subtitle bg-primary cursor-pointer p-6 rounded-[25px] text-4xl text-white text-center">
-                        primary
-                    </div>
-                </div>
-                <div>
-                    <div class="modal-subtitle bg-tag-1 cursor-pointer p-6 rounded-[25px] text-4xl text-white text-center">
-                        resale
-                    </div>
-                </div>
-                <div>
-                    <div class="modal-subtitle bg-tag-2 cursor-pointer p-6 rounded-[25px] text-4xl text-white text-center">
-                        land
-                    </div>
-                </div>
-            </div>
-        </div>
+        @if ($types)
+            <x-ui.filters.types :types="$types" />
+        @endif
 
         <!-- Keywords & Price range -->
         <div class="uk-child-width-1-2 pt-20" uk-grid>
@@ -112,17 +92,15 @@
                 </div>
             </div>
             <!-- Price Range -->
-            <div>
-                <x-ui.filters.ranges.price-range
-                    :fromInputName="'price_from'"
-                    :toInputName="'price_to'"
-                    :minLength="3"
-                    :maxLength="7"
-                    :step="1000"
-                    :minValue="1"
-                    :maxValue="1000000"
-                />
-            </div>
+            <x-ui.filters.ranges.price-range
+                :fromInputName="'price_from'"
+                :toInputName="'price_to'"
+                :minLength="3"
+                :maxLength="7"
+                :step="1000"
+                :minValue="1"
+                :maxValue="1000000"
+            />
         </div>
 
         <!-- Features -->

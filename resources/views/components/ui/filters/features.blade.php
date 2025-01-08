@@ -4,7 +4,8 @@
 
 <div x-data="features()">
     <h3 class="mt-40 modal-subtitle text-primary">
-        Facilities | <span class="font-700">x</span>
+        Facilities |
+        <span class="font-700">x</span>
         <span
             id="selectedFeatures"
             x-text="selectedFeatures.join(', ')"

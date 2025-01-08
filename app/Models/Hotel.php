@@ -17,7 +17,6 @@ class Hotel extends Model
         'title',
         'slug',
         'description',
-        'type',
         'codename',
         'latitude',
         'longitude',
@@ -30,7 +29,6 @@ class Hotel extends Model
 
     protected $translatable = [
         'description',
-        'type',
     ];
 
     protected $casts = [
@@ -179,6 +177,11 @@ class Hotel extends Model
     public function features()
     {
         return $this->belongsToMany(Feature::class, 'hotel_feature');
+    }
+
+    public function types()
+    {
+        return $this->belongsToMany(Type::class, 'hotel_type');
     }
 
     public function likes()
