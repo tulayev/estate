@@ -4,14 +4,24 @@
 
 <div x-data="features()">
     <h3 class="mt-40 modal-subtitle text-primary">
-        Facilities |
-        <span class="font-700">x</span>
+        Facilities
+        <span
+            class="font-700"
+        >
+            |
+        </span>
+        <span
+            class="font-400 cursor-pointer hover:text-red-500 hover:font-900"
+            @click="resetFeatures"
+        >
+            x
+        </span>
         <span
             id="selectedFeatures"
             x-text="selectedFeatures.join(', ')"
         ></span>
     </h3>
-    <div class="mt-6 uk-child-width-1-2" uk-grid>
+    <div class="mt-12 uk-child-width-1-2" uk-grid>
         <div>
             <h4 class="modal-subtitle text-secondary">bathrooms</h4>
             <div class="shadow-feature-card rounded-[25px] mt-3 px-14 py-7 flex items-center justify-between">
@@ -43,7 +53,7 @@
             </div>
         </div>
     </div>
-    <div class="mt-6 features flex flex-wrap gap-4">
+    <div class="mt-10 features flex flex-wrap gap-4">
         @foreach($features as $feature)
             <div
                 class="feature mr-9 shadow-feature-card rounded-[25px] w-[170px] h-[145px] flex justify-center items-center cursor-pointer"
@@ -84,6 +94,10 @@
             isFeatureSelected(featureName) {
                 return this.selectedFeatures.includes(featureName);
             },
+
+            resetFeatures() {
+                this.selectedFeatures = [];
+            }
         }
     }
 </script>

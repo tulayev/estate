@@ -600,12 +600,16 @@ video {
   }
 }
 
-.font-700 {
-  font-weight: 700;
+.font-400 {
+  font-weight: 400;
 }
 
 .font-600 {
   font-weight: 600;
+}
+
+.font-700 {
+  font-weight: 700;
 }
 
 .line-animation:hover {
@@ -1531,6 +1535,15 @@ video {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+.hover\:font-900:hover {
+  font-weight: 900;
+}
+
+.hover\:text-red-500:hover {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity, 1));
 }
 
 .focus\:border-blue-500:focus {

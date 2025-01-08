@@ -3,12 +3,16 @@
 @tailwind utilities;
 
 @layer components {
-    .font-700 {
-        font-weight: 700;
+    .font-400 {
+        font-weight: 400;
     }
 
     .font-600 {
         font-weight: 600;
+    }
+
+    .font-700 {
+        font-weight: 700;
     }
 
     .font-800 {

@@ -4,9 +4,14 @@
 
 <div x-data="tags()">
     <h3 class="mt-40 modal-subtitle text-primary">
-        Tags |
+        Tags
         <span
-            class="font-700 cursor-pointer"
+            class="font-700"
+        >
+            |
+        </span>
+        <span
+            class="font-400 cursor-pointer hover:text-red-500 hover:font-900"
             @click="resetTags"
         >
             x

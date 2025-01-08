@@ -4,9 +4,14 @@
 
 <div x-data="types()">
     <h3 class="mt-16 modal-subtitle text-primary">
-        Type |
+        Type
         <span
-            class="font-700 cursor-pointer"
+            class="font-700"
+        >
+            |
+        </span>
+        <span
+            class="font-400 cursor-pointer hover:text-red-500 hover:font-900"
             @click="resetTypes"
         >
             x
