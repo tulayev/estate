@@ -108,11 +108,25 @@ class Hotel extends Model
         return $query;
     }
 
+    public function scopeFilterByTypes($query, $types)
+    {
+        if (!empty($types)) {
+            $typesArray = explode(',', $types);
+
+            $query->whereHas('types', function ($q) use ($typesArray) {
+                $q->whereIn('types.id', $typesArray); // Specify `types.id`
+            });
+        }
+        return $query;
+    }
+
     public function scopeFilterByTags($query, $tags)
     {
         if (!empty($tags)) {
-            $query->whereHas('tags', function ($q) use ($tags) {
-                $q->whereIn('tags.id', $tags); // Specify `tags.id`
+            $tagsArray = explode(',', $tags);
+
+            $query->whereHas('tags', function ($q) use ($tagsArray) {
+                $q->whereIn('tags.id', $tagsArray); // Specify `tags.id`
             });
         }
         return $query;
@@ -121,8 +135,10 @@ class Hotel extends Model
     public function scopeFilterByFeatures($query, $features)
     {
         if (!empty($features)) {
-            $query->whereHas('features', function ($q) use ($features) {
-                $q->whereIn('features.id', $features); // Specify `features.id`
+            $featuresArray = explode(',', $features);
+
+            $query->whereHas('features', function ($q) use ($featuresArray) {
+                $q->whereIn('features.id', $featuresArray); // Specify `features.id`
             });
         }
         return $query;

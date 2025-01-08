@@ -5,30 +5,25 @@
 <div x-data="types()">
     <h3 class="mt-16 modal-subtitle text-primary">
         Type
-        <span
-            class="font-700"
-        >
-            |
-        </span>
-        <span
-            class="font-400 cursor-pointer hover:text-red-500 hover:font-900"
-            @click="resetTypes"
-        >
-            x
-        </span>
-        <span
-            id="selectedTypes"
-            x-text="selectedTypes.join(', ')"
-        ></span>
+        <span class="font-700">|</span>
+        <span class="font-400 cursor-pointer hover:text-red-500 hover:font-900" @click="resetTypes">x</span>
+        <span x-text="selectedTypeNames('{{ app()->getLocale() }}').join(', ')"></span>
     </h3>
 
     <div class="uk-child-width-1-3 mt-12" uk-grid>
+        <input
+            type="hidden"
+            name="types"
+            :value="selectedTypes.join(',')"
+            x-bind:value="selectedTypes.join(',')"
+        />
+
         @foreach($types as $type)
             <div>
                 <div
                     class="modal-subtitle cursor-pointer p-6 rounded-[25px] text-4xl text-white text-center"
-                    :class="[getRandomColor(), isTypeSelected('{{ $type->name }}') ? 'hidden' : '']"
-                    @click="addType('{{ $type->name }}')"
+                    :class="[getRandomColor(), isTypeSelected('{{ $type->id }}') ? 'hidden' : '']"
+                    @click="addType('{{ $type->id }}')"
                 >
                     {{ $type->name }}
                 </div>
@@ -41,6 +36,7 @@
     function types() {
         return {
             selectedTypes: [],
+            allTypes: @json($types),
             colors: ['bg-tag-1', 'bg-tag-2', 'bg-tag-3', 'bg-tag-4'],
 
             addType(type) {
@@ -53,12 +49,19 @@
                 return this.colors[Math.floor(Math.random() * this.colors.length)];
             },
 
-            isTypeSelected(typeName) {
-                return this.selectedTypes.includes(typeName);
+            isTypeSelected(type) {
+                return this.selectedTypes.includes(type);
             },
 
             resetTypes() {
                 this.selectedTypes = [];
+            },
+
+            selectedTypeNames(locale) {
+                return this.selectedTypes.map(id => {
+                    const type = this.allTypes.find(type => type.id == id);
+                    return type ? type.name[locale] : '';
+                });
             }
         }
     }

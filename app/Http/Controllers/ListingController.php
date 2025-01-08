@@ -6,12 +6,14 @@ use App\Models\Feature;
 use App\Models\Hotel;
 use App\Models\HotelLike;
 use App\Models\Tag;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class ListingController extends Controller
 {
     public function index(Request $request)
     {
+        $types = Type::all();
         $tags = Tag::all();
         $features = Feature::all();
 
@@ -19,6 +21,7 @@ class ListingController extends Controller
 
         return view('pages.listing.index', [
             'hotels' => $hotels,
+            'types' => $types,
             'tags' => $tags,
             'features' => $features,
         ]);
@@ -133,13 +136,14 @@ class ListingController extends Controller
     private function applyFilters(Request $request)
     {
         return Hotel::query()
-            ->with(['floors', 'tags', 'features'])
+            ->with(['floors', 'types', 'tags', 'features'])
             ->search($request->input('search'))
             ->filterByPrice($request->input('price_min'), $request->input('price_max'))
             ->filterByBedrooms($request->input('bedrooms_min'), $request->input('bedrooms_max'))
             ->filterByBathrooms($request->input('bathrooms_min'), $request->input('bathrooms_max'))
-            ->filterByTags($request->input('tags', []))
-            ->filterByFeatures($request->input('features', []))
+            ->filterByTypes($request->input('types'))
+            ->filterByTags($request->input('tags'))
+            ->filterByFeatures($request->input('features'))
             ->active();
     }
 }

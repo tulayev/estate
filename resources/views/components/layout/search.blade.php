@@ -54,7 +54,11 @@
     class="w-[85%] h-[90%] m-auto bg-white rounded-[31px]"
     uk-modal
 >
-    <div class="px-11 py-9">
+    <form
+        id="filterForm"
+        action="{{ route('pages.listing.index') }}"
+        class="px-11 py-9"
+    >
         <div class="flex justify-between items-center">
             <h2 class="section-title">
                 filters
@@ -93,8 +97,8 @@
             </div>
             <!-- Price Range -->
             <x-ui.filters.ranges.price-range
-                :fromInputName="'price_from'"
-                :toInputName="'price_to'"
+                :fromInputName="'price_min'"
+                :toInputName="'price_max'"
                 :minLength="3"
                 :maxLength="7"
                 :step="1000"
@@ -115,11 +119,49 @@
         <!-- Show Results button -->
         <div class="mt-24">
             <button
-                type="button"
+                id="showResultsButton"
+                type="submit"
                 class="w-full py-7 bg-primary rounded-[25px] modal-subtitle text-white text-center"
-            >
-                Show results
-            </button>
+            ></button>
         </div>
-    </div>
+    </form>
 </div>
+
+<script>
+    const API_URI = '/api/objects/count';
+    const filtersForm = document.getElementById('filterForm');
+    const showResultsButton = document.getElementById('showResultsButton');
+
+    const updateResultsCount = async () => {
+        const formData = new FormData(filtersForm);
+        const filters = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch(API_URI, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                },
+                body: JSON.stringify(filters),
+            });
+
+            const data = await response.json();
+
+            // Update the button text
+            showResultsButton.textContent = `Show ${data.count} Results`;
+        } catch (error) {
+            console.error('Error updating results count:', error);
+        }
+    };
+
+    // Event listeners to update results count on filter change
+    const filterInputs = filtersForm.querySelectorAll("input, select");
+    console.log(filterInputs)
+    filterInputs.forEach(input => {
+        input.addEventListener('change', updateResultsCount);
+    });
+
+    // Initial load
+    document.addEventListener('DOMContentLoaded', updateResultsCount);
+</script>
