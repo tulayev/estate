@@ -16,8 +16,4 @@
 
     <x-pages.home.faq />
 
-    <x-layout.contact />
-
-    <x-layout.footer />
-
 </x-layout.app>

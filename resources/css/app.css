@@ -43,6 +43,10 @@
         @apply text-primary uppercase text-2xl font-700 xl:text-[55px] xl:font-900;
     }
 
+    .section-title-white {
+        @apply text-white uppercase text-2xl font-700 xl:text-[55px] xl:font-900;
+    }
+
     .collapse-title {
         @apply text-sm md:text-lg xl:text-2xl text-[#0f1f3d] font-bold uppercase;
     }

@@ -1,36 +1,50 @@
 <div class="uk-section">
     <div class="p-5 pt-24">
         <div class="h-[800px] relative">
+            <!-- Map -->
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15807.925736790354!2d98.35639726144633!3d7.897007978309972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x305031c77c20ac4b%3A0xc7e0cd8ec7ed8276!2sMu%20Ban%20Suan%20Place%2C%20Mueang%20Phuket%2C%20Mueang%20Phuket%20District%2C%20Phuket%2083000%2C%20Thailand!5e0!3m2!1sen!2s!4v1735564742957!5m2!1sen!2s"
-                width="100%" height="100%" style="border:0; border-radius: 28px;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                width="100%"
+                height="100%"
+                style="border:0; border-radius: 28px;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <!-- Footer Links -->
             <div class="bg-[#0F1F3Ddd] rounded-[28px] py-10 absolute left-0 bottom-0 w-full flex flex-col items-center text-white">
                 <nav>
                     <ul class="flex uk-flex-middle uppercase" uk-grid>
                         <li class="animLeft">
-                            <a href="{{ asset('') }}layouts/list.html" class="line-animation text-navbar">
+                            <a
+                                href="{{ route('pages.listing.index') }}"
+                                class="line-animation text-navbar"
+                            >
                                 listings
                             </a>
                         </li>
                         <li class="animLeft">
-                            <a href="#listings" class="line-animation text-navbar">
+                            <a
+                                href="{{ route('pages.club.index') }}"
+                                class="line-animation text-navbar"
+                            >
                                 insider club
                             </a>
                         </li>
                         <li class="animLeft">
-                            <a href="#listings" class="line-animation text-navbar">
-                                services
+                            <a
+                                href="{{ route('pages.insight.index') }}"
+                                class="line-animation text-navbar"
+                            >
+                                insight
                             </a>
                         </li>
                         <li class="animLeft">
-                            <a href="#listings" class="line-animation text-navbar">
+                            <a
+                                href="{{ route('pages.about.index') }}"
+                                class="line-animation text-navbar"
+                            >
                                 about us
-                            </a>
-                        </li>
-                        <li class="animLeft">
-                            <a href="#listings" class="line-animation text-navbar">
-                                tools
                             </a>
                         </li>
                     </ul>
@@ -39,45 +53,69 @@
                     <div class="custom-btn-white">
                         <ul class="flex items-center space-x-8 h-full">
                             <li>
-                                <a href="">
-                                    <img src="{{ asset('') }}assets/images/contact/phone.svg" alt="watsup">
+                                <a href="#">
+                                    <img
+                                        src="{{ asset('assets/images/contact/phone.svg') }}"
+                                        alt="whatsapp"
+                                    />
                                 </a>
                             </li>
                             <li>
-                                <a href="">
-                                    <img src="{{ asset('') }}assets/images/contact/x.svg" alt="x">
+                                <a href="#">
+                                    <img
+                                        src="{{ asset('assets/images/contact/x.svg') }}"
+                                        alt="x"
+                                    />
                                 </a>
                             </li>
                             <li>
-                                <a href="">
-                                    <img src="{{ asset('') }}assets/images/contact/instagram.svg" alt="instagram">
+                                <a href="#">
+                                    <img
+                                        src="{{ asset('assets/images/contact/instagram.svg') }}"
+                                        alt="instagram"
+                                    />
                                 </a>
                             </li>
                             <li>
-                                <a href="">
-                                    <img src="{{ asset('') }}assets/images/contact/youtube.svg" alt="youtube">
+                                <a href="#">
+                                    <img
+                                        src="{{ asset('assets/images/contact/youtube.svg') }}"
+                                        alt="youtube"
+                                    />
                                 </a>
                             </li>
                             <li>
-                                <a href="">
-                                    <img src="{{ asset('') }}assets/images/contact/facebook.svg" alt="facebook">
+                                <a href="#">
+                                    <img
+                                        src="{{ asset('assets/images/contact/facebook.svg') }}"
+                                        alt="facebook"
+                                    />
                                 </a>
                             </li>
                             <li>
-                                <a href="">
-                                    <img src="{{ asset('') }}assets/images/contact/vkicon.svg" alt="vkicon">
+                                <a href="#">
+                                    <img
+                                        src="{{ asset('assets/images/contact/vkicon.svg') }}"
+                                        alt="vk"
+                                    />
                                 </a>
                             </li>
                             <li>
-                                <a href="">
-                                    <img src="{{ asset('') }}assets/images/contact/mail.svg" alt="mail">
+                                <a href="#">
+                                    <img
+                                        src="{{ asset('assets/images/contact/mail.svg') }}"
+                                        alt="mail"
+                                    />
                                 </a>
                             </li>
                         </ul>
                     </div>
-                    <button class="custom-btn-white">
-                        +7 (972) 928-30-12
-                    </button>
+                    <a
+                        href="tel:+7 (972) 928-30-12"
+                        class="custom-btn-white flex justify-center items-center"
+                    >
+                        <span>+7 (972) 928-30-12</span>
+                    </a>
                 </div>
             </div>
         </div>

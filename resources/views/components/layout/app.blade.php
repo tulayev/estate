@@ -21,6 +21,12 @@
     <script defer src="{{ asset('assets/js/swiper.js') }}"></script>
 </head>
 <body>
+    <x-layout.header />
+
     {{ $slot }}
+
+    <x-layout.contact />
+
+    <x-layout.footer />
 </body>
 </html>
