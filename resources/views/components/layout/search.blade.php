@@ -1,4 +1,4 @@
-<div class="hidden absolute left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 text-[#C6C6C6] z-10 bg-white font-600 uppercase rounded-full sm:flex items-center px-3 w-[90vw] lg:w-[70vw] h-[50px] xl:h-[70px] text-sm xl:text-base xlWide:text-xl">
+<div class="uk-visible@m absolute left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 text-[#C6C6C6] z-10 bg-white font-600 uppercase rounded-full sm:flex items-center px-3 w-[90vw] lg:w-[70vw] h-[50px] xl:h-[70px] text-sm xl:text-base xlWide:text-xl">
     <div>
         <img
             src="{{ asset('assets/images/circle.png') }}"
@@ -10,31 +10,31 @@
         <input
             type="text"
             placeholder="keywords"
-            class="modal-subtitle text-primary placeholder-secondary bg-transparent border-none text-center outline-none"
+            class="xl:modal-subtitle text-primary placeholder-secondary bg-transparent border-none text-center outline-none"
         />
     </div>
     <div class="px-10 border-r border-borderColor h-full flex items-center justify-center w-[15%]">
         <input
             type="text"
             placeholder="type"
-            class="modal-subtitle text-primary placeholder-secondary bg-transparent border-none text-center outline-none"
+            class="xl:modal-subtitle text-primary placeholder-secondary bg-transparent border-none text-center outline-none"
         />
     </div>
     <div class="px-10 border-r border-borderColor h-full flex items-center justify-center w-[20%]">
         <input
             type="text"
             placeholder="location"
-            class="modal-subtitle text-primary placeholder-secondary bg-transparent border-none text-center outline-none"
+            class="xl:modal-subtitle text-primary placeholder-secondary bg-transparent border-none text-center outline-none"
         />
     </div>
     <div class="px-10 border-r border-borderColor h-full flex items-center justify-center w-[8%]">
         🛏️
     </div>
-    <div class="px-10 border-r border-borderColor h-full flex items-center justify-center w-[24%]">
+    <div class="px-10 border-r border-borderColor h-full flex items-center justify-center w-[15%] xl:w-[24%]">
         <input
             type="text"
             placeholder="price"
-            class="modal-subtitle text-primary placeholder-secondary bg-transparent border-none text-center outline-none"
+            class="xl:modal-subtitle text-primary placeholder-secondary bg-transparent border-none text-center outline-none"
         />
     </div>
     <div class="h-full flex items-center justify-end w-[10%] space-x-5">
