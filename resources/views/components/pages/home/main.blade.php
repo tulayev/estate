@@ -20,7 +20,7 @@
                                 uk-toggle
                             >
                                 <img
-                                    src="{{ asset('assets/images/play.svg') }}"
+                                    src="{{ asset('assets/images/icons/play.svg') }}"
                                     alt="play"
                                 />
                                 <span>Watch a video</span>

@@ -11,16 +11,17 @@
     <div class="mini-container py-24">
         <div class="mini-container">
             <div class="uk-width-1-1 pb-24">
-                <ul class="uk-nav-default uk-nav-parent-icon" uk-nav="multiple: true">
-
+                <ul class="uk-nav-default uk-nav-parent-icon" uk-nav="multiple: false">
                     <li class="uk-parent">
                         <a href="#">
                             <span class="collapse-title">Question 1</span>
                         </a>
                         <ul class="uk-nav-sub">
                             <li>
-                                <p class="text py-4">We connect buyers and investors to real opportunities through carefully selected
-                                    off-plan projects that offer genuine value and clear potential.</p>
+                                <p class="text-xl py-4">
+                                    We connect buyers and investors to real opportunities through carefully selected
+                                    off-plan projects that offer genuine value and clear potential.
+                                </p>
                             </li>
                         </ul>
                     </li>
@@ -32,8 +33,10 @@
                         </a>
                         <ul class="uk-nav-sub">
                             <li>
-                                <p class="text py-4">We connect buyers and investors to real opportunities through carefully selected
-                                    off-plan projects that offer genuine value and clear potential.</p>
+                                <p class="text-xl py-4">
+                                    We connect buyers and investors to real opportunities through carefully selected
+                                    off-plan projects that offer genuine value and clear potential.
+                                </p>
                             </li>
                         </ul>
                     </li>
@@ -45,8 +48,10 @@
                         </a>
                         <ul class="uk-nav-sub">
                             <li>
-                                <p class="text py-4">We connect buyers and investors to real opportunities through carefully selected
-                                    off-plan projects that offer genuine value and clear potential.</p>
+                                <p class="text-xl py-4">
+                                    We connect buyers and investors to real opportunities through carefully selected
+                                    off-plan projects that offer genuine value and clear potential.
+                                </p>
                             </li>
                         </ul>
                     </li>
@@ -58,8 +63,10 @@
                         </a>
                         <ul class="uk-nav-sub">
                             <li>
-                                <p class="text py-4">We connect buyers and investors to real opportunities through carefully selected
-                                    off-plan projects that offer genuine value and clear potential.</p>
+                                <p class="text-xl py-4">
+                                    We connect buyers and investors to real opportunities through carefully selected
+                                    off-plan projects that offer genuine value and clear potential.
+                                </p>
                             </li>
                         </ul>
                     </li>

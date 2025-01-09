@@ -13,7 +13,7 @@
         <div>
             <h4 class="modal-subtitle text-secondary">bathrooms</h4>
             <div class="shadow-feature-card rounded-[25px] mt-3 px-14 py-7 flex items-center justify-between">
-                <img src="{{ asset('assets/images/bath.png') }}" alt="bath" />
+                <img src="{{ asset('assets/images/icons/bath.png') }}" alt="bath" />
                 <x-ui.filters.ranges.bath-range
                     :fromInputName="'bathrooms_min'"
                     :toInputName="'bathrooms_max'"
@@ -28,7 +28,7 @@
         <div>
             <h4 class="modal-subtitle text-secondary">bedrooms</h4>
             <div class="shadow-feature-card rounded-[25px] mt-3 px-14 py-7 flex items-center justify-between">
-                <img src="{{ asset('assets/images/bed.png') }}" alt="bed" />
+                <img src="{{ asset('assets/images/icons/bed.png') }}" alt="bed" />
                 <x-ui.filters.ranges.bed-range
                     :fromInputName="'bedrooms_min'"
                     :toInputName="'bedrooms_max'"
@@ -57,7 +57,7 @@
             >
                 <div>
                     <img
-                        src="{{ ImagePathResolver::resolve($feature->icon) ?? asset('assets/images/gym.png') }}"
+                        src="{{ ImagePathResolver::resolve($feature->icon) ?? asset('assets/images/icons/gym.png') }}"
                         alt="{{ $feature->name }}"
                         class="m-auto"
                     />

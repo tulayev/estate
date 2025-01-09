@@ -55,7 +55,7 @@
                             <li>
                                 <a href="#">
                                     <img
-                                        src="{{ asset('assets/images/contact/phone.svg') }}"
+                                        src="{{ asset('assets/images/icons/phone.svg') }}"
                                         alt="whatsapp"
                                     />
                                 </a>
@@ -63,7 +63,7 @@
                             <li>
                                 <a href="#">
                                     <img
-                                        src="{{ asset('assets/images/contact/x.svg') }}"
+                                        src="{{ asset('assets/images/icons/x.svg') }}"
                                         alt="x"
                                     />
                                 </a>
@@ -71,7 +71,7 @@
                             <li>
                                 <a href="#">
                                     <img
-                                        src="{{ asset('assets/images/contact/instagram.svg') }}"
+                                        src="{{ asset('assets/images/icons/instagram.svg') }}"
                                         alt="instagram"
                                     />
                                 </a>
@@ -79,7 +79,7 @@
                             <li>
                                 <a href="#">
                                     <img
-                                        src="{{ asset('assets/images/contact/youtube.svg') }}"
+                                        src="{{ asset('assets/images/icons/youtube.svg') }}"
                                         alt="youtube"
                                     />
                                 </a>
@@ -87,7 +87,7 @@
                             <li>
                                 <a href="#">
                                     <img
-                                        src="{{ asset('assets/images/contact/facebook.svg') }}"
+                                        src="{{ asset('assets/images/icons/facebook.svg') }}"
                                         alt="facebook"
                                     />
                                 </a>
@@ -95,7 +95,7 @@
                             <li>
                                 <a href="#">
                                     <img
-                                        src="{{ asset('assets/images/contact/vkicon.svg') }}"
+                                        src="{{ asset('assets/images/icons/vk.svg') }}"
                                         alt="vk"
                                     />
                                 </a>
@@ -103,7 +103,7 @@
                             <li>
                                 <a href="#">
                                     <img
-                                        src="{{ asset('assets/images/contact/mail.svg') }}"
+                                        src="{{ asset('assets/images/icons/mail.svg') }}"
                                         alt="mail"
                                     />
                                 </a>

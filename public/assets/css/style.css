@@ -30,7 +30,7 @@
     box-shadow: inset 0px 0px 0px rgba(245, 245, 245, 0.88);
 }
 
-html {
+html, body {
     background-color: #f4f4f4;
 }
 
@@ -46,7 +46,7 @@ a:hover {
 .card-shadow {
     box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px 0px rgba(16, 24, 40, 0.06);
 }
-
+/* Swiper Slider */
 .u-swiper-slider {
     color: #fff;
     background: #030c18;
@@ -54,25 +54,6 @@ a:hover {
     border: 2px solid rgba(255, 255, 255, 0.42);
     min-height: 260px;
     max-height: 260px;
-}
-
-.uk-nav-parent-icon>.uk-parent>a::after {
-	background-image: url('../images/plus.svg');
-}
-
-.uk-nav-parent-icon>.uk-parent.uk-open>a::after {
-	background-image: url('../images/minus.svg');
-}
-
-.uk-modal {
-    padding: 0;
-}
-
-input[type=range]::-webkit-slider-thumb {
-    pointer-events: all;
-    width: 24px;
-    height: 24px;
-    -webkit-appearance: none;
 }
 
 @media (max-width: 1280px) {
@@ -97,6 +78,31 @@ input[type=range]::-webkit-slider-thumb {
 
 .u-swiper-slider h3 {
     margin: 22px 0 12px 0;
+}
+
+/* Uikit Accordion */
+.uk-nav-parent-icon>.uk-parent>a::after {
+    background-image: url('../images/icons/plus.svg');
+}
+
+.uk-nav-parent-icon>.uk-parent.uk-open>a::after {
+    background-image: url('../images/icons/minus.svg');
+}
+
+.uk-nav>li>a {
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+/* Uikit Modal */
+.uk-modal {
+    padding: 0;
+}
+/* Input range slider thumb */
+input[type=range]::-webkit-slider-thumb {
+    pointer-events: all;
+    width: 24px;
+    height: 24px;
+    -webkit-appearance: none;
 }
 
 .mini-container {
