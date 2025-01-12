@@ -91,6 +91,8 @@ class HotelResource extends ModelResource
 
             Text::make('Code Name', 'codename'),
 
+            Text::make('Location', 'location'),
+
             Number::make('Latitude', 'latitude'),
 
             Number::make('Longitude', 'longitude'),
@@ -133,6 +135,9 @@ class HotelResource extends ModelResource
                 Text::make('Type', 'type'),
 
                 Text::make('Code Name', 'codename'),
+
+                Text::make('Location', 'location')
+                    ->required(),
 
                 Number::make('Latitude', 'latitude')
                     ->step(0.000001),
@@ -183,6 +188,7 @@ class HotelResource extends ModelResource
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'codename' => 'nullable|string|max:255',
+            'location' => 'required|string',
             'latitude' => 'nullable|numeric|between:-90,90',
             'longitude' => 'nullable|numeric|between:-180,180',
             'price' => 'required|numeric|min:0|regex:/^\d+(\.\d{1,3})?$/',

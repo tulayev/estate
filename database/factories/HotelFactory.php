@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Faker\Factory as FakerFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,14 +17,21 @@ class HotelFactory extends Factory
      */
     public function definition(): array
     {
+        $fakerEn = FakerFactory::create('en_US'); // English
+        $fakerRu = FakerFactory::create('ru_RU'); // Russian
+
         return [
             'title' => $this->faker->company,
             'slug' => $this->faker->unique()->slug,
             'description' => [
-                'en' => $this->faker->paragraph,
-                'ru' => $this->faker->paragraph,
+                'en' => $fakerEn->realTextBetween(200, 400, 2),
+                'ru' => $fakerRu->realTextBetween(200, 400, 2),
             ],
             'codename' => $this->faker->optional()->word,
+            'location' => [
+                'en' => $fakerEn->city,
+                'ru' => $fakerRu->city,
+            ],
             'latitude' => $this->faker->latitude,
             'longitude' => $this->faker->longitude,
             'price' => $this->faker->randomFloat(3, 50, 1000),

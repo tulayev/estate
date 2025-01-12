@@ -18,6 +18,7 @@ class Hotel extends Model
         'slug',
         'description',
         'codename',
+        'location',
         'latitude',
         'longitude',
         'price',
@@ -29,6 +30,7 @@ class Hotel extends Model
 
     protected $translatable = [
         'description',
+        'location',
     ];
 
     protected $casts = [

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Faker\Factory as FakerFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,10 +17,13 @@ class FeatureFactory extends Factory
      */
     public function definition(): array
     {
+        $fakerEn = FakerFactory::create('en_US'); // English
+        $fakerRu = FakerFactory::create('ru_RU'); // Russian
+
         return [
             'name' => [
-                'en' => $this->faker->word,
-                'ru' => $this->faker->word,
+                'en' => $fakerEn->word,
+                'ru' => $fakerRu->word,
             ],
         ];
     }

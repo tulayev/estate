@@ -107,7 +107,7 @@
                         <div class="shadow-feature-card rounded-[25px] mt-[-44px] px-5 pt-[68px] pb-6">
                             <div class="flex justify-between uppercase text-[#505050] text-xl font-900">
                                 <div>
-                                    <p>📍 bang tao</p>
+                                    <p>📍 {{ $hotel->location }}</p>
                                 </div>
                                 <div class="flex justify-between space-x-6">
                                     <p>🛏️ {{ $hotel->bedrooms }}</p>

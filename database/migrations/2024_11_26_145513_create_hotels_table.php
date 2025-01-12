@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->json('description');
             $table->string('codename')->nullable();
+            $table->json('location');
             $table->decimal('latitude', 10, 8)->nullable();
             $table->decimal('longitude', 11, 8)->nullable();
             $table->decimal('price', 10, 3);
