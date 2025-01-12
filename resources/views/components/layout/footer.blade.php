@@ -50,7 +50,7 @@
                     </ul>
                 </nav>
                 <div class="flex space-x-4 items-center mt-10">
-                    <div class="custom-btn-white">
+                    <div class="white-button">
                         <ul class="flex items-center space-x-8 h-full">
                             <li>
                                 <a href="#">
@@ -112,7 +112,7 @@
                     </div>
                     <a
                         href="tel:+7 (972) 928-30-12"
-                        class="custom-btn-white flex justify-center items-center"
+                        class="white-button flex justify-center items-center"
                     >
                         <span>+7 (972) 928-30-12</span>
                     </a>

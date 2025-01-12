@@ -4,8 +4,8 @@
     uk-scrollspy="target: .animLeft; cls: animate__animated animate__lightSpeedInLeft; delay: 300;"
     uk-sticky="animation: uk-animation-slide-top; sel-target: .header; cls-active: uk-navbar-sticky bg-primary; cls-inactive: z-[999]; top: 200;"
 >
-    <div class="w-[70vw] mx-auto">
-        <nav class="uk-flex uk-flex-between uk-flex-middle py-5 xl:py-10">
+    <div class="mini-container">
+        <nav class="uk-flex uk-flex-between uk-flex-middle py-10">
             <!-- Logo -->
             <div class="animLeft">
                 <a href="{{ route('pages.home.index') }}">
@@ -18,10 +18,10 @@
             </div>
             <!-- Navbar Links -->
             <div
-                class="uk-navbar-right text-[#fff]"
+                class="uk-visible@m uk-navbar-right text-[#fff]"
                 uk-scrollspy="target: .animRight; cls: uk-animation-slide-right; delay: 300;"
             >
-                <ul class="hidden xl:flex uk-flex-middle uppercase text-base xlWide:text-xl" uk-grid>
+                <ul class="flex uk-flex-middle uppercase text-base xlWide:text-xl" uk-grid>
                     <li class="animRight">
                         <a
                             href="{{ route('pages.listing.index') }}"
@@ -56,7 +56,7 @@
                     </li>
                 </ul>
                 <!-- Locale Switcher -->
-                <ul class="animRight flex justify-between items-center rounded-[100px] bg-white bg-opacity-10 relative xl:w-[150px] xl:ml-6 xl:pl-4 2xl:w-[235px] 2xl:ml-10 2xl:pl-5">
+                <ul class="animRight flex justify-between items-center rounded-[100px] bg-white bg-opacity-10 relative w-[100px] xl:w-[150px] 2xl:w-[235px] ml-4 pl-2 xl:ml-6 xl:pl-4 2xl:ml-10 2xl:pl-5">
                     <li class="text-base font-700 2xl:text-lg 2xl:font-900">
                         <a href="#">
                             {{ config()->get('locales')[app()->getLocale()] }}

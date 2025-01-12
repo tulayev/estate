@@ -31,8 +31,16 @@
         color: inherit;
     }
 
-    .mini-btn {
-        @apply text-[#F4F4F4] uppercase rounded-[24px] font-700 px-4 py-2;
+    .card-tag-button {
+        @apply text-[#F4F4F4] uppercase rounded-lg sm:rounded-[25px] text-sm sm:text-base sm:font-700 px-2 sm:px-4 py-2 sm:py-2;
+    }
+
+    .primary-button {
+        @apply bg-primary text-[#f4f4f4] uppercase rounded-[25px] font-600 px-2 py-2 md:px-5 md:py-3
+    }
+
+    .white-button {
+        @apply bg-white text-primary uppercase rounded-[25px] font-600 px-2 py-2 md:px-5 md:py-3
     }
 
     .main-title {
@@ -48,7 +56,7 @@
     }
 
     .collapse-title {
-        @apply text-primary uppercase font-700 text-sm md:text-lg xl:text-2xl xl:font-900;
+        @apply text-primary uppercase text-xs sm:text-sm md:text-lg xl:text-2xl sm:font-700 xl:font-900;
     }
 
     .second-title {
@@ -57,6 +65,10 @@
 
     .modal-subtitle {
         @apply text-primary uppercase font-700 text-lg xl:font-900;
+    }
+
+    .bg-gradient {
+        @apply bg-gradient-to-b from-black/50 to-black/0
     }
 
     .bg-tag-1 {

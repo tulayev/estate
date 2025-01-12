@@ -1,10 +1,10 @@
-<div class="uk-section">
+<div id="contactSection" class="uk-section">
     <div class="mini-container flex items-center justify-between  mb-10">
         <h2 class="section-title flex space-x-3">
             contact us
         </h2>
         <div class="flex items-center space-x-4">
-            <div class="custom-btn-white">
+            <div class="white-button">
                 <ul class="flex items-center space-x-8 h-full">
                     <li>
                         <a href="#">
@@ -45,7 +45,7 @@
             </div>
             <a
                 href="tel:+7 (972) 928-30-12"
-                class="custom-btn-white"
+                class="white-button"
             >
                 +7 (972) 928-30-12
             </a>

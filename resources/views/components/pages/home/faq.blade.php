@@ -3,7 +3,7 @@
         <h2 class="section-title flex space-x-3">
             faq
         </h2>
-        <button class="custom-btn">
+        <button class="primary-button">
             ask us something
         </button>
     </div>
@@ -18,7 +18,7 @@
                         </a>
                         <ul class="uk-nav-sub">
                             <li>
-                                <p class="text-xl py-4">
+                                <p class="text-sm sm:text-xl py-2 sm:py-4">
                                     We connect buyers and investors to real opportunities through carefully selected
                                     off-plan projects that offer genuine value and clear potential.
                                 </p>
@@ -33,7 +33,7 @@
                         </a>
                         <ul class="uk-nav-sub">
                             <li>
-                                <p class="text-xl py-4">
+                                <p class="text-sm sm:text-xl py-2 sm:py-4">
                                     We connect buyers and investors to real opportunities through carefully selected
                                     off-plan projects that offer genuine value and clear potential.
                                 </p>
@@ -48,7 +48,7 @@
                         </a>
                         <ul class="uk-nav-sub">
                             <li>
-                                <p class="text-xl py-4">
+                                <p class="text-sm sm:text-xl py-2 sm:py-4">
                                     We connect buyers and investors to real opportunities through carefully selected
                                     off-plan projects that offer genuine value and clear potential.
                                 </p>
@@ -63,7 +63,7 @@
                         </a>
                         <ul class="uk-nav-sub">
                             <li>
-                                <p class="text-xl py-4">
+                                <p class="text-sm sm:text-xl py-2 sm:py-4">
                                     We connect buyers and investors to real opportunities through carefully selected
                                     off-plan projects that offer genuine value and clear potential.
                                 </p>

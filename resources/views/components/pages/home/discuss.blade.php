@@ -3,7 +3,7 @@
         <h2 class="section-title">
             Let's Discuss Your Project
         </h2>
-        <button class="custom-btn">
+        <button class="primary-button">
             contact us
         </button>
     </div>

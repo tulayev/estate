@@ -1,7 +1,7 @@
 <div class="py-5 px-5 relative">
     <div class="main-section relative">
         <img
-            class="object-cover h-[400px] sm:h-auto sm:object-contain"
+            class="rounded-[25px] object-cover h-[250px] sm:h-auto sm:object-contain"
             src="{{ asset('assets/images/main-background.png') }}"
             alt="main"
         />
@@ -28,7 +28,7 @@
                         </div>
                         <div class="text-white animLeft">
                             <a
-                                href="#modalForm"
+                                href="#contactSection"
                                 class="inline-block space-x-2 bg-white/10 text-[#fff] font-600 px-[22px] py-1 lg:py-[12px] rounded-full"
                                 uk-toggle
                             >
@@ -40,6 +40,6 @@
             </div>
         </div>
     </div>
-
+    <!-- Search -->
     <x-layout.search />
 </div>
