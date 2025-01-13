@@ -55,7 +55,7 @@
                     <div>
                         <div
                             class="relative flex flex-col justify-between rounded-[25px] p-3 h-[300px]"
-                            style="background-image: url('{{ ImagePathResolver::resolve($hotel->image) ?? asset('assets/images/object-background.png') }}')"
+                            style="background-image: url('{{ ImagePathResolver::resolve($hotel->image) ?? $hotel->main_image_old ?? asset('assets/images/object-background.png') }}')"
                         >
                             <div class="absolute rounded-[25px] inset-0 bg-gradient"></div>
                             <!-- Image Top -->

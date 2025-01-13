@@ -24,6 +24,8 @@ class Hotel extends Model
         'price',
         'main_image',
         'gallery',
+        'main_image_old',
+        'gallery_old',
         'active',
         'created_by',
     ];
@@ -205,6 +207,14 @@ class Hotel extends Model
     public function likes()
     {
         return $this->hasMany(HotelLike::class);
+    }
+
+    public function getGalleryOldAttribute($value)
+    {
+        if ($value)
+            return explode(';', $value);
+
+        return  null;
     }
 
     public function getAreaAttribute()

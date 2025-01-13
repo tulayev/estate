@@ -195,6 +195,8 @@ class HotelResource extends ModelResource
             'main_image' => 'nullable|image|max:2048',
             'gallery' => 'nullable|array',
             'gallery.*' => 'image|max:2048',
+            'main_image_old' => 'nullable|string',
+            'gallery_old' => 'nullable|string',
         ];
     }
 

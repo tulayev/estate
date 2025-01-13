@@ -12,13 +12,13 @@
                 referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
             <!-- Footer Links -->
-            <div class="bg-[#0F1F3Ddd] rounded-[28px] py-10 absolute left-0 bottom-0 w-full flex flex-col items-center text-white">
+            <div class="bg-[#0F1F3Ddd] rounded-[25px] py-10 absolute left-0 bottom-0 w-full flex flex-col items-center text-white">
                 <nav>
                     <ul class="flex uk-flex-middle uppercase" uk-grid>
                         <li class="animLeft">
                             <a
                                 href="{{ route('pages.listing.index') }}"
-                                class="line-animation text-navbar"
+                                class="line-animation text-white font-700"
                             >
                                 listings
                             </a>
@@ -26,7 +26,7 @@
                         <li class="animLeft">
                             <a
                                 href="{{ route('pages.club.index') }}"
-                                class="line-animation text-navbar"
+                                class="line-animation text-white font-700"
                             >
                                 insider club
                             </a>
@@ -34,7 +34,7 @@
                         <li class="animLeft">
                             <a
                                 href="{{ route('pages.insight.index') }}"
-                                class="line-animation text-navbar"
+                                class="line-animation text-white font-700"
                             >
                                 insight
                             </a>
@@ -42,7 +42,7 @@
                         <li class="animLeft">
                             <a
                                 href="{{ route('pages.about.index') }}"
-                                class="line-animation text-navbar"
+                                class="line-animation text-white font-700"
                             >
                                 about us
                             </a>

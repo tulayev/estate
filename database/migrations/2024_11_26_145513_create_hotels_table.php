@@ -23,6 +23,8 @@ return new class extends Migration
             $table->decimal('price', 10, 3);
             $table->string('main_image')->nullable();
             $table->json('gallery')->nullable();
+            $table->string('main_image_old')->nullable();
+            $table->text('gallery_old')->nullable();
             $table->boolean('active')->default(false);
             $table->foreignId('created_by')
                 ->nullable()

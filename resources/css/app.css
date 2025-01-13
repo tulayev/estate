@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+    .mini-container {
+        @apply mx-auto px-11 py-0 w-full xl:w-[70vw]
+    }
+
     .font-400 {
         font-weight: 400;
     }
@@ -48,7 +52,7 @@
     }
 
     .section-title {
-        @apply text-primary uppercase text-2xl font-700 xl:text-[55px] xl:font-900;
+        @apply leading-none text-primary uppercase text-2xl font-700 xl:text-[55px] xl:font-900;
     }
 
     .section-title-white {

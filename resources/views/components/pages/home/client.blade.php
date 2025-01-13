@@ -1,5 +1,5 @@
 <div class="uk-section">
-    <div class="mini-container flex items-center justify-between  mb-10">
+    <div class="mini-container flex items-center justify-between">
         <h2 class="section-title flex space-x-3">
             our clients
         </h2>
@@ -8,7 +8,7 @@
         </button>
     </div>
 
-    <div class="mini-container py-24">
+    <div class="mini-container py-6 md:py-12 xl:py-24">
         <div class="uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid>
             <div>
                 <div class="relative">

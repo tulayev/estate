@@ -1,5 +1,5 @@
 <div class="uk-section">
-    <div class="mini-container flex items-center justify-between  mb-10">
+    <div class="mini-container flex items-center justify-between">
         <h2 class="section-title flex space-x-3">
             faq
         </h2>
@@ -8,10 +8,13 @@
         </button>
     </div>
 
-    <div class="mini-container py-24">
+    <div class="mini-container py-6 md:py-12 xl:py-24">
         <div class="mini-container">
             <div class="uk-width-1-1 pb-24">
-                <ul class="uk-nav-default uk-nav-parent-icon" uk-nav="multiple: false">
+                <ul
+                    class="uk-nav-default uk-nav-parent-icon"
+                    uk-nav="multiple: false"
+                >
                     <li class="uk-parent">
                         <a href="#">
                             <span class="collapse-title">Question 1</span>

@@ -36,7 +36,13 @@ class HotelFactory extends Factory
             'longitude' => $this->faker->longitude,
             'price' => $this->faker->randomFloat(3, 50, 1000),
             'active' => $this->faker->boolean(80), // 80% chance to be active
-            'created_by' => 1, // Assume admin user exists
+            'created_by' => 1,
+            'main_image_old' => $this->faker->imageUrl(800, 600),
+            'gallery_old' => collect(range(1, rand(3, 10)))
+                                ->map(function () {
+                                    return $this->faker->imageUrl(800, 600);
+                                })
+                                ->implode(';'),
         ];
     }
 }

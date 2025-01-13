@@ -10,7 +10,7 @@
             <div class="animLeft">
                 <a href="{{ route('pages.home.index') }}">
                     <img
-                        class="w-[260px] xl:w-[165px] 2xl:w-[260px] uk-animation-fade"
+                        class="w-[260px] xl:w-[165px] xxl:w-[260px] uk-animation-fade"
                         src="{{ asset('assets/images/icons/logoicon.svg') }}"
                         alt="Logo"
                     />
@@ -21,11 +21,11 @@
                 class="uk-visible@m uk-navbar-right text-[#fff]"
                 uk-scrollspy="target: .animRight; cls: uk-animation-slide-right; delay: 300;"
             >
-                <ul class="flex uk-flex-middle uppercase text-base xlWide:text-xl" uk-grid>
+                <ul class="flex uk-flex-middle uppercase text-base xl:text-xl" uk-grid>
                     <li class="animRight">
                         <a
                             href="{{ route('pages.listing.index') }}"
-                            class="line-animation text-sm md:text-base xl:text-lg xl:font-700 2xl:text-2xl 2xl:font-900"
+                            class="line-animation text-sm md:text-base xl:text-lg xl:font-700 xxl:text-2xl xxl:font-900"
                         >
                             listings
                         </a>
@@ -33,7 +33,7 @@
                     <li class="animRight">
                         <a
                             href="{{ route('pages.club.index') }}"
-                            class="line-animation text-sm md:text-base xl:text-lg xl:font-700 2xl:text-2xl 2xl:font-900"
+                            class="line-animation text-sm md:text-base xl:text-lg xl:font-700 xxl:text-2xl xxl:font-900"
                         >
                             insider club
                         </a>
@@ -41,7 +41,7 @@
                     <li class="animRight">
                         <a
                             href="{{ route('pages.insight.index') }}"
-                            class="line-animation text-sm md:text-base xl:text-lg xl:font-700 2xl:text-2xl 2xl:font-900"
+                            class="line-animation text-sm md:text-base xl:text-lg xl:font-700 xxl:text-2xl xxl:font-900"
                         >
                             insights
                         </a>
@@ -49,20 +49,20 @@
                     <li class="animRight">
                         <a
                             href="{{ route('pages.about.index') }}"
-                            class="line-animation text-sm md:text-base xl:text-lg xl:font-700 2xl:text-2xl 2xl:font-900"
+                            class="line-animation text-sm md:text-base xl:text-lg xl:font-700 xxl:text-2xl xxl:font-900"
                         >
                             about us
                         </a>
                     </li>
                 </ul>
                 <!-- Locale Switcher -->
-                <ul class="animRight flex justify-between items-center rounded-[100px] bg-white bg-opacity-10 relative w-[100px] xl:w-[150px] 2xl:w-[235px] ml-4 pl-2 xl:ml-6 xl:pl-4 2xl:ml-10 2xl:pl-5">
-                    <li class="text-base font-700 2xl:text-lg 2xl:font-900">
+                <ul class="animRight flex justify-between items-center rounded-[100px] bg-white bg-opacity-10 relative w-[100px] xl:w-[150px] xxl:w-[235px] ml-4 pl-2 xl:ml-6 xl:pl-4 xxl:ml-10 xxl:pl-5">
+                    <li class="text-base font-700 xxl:text-lg xxl:font-900">
                         <a href="#">
                             {{ config()->get('locales')[app()->getLocale()] }}
                         </a>
                         <div
-                            class="rounded-lg p-2.5 min-w-10 2xl:p-4 2xl:min-w-16"
+                            class="rounded-lg p-2.5 min-w-10 xxl:p-4 xxl:min-w-16"
                             uk-dropdown="pos: bottom-justify; animation: uk-animation-slide-top-small; duration: 400; mode: click"
                         >
                             <ul>

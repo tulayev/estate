@@ -1,4 +1,4 @@
-<div class="uk-visible@m absolute left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 text-[#C6C6C6] z-10 bg-white font-600 uppercase rounded-full sm:flex items-center px-3 w-[90vw] lg:w-[70vw] h-[50px] xl:h-[70px] text-sm xl:text-base xlWide:text-xl">
+<div class="uk-visible@m absolute left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 text-[#C6C6C6] z-10 bg-white font-600 uppercase rounded-full sm:flex items-center px-3 w-[90vw] lg:w-[70vw] h-[50px] xl:h-[70px] text-sm xl:text-base xl:text-xl">
     <div>
         <img
             src="{{ asset('assets/images/icons/circle.png') }}"
@@ -45,7 +45,7 @@
             +
         </button>
         <div class="w-[30px] xl:w-[50px] h-[30px] xl:h-[50px]">
-            <div class="w-[30px] xl:w-[50px] h-[30px] xl:h-[50px] bg-[#0F1F3D] rounded-full flex items-center justify-center">
+            <div class="w-[30px] xl:w-[50px] h-[30px] xl:h-[50px] bg-primary rounded-full flex items-center justify-center">
                 <img
                     class="w-[14px] xl:w-[20px]"
                     src="{{ asset('assets/images/icons/search.svg') }}"

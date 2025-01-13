@@ -20,10 +20,7 @@ module.exports = {
                 md: "768px", // Medium screens (default in Tailwind)
                 lg: "1024px", // Large screens (default in Tailwind)
                 xl: "1280px", // Extra large screens (default in Tailwind)
-                "2xl": "1536px", // 2X large screens (default in Tailwind)
-                // Custom breakpoints
-                xs: "480px", // Ultra small screens
-                xlWide: "1440px", // Extra wide screens
+                xxl: "1536px", // 2X large screens (default in Tailwind)
             },
             boxShadow: {
                 'feature-card': '0 4px 30px 0 rgba(0, 0, 0, 0.05)', // x, y, blur, spread, color
