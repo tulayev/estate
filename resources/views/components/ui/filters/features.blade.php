@@ -12,7 +12,7 @@
     <div class="mt-12 uk-child-width-1-2" uk-grid>
         <div>
             <h4 class="modal-subtitle text-secondary">bathrooms</h4>
-            <div class="shadow-feature-card rounded-[25px] mt-3 px-14 py-7 flex items-center justify-between">
+            <div class="shadow-card rounded-[25px] mt-3 px-14 py-7 flex items-center justify-between">
                 <img src="{{ asset('assets/images/icons/bath.png') }}" alt="bath" />
                 <x-ui.filters.ranges.bath-range
                     :fromInputName="'bathrooms_min'"
@@ -27,7 +27,7 @@
         </div>
         <div>
             <h4 class="modal-subtitle text-secondary">bedrooms</h4>
-            <div class="shadow-feature-card rounded-[25px] mt-3 px-14 py-7 flex items-center justify-between">
+            <div class="shadow-card rounded-[25px] mt-3 px-14 py-7 flex items-center justify-between">
                 <img src="{{ asset('assets/images/icons/bed.png') }}" alt="bed" />
                 <x-ui.filters.ranges.bed-range
                     :fromInputName="'bedrooms_min'"
@@ -51,7 +51,7 @@
 
         @foreach($features as $feature)
             <div
-                class="feature mr-9 shadow-feature-card rounded-[25px] w-[170px] h-[145px] flex justify-center items-center cursor-pointer"
+                class="feature mr-9 shadow-card rounded-[25px] w-[170px] h-[145px] flex justify-center items-center cursor-pointer"
                 :class="isFeatureSelected('{{ $feature->id }}') ? 'bg-primary' : 'bg-white'"
                 @click="toggleFeature('{{ $feature->id }}')"
             >

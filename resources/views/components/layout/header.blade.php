@@ -11,7 +11,7 @@
                 <a href="{{ route('pages.home.index') }}">
                     <img
                         class="w-[260px] xl:w-[165px] xxl:w-[260px] uk-animation-fade"
-                        src="{{ asset('assets/images/icons/logoicon.svg') }}"
+                        src="{{ asset('assets/images/icons/logo-white.svg') }}"
                         alt="Logo"
                     />
                 </a>
@@ -109,7 +109,7 @@
                 >
                     <img
                         class="w-[260px] uk-animation-fade"
-                        src="{{ asset('assets/images/icons/logoicon.svg') }}"
+                        src="{{ asset('assets/images/icons/logo-white.svg') }}"
                         alt="Logo"
                     />
                 </a>

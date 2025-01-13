@@ -14,8 +14,8 @@ return [
     'namespace' => 'App\MoonShine',
 
     'title' => env('MOONSHINE_TITLE', 'Ignatev Estate'),
-    'logo' => env('MOONSHINE_LOGO', '/assets/common/logo-white.svg'),
-    'logo_small' => env('MOONSHINE_LOGO_SMALL', '/assets/common/logo-white.svg'),
+    'logo' => env('MOONSHINE_LOGO', '/assets/images/icons/logo-white.svg'),
+    'logo_small' => env('MOONSHINE_LOGO_SMALL', '/assets/images/icons/logo-white.svg'),
 
     'route' => [
         'domain' => env('MOONSHINE_URL', ''),

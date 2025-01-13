@@ -109,7 +109,7 @@
                             </a>
                         </div>
                         <!-- Bottom -->
-                        <div class="shadow-feature-card rounded-[25px] mt-[-54px] sm:mt-[-44px] px-3 sm:px-5 pt-[68px] pb-4 sm:pb-6">
+                        <div class="shadow-card rounded-[25px] mt-[-54px] sm:mt-[-44px] px-3 sm:px-5 pt-[68px] pb-4 sm:pb-6">
                             <div class="flex justify-between uppercase text-[#505050] text-sm sm:text-base md:text-lg xl:text-xl sm:font-bold md:font-black">
                                 <div>
                                     <p>📍 {{ Str::limit($hotel->location, 10) }}</p>
