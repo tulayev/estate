@@ -13,7 +13,7 @@
                     not just an agent’s reputation or glossy brochures. 
                 </p>
                 <div class="flex items-center mt-4 sm:mt-8 xl:mt-10 xl:mt-20 space-x-4">
-                    <p class="text-white font-700 text-xs xl:text-xl">How we serve</p>
+                    <p class="text-white font-bold text-xs xl:text-xl">How we serve</p>
                     <button class="primary-button text-xs xl:text-lg">Investors</button>
                     <button class="primary-button bg-[#5C687A] text-xs xl:text-lg">developers</button>
                 </div>

@@ -1,4 +1,4 @@
-<div class="uk-visible@m absolute left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 text-[#C6C6C6] z-10 bg-white font-600 uppercase rounded-full sm:flex items-center px-3 w-[90vw] lg:w-[70vw] h-[50px] xl:h-[70px] text-sm xl:text-base xl:text-xl">
+<div class="uk-visible@m absolute left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 text-[#C6C6C6] z-10 bg-white font-semibold uppercase rounded-full sm:flex items-center px-3 w-[90vw] lg:w-[70vw] h-[50px] xl:h-[70px] text-sm xl:text-base xl:text-xl">
     <div>
         <img
             src="{{ asset('assets/images/icons/circle.png') }}"

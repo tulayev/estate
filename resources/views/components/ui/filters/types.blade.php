@@ -5,8 +5,8 @@
 <div x-data="types()">
     <h3 class="mt-16 modal-subtitle text-primary">
         Type
-        <span class="font-700">|</span>
-        <span class="font-400 cursor-pointer hover:text-red-500 hover:font-900" @click="resetTypes">x</span>
+        <span class="font-bold">|</span>
+        <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetTypes">x</span>
         <span x-text="selectedTypeNames('{{ app()->getLocale() }}').join(', ')"></span>
     </h3>
 

@@ -3,7 +3,7 @@
         <h2 class="section-title flex space-x-3">
             contact us
         </h2>
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-4 uk-visible@m">
             <div class="white-button">
                 <ul class="flex items-center space-x-8 h-full">
                     <li>
@@ -53,53 +53,51 @@
     </div>
 
     <div class="mini-container">
-        <div class="mini-container">
-            <form class="mt-4 sm:mt-6 md:mt-8 lg:mt-10 w-full relative z-[4]">
-                <div class="uk-grid-small uk-child-width-1-1 uk-child-width-1-2@s" uk-grid>
-                    <div>
-                        <div class="form-input-anim">
-                            <input
-                                type="text"
-                                name="text"
-                                class="input w-full px-[30px] rounded-[25px] focus:outline-none"
-                                autocomplete="off"
-                                required
-                            />
-                            <label for="text" class="label-name">
-                                <span class="content-name">Enter your name</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="form-input-anim">
-                            <input
-                                type="text"
-                                name="text"
-                                class="input w-full px-[30px] rounded-[25px] focus:outline-none"
-                                autocomplete="off"
-                                required
-                            />
-                            <label for="text" class="label-name">
-                                <span class="content-name">Enter your number</span>
-                            </label>
-                        </div>
+        <form class="mt-4 sm:mt-6 md:mt-8 lg:mt-10 w-full relative z-[4]">
+            <div class="uk-grid-small uk-child-width-1-1 uk-child-width-1-2@s" uk-grid>
+                <div>
+                    <div class="form-input-anim">
+                        <input
+                            type="text"
+                            name="text"
+                            class="input w-full px-[30px] rounded-[25px] focus:outline-none"
+                            autocomplete="off"
+                            required
+                        />
+                        <label for="text" class="label-name">
+                            <span class="content-name">Enter your name</span>
+                        </label>
                     </div>
                 </div>
+                <div>
+                    <div class="form-input-anim">
+                        <input
+                            type="text"
+                            name="text"
+                            class="input w-full px-[30px] rounded-[25px] focus:outline-none"
+                            autocomplete="off"
+                            required
+                        />
+                        <label for="text" class="label-name">
+                            <span class="content-name">Enter your number</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
 
-                <div class="form-input-anim mt-4 textarea-wrapper">
-                    <textarea
-                        class="input textarea w-full px-[30px] rounded-[25px] focus:outline-none"
-                        name="text"
-                        rows="12"
-                        autocomplete="off"
-                        required
-                    ></textarea>
-                    <label for="text" class="label-name">
-                        <span class="content-name">Message</span>
-                    </label>
-                </div>
-                <button class="absolute bg-primary text-white rounded-[25px] w-full bottom-0 text-xl font-bold h-[60px] md:h-[80px]">Send</button>
-            </form>
-        </div>
+            <div class="form-input-anim mt-4 textarea-wrapper">
+                <textarea
+                    class="input textarea w-full px-[30px] rounded-[25px] focus:outline-none"
+                    name="text"
+                    rows="12"
+                    autocomplete="off"
+                    required
+                ></textarea>
+                <label for="text" class="label-name">
+                    <span class="content-name">Message</span>
+                </label>
+            </div>
+            <button class="absolute bg-primary text-white rounded-[25px] w-full bottom-0 text-xl font-bold h-[60px] md:h-[80px]">Send</button>
+        </form>
     </div>
 </div>

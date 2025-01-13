@@ -15,11 +15,11 @@
                     VISIBILITY FOR DEVELOPERS.
                 </h1>
                 <div class="mt-5 lg:mt-[80px]">
-                    <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-3 sm:space-y-0 space-y-3 text-sm xl:text-lg font-800 uppercase">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-3 sm:space-y-0 space-y-3 text-sm xl:text-lg font-extrabold uppercase">
                         <div class="text-white animLeft">
                             <a
                                 href="#modalForm"
-                                class=" inline-flex items-center space-x-2 bg-white/10 text-[#fff] font-600 px-[22px] py-1 lg:py-[12px] rounded-full"
+                                class=" inline-flex items-center space-x-2 bg-white/10 text-[#fff] font-semibold px-[22px] py-1 lg:py-[12px] rounded-full"
                                 uk-toggle
                             >
                                 <img
@@ -32,7 +32,7 @@
                         <div class="text-white animLeft">
                             <a
                                 href="#contactSection"
-                                class="inline-block space-x-2 bg-white/10 text-[#fff] font-600 px-[22px] py-1 lg:py-[12px] rounded-full"
+                                class="inline-block space-x-2 bg-white/10 text-[#fff] font-semibold px-[22px] py-1 lg:py-[12px] rounded-full"
                                 uk-toggle
                             >
                                 <span>Contact us</span>

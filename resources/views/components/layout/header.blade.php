@@ -25,7 +25,7 @@
                     <li class="animRight">
                         <a
                             href="{{ route('pages.listing.index') }}"
-                            class="line-animation text-sm md:text-base xl:text-lg xl:font-700 xxl:text-2xl xxl:font-900"
+                            class="line-animation text-sm md:text-base xl:text-lg xl:font-bold xxl:text-2xl xxl:font-black"
                         >
                             listings
                         </a>
@@ -33,7 +33,7 @@
                     <li class="animRight">
                         <a
                             href="{{ route('pages.club.index') }}"
-                            class="line-animation text-sm md:text-base xl:text-lg xl:font-700 xxl:text-2xl xxl:font-900"
+                            class="line-animation text-sm md:text-base xl:text-lg xl:font-bold xxl:text-2xl xxl:font-black"
                         >
                             insider club
                         </a>
@@ -41,7 +41,7 @@
                     <li class="animRight">
                         <a
                             href="{{ route('pages.insight.index') }}"
-                            class="line-animation text-sm md:text-base xl:text-lg xl:font-700 xxl:text-2xl xxl:font-900"
+                            class="line-animation text-sm md:text-base xl:text-lg xl:font-bold xxl:text-2xl xxl:font-black"
                         >
                             insights
                         </a>
@@ -49,7 +49,7 @@
                     <li class="animRight">
                         <a
                             href="{{ route('pages.about.index') }}"
-                            class="line-animation text-sm md:text-base xl:text-lg xl:font-700 xxl:text-2xl xxl:font-900"
+                            class="line-animation text-sm md:text-base xl:text-lg xl:font-bold xxl:text-2xl xxl:font-black"
                         >
                             about us
                         </a>
@@ -57,7 +57,7 @@
                 </ul>
                 <!-- Locale Switcher -->
                 <ul class="animRight flex justify-between items-center rounded-[100px] bg-white bg-opacity-10 relative w-[100px] xl:w-[150px] xxl:w-[235px] ml-4 pl-2 xl:ml-6 xl:pl-4 xxl:ml-10 xxl:pl-5">
-                    <li class="text-base font-700 xxl:text-lg xxl:font-900">
+                    <li class="text-base font-bold xxl:text-lg xxl:font-black">
                         <a href="#">
                             {{ config()->get('locales')[app()->getLocale()] }}
                         </a>

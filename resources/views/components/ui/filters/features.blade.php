@@ -5,8 +5,8 @@
 <div x-data="features()">
     <h3 class="mt-40 modal-subtitle text-primary">
         Facilities
-        <span class="font-700">|</span>
-        <span class="font-400 cursor-pointer hover:text-red-500 hover:font-900" @click="resetFeatures">x</span>
+        <span class="font-bold">|</span>
+        <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetFeatures">x</span>
         <span x-text="selectedFeatureNames('{{ app()->getLocale() }}').join(', ')"></span>
     </h3>
     <div class="mt-12 uk-child-width-1-2" uk-grid>

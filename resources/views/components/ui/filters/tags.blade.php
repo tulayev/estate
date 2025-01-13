@@ -5,8 +5,8 @@
 <div x-data="tags()">
     <h3 class="mt-40 modal-subtitle text-primary">
         Tags
-        <span class="font-700">|</span>
-        <span class="font-400 cursor-pointer hover:text-red-500 hover:font-900" @click="resetTags">x</span>
+        <span class="font-bold">|</span>
+        <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetTags">x</span>
         <span x-text="selectedTagNames('{{ app()->getLocale() }}').join(', ')"></span>
     </h3>
     <div class="mt-6 tags flex flex-wrap gap-4">

@@ -7,68 +7,40 @@
         @apply mx-auto px-11 py-0 w-full xl:w-[70vw]
     }
 
-    .font-400 {
-        font-weight: 400;
-    }
-
-    .font-600 {
-        font-weight: 600;
-    }
-
-    .font-700 {
-        font-weight: 700;
-    }
-
-    .font-800 {
-        font-weight: 800;
-    }
-
-    .font-900 {
-        font-weight: 900;
-    }
-
-    .line-animation {
-        @apply hover:no-underline;
-    }
-
-    .line-animation:hover {
-        color: inherit;
-    }
-
     .card-tag-button {
-        @apply text-[#F4F4F4] uppercase rounded-lg sm:rounded-[25px] text-sm sm:text-base sm:font-700 px-2 sm:px-4 py-2 sm:py-2;
+        @apply text-[#F4F4F4] uppercase rounded-lg sm:rounded-[25px] text-sm sm:text-base sm:font-bold px-2 sm:px-4 py-2 sm:py-2;
     }
 
     .primary-button {
-        @apply bg-primary text-[#f4f4f4] uppercase rounded-[25px] font-600 px-2 py-2 md:px-5 md:py-3
+        @apply bg-primary text-[#f4f4f4] uppercase rounded-2xl sm:rounded-[25px] font-semibold px-2 py-2 md:px-5 md:py-3
     }
 
     .white-button {
-        @apply bg-white text-primary uppercase rounded-[25px] font-600 px-2 py-2 md:px-5 md:py-3
+        @apply bg-white text-primary uppercase rounded-2xl sm:rounded-[25px] font-semibold px-2 py-2 md:px-5 md:py-3
     }
 
     .main-title {
-        @apply text-white font-700;
+        @apply text-white font-bold;
     }
 
     .section-title {
-        @apply leading-none text-primary uppercase text-2xl font-700 xl:text-[55px] xl:font-900;
+        @apply leading-none text-primary uppercase text-2xl font-bold xl:text-[55px] xl:font-black;
     }
 
     .section-title-white {
-        @apply text-white uppercase font-700 text-2xl xl:text-[55px] xl:font-900;
-    }
-
-    .collapse-title {
-        @apply text-primary uppercase text-xs sm:text-sm md:text-lg xl:text-2xl sm:font-700 xl:font-900;
+        @apply text-white uppercase font-bold text-2xl xl:text-[55px] xl:font-black;
     }
 
     .second-title {
-        @apply text-white uppercase font-700 text-lg md:text-2xl xl:text-4xl;
+        @apply text-white uppercase font-bold text-lg md:text-2xl xl:text-4xl;
+    }
+
+    .collapse-title {
+        @apply text-primary uppercase text-xs sm:text-sm md:text-lg xl:text-2xl sm:font-bold xl:font-black;
     }
 
     .modal-subtitle {
-        @apply text-primary uppercase font-700 text-lg xl:font-900;
+        @apply text-primary uppercase font-bold text-lg xl:font-black;
     }
 
     .bg-gradient {
