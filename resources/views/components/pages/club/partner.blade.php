@@ -1,5 +1,5 @@
-<section class="partner mt-10 sm:mt-20">
-    <div class="mini-container flex items-center justify-between">
+<section class="section">
+    <div class="container flex items-center justify-between">
         <h2 class="section-title flex space-x-3">
             why partner with us?
         </h2>
@@ -8,7 +8,7 @@
         </button>
     </div>
 
-    <div class="mini-container py-6 sm:py-12 md:py-24">
+    <div class="container pt-6 md:pt-12 xl:pt-24">
         <!-- Insights -->
         <div class="relative bg-gray-600 text-white rounded-lg overflow-hidden mb-6 mx-auto">
             <img

@@ -3,24 +3,39 @@
 @tailwind utilities;
 
 @layer components {
-    .mini-container {
-        @apply mx-auto px-11 py-0 w-full xl:w-[70vw]
+    /* Containers */
+    .main-section {
+        @apply px-5 py-5
     }
 
-    .card-tag-button {
-        @apply text-[#F4F4F4] uppercase rounded-lg sm:rounded-[25px] text-sm sm:text-base sm:font-bold px-2 sm:px-4 py-2 sm:py-2;
+    .section {
+        @apply pt-8 sm:pt-16 md:pt-24 lg:pt-36 xl:pt-40
+    }
+
+    .container {
+        @apply mx-auto px-11 w-full xl:w-[70vw]
+    }
+
+    /* Buttons */
+    .main-button {
+        @apply bg-white/10 text-white uppercase font-semibold flex items-center text-sm xl:text-lg space-x-2 px-[22px] py-1 lg:py-[12px] rounded-full
     }
 
     .primary-button {
-        @apply bg-primary text-[#f4f4f4] uppercase rounded-2xl sm:rounded-[25px] font-semibold px-2 py-2 md:px-5 md:py-3
+        @apply bg-primary text-[#F4F4F4] uppercase rounded-2xl sm:border-rounded font-semibold px-2 py-2 md:px-5 md:py-3
     }
 
     .white-button {
-        @apply bg-white text-primary uppercase rounded-2xl sm:rounded-[25px] font-semibold px-2 py-2 md:px-5 md:py-3
+        @apply bg-white text-primary uppercase rounded-2xl sm:border-rounded font-semibold px-2 py-2 md:px-5 md:py-3
     }
 
+    .card-tag-button {
+        @apply text-[#F4F4F4] uppercase rounded-lg sm:border-rounded text-sm sm:text-base sm:font-bold px-2 sm:px-4 py-2 sm:py-2;
+    }
+
+    /* Titles */
     .main-title {
-        @apply text-white font-bold;
+        @apply text-white uppercase font-bold lg:font-black text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl;
     }
 
     .section-title {
@@ -28,7 +43,7 @@
     }
 
     .section-title-white {
-        @apply text-white uppercase font-bold text-2xl xl:text-[55px] xl:font-black;
+        @apply text-white uppercase font-bold xl:font-black text-2xl xl:text-[55px];
     }
 
     .second-title {
@@ -40,10 +55,15 @@
     }
 
     .modal-subtitle {
-        @apply text-primary uppercase font-bold text-lg xl:font-black;
+        @apply text-primary uppercase text-lg font-bold xl:font-black;
     }
 
-    .bg-gradient {
+    /* Background Colors */
+    .bg-gradient-100 {
+        @apply bg-gradient-to-b from-black/100 to-black/0
+    }
+
+    .bg-gradient-50 {
         @apply bg-gradient-to-b from-black/50 to-black/0
     }
 
@@ -61,5 +81,15 @@
 
     .bg-tag-4 {
         @apply bg-[#767E94];
+    }
+
+    /* Borders */
+    .border-rounded {
+        @apply rounded-[25px]
+    }
+
+    /* Miscellaneous */
+    .absolute-centralize {
+        @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
     }
 }

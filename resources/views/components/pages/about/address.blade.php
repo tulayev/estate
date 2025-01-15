@@ -1,5 +1,5 @@
-<section class="uk-section">
-    <div class="mini-container py-6 md:py-12 xl:py-24">
+<section class="section">
+    <div class="container">
         <div class="uk-card uk-card-default uk-width-1-1 uk-margin-auto rounded-lg">
             <div class="uk-child-width-1-2@m" uk-grid>
                 <div>

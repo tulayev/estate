@@ -1,5 +1,5 @@
-<section class="uk-section">
-    <div class="mini-container py-6 md:py-12 xl:py-24">
+<section class="section">
+    <div class="container">
         <h2 class="section-title mb-16">
             about ignatev estate
         </h2>

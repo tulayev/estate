@@ -1,6 +1,8 @@
-<section class="uk-section">
-    <div class="mini-container py-6 md:py-12 xl:py-24">
-        <h2 class="section-title mb-16">Our Focus is Off-Plan Investments</h2>
+<section class="section">
+    <div class="container">
+        <h2 class="section-title mb-16">
+            Our Focus is Off-Plan Investments
+        </h2>
 
         <p class="uk-margin-remove xs:text-lg sm:text-xl lg:text-2xl">
             Off-plan real estate investment involves purchasing properties before

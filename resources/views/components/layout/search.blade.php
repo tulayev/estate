@@ -129,7 +129,7 @@
             <button
                 id="showResultsButton"
                 type="submit"
-                class="w-full py-7 bg-primary rounded-[25px] modal-subtitle text-white text-center"
+                class="w-full py-7 bg-primary border-rounded modal-subtitle text-white text-center"
             ></button>
         </div>
     </form>

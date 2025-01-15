@@ -1,5 +1,5 @@
-<section class="club mt-10 sm:mt-20">
-    <div class="mini-container flex items-center justify-between">
+<section class="section">
+    <div class="container flex items-center justify-between">
         <h2 class="section-title flex space-x-3">
             what is Insider Club?
         </h2>
@@ -8,7 +8,7 @@
         </button>
     </div>
 
-    <div class="mini-container py-2 md:py-4 xl:py-8">
+    <div class="container py-2 md:py-4 xl:py-8">
         <!-- For investors -->
         <div class="relative bg-gray-600 text-white rounded-lg mb-6 mx-auto flex flex-wrap xl:flex-nowrap flex-col xl:flex-row">
             <img

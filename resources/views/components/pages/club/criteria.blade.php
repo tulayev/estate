@@ -1,5 +1,5 @@
-<section class="criteria mt-10 sm:mt-20">
-    <div class="mini-container flex items-center justify-between">
+<section class="section">
+    <div class="container flex items-center justify-between">
         <h2 class="section-title flex space-x-3">
             entry criteria
         </h2>
@@ -8,7 +8,7 @@
         </button>
     </div>
 
-    <div class="mini-container py-6 sm:py-12 md:py-24">
+    <div class="container pt-6 md:pt-12 xl:pt-24">
         <div class="w-full">
             <ul class="uk-nav-default uk-nav-parent-icon" uk-nav="multiple: false">
                 <li class="uk-parent">

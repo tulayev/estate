@@ -21,7 +21,7 @@
         @foreach($types as $type)
             <div>
                 <div
-                    class="modal-subtitle cursor-pointer p-6 rounded-[25px] text-4xl text-white text-center"
+                    class="modal-subtitle cursor-pointer p-6 border-rounded text-4xl text-white text-center"
                     :class="[getRandomColor(), isTypeSelected('{{ $type->id }}') ? 'hidden' : '']"
                     @click="addType('{{ $type->id }}')"
                 >

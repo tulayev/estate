@@ -1,5 +1,8 @@
-<div id="contactSection" class="uk-section">
-    <div class="mini-container flex items-center justify-between  mb-10">
+<section
+    id="contactSection"
+    class="section"
+>
+    <div class="container flex items-center justify-between mb-10">
         <h2 class="section-title flex space-x-3">
             contact us
         </h2>
@@ -8,37 +11,57 @@
                 <ul class="flex items-center space-x-8 h-full">
                     <li>
                         <a href="#">
-                            <img src="{{ asset('assets/images/icons/whatsapp.svg') }}" alt="whatsapp" />
+                            <img
+                                src="{{ asset('assets/images/icons/whatsapp.svg') }}"
+                                alt="whatsapp"
+                            />
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img src="{{ asset('assets/images/icons/x.svg') }}" alt="x" />
+                            <img
+                                src="{{ asset('assets/images/icons/x.svg') }}"
+                                alt="x" />
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img src="{{ asset('assets/images/icons/instagram.svg') }}" alt="instagram" />
+                            <img
+                                src="{{ asset('assets/images/icons/instagram.svg') }}"
+                                alt="instagram"
+                            />
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img src="{{ asset('assets/images/icons/youtube.svg') }}" alt="youtube" />
+                            <img
+                                src="{{ asset('assets/images/icons/youtube.svg') }}"
+                                alt="youtube"
+                            />
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img src="{{ asset('assets/images/icons/facebook.svg') }}" alt="facebook" />
+                            <img
+                                src="{{ asset('assets/images/icons/facebook.svg') }}"
+                                alt="facebook"
+                            />
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img src="{{ asset('assets/images/icons/vk.svg') }}" alt="vk" />
+                            <img
+                                src="{{ asset('assets/images/icons/vk.svg') }}"
+                                alt="vk"
+                            />
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img src="{{ asset('assets/images/icons/mail.svg') }}" alt="mail" />
+                            <img
+                                src="{{ asset('assets/images/icons/mail.svg') }}"
+                                alt="mail"
+                            />
                         </a>
                     </li>
                 </ul>
@@ -52,7 +75,7 @@
         </div>
     </div>
 
-    <div class="mini-container">
+    <div class="container">
         <form class="mt-4 sm:mt-6 md:mt-8 lg:mt-10 w-full relative z-[4]">
             <div class="uk-grid-small uk-child-width-1-1 uk-child-width-1-2@s" uk-grid>
                 <div>
@@ -60,7 +83,7 @@
                         <input
                             type="text"
                             name="text"
-                            class="input w-full px-[30px] rounded-[25px] focus:outline-none"
+                            class="input w-full px-[30px] border-rounded focus:outline-none"
                             autocomplete="off"
                             required
                         />
@@ -74,7 +97,7 @@
                         <input
                             type="text"
                             name="text"
-                            class="input w-full px-[30px] rounded-[25px] focus:outline-none"
+                            class="input w-full px-[30px] border-rounded focus:outline-none"
                             autocomplete="off"
                             required
                         />
@@ -87,7 +110,7 @@
 
             <div class="form-input-anim mt-4 textarea-wrapper">
                 <textarea
-                    class="input textarea w-full px-[30px] rounded-[25px] focus:outline-none"
+                    class="input textarea w-full px-[30px] border-rounded focus:outline-none"
                     name="text"
                     rows="12"
                     autocomplete="off"
@@ -97,7 +120,7 @@
                     <span class="content-name">Message</span>
                 </label>
             </div>
-            <button class="absolute bg-primary text-white rounded-[25px] w-full bottom-0 text-xl font-bold h-[60px] md:h-[80px]">Send</button>
+            <button class="absolute bg-primary text-white border-rounded w-full bottom-0 text-xl font-bold h-[60px] md:h-[80px]">Send</button>
         </form>
     </div>
-</div>
+</section>

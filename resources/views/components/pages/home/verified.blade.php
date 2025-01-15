@@ -2,8 +2,8 @@
     'hotels' => null,
 ])
 
-<section class="uk-section">
-    <div class="mini-container">
+<section class="section">
+    <div class="container">
         <h2 class="section-title mb-10 xl:mb-20 flex items-center space-x-3">
             <img
                 class="w-[30px] sm:w-[50px]"
@@ -13,14 +13,14 @@
             <span>ie verified</span>
         </h2>
     </div>
-    <div class="mini-container pb-10 sm:pb-24">
+    <div class="container pb-10 sm:pb-24">
         <div class="mt-10 uk-child-width-1-1 uk-child-width-1-2@s" uk-grid>
             <div>
                 <div
-                    class="relative text-white rounded-lg sm:rounded-[25px]"
+                    class="relative text-white rounded-lg sm:border-rounded"
                     style="background-image: url('{{ asset('assets/images/verified_1.png') }}')"
                 >
-                    <div class="rounded-lg sm:rounded-[25px] absolute inset-0 bg-[#0F1F3DE5] opacity-90"></div>
+                    <div class="rounded-lg sm:border-rounded absolute inset-0 bg-[#0F1F3DE5] opacity-90"></div>
                     <div class="relative px-2 sm:px-4 xl:px-11 py-2 sm:py-4 xl:py-8">
                         <h4 class="font-bold uppercase text-white text-sm sm:text-lg xl:text-3xl">
                             for investors
@@ -33,10 +33,10 @@
             </div>
             <div>
                 <div
-                    class="relative text-white rounded-lg sm:rounded-[25px]"
+                    class="relative text-white rounded-lg sm:border-rounded"
                     style="background-image: url('{{ asset('assets/images/verified_2.png') }}')"
                 >
-                    <div class="rounded-lg sm:rounded-[25px] absolute inset-0 bg-[#5C687AE5] opacity-90"></div>
+                    <div class="rounded-lg sm:border-rounded absolute inset-0 bg-[#5C687AE5] opacity-90"></div>
                     <div class="relative px-2 sm:px-4 xl:px-11 py-2 sm:py-4 xl:py-8">
                         <h4 class="font-bold uppercase text-white text-sm sm:text-lg xl:text-3xl">
                             for developers
@@ -54,10 +54,10 @@
                 @foreach($hotels as $hotel)
                     <div>
                         <div
-                            class="relative flex flex-col justify-between rounded-[25px] p-3 h-[300px]"
-                            style="background-image: url('{{ ImagePathResolver::resolve($hotel->image) ?? $hotel->main_image_old ?? asset('assets/images/object-background.png') }}')"
+                            class="relative flex flex-col justify-between border-rounded p-3 h-[300px]"
+                            style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_old ?? asset('assets/images/object-background.png') }}')"
                         >
-                            <div class="absolute rounded-[25px] inset-0 bg-gradient"></div>
+                            <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
                             <!-- Image Top -->
                             <div class="flex justify-between items-center z-10">
                                 @if ($hotel->tags)
@@ -109,7 +109,7 @@
                             </a>
                         </div>
                         <!-- Bottom -->
-                        <div class="shadow-card rounded-[25px] mt-[-54px] sm:mt-[-44px] px-3 sm:px-5 pt-[68px] pb-4 sm:pb-6">
+                        <div class="shadow-card border-rounded mt-[-54px] sm:mt-[-44px] px-3 sm:px-5 pt-[68px] pb-4 sm:pb-6">
                             <div class="flex justify-between uppercase text-[#505050] text-sm sm:text-base md:text-lg xl:text-xl sm:font-bold md:font-black">
                                 <div>
                                     <p>📍 {{ Str::limit($hotel->location, 10) }}</p>

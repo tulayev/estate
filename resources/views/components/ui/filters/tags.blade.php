@@ -19,7 +19,7 @@
 
         @foreach($tags as $tag)
             <div
-                class="tag modal-subtitle cursor-pointer text-white text-center p-3 rounded-[25px]"
+                class="tag modal-subtitle cursor-pointer text-white text-center p-3 border-rounded"
                 :class="[getRandomColor(), isTagSelected('{{ $tag->id }}') ? 'hidden' : '']"
                 @click="addTag('{{ $tag->id }}')"
             >

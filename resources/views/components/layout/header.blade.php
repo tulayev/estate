@@ -4,7 +4,7 @@
     uk-scrollspy="target: .animLeft; cls: animate__animated animate__lightSpeedInLeft; delay: 300;"
     uk-sticky="animation: uk-animation-slide-top; sel-target: .header; cls-active: uk-navbar-sticky bg-primary; cls-inactive: z-[999]; top: 200;"
 >
-    <div class="mini-container">
+    <div class="container">
         <nav class="uk-flex uk-flex-between uk-flex-middle py-10">
             <!-- Logo -->
             <div class="animLeft">

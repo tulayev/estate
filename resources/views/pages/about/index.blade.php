@@ -1,5 +1,7 @@
 <x-layout.app>
 
+    <x-pages.about.main />
+
     <x-pages.about.address />
 
     <x-pages.about.numbers />

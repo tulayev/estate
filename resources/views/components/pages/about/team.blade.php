@@ -1,5 +1,5 @@
-<section class="uk-section">
-    <div class="mini-container py-6 md:py-12 xl:py-24">
+<section class="section">
+    <div class="container">
         <div class="uk-flex uk-flex-middle uk-flex-between uk-flex-wrap">
             <h2 class="section-title">Our Leadership Team</h2>
             <a

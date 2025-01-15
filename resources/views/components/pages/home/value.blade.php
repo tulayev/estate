@@ -1,5 +1,5 @@
-<section class="value mt-10 sm:mt-20">
-    <div class="mini-container">
+<section class="section">
+    <div class="container">
         <h2 class="section-title mb-5 xl:mb-10 flex space-x-3">
             Value, no strings attached
         </h2>
@@ -10,7 +10,7 @@
         </p>
     </div>
 
-    <div class="mini-container py-6 sm:py-12 md:py-24">
+    <div class="container pt-6 md:pt-12 xl:pt-24">
         <div class="w-full">
             <ul class="uk-nav-default uk-nav-parent-icon" uk-nav="multiple: false">
                 <li class="uk-parent">
