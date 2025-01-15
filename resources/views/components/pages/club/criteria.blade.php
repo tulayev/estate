@@ -1,13 +1,11 @@
-<section class="value mt-10 sm:mt-20">
-    <div class="mini-container">
-        <h2 class="section-title mb-5 xl:mb-10 flex space-x-3">
-            Value, no strings attached
+<section class="criteria mt-10 sm:mt-20">
+    <div class="mini-container flex items-center justify-between">
+        <h2 class="section-title flex space-x-3">
+            entry criteria
         </h2>
-        <p class="text mb-10">
-            We believe in proving our worth upfront. That’s why some of our most valuable insights and some services are
-            free. Get the clarity you need without commitment, and see why smart investors and developers trust us from the
-            start.
-        </p>
+        <button class="primary-button">
+            Apply To Join
+        </button>
     </div>
 
     <div class="mini-container py-6 sm:py-12 md:py-24">
@@ -29,8 +27,9 @@
                     <ul class="uk-nav-sub">
                         <li>
                             <p class="text-sm sm:text-xl py-2 sm:py-4">
-                                We connect buyers and investors to real opportunities through carefully selected
-                                off-plan projects that offer genuine value and clear potential.
+                                We connect buyers and investors to real opportunities
+                                through carefully selected off-plan projects that offer
+                                genuine value and clear potential.
                             </p>
                         </li>
                     </ul>
@@ -51,8 +50,9 @@
                     <ul class="uk-nav-sub">
                         <li>
                             <p class="text-sm sm:text-xl py-2 sm:py-4">
-                                We connect buyers and investors to real opportunities through carefully selected
-                                off-plan projects that offer genuine value and clear potential.
+                                We connect buyers and investors to real opportunities
+                                through carefully selected off-plan projects that offer
+                                genuine value and clear potential.
                             </p>
                         </li>
                     </ul>
@@ -73,8 +73,9 @@
                     <ul class="uk-nav-sub">
                         <li>
                             <p class="text-sm sm:text-xl py-2 sm:py-4">
-                                We connect buyers and investors to real opportunities through carefully selected
-                                off-plan projects that offer genuine value and clear potential.
+                                We connect buyers and investors to real opportunities
+                                through carefully selected off-plan projects that offer
+                                genuine value and clear potential.
                             </p>
                         </li>
                     </ul>
@@ -95,8 +96,9 @@
                     <ul class="uk-nav-sub">
                         <li>
                             <p class="text-sm sm:text-xl py-2 sm:py-4">
-                                We connect buyers and investors to real opportunities through carefully selected
-                                off-plan projects that offer genuine value and clear potential.
+                                We connect buyers and investors to real opportunities
+                                through carefully selected off-plan projects that offer
+                                genuine value and clear potential.
                             </p>
                         </li>
                     </ul>
@@ -117,8 +119,9 @@
                     <ul class="uk-nav-sub">
                         <li>
                             <p class="text-sm sm:text-xl py-2 sm:py-4">
-                                We connect buyers and investors to real opportunities through carefully selected
-                                off-plan projects that offer genuine value and clear potential.
+                                We connect buyers and investors to real opportunities
+                                through carefully selected off-plan projects that offer
+                                genuine value and clear potential.
                             </p>
                         </li>
                     </ul>
@@ -139,8 +142,9 @@
                     <ul class="uk-nav-sub">
                         <li>
                             <p class="text-sm sm:text-xl py-2 sm:py-4">
-                                We connect buyers and investors to real opportunities through carefully selected
-                                off-plan projects that offer genuine value and clear potential.
+                                We connect buyers and investors to real opportunities
+                                through carefully selected off-plan projects that offer
+                                genuine value and clear potential.
                             </p>
                         </li>
                     </ul>

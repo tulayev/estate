@@ -928,6 +928,11 @@ video {
   margin-right: 0.5rem;
 }
 
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .-mt-2 {
   margin-top: -0.5rem;
 }
@@ -1010,6 +1015,10 @@ video {
 
 .mt-\[-54px\] {
   margin-top: -54px;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
 }
 
 .block {
@@ -1172,6 +1181,10 @@ video {
   width: 100%;
 }
 
+.w-4\/5 {
+  width: 80%;
+}
+
 .min-w-10 {
   min-width: 2.5rem;
 }
@@ -1222,6 +1235,10 @@ video {
 
 .flex-col {
   flex-direction: column;
+}
+
+.flex-col-reverse {
+  flex-direction: column-reverse;
 }
 
 .flex-wrap {
@@ -1308,6 +1325,10 @@ video {
 
 .whitespace-nowrap {
   white-space: nowrap;
+}
+
+.text-balance {
+  text-wrap: balance;
 }
 
 .rounded-3xl {
@@ -1413,6 +1434,16 @@ video {
 
 .bg-white\/10 {
   background-color: rgb(255 255 255 / 0.1);
+}
+
+.bg-gray-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(75 85 99 / var(--tw-bg-opacity, 1));
+}
+
+.bg-gray-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
 }
 
 .bg-opacity-10 {
@@ -1559,6 +1590,11 @@ video {
   padding-bottom: 2.25rem;
 }
 
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -1593,6 +1629,10 @@ video {
 
 .pt-\[68px\] {
   padding-top: 68px;
+}
+
+.text-left {
+  text-align: left;
 }
 
 .text-center {
@@ -1753,6 +1793,10 @@ video {
 
 .opacity-90 {
   opacity: 0.9;
+}
+
+.opacity-50 {
+  opacity: 0.5;
 }
 
 .shadow {
@@ -2096,6 +2140,11 @@ video {
     padding-bottom: 6rem;
   }
 
+  .md\:py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
   .md\:pt-12 {
     padding-top: 3rem;
   }
@@ -2190,6 +2239,10 @@ video {
     bottom: -15px;
   }
 
+  .xl\:right-6 {
+    right: 1.5rem;
+  }
+
   .xl\:col-span-1 {
     grid-column: span 1 / span 1;
   }
@@ -2261,6 +2314,18 @@ video {
 
   .xl\:w-\[50px\] {
     width: 50px;
+  }
+
+  .xl\:w-1\/2 {
+    width: 50%;
+  }
+
+  .xl\:flex-row {
+    flex-direction: row;
+  }
+
+  .xl\:flex-nowrap {
+    flex-wrap: nowrap;
   }
 
   .xl\:p-10 {
@@ -2346,6 +2411,11 @@ video {
   .xl\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .xl\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 
   .xl\:font-bold {
