@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Feature;
+use App\Models\Hotel;
 use App\Models\Tag;
 use App\Models\Type;
 use Illuminate\Support\Facades\View;
@@ -28,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer('components.layout.search', function ($view) {
             $view
                 ->with('types', Type::all())
+                ->with('locations', Hotel::locations()->get())
                 ->with('tags', Tag::all())
                 ->with('features', Feature::all());
         });

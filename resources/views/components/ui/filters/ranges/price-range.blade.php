@@ -68,7 +68,7 @@
                 <div class="relative z-10 h-2">
                     <div class="absolute z-10 left-0 right-0 bottom-0 top-0 rounded-md bg-primary"></div>
                     <div
-                        class="absolute z-20 top-0 bottom-0 rounded-md bg-primary"
+                        class="absolute z-20 top-0 bottom-0 rounded-md bg-secondary"
                         x-bind:style="'right:'+maxPriceThumb+'%; left:'+minPriceThumb+'%'"
                     ></div>
                     <div
@@ -120,15 +120,13 @@
             validatePrices() {
                 // Clamp minPrice to valid range
                 this.minPrice = Math.max(this.min, Math.min(this.minPrice, this.max));
-
                 // Clamp maxPrice to valid range
                 this.maxPrice = Math.max(this.min, Math.min(this.maxPrice, this.max));
             },
 
             updateThumbs() {
-                // Calculate thumb positions after validation
-                this.minPriceThumb = ((this.minPrice - this.min) / (this.max - this.min)) * 100;
-                this.maxPriceThumb = 100 - (((this.maxPrice - this.min) / (this.max - this.min)) * 100);
+                this.minPriceThumb = ((this.minPrice - this.min) / (this.max - this.min)) * 100 - 2;
+                this.maxPriceThumb = 100 - 2 - (((this.maxPrice - this.min) / (this.max - this.min)) * 100);
             }
         }
     }

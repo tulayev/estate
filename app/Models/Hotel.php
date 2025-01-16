@@ -46,6 +46,11 @@ class Hotel extends Model
         return $query->where('active', true);
     }
 
+    public function scopeLocations($query)
+    {
+        return $query->select('location', 'longitude', 'latitude')->distinct();
+    }
+
     public function scopeSearch($query, $keyword)
     {
         if (!empty($keyword)) {

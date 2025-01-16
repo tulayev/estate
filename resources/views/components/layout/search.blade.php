@@ -1,4 +1,4 @@
-<div class="uk-visible@m absolute left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 text-[#C6C6C6] z-10 bg-white font-semibold uppercase rounded-full sm:flex items-center px-3 w-[90vw] lg:w-[70vw] h-[50px] xl:h-[70px] text-sm xl:text-base xl:text-xl">
+<div class="uk-visible@m absolute left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 text-[#C6C6C6] z-10 bg-white font-semibold uppercase rounded-full sm:flex items-center px-3 w-[90vw] lg:w-[70vw] h-[50px] xl:h-[70px] text-sm xl:text-xl">
     <div>
         <img
             src="{{ asset('assets/images/icons/circle.png') }}"
@@ -56,7 +56,7 @@
     </div>
 </div>
 
-<!-- Search Modal -->
+<!-- Filter Modal -->
 <div
     id="searchModal"
     class="w-[85%] h-[90%] m-auto bg-white rounded-[31px]"
@@ -65,7 +65,7 @@
     <form
         id="filterForm"
         action="{{ route('pages.listing.index') }}"
-        class="px-11 py-9"
+        class="p-4 sm:p-6 lg:p-8 xl:px-11 xl:py-9"
     >
         <div class="flex justify-between items-center">
             <h2 class="section-title">
@@ -89,12 +89,12 @@
         @endif
 
         <!-- Keywords & Price range -->
-        <div class="uk-child-width-1-2 pt-20" uk-grid>
+        <div class="uk-child-width-1-2 md:pt-10 xl:pt-20" uk-grid>
             <!-- Keywords -->
             <div>
                 <h3 class="modal-subtitle text-primary">Keywords</h3>
 
-                <div class="mt-6">
+                <div class="md:pt-4 xl:mt-6">
                     <input
                         name="keywords"
                         type="text"
@@ -115,6 +115,10 @@
             />
         </div>
 
+        <!-- Map -->
+        @if ($locations)
+            <x-ui.filters.map :locations="$locations" />
+        @endif
         <!-- Features -->
         @if ($features)
             <x-ui.filters.features :features="$features" />
@@ -125,11 +129,11 @@
         @endif
 
         <!-- Show Results button -->
-        <div class="mt-24">
+        <div class="mt-4 sm:mt-6 md:mt-8 lg:mt-12 xl:mt-24">
             <button
                 id="showResultsButton"
                 type="submit"
-                class="w-full py-7 bg-primary border-rounded modal-subtitle text-white text-center"
+                class="w-full bg-primary border-rounded modal-subtitle text-white text-center py-2 sm:py-4 xl:py-7"
             ></button>
         </div>
     </form>
