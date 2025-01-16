@@ -17,14 +17,14 @@
             <!-- First Card -->
             <div>
                 <div
-                    class="h-64 flex items-center justify-center bg-cover bg-center"
+                    class="h-64 flex items-center justify-center bg-cover bg-center rounded-xl p-8"
                     data-src="{{ asset('assets/images/about/focus-bg-img.png') }}"
                     uk-img
                 >
-                    <div class="flex flex-col items-center justify-center">
-                        <span class="font-bold mb-4 text-[110px]">📈</span>
-                        <h4 class="font-bold text-white uppercase text-sm sm:text-2xl">
-                            Higher Gains
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="font-bold text-[5rem]">📈</span>
+                        <h4 class="font-bold text-white uppercase text-sm sm:text-xl lg:ml-8  lg:leading-none">
+                            higher gains
                         </h4>
                     </div>
                 </div>
@@ -33,13 +33,13 @@
             <!-- Second Card -->
             <div>
                 <div
-                    class="h-64 flex items-center justify-center bg-cover bg-center rounded-xl"
+                    class="h-64 flex items-center justify-center bg-cover bg-center rounded-xl p-8"
                     data-src="{{ asset('assets/images/about/focus-bg-img.png') }}"
                     uk-img
                 >
-                    <div class="flex flex-col items-center justify-center">
-                        <span class="font-bold mb-4 text-[110px]">💵</span>
-                        <h4 class="font-bold text-white uppercase text-sm sm:text-2xl">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="font-bold text-[5rem]">💵</span>
+                        <h4 class="font-bold text-white uppercase text-sm sm:text-xl lg:ml-8  lg:leading-none">
                             lower initial costs
                         </h4>
                     </div>
@@ -49,13 +49,13 @@
             <!-- Third Card -->
             <div>
                 <div
-                    class="h-64 flex justify-center bg-cover bg-center rounded-xl items-center"
+                    class="h-64 flex items-center justify-center bg-cover bg-center rounded-xl p-8"
                     data-src="{{ asset('assets/images/about/focus-bg-img.png') }}"
                     uk-img
                 >
-                    <div class="flex flex-col items-center justify-center">
-                        <span class="font-bold mb-4 text-[110px]">⌛️</span>
-                        <h4 class="font-bold text-white uppercase text-sm sm:text-2xl">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="font-bold text-[5rem]">⌛️</span>
+                        <h4 class="font-bold text-white uppercase text-sm sm:text-xl lg:ml-6  lg:leading-none">
                             early property selection
                         </h4>
                     </div>
@@ -65,18 +65,22 @@
             <!-- Fourth Card -->
             <div>
                 <div
-                    class="h-64 flex items-center justify-center bg-cover bg-center rounded-xl"
+                    class="h-64 flex items-center justify-center bg-cover bg-center rounded-xl p-8"
                     data-src="{{ asset('assets/images/about/focus-bg-img.png') }}"
                     uk-img
                 >
-                    <div class="flex flex-col items-center justify-center">
-                        <span class="font-bold mb-4 text-[110px]">🗓</span>
-                        <h4 class="font-bold text-white uppercase text-sm sm:text-2xl">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="font-bold text-[5rem]">🗓</span>
+                        <h4 class="font-bold text-white uppercase text-sm sm:text-xl lg:ml-6 lg:mb-2 lg:leading-none">
                             flexible payment
                         </h4>
                     </div>
                 </div>
             </div>
+
+
+            
+
         </div>
 
         <!-- Warning Card -->

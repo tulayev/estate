@@ -5,28 +5,32 @@
 @layer components {
     /* Containers */
     .main-section {
-        @apply px-5 py-5
+        @apply px-5 py-5;
     }
 
     .section {
-        @apply pt-8 sm:pt-16 md:pt-24 lg:pt-36 xl:pt-40
+        @apply pt-8 sm:pt-16 md:pt-24 lg:pt-36 xl:pt-40;
     }
 
     .container {
-        @apply mx-auto px-11 w-full xl:w-[70vw]
+        @apply mx-auto px-11 w-full xl:w-[70vw];
     }
 
     /* Buttons */
     .main-button {
-        @apply bg-white/10 text-white uppercase font-semibold flex items-center text-sm xl:text-lg space-x-2 px-[22px] py-1 lg:py-[12px] rounded-full
+        @apply bg-white/10 text-white uppercase font-semibold flex items-center text-sm xl:text-lg space-x-2 px-[22px] py-1 lg:py-[12px] rounded-full;
+    }
+
+    .main-button-about {
+        @apply bg-white/10 text-white uppercase font-semibold flex items-center text-sm xl:text-lg space-x-2 rounded-full;
     }
 
     .primary-button {
-        @apply bg-primary text-[#F4F4F4] uppercase rounded-2xl sm:border-rounded font-semibold px-2 py-2 md:px-5 md:py-3
+        @apply bg-primary text-[#F4F4F4] uppercase rounded-2xl sm:border-rounded font-semibold px-2 py-2 md:px-5 md:py-3;
     }
 
     .white-button {
-        @apply bg-white text-primary uppercase rounded-2xl sm:border-rounded font-semibold px-2 py-2 md:px-5 md:py-3
+        @apply bg-white text-primary uppercase rounded-2xl sm:border-rounded font-semibold px-2 py-2 md:px-5 md:py-3;
     }
 
     .card-tag-button {
@@ -60,11 +64,11 @@
 
     /* Background Colors */
     .bg-gradient-100 {
-        @apply bg-gradient-to-b from-black/100 to-black/0
+        @apply bg-gradient-to-b from-black/100 to-black/0;
     }
 
     .bg-gradient-50 {
-        @apply bg-gradient-to-b from-black/50 to-black/0
+        @apply bg-gradient-to-b from-black/50 to-black/0;
     }
 
     .bg-tag-1 {
@@ -85,11 +89,11 @@
 
     /* Borders */
     .border-rounded {
-        @apply rounded-[25px]
+        @apply rounded-[25px];
     }
 
     /* Miscellaneous */
     .absolute-centralize {
-        @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+        @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
     }
 }

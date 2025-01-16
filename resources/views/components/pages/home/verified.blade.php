@@ -17,8 +17,8 @@
         <div class="mt-10 uk-child-width-1-1 uk-child-width-1-2@s" uk-grid>
             <div>
                 <div
-                    class="relative text-white rounded-lg sm:border-rounded"
-                    style="background-image: url('{{ asset('assets/images/verified_1.png') }}')"
+                    class="relative text-white rounded-lg sm:border-rounded h-full"
+                    style="background-image: url('{{ asset('assets/images/verified_1.png') }}'); background-repeat: no-repeat; background-size: cover;"
                 >
                     <div class="rounded-lg sm:border-rounded absolute inset-0 bg-[#0F1F3DE5] opacity-90"></div>
                     <div class="relative px-2 sm:px-4 xl:px-11 py-2 sm:py-4 xl:py-8">
@@ -26,15 +26,17 @@
                             for investors
                         </h4>
                         <p class="mt-2 xl:mt-4 text-xs sm:text-base lg:text-xl">
-                            “Data & Quality Mark You Can Trust.” We do the research. You get the facts, clarity & best terms.
+                            “Data & Quality Mark You Can Trust.”<br>
+                            We do the research.<br>
+                            You get the facts, clarity & best terms.
                         </p>
                     </div>
                 </div>
             </div>
             <div>
                 <div
-                    class="relative text-white rounded-lg sm:border-rounded"
-                    style="background-image: url('{{ asset('assets/images/verified_2.png') }}')"
+                    class="relative text-white rounded-lg sm:border-rounded h-full"
+                    style="background-image: url('{{ asset('assets/images/verified_2.png') }}'); background-repeat: no-repeat; background-size: cover;"
                 >
                     <div class="rounded-lg sm:border-rounded absolute inset-0 bg-[#5C687AE5] opacity-90"></div>
                     <div class="relative px-2 sm:px-4 xl:px-11 py-2 sm:py-4 xl:py-8">
