@@ -41,7 +41,7 @@
             </div>
         </div>
     </div>
-    <div class="mt-10 features flex flex-wrap gap-4">
+    <div class="mt-10 features flex justify-between flex-wrap gap-4">
         <input
             type="hidden"
             name="features"
@@ -51,7 +51,7 @@
 
         @foreach($features as $feature)
             <div
-                class="feature mr-9 shadow-card border-rounded w-[170px] h-[145px] flex justify-center items-center cursor-pointer"
+                class="feature shadow-card border-rounded w-[150px] h-[100px] flex justify-center items-center cursor-pointer"
                 :class="isFeatureSelected('{{ $feature->id }}') ? 'bg-primary' : 'bg-white'"
                 @click="toggleFeature('{{ $feature->id }}')"
             >
