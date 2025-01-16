@@ -11,7 +11,7 @@
                         loading="lazy"
                     ></iframe>
                 </div>
-                <div class="uk-padding sm:p-10 xxs:p-10">
+                <div class="p-10 ">
                     <div class="uk-flex uk-flex-middle mb-4">
                         <img
                             src="{{ asset('assets/images/icons/logo-primary.svg') }}"
