@@ -17,3 +17,11 @@ yarn-error.log
 /.idea
 /.vscode
 /public/assets/css/tailwind.css
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
