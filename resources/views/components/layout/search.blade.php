@@ -1,4 +1,9 @@
-<div class="uk-visible@m absolute left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 text-[#C6C6C6] z-10 bg-white font-semibold uppercase rounded-full sm:flex items-center px-3 w-[90vw] lg:w-[70vw] h-[50px] xl:h-[70px] text-sm xl:text-xl">
+<!-- Search Form -->
+<form
+    id="searchForm"
+    class="uk-visible@s text-secondary z-10 bg-white font-semibold uppercase rounded-full absolute left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 sm:flex items-center px-3 w-[90vw] lg:w-[70vw] h-[50px] xl:h-[70px] text-sm xl:text-xl"
+    autocomplete="off"
+>
     <div>
         <img
             src="{{ asset('assets/images/icons/circle.png') }}"
@@ -9,25 +14,17 @@
     <div class="pr-5 border-r border-borderColor h-full flex items-center justify-center w-[18%]">
         <input
             type="text"
+            name="title"
             placeholder="keywords"
             class="xl:modal-subtitle text-primary placeholder-secondary bg-transparent border-none text-center outline-none"
         />
     </div>
-    <div class="px-10 border-r border-borderColor h-full flex items-center justify-center w-[15%]">
-        <input
-            type="text"
-            placeholder="type"
-            class="xl:modal-subtitle text-primary placeholder-secondary bg-transparent border-none text-center outline-none"
-        />
-    </div>
-    <div class="px-10 border-r border-borderColor h-full flex items-center justify-center w-[20%]">
-        <input
-            type="text"
-            placeholder="location"
-            class="xl:modal-subtitle text-primary placeholder-secondary bg-transparent border-none text-center outline-none"
-        />
-    </div>
-    <div class="px-10 border-r border-borderColor h-full flex items-center justify-center w-[8%]">
+
+    <x-ui.search.type-input :types="$types" />
+
+    <x-ui.search.location-input />
+
+    <div class="px-6 md:px-10 border-r border-borderColor h-full flex items-center justify-center w-[8%]">
         🛏️
     </div>
     <div class="px-10 border-r border-borderColor h-full flex items-center justify-center w-[15%] xl:w-[24%]">
@@ -37,24 +34,28 @@
             class="xl:modal-subtitle text-primary placeholder-secondary bg-transparent border-none text-center outline-none"
         />
     </div>
-    <div class="h-full flex items-center justify-end w-[10%] space-x-5">
+    <div class="h-full flex items-center justify-end w-[12%] md:w-[10%] space-x-5">
         <button
-            class="text-3xl bg-transparent border-none outline-none cursor-pointer"
+            class="text-3xl bg-transparent border-none outline-none"
+            type="button"
             uk-toggle="target: #searchModal"
         >
             +
         </button>
         <div class="w-[30px] xl:w-[50px] h-[30px] xl:h-[50px]">
-            <div class="w-[30px] xl:w-[50px] h-[30px] xl:h-[50px] bg-primary rounded-full flex items-center justify-center">
+            <button
+                class="w-[30px] xl:w-[50px] h-[30px] xl:h-[50px] bg-primary rounded-full flex items-center justify-center"
+                type="submit"
+            >
                 <img
                     class="w-[14px] xl:w-[20px]"
                     src="{{ asset('assets/images/icons/search.svg') }}"
                     alt="search"
                 />
-            </div>
+            </button>
         </div>
     </div>
-</div>
+</form>
 
 <!-- Filter Modal -->
 <div

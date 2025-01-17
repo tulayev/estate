@@ -7,7 +7,7 @@
         Location
         <span class="font-bold">|</span>
         <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetLocations">x</span>
-        <span x-text="selectedLocationsString('{{ app()->getLocale() }}').join(', ')"></span>
+        <span x-text="selectedLocationsString().join(', ')"></span>
     </h3>
     <div class="mt-10 features flex justify-between flex-wrap gap-4">
         @foreach($locations as $location)

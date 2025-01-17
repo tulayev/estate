@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/objects/count', [ListingController::class, 'count']);
+
+Route::prefix('search')->group(function () {
+   Route::get('/locations', [SearchController::class, 'locations'])->name('search.locations');
+});

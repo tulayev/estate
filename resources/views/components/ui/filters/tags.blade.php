@@ -7,7 +7,7 @@
         Tags
         <span class="font-bold">|</span>
         <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetTags">x</span>
-        <span x-text="selectedTagNames('{{ app()->getLocale() }}').join(', ')"></span>
+        <span x-text="selectedTagNames().join(', ')"></span>
     </h3>
     <div class="mt-6 tags flex flex-wrap gap-4">
         <input
@@ -32,6 +32,7 @@
 <script>
     function tags() {
         return {
+            locale: '{{ app()->getLocale() }}',
             selectedTags: [],
             allTags: @json($tags),
             colors: ['bg-tag-1', 'bg-tag-2', 'bg-tag-3', 'bg-tag-4'],
@@ -54,10 +55,10 @@
                 this.selectedTags = [];
             },
 
-            selectedTagNames(locale) {
+            selectedTagNames() {
                 return this.selectedTags.map(id => {
                     const tag = this.allTags.find(tag => tag.id == id);
-                    return tag ? tag.name[locale] : '';
+                    return tag ? tag.name[this.locale] : '';
                 });
             }
         }
