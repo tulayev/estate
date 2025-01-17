@@ -66,7 +66,7 @@
                                     <div class="flex items-center space-x-2">
                                         @foreach($hotel->tags->take(2) as $tag)
                                             <div class="card-tag-button bg-[#5A6BC9bb]">
-                                                {{ $tag->name }}
+                                                {{ Str::limit($tag->name, 3, '...') }}
                                             </div>
                                         @endforeach
                                     </div>
