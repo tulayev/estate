@@ -7,7 +7,7 @@
         Type
         <span class="font-bold">|</span>
         <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetTypes">x</span>
-        <span x-text="selectedTypeNames('{{ app()->getLocale() }}').join(', ')"></span>
+        <span x-text="selectedTypeNames().join(', ')"></span>
     </h3>
 
     <div class="uk-child-width-1-3 mt-12" uk-grid>
@@ -35,6 +35,7 @@
 <script>
     function types() {
         return {
+            locale: '{{ app()->getLocale() }}',
             selectedTypes: [],
             allTypes: @json($types),
             colors: ['bg-tag-1', 'bg-tag-2', 'bg-tag-3', 'bg-tag-4'],
@@ -57,10 +58,10 @@
                 this.selectedTypes = [];
             },
 
-            selectedTypeNames(locale) {
+            selectedTypeNames() {
                 return this.selectedTypes.map(id => {
                     const type = this.allTypes.find(type => type.id == id);
-                    return type ? type.name[locale] : '';
+                    return type ? type.name[this.locale] : '';
                 });
             }
         }

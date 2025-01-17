@@ -7,7 +7,7 @@
         Facilities
         <span class="font-bold">|</span>
         <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetFeatures">x</span>
-        <span x-text="selectedFeatureNames('{{ app()->getLocale() }}').join(', ')"></span>
+        <span x-text="selectedFeatureNames().join(', ')"></span>
     </h3>
     <div class="mt-12 uk-child-width-1-2" uk-grid>
         <div>
@@ -76,6 +76,7 @@
 <script>
     function features() {
         return {
+            locale: '{{ app()->getLocale() }}',
             selectedFeatures: [],
             allFeatures: @json($features),
 
@@ -95,10 +96,10 @@
                 this.selectedFeatures = [];
             },
 
-            selectedFeatureNames(locale) {
+            selectedFeatureNames() {
                 return this.selectedFeatures.map(id => {
                     const feature = this.allFeatures.find(feature => feature.id == id);
-                    return feature ? feature.name[locale] : '';
+                    return feature ? feature.name[this.locale] : '';
                 });
             }
         }
