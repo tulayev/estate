@@ -57,7 +57,7 @@
                     <div>
                         <div
                             class="relative flex flex-col justify-between border-rounded p-3 h-[300px]"
-                            style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_old ?? asset('assets/images/object-background.png') }}')"
+                            style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_old ?? asset('assets/images/object-background.png') }}'); background-size: cover; background-repeat: no-repeat; background-position: center;"
                         >
                             <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
                             <!-- Image Top -->
