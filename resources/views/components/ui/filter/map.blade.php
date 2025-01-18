@@ -37,7 +37,8 @@
                     center: [0, 0],
                     zoom: 2,
                     minZoom: 2, // Prevent excessive zoom out
-                    maxZoom: 18 // Optional: Limit zooming in
+                    maxZoom: 18, // Optional: Limit zooming in
+                    attributionControl: false
                 });
 
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

@@ -3,7 +3,7 @@
         <h2 class="section-title mb-16">
             Subscribe to Our Newsletter
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 rounded-xl border border-transparent bg-white uppercase">
+        <div class="grid grid-rows-3 sm:grid-cols-3  sm:grid-rows-1 gap-0 rounded-xl border border-transparent bg-white uppercase">
             <div class="form-input-anim">
                 <input
                     type="text"
@@ -21,7 +21,7 @@
                 
             </div>
 
-            <div class="form-drop-down">
+            <div class="form-drop-down ">
                 <label for="name" class="label-name">
                     <span class="content-name">
                        Select topic
@@ -41,7 +41,7 @@
             
 
             <div class="form-input-anim">
-                <button class="bg-primary text-white border-rounded w-full text-xl font-bold h-full uppercase">
+                <button class="bg-primary text-white border-rounded w-full text-xl font-bold h-full uppercase p-4">
                     Submit
                 </button>
             </div>
