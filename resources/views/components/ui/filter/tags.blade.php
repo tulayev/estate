@@ -2,8 +2,11 @@
     'tags' => null,
 ])
 
-<div x-data="tags()">
-    <h3 class="mt-40 modal-subtitle text-primary">
+<div
+    class="mt-8 sm:mt-10 md:mt-20 lg:mt-30 xl:mt-40"
+    x-data="tags()"
+>
+    <h3 class="modal-subtitle text-primary">
         Tags
         <span class="font-bold">|</span>
         <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetTags">x</span>

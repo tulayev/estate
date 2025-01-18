@@ -11,7 +11,7 @@
 <div
     x-data="bedRange()"
     x-init="minBedTrigger(); maxBedTrigger()"
-    class="w-[520px]"
+    class="w-[130px] sm:w-[300px] md:w-[430px] lg:w-[520px]"
 >
     <input
         name="{{ $fromInputName }}"

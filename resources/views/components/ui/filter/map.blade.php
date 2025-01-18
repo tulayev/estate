@@ -2,26 +2,30 @@
     'locations' => null
 ])
 
-<div x-data="mapHandler()" x-init="initMap()">
-    <h3 class="mt-16 modal-subtitle text-primary">
+<div
+    class="mt-4 sm:mt-6 md:mt-10 xl:mt-16"
+    x-data="mapHandler()"
+    x-init="initMap()"
+>
+    <h3 class="modal-subtitle text-primary">
         Location
         <span class="font-bold">|</span>
         <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetLocations">x</span>
         <span x-text="selectedLocationsString().join(', ')"></span>
     </h3>
-    <div class="mt-10 features flex justify-between flex-wrap gap-4">
+    <div class="mt-6 sm:mt-8 md:mt-10 features flex justify-around flex-wrap gap-2 sm:gap-4">
         @foreach($locations as $location)
             <div
-                class="location flex justify-center items-center cursor-pointer modal-subtitle shadow-card border-rounded w-[250px] h-[90px]"
+                class="location flex justify-center items-center cursor-pointer modal-subtitle shadow-card border-rounded w-[175px] h-[65px] sm:w-[200px] sm:h-[70px] lg:w-[250px] lg:h-[90px]"
                 :class="isLocationSelected('{{ $location->latitude }}', '{{ $location->longitude }}') ? 'bg-primary text-white' : 'bg-white text-primary'"
                 @click="toggleLocation('{{ $location->latitude }}', '{{ $location->longitude }}', '{{ $location->location }}')"
             >
-                {{ $location->location }}
+                {{ Str::limit($location->location, 12) }}
             </div>
         @endforeach
     </div>
 
-    <div id="map" class="border-rounded w-full h-[500px] mt-6"></div>
+    <div id="map" class="border-rounded w-full mt-4 sm:mt-6 h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]"></div>
 </div>
 
 <script>

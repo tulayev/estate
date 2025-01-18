@@ -14,12 +14,11 @@
                 VISIBILITY FOR DEVELOPERS.
             </h1>
             <div class="mt-5 lg:mt-20">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-3 space-y-3 sm:space-y-0">
+                <div class="inline-flex flex-col sm:flex-row sm:items-center sm:space-x-3 space-y-3 sm:space-y-0">
                     <div class="animLeft">
                         <a
-                            href="#modalForm"
+                            href="#"
                             class="main-button"
-                            uk-toggle
                         >
                             <img
                                 src="{{ asset('assets/images/icons/play.svg') }}"
@@ -32,7 +31,6 @@
                         <a
                             href="#contactSection"
                             class="main-button"
-                            uk-toggle
                         >
                             <span>Contact us</span>
                         </a>

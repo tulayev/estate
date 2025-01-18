@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\TopicLike;
 use App\Models\Topic;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class InsightController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $topics = Topic::active()->get();
 
@@ -17,7 +19,7 @@ class InsightController extends Controller
         ]);
     }
 
-    public function show($slug)
+    public function show($slug): View
     {
         $topic = Topic::active()
             ->where('slug', $slug)
@@ -38,7 +40,7 @@ class InsightController extends Controller
         ]);
     }
 
-    public function like(Request $request, $topicId)
+    public function like(Request $request, $topicId): JsonResponse
     {
         $topic = Topic::findOrFail($topicId);
 
@@ -78,7 +80,7 @@ class InsightController extends Controller
             ->json(['message' => 'Topic liked successfully'], 201);
     }
 
-    public function likes($topicId)
+    public function likes($topicId): JsonResponse
     {
         $topic = Topic::findOrFail($topicId);
 
@@ -93,7 +95,7 @@ class InsightController extends Controller
             ->json(['likes_count' => $likesCount]);
     }
 
-    public function likedByUser(Request $request)
+    public function likedByUser(Request $request): JsonResponse
     {
         $userId = auth()->check() ? auth()->user()->id : null;
         $ipAddress = $request->ip();
@@ -109,6 +111,7 @@ class InsightController extends Controller
             ->with('topic')
             ->get();
 
-        return response()->json($likedTopics);
+        return response()
+            ->json($likedTopics);
     }
 }

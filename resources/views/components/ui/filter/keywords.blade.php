@@ -1,7 +1,7 @@
 <div>
     <h3 class="modal-subtitle text-primary">Keywords</h3>
 
-    <div class="md:pt-4 xl:mt-6">
+    <div class="mt-2 md:mt-4 xl:mt-6">
         <input
             name="keywords"
             type="text"

@@ -7,17 +7,18 @@ use App\Models\Hotel;
 use App\Models\HotelLike;
 use App\Models\Tag;
 use App\Models\Type;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ListingController extends Controller
 {
-    public function index(Request $request)
+    public function index(): View
     {
         $types = Type::all();
         $tags = Tag::all();
         $features = Feature::all();
-
-        $hotels = $this->applyFilters($request)->get();
+        $hotels = Hotel::all();
 
         return view('pages.listing.index', [
             'hotels' => $hotels,
@@ -27,16 +28,7 @@ class ListingController extends Controller
         ]);
     }
 
-    public function count(Request $request) // API call only
-    {
-        $count = $this->applyFilters($request)->count();
-
-        return response()->json([
-            'count' => $count,
-        ]);
-    }
-
-    public function show($slug)
+    public function show($slug): View
     {
         $hotel = Hotel::active()
             ->where('slug', $slug)
@@ -56,7 +48,7 @@ class ListingController extends Controller
         ]);
     }
 
-    public function like(Request $request, $hotelId)
+    public function like(Request $request, $hotelId): JsonResponse
     {
         $hotel = Hotel::findOrFail($hotelId);
 
@@ -98,7 +90,7 @@ class ListingController extends Controller
         ], 201);
     }
 
-    public function likes($hotelId)
+    public function likes($hotelId): JsonResponse
     {
         $hotel = Hotel::findOrFail($hotelId);
 
@@ -114,7 +106,7 @@ class ListingController extends Controller
         ]);
     }
 
-    public function likedByUser(Request $request)
+    public function likedByUser(Request $request): JsonResponse
     {
         $userId = auth()->check() ? auth()->user()->id : null;
         $ipAddress = $request->ip();
@@ -131,19 +123,5 @@ class ListingController extends Controller
             ->get();
 
         return response()->json($likedHotels);
-    }
-
-    private function applyFilters(Request $request)
-    {
-        return Hotel::query()
-            ->with(['floors', 'types', 'tags', 'features'])
-            ->search($request->input('search'))
-            ->filterByPrice($request->input('price_min'), $request->input('price_max'))
-            ->filterByBedrooms($request->input('bedrooms_min'), $request->input('bedrooms_max'))
-            ->filterByBathrooms($request->input('bathrooms_min'), $request->input('bathrooms_max'))
-            ->filterByTypes($request->input('types'))
-            ->filterByTags($request->input('tags'))
-            ->filterByFeatures($request->input('features'))
-            ->active();
     }
 }

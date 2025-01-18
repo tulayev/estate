@@ -6,10 +6,10 @@
         type="text"
         name="location"
         placeholder="location"
-        class="xl:modal-subtitle text-primary placeholder-secondary bg-transparent border-none text-center outline-none"
+        class="modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none"
         x-model="query"
         @input.debounce="fetchLocations"
-        @focus="open = true"
+        @focus="onFocus"
         @click.away="open = false"
     />
     <ul
@@ -39,12 +39,23 @@
             suggestions: [], // Holds fetched suggestions
 
             fetchLocations() {
-                fetch(`api/search/locations?q=${encodeURIComponent(this.query)}`)
+                const url = this.query
+                    ? `api/search/locations?q=${encodeURIComponent(this.query)}`
+                    : 'api/search/locations';
+
+                fetch(url)
                     .then((res) => res.json())
                     .then((data) => {
                         this.suggestions = data;
                     })
                     .catch((error) => console.error('Error fetching locations:', error));
+            },
+
+            onFocus() {
+                this.open = true;
+                if (!this.query) {
+                    this.fetchLocations(); // Fetch all locations if the query is empty
+                }
             },
 
             selectLocation(location) {

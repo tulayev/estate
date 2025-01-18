@@ -59,7 +59,7 @@
     }
 
     .modal-subtitle {
-        @apply text-primary uppercase text-lg font-bold xl:font-black;
+        @apply text-primary uppercase text-sm sm:text-base md:text-lg font-bold xl:font-black;
     }
 
     /* Background Colors */

@@ -14,8 +14,8 @@
 >
     <h3 class="modal-subtitle text-primary">Price range</h3>
 
-    <div class="uk-child-width-1-2" uk-grid>
-        <div class="mt-6">
+    <div class="uk-child-width-1-2 mt-2 md:mt-4 xl:mt-6" uk-grid>
+        <div>
             <input
                 name="{{ $fromInputName }}"
                 type="text"
@@ -28,7 +28,7 @@
                 wire:model.debounce.300="minPrice"
             />
         </div>
-        <div class="mt-6">
+        <div>
             <input
                 name="{{ $toInputName }}"
                 type="text"
@@ -42,7 +42,7 @@
             />
         </div>
     </div>
-    <div class="mt-12 flex justify-center items-center">
+    <div class="px-2.5 mt-4 md:mt-8 xl:mt-12 flex justify-center items-center">
         <div class="relative w-full">
             <div>
                 <!-- Range Inputs -->

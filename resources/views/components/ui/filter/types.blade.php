@@ -2,15 +2,18 @@
     'types' => null,
 ])
 
-<div x-data="types()">
-    <h3 class="mt-16 modal-subtitle text-primary">
+<div
+    class="mt-4 sm:mt-6 md:mt-10 xl:mt-16"
+    x-data="types()"
+>
+    <h3 class="modal-subtitle text-primary">
         Type
         <span class="font-bold">|</span>
         <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetTypes">x</span>
         <span x-text="selectedTypeNames().join(', ')"></span>
     </h3>
 
-    <div class="uk-child-width-1-3 mt-12" uk-grid>
+    <div class="uk-child-width-1-3 mt-6 sm:mt-8 md:mt-12" uk-grid>
         <input
             type="hidden"
             name="types"
@@ -21,7 +24,7 @@
         @foreach($types as $type)
             <div>
                 <div
-                    class="modal-subtitle cursor-pointer p-6 border-rounded text-4xl text-white text-center"
+                    class="modal-subtitle cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
                     :class="[getRandomColor(), isTypeSelected('{{ $type->id }}') ? 'hidden' : '']"
                     @click="addType('{{ $type->id }}')"
                 >

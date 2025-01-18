@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hotel;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $hotels = Hotel::active()
             ->inRandomOrder()

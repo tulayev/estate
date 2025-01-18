@@ -10,7 +10,7 @@
         type="text"
         name="type"
         placeholder="type"
-        class="xl:modal-subtitle text-primary placeholder-secondary bg-transparent border-none text-center outline-none"
+        class="modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none"
         x-model="query"
         @focus="open = true"
         @click.away="open = false"

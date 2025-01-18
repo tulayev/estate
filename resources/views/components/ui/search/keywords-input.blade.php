@@ -3,6 +3,6 @@
         type="text"
         name="title"
         placeholder="keywords"
-        class="xl:modal-subtitle text-primary placeholder-secondary bg-transparent border-none text-center outline-none"
+        class="modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none"
     />
 </div>

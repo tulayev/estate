@@ -1,7 +1,7 @@
 <!-- Search Form -->
 <form
     id="searchForm"
-    class="uk-visible@s text-secondary z-10 bg-white font-semibold uppercase rounded-full absolute left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 sm:flex items-center px-3 w-[90vw] lg:w-[70vw] h-[50px] xl:h-[70px] text-sm xl:text-xl"
+    class="uk-visible@s text-secondary z-10 bg-white font-semibold uppercase rounded-full flex justify-between items-center absolute px-3 left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 w-[90vw] lg:w-[70vw] h-[50px] xl:h-[70px] text-sm xl:text-xl"
     autocomplete="off"
 >
     <div>
@@ -22,7 +22,7 @@
 
     <x-ui.search.price-input />
 
-    <div class="h-full flex items-center justify-end w-[12%] md:w-[10%] space-x-5">
+    <div class="h-full flex items-center justify-end w-[12%] md:w-[10%] lg:w-[12%] space-x-5">
         <button
             class="text-3xl bg-transparent border-none outline-none"
             type="button"
@@ -48,7 +48,7 @@
 <!-- Filter Modal -->
 <div
     id="searchModal"
-    class="w-[85%] h-[90%] m-auto bg-white rounded-[31px]"
+    class="w-[85vw] h-[85vh] m-auto bg-white rounded-[31px] shadow-card"
     uk-modal
 >
     <form
@@ -78,7 +78,7 @@
         @endif
 
         <!-- Keywords & Price range -->
-        <div class="uk-child-width-1-2 md:pt-10 xl:pt-20" uk-grid>
+        <div class="uk-child-width-1-1 uk-child-width-1-2@m mt-4 sm:mt-6 md:mt-10 xl:mt-20" uk-grid>
             <!-- Keywords -->
             <x-ui.filter.keywords />
             <!-- Price Range -->

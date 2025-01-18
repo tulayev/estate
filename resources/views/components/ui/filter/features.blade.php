@@ -2,17 +2,20 @@
     'features' => null,
 ])
 
-<div x-data="features()">
-    <h3 class="mt-40 modal-subtitle text-primary">
+<div
+    class="mt-8 sm:mt-10 md:mt-20 lg:mt-30 xl:mt-40"
+    x-data="features()"
+>
+    <h3 class="modal-subtitle text-primary">
         Facilities
         <span class="font-bold">|</span>
         <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetFeatures">x</span>
         <span x-text="selectedFeatureNames().join(', ')"></span>
     </h3>
-    <div class="mt-12 uk-child-width-1-2" uk-grid>
+    <div class="mt-6 sm:mt-8 xl:mt-12 uk-grid-column-medium uk-child-width-1-1 uk-child-width-1-2@xl" uk-grid>
         <div>
             <h4 class="modal-subtitle text-secondary">bathrooms</h4>
-            <div class="shadow-card border-rounded mt-3 px-14 py-7 flex items-center justify-between">
+            <div class="shadow-card border-rounded mt-3 p-4 sm:p-6 xl:px-14 xl:py-7 flex items-center justify-around xl:justify-between">
                 <img src="{{ asset('assets/images/icons/bath.png') }}" alt="bath" />
                 <x-ui.filter.ranges.bath-range
                     :fromInputName="'bathrooms_min'"
@@ -27,7 +30,7 @@
         </div>
         <div>
             <h4 class="modal-subtitle text-secondary">bedrooms</h4>
-            <div class="shadow-card border-rounded mt-3 px-14 py-7 flex items-center justify-between">
+            <div class="shadow-card border-rounded mt-3 p-4 sm:p-6 xl:px-14 xl:py-7 flex items-center justify-around xl:justify-between">
                 <img src="{{ asset('assets/images/icons/bed.png') }}" alt="bed" />
                 <x-ui.filter.ranges.bed-range
                     :fromInputName="'bedrooms_min'"
@@ -41,7 +44,7 @@
             </div>
         </div>
     </div>
-    <div class="mt-10 features flex justify-between flex-wrap gap-4">
+    <div class="features mt-6 md:mt-10 flex justify-around flex-wrap gap-2 sm:gap-4">
         <input
             type="hidden"
             name="features"
@@ -51,7 +54,7 @@
 
         @foreach($features as $feature)
             <div
-                class="feature shadow-card border-rounded w-[150px] h-[100px] flex justify-center items-center cursor-pointer"
+                class="feature shadow-card border-rounded flex justify-center items-center cursor-pointer w-[150px] h-[100px]"
                 :class="isFeatureSelected('{{ $feature->id }}') ? 'bg-primary' : 'bg-white'"
                 @click="toggleFeature('{{ $feature->id }}')"
             >
