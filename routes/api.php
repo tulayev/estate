@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/objects/count', [ListingController::class, 'count']);
+Route::post('/hotels/count', [ListingController::class, 'count']);
 
 Route::prefix('search')->group(function () {
    Route::get('/locations', [SearchController::class, 'locations'])->name('search.locations');

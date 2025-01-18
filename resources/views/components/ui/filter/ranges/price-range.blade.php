@@ -68,7 +68,7 @@
                 <div class="relative z-10 h-2">
                     <div class="absolute z-10 left-0 right-0 bottom-0 top-0 rounded-md bg-primary"></div>
                     <div
-                        class="absolute z-20 top-0 bottom-0 rounded-md bg-secondary"
+                        class="absolute z-20 top-0 bottom-0 rounded-md bg-primary"
                         x-bind:style="'right:'+maxPriceThumb+'%; left:'+minPriceThumb+'%'"
                     ></div>
                     <div
@@ -77,18 +77,22 @@
                         x-bind:style="'left: '+minPriceThumb+'%'"
                     ></div>
                     <div
-                        class="absolute z-30 w-6 h-6 top-0 left-0 bg-primary rounded-full -mt-2"
+                        class="flex absolute z-30 w-6 h-6 top-0 left-0 bg-primary rounded-full -mt-2"
                         x-bind:style="'left: '+minPriceThumb+'%'"
-                    ></div>
+                    >
+                        <div class="w-3 h-3 bg-white rounded-full m-auto"></div>
+                    </div>
                     <div
                         class="absolute bottom-4 right-0 text-secondary"
                         x-text="maxPrice"
                         x-bind:style="'right: '+maxPriceThumb+'%'"
                     ></div>
                     <div
-                        class="absolute z-30 w-6 h-6 top-0 right-0 bg-primary rounded-full -mt-2"
+                        class="flex absolute z-30 w-6 h-6 top-0 right-0 bg-primary rounded-full -mt-2"
                         x-bind:style="'right: '+maxPriceThumb+'%'"
-                    ></div>
+                    >
+                        <div class="w-3 h-3 bg-white rounded-full m-auto"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -99,7 +103,7 @@
     function priceRange() {
         return {
             minPrice: {{ $minValue }},
-            maxPrice: {{ $maxValue }},
+            maxPrice: {{ $minValue + 99 }},
             min: {{ $minValue }},
             max: {{ $maxValue }},
             minPriceThumb: 0,

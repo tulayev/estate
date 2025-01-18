@@ -14,7 +14,7 @@
             <h4 class="modal-subtitle text-secondary">bathrooms</h4>
             <div class="shadow-card border-rounded mt-3 px-14 py-7 flex items-center justify-between">
                 <img src="{{ asset('assets/images/icons/bath.png') }}" alt="bath" />
-                <x-ui.filters.ranges.bath-range
+                <x-ui.filter.ranges.bath-range
                     :fromInputName="'bathrooms_min'"
                     :toInputName="'bathrooms_max'"
                     :minLength="1"
@@ -29,7 +29,7 @@
             <h4 class="modal-subtitle text-secondary">bedrooms</h4>
             <div class="shadow-card border-rounded mt-3 px-14 py-7 flex items-center justify-between">
                 <img src="{{ asset('assets/images/icons/bed.png') }}" alt="bed" />
-                <x-ui.filters.ranges.bed-range
+                <x-ui.filter.ranges.bed-range
                     :fromInputName="'bedrooms_min'"
                     :toInputName="'bedrooms_max'"
                     :minLength="1"

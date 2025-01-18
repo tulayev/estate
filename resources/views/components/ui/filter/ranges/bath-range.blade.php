@@ -34,7 +34,6 @@
 
     <div class="flex justify-center items-center">
         <div class="relative w-full">
-
                 <!-- Range Inputs -->
                 <input
                     type="range"
@@ -67,20 +66,23 @@
                         x-bind:style="'left: '+minBathThumb+'%'"
                     ></div>
                     <div
-                        class="absolute z-30 w-6 h-6 top-0 left-0 bg-primary rounded-full -mt-2"
+                        class="flex absolute z-30 w-6 h-6 top-0 left-0 bg-primary rounded-full -mt-2"
                         x-bind:style="'left: '+minBathThumb+'%'"
-                    ></div>
+                    >
+                        <div class="w-3 h-3 bg-white rounded-full m-auto"></div>
+                    </div>
                     <div
                         class="absolute bottom-4 right-0 text-secondary"
                         x-text="maxBath"
                         x-bind:style="'right: '+maxBathThumb+'%'"
                     ></div>
                     <div
-                        class="absolute z-30 w-6 h-6 top-0 right-0 bg-primary rounded-full -mt-2"
+                        class="flex absolute z-30 w-6 h-6 top-0 right-0 bg-primary rounded-full -mt-2"
                         x-bind:style="'right: '+maxBathThumb+'%'"
-                    ></div>
+                    >
+                        <div class="w-3 h-3 bg-white rounded-full m-auto"></div>
+                    </div>
                 </div>
-
         </div>
     </div>
 </div>
@@ -89,7 +91,7 @@
     function bathRange() {
         return {
             minBath: {{ $minValue }},
-            maxBath: {{ $maxValue }},
+            maxBath: {{ $minValue + 1 }},
             min: {{ $minValue }},
             max: {{ $maxValue }},
             minBathThumb: 0,
@@ -117,8 +119,8 @@
 
             updateThumbs() {
                 // Calculate thumb positions based on validated values
-                this.minBathThumb = ((this.minBath - this.min) / (this.max - this.min)) * 100;
-                this.maxBathThumb = 100 - (((this.maxBath - this.min) / (this.max - this.min)) * 100);
+                this.minBathThumb = ((this.minBath - this.min) / (this.max - this.min)) * 100 - 2;
+                this.maxBathThumb = 100 - 2 - (((this.maxBath - this.min) / (this.max - this.min)) * 100);
             }
         }
     }

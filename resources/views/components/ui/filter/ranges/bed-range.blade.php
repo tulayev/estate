@@ -67,20 +67,23 @@
                     x-bind:style="'left: '+minBedThumb+'%'"
                 ></div>
                 <div
-                    class="absolute z-30 w-6 h-6 top-0 left-0 bg-primary rounded-full -mt-2"
+                    class="flex absolute z-30 w-6 h-6 top-0 left-0 bg-primary rounded-full -mt-2"
                     x-bind:style="'left: '+minBedThumb+'%'"
-                ></div>
+                >
+                    <div class="w-3 h-3 bg-white rounded-full m-auto"></div>
+                </div>
                 <div
                     class="absolute bottom-4 right-0 text-secondary"
                     x-text="maxBed"
                     x-bind:style="'right: '+maxBedThumb+'%'"
                 ></div>
                 <div
-                    class="absolute z-30 w-6 h-6 top-0 right-0 bg-primary rounded-full -mt-2"
+                    class="flex absolute z-30 w-6 h-6 top-0 right-0 bg-primary rounded-full -mt-2"
                     x-bind:style="'right: '+maxBedThumb+'%'"
-                ></div>
+                >
+                    <div class="w-3 h-3 bg-white rounded-full m-auto"></div>
+                </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -89,7 +92,7 @@
     function bedRange() {
         return {
             minBed: {{ $minValue }},
-            maxBed: {{ $maxValue }},
+            maxBed: {{ $minValue + 1 }},
             min: {{ $minValue }},
             max: {{ $maxValue }},
             minBedThumb: 0,
@@ -117,8 +120,8 @@
 
             updateThumbs() {
                 // Calculate thumb positions based on validated values
-                this.minBedThumb = ((this.minBed - this.min) / (this.max - this.min)) * 100;
-                this.maxBedThumb = 100 - (((this.maxBed - this.min) / (this.max - this.min)) * 100);
+                this.minBedThumb = ((this.minBed - this.min) / (this.max - this.min)) * 100 - 2;
+                this.maxBedThumb = 100 - 2 - (((this.maxBed - this.min) / (this.max - this.min)) * 100);
             }
         }
     }
