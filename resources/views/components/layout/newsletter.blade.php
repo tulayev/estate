@@ -1,30 +1,25 @@
 <!-- Newsletter -->
 <form
     id="newsletterForm"
-    class="uk-grid-collapse uk-flex uk-flex-wrap uk-flex-wrap-around uk-flex-middle uk-background-default uk-box-shadow-medium uk-width-1-1@m uk-width-3-4@l uk-margin-auto w-full rounded-lg uppercase"
+    class="uk-grid-collapse uk-flex uk-flex-wrap uk-flex-wrap-around uk-flex-middle uk-background-default uk-box-shadow-medium uk-width-1-1@m uk-width-3-4@l uk-margin-auto w-full uppercase  uk-border-rounded"
     uk-grid
 >
     <!-- Email Input -->
-    <div class="uk-width-1-4@s border-r border-borderColor "> 
-        <div class="form-input-anim">
+    <div class="uk-width-1-4@s sm:border-r sm:border-borderColor">
+        <div class="text-lg font-bold text-center">
             <input
                 type="text"
                 name="name"
-                class="input w-full px-[30px] border-rounded focus:outline-none"
+                placeholder="Enter your name"
+                class="text-lg outline-none uppercase text-center text-black placeholder:text-[#c6c6c6] w-full px-4 py-2 box-border"
                 autocomplete="off"
-                required
             />
-            <label for="name" class="label-name">
-                <span class="content-name">
-                    Enter Your Name
-                </span>
-            </label>
         </div>
     </div>
 
     <!-- Preferences Input -->
-    <div class="uk-width-1-2@s form-drop-down px-4 text-center"> 
-        <span class="text-lg font-bold text-[#c6c6c6]">
+    <div class="uk-width-1-2@s form-drop-down px-4 text-center">
+        <span class="text-lg font-bold text-[#c6c6c6] block ">
             What you'd like to receive
         </span>
         <div
@@ -50,8 +45,8 @@
     </div>
 
     <!-- Submit Button -->
-    <div class="uk-width-1-4@s"> 
-        <button class="relative sm:left-3 top-3 sm:top-0 bg-primary text-white border-rounded w-full text-xl font-bold h-full uppercase p-7">
+    <div class="uk-width-1-4@s">
+        <button class="relative sm:left-3  top-3 sm:top-0 bg-primary text-white border-rounded w-full text-xl font-bold h-full uppercase px-7 py-4 ">
             Submit
         </button>
     </div>
