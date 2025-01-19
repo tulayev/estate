@@ -33,8 +33,7 @@
             
         >
             <ul
-                class="uk-nav uk-dropdown-nav uk-scrollable"
-                style="max-height: 200px; overflow-y: auto; padding: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);"
+                class="uk-nav uk-dropdown-nav uk-scrollable max-h-[20vw] overflow-y-auto p-2 shadow-md"
             >
                 <li class="uk-active"><a href="#">Active</a></li>
                 <li><a href="#">Item 1</a></li>

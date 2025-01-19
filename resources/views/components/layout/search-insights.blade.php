@@ -12,16 +12,36 @@
         />
     </div>
 
-    <x-ui.search.search-input />    
+    <x-ui.search.search-input />
 
     <div class="h-full flex items-center justify-end w-[12%] md:w-[10%] space-x-5">
-         <div>
-        <img
-            src="{{ asset('assets/images/icons/filter-dark.svg') }}"
-            alt="circle"
-            class="w-10"
-        />
-    </div>
+        <div>
+            <img
+                src="{{ asset('assets/images/icons/filter-dark.svg') }}"
+                alt="circle"
+                class="w-10"
+            />
+            <div
+                uk-dropdown="mode: click; pos: bottom-justify; boundary: !.uk-visible@s;"
+                class="uk-dropdown uk-overflow-hidden uk-padding-remove uk-width-expand w-full left-0 right-0"
+            >
+                <ul
+                    class="uk-nav uk-dropdown-nav uk-scrollable max-h-[20vw] overflow-y-auto p-2 shadow-md"
+                >
+                    <li class="uk-active"><a href="#">Active</a></li>
+                    <li><a href="#">topic from db</a></li>
+                    
+                    <li><a href="#">topic from db</a></li>
+                    <li><a href="#">topic from db</a></li>
+                    <li><a href="#">topic from db</a></li>
+                   
+                    <li><a href="#">topic from db</a></li>
+                    <li><a href="#">topic from db</a></li>
+                    <li><a href="#">topic from db</a></li>
+                    <li><a href="#">topic from db</a></li>
+                </ul>
+            </div>
+        </div>
         <div class="w-[30px] xl:w-[50px] h-[30px] xl:h-[50px]">
             <button
                 class="w-[30px] xl:w-[50px] h-[30px] xl:h-[50px] bg-primary rounded-full flex items-center justify-center"
@@ -36,5 +56,3 @@
         </div>
     </div>
 </form>
-
-
