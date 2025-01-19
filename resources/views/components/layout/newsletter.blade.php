@@ -33,7 +33,7 @@
             
         >
             <ul
-                class="uk-nav uk-dropdown-nav uk-scrollable max-h-[20vw] overflow-y-auto p-2 shadow-md"
+                class="uk-nav uk-dropdown-nav uk-scrollable max-h-[50vw] sm:max-h-[20vw] overflow-y-auto p-2 shadow-md"
             >
                 <li class="uk-active"><a href="#">Active</a></li>
                 <li><a href="#">Item 1</a></li>
