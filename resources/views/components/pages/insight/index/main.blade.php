@@ -1,4 +1,4 @@
-<main class="main-section relative p-2 overflow-scroll">
+<main class="main-section relative p-2 ">
     <img
         class="border-rounded object-cover h-[250px] sm:h-auto sm:object-contain"
         src="{{ asset('assets/images/insights/index/main-bg.png') }}" 
@@ -29,7 +29,7 @@
 
             
             
-            <div class=" lg:mt-20 m-2">
+            <div class="m-2 w-2/3 md:w-1/2">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-3 space-y-3 sm:space-y-0 ">
                     <div class="animLeft ">
                         <a
@@ -66,5 +66,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Search -->
+    <x-layout.search-insights />
     
 </main>

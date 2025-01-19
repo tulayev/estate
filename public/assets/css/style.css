@@ -163,6 +163,14 @@ input[type="range"]::-webkit-slider-thumb {
     pointer-events: none;
 }
 
+.form-drop-down label {
+    position: absolute;
+    left: 30px;
+    width: 100%;
+    top: -20px;
+    height: 100%;
+}
+
 .form-input-anim .input {
     height: 80px;
     font-size: 18px;
@@ -174,7 +182,16 @@ input[type="range"]::-webkit-slider-thumb {
     top: -330px;
 }
 
+.form-drop-down.textarea-wrapper label {
+    top: -330px;
+}
+
 .form-input-anim.textarea-wrapper .textarea {
+    height: auto;
+    padding: 30px;
+}
+
+.form-drop-down.textarea-wrapper .textarea {
     height: auto;
     padding: 30px;
 }
@@ -191,6 +208,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .form-drop-down .content-name {
+    position: absolute;
     bottom: 0px;
     left: 0px;
     padding-bottom: 5px;
