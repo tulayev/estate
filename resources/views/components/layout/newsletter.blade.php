@@ -5,7 +5,7 @@
     uk-grid
 >
     <!-- Email Input -->
-    <div class="uk-width-1-3@s">
+    <div class="uk-width-1-4@s border-r border-borderColor "> 
         <div class="form-input-anim">
             <input
                 type="text"
@@ -23,14 +23,13 @@
     </div>
 
     <!-- Preferences Input -->
-    <div class="uk-width-1-3@s form-drop-down ml-7 sm:ml-0">
+    <div class="uk-width-1-2@s form-drop-down px-4"> 
         <span class="text-lg font-bold text-[#c6c6c6]">
             What you'd like to receive
         </span>
         <div
             uk-dropdown="mode: hover; pos: bottom-justify;"
             class="uk-dropdown uk-overflow-hidden uk-padding-remove"
-            
         >
             <ul
                 class="uk-nav uk-dropdown-nav uk-scrollable max-h-[50vw] sm:max-h-[20vw] overflow-y-auto p-2 shadow-md"
@@ -51,8 +50,8 @@
     </div>
 
     <!-- Submit Button -->
-    <div class="uk-width-1-3@s">
-        <button class="bg-primary text-white border-rounded w-full text-xl font-bold h-full uppercase p-4">
+    <div class="uk-width-1-4@s"> 
+        <button class="relative top-3 sm:top-0 bg-primary text-white border-rounded w-full text-xl font-bold h-full uppercase p-6">
             Submit
         </button>
     </div>
