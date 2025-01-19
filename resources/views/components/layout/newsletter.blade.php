@@ -23,7 +23,7 @@
     </div>
 
     <!-- Preferences Input -->
-    <div class="uk-width-1-2@s form-drop-down px-4"> 
+    <div class="uk-width-1-2@s form-drop-down px-4 text-center"> 
         <span class="text-lg font-bold text-[#c6c6c6]">
             What you'd like to receive
         </span>
@@ -51,7 +51,7 @@
 
     <!-- Submit Button -->
     <div class="uk-width-1-4@s"> 
-        <button class="relative top-3 sm:top-0 bg-primary text-white border-rounded w-full text-xl font-bold h-full uppercase p-6">
+        <button class="relative sm:left-3 top-3 sm:top-0 bg-primary text-white border-rounded w-full text-xl font-bold h-full uppercase p-7">
             Submit
         </button>
     </div>
