@@ -6,7 +6,10 @@
 
     <x-pages.home.media />
 
-    <x-pages.home.verified :hotels="$hotels" />
+    <x-pages.home.verified
+        :hotels="$hotels"
+        :likedHotels="$likedHotels"
+    />
 
     <x-pages.home.value />
 

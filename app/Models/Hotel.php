@@ -41,6 +41,19 @@ class Hotel extends Model
         'longitude' => 'float',
     ];
 
+    public static function getLikedHotels($userId = null, $ipAddress = null)
+    {
+        return HotelLike::query()
+            ->when($userId, function ($query) use ($userId) {
+                $query->where('liked_by', $userId);
+            })
+            ->when(!$userId, function ($query) use ($ipAddress) {
+                $query->where('ip_address', $ipAddress);
+            })
+            ->with('hotel')
+            ->get();
+    }
+
     public function scopeActive($query)
     {
         return $query->where('active', true);

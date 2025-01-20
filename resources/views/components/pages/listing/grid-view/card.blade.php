@@ -1,9 +1,12 @@
 @props([
     'hotel' => null,
+    'likedHotels' => null,
 ])
 
 @if ($hotel)
-    <div>
+    <div
+        x-data="likeHandler({{ $hotel->id }}, {{ $likedHotels->pluck('hotel_id')->contains($hotel->id) ? 'true' : 'false' }})"
+    >
         <div
             class="relative bg-cover bg-center bg-no-repeat flex flex-col justify-between border-rounded p-3 h-[300px]"
             style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_old ?? asset('assets/images/object-background.png') }}');"
@@ -15,7 +18,7 @@
                     <div class="flex items-center space-x-2">
                         @foreach($hotel->tags->take(2) as $tag)
                             <div class="card-tag-button bg-[#5A6BC9bb]">
-                                {{ Str::limit($tag->name, 3, '...') }}
+                                {{ Str::limit($tag->name, 3) }}
                             </div>
                         @endforeach
                     </div>
@@ -27,10 +30,10 @@
                             alt="filter"
                         />
                     </button>
-                    <button>
+                    <button @click="toggleLike">
                         <img
-                            src="{{ asset('assets/images/icons/heart.svg') }}"
-                            alt="heart"
+                            :src="isLiked ? '{{ asset('assets/images/icons/heart-red.svg') }}' : '{{ asset('assets/images/icons/heart.svg') }}'"
+                            alt="like"
                         />
                     </button>
                 </div>
@@ -73,3 +76,36 @@
         </div>
     </div>
 @endif
+
+<script>
+    function likeHandler(hotelId, initialState) {
+        return {
+            isLiked: initialState,
+
+            async toggleLike() {
+                try {
+                    const response = await fetch(`/listings/${hotelId}/like`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        },
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data.message === 'Like removed successfully') {
+                            this.isLiked = false;
+                        } else if (data.message === 'Object liked successfully') {
+                            this.isLiked = true;
+                        }
+                    } else {
+                        console.error('Failed to toggle like.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            },
+        };
+    }
+</script>

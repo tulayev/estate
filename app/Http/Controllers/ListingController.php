@@ -108,20 +108,14 @@ class ListingController extends Controller
 
     public function likedByUser(Request $request): JsonResponse
     {
+        return response()->json($this->getLikedHotelsByUser($request));
+    }
+
+    private function getLikedHotelsByUser(Request $request)
+    {
         $userId = auth()->check() ? auth()->user()->id : null;
         $ipAddress = $request->ip();
 
-        // Fetch the hotels liked by the user or their IP address
-        $likedHotels = HotelLike::query()
-            ->when($userId, function ($query) use ($userId) {
-                $query->where('liked_by', $userId);
-            })
-            ->when(!$userId, function ($query) use ($ipAddress) {
-                $query->where('ip_address', $ipAddress);
-            })
-            ->with('hotel')
-            ->get();
-
-        return response()->json($likedHotels);
+        return Hotel::getLikedHotels($userId, $ipAddress);
     }
 }
