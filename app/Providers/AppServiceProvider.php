@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('components.layout.search', function ($view) {
+        View::composer('components.layout.listing.search', function ($view) {
             $view
                 ->with('types', Type::all())
                 ->with('locations', Hotel::locations()->get())

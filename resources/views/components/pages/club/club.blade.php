@@ -8,15 +8,14 @@
         </button>
     </div>
 
-    <div class="container py-2 md:py-4 xl:py-8">
+    <div class="container mt-4 sm:mt-8 md:mt-12 lg:mt-16 xl:mt-32">
         <!-- For investors -->
-        <div class="relative bg-gray-600 text-white rounded-lg mb-6 mx-auto flex flex-wrap xl:flex-nowrap flex-col xl:flex-row">
-            <img
-                src="{{ asset('assets/images/club/what-is-bg.png') }}"
-                alt="background"
-                class="absolute inset-0 w-full h-full object-cover opacity-50"
-            />
-            <div class="relative p-6 w-full xl:w-1/2 text-left">
+        <div
+            class="relative bg-cover bg-center bg-no-repeat border-rounded text-white flex"
+            style="background-image: url('{{ asset('assets/images/club/what-is-bg.png') }}')"
+        >
+            <div class="absolute border-rounded inset-0 bg-gradient-100"></div>
+            <div class="relative p-6 w-full xl:w-1/2">
                 <div>
                     <h2 class="font-bold text-white uppercase text-lg xl:text-4xl">
                         for investors
@@ -30,34 +29,19 @@
                     </p>
                 </div>
             </div>
-            <div class="w-full relative xl:w-1/2 h-full mt-10">
-                <img
-                    src="{{ asset('assets/images/club/team.png') }}"
-                    alt="Team"
-                    class="w-full"
-                    style="filter: brightness(0.8)"
-                />
-            </div>
-        </div>
-
-        <!-- For developers -->
-        <div class="relative bg-gray-600 text-white rounded-lg mb-6 mx-auto flex flex-wrap xl:flex-nowrap flex-col-reverse xl:flex-row overflow-hidden">
             <img
-                src="{{ asset('assets/images/club/what-is-bg.png') }}"
-                alt="Background"
-                class="absolute inset-0 w-full h-full object-cover opacity-50"
+                src="{{ asset('assets/images/club/team.png') }}"
+                alt="Team"
+                class="absolute w-1/2 right-0 bottom-0"
             />
-            <div
-                class="w-full h-full relative xl:w-1/2 mt-10 xl:right-6 xxs:right-4"
-            >
-                <img
-                    src="{{ asset('assets/images/club/team-dev.png') }}"
-                    alt="Team"
-                    class="w-full"
-                    style="filter: brightness(0.8)"
-                />
-            </div>
-            <div class="relative p-6 w-full xl:w-1/2 text-left">
+        </div>
+        <!-- For developers -->
+        <div
+            class="relative bg-cover bg-center bg-no-repeat border-rounded text-white flex justify-end mt-4 md:mt-8 xl:mt-16"
+            style="background-image: url('{{ asset('assets/images/club/what-is-bg.png') }}')"
+        >
+            <div class="absolute border-rounded inset-0 bg-gradient-100"></div>
+            <div class="relative p-6 w-full xl:w-1/2">
                 <div>
                     <h2 class="font-bold text-white uppercase text-lg xl:text-4xl">
                         for developers
@@ -72,6 +56,11 @@
                     </p>
                 </div>
             </div>
+            <img
+                src="{{ asset('assets/images/club/team-dev.png') }}"
+                alt="Team"
+                class="absolute w-1/2 left-0 bottom-0"
+            />
         </div>
     </div>
 </section>
