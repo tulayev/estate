@@ -4,9 +4,7 @@
 ])
 
 @if ($hotel)
-    <div
-        x-data="likeHandler({{ $hotel->id }}, {{ $likedHotels->pluck('hotel_id')->contains($hotel->id) ? 'true' : 'false' }})"
-    >
+    <div>
         <div
             class="relative bg-cover bg-center bg-no-repeat flex flex-col justify-between border-rounded p-3 h-[300px]"
             style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_old ?? asset('assets/images/object-background.png') }}');"
@@ -30,7 +28,10 @@
                             alt="filter"
                         />
                     </button>
-                    <button @click="toggleLike">
+                    <button
+                        x-data="likeHandler({{ $hotel->id }}, {{ $likedHotels->pluck('hotel_id')->contains($hotel->id) ? 'true' : 'false' }})"
+                        @click="toggleLike"
+                    >
                         <img
                             :src="isLiked ? '{{ asset('assets/images/icons/heart-red.svg') }}' : '{{ asset('assets/images/icons/heart.svg') }}'"
                             alt="like"
