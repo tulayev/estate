@@ -50,4 +50,9 @@ class TypeResource extends ModelResource
             'name' => 'required|string|max:255',
         ];
     }
+
+    public function redirectAfterSave(): string
+    {
+        return url('/admin/resource/type-resource/index-page');
+    }
 }

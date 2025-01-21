@@ -60,4 +60,9 @@ class FeatureResource extends ModelResource
             'icon' => 'nullable|image|max:2048',
         ];
     }
+
+    public function redirectAfterSave(): string
+    {
+        return url('/admin/resource/feature-resource/index-page');
+    }
 }
