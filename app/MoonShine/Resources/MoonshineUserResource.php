@@ -93,4 +93,9 @@ class MoonshineUserResource extends \MoonShine\Resources\MoonShineUserResource
             ]),
         ];
     }
+
+    public function redirectAfterSave(): string
+    {
+        return url('/admin/resource/moonshine-user-resource/index-page');
+    }
 }

@@ -87,4 +87,9 @@ class FloorResource extends ModelResource
             'hotel_id' => 'required|exists:hotels,id',
         ];
     }
+    
+    public function redirectAfterSave(): string
+    {
+        return url('/admin/resource/floor-resource/index-page');
+    }
 }

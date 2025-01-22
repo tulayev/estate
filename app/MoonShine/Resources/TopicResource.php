@@ -133,4 +133,9 @@ class TopicResource extends ModelResource
     {
         return ['title', 'category.title'];
     }
+
+    public function redirectAfterSave(): string
+    {
+        return url('/admin/resource/topic-resource/index-page');
+    }
 }

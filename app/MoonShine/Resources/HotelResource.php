@@ -204,4 +204,9 @@ class HotelResource extends ModelResource
     {
         return ['title', 'description'];
     }
+
+    public function redirectAfterSave(): string
+    {
+        return url('/admin/resource/hotel-resource/index-page');
+    }
 }

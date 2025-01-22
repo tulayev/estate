@@ -52,4 +52,9 @@ class TopicCategoryResource extends ModelResource
             'title' => 'required|string|max:255',
         ];
     }
+
+    public function redirectAfterSave(): string
+    {
+        return url('/admin/resource/topic-category-resource/index-page');
+    }
 }
