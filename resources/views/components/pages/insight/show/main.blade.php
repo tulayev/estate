@@ -9,13 +9,15 @@
             class="main-wrapper "
             uk-scrollspy="target: .animLeft; cls: uk-animation-slide-left; delay: 300;"
         >
-            <div class="flex flex-row items-left ">
+            <div class="flex flex-row items-left justify-between">
                 <h1 class="main-title animLeft mt-2 lg:mt-10 ">
                     the main topic
                 </h1>
-                <span class="text-white  text-lg animLeft  ml-2 p-2 lg:mt-10 ">
-                    1h
-                </span>
+                <div class="flex flex-row items-center md:items-right space-x-2 text-white text-sm animLeft ml-2 md:p-2 md:mt-10">
+                    <div class="border-rounded bg-white/10 text-white p-2">3 mins read</div>
+                    <div class="border-rounded bg-white/10 text-white p-2">👁 590</div>
+                </div>
+                
             </div>
 
             <div class="animLeft hidden sm:flex text-sm lg:text-lg mt-2 lg:mt-10">
