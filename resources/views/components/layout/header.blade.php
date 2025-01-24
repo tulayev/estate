@@ -27,7 +27,7 @@
                             href="{{ route('pages.listing.index') }}"
                             class="line-animation md:text-sm xl:text-base xl:font-bold xxl:text-2xl xxl:font-black"
                         >
-                            listings
+                            {{ __('general.nav_listings') }}
                         </a>
                     </li>
                     <li class="animRight">

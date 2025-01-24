@@ -10,8 +10,7 @@
             uk-scrollspy="target: .animLeft; cls: uk-animation-slide-left; delay: 300;"
         >
             <h1 class="main-title animLeft">
-                CLARITY FOR INVESTORS. <br />
-                VISIBILITY FOR DEVELOPERS.
+                {!! __('home/main.title') !!}
             </h1>
             <div class="mt-5 lg:mt-20">
                 <div class="inline-flex flex-col sm:flex-row sm:items-center sm:space-x-3 space-y-3 sm:space-y-0">
