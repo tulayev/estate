@@ -1,6 +1,5 @@
 @props([
     'hotels' => null,
-    'likedHotels' => null,
 ])
 
 <section class="section">
@@ -55,9 +54,8 @@
         @if ($hotels)
             <div class="uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m mt-10" uk-grid>
                 @foreach($hotels as $hotel)
-                    <x-pages.listing.grid-view.card
+                    <x-pages.listing.index.grid-view.card
                         :hotel="$hotel"
-                        :likedHotels="$likedHotels"
                     />
                 @endforeach
             </div>

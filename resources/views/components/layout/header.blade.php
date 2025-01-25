@@ -1,95 +1,132 @@
- <!-- Desktop -->
+@props([
+    'mapView' => false,
+])
+
+<!-- Desktop -->
 <header
     class="header absolute top-0 left-0 w-full z-[999] uk-visible@m"
     uk-scrollspy="target: .animLeft; cls: animate__animated animate__lightSpeedInLeft; delay: 300;"
-    uk-sticky="animation: uk-animation-slide-top; sel-target: .header; cls-active: uk-navbar-sticky bg-primary; cls-inactive: z-[999]; top: 200;"
+    uk-sticky="animation: uk-animation-slide-top; sel-target: .header; cls-active: {{ $mapView ? 'bg-white' : 'bg-primary' }} uk-navbar-sticky; cls-inactive: z-[9999]; top: 200;"
+    x-data="listingDropdown()"
 >
-    <div class="container">
-        <nav class="uk-flex uk-flex-between uk-flex-middle py-10">
-            <!-- Logo -->
-            <div class="animLeft">
-                <a href="{{ route('pages.home.index') }}">
-                    <img
-                        class="w-[260px] md:w-[180px] lg:w-[200px] xl:w-[165px] xxl:w-[230px] uk-animation-fade"
-                        src="{{ asset('assets/images/icons/logo-white.svg') }}"
-                        alt="Logo"
-                    />
-                </a>
-            </div>
-            <!-- Navbar Links -->
-            <div
-                class="uk-visible@m uk-navbar-right text-[#fff]"
-                uk-scrollspy="target: .animRight; cls: uk-animation-slide-right; delay: 300;"
-            >
-                <ul class="flex uk-flex-middle uppercase" uk-grid>
-                    <li class="animRight">
-                        <a
-                            href="{{ route('pages.listing.index') }}"
-                            class="line-animation md:text-sm xl:text-base xl:font-bold xxl:text-2xl xxl:font-black"
-                        >
-                            {{ __('general.nav_listings') }}
-                        </a>
-                    </li>
-                    <li class="animRight">
-                        <a
-                            href="{{ route('pages.club.index') }}"
-                            class="line-animation md:text-sm xl:text-base xl:font-bold xxl:text-2xl xxl:font-black"
-                        >
-                            insider club
-                        </a>
-                    </li>
-                    <li class="animRight">
-                        <a
-                            href="{{ route('pages.insight.index') }}"
-                            class="line-animation md:text-sm xl:text-base xl:font-bold xxl:text-2xl xxl:font-black"
-                        >
-                            insights
-                        </a>
-                    </li>
-                    <li class="animRight">
-                        <a
-                            href="{{ route('pages.about.index') }}"
-                            class="line-animation md:text-sm xl:text-base xl:font-bold xxl:text-2xl xxl:font-black"
-                        >
-                            about us
-                        </a>
-                    </li>
-                </ul>
-                <!-- Locale Switcher -->
-                <ul class="animRight flex justify-between items-center rounded-[100px] bg-white bg-opacity-10 relative md:w-[60px] xl:w-[120px] xxl:w-[235px] md:ml-4 md:pl-2 xl:ml-6 xl:pl-3 xxl:ml-10 xxl:pl-5">
-                    <li class="md:font-semibold lg:font-bold md:text-sm xl:text-base xxl:text-lg xxl:font-black">
-                        <a href="#">
-                            {{ config()->get('locales')[app()->getLocale()] }}
-                        </a>
-                        <div
-                            class="rounded-lg p-2.5 min-w-10 xxl:p-4 xxl:min-w-16"
-                            uk-dropdown="pos: bottom-justify; animation: uk-animation-slide-top-small; duration: 400; mode: click"
-                        >
-                            <ul>
-                                @foreach(config()->get('locales') as $k => $v)
-                                    @if($k !== app()->getLocale())
-                                        <li>
-                                            <a
-                                                href="{{ route('change-locale', $k) }}"
-                                                class="text-primary"
-                                            >
-                                                {{ $v }}
-                                            </a>
-                                        </li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
+    <div class="relative">
+        <div class="container">
+            <nav class="flex justify-between items-center pt-10" :class="open ? 'pb-24' : 'pb-10'">
+                <!-- Logo -->
+                <div class="animLeft">
+                    <a href="{{ route('pages.home.index') }}">
                         <img
-                            src="{{ asset('assets/images/icons/locale-icon.svg') }}"
-                            alt="locale-icon"
+                            class="w-[260px] md:w-[180px] lg:w-[200px] xl:w-[165px] xxl:w-[230px] uk-animation-fade"
+                            src="{{ asset('assets/images/icons/logo-white.svg') }}"
+                            alt="Logo"
                         />
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                    </a>
+                </div>
+                <!-- Navbar Links -->
+                <div
+                    class="{{ $mapView ? 'text-primary' : 'text-[#f4f4f4]' }} uk-visible@m uk-navbar-right"
+                    uk-scrollspy="target: .animRight; cls: uk-animation-slide-right; delay: 300;"
+                >
+                    <ul class="flex uk-flex-middle uppercase" uk-grid>
+                        <li class="animRight">
+                            <a
+                                href="{{ route('pages.listing.index') }}"
+                                class="line-animation md:text-sm xl:text-base xl:font-bold xxl:text-2xl xxl:font-black"
+                                @mouseenter="open = true"
+                                @mouseleave="open = false"
+                            >
+                                {{ __('general.nav_listings') }}
+                            </a>
+                            @if ($types)
+                                <div
+                                    x-show="open"
+                                    @mouseenter="open = true"
+                                    @mouseleave="open = false"
+                                    x-transition:enter="transition transform ease-out duration-300"
+                                    x-transition:enter-start="opacity-0 scale-95"
+                                    x-transition:enter-end="opacity-100 scale-100"
+                                    x-transition:leave="transition transform ease-in duration-200"
+                                    x-transition:leave-start="opacity-100 scale-100"
+                                    x-transition:leave-end="opacity-0 scale-95"
+                                    class="absolute bg-transparent border-none mt-4 w-full left-0"
+                                >
+                                    <div class="container flex justify-between space-x-6">
+                                        @foreach($types as $type)
+                                            <a
+                                                href="{{ route('pages.listing.index', ['type' => $type->id]) }}"
+                                                class="w-full"
+                                            >
+                                                <div class="{{ $mapView ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
+                                                    {{ $type->name }}
+                                                </div>
+                                            </a>
+
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endif
+                        </li>
+                        <li class="animRight">
+                            <a
+                                href="{{ route('pages.club.index') }}"
+                                class="line-animation md:text-sm xl:text-base xl:font-bold xxl:text-2xl xxl:font-black"
+                            >
+                                insider club
+                            </a>
+                        </li>
+                        <li class="animRight">
+                            <a
+                                href="{{ route('pages.insight.index') }}"
+                                class="line-animation md:text-sm xl:text-base xl:font-bold xxl:text-2xl xxl:font-black"
+                            >
+                                insights
+                            </a>
+                        </li>
+                        <li class="animRight">
+                            <a
+                                href="{{ route('pages.about.index') }}"
+                                class="line-animation md:text-sm xl:text-base xl:font-bold xxl:text-2xl xxl:font-black"
+                            >
+                                about us
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Locale Switcher -->
+                    <ul class="{{ $mapView ? '' : 'bg-opacity-10' }} animRight flex justify-between items-center rounded-[100px] bg-white relative md:w-[60px] xl:w-[120px] xxl:w-[235px] md:ml-4 md:pl-2 xl:ml-6 xl:pl-3 xxl:ml-10 xxl:pl-5">
+                        <li class="md:font-semibold lg:font-bold md:text-sm xl:text-base xxl:text-lg xxl:font-black">
+                            <a href="#">
+                                {{ config()->get('locales')[app()->getLocale()] }}
+                            </a>
+                            <div
+                                class="rounded-lg p-2.5 min-w-10 xxl:p-4 xxl:min-w-16"
+                                uk-dropdown="pos: bottom-justify; animation: uk-animation-slide-top-small; duration: 400; mode: click"
+                            >
+                                <ul>
+                                    @foreach(config()->get('locales') as $k => $v)
+                                        @if($k !== app()->getLocale())
+                                            <li>
+                                                <a
+                                                    href="{{ route('change-locale', $k) }}"
+                                                    class="text-primary"
+                                                >
+                                                    {{ $v }}
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <img
+                                src="{{ asset('assets/images/icons/locale-icon.svg') }}"
+                                alt="locale-icon"
+                            />
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </div>
 </header>
 
@@ -196,3 +233,11 @@
         </nav>
     </div>
 </header>
+
+ <script>
+     function listingDropdown() {
+         return {
+             open: false
+         };
+     }
+ </script>

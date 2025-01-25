@@ -6,9 +6,9 @@
     x-data="typeDropdown({{ json_encode($types) }})"
     class="relative px-10 border-r border-borderColor h-full flex items-center justify-center w-[15%]"
 >
+    <input type="hidden" name="type" x-model="id" />
     <input
         type="text"
-        name="type"
         placeholder="type"
         class="modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none"
         x-model="query"
@@ -25,11 +25,11 @@
             :key="type.id"
         >
             <li
-                @click="selectType(getLocalizedTypeName(type))"
+                @click="selectType(type)"
                 class="px-2 py-4 rounded-[14px] cursor-pointer font-black text-white text-center"
                 :class="getRandomColor()"
             >
-                <span x-text="getLocalizedTypeName(type)"></span>
+                <span x-text="type.name[locale]"></span>
             </li>
         </template>
     </ul>
@@ -39,6 +39,7 @@
     function typeDropdown(types) {
         return {
             locale: '{{ app()->getLocale() }}',
+            id: '',
             query: '', // Input value
             open: false, // Controls dropdown visibility
             filteredTypes: types, // Filtered list of types
@@ -51,12 +52,9 @@
             },
 
             selectType(type) {
-                this.query = type;
+                this.id = type.id;
+                this.query = type.name[this.locale];
                 this.open = false;
-            },
-
-            getLocalizedTypeName({ name }) {
-                return name[this.locale];
             },
 
             getRandomColor() {

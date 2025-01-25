@@ -8,7 +8,6 @@
 
     <x-pages.home.verified
         :hotels="$hotels"
-        :likedHotels="$likedHotels"
     />
 
     <x-pages.home.value />

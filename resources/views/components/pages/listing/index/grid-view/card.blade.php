@@ -1,6 +1,5 @@
 @props([
     'hotel' => null,
-    'likedHotels' => null,
 ])
 
 @if ($hotel)
@@ -29,7 +28,7 @@
                         />
                     </button>
                     <button
-                        x-data="likeHandler({{ $hotel->id }}, {{ $likedHotels->pluck('hotel_id')->contains($hotel->id) ? 'true' : 'false' }})"
+                        x-data="likeHandler({{ $hotel->id }}, @json($hotel->isLiked))"
                         @click="toggleLike"
                     >
                         <img
@@ -79,32 +78,27 @@
 @endif
 
 <script>
-    function likeHandler(hotelId, initialState) {
+    function likeHandler(hotelId, initialIsLiked) {
         return {
-            isLiked: initialState,
+            API_URI: `listings/${hotelId}/like`,
+            isLiked: initialIsLiked,
 
             async toggleLike() {
                 try {
-                    const response = await fetch(`/listings/${hotelId}/like`, {
-                        method: 'POST',
+                    const { status } = await axios.post(this.API_URI, {}, {
                         headers: {
                             'Content-Type': 'application/json',
                             'X-CSRF-TOKEN': '{{ csrf_token() }}',
                         },
                     });
 
-                    if (response.ok) {
-                        const data = await response.json();
-                        if (data.message === 'Like removed successfully') {
-                            this.isLiked = false;
-                        } else if (data.message === 'Object liked successfully') {
-                            this.isLiked = true;
-                        }
-                    } else {
-                        console.error('Failed to toggle like.');
+                    if (status === 204) {
+                        this.isLiked = false;
+                    } else if (status === 201) {
+                        this.isLiked = true;
                     }
                 } catch (error) {
-                    console.error('Error:', error);
+                    console.error('Error:', error.message);
                 }
             },
         };

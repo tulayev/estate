@@ -26,12 +26,20 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('components.layout.listing.search', function ($view) {
-            $view
-                ->with('types', Type::all())
-                ->with('locations', Hotel::locations()->get())
-                ->with('tags', Tag::all())
-                ->with('features', Feature::all());
+        $types = Type::all();
+        $locations = Hotel::locations()->get();
+        $tags = Tag::all();
+        $features = Feature::all();
+
+        View::composer('components.layout.listing.search', function ($view) use ($types, $tags, $features, $locations) {
+            $view->with('types', $types)
+                ->with('tags', $tags)
+                ->with('features', $features)
+                ->with('locations', $locations);
+        });
+
+        View::composer('components.layout.header', function ($view) use ($types) {
+            $view->with('types', $types);
         });
     }
 }

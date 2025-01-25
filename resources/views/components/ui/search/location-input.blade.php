@@ -33,22 +33,24 @@
 <script>
     function locationDropdown() {
         return {
+            API_URI: '{{ route('hotels.search.locations') }}',
             locale: '{{ app()->getLocale() }}',
-            query: '', // Input value
-            open: false, // Controls dropdown visibility
-            suggestions: [], // Holds fetched suggestions
+            query: '',
+            open: false,
+            suggestions: [],
 
             fetchLocations() {
                 const url = this.query
-                    ? `api/search/locations?q=${encodeURIComponent(this.query)}`
-                    : 'api/search/locations';
+                    ? `${this.API_URI}?q=${encodeURIComponent(this.query)}`
+                    : this.API_URI;
 
-                fetch(url)
-                    .then((res) => res.json())
-                    .then((data) => {
-                        this.suggestions = data;
+                axios.get(url)
+                    .then((response) => {
+                        this.suggestions = response.data;
                     })
-                    .catch((error) => console.error('Error fetching locations:', error));
+                    .catch((error) => {
+                        console.error('Error fetching locations:', error);
+                    });
             },
 
             onFocus() {

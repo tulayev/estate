@@ -5,6 +5,9 @@ namespace App\Models;
 use App\Helpers\Constants;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Storage;
 use MoonShine\Models\MoonshineUser;
 use Spatie\Translatable\HasTranslations;
@@ -36,23 +39,10 @@ class Hotel extends Model
     ];
 
     protected $casts = [
-        'gallery' => 'array', // Automatically handle JSON
+        'gallery' => 'array',
         'latitude' => 'float',
         'longitude' => 'float',
     ];
-
-    public static function getLikedHotels($userId = null, $ipAddress = null)
-    {
-        return HotelLike::query()
-            ->when($userId, function ($query) use ($userId) {
-                $query->where('liked_by', $userId);
-            })
-            ->when(!$userId, function ($query) use ($ipAddress) {
-                $query->where('ip_address', $ipAddress);
-            })
-            ->with('hotel')
-            ->get();
-    }
 
     public function scopeActive($query)
     {
@@ -64,29 +54,44 @@ class Hotel extends Model
         return $query->select('location', 'longitude', 'latitude')->distinct();
     }
 
-    public function scopeSearch($query, $keyword)
+    public function scopeSearchByTitle($query, $keyword)
     {
-        if (!empty($keyword)) {
-            $query->where('title', 'LIKE', '%' . $keyword . '%')
-                ->orWhere('type', 'LIKE', '%' . $keyword . '%');
+        if ($keyword) {
+            $query->whereRaw('LOWER(title) LIKE ?', ['%' . strtolower($keyword) . '%']);
         }
+
+        return $query;
+    }
+
+    public function scopeSearchByLocations($query, $searchTerm)
+    {
+        $locale = app()->getLocale();
+
+        if ($searchTerm) {
+            $query->whereRaw(
+                "LOWER(JSON_UNQUOTE(JSON_EXTRACT(location, '$.\"{$locale}\"'))) LIKE ?",
+                ['%' . strtolower($searchTerm) . '%']
+            );
+        }
+
         return $query;
     }
 
     public function scopeFilterByPrice($query, $min = null, $max = null)
     {
-        if ($min !== null) {
+        if ($min !== null && $min != 0) {
             $query->where('price', '>=', $min);
         }
-        if ($max !== null) {
+        if ($max !== null && $max != 0) {
             $query->where('price', '<=', $max);
         }
+
         return $query;
     }
 
     public function scopeFilterByBedrooms($query, $min = null, $max = null)
     {
-        if ($min !== null) {
+        if ($min !== null && $min != 0) {
             $query->where(function ($q) use ($min) {
                 $q->whereRaw(
                     '(SELECT SUM(bedrooms) FROM floors WHERE floors.hotel_id = hotels.id) >= ?',
@@ -95,7 +100,7 @@ class Hotel extends Model
             });
         }
 
-        if ($max !== null) {
+        if ($max !== null && $max != 0) {
             $query->where(function ($q) use ($max) {
                 $q->whereRaw(
                     '(SELECT SUM(bedrooms) FROM floors WHERE floors.hotel_id = hotels.id) <= ?',
@@ -109,7 +114,7 @@ class Hotel extends Model
 
     public function scopeFilterByBathrooms($query, $min = null, $max = null)
     {
-        if ($min !== null) {
+        if ($min !== null && $min != 0) {
             $query->where(function ($q) use ($min) {
                 $q->whereRaw(
                     '(SELECT SUM(bathrooms) FROM floors WHERE floors.hotel_id = hotels.id) >= ?',
@@ -118,7 +123,7 @@ class Hotel extends Model
             });
         }
 
-        if ($max !== null) {
+        if ($max !== null && $max != 0) {
             $query->where(function ($q) use ($max) {
                 $q->whereRaw(
                     '(SELECT SUM(bathrooms) FROM floors WHERE floors.hotel_id = hotels.id) <= ?',
@@ -166,7 +171,104 @@ class Hotel extends Model
         return $query;
     }
 
-    protected static function boot()
+    public function scopeFilterByLocations($query, $locations)
+    {
+        $locale = app()->getLocale();
+
+        if (!empty($locations)) {
+            $locationArray = explode(',', $locations);
+
+            foreach ($locationArray as $location) {
+                $location = trim($location);
+
+                $query->orWhereRaw(
+                    "LOWER(JSON_UNQUOTE(JSON_EXTRACT(location, '$.\"{$locale}\"'))) LIKE ?",
+                    ['%' . strtolower($location) . '%']
+                );
+            }
+        }
+        return $query;
+    }
+
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(MoonshineUser::class, 'created_by');
+    }
+
+    public function floors(): HasMany
+    {
+        return $this->hasMany(Floor::class);
+    }
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class, 'hotel_tag');
+    }
+
+    public function features(): BelongsToMany
+    {
+        return $this->belongsToMany(Feature::class, 'hotel_feature');
+    }
+
+    public function types(): BelongsToMany
+    {
+        return $this->belongsToMany(Type::class, 'hotel_type');
+    }
+
+    public function likes(): HasMany
+    {
+        return $this->hasMany(HotelLike::class);
+    }
+
+    public function getGalleryOldAttribute($value): array | null
+    {
+        if ($value)
+            return explode(';', $value);
+
+        return  null;
+    }
+
+    public function getAreaAttribute()
+    {
+        return $this->floors()->sum('area');
+    }
+
+    public function getBedroomsAttribute()
+    {
+        return $this->floors()->sum('bedrooms');
+    }
+
+    public function getBathroomsAttribute()
+    {
+        return $this->floors()->sum('bathrooms');
+    }
+
+    public function getFormattedAreaAttribute(): string
+    {
+        return number_format($this->area, 2);
+    }
+
+    public function getFormattedPriceAttribute(): string
+    {
+        return number_format($this->price, 3);
+    }
+
+    public function getIsLikedAttribute(): bool
+    {
+        $userId = auth()->id();
+        $ipAddress = request()->ip();
+
+        return $this->likes()
+            ->when($userId, function ($query) use ($userId) {
+                $query->where('liked_by', $userId);
+            })
+            ->when(!$userId, function ($query) use ($ipAddress) {
+                $query->where('ip_address', $ipAddress);
+            })
+            ->exists();
+    }
+
+    protected static function boot(): void
     {
         parent::boot();
 
@@ -195,68 +297,5 @@ class Hotel extends Model
                 }
             }
         });
-    }
-
-    public function author()
-    {
-        return $this->belongsTo(MoonshineUser::class, 'created_by');
-    }
-
-    public function floors()
-    {
-        return $this->hasMany(Floor::class);
-    }
-
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class, 'hotel_tag');
-    }
-
-    public function features()
-    {
-        return $this->belongsToMany(Feature::class, 'hotel_feature');
-    }
-
-    public function types()
-    {
-        return $this->belongsToMany(Type::class, 'hotel_type');
-    }
-
-    public function likes()
-    {
-        return $this->hasMany(HotelLike::class);
-    }
-
-    public function getGalleryOldAttribute($value)
-    {
-        if ($value)
-            return explode(';', $value);
-
-        return  null;
-    }
-
-    public function getAreaAttribute()
-    {
-        return $this->floors()->sum('area');
-    }
-
-    public function getBedroomsAttribute()
-    {
-        return $this->floors()->sum('bedrooms');
-    }
-
-    public function getBathroomsAttribute()
-    {
-        return $this->floors()->sum('bathrooms');
-    }
-
-    public function getFormattedAreaAttribute()
-    {
-        return number_format($this->area, 2);
-    }
-
-    public function getFormattedPriceAttribute()
-    {
-        return number_format($this->price, 3);
     }
 }

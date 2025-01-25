@@ -33,10 +33,12 @@ Route::get('/', [HomeController::class, 'index'])->name('pages.home.index');
 
 Route::prefix('listings')->group(function () {
     Route::get('/', [ListingController::class, 'index'])->name('pages.listing.index');
-    Route::get('/likedByUser', [ListingController::class, 'likedByUser']);
+    Route::get('/map-view', [ListingController::class, 'mapView'])->name('pages.listing.map');
+    Route::get('/map-view/{hotelId}', [ListingController::class, 'mapViewShow'])->name('pages.listing.map.show');
     Route::get('/{slug}', [ListingController::class, 'show'])->name('pages.listing.show');
-    Route::post('/{hotelId}/like', [ListingController::class, 'like']);
-    Route::get('/{hotelId}/likes', [ListingController::class, 'likes']);
+    Route::post('/{hotelId}/like', [ListingController::class, 'like'])->name('hotel.like');
+    Route::post('/search/count', [ListingController::class, 'hotelsCount'])->name('hotels.search.count');
+    Route::get('/search/locations', [ListingController::class, 'searchLocations'])->name('hotels.search.locations');
 });
 
 Route::get('/club', [ClubController::class, 'index'])->name('pages.club.index');

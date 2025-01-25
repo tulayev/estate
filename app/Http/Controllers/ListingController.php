@@ -2,30 +2,94 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Feature;
 use App\Models\Hotel;
 use App\Models\HotelLike;
-use App\Models\Tag;
-use App\Models\Type;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ListingController extends Controller
 {
-    public function index(): View
+    private const PAGINATION_PARAMS = [
+        'grid' => 9,
+        'list' => 3,
+        'liked' => 6
+    ];
+
+    public function index(Request $request): View | string
     {
-        $types = Type::all();
-        $tags = Tag::all();
-        $features = Feature::all();
-        $hotels = Hotel::all();
+        // Search & Filter
+        $hotelsQuery = $request->has('requestType') && $request->get('requestType') === 'search'
+            ? $this->applySearch($request)
+            : $this->applyFilters($request);
+
+        if ($request->has('type')) {
+            $hotelsQuery->filterByTypes($request->get('type'))
+                ->active();
+        }
+
+        if ($request->has('viewType') && $request->get('viewType') === 'liked') {
+            $hotelsQuery->whereHas('likes', function ($query) {
+                $userId = auth()->id();
+                $ipAddress = request()->ip();
+
+                $query->when($userId, function ($query) use ($userId) {
+                    $query->where('liked_by', $userId);
+                })->when(!$userId, function ($query) use ($ipAddress) {
+                    $query->where('ip_address', $ipAddress);
+                });
+            });
+        }
+
+        // Sorting
+        if ($request->has('sort')) {
+            $sort = $request->get('sort');
+            switch ($sort) {
+                case 'title_asc':
+                    $hotelsQuery->orderBy('title', 'asc');
+                    break;
+                case 'title_desc':
+                    $hotelsQuery->orderBy('title', 'desc');
+                    break;
+            }
+        }
+
+        $viewType = $request->get('viewType', 'grid');
+        $perPage = self::PAGINATION_PARAMS[$viewType];
+
+        $hotels = $hotelsQuery->paginate($perPage);
+
+        if ($request->ajax()) {
+            return view('components.pages.listing.index.view-type.list', [
+                'hotels' => $hotels,
+                'viewType' => $viewType,
+            ])->render();
+        }
 
         return view('pages.listing.index', [
             'hotels' => $hotels,
-            'types' => $types,
-            'tags' => $tags,
-            'features' => $features,
+            'viewType' => $viewType,
         ]);
+    }
+
+    public function mapView(): View
+    {
+        return view('pages.listing.map', [
+            'hotels' => Hotel::active()->get(),
+        ]);
+    }
+
+    public function mapViewShow(Request $request, $hotelId): string
+    {
+        $hotel = Hotel::active()->findOrFail($hotelId);
+
+        if ($request->ajax()) {
+            return view('components.pages.listing.index.map-view.selected-card', [
+                'hotel' => $hotel,
+            ])->render();
+        }
+
+        return '';
     }
 
     public function show($slug): View
@@ -50,7 +114,8 @@ class ListingController extends Controller
 
     public function like(Request $request, $hotelId): JsonResponse
     {
-        $hotel = Hotel::findOrFail($hotelId);
+        $hotel = Hotel::active()
+            ->findOrFail($hotelId);
 
         if (!$hotel) {
             return response()
@@ -60,7 +125,6 @@ class ListingController extends Controller
         $userId = auth()->check() ? auth()->user()->id : null;
         $ipAddress = $request->ip();
 
-        // Check if the user/IP has already liked the hotel
         $existingLike = HotelLike::where('hotel_id', $hotelId)
             ->when($userId, function ($query) use ($userId) {
                 $query->where('liked_by', $userId);
@@ -71,12 +135,10 @@ class ListingController extends Controller
             ->first();
 
         if ($existingLike) {
-            // Remove the existing like
             $existingLike->delete();
 
-            return response()->json([
-                'message' => 'Like removed successfully'
-            ]);
+            return response()
+                ->json([], 204);
         }
 
         HotelLike::create([
@@ -85,37 +147,60 @@ class ListingController extends Controller
             'ip_address' => $userId ? null : $ipAddress,
         ]);
 
-        return response()->json([
-            'message' => 'Object liked successfully'
-        ], 201);
+        return response()
+            ->json([], 201);
     }
 
-    public function likes($hotelId): JsonResponse
+    public function hotelsCount(Request $request): JsonResponse
     {
-        $hotel = Hotel::findOrFail($hotelId);
+        $count = $this->applyFilters($request)->count();
 
-        if (!$hotel) {
-            return response()
-                ->json(['message' => 'Object not found'], 404);
+        return response()
+            ->json(['count' => $count]);
+    }
+
+    public function searchLocations(Request $request): JsonResponse
+    {
+        $locale = app()->getLocale();
+        $query = $request->get('q', '');
+        $locations = Hotel::locations();
+
+        if ($query) {
+            $locations = $locations->whereRaw(
+                "LOWER(JSON_UNQUOTE(JSON_EXTRACT(location, '$.\"{$locale}\"'))) LIKE ?",
+                ['%' . strtolower($query) . '%']
+            );
         }
 
-        $likesCount = $hotel->likes()->count();
+        $locations = $locations->limit(10)->get();
 
-        return response()->json([
-            'likes_count' => $likesCount
-        ]);
+        return response()
+            ->json($locations);
     }
 
-    public function likedByUser(Request $request): JsonResponse
+    private function applySearch(Request $request)
     {
-        return response()->json($this->getLikedHotelsByUser($request));
+        return Hotel::query()
+            ->with(['floors', 'types', 'tags', 'features'])
+            ->searchByTitle($request->input('title'))
+            ->searchByLocations($request->input('location'))
+            ->filterByBedrooms($request->input('beds'), $request->input('beds'))
+            ->filterByPrice($request->input('price_min'), $request->input('price_max'))
+            ->active();
     }
 
-    private function getLikedHotelsByUser(Request $request)
+    private function applyFilters(Request $request)
     {
-        $userId = auth()->check() ? auth()->user()->id : null;
-        $ipAddress = $request->ip();
-
-        return Hotel::getLikedHotels($userId, $ipAddress);
+        return Hotel::query()
+            ->with(['floors', 'types', 'tags', 'features'])
+            ->searchByTitle($request->input('title'))
+            ->filterByPrice($request->input('price_min'), $request->input('price_max'))
+            ->filterByBedrooms($request->input('bedrooms_min'), $request->input('bedrooms_max'))
+            ->filterByBathrooms($request->input('bathrooms_min'), $request->input('bathrooms_max'))
+            ->filterByTypes($request->input('types'))
+            ->filterByTags($request->input('tags'))
+            ->filterByFeatures($request->input('features'))
+            ->filterByLocations($request->input('locations'))
+            ->active();
     }
 }

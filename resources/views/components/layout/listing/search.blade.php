@@ -1,9 +1,16 @@
 <!-- Search Form -->
 <form
     id="searchForm"
+    action="{{ route('pages.listing.index') }}"
     class="uk-visible@s text-secondary z-10 bg-white font-semibold uppercase rounded-full flex justify-between items-center absolute px-3 left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 w-[90vw] lg:w-[70vw] h-[50px] xl:h-[70px] text-sm xl:text-xl"
     autocomplete="off"
 >
+    <input
+        type="hidden"
+        name="requestType"
+        value="search"
+    />
+
     <div>
         <img
             src="{{ asset('assets/images/icons/circle.png') }}"
@@ -123,23 +130,20 @@
 
 <script>
     const filtersHandler = () => ({
-        API_URI: '/api/hotels/count',
+        API_URI: '{{ route('hotels.search.count') }}',
         buttonText: 'Loading...',
         filters: {},
 
         async fetchResultsCount() {
             try {
-                const response = await fetch(this.API_URI, {
-                    method: 'POST',
+                const response = await axios.post(this.API_URI, this.filters, {
                     headers: {
                         'Content-Type': 'application/json',
                         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
                     },
-                    body: JSON.stringify(this.filters),
                 });
 
-                const data = await response.json();
-                this.buttonText = `Show ${data.count === 0 ? '' : data.count} Results`;
+                this.buttonText = `show ${response.data.count === 0 ? '' : response.data.count} results`;
             } catch (error) {
                 console.error('Error updating results count:', error);
                 this.buttonText = 'Error loading results';

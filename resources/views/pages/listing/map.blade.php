@@ -36,22 +36,27 @@
         <div class="loading"></div>
     </div>
 
-    <x-layout.header />
+    <x-layout.header
+        :mapView="true"
+    />
 
-    {{ $slot }}
+    <main class="main-section relative mt-40">
+        <x-layout.listing.search />
+    </main>
 
-    <x-layout.contact />
-
-    <x-layout.footer />
+    <x-pages.listing.index.map
+        :hotels="$hotels"
+    />
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const overlay = document.getElementById('overlay');
 
             if (overlay) {
-                setTimeout(() => overlay.style.display = 'none', 2000);
+                setTimeout(() => overlay.style.display = 'none', 1000);
             }
         })
     </script>
 </body>
 </html>
+

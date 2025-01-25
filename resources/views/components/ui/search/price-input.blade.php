@@ -4,12 +4,12 @@
 >
     <input
         type="hidden"
-        name="min_price"
+        name="price_min"
         x-model="minPriceHidden"
     />
     <input
         type="hidden"
-        name="max_price"
+        name="price_max"
         x-model="maxPriceHidden"
     />
     <div
@@ -118,7 +118,7 @@
             maxPriceHidden: 0,
             showInputs: false,
             minPrice: 1,
-            maxPrice: 100,
+            maxPrice: 1000000,
             min: 1,
             max: 1000000,
             minPriceThumb: 0,

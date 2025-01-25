@@ -4,6 +4,6 @@
 
     <x-pages.insight.index.card />
 
-    <x-pages.insight.index.newsletter />
+    <x-layout.newsletter />
 
 </x-layout.app>

@@ -13,12 +13,12 @@
                 <h1 class="main-title animLeft mt-2 lg:mt-10 ">
                     new listing
                 </h1>
-                
+
             </div>
 
             <div class="animLeft hidden sm:flex text-sm lg:text-lg mt-2 lg:mt-10">
                 <div class="pl-2 text-white">
-                    Buying a property with the intent to sell it later—whether in the short or long term—requires strategic planning and market insight. At *Ignatev Estate*, we specialize in identifying properties that are not only great investments now but will also be in demand when you're ready to sell. Here’s how to ensure the property you buy today is something you’ll be able to sell tomorrow, for profit or convenience. 
+                    Buying a property with the intent to sell it later—whether in the short or long term—requires strategic planning and market insight. At *Ignatev Estate*, we specialize in identifying properties that are not only great investments now but will also be in demand when you're ready to sell. Here’s how to ensure the property you buy today is something you’ll be able to sell tomorrow, for profit or convenience.
                 </div>
             </div>
 
@@ -54,5 +54,5 @@
     </div>
 
     <!-- Search -->
-    <x-layout.insight.search />
+    <x-layout.listing.search />
 </main>

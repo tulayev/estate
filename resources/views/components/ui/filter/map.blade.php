@@ -14,6 +14,13 @@
         <span x-text="selectedLocationsString().join(', ')"></span>
     </h3>
     <div class="mt-6 sm:mt-8 md:mt-10 features flex justify-around flex-wrap gap-2 sm:gap-4">
+        <input
+            type="hidden"
+            name="locations"
+            :value="selectedLocationsString().join(',')"
+            x-bind:value="selectedLocationsString().join(',')"
+        />
+
         @foreach($locations as $location)
             <div
                 class="location flex justify-center items-center cursor-pointer modal-subtitle shadow-card border-rounded w-[175px] h-[65px] sm:w-[200px] sm:h-[70px] lg:w-[250px] lg:h-[90px]"
