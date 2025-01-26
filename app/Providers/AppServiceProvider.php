@@ -30,12 +30,14 @@ class AppServiceProvider extends ServiceProvider
         $locations = Hotel::locations()->get();
         $tags = Tag::all();
         $features = Feature::all();
+        $maxPrice = Hotel::getMaxPrice();
 
-        View::composer('components.layout.listing.search', function ($view) use ($types, $tags, $features, $locations) {
+        View::composer('components.layout.listing.search', function ($view) use ($types, $tags, $features, $locations, $maxPrice) {
             $view->with('types', $types)
                 ->with('tags', $tags)
                 ->with('features', $features)
-                ->with('locations', $locations);
+                ->with('locations', $locations)
+                ->with('maxPrice', $maxPrice);
         });
 
         View::composer('components.layout.header', function ($view) use ($types) {

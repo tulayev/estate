@@ -16,6 +16,8 @@ return new class extends Migration
             $table->json('title');
             $table->string('slug')->unique();
             $table->json('body');
+            $table->unsignedInteger('minutes_to_read')->nullable();
+            $table->unsignedBigInteger('views')->default(0);
             $table->string('image')->nullable();
             $table->boolean('active')->default(false);
             $table->foreignId('topic_category_id')

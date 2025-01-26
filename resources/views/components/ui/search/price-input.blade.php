@@ -1,3 +1,7 @@
+@props([
+    'maxPrice' => 0,
+])
+
 <div
     x-data="priceDropdown()"
     class="relative px-10 border-r border-borderColor h-full flex items-center justify-center w-[15%] xl:w-[24%]"
@@ -59,18 +63,18 @@
                     <!-- Range Inputs -->
                     <input
                         type="range"
-                        step="1000"
-                        x-bind:min="1"
-                        x-bind:max="1000000"
+                        step="100"
+                        x-bind:min="0"
+                        x-bind:max="{{ $maxPrice }}"
                         x-on:input="minPriceTrigger"
                         x-model="minPrice"
                         class="absolute pointer-events-none appearance-none z-20 h-2 w-full opacity-0 cursor-pointer"
                     />
                     <input
                         type="range"
-                        step="1000"
-                        x-bind:min="1"
-                        x-bind:max="1000000"
+                        step="100"
+                        x-bind:min="0"
+                        x-bind:max="{{ $maxPrice }}"
                         x-on:input="maxPriceTrigger"
                         x-model="maxPrice"
                         class="absolute pointer-events-none appearance-none z-20 h-2 w-full opacity-0 cursor-pointer"
@@ -117,10 +121,10 @@
             minPriceHidden: 0,
             maxPriceHidden: 0,
             showInputs: false,
-            minPrice: 1,
-            maxPrice: 1000000,
-            min: 1,
-            max: 1000000,
+            minPrice: 0,
+            maxPrice: {{ $maxPrice }},
+            min: 0,
+            max: {{ $maxPrice }},
             minPriceThumb: 0,
             maxPriceThumb: 0,
 

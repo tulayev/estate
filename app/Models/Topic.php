@@ -5,6 +5,8 @@ namespace App\Models;
 use App\Helpers\Constants;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Translatable\HasTranslations;
 
@@ -16,6 +18,8 @@ class Topic extends Model
         'title',
         'slug',
         'body',
+        'minutes_to_read',
+        'views',
         'image',
         'active',
         'topic_category_id',
@@ -32,12 +36,38 @@ class Topic extends Model
         return $query->where('active', true);
     }
 
-    protected static function boot()
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(TopicCategory::class, 'topic_category_id');
+    }
+
+    public function likes(): HasMany
+    {
+        return $this->hasMany(TopicLike::class);
+    }
+
+    public function getIsLikedAttribute(): bool
+    {
+        $userId = auth()->id();
+        $ipAddress = request()->ip();
+
+        return $this->likes()
+            ->when($userId, function ($query) use ($userId) {
+                $query->where('liked_by', $userId);
+            })
+            ->when(!$userId, function ($query) use ($ipAddress) {
+                $query->where('ip_address', $ipAddress);
+            })
+            ->exists();
+    }
+
+    protected static function boot(): void
     {
         parent::boot();
 
         static::creating(function ($topic) {
             $topic->created_by = auth()->user()->id;
+            $topic->minutes_to_read = $topic->calculateMinutesToRead();
         });
 
         static::deleting(function ($topic) {
@@ -47,13 +77,11 @@ class Topic extends Model
         });
     }
 
-    public function category()
+    private function calculateMinutesToRead(): int
     {
-        return $this->belongsTo(TopicCategory::class, 'topic_category_id');
-    }
+        $wordCount = str_word_count(strip_tags($this->body));
+        $wordsPerMinute = 200;
 
-    public function likes()
-    {
-        return $this->hasMany(TopicLike::class);
+        return ceil($wordCount / $wordsPerMinute);
     }
 }

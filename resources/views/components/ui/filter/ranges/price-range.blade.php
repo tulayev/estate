@@ -1,11 +1,9 @@
 @props([
     'fromInputName' => '',
     'toInputName' => '',
-    'minLength' => 0,
-    'maxLength' => 0,
-    'step' => 1,
+    'step' => 0,
     'minValue' => 0,
-    'maxValue' => 1,
+    'maxValue' => 0,
 ])
 
 <div
@@ -21,8 +19,6 @@
                 type="text"
                 class="modal-subtitle text-primary placeholder-primary placeholder-opacity-50 w-full py-4 border-b-[2px] border-borderColor focus:outline-none focus:border-blue-500"
                 placeholder="From"
-                minlength="{{ $minLength }}"
-                maxlength="{{ $maxLength }}"
                 x-on:input.debounce="minPriceTrigger"
                 x-model="minPrice"
                 wire:model.debounce.300="minPrice"
@@ -34,8 +30,6 @@
                 type="text"
                 class="modal-subtitle text-primary placeholder-primary placeholder-opacity-50 w-full py-4 border-b-[2px] border-borderColor focus:outline-none focus:border-blue-500"
                 placeholder="To"
-                minlength="{{ $minLength }}"
-                maxlength="{{ $maxLength }}"
                 x-on:input.debounce.300="maxPriceTrigger"
                 x-model="maxPrice"
                 wire:model.debounce="maxPrice"
@@ -103,7 +97,7 @@
     function priceRange() {
         return {
             minPrice: {{ $minValue }},
-            maxPrice: {{ $minValue + 99 }},
+            maxPrice: {{ $maxValue }},
             min: {{ $minValue }},
             max: {{ $maxValue }},
             minPriceThumb: 0,

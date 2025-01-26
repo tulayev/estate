@@ -1,11 +1,9 @@
 @props([
     'fromInputName' => '',
     'toInputName' => '',
-    'minLength' => 0,
-    'maxLength' => 0,
-    'step' => 1,
+    'step' => 0,
     'minValue' => 0,
-    'maxValue' => 1,
+    'maxValue' => 0,
 ])
 
 <div
@@ -16,8 +14,6 @@
     <input
         name="{{ $fromInputName }}"
         type="hidden"
-        minlength="{{ $minLength }}"
-        maxlength="{{ $maxLength }}"
         x-on:input.debounce="minBedTrigger"
         x-model="minBed"
         wire:model.debounce.300="minBed"
@@ -25,8 +21,6 @@
     <input
         name="{{ $toInputName }}"
         type="hidden"
-        minlength="{{ $minLength }}"
-        maxlength="{{ $maxLength }}"
         x-on:input.debounce.300="maxBedTrigger"
         x-model="maxBed"
         wire:model.debounce="maxBed"
@@ -92,7 +86,7 @@
     function bedRange() {
         return {
             minBed: {{ $minValue }},
-            maxBed: {{ $minValue + 1 }},
+            maxBed: {{ $maxValue }},
             min: {{ $minValue }},
             max: {{ $maxValue }},
             minBedThumb: 0,

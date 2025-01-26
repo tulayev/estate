@@ -1,11 +1,9 @@
 @props([
     'fromInputName' => '',
     'toInputName' => '',
-    'minLength' => 0,
-    'maxLength' => 0,
-    'step' => 1,
+    'step' => 0,
     'minValue' => 0,
-    'maxValue' => 1,
+    'maxValue' => 0,
 ])
 
 <div
@@ -16,8 +14,6 @@
     <input
         name="{{ $fromInputName }}"
         type="hidden"
-        minlength="{{ $minLength }}"
-        maxlength="{{ $maxLength }}"
         x-on:input.debounce="minBathTrigger"
         x-model="minBath"
         wire:model.debounce.300="minBath"
@@ -25,8 +21,6 @@
     <input
         name="{{ $toInputName }}"
         type="hidden"
-        minlength="{{ $minLength }}"
-        maxlength="{{ $maxLength }}"
         x-on:input.debounce.300="maxBathTrigger"
         x-model="maxBath"
         wire:model.debounce="maxBath"
@@ -91,7 +85,7 @@
     function bathRange() {
         return {
             minBath: {{ $minValue }},
-            maxBath: {{ $minValue + 1 }},
+            maxBath: {{ $maxValue }},
             min: {{ $minValue }},
             max: {{ $maxValue }},
             minBathThumb: 0,

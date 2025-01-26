@@ -17,7 +17,7 @@
                     <a href="{{ route('pages.home.index') }}">
                         <img
                             class="w-[260px] md:w-[180px] lg:w-[200px] xl:w-[165px] xxl:w-[230px] uk-animation-fade"
-                            src="{{ asset('assets/images/icons/logo-white.svg') }}"
+                            src="{{ $mapView ? asset('assets/images/icons/logo-primary.svg') : asset('assets/images/icons/logo-white.svg') }}"
                             alt="Logo"
                         />
                     </a>

@@ -20,11 +20,9 @@
                 <x-ui.filter.ranges.bath-range
                     :fromInputName="'bathrooms_min'"
                     :toInputName="'bathrooms_max'"
-                    :minLength="1"
-                    :maxLength="2"
                     :step="1"
-                    :minValue="1"
-                    :maxValue="99"
+                    :minValue="0"
+                    :maxValue="100"
                 />
             </div>
         </div>
@@ -35,11 +33,9 @@
                 <x-ui.filter.ranges.bed-range
                     :fromInputName="'bedrooms_min'"
                     :toInputName="'bedrooms_max'"
-                    :minLength="1"
-                    :maxLength="2"
                     :step="1"
-                    :minValue="1"
-                    :maxValue="99"
+                    :minValue="0"
+                    :maxValue="100"
                 />
             </div>
         </div>

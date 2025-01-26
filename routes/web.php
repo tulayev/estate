@@ -45,10 +45,8 @@ Route::get('/club', [ClubController::class, 'index'])->name('pages.club.index');
 
 Route::prefix('insights')->group(function() {
     Route::get('/', [InsightController::class, 'index'])->name('pages.insight.index');
-    Route::get('/likedByUser', [InsightController::class, 'likedByUser']);
     Route::get('/{slug}', [InsightController::class, 'show'])->name('pages.insight.show');
-    Route::post('/{topicId}/like', [InsightController::class, 'like']);
-    Route::get('/{topicId}/likes', [InsightController::class, 'likes']);
+    Route::post('/{topicId}/like', [InsightController::class, 'like'])->name('topic.like');
 });
 
 Route::get('/about-us', [AboutController::class, 'index'])->name('pages.about.index');

@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
             MoonshineUserRoleSeeder::class,
             MoonshineUserSeeder::class,
             HotelSeeder::class,
+            TopicCategorySeeder::class,
+            TopicSeeder::class,
         ]);
     }
 }

@@ -27,7 +27,7 @@
 
     <x-ui.search.beds-input />
 
-    <x-ui.search.price-input />
+    <x-ui.search.price-input :maxPrice="$maxPrice" />
 
     <div class="h-full flex items-center justify-end w-[12%] md:w-[10%] lg:w-[12%] space-x-5">
         <button
@@ -92,11 +92,9 @@
             <x-ui.filter.ranges.price-range
                 :fromInputName="'price_min'"
                 :toInputName="'price_max'"
-                :minLength="3"
-                :maxLength="7"
-                :step="1000"
-                :minValue="1"
-                :maxValue="1000000"
+                :step="100"
+                :minValue="0"
+                :maxValue="$maxPrice"
             />
         </div>
 

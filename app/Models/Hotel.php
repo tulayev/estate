@@ -268,6 +268,11 @@ class Hotel extends Model
             ->exists();
     }
 
+    public static function getMaxPrice(): int
+    {
+        return ceil(self::max('price'));
+    }
+
     protected static function boot(): void
     {
         parent::boot();

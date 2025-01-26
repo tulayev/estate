@@ -6,6 +6,7 @@ use App\Models\TopicLike;
 use App\Models\Topic;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class InsightController extends Controller
@@ -25,13 +26,21 @@ class InsightController extends Controller
             ->where('slug', $slug)
             ->first();
 
+        if (!$topic) {
+            abort(404);
+        }
+
         $similarTopics = Topic::active()
             ->inrandomOrder()
             ->limit(10)
             ->get();
 
-        if (!$topic) {
-            abort(404);
+        // Use cache to track views
+        $cacheKey = 'topic_' . $slug . '_viewed';
+
+        if (!Cache::has($cacheKey)) {
+            $topic->increment('views');
+            Cache::put($cacheKey, true, now()->addMinutes(30)); // Prevent duplicate views for 30 minutes
         }
 
         return view('pages.insight.show', [
@@ -42,7 +51,8 @@ class InsightController extends Controller
 
     public function like(Request $request, $topicId): JsonResponse
     {
-        $topic = Topic::findOrFail($topicId);
+        $topic = Topic::active()
+            ->findOrFail($topicId);
 
         if (!$topic) {
             return response()
@@ -52,7 +62,6 @@ class InsightController extends Controller
         $userId = auth()->check() ? auth()->user()->id : null;
         $ipAddress = $request->ip();
 
-        // Check if the user/IP has already liked the topic
         $existingLike = TopicLike::where('topic_id', $topicId)
             ->when($userId, function ($query) use ($userId) {
                 $query->where('liked_by', $userId);
@@ -63,11 +72,10 @@ class InsightController extends Controller
             ->first();
 
         if ($existingLike) {
-            // Remove the existing like
             $existingLike->delete();
 
             return response()
-                ->json(['message' => 'Like removed successfully']);
+                ->json([], 204);
         }
 
         TopicLike::create([
@@ -77,41 +85,6 @@ class InsightController extends Controller
         ]);
 
         return response()
-            ->json(['message' => 'Topic liked successfully'], 201);
-    }
-
-    public function likes($topicId): JsonResponse
-    {
-        $topic = Topic::findOrFail($topicId);
-
-        if (!$topic) {
-            return response()
-                ->json(['message' => 'Topic not found'], 404);
-        }
-
-        $likesCount = $topic->likes()->count();
-
-        return response()
-            ->json(['likes_count' => $likesCount]);
-    }
-
-    public function likedByUser(Request $request): JsonResponse
-    {
-        $userId = auth()->check() ? auth()->user()->id : null;
-        $ipAddress = $request->ip();
-
-        // Fetch the topics liked by the user or their IP address
-        $likedTopics = TopicLike::query()
-            ->when($userId, function ($query) use ($userId) {
-                $query->where('liked_by', $userId);
-            })
-            ->when(!$userId, function ($query) use ($ipAddress) {
-                $query->where('ip_address', $ipAddress);
-            })
-            ->with('topic')
-            ->get();
-
-        return response()
-            ->json($likedTopics);
+            ->json([], 201);
     }
 }
