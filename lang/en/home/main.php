@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'title' => 'CLARITY FOR INVESTORS. <br />VISIBILITY FOR DEVELOPERS.',
+    'title' => 'clarity for investors. <br />visibility for developers.',
 ];

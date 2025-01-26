@@ -71,7 +71,7 @@
                                 href="{{ route('pages.club.index') }}"
                                 class="line-animation md:text-sm xl:text-base xl:font-bold xxl:text-2xl xxl:font-black"
                             >
-                                insider club
+                                {{ __('general.nav_ic') }}
                             </a>
                         </li>
                         <li class="animRight">
@@ -79,7 +79,7 @@
                                 href="{{ route('pages.insight.index') }}"
                                 class="line-animation md:text-sm xl:text-base xl:font-bold xxl:text-2xl xxl:font-black"
                             >
-                                insights
+                                {!! __('general.nav_insights') !!}
                             </a>
                         </li>
                         <li class="animRight">
@@ -87,7 +87,7 @@
                                 href="{{ route('pages.about.index') }}"
                                 class="line-animation md:text-sm xl:text-base xl:font-bold xxl:text-2xl xxl:font-black"
                             >
-                                about us
+                                {!! __('general.nav_about') !!}
                             </a>
                         </li>
                     </ul>

@@ -1,7 +1,7 @@
 <section class="section">
     <div class="container">
         <h2 class="section-title mb-5 sm:mb-10">
-            Media about us
+            {{ __('home/media.title') }}
         </h2>
     </div>
     <div class="swiper sliderPartner">

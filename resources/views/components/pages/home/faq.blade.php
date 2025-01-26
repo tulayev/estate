@@ -1,7 +1,7 @@
 <section class="section">
     <div class="container flex items-center justify-between">
         <h2 class="section-title flex space-x-3">
-            faq
+            {{ __('home/faq.title') }}
         </h2>
         <button class="primary-button">
             ask us something

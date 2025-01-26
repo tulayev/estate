@@ -1,7 +1,7 @@
 <section class="section">
     <div class="container flex items-center justify-between">
         <h2 class="section-title">
-            Let's Discuss Your Project
+            {{ __('home/discuss.title') }}
         </h2>
         <button class="primary-button">
             contact us

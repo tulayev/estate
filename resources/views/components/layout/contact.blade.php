@@ -4,7 +4,7 @@
 >
     <div class="container flex items-center justify-between mb-10">
         <h2 class="section-title flex space-x-3">
-            contact us
+            {{ __('general.contact_us') }}
         </h2>
         <div class="flex items-center space-x-4 uk-visible@m">
             <div class="white-button">
@@ -88,7 +88,7 @@
                             required
                         />
                         <label for="text" class="label-name">
-                            <span class="content-name">Enter your name</span>
+                            <span class="content-name">{{ __('general.form_name') }}</span>
                         </label>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
                             required
                         />
                         <label for="text" class="label-name">
-                            <span class="content-name">Enter your number</span>
+                            <span class="content-name">{{ __('general.form_number') }}</span>
                         </label>
                     </div>
                 </div>
@@ -117,10 +117,12 @@
                     required
                 ></textarea>
                 <label for="text" class="label-name">
-                    <span class="content-name">Message</span>
+                    <span class="content-name">{{ __('general.form_message') }}</span>
                 </label>
             </div>
-            <button class="absolute bg-primary text-white border-rounded w-full bottom-0 text-xl font-bold h-[60px] md:h-[80px]">Send</button>
+            <button class="absolute bg-primary text-white border-rounded w-full bottom-0 text-xl font-bold h-[60px] md:h-[80px]">
+                {{ __('general.form_submit') }}
+            </button>
         </form>
     </div>
 </section>

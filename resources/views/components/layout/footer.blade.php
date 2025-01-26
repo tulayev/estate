@@ -20,7 +20,7 @@
                                 href="{{ route('pages.listing.index') }}"
                                 class="line-animation text-white font-bold"
                             >
-                                listings
+                                {!! __('general.nav_listings') !!}
                             </a>
                         </li>
                         <li class="animLeft">
@@ -28,7 +28,7 @@
                                 href="{{ route('pages.club.index') }}"
                                 class="line-animation text-white font-bold"
                             >
-                                insider club
+                                {!! __('general.nav_ic') !!}
                             </a>
                         </li>
                         <li class="animLeft">
@@ -36,7 +36,7 @@
                                 href="{{ route('pages.insight.index') }}"
                                 class="line-animation text-white font-bold"
                             >
-                                insight
+                                {!! __('general.nav_insights') !!}
                             </a>
                         </li>
                         <li class="animLeft">
@@ -44,7 +44,7 @@
                                 href="{{ route('pages.about.index') }}"
                                 class="line-animation text-white font-bold"
                             >
-                                about us
+                                {!! __('general.nav_about') !!}
                             </a>
                         </li>
                     </ul>
@@ -55,7 +55,7 @@
                                 href="{{ route('pages.listing.index') }}"
                                 class="line-animation text-white font-bold"
                             >
-                                listings
+                                {!! __('general.nav_listings') !!}
                             </a>
                         </li>
                         <li class="animLeft">
@@ -63,7 +63,7 @@
                                 href="{{ route('pages.club.index') }}"
                                 class="line-animation text-white font-bold"
                             >
-                                insider club
+                                {!! __('general.nav_ic') !!}
                             </a>
                         </li>
                         <li class="animLeft">
@@ -71,7 +71,7 @@
                                 href="{{ route('pages.insight.index') }}"
                                 class="line-animation text-white font-bold"
                             >
-                                insight
+                                {!! __('general.nav_insights') !!}
                             </a>
                         </li>
                         <li class="animLeft">
@@ -79,7 +79,7 @@
                                 href="{{ route('pages.about.index') }}"
                                 class="line-animation text-white font-bold"
                             >
-                                about us
+                                {!! __('general.nav_about') !!}
                             </a>
                         </li>
                     </ul>
