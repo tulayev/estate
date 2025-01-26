@@ -1,7 +1,7 @@
 <section class="section">
     <div class="container">
         <h2 class="section-title mb-16">
-            Our Focus is Off-Plan Investments
+            {{ __('about/focus.title') }}
         </h2>
 
         <p class="uk-margin-remove xs:text-lg sm:text-xl lg:text-2xl">
@@ -10,7 +10,7 @@
         </p>
 
         <h3 class="uk-text-bold uk-text-uppercase mt-10 mb-10 text-xl sm:text-4xl">
-            This strategy offers several potential benefits:
+            {{ __('about/focus.strategy') }}
         </h3>
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
