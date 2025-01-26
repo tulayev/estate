@@ -2,7 +2,7 @@
     'hotels' => null,
 ])
 
-<section class="section">
+<section class="section-map-view fixed">
     <div class="container">
         <div class="w-full flex justify-between">
             <div class="collapse-title">
@@ -44,7 +44,7 @@
                         <div
                             id="hotel_{{ $hotel->id }}"
                             @click="selectHotel({{ $hotel->id }})"
-                            class="transition-all duration-300"
+                            class="transition-all duration-300 mb-2"
                         >
                             <x-pages.listing.index.map-view.card
                                 :hotel="$hotel"
@@ -53,7 +53,7 @@
                     @endforeach
                 </div>
             </div>
-            <div id="mapView" class="border-rounded w-[100vw] h-[100vh]"></div>
+            <div id="mapView" class="border-rounded w-[100vw] h-[100vh] "></div>
         </div>
     @endif
 </section>
@@ -67,14 +67,20 @@
             selectedHotel: null,
 
             initMapView() {
-                // Initialize the map
+                // Initialize the map without zoom control
                 this.map = L.map("mapView", {
                     center: [0, 0],
                     zoom: 2,
                     minZoom: 2,
                     maxZoom: 18,
                     attributionControl: false,
+                    zoomControl: false // Disable default zoom control
                 });
+
+                // Add zoom control to the bottom-right corner
+                L.control.zoom({
+                    position: 'topright'
+                }).addTo(this.map);
 
                 L.tileLayer(
                     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",

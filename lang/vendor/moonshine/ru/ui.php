@@ -59,7 +59,7 @@ return [
         'repeat_password' => 'Повторите пароль',
         'avatar' => 'Аватар',
         'created_at' => 'Дата создания',
-        'admins_title' => 'Администраторы',
+        'admins_title' => 'Управление пользователями',
         'role_title' => 'Роли',
         'role_name' => 'Название',
 
