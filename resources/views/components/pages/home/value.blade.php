@@ -1,7 +1,7 @@
 <section class="section">
     <div class="container">
         <h2 class="section-title mb-5 xl:mb-10 flex space-x-3">
-            Value, no strings attached
+            {{ __('home/value.title') }}
         </h2>
         <p class="text mb-10">
             We believe in proving our worth upfront. That’s why some of our most valuable insights and some services are

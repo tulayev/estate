@@ -1,7 +1,7 @@
 <section class="section">
     <div class="container">
         <div class="uk-flex uk-flex-middle uk-flex-between uk-flex-wrap">
-            <h2 class="section-title">Our Leadership Team</h2>
+            <h2 class="section-title">{{ __('about/team.title') }}</h2>
             <a
                 href="#contactSection"
                 class="primary-button"

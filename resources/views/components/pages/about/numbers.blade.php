@@ -1,7 +1,7 @@
 <section class="section">
     <div class="container">
         <h2 class="section-title mb-16">
-            about ignatev estate
+           {{ __('about/numbers.title') }}
         </h2>
         <div class="uk-flex uk-flex-column uk-flex-middle">
             <!-- Card 1 -->

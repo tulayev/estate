@@ -10,7 +10,7 @@
             uk-scrollspy="target: .animLeft; cls: uk-animation-slide-left; delay: 300;"
         >
             <h1 class="main-title animLeft mt-2 lg:mt-10 ">
-                ABOUT US
+                {{ __('about/main.title') }}
             </h1>
             
             <div class="animLeft hidden sm:flex text-sm lg:text-lg mt-2 lg:mt-10">

@@ -8,7 +8,7 @@
             <div class="absolute border-rounded inset-0 bg-gradient-100"></div>
             <div class="relative z-10">
                 <h2 class="section-title-white text-lg sm:text-2xl xl:text-5xl">
-                    The Problem We Solve
+                    {{ __('home/problem.title') }}
                 </h2>
                 <p class="text-white text-sm lg:text-base xl:text-2xl mt-4 sm:mt-5 lg:mt-10">
                     We transform off-plan real estate sales by showcasing projects based on their true merit and potential,
