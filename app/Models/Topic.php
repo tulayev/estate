@@ -36,6 +36,20 @@ class Topic extends Model
         return $query->where('active', true);
     }
 
+    public function scopeSearchByTitle($query, $searchTerm)
+    {
+        $locale = app()->getLocale();
+
+        if ($searchTerm) {
+            $query->whereRaw(
+                "LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, '$.\"{$locale}\"'))) LIKE ?",
+                ['%' . strtolower($searchTerm) . '%']
+            );
+        }
+
+        return $query;
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(TopicCategory::class, 'topic_category_id');

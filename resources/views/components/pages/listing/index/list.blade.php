@@ -79,7 +79,8 @@
             viewType: '{{ $viewType }}',
 
             async loadMore() {
-                if (!this.hasMorePages) return;
+                if (!this.hasMorePages)
+                    return;
 
                 this.currentPage++;
 
@@ -88,11 +89,6 @@
                         page: this.currentPage,
                         viewType: this.viewType,
                     });
-
-                    // If onlyLiked filter is applied, add it to the query params
-                    if (this.onlyLikedFilter) {
-                        queryParams.append('onlyLiked', 'true');
-                    }
 
                     const response = await axios.get(`?${queryParams.toString()}`, {
                         headers: {

@@ -32,7 +32,10 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <div id="overlay" class="fixed w-full h-full top-0 left-0 flex justify-center items-center bg-primary" style="z-index: 10001;">
+    <div
+        id="overlay"
+        class="fixed w-full h-full top-0 left-0 flex justify-center items-center bg-primary z-[10001]"
+    >
         <div class="loading"></div>
     </div>
 

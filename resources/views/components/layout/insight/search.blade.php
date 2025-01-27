@@ -1,6 +1,7 @@
 <!-- Search Form -->
 <form
-    id="searchFormInsights"
+    id="searchForm"
+    action="{{ route('pages.insight.index') }}"
     class="uk-visible@s justify-between text-secondary z-10 bg-white font-semibold uppercase rounded-full absolute left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 sm:flex items-center px-3 w-[90vw] lg:w-[70vw] h-[50px] xl:h-[70px] text-sm xl:text-xl"
     autocomplete="off"
 >
@@ -12,7 +13,14 @@
         />
     </div>
 
-    <x-ui.search.search-input />
+    <div class="pr-2 border-r border-borderColor h-full flex items-center w-[80%]">
+        <input
+            type="text"
+            name="title"
+            placeholder="search"
+            class="xl:modal-subtitle text-primary placeholder-secondary bg-transparent border-none text-left outline-none"
+        />
+    </div>
 
     <div class="h-full flex items-center justify-end w-[12%] md:w-[10%] space-x-5">
         <div>
@@ -30,11 +38,11 @@
                 >
                     <li class="uk-active"><a href="#">Active</a></li>
                     <li><a href="#">topic from db</a></li>
-                    
+
                     <li><a href="#">topic from db</a></li>
                     <li><a href="#">topic from db</a></li>
                     <li><a href="#">topic from db</a></li>
-                   
+
                     <li><a href="#">topic from db</a></li>
                     <li><a href="#">topic from db</a></li>
                     <li><a href="#">topic from db</a></li>

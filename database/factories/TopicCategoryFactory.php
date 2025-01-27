@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Faker\Factory as FakerFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,10 +17,13 @@ class TopicCategoryFactory extends Factory
      */
     public function definition(): array
     {
+        $fakerEn = FakerFactory::create('en_US'); // English
+        $fakerRu = FakerFactory::create('ru_RU'); // Russian
+
         return [
             'title' => [
-                'en' => $this->faker->sentence(3),
-                'ru' => $this->faker->sentence(3),
+                'en' => $fakerEn->word,
+                'ru' => $fakerRu->word,
             ],
         ];
     }

@@ -11,9 +11,35 @@ use Illuminate\View\View;
 
 class InsightController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View | string
     {
-        $topics = Topic::active()->get();
+        $topicsQuery = Topic::query()
+            ->active();
+
+        if ($request->has('filter') && $request->get('filter') === 'liked') {
+            $topicsQuery->whereHas('likes', function ($query) {
+                $userId = auth()->id();
+                $ipAddress = request()->ip();
+
+                $query->when($userId, function ($query) use ($userId) {
+                    $query->where('liked_by', $userId);
+                })->when(!$userId, function ($query) use ($ipAddress) {
+                    $query->where('ip_address', $ipAddress);
+                });
+            });
+        }
+
+        if ($request->has('title')) {
+            $topicsQuery->searchByTitle($request->get('title'));
+        }
+
+        $topics = $topicsQuery->paginate(6);
+
+        if ($request->ajax()) {
+            return view('components.pages.insight.index.view-type.list', [
+                'topics' => $topics,
+            ])->render();
+        }
 
         return view('pages.insight.index', [
             'topics' => $topics,

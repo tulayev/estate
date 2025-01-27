@@ -4,7 +4,8 @@
             {{ __('home/media.title') }}
         </h2>
     </div>
-    <div class="swiper sliderPartner">
+
+    <div class="swiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div class="flex justify-center items-center rounded-3xl bg-white px-8 h-[100px] xl:px-10 xl:h-[140px]">
