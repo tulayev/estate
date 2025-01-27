@@ -59,7 +59,7 @@ return [
         'repeat_password' => 'Repeat password',
         'avatar' => 'Avatar',
         'created_at' => 'Created At',
-        'admins_title' => 'Admins',
+        'admins_title' => 'User Management',
         'role_title' => 'Roles',
         'role_name' => 'Title',
 

@@ -23,7 +23,7 @@ class TopicCategoryResource extends ModelResource
 {
     protected string $model = TopicCategory::class;
 
-    protected string $title = 'TopicCategories';
+    protected string $title = 'Topic Categories';
 
     /**
      * @return list<MoonShineComponent|Field>

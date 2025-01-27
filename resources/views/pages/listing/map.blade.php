@@ -40,7 +40,7 @@
         :mapView="true"
     />
 
-    <main class="main-section relative mt-40">
+    <main class="main-section relative mt-2 sm:mt-40">
         <x-layout.listing.search />
     </main>
 
