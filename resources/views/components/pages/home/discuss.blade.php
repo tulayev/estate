@@ -3,8 +3,8 @@
         <h2 class="section-title">
             {{ __('home/discuss.title') }}
         </h2>
-        <button class="primary-button">
-            contact us
+        <button class="primary-button" onclick="document.getElementById('contactSection').scrollIntoView({behavior: 'smooth'})">
+            {{ __('home/discuss.action_1') }}
         </button>
     </div>
 

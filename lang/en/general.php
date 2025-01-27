@@ -17,4 +17,17 @@ return [
     'form_number' => 'Enter your number',
     'form_message' => 'Message',
     'form_submit' => 'Send',
+
+    /*
+     * Newsletter
+     */
+    'newsetter_title' => 'subscribe to our newsletter',
+    'newsetter_email' => 'email',
+    'newsetter_choose' => 'what you\'d like to receive',
+    'newsetter_submit' => 'submit',
+
+    /*
+     * Listing
+     */
+    'see_more' => 'see more',
 ];

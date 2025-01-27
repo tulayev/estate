@@ -11,7 +11,7 @@
         >
             <div class="flex flex-row items-left ">
                 <h1 class="main-title animLeft mt-2 lg:mt-10 ">
-                    the main topic
+                    {{ __('insight/index/main.title') }}
                 </h1>
                 <span class="text-white  text-lg animLeft  ml-2 p-2 lg:mt-10 ">
                     1h

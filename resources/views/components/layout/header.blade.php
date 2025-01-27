@@ -121,6 +121,7 @@
                             <img
                                 src="{{ asset('assets/images/icons/locale-icon.svg') }}"
                                 alt="locale-icon"
+                                class="hidden"
                             />
                         </li>
                     </ul>

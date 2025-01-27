@@ -159,8 +159,8 @@
         </div>
 
         <div class="w-full flex justify-center mt-10">
-           <button class=" bg-primary text-white border-rounded w-full bottom-0 text-xl font-bold h-[60px] md:h-[80px]">
-                See More
+           <button class=" bg-primary text-white border-rounded w-full bottom-0 text-xl font-bold h-[60px] md:h-[80px] uppercase">
+                {{ __('insight/index/card.see_more') }}
             </button>
         </div>
     </div>

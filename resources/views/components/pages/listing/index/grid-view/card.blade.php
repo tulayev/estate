@@ -21,7 +21,7 @@
                     </div>
                 @endif
                 <div class="flex items-center space-x-2">
-                    <button>
+                    <button class="hidden">
                         <img
                             src="{{ asset('assets/images/icons/filter.svg') }}"
                             alt="filter"
@@ -51,7 +51,7 @@
                             alt="verified"
                         />
                         <p class="text-white sm:font-bold">
-                            {{ $hotel->title }}
+                            {{ Str::limit($hotel->title, 5) }}
                         </p>
                     </div>
                     <div>
@@ -66,7 +66,7 @@
         <div class="shadow-card border-rounded mt-[-54px] sm:mt-[-44px] px-3 sm:px-5 pt-[68px] pb-4 sm:pb-6">
             <div class="flex justify-between uppercase text-[#505050] text-sm sm:text-base md:text-lg xl:text-xl sm:font-bold md:font-black">
                 <div>
-                    <p>📍 {{ Str::limit($hotel->location, 10) }}</p>
+                    <p>📍 {{ Str::limit($hotel->location, 5) }}</p>
                 </div>
                 <div class="flex justify-between space-x-6">
                     <p>🛏️ {{ $hotel->bedrooms }}</p>
