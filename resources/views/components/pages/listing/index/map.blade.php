@@ -2,7 +2,7 @@
     'hotels' => null,
 ])
 
-<section class="section-map-view fixed">
+<section class="pt-8 sm:pt-16 md:pt-24 lg:pt-36 xl:pt-10 fixed">
     <div class="container">
         <div class="w-full flex justify-between">
             <div class="collapse-title">
@@ -53,7 +53,7 @@
                     @endforeach
                 </div>
             </div>
-            <div id="mapView" class="border-rounded w-[100vw] h-[100vh] "></div>
+            <div id="mapView" class="border-rounded w-[100vw] h-[100vh]"></div>
         </div>
     @endif
 </section>
