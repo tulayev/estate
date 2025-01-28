@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'en' => 'EN',
-    'ru' => 'RU',
+    'en' => 'EN | USD',
+    'ru' => 'RU | USD',
 ];

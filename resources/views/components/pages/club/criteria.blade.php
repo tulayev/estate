@@ -1,10 +1,10 @@
 <section class="section">
     <div class="container flex items-center justify-between">
         <h2 class="section-title flex space-x-3">
-            entry criteria
+            {{ __('club/criteria.title') }}
         </h2>
-        <button class="primary-button">
-            Apply To Join
+        <button class="primary-button" onclick="document.getElementById('contactSection').scrollIntoView({behavior: 'smooth'})">
+            {{ __('club/criteria.action_1') }}
         </button>
     </div>
 

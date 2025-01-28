@@ -23,7 +23,7 @@
                                 src="{{ asset('assets/images/icons/play.svg') }}"
                                 alt="play"
                             />
-                            <span>Watch a video</span>
+                            <span>{{ __('home/main.action_1') }}</span>
                         </a>
                     </div>
                     <div class="animLeft">
@@ -31,7 +31,7 @@
                             href="#contactSection"
                             class="main-button"
                         >
-                            <span>Contact us</span>
+                            <span>{{ __('home/main.action_2') }}</span>
                         </a>
                     </div>
                 </div>

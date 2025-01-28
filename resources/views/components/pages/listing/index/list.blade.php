@@ -61,7 +61,7 @@
                             @click="loadMore"
                             class="bg-white text-primary rounded-[100px] modal-subtitle py-5 w-full"
                         >
-                            See More
+                            {{ __('general.see_more') }}
                         </button>
                     </div>
                 @endif

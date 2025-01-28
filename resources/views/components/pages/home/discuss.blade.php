@@ -3,8 +3,8 @@
         <h2 class="section-title">
             {{ __('home/discuss.title') }}
         </h2>
-        <button class="primary-button">
-            contact us
+        <button class="primary-button" onclick="document.getElementById('contactSection').scrollIntoView({behavior: 'smooth'})">
+            {{ __('home/discuss.action_1') }}
         </button>
     </div>
 
@@ -14,7 +14,7 @@
             style="background-image: url('{{ asset('assets/images/discuss.png') }}')"
         >
             <p class="text-white uppercase text-xs sm:text-sm md:text-lg xl:text-2xl">
-                We will run your project through our assessment tools so that opportunities and risks are captured and quantified.
+                {{ __('home/discuss.p_1') }}
             </p>
         </div>
     </div>

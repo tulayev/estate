@@ -23,12 +23,10 @@
                     <div class="rounded-lg sm:border-rounded absolute inset-0 bg-[#0F1F3DE5] opacity-90"></div>
                     <div class="relative px-2 sm:px-4 xl:px-11 py-2 sm:py-4 xl:py-8">
                         <h4 class="font-bold uppercase text-white text-sm sm:text-lg xl:text-3xl">
-                            for investors
+                            {{ __('home/verified.for_whom1') }}
                         </h4>
                         <p class="mt-2 xl:mt-4 text-xs sm:text-base lg:text-xl">
-                            “Data & Quality Mark You Can Trust.”<br>
-                            We do the research.<br>
-                            You get the facts, clarity & best terms.
+                            {!! __('home/verified.for_whom1_desc') !!}
                         </p>
                     </div>
                 </div>
@@ -41,10 +39,10 @@
                     <div class="rounded-lg sm:border-rounded absolute inset-0 bg-[#5C687AE5] opacity-90"></div>
                     <div class="relative px-2 sm:px-4 xl:px-11 py-2 sm:py-4 xl:py-8">
                         <h4 class="font-bold uppercase text-white text-sm sm:text-lg xl:text-3xl">
-                            for developers
+                            {{ __('home/verified.for_whom2') }}
                         </h4>
                         <p class="mt-2 xl:mt-4 text-xs sm:text-base lg:text-xl">
-                            “Visibility & Quality Mark That Matters.” We connect you with your buyers.
+                            {!! __('home/verified.for_whom2_desc') !!}
                         </p>
                     </div>
                 </div>

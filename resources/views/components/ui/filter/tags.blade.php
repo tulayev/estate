@@ -7,7 +7,7 @@
     x-data="tags()"
 >
     <h3 class="modal-subtitle text-primary">
-        Tags
+        {{ __('general.filter_popup_tags') }}
         <span class="font-bold">|</span>
         <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetTags">x</span>
         <span x-text="selectedTagNames().join(', ')"></span>

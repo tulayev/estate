@@ -1,10 +1,10 @@
 <section class="section">
     <div class="container flex items-center justify-between">
         <h2 class="section-title flex space-x-3">
-            why partner with us?
+            {{ __('club/partner.title') }}
         </h2>
-        <button class="primary-button">
-            Apply To Join
+        <button class="primary-button" onclick="document.getElementById('contactSection').scrollIntoView({behavior: 'smooth'})">
+            {{ __('club/partner.action_1') }}
         </button>
     </div>
 
@@ -17,7 +17,7 @@
             <div class="absolute border-rounded inset-0 bg-black bg-opacity-10"></div>
             <div class="relative p-4 sm:p-6 lg:px-8 lg:py-4 xl:px-16 xl:py-8">
                 <h2 class="section-title text-[#f4f4f4]">
-                    insights
+                    {{ __('club/partner.insights') }}
                 </h2>
                 <p class="mt-4 text-white text-base md:text-lg lg:text-xl xl:text-3xl">
                     Gain unrivaled market insights specifically tailored to buyer

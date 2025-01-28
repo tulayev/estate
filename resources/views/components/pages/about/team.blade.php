@@ -25,18 +25,13 @@
                     <div class="uk-width-2-3@m">
                         <div class="flex justify-between items-start">
                             <h3 class="uppercase font-bold text-lg sm:text-xl lg:text-2xl xl:text-[30px]">
-                                Pavel Ignatev
+                                {{ __('about/team.team_member1') }}
                             </h3>
                             <span class="text-gray-500 bg-gray-100 px-2 py-1 rounded-full">CEO</span>
                         </div>
                         <!-- Description -->
                         <p class="text-sm sm:text-base md:text-lg xl:text-[24px] mt-4 lg:mt-6">
-                            My experience highlights include top senior positions at
-                            global powerhouses including Ernst & Young (EY), Ancor
-                            International Group, ICM Asset Management, AV Group, Federal
-                            level high stakes investment projects, an extensive
-                            background in private equity-backed investments, and leading
-                            PMO's.
+                            {{ __('about/team.member_experience1') }}
                         </p>
                         <!-- Buttons Section -->
                         <div class="flex flex-col items-start justify-start gap-4 mt-8 xlWide:flex-row">
@@ -87,39 +82,17 @@
 
                 <div class="uk-card-body uk-background-default">
                     <h4 class="uk-text-bold xl:text-[30px] lg:text-[28px] mb-4">
-                        👋 Hello, I'm Pavel, Founder and CEO of Ignatev Estate.
+                        {{ __('about/team.member_bio') }}
                     </h4>
                     <p class="uk-text-light xl:text-[30px] lg:text-[28px]">
-                        — My journey in real estate and finance, rooted in M&A
-                        execution and competitive strategy development at leading
-                        international companies, has led me to create something unique
-                        here in Phuket. At Ignatev Estate, we apply the rigor of
-                        private equity due diligence to off-plan property investments.
-                        Leveraging my experience in corporate and regional strategy,
-                        along with a keen market awareness, I've developed an approach
-                        and business model that clearly sets us apart in the local
-                        real estate market. We don't just look at properties; we
-                        analyze market dynamics, identify competitive advantages, and
-                        assess risks with the precision I've cultivated through years
-                        of high-stakes corporate strategy work. Our comprehensive view
-                        allows us to offer insights that go beyond the typical real
-                        estate transaction.
+                        {{ __('about/team.member_desc1') }}
                     </p>
                     <p class="uk-text-light xl:text-[30px] lg:text-[28px] mt-10">
-                        — My background has taught me that even great developers can
-                        have suboptimal projects, while lesser-known developers might
-                        have hidden gems. That's why we assess every opportunity
-                        individually, providing you with clarity as an investor and
-                        true visibility for real estate developers. One of my proudest
-                        achievements is our robust method for assessing off-plan
-                        property investments, which draws on my experience in M&A
-                        execution and market analysis. We are changing the game in our
-                        industry, providing a level of clarity and confidence that
-                        wasn't available before.
+                         {{ __('about/team.member_desc2') }}
                     </p>
                     <div class="uk-text-center uk-margin-top">
                         <button class="border-none uk-button uk-button-default uk-text-uppercase uk-text-bold">
-                            Hide
+                            {{ __('about/team.action_btn') }}
                         </button>
                     </div>
                 </div>

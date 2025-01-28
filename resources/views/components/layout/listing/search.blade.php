@@ -65,7 +65,7 @@
     >
         <div class="flex justify-between items-center">
             <h2 class="section-title">
-                filters
+                {{ __('general.filter_popup_name') }}
             </h2>
 
             <div>
@@ -111,7 +111,7 @@
             <x-ui.filter.tags :tags="$tags" />
         @endif
 
-        <!-- Show Results button -->
+        <!--  Results button -->
         <div
             x-data="filtersHandler()"
             class="mt-4 sm:mt-6 md:mt-8 lg:mt-12 xl:mt-24"
@@ -141,7 +141,7 @@
                     },
                 });
 
-                this.buttonText = `show ${response.data.count === 0 ? '' : response.data.count} results`;
+                 
             } catch (error) {
                 console.error('Error updating results count:', error);
                 this.buttonText = 'Error loading results';

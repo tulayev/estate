@@ -11,13 +11,12 @@
                     {{ __('home/problem.title') }}
                 </h2>
                 <p class="text-white text-sm lg:text-base xl:text-2xl mt-4 sm:mt-5 lg:mt-10">
-                    We transform off-plan real estate sales by showcasing projects based on their true merit and potential,
-                    not just an agent’s reputation or glossy brochures.
+                    {{ __('home/problem.p_1') }}
                 </p>
                 <div class="flex items-center space-x-4 mt-4 sm:mt-8 lg:mt-10 xl:mt-20">
-                    <p class="text-white font-bold text-xs xl:text-xl">How we serve</p>
-                    <button class="primary-button text-xs xl:text-lg">Investors</button>
-                    <button class="primary-button bg-[#5C687A] text-xs xl:text-lg">developers</button>
+                    <p class="text-white font-bold text-xs xl:text-xl">{{ __('home/problem.p_2') }}</p>
+                    <button class="primary-button text-xs xl:text-lg">{{ __('home/problem.for_investors') }}</button>
+                    <button class="primary-button bg-[#5C687A] text-xs xl:text-lg">{{ __('home/problem.for_developers') }}</button>
                 </div>
             </div>
         </div>
@@ -32,7 +31,7 @@
                         alt="primary"
                     />
                     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        <h4 class="text-2xl text-white font-bold uppercase">primary</h4>
+                        <h4 class="text-2xl text-white font-bold uppercase">{{ __('home/problem.card_1') }}</h4>
                     </div>
                 </div>
             </div>
@@ -45,7 +44,7 @@
                         alt="resale"
                     />
                     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        <h4 class="text-2xl text-white font-bold uppercase">resale</h4>
+                        <h4 class="text-2xl text-white font-bold uppercase">{{ __('home/problem.card_2') }}</h4>
                     </div>
                 </div>
             </div>
@@ -58,7 +57,7 @@
                         alt="land"
                     />
                     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        <h4 class="text-2xl text-white font-bold uppercase">land</h4>
+                        <h4 class="text-2xl text-white font-bold uppercase">{{ __('home/problem.card_3') }}</h4>
                     </div>
                 </div>
             </div>

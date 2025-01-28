@@ -1,10 +1,10 @@
 <section class="section">
     <div class="container flex items-center justify-between">
         <h2 class="section-title flex space-x-3">
-            what is Insider Club?
+            {{ __('club/club.title') }}
         </h2>
-        <button class="primary-button">
-            Apply To Join
+        <button class="primary-button" onclick="document.getElementById('contactSection').scrollIntoView({behavior: 'smooth'})">
+            {{ __('club/club.action_1') }}
         </button>
     </div>
 
@@ -18,7 +18,7 @@
             <div class="relative p-6 w-full xl:w-1/2">
                 <div>
                     <h2 class="font-bold text-white uppercase text-lg xl:text-4xl">
-                        for investors
+                        {{ __('club/club.for_investors') }}
                     </h2>
                     <p class="mt-4 text-white text-sm sm:text-base md:text-lg xl:text-xl xlWide:text-2xl italic text-balance">
                         Tired of being the last to know and the last to act? The
@@ -44,7 +44,7 @@
             <div class="relative p-6 w-full xl:w-1/2">
                 <div>
                     <h2 class="font-bold text-white uppercase text-lg xl:text-4xl">
-                        for developers
+                        {{ __('club/club.for_developers') }}
                     </h2>
                     <p class="mt-4 text-white text-sm sm:text-base md:text-lg xl:text-xl xlWide:text-2xl italic text-balance">
                         Picture your vision connecting with its ideal audience before

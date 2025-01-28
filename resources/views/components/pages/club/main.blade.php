@@ -11,7 +11,7 @@
         >
             <div class="flex flex-row items-left mt-2 lg:mt-10 ">
                 <h1 class="main-title animLeft  ">
-                    insider club
+                    {{ __('club/main.title') }}
                 </h1>
                 
                 <div class="inline-flex flex-row sm:flex-row sm:items-center sm:space-x-3 space-y-3 sm:space-y-0 ml-2">
@@ -24,7 +24,7 @@
                                 src="{{ asset('assets/images/icons/play.svg') }}"
                                 alt="play"
                             />
-                            <span>Watch a video</span>
+                            <span>{{ __('club/main.action_1') }}</span>
                         </a>
                     </div>
                     
@@ -46,7 +46,7 @@
                             href="#modalForm"
                             class="main-button-about bg-white/10"
                         >
-                            <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis"> Clear</span>
+                            <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('club/main.tag_1') }}</span>
                         </a>
                     </div>
                     <div class="animLeft">
@@ -54,7 +54,7 @@
                             href="#modalForm"
                             class="main-button-about bg-white/10"
                         >
-                            <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">Reliable</span>
+                            <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('club/main.tag_2') }}</span>
                         </a>
                     </div>
                     <div class="animLeft">
@@ -62,7 +62,7 @@
                             href="#modalForm"
                             class="main-button-about bg-white/10"
                         >
-                            <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">Exclusive</span>
+                            <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('club/main.tag_3') }}</span>
                         </a>
                     </div>
                 </div>
