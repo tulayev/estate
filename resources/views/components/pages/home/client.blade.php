@@ -19,15 +19,15 @@
                     />
                     <div class="border-rounded h-full overflow-hidden absolute w-[90%] left-1/2 top-[-20px] -translate-x-1/2">
                         <img
-                            class="absolute left-0 top-0 z-[99]"
+                            class="hidden absolute left-0 top-0 z-[99]"
                             src="{{ asset('assets/images/client_1.png') }}"
                             alt="client 1"
                         />
                     </div>
                     <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white w-[80%]">
-                        <h3 class="second-title whitespace-nowrap pb-5">john wick</h3>
+                        <h3 class="second-title whitespace-nowrap pb-5">{!! __('home/client.client_name_1') !!}</h3>
                         <p class="text-sm md:text-xl">
-                            Are you ready to be part of something extraordinary? Welcome to the Insider’s Club
+                            {{ __('home/client.client_desc_1') }}
                         </p>
                     </div>
                 </div>
@@ -41,15 +41,15 @@
                     />
                     <div class="border-rounded h-full overflow-hidden absolute w-[90%] left-1/2 top-[-20px] -translate-x-1/2">
                         <img
-                            class="absolute left-0 top-0 z-[99]"
+                            class="hidden absolute left-0 top-0 z-[99]"
                             src="{{ asset('assets/images/client_2.png') }}"
                             alt="client 2"
                         />
                     </div>
                     <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white w-[80%]">
-                        <h3 class="second-title whitespace-nowrap pb-5">frodo baggins</h3>
+                        <h3 class="second-title whitespace-nowrap pb-5">{!! __('home/client.client_name_2') !!}</h3>
                         <p class="text-sm md:text-xl">
-                            Are you ready to be part of something extraordinary? Welcome to the Insider’s Club
+                            {{ __('home/client.client_desc_2') }}
                         </p>
                     </div>
                 </div>
@@ -63,15 +63,15 @@
                     />
                     <div class="border-rounded h-full overflow-hidden absolute w-[90%] left-1/2 top-[-20px] -translate-x-1/2">
                         <img
-                            class="absolute left-0 top-[-10px] z-[99] "
+                            class="hidden absolute left-0 top-[-10px] z-[99] "
                             src="{{ asset('assets/images/client_3.png') }}"
                             alt="client 3"
                         />
                     </div>
                     <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white w-[80%]">
-                        <h3 class="second-title whitespace-nowrap pb-5">ivan vasilevich</h3>
+                        <h3 class="second-title whitespace-nowrap pb-5">{!! __('home/client.client_name_3') !!}</h3>
                         <p class="text-sm md:text-xl">
-                            Are you ready to be part of something extraordinary? Welcome to the Insider’s Club
+                            {{ __('home/client.client_desc_3') }}
                         </p>
                     </div>
                 </div>

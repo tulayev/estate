@@ -23,7 +23,7 @@
     >
         <input
             type="text"
-            placeholder="price"
+            placeholder="{{ __('general.search_price') }}"
             class="modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none"
             :value="(minPriceHidden !== 0 && maxPriceHidden !== 0) ? `From ${minPriceHidden} To ${maxPriceHidden}` : ''"
             readonly

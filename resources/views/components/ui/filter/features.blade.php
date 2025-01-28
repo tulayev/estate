@@ -7,14 +7,16 @@
     x-data="features()"
 >
     <h3 class="modal-subtitle text-primary">
-        Facilities
+        {{ __('general.filter_popup_facilities') }}
         <span class="font-bold">|</span>
         <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetFeatures">x</span>
         <span x-text="selectedFeatureNames().join(', ')"></span>
     </h3>
     <div class="mt-6 sm:mt-8 xl:mt-12 uk-grid-column-medium uk-child-width-1-1 uk-child-width-1-2@xl" uk-grid>
         <div>
-            <h4 class="modal-subtitle text-secondary">bathrooms</h4>
+            <h4 class="modal-subtitle text-secondary">
+                {{ __('general.filter_popup_bathrooms') }}
+            </h4>
             <div class="shadow-card border-rounded mt-3 p-4 sm:p-6 xl:px-14 xl:py-7 flex items-center justify-around xl:justify-between">
                 <img src="{{ asset('assets/images/icons/bath.png') }}" alt="bath" />
                 <x-ui.filter.ranges.bath-range
@@ -27,7 +29,9 @@
             </div>
         </div>
         <div>
-            <h4 class="modal-subtitle text-secondary">bedrooms</h4>
+            <h4 class="modal-subtitle text-secondary">
+                {{ __('general.filter_popup_bedrooms') }}
+            </h4>
             <div class="shadow-card border-rounded mt-3 p-4 sm:p-6 xl:px-14 xl:py-7 flex items-center justify-around xl:justify-between">
                 <img src="{{ asset('assets/images/icons/bed.png') }}" alt="bed" />
                 <x-ui.filter.ranges.bed-range

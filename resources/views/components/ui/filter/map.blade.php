@@ -8,7 +8,7 @@
     x-init="initMap()"
 >
     <h3 class="modal-subtitle text-primary">
-        Location
+        {{ __('general.filter_popup_location') }}
         <span class="font-bold">|</span>
         <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetLocations">x</span>
         <span x-text="selectedLocationsString().join(', ')"></span>

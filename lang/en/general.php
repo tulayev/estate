@@ -30,4 +30,27 @@ return [
      * Listing
      */
     'see_more' => 'see more',
+
+    /*
+     * Search
+     */
+    'search_keywords' => 'keywords',
+    'search_type' => 'type',
+    'search_location' => 'location',
+    'search_price' => 'price',
+
+    /*
+     * Filter
+     */
+    'filter_popup_name' => 'filters',
+    'filter_popup_type' => 'type',
+    'filter_popup_keywords' => 'keywords',
+    'filter_popup_keywords_placeholder' => 'for example',
+    'filter_popup_price' => 'price range',
+    'filter_popup_location' => 'location',
+    'filter_popup_facilities' => 'facilities',
+    'filter_popup_bedrooms' => 'bedrooms',
+    'filter_popup_bathrooms' => 'bathrooms',
+    'filter_popup_tags' => 'tags',
+    'filter_popup_submit' => 'show results',    
 ];

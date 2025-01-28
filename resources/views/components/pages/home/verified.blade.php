@@ -26,9 +26,7 @@
                             {{ __('home/verified.for_whom1') }}
                         </h4>
                         <p class="mt-2 xl:mt-4 text-xs sm:text-base lg:text-xl">
-                            “Data & Quality Mark You Can Trust.”<br>
-                            We do the research.<br>
-                            You get the facts, clarity & best terms.
+                            {!! __('home/verified.for_whom1_desc') !!}
                         </p>
                     </div>
                 </div>
@@ -44,7 +42,7 @@
                             {{ __('home/verified.for_whom2') }}
                         </h4>
                         <p class="mt-2 xl:mt-4 text-xs sm:text-base lg:text-xl">
-                            “Visibility & Quality Mark That Matters.” We connect you with your buyers.
+                            {!! __('home/verified.for_whom2_desc') !!}
                         </p>
                     </div>
                 </div>

@@ -5,7 +5,7 @@
     <input
         type="text"
         name="location"
-        placeholder="location"
+        placeholder="{{ __('general.search_location') }}"
         class="modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none"
         x-model="query"
         @input.debounce="fetchLocations"

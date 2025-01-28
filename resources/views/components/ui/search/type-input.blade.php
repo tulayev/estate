@@ -9,7 +9,7 @@
     <input type="hidden" name="type" x-model="id" />
     <input
         type="text"
-        placeholder="type"
+        placeholder="{{ __('general.search_type') }}"
         class="modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none"
         x-model="query"
         @focus="open = true"

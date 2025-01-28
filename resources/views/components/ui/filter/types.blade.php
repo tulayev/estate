@@ -7,7 +7,7 @@
     x-data="types()"
 >
     <h3 class="modal-subtitle text-primary">
-        Type
+        {{ __('general.filter_popup_type') }}
         <span class="font-bold">|</span>
         <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetTypes">x</span>
         <span x-text="selectedTypeNames().join(', ')"></span>
