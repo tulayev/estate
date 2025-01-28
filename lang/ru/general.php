@@ -17,4 +17,17 @@ return [
     'form_number' => 'Введите ваш номер телефона',
     'form_message' => 'Сообщение',
     'form_submit' => 'Отправить',
+
+    /*
+     * Newsletter
+     */
+    'newsetter_title' => 'наш дайджест',
+    'newsetter_email' => 'ваша почта',
+    'newsetter_choose' => 'выберите тему',
+    'newsetter_submit' => 'отправить',
+
+    /*
+     * Listing
+     */
+    'see_more' => 'далее',
 ];

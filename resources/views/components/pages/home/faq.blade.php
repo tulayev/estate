@@ -3,8 +3,8 @@
         <h2 class="section-title flex space-x-3">
             {{ __('home/faq.title') }}
         </h2>
-        <button class="primary-button">
-            ask us something
+        <button class="primary-button" onclick="document.getElementById('contactSection').scrollIntoView({behavior: 'smooth'})">
+            {{ __('home/faq.action_1') }}
         </button>
     </div>
 

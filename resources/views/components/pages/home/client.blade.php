@@ -4,7 +4,7 @@
             {{ __('home/client.title') }}
         </h2>
         <button class="primary-button">
-            add your review
+            {{ __('home/client.action_1') }}
         </button>
     </div>
 
