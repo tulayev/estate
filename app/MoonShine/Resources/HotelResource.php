@@ -16,6 +16,7 @@ use MoonShine\Fields\Relationships\BelongsToMany;
 use MoonShine\Fields\Slug;
 use MoonShine\Fields\Switcher;
 use MoonShine\Fields\Text;
+use MoonShine\Fields\Textarea;
 use MoonShine\Fields\TinyMce;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
@@ -87,8 +88,6 @@ class HotelResource extends ModelResource
 
             Text::make('Description', 'description'),
 
-            Text::make('Type', 'type'),
-
             Text::make('Code Name', 'codename'),
 
             Text::make('Location', 'location'),
@@ -132,8 +131,6 @@ class HotelResource extends ModelResource
                 TinyMce::make('Description', 'description')
                     ->required(),
 
-                Text::make('Type', 'type'),
-
                 Text::make('Code Name', 'codename'),
 
                 Text::make('Location', 'location')
@@ -172,6 +169,10 @@ class HotelResource extends ModelResource
                     ->allowedExtensions(['png', 'jpg', 'jpeg'])
                     ->removable()
                     ->multiple(),
+
+                Text::make('Main Image URL', 'main_image_old'),
+
+                Textarea::make('Gallery URLs (separate by coma)', 'gallery_old'),
             ]),
         ];
     }

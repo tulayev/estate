@@ -77,13 +77,15 @@
             </div>
             <!-- Description -->
             <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 rounded-[28px] shadow-card bg-white px-3 py-5">
-                <div class="text-primary uppercase border-b border-borderColor text-xs sm:text-sm md:text-lg xl:text-xl sm:font-bold xl:font-black px-4 pb-4 md:pb-8">
+                <div class="text-primary text-center items-center uppercase border-b border-borderColor text-xs sm:text-sm md:text-lg xl:text-xl sm:font-bold xl:font-black px-4 pb-4 md:pb-8">
                     <div class="uk-child-width-1-2 uk-child-width-1-4@s uk-grid-small" uk-grid>
-                        <div>
-                            <p>
-                                🏠 {{ implode(', ', $hotel->types->pluck('name')->toArray()) }}
-                            </p>
-                        </div>
+                        @if ($hotel->types)
+                            <div>
+                                <p>
+                                    🏠 {{ implode(', ', $hotel->types->pluck('name')->toArray()) }}
+                                </p>
+                            </div>
+                        @endif
                         <div>
                             <p>
                                 📐 {{ $hotel->area }} M<sup>2</sup>
@@ -114,11 +116,11 @@
                         {!! $hotel->description !!}
                     </p>
                     <p
-                        class="collapse-title font-normal normal-case truncate"
+                        class="collapse-title font-normal normal-case"
                         x-show="!expanded"
                         x-cloak
                     >
-                        {!! Str::limit(strip_tags($hotel->description), 150) !!}
+                        {!! Str::limit(strip_tags($hotel->description), 350) !!}
                     </p>
                     <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 text-center">
                         <button
@@ -137,7 +139,7 @@
                     <div class="uk-child-width-1-2 uk-child-width-1-3@m uk-grid-small" uk-grid>
                         @foreach($hotel->features as $feature)
                             <div>
-                                <div class="shadow-card rounded-[28px] flex justify-center items-center bg-white py-6">
+                                <div class="shadow-card rounded-[28px] flex justify-center items-center bg-white py-3 sm:py-6">
                                     <span class="collapse-title">
                                         {{ $feature->name }}
                                     </span>

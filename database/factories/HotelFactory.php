@@ -24,8 +24,8 @@ class HotelFactory extends Factory
             'title' => $this->faker->company,
             'slug' => $this->faker->unique()->slug,
             'description' => [
-                'en' => $fakerEn->realTextBetween(200, 400, 2),
-                'ru' => $fakerRu->realTextBetween(200, 400, 2),
+                'en' => $fakerEn->realTextBetween(900, 1000, 2),
+                'ru' => $fakerRu->realTextBetween(900, 1000, 2),
             ],
             'codename' => $this->faker->optional()->word,
             'location' => [

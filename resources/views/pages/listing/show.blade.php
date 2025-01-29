@@ -11,7 +11,15 @@
     <x-pages.listing.show.history />
 
     <x-pages.listing.show.floor
-        :floors="$hotel->floors"
+        :hotel="$hotel"
     />
+
+    <x-pages.listing.show.similar-listing
+        :similarHotels="$similarHotels"
+    />
+
+    <x-layout.contact />
+
+    <x-layout.footer />
 
 </x-layout.listing-layout>

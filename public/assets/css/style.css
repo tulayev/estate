@@ -69,7 +69,7 @@ a:hover {
     background-image: url("../images/icons/minus.svg");
 }
 
-.uk-nav > li > a {
+.uk-nav>li>a {
     padding-top: 14px;
     padding-bottom: 14px;
 }
