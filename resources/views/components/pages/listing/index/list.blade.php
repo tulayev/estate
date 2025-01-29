@@ -7,7 +7,7 @@
     <div class="container pb-10 sm:pb-24">
         <div class="w-full flex justify-between">
             <div class="collapse-title">
-                For sale | off plan
+                {{ __('listing/index/list.for_sale_off_plan') }}
             </div>
             <div class="flex items-center space-x-2 md:space-x-4 xl:space-x-8">
                 <a href="{{ route('pages.listing.index', ['viewType' => 'liked']) }}">

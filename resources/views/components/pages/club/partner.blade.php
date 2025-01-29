@@ -20,12 +20,7 @@
                     {{ __('club/partner.insights') }}
                 </h2>
                 <p class="mt-4 text-white text-base md:text-lg lg:text-xl xl:text-3xl">
-                    Gain unrivaled market insights specifically tailored to buyer
-                    demographics, enabling developers to make informed decisions that
-                    align with market demand. Access to a network of committed
-                    investors who are actively interested in Phuket’s off-plan real
-                    estate, positioning your project in front of the right audience
-                    from the start.
+                    {!! __('club/partner.insights_desc') !!}
                 </p>
             </div>
         </div>
@@ -37,15 +32,10 @@
             <div class="absolute border-rounded inset-0 bg-black bg-opacity-80"></div>
             <div class="relative p-4 sm:p-6 lg:px-8 lg:py-4 xl:px-16 xl:py-8">
                 <h2 class="section-title text-[#f4f4f4]">
-                    project elevation
+                    {{ __('club/partner.project_elevation') }}
                 </h2>
                 <p class="mt-4 text-white text-base md:text-lg lg:text-xl xl:text-3xl">
-                    Gain unrivaled market insights specifically tailored to buyer
-                    demographics, enabling developers to make informed decisions that
-                    align with market demand. Access to a network of committed
-                    investors who are actively interested in Phuket’s off-plan real
-                    estate, positioning your project in front of the right audience
-                    from the start.
+                    {!! __('club/partner.project_elevation_desc') !!}
                 </p>
             </div>
         </div>

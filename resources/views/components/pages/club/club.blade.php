@@ -21,11 +21,7 @@
                         {{ __('club/club.for_investors') }}
                     </h2>
                     <p class="mt-4 text-white text-sm sm:text-base md:text-lg xl:text-xl xlWide:text-2xl italic text-balance">
-                        Tired of being the last to know and the last to act? The
-                        Insider’s Club changes the game. Here, you’re not just ahead of
-                        the curve—you define it. From exclusive first looks to VIP site
-                        tours, we offer privileges that turn market insights into your
-                        competitive edge. Ready to shift from observer to leader?
+                        {!! __('club/club.for_investors_desc') !!}
                     </p>
                 </div>
             </div>
@@ -47,12 +43,7 @@
                         {{ __('club/club.for_developers') }}
                     </h2>
                     <p class="mt-4 text-white text-sm sm:text-base md:text-lg xl:text-xl xlWide:text-2xl italic text-balance">
-                        Picture your vision connecting with its ideal audience before
-                        construction even begins. The Insider’s Club isn’t just a
-                        platform; it’s a community—a direct pathway to buyers who
-                        understand your vision. We’re not just finding customers; we’re
-                        building advocates. Are you ready to stop selling and start
-                        inspiring?
+                        {!! __('club/club.for_developers_desc') !!}
                     </p>
                 </div>
             </div>

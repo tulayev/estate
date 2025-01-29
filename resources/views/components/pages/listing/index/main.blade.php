@@ -11,14 +11,14 @@
         >
             <div class="flex flex-row items-left ">
                 <h1 class="main-title animLeft mt-2 lg:mt-10 ">
-                    new listing
+                    {{ __('listing/index/main.title') }}
                 </h1>
 
             </div>
 
             <div class="animLeft hidden sm:flex text-sm lg:text-lg mt-2 lg:mt-10">
                 <div class="pl-2 text-white">
-                    Buying a property with the intent to sell it later—whether in the short or long term—requires strategic planning and market insight. At *Ignatev Estate*, we specialize in identifying properties that are not only great investments now but will also be in demand when you're ready to sell. Here’s how to ensure the property you buy today is something you’ll be able to sell tomorrow, for profit or convenience.
+                    {!! __('listing/index/main.main_desc') !!}
                 </div>
             </div>
 
@@ -29,7 +29,7 @@
                             href="#modalForm"
                             class="main-button-about bg-[#69A8A4]"
                         >
-                            <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis"> research</span>
+                            <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('listing/index/main.tag_1') }}</span>
                         </a>
                     </div>
                     <div class="animLeft">
@@ -37,7 +37,7 @@
                             href="#modalForm"
                             class="main-button-about bg-[#23334B]"
                         >
-                            <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">Luxury</span>
+                            <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('listing/index/main.tag_2') }}</span>
                         </a>
                     </div>
                     <div class="animLeft">
@@ -45,7 +45,7 @@
                             href="#modalForm"
                             class="main-button-about bg-[#767E94]"
                         >
-                            <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">summer</span>
+                            <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('listing/index/main.tag_3') }}</span>
                         </a>
                     </div>
                 </div>

@@ -34,8 +34,7 @@
 
             <div class="animLeft hidden sm:flex text-sm lg:text-lg mt-2 lg:mt-10">
                 <div class="pl-2 text-white ">
-                    Are you ready to be part of something extraordinary?<br>
-                    Welcome to the Insider’s Club, where the future of Phuket’s real estate isn’t just forecasted — it’s shaped.
+                    {!! __('club/main.main_desc') !!}
                 </div>
             </div>
 
