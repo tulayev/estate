@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'about ignatev estate.',
+    'title' => 'about ignatev estate',
     '2017_desc' => 'Our journey with Phuket\'s off-plan real estate market began in
                             2017, not as service providers, but as investors. Despite the
                             market\'s growth potential, we quickly discovered significant

@@ -120,7 +120,7 @@
                     <span class="content-name">{{ __('general.form_message') }}</span>
                 </label>
             </div>
-            <button class="absolute bg-primary text-white border-rounded w-full bottom-0 text-xl font-bold h-[60px] md:h-[80px]">
+            <button class="absolute bg-primary text-white border-rounded w-full bottom-0 text-xl font-bold h-[60px] md:h-[80px] uppercase">
                 {{ __('general.form_submit') }}
             </button>
         </form>

@@ -43,11 +43,11 @@
     }
 
     .section-title {
-        @apply leading-none text-primary uppercase text-2xl font-bold xl:text-[55px] xl:font-black;
+        @apply leading-none text-primary uppercase mr-[1rem] text-[1.5rem] font-bold xl:text-[45px] xl:font-black;
     }
 
     .section-title-white {
-        @apply text-white uppercase font-bold xl:font-black text-2xl xl:text-[55px];
+        @apply text-white uppercase font-bold xl:font-black text-2xl xl:text-[45px];
     }
 
     .second-title {

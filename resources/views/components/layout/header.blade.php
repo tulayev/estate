@@ -92,13 +92,13 @@
                         </li>
                     </ul>
                     <!-- Locale Switcher -->
-                    <ul class="{{ $mapView ? '' : 'bg-opacity-10' }} animRight flex justify-between items-center rounded-[100px] bg-white relative md:w-[60px] xl:w-[120px] xxl:w-[235px] md:ml-4 md:pl-2 xl:ml-6 xl:pl-3 xxl:ml-10 xxl:pl-5">
+                    <ul class="{{ $mapView ? '' : 'bg-opacity-10' }} animRight flex justify-between items-center rounded-[100px] bg-white relative md:w-[60px] xl:w-[120px] xxl:w-[235px] md:ml-4 md:pl-2 xl:ml-6 xl:pl-6 xxl:ml-[4.5rem] xxl:pl-[4.5rem]">
                         <li class="md:font-semibold lg:font-bold md:text-sm xl:text-base xxl:text-lg xxl:font-black">
                             <a href="#">
                                 {{ config()->get('locales')[app()->getLocale()] }}
                             </a>
                             <div
-                                class="rounded-lg p-2.5 min-w-10 xxl:p-4 xxl:min-w-16"
+                                class="rounded-lg p-2.5 min-w-12 xxl:p-4 xxl:min-w-16"
                                 uk-dropdown="pos: bottom-justify; animation: uk-animation-slide-top-small; duration: 400; mode: click"
                             >
                                 <ul>
