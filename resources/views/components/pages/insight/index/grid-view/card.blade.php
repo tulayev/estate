@@ -13,7 +13,7 @@
             <div class="flex justify-between items-center z-10">
                 <div class="flex items-center space-x-2">
                     <div class="card-tag-button bg-[#5A6BC9bb]">
-                        {{ $topic->category->title }}
+                        {{ Str::limit($topic->category->title, 3) }}
                     </div>
                 </div>
                 <div class="flex items-center space-x-2">
@@ -36,7 +36,7 @@
                 <div class="flex justify-between items-center uppercase text-sm sm:text-base md:text-lg">
                     <div class="flex items-center space-x-2">
                         <p class="text-white sm:font-bold">
-                            {{ $topic->title }}
+                            {{ Str::limit($topic->title, 10) }}
                         </p>
                     </div>
                     <div>

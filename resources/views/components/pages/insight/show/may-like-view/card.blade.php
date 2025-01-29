@@ -12,7 +12,7 @@
             <!-- Image Top -->
             <div class="flex justify-end items-center z-10">
                 <h3 class="card-tag-button bg-[#5A6BC9bb]">
-                    {{ $topic->category->title }}
+                    {{ Str::limit($topic->category->title, 3) }}
                 </h3>
             </div>
             <!-- Image Bottom -->
@@ -20,7 +20,7 @@
                 href="{{ route('pages.insight.show', $topic->slug) }}"
                 class="z-10"
             >
-                {{ Str::limit($topic->title, 24) }}
+                {{ Str::limit($topic->title, 10) }}
             </a>
         </div>
     </div>
