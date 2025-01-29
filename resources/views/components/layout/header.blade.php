@@ -98,13 +98,13 @@
                                 {{ config()->get('locales')[app()->getLocale()] }}
                             </a>
                             <div
-                                class="rounded-lg p-2.5 min-w-12 xxl:p-4 xxl:min-w-16"
+                                class="rounded-lg p-2.5 "
                                 uk-dropdown="pos: bottom-justify; animation: uk-animation-slide-top-small; duration: 400; mode: click"
                             >
                                 <ul>
                                     @foreach(config()->get('locales') as $k => $v)
                                         @if($k !== app()->getLocale())
-                                            <li>
+                                            <li class="text-center whitespace-nowrap">
                                                 <a
                                                     href="{{ route('change-locale', $k) }}"
                                                     class="text-primary"
