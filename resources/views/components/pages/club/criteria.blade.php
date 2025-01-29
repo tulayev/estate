@@ -10,7 +10,7 @@
 
     <div class="container pt-6 md:pt-12 xl:pt-24">
         <div class="w-full">
-            <ul class="uk-nav-default uk-nav-parent-icon" uk-nav="multiple: false">
+           <ul class="uk-nav-default uk-nav-parent-icon" uk-nav="multiple: false">
                 <li class="uk-parent">
                     <a href="#">
                         <img
@@ -19,17 +19,13 @@
                             alt="icon"
                         />
                         <span class="sm:ml-[12px] collapse-title">
-                            Off-Plan Property Sales
-                            <br class="sm:hidden" />
-                            for Buyers and Investors
+                            {!! __('home/value.ul_item_name_1') !!}
                         </span>
                     </a>
                     <ul class="uk-nav-sub">
                         <li>
                             <p class="text-sm sm:text-xl py-2 sm:py-4">
-                                We connect buyers and investors to real opportunities
-                                through carefully selected off-plan projects that offer
-                                genuine value and clear potential.
+                                {!! __('home/value.ul_item_name_1_desc') !!}
                             </p>
                         </li>
                     </ul>
@@ -44,15 +40,13 @@
                             alt="icon"
                         />
                         <span class="sm:ml-[12px] collapse-title">
-                            personalized Investment Insights
+                            {!! __('home/value.ul_item_name_2') !!}
                         </span>
                     </a>
                     <ul class="uk-nav-sub">
                         <li>
                             <p class="text-sm sm:text-xl py-2 sm:py-4">
-                                We connect buyers and investors to real opportunities
-                                through carefully selected off-plan projects that offer
-                                genuine value and clear potential.
+                                {!! __('home/value.ul_item_name_2_desc') !!}
                             </p>
                         </li>
                     </ul>
@@ -67,15 +61,13 @@
                             alt="icon"
                         />
                         <span class="sm:ml-[12px] collapse-title">
-                            Exclusive Pre-Sale Access
+                            {!! __('home/value.ul_item_name_3') !!}
                         </span>
                     </a>
                     <ul class="uk-nav-sub">
                         <li>
                             <p class="text-sm sm:text-xl py-2 sm:py-4">
-                                We connect buyers and investors to real opportunities
-                                through carefully selected off-plan projects that offer
-                                genuine value and clear potential.
+                                {!! __('home/value.ul_item_name_3_desc') !!}
                             </p>
                         </li>
                     </ul>
@@ -90,15 +82,13 @@
                             alt="icon"
                         />
                         <span class="sm:ml-[12px] collapse-title">
-                            Insider Club for Investors
+                            {!! __('home/value.ul_item_name_4') !!}
                         </span>
                     </a>
                     <ul class="uk-nav-sub">
                         <li>
                             <p class="text-sm sm:text-xl py-2 sm:py-4">
-                                We connect buyers and investors to real opportunities
-                                through carefully selected off-plan projects that offer
-                                genuine value and clear potential.
+                                {!! __('home/value.ul_item_name_4_desc') !!}
                             </p>
                         </li>
                     </ul>
@@ -113,15 +103,13 @@
                             alt="icon"
                         />
                         <span class="sm:ml-[12px] collapse-title">
-                            Helping Developers Sell Faster
+                            {!! __('home/value.ul_item_name_5') !!}
                         </span>
                     </a>
                     <ul class="uk-nav-sub">
                         <li>
                             <p class="text-sm sm:text-xl py-2 sm:py-4">
-                                We connect buyers and investors to real opportunities
-                                through carefully selected off-plan projects that offer
-                                genuine value and clear potential.
+                                {!! __('home/value.ul_item_name_5_desc') !!}
                             </p>
                         </li>
                     </ul>
@@ -136,15 +124,13 @@
                             alt="icon"
                         />
                         <span class="sm:ml-[12px] collapse-title">
-                            Off-Plan Project Listing Platform
+                            {!! __('home/value.ul_item_name_6') !!}
                         </span>
                     </a>
                     <ul class="uk-nav-sub">
                         <li>
                             <p class="text-sm sm:text-xl py-2 sm:py-4">
-                                We connect buyers and investors to real opportunities
-                                through carefully selected off-plan projects that offer
-                                genuine value and clear potential.
+                                {!! __('home/value.ul_item_name_6_desc') !!}
                             </p>
                         </li>
                     </ul>
