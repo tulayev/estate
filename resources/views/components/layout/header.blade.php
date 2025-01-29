@@ -92,7 +92,7 @@
                         </li>
                     </ul>
                     <!-- Locale Switcher -->
-                    <ul class="{{ $mapView ? '' : 'bg-opacity-10' }} animRight flex justify-between items-center rounded-[100px] bg-white relative md:w-[60px] xl:w-[120px] xxl:w-[235px] md:ml-4 md:pl-2 xl:ml-6 xl:pl-6 xxl:ml-[4.5rem] xxl:pl-[4.5rem]">
+                    <ul class="{{ $mapView ? '' : 'bg-opacity-10' }} animRight flex justify-between items-center rounded-[100px] bg-white relative md:w-[60px] xl:w-[120px] xxl:w-[235px] md:ml-4 md:pl-2 xl:ml-6 xl:pl-6 xxl:ml-[72px] xxl:pl-[72px]">
                         <li class="md:font-semibold lg:font-bold md:text-sm xl:text-base xxl:text-lg xxl:font-black">
                             <a href="#">
                                 {{ config()->get('locales')[app()->getLocale()] }}
