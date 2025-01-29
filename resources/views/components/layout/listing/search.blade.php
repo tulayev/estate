@@ -128,8 +128,13 @@
 
 <script>
     const filtersHandler = () => ({
+        buttonTextsLocalized: {
+            en: 'show results',
+            ru: 'показать результаты'
+        },
+        locale: '{{ app()->getLocale() }}',
         API_URI: '{{ route('hotels.search.count') }}',
-        buttonText: 'Loading...',
+        buttonText: '',
         filters: {},
 
         async fetchResultsCount() {
@@ -141,7 +146,7 @@
                     },
                 });
 
-                 
+                this.buttonText = `${this.buttonTextsLocalized[this.locale]} (${response.data.count === 0 ? '' : response.data.count})`;
             } catch (error) {
                 console.error('Error updating results count:', error);
                 this.buttonText = 'Error loading results';

@@ -113,4 +113,24 @@ class InsightController extends Controller
         return response()
             ->json([], 201);
     }
+
+    public function searchTopics(Request $request): JsonResponse
+    {
+        $locale = app()->getLocale();
+        $query = $request->get('q', '');
+        $topics = Topic::query()
+            ->active();
+
+        if ($query) {
+            $topics = $topics->whereRaw(
+                "LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, '$.\"{$locale}\"'))) LIKE ?",
+                ['%' . strtolower($query) . '%']
+            );
+        }
+
+        $topics = $topics->limit(10)->get();
+
+        return response()
+            ->json($topics);
+    }
 }

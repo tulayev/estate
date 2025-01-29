@@ -4,6 +4,7 @@
     action="{{ route('pages.insight.index') }}"
     class="uk-visible@s justify-between text-secondary z-10 bg-white font-semibold uppercase rounded-full absolute left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 sm:flex items-center px-3 w-[90vw] lg:w-[70vw] h-[50px] xl:h-[70px] text-sm xl:text-xl"
     autocomplete="off"
+    x-data="topicsDropdown()"
 >
     <div>
         <img
@@ -13,12 +14,16 @@
         />
     </div>
 
-    <div class="pr-2 border-r border-borderColor h-full flex items-center w-[80%]">
+    <div class="relative border-r border-borderColor h-full flex items-center w-[80%]">
         <input
             type="text"
             name="title"
             placeholder="search"
-            class="xl:modal-subtitle text-primary placeholder-secondary bg-transparent border-none text-left outline-none"
+            class="modal-subtitle w-full text-primary placeholder-secondary bg-transparent border-none text-left outline-none"
+            x-model="query"
+            @input.debounce="fetchTopics"
+            @focus="onFocus"
+            @click.away="open = false"
         />
     </div>
 
@@ -29,26 +34,22 @@
                 alt="circle"
                 class="w-10"
             />
-            <div
-                uk-dropdown="mode: click; pos: bottom-justify; boundary: !.uk-visible@s;"
-                class="uk-dropdown uk-overflow-hidden uk-padding-remove uk-width-expand w-full left-0 right-0"
+            <ul
+                x-show="open && suggestions.length > 0"
+                class="absolute top-[70px] left-0 bg-white border-rounded w-full shadow-card max-h-64 overflow-auto"
             >
-                <ul
-                    class="uk-nav uk-dropdown-nav uk-scrollable max-h-[20vw] overflow-y-auto p-2 shadow-md"
+                <template
+                    x-for="{ id, title } in suggestions"
+                    :key="id"
                 >
-                    <li class="uk-active"><a href="#">Active</a></li>
-                    <li><a href="#">topic from db</a></li>
-
-                    <li><a href="#">topic from db</a></li>
-                    <li><a href="#">topic from db</a></li>
-                    <li><a href="#">topic from db</a></li>
-
-                    <li><a href="#">topic from db</a></li>
-                    <li><a href="#">topic from db</a></li>
-                    <li><a href="#">topic from db</a></li>
-                    <li><a href="#">topic from db</a></li>
-                </ul>
-            </div>
+                    <li
+                        @click="selectTopic(getLocalizedTitle(title))"
+                        class="p-4 relative z-40 rounded-xl cursor-pointer font-black text-primary hover:bg-primary hover:text-white"
+                    >
+                        <span x-text="getLocalizedTitle(title)"></span>
+                    </li>
+                </template>
+            </ul>
         </div>
         <div class="w-[30px] xl:w-[50px] h-[30px] xl:h-[50px]">
             <button
@@ -64,3 +65,45 @@
         </div>
     </div>
 </form>
+
+<script>
+    function topicsDropdown() {
+        return {
+            API_URI: '{{ route('topics.search.titles') }}',
+            locale: '{{ app()->getLocale() }}',
+            query: '',
+            open: false,
+            suggestions: [],
+
+            fetchTopics() {
+                const url = this.query
+                    ? `${this.API_URI}?q=${encodeURIComponent(this.query)}`
+                    : this.API_URI;
+
+                axios.get(url)
+                    .then((response) => {
+                        this.suggestions = response.data;
+                    })
+                    .catch((error) => {
+                        console.error('Error fetching topics:', error);
+                    });
+            },
+
+            onFocus() {
+                this.open = true;
+                if (!this.query) {
+                    this.fetchTopics(); // Fetch all topics if the query is empty
+                }
+            },
+
+            selectTopic(topic) {
+                this.query = topic;
+                this.open = false;
+            },
+
+            getLocalizedTitle(title) {
+                return title[this.locale];
+            }
+        };
+    }
+</script>

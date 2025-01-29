@@ -31,7 +31,7 @@
                         <li class="animRight">
                             <a
                                 href="{{ route('pages.listing.index') }}"
-                                class="line-animation md:text-sm xl:text-base xl:font-bold xxl:text-2xl xxl:font-black"
+                                class="line-animation md:text-sm xl:text-base xxl:text-xl xl:font-bold xxl:font-black"
                                 @mouseenter="open = true"
                                 @mouseleave="open = false"
                             >
@@ -69,7 +69,7 @@
                         <li class="animRight">
                             <a
                                 href="{{ route('pages.club.index') }}"
-                                class="line-animation md:text-sm xl:text-base xl:font-bold xxl:text-2xl xxl:font-black"
+                                class="line-animation md:text-sm xl:text-base xxl:text-xl xl:font-bold xxl:font-black"
                             >
                                 {{ __('general.nav_ic') }}
                             </a>
@@ -77,7 +77,7 @@
                         <li class="animRight">
                             <a
                                 href="{{ route('pages.insight.index') }}"
-                                class="line-animation md:text-sm xl:text-base xl:font-bold xxl:text-2xl xxl:font-black"
+                                class="line-animation md:text-sm xl:text-base xxl:text-xl xl:font-bold xxl:font-black"
                             >
                                 {!! __('general.nav_insights') !!}
                             </a>
@@ -85,7 +85,7 @@
                         <li class="animRight">
                             <a
                                 href="{{ route('pages.about.index') }}"
-                                class="line-animation md:text-sm xl:text-base xl:font-bold xxl:text-2xl xxl:font-black"
+                                class="line-animation md:text-sm xl:text-base xxl:text-xl xl:font-bold xxl:font-black"
                             >
                                 {!! __('general.nav_about') !!}
                             </a>
@@ -226,6 +226,29 @@
                                         </ul>
                                     </li>
                                 </ul>
+                            </li>
+                            <li class="p-0 sm:hidden relative">
+                                <form
+                                    id="mobileSearch"
+                                    action="{{ route('pages.listing.index') }}"
+                                    autocomplete="off"
+                                    @keydown.enter="$event.target.closest('form').submit()"
+                                >
+                                    <input
+                                        id="name"
+                                        type="text"
+                                        name="title"
+                                        placeholder="Search..."
+                                        class="w-full border-b-2 border-gray-300 bg-transparent focus:outline-none focus:border-blue-500 py-2 placeholder-secondary"
+                                    />
+                                    <button
+                                        class="absolute top-1 right-1 text-3xl bg-transparent border-none outline-none"
+                                        type="button"
+                                        uk-toggle="target: #searchModal"
+                                    >
+                                        +
+                                    </button>
+                                </form>
                             </li>
                         </ul>
                     </div>
