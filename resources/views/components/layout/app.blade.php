@@ -6,6 +6,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>{{ env('APP_NAME', 'Estate') }}</title>
     <link rel="icon" href="{{ asset('assets/images/icons/logo-icon.svg') }}">
+    <!-- NoUISlider css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider/dist/nouislider.min.css" />
     <!-- Swiper css -->
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
     <!-- Leaflet css -->
@@ -18,6 +20,8 @@
     <link rel="stylesheet" href="{{ asset('assets/font/fonts.css') }}" />
     <!-- Style css -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+    <!-- NoUISlider js -->
+    <script src="https://cdn.jsdelivr.net/npm/nouislider/dist/nouislider.min.js"></script>
     <!-- Swiper js -->
     <script defer src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script defer src="{{ asset('assets/js/swiper.js') }}"></script>

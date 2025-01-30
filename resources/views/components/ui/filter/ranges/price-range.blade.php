@@ -1,131 +1,70 @@
 @props([
-    'fromInputName' => '',
-    'toInputName' => '',
     'step' => 0,
     'minValue' => 0,
     'maxValue' => 0,
 ])
 
-<div
-    x-data="priceRange()"
-    x-init="minPriceTrigger(); maxPriceTrigger()"
->
+<div>
     <h3 class="modal-subtitle text-primary">Price range</h3>
 
     <div class="uk-child-width-1-2 mt-2 md:mt-4 xl:mt-6" uk-grid>
         <div>
             <input
-                name="{{ $fromInputName }}"
+                id="priceFrom"
+                name="price_from"
                 type="text"
                 class="modal-subtitle text-primary placeholder-primary placeholder-opacity-50 w-full py-4 border-b-[2px] border-borderColor focus:outline-none focus:border-blue-500"
                 placeholder="From"
-                x-on:input.debounce="minPriceTrigger"
-                x-model="minPrice"
-                wire:model.debounce.300="minPrice"
             />
         </div>
         <div>
             <input
-                name="{{ $toInputName }}"
+                id="priceTo"
+                name="price_to"
                 type="text"
                 class="modal-subtitle text-primary placeholder-primary placeholder-opacity-50 w-full py-4 border-b-[2px] border-borderColor focus:outline-none focus:border-blue-500"
                 placeholder="To"
-                x-on:input.debounce.300="maxPriceTrigger"
-                x-model="maxPrice"
-                wire:model.debounce="maxPrice"
             />
         </div>
     </div>
     <div class="px-2.5 mt-4 md:mt-8 xl:mt-12 flex justify-center items-center">
-        <div class="relative w-full">
-            <div>
-                <!-- Range Inputs -->
-                <input
-                    type="range"
-                    step="{{ $step }}"
-                    x-bind:min="{{ $minValue }}"
-                    x-bind:max="{{ $maxValue }}"
-                    x-on:input="minPriceTrigger"
-                    x-model="minPrice"
-                    class="absolute pointer-events-none appearance-none z-20 h-2 w-full opacity-0 cursor-pointer"
-                />
-                <input
-                    type="range"
-                    step="{{ $step }}"
-                    x-bind:min="{{ $minValue }}"
-                    x-bind:max="{{ $maxValue }}"
-                    x-on:input="maxPriceTrigger"
-                    x-model="maxPrice"
-                    class="absolute pointer-events-none appearance-none z-20 h-2 w-full opacity-0 cursor-pointer"
-                />
-                <!-- Thumbs -->
-                <div class="relative z-10 h-2">
-                    <div class="absolute z-10 left-0 right-0 bottom-0 top-0 rounded-md bg-primary"></div>
-                    <div
-                        class="absolute z-20 top-0 bottom-0 rounded-md bg-primary"
-                        x-bind:style="'right:'+maxPriceThumb+'%; left:'+minPriceThumb+'%'"
-                    ></div>
-                    <div
-                        class="absolute bottom-4 left-0 text-secondary"
-                        x-text="minPrice"
-                        x-bind:style="'left: '+minPriceThumb+'%'"
-                    ></div>
-                    <div
-                        class="flex absolute z-30 w-6 h-6 top-0 left-0 bg-primary rounded-full -mt-2"
-                        x-bind:style="'left: '+minPriceThumb+'%'"
-                    >
-                        <div class="w-3 h-3 bg-white rounded-full m-auto"></div>
-                    </div>
-                    <div
-                        class="absolute bottom-4 right-0 text-secondary"
-                        x-text="maxPrice"
-                        x-bind:style="'right: '+maxPriceThumb+'%'"
-                    ></div>
-                    <div
-                        class="flex absolute z-30 w-6 h-6 top-0 right-0 bg-primary rounded-full -mt-2"
-                        x-bind:style="'right: '+maxPriceThumb+'%'"
-                    >
-                        <div class="w-3 h-3 bg-white rounded-full m-auto"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div
+            class="w-full"
+            id="priceSlider"
+        ></div>
     </div>
 </div>
 
 <script>
-    function priceRange() {
-        return {
-            minPrice: {{ $minValue }},
-            maxPrice: {{ $maxValue }},
+    const priceSlider = document.getElementById('priceSlider');
+    const priceFromInput = document.getElementById('priceFrom');
+    const priceToInput = document.getElementById('priceTo');
+
+    noUiSlider.create(priceSlider, {
+        start: [{{ $minValue }}, {{ $maxValue }}],
+        connect: true,
+        range: {
             min: {{ $minValue }},
             max: {{ $maxValue }},
-            minPriceThumb: 0,
-            maxPriceThumb: 0,
+        },
+        step: {{ $step }}
+    });
 
-            minPriceTrigger() {
-                this.validatePrices();
-                this.minPrice = Math.min(this.minPrice, this.maxPrice - 1); // Ensure minPrice < maxPrice
-                this.updateThumbs();
-            },
+    // Create tooltips dynamically
+    const priceHandles = priceSlider.querySelectorAll('.noUi-handle');
+    priceHandles.forEach(handle => {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'custom-tooltip';
+        tooltip.innerText = '0';
+        handle.appendChild(tooltip);
+    });
 
-            maxPriceTrigger() {
-                this.validatePrices();
-                this.maxPrice = Math.max(this.maxPrice, this.minPrice + 1); // Ensure maxPrice > minPrice
-                this.updateThumbs();
-            },
+    // Update tooltips and input values on slider change
+    priceSlider.noUiSlider.on('update', (values) => {
+        priceFromInput.value = Math.round(values[0]);
+        priceToInput.value = Math.round(values[1]);
 
-            validatePrices() {
-                // Clamp minPrice to valid range
-                this.minPrice = Math.max(this.min, Math.min(this.minPrice, this.max));
-                // Clamp maxPrice to valid range
-                this.maxPrice = Math.max(this.min, Math.min(this.maxPrice, this.max));
-            },
-
-            updateThumbs() {
-                this.minPriceThumb = ((this.minPrice - this.min) / (this.max - this.min)) * 100 - 2;
-                this.maxPriceThumb = 100 - 2 - (((this.maxPrice - this.min) / (this.max - this.min)) * 100);
-            }
-        }
-    }
+        priceHandles[0].querySelector('.custom-tooltip').innerText = Math.round(values[0]);
+        priceHandles[1].querySelector('.custom-tooltip').innerText = Math.round(values[1]);
+    });
 </script>

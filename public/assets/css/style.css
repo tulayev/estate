@@ -61,11 +61,11 @@ a:hover {
 }
 
 /* Uikit Accordion */
-.uk-nav-parent-icon > .uk-parent > a::after {
+.uk-nav-parent-icon>.uk-parent>a::after {
     background-image: url("../images/icons/plus.svg");
 }
 
-.uk-nav-parent-icon > .uk-parent.uk-open > a::after {
+.uk-nav-parent-icon>.uk-parent.uk-open>a::after {
     background-image: url("../images/icons/minus.svg");
 }
 
@@ -80,6 +80,52 @@ input[type="range"]::-webkit-slider-thumb {
     width: 24px;
     height: 24px;
     -webkit-appearance: none;
+}
+
+/* NoUI Slider */
+/* Track background */
+.noUi-target {
+    border: none;
+    background-color: #0F1F3D;
+    border-radius: 8px;
+    height: 8px;
+}
+
+/* Handles */
+.noUi-horizontal .noUi-handle {
+    top: -8px;
+    background: #0F1F3D;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.noUi-handle {
+    cursor: pointer;
+    border: none;
+    box-shadow: none;
+}
+
+.noUi-handle:after,
+.noUi-handle:before {
+    display: none;
+}
+
+/* Connect line between handles */
+.noUi-connect {
+    background-color: #C6C6C6;
+}
+
+/* Custom tooltips */
+.custom-tooltip {
+    position: absolute;
+    top: -30px;
+    color: white;
+    background: #333;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
 }
 
 /* Contact Form */

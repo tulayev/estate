@@ -20,8 +20,6 @@
             <div class="shadow-card border-rounded mt-3 p-4 sm:p-6 xl:px-14 xl:py-7 flex items-center justify-around xl:justify-between">
                 <img src="{{ asset('assets/images/icons/bath.png') }}" alt="bath" />
                 <x-ui.filter.ranges.bath-range
-                    :fromInputName="'bathrooms_min'"
-                    :toInputName="'bathrooms_max'"
                     :step="1"
                     :minValue="0"
                     :maxValue="100"
@@ -35,8 +33,6 @@
             <div class="shadow-card border-rounded mt-3 p-4 sm:p-6 xl:px-14 xl:py-7 flex items-center justify-around xl:justify-between">
                 <img src="{{ asset('assets/images/icons/bed.png') }}" alt="bed" />
                 <x-ui.filter.ranges.bed-range
-                    :fromInputName="'bedrooms_min'"
-                    :toInputName="'bedrooms_max'"
                     :step="1"
                     :minValue="0"
                     :maxValue="100"
