@@ -6,16 +6,16 @@
     <div>
         <div class="shadow-card bg-white border-rounded flex z-[999]">
             <div
-                class="relative bg-cover bg-center bg-no-repeat w-full md:w-1/2 flex flex-col justify-between border-rounded p-2 h-[250px]"
+                class="relative bg-cover bg-center bg-no-repeat w-full md:w-1/2 flex flex-col justify-between border-rounded p-2 h-[250px] xl:h-auto"
                 style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_old ?? asset('assets/images/object-background.png') }}');"
             >
-                <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
+                <div class="absolute border-rounded inset-0 bg-gradient-50 "></div>
                 <!-- Image Top -->
                 <div class="flex justify-between items-center z-10">
                     @if ($hotel->tags)
                         <div class="flex items-center space-x-2">
                             @foreach($hotel->tags->take(2) as $tag)
-                                <div class="card-tag-button bg-[#5A6BC9bb]">
+                                <div class="card-tag-button bg-[#5A6BC9bb] hover:bg-[#c2c6dbbb]">
                                     {{ Str::limit($tag->name, 3) }}
                                 </div>
                             @endforeach

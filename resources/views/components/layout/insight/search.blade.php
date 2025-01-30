@@ -14,12 +14,12 @@
         />
     </div>
 
-    <div class="relative border-r border-borderColor h-full flex items-center w-[80%]">
+    <div class="relative  h-full flex items-center w-full">
         <input
             type="text"
             name="title"
             placeholder="search"
-            class="modal-subtitle w-full text-primary placeholder-secondary bg-transparent border-none text-left outline-none"
+            class="modal-subtitle w-full text-primary placeholder-secondary bg-transparent border-none text-center outline-none"
             x-model="query"
             @input.debounce="fetchTopics"
             @focus="onFocus"
@@ -27,7 +27,7 @@
         />
     </div>
 
-    <div class="h-full flex items-center justify-end w-[12%] md:w-[10%] space-x-5">
+    <div class="h-full flex items-center justify-end w-[12%] md:w-[12%] space-x-5">
         <div>
             <img
                 src="{{ asset('assets/images/icons/filter-dark.svg') }}"
