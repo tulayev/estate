@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'for_sale_off_plan' => 'Продажа | этап строительства',
+    'for_sale_off_plan' => 'Объекты',
 ];

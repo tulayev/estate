@@ -14,7 +14,7 @@
             </h1>
 
             <div class="animLeft hidden sm:flex text-sm lg:text-lg mt-2 lg:mt-10">
-                <div class="border-2 border-gray-700"></div>
+                
                 <div class="pl-2 text-white">
                     {!! __('about/main.description') !!}
                 </div>
@@ -33,7 +33,7 @@
                                 width="53"
                                 height="53"
                             />
-                            <span class="pr-2 overflow-hidden whitespace-nowrap text-ellipsis"> +7 (972) 928-30-12</span>
+                            <span class="pr-2 overflow-hidden whitespace-nowrap text-ellipsis normal-case"> +7 (972) 928-30-12</span>
                         </a>
                     </div>
                     <div class="animLeft">
@@ -47,7 +47,7 @@
                                 width="53"
                                 height="53"
                             />
-                            <span class="pr-2 overflow-hidden whitespace-nowrap text-ellipsis">Istategroup</span>
+                            <span class="pr-2 overflow-hidden whitespace-nowrap text-ellipsis normal-case">Istategroup</span>
                         </a>
                     </div>
                     <div class="animLeft">
@@ -60,7 +60,7 @@
                                 alt="Whatsapp"
 
                             />
-                            <span class="pr-2 overflow-hidden whitespace-nowrap text-ellipsis">Istategroup</span>
+                            <span class="pr-2 overflow-hidden whitespace-nowrap text-ellipsis normal-case">Istategroup</span>
                         </a>
                     </div>
                 </div>

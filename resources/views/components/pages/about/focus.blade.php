@@ -12,7 +12,7 @@
             {{ __('about/focus.strategy') }}
         </h3>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:p-4">
             <!-- First Card -->
             <div>
                 <div

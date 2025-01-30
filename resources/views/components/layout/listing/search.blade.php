@@ -74,6 +74,8 @@
                         class="uk-modal-close"
                         src="{{ asset('assets/images/icons/modal-close.svg') }}"
                         alt="close"
+                        width="20"
+                        height="20"
                     />
                 </button>
             </div>
