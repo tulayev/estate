@@ -76,7 +76,6 @@
             currentPage: 1,
             hasMorePages: {{ $hotels->hasMorePages() ? 'true' : 'false' }},
             lastPage: {{ $hotels->lastPage() }},
-            viewType: '{{ $viewType }}',
 
             async loadMore() {
                 if (!this.hasMorePages)
@@ -85,11 +84,11 @@
                 this.currentPage++;
 
                 try {
-                    const queryParams = new URLSearchParams({
-                        page: this.currentPage,
-                        viewType: this.viewType,
-                    });
+                    const existingParams = new URLSearchParams(window.location.search);
+                    const queryParams = new URLSearchParams(existingParams);
 
+                    queryParams.set('page', this.currentPage);
+                    
                     const response = await axios.get(`?${queryParams.toString()}`, {
                         headers: {
                             'X-Requested-With': 'XMLHttpRequest',
