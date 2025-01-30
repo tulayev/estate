@@ -45,7 +45,7 @@
             open: false,
             selectedBeds: 0, // Default bed count
             minBeds: 1,      // Minimum bed count
-            maxBeds: 10,     // Maximum bed count
+            maxBeds: 100,     // Maximum bed count
 
             toggleDropdown() {
                 this.open = !this.open;

@@ -25,7 +25,7 @@
 
             <!-- Preferences Input -->
             <div class="uk-width-1-2@s form-drop-down px-4 text-center">
-        <span class="text-lg font-bold text-[#c6c6c6] block ">
+        <span class="text-lg font-bold text-[#c6c6c6] block">
             {{ __('general.newsetter_choose') }}
         </span>
                 <div
@@ -52,7 +52,7 @@
 
             <!-- Submit Button -->
             <div class="uk-width-1-4@s">
-                <button class="relative sm:left-3  top-3 sm:top-0 bg-primary text-white border-rounded w-full text-xl font-bold h-full uppercase px-7 py-4 ">
+                <button class="relative sm:left-3  top-3 sm:top-0 bg-primary text-white border-rounded w-full text-xl font-bold h-full uppercase px-7 py-4">
                     {{ __('general.newsetter_submit') }}
                 </button>
             </div>
