@@ -5,7 +5,7 @@
             class="border-rounded relative px-5 sm:px-10 xl:px-20 py-5 sm:py-10 md:py-20 lg:py-30 xl:py-60"
             style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
         >
-            <div class="absolute border-rounded inset-0 bg-gradient-100"></div>
+            <div class="absolute border-rounded inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
             <div class="relative z-10">
                 <h2 class="section-title-white text-lg sm:text-2xl xl:text-5xl">
                     {{ __('home/problem.title') }}

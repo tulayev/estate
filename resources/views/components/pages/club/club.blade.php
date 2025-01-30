@@ -12,7 +12,7 @@
         <!-- For investors -->
         <div
             class="relative bg-cover bg-center bg-no-repeat border-rounded text-white flex"
-            style="background-image: url('{{ asset('assets/images/club/what-is-bg.png') }}')"
+            style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('assets/images/club/what-is-bg.png') }}')"
         >
             <div class="absolute border-rounded inset-0 bg-gradient-100"></div>
             <div class="relative p-6 w-full xl:w-1/2">
@@ -34,7 +34,7 @@
         <!-- For developers -->
         <div
             class="relative bg-cover bg-center bg-no-repeat border-rounded text-white flex justify-end mt-4 md:mt-8 xl:mt-16"
-            style="background-image: url('{{ asset('assets/images/club/what-is-bg.png') }}')"
+            style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('assets/images/club/what-is-bg.png') }}')"
         >
             <div class="absolute border-rounded inset-0 bg-gradient-100"></div>
             <div class="relative p-6 w-full xl:w-1/2">

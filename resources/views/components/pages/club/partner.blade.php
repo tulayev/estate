@@ -19,7 +19,7 @@
                 <h2 class="section-title text-[#f4f4f4]">
                     {{ __('club/partner.insights') }}
                 </h2>
-                <p class="mt-4 text-white text-base md:text-lg lg:text-xl xl:text-3xl">
+                <p class="mt-4 text-white text-base md:text-md lg:text-lg xl:text-2xl">
                     {!! __('club/partner.insights_desc') !!}
                 </p>
             </div>
@@ -34,7 +34,7 @@
                 <h2 class="section-title text-[#f4f4f4]">
                     {{ __('club/partner.project_elevation') }}
                 </h2>
-                <p class="mt-4 text-white text-base md:text-lg lg:text-xl xl:text-3xl">
+                <p class="mt-4 text-white text-base md:text-md lg:text-lg xl:text-2xl">
                     {!! __('club/partner.project_elevation_desc') !!}
                 </p>
             </div>
