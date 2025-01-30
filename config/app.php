@@ -212,6 +212,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         'Constants' => \App\Helpers\Constants::class,
         'ImagePathResolver' => \App\Helpers\ImagePathResolver::class,
+        'Helper' => \App\Helpers\Helper::class,
     ])->toArray(),
 
 ];

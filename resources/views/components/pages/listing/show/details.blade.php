@@ -64,7 +64,7 @@
                         </div>
                     @endforeach
                 @elseif ($hotel->gallery_old)
-                    @foreach($hotel->gallery_old as $image)
+                    @foreach(Helper::splitString($hotel->gallery_old, ';') as $image)
                         <div>
                             <img
                                 src="{{ $image }}"

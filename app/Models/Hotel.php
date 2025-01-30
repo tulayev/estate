@@ -220,14 +220,6 @@ class Hotel extends Model
         return $this->hasMany(HotelLike::class);
     }
 
-    public function getGalleryOldAttribute($value): array | null
-    {
-        if ($value)
-            return explode(';', $value);
-
-        return  null;
-    }
-
     public function getAreaAttribute()
     {
         return $this->floors()->sum('area');
