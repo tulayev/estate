@@ -1,3 +1,7 @@
+@props([
+    'types' => null,
+])
+
 <section class="section">
     <div class="container">
         <!-- Slider -->
@@ -21,46 +25,39 @@
             </div>
         </div>
         <!-- Cards -->
-        <div class="uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m mt-5 xl:mt-10" uk-grid>
-            <div>
-                <div class="relative">
-                    <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
-                    <img
-                        class="w-full h-full"
-                        src="{{ asset('assets/images/primary_bg.png') }}"
-                        alt="primary"
-                    />
-                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        <h4 class="text-2xl text-white font-bold uppercase">{{ __('home/problem.card_1') }}</h4>
+        @if ($types)
+            <div class="uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m mt-5 xl:mt-10" uk-grid>
+                @php
+                $typeImages = [
+                      asset('assets/images/primary_bg.png'),
+                      asset('assets/images/resale_bg.png'),
+                      asset('assets/images/land_bg.png'),
+                ];
+                $i = 0;
+                @endphp
+                @foreach($types as $type)
+                    <div>
+                        <a
+                            href="{{ route('pages.listing.index', ['type' => $type->id]) }}"
+                            class="group"
+                        >
+                            <div class="relative">
+                                <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
+                                <img
+                                    class="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110"
+                                    src="{{ $typeImages[$i++] }}"
+                                    alt="{{ $type->name }}"
+                                />
+                                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                    <h4 class="text-2xl text-white font-bold uppercase group-hover:text-primary">
+                                        {{ $type->name }}
+                                    </h4>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
+                @endforeach
             </div>
-            <div>
-                <div class="relative">
-                    <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
-                    <img
-                        class="w-full h-full"
-                        src="{{ asset('assets/images/resale_bg.png') }}"
-                        alt="resale"
-                    />
-                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        <h4 class="text-2xl text-white font-bold uppercase">{{ __('home/problem.card_2') }}</h4>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="relative">
-                    <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
-                    <img
-                        class="w-full h-full"
-                        src="{{ asset('assets/images/land_bg.png') }}"
-                        alt="land"
-                    />
-                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        <h4 class="text-2xl text-white font-bold uppercase">{{ __('home/problem.card_3') }}</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endif
     </div>
 </section>

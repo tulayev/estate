@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             MoonshineUserRoleSeeder::class,
             MoonshineUserSeeder::class,
+            TypeSeeder::class,
             HotelSeeder::class,
             TopicCategorySeeder::class,
             TopicSeeder::class,

@@ -50,12 +50,14 @@ a:hover {
     border-top-color: orange;
     animation: loading 1s linear infinite;
 }
+
 @keyframes loading {
     to {
         transform: rotate(360deg);
     }
 }
 
+/* Uikit Modal */
 .uk-modal {
     padding: 0 !important;
 }
@@ -69,7 +71,7 @@ a:hover {
     background-image: url("../images/icons/minus.svg");
 }
 
-.uk-nav > li > a {
+.uk-nav>li>a {
     padding-top: 14px;
     padding-bottom: 14px;
 }

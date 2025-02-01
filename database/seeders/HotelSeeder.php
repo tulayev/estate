@@ -20,7 +20,7 @@ class HotelSeeder extends Seeder
         // Disable model events to bypass the creating and deleting events
         Hotel::withoutEvents(function () {
             // Create types, tags and features
-            $types = Type::factory(3)->create(); // Create 3 types
+            $types = Type::all();
             $tags = Tag::factory(10)->create(); // Create 10 tags
             $features = Feature::factory(10)->create(); // Create 10 features
 
