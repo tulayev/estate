@@ -30,7 +30,7 @@
     </ul>
 </div>
 
-<script>
+<script defer>
     function locationDropdown() {
         return {
             API_URI: '{{ route('hotels.search.locations') }}',

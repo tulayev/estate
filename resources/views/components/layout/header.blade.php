@@ -258,7 +258,7 @@
     </div>
 </header>
 
- <script>
+ <script defer>
      function listingDropdown() {
          return {
              open: false

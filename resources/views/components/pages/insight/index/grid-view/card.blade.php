@@ -50,7 +50,7 @@
     </div>
 @endif
 
-<script>
+<script defer>
     function likeHandler(topicId, initialIsLiked) {
         return {
             API_URI: `insights/${topicId}/like`,

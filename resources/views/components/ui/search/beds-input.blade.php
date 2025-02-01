@@ -39,7 +39,7 @@
     </div>
 </div>
 
-<script>
+<script defer>
     function bedDropdown() {
         return {
             open: false,

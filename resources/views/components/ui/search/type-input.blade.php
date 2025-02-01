@@ -26,8 +26,7 @@
         >
             <li
                 @click="selectType(type)"
-                class="px-2 py-4 rounded-[14px] cursor-pointer font-black text-white text-center"
-                :class="getRandomColor()"
+                class="random-bg-color px-2 py-4 rounded-[14px] cursor-pointer font-black text-white text-center"
             >
                 <span x-text="type.name[locale]"></span>
             </li>
@@ -35,7 +34,7 @@
     </ul>
 </div>
 
-<script>
+<script defer>
     function typeDropdown(types) {
         return {
             locale: '{{ app()->getLocale() }}',
@@ -43,7 +42,6 @@
             query: '', // Input value
             open: false, // Controls dropdown visibility
             filteredTypes: types, // Filtered list of types
-            colors: ['bg-tag-1', 'bg-tag-2', 'bg-tag-3', 'bg-tag-4'],
 
             filterTypes() {
                 this.filteredTypes = types.filter(({ name }) =>
@@ -55,10 +53,6 @@
                 this.id = type.id;
                 this.query = type.name[this.locale];
                 this.open = false;
-            },
-
-            getRandomColor() {
-                return this.colors[Math.floor(Math.random() * this.colors.length)];
             }
         };
     }

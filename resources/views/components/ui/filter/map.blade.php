@@ -35,7 +35,7 @@
     <div id="map" class="border-rounded w-full mt-4 sm:mt-6 h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]"></div>
 </div>
 
-<script>
+<script defer>
     function mapHandler() {
         return {
             map: null,

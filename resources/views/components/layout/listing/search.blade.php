@@ -75,11 +75,9 @@
             <div>
                 <button>
                     <img
-                        class="uk-modal-close"
+                        class="uk-modal-close w-5 h-5"
                         src="{{ asset('assets/images/icons/modal-close.svg') }}"
                         alt="close"
-                        width="20"
-                        height="20"
                     />
                 </button>
             </div>
@@ -130,7 +128,7 @@
     </form>
 </div>
 
-<script>
+<script defer>
     const filtersHandler = () => ({
         buttonTextsLocalized: {
             en: 'show results',
@@ -164,13 +162,15 @@
         },
 
         init() {
-            // Initialize the filters and fetch results count
-            this.filters = Object.fromEntries(new FormData(document.getElementById('filterForm')).entries());
-            this.fetchResultsCount();
+            document.addEventListener('DOMContentLoaded', () => {
+                // Initialize the filters and fetch results count
+                this.filters = Object.fromEntries(new FormData(document.getElementById('filterForm')).entries());
+                this.fetchResultsCount();
 
-            // Add event listeners to filter inputs
-            document.querySelectorAll('#filterForm input, #filterForm select').forEach(input => {
-                input.addEventListener('change', event => this.updateFilters(event));
+                // Add event listeners to filter inputs
+                document.querySelectorAll('#filterForm input, #filterForm select').forEach(input => {
+                    input.addEventListener('change', event => this.updateFilters(event));
+                });
             });
         }
     });

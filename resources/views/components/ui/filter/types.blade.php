@@ -24,8 +24,8 @@
         @foreach($types as $type)
             <div>
                 <div
-                    class="modal-subtitle cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
-                    :class="[getRandomColor(), isTypeSelected('{{ $type->id }}') ? 'hidden' : '']"
+                    class="modal-subtitle random-bg-color cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
+                    :class="isTypeSelected('{{ $type->id }}') ? 'hidden' : ''"
                     @click="addType('{{ $type->id }}')"
                 >
                     {{ $type->name }}
@@ -35,22 +35,17 @@
     </div>
 </div>
 
-<script>
+<script defer>
     function types() {
         return {
             locale: '{{ app()->getLocale() }}',
             selectedTypes: [],
             allTypes: @json($types),
-            colors: ['bg-tag-1', 'bg-tag-2', 'bg-tag-3', 'bg-tag-4'],
 
             addType(type) {
                 if (!this.selectedTypes.includes(type)) {
                     this.selectedTypes.push(type);
                 }
-            },
-
-            getRandomColor() {
-                return this.colors[Math.floor(Math.random() * this.colors.length)];
             },
 
             isTypeSelected(type) {

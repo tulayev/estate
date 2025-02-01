@@ -39,7 +39,7 @@
     </div>
 </section>
 
-<script>
+<script defer>
     function topicPagination() {
         return {
             currentPage: 1,

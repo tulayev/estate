@@ -36,7 +36,10 @@
             x-data="mapViewHandler({{ $hotels->toJson() }})"
             x-init="initMapView()"
         >
-            <div class="absolute top-4 left-4 w-1/2 md:w-[40%] space-y-4 h-[100vh] overflow-y-scroll z-[999]" style="scrollbar-width: none; -ms-overflow-style: none;">
+            <div 
+                class="absolute top-4 left-4 w-1/2 md:w-[40%] space-y-4 h-[100vh] overflow-y-scroll z-[999]" 
+                style="scrollbar-width: none; -ms-overflow-style: none;"
+            >
                 <div id="dynamicCardContainer" class="space-y-4"></div>
 
                 <div x-ref="hotelList">
@@ -58,7 +61,7 @@
     @endif
 </section>
 
-<script>
+<script defer>
     function mapViewHandler(hotels) {
         return {
             locale: '{{ app()->getLocale() }}',

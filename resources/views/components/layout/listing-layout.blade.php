@@ -18,22 +18,24 @@
     <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css') }}" />
     <!-- Fonts css -->
     <link rel="stylesheet" href="{{ asset('assets/font/fonts.css') }}" />
-    <!-- Style css -->
+    <!-- Custom styles css -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
     <!-- NoUISlider js -->
-    <script src="https://cdn.jsdelivr.net/npm/nouislider/dist/nouislider.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/nouislider/dist/nouislider.min.js"></script>
     <!-- Swiper js -->
     <script defer src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script defer src="{{ asset('assets/js/swiper.js') }}"></script>
     <!-- Leaflet js -->
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script defer src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
     <!-- Uikit js -->
     <script defer src="{{ asset('assets/js/uikit-icons.min.js') }}"></script>
     <script defer src="{{ asset('assets/js/uikit.min.js') }}"></script>
     <!-- Alpine js -->
     <script defer src="https://unpkg.com/alpinejs@3.9.6/dist/cdn.min.js"></script>
     <!-- Axios js -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Custom scripts js -->
+    <script defer src="{{ asset('assets/js/script.js') }}"></script>
 </head>
 <body>
     <div
@@ -48,15 +50,5 @@
     />
 
     {{ $slot }}
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const overlay = document.getElementById('overlay');
-
-            if (overlay) {
-                setTimeout(() => overlay.style.display = 'none', 1000);
-            }
-        })
-    </script>
 </body>
 </html>

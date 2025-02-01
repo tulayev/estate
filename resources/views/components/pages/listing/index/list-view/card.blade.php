@@ -71,7 +71,7 @@
     </div>
 @endif
 
-<script>
+<script defer>
     function likeHandler(hotelId, initialIsLiked) {
         return {
             API_URI: `listings/${hotelId}/like`,

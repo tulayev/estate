@@ -66,7 +66,7 @@
     </div>
 </form>
 
-<script>
+<script defer>
     function topicsDropdown() {
         return {
             API_URI: '{{ route('topics.search.titles') }}',

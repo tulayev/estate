@@ -28,14 +28,14 @@
     >
         <input
             id="priceInputFrom"
-            name="price_from"
+            name="price_min"
             type="text"
             class="modal-subtitle text-center bg-[#f4f4f4] rounded-[10px] p-2 border-b border-borderColor w-1/2"
             readonly
         />
         <input
             id="priceInputTo"
-            name="price_to"
+            name="price_max"
             type="text"
             class="modal-subtitle text-center bg-[#f4f4f4] rounded-[10px] p-2 border-b border-borderColor w-1/2"
             readonly
@@ -56,7 +56,7 @@
     </div>
 </div>
 
-<script>
+<script defer>
     function priceDropdown() {
         return {
             showInputs: false,
@@ -67,40 +67,42 @@
         };
     }
 
-    const priceInputSlider = document.getElementById('priceInputSlider');
-    const priceInputFrom = document.getElementById('priceInputFrom');
-    const priceInputTo = document.getElementById('priceInputTo');
-    const priceInput = document.getElementById('priceInput');
+    document.addEventListener('DOMContentLoaded', () => {
+        const priceInputSlider = document.getElementById('priceInputSlider');
+        const priceInputFrom = document.getElementById('priceInputFrom');
+        const priceInputTo = document.getElementById('priceInputTo');
+        const priceInput = document.getElementById('priceInput');
 
-    noUiSlider.create(priceInputSlider, {
-        start: [{{ $minValue }}, {{ $maxValue }}],
-        connect: true,
-        range: {
-            min: {{ $minValue }},
-            max: {{ $maxValue }},
-        },
-        step: {{ $step }}
-    });
+        noUiSlider.create(priceInputSlider, {
+            start: [{{ $minValue }}, {{ $maxValue }}],
+            connect: true,
+            range: {
+                min: {{ $minValue }},
+                max: {{ $maxValue }},
+            },
+            step: {{ $step }}
+        });
 
-    // Create tooltips dynamically
-    const priceInputHandles = priceInputSlider.querySelectorAll('.noUi-handle');
-    priceInputHandles.forEach(handle => {
-        const tooltip = document.createElement('div');
-        tooltip.className = 'custom-tooltip';
-        tooltip.innerText = '0';
-        handle.appendChild(tooltip);
-    });
+        // Create tooltips dynamically
+        const priceInputHandles = priceInputSlider.querySelectorAll('.noUi-handle');
+        priceInputHandles.forEach(handle => {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'custom-tooltip';
+            tooltip.innerText = '0';
+            handle.appendChild(tooltip);
+        });
 
-    // Update tooltips and input values on slider change
-    priceInputSlider.noUiSlider.on('update', (values) => {
-        priceInputFrom.value = Math.round(values[0]);
-        priceInputTo.value = Math.round(values[1]);
+        // Update tooltips and input values on slider change
+        priceInputSlider.noUiSlider.on('update', (values) => {
+            priceInputFrom.value = Math.round(values[0]);
+            priceInputTo.value = Math.round(values[1]);
 
-        priceInputHandles[0].querySelector('.custom-tooltip').innerText = Math.round(values[0]);
-        priceInputHandles[1].querySelector('.custom-tooltip').innerText = Math.round(values[1]);
+            priceInputHandles[0].querySelector('.custom-tooltip').innerText = Math.round(values[0]);
+            priceInputHandles[1].querySelector('.custom-tooltip').innerText = Math.round(values[1]);
 
-        priceInput.value = (priceInputFrom.value != {{ $minValue }} && priceInputTo.value != {{ $maxValue }})
-            ? `From ${priceInputFrom.value} To ${priceInputTo.value}`
-            : '';
+            priceInput.value = (priceInputFrom.value != {{ $minValue }} && priceInputTo.value != {{ $maxValue }})
+                ? `From ${priceInputFrom.value} To ${priceInputTo.value}`
+                : '';
+        });
     });
 </script>

@@ -22,8 +22,8 @@
 
         @foreach($tags as $tag)
             <div
-                class="tag modal-subtitle cursor-pointer text-white text-center p-3 border-rounded"
-                :class="[getRandomColor(), isTagSelected('{{ $tag->id }}') ? 'hidden' : '']"
+                class="tag random-bg-color modal-subtitle cursor-pointer text-white text-center p-3 border-rounded"
+                :class="isTagSelected('{{ $tag->id }}') ? 'hidden' : ''"
                 @click="addTag('{{ $tag->id }}')"
             >
                 {{ $tag->name }}
@@ -32,22 +32,17 @@
     </div>
 </div>
 
-<script>
+<script defer>
     function tags() {
         return {
             locale: '{{ app()->getLocale() }}',
             selectedTags: [],
             allTags: @json($tags),
-            colors: ['bg-tag-1', 'bg-tag-2', 'bg-tag-3', 'bg-tag-4'],
 
             addTag(tag) {
                 if (!this.selectedTags.includes(tag)) {
                     this.selectedTags.push(tag);
                 }
-            },
-
-            getRandomColor() {
-                return this.colors[Math.floor(Math.random() * this.colors.length)];
             },
 
             isTagSelected(tag) {

@@ -72,7 +72,7 @@
     </div>
 </div>
 
-<script>
+<script defer>
     function features() {
         return {
             locale: '{{ app()->getLocale() }}',

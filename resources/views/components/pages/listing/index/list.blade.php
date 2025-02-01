@@ -71,7 +71,7 @@
     </div>
 </section>
 
-<script>
+<script defer>
     function hotelPagination() {
         return {
             currentPage: 1,

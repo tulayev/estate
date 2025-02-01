@@ -35,36 +35,38 @@
     </div>
 </div>
 
-<script>
-    const priceSlider = document.getElementById('priceSlider');
-    const priceFromInput = document.getElementById('priceFrom');
-    const priceToInput = document.getElementById('priceTo');
+<script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+        const priceSlider = document.getElementById('priceSlider');
+        const priceFromInput = document.getElementById('priceFrom');
+        const priceToInput = document.getElementById('priceTo');
 
-    noUiSlider.create(priceSlider, {
-        start: [{{ $minValue }}, {{ $maxValue }}],
-        connect: true,
-        range: {
-            min: {{ $minValue }},
-            max: {{ $maxValue }},
-        },
-        step: {{ $step }}
-    });
+        noUiSlider.create(priceSlider, {
+            start: [{{ $minValue }}, {{ $maxValue }}],
+            connect: true,
+            range: {
+                min: {{ $minValue }},
+                max: {{ $maxValue }},
+            },
+            step: {{ $step }}
+        });
 
-    // Create tooltips dynamically
-    const priceHandles = priceSlider.querySelectorAll('.noUi-handle');
-    priceHandles.forEach(handle => {
-        const tooltip = document.createElement('div');
-        tooltip.className = 'custom-tooltip';
-        tooltip.innerText = '0';
-        handle.appendChild(tooltip);
-    });
+        // Create tooltips dynamically
+        const priceHandles = priceSlider.querySelectorAll('.noUi-handle');
+        priceHandles.forEach(handle => {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'custom-tooltip';
+            tooltip.innerText = '0';
+            handle.appendChild(tooltip);
+        });
 
-    // Update tooltips and input values on slider change
-    priceSlider.noUiSlider.on('update', (values) => {
-        priceFromInput.value = Math.round(values[0]);
-        priceToInput.value = Math.round(values[1]);
+        // Update tooltips and input values on slider change
+        priceSlider.noUiSlider.on('update', (values) => {
+            priceFromInput.value = Math.round(values[0]);
+            priceToInput.value = Math.round(values[1]);
 
-        priceHandles[0].querySelector('.custom-tooltip').innerText = Math.round(values[0]);
-        priceHandles[1].querySelector('.custom-tooltip').innerText = Math.round(values[1]);
+            priceHandles[0].querySelector('.custom-tooltip').innerText = Math.round(values[0]);
+            priceHandles[1].querySelector('.custom-tooltip').innerText = Math.round(values[1]);
+        });
     });
 </script>

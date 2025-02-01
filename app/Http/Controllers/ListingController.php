@@ -18,41 +18,7 @@ class ListingController extends Controller
 
     public function index(Request $request): View | string
     {
-        // Search & Filter
-        $hotelsQuery = $request->has('requestType') && $request->get('requestType') === 'search'
-            ? $this->applySearch($request)
-            : $this->applyFilters($request);
-
-        if ($request->has('type')) {
-            $hotelsQuery->filterByTypes($request->get('type'))
-                ->active();
-        }
-
-        if ($request->has('viewType') && $request->get('viewType') === 'liked') {
-            $hotelsQuery->whereHas('likes', function ($query) {
-                $userId = auth()->id();
-                $ipAddress = request()->ip();
-
-                $query->when($userId, function ($query) use ($userId) {
-                    $query->where('liked_by', $userId);
-                })->when(!$userId, function ($query) use ($ipAddress) {
-                    $query->where('ip_address', $ipAddress);
-                });
-            });
-        }
-
-        // Sorting
-        if ($request->has('sort')) {
-            $sort = $request->get('sort');
-            switch ($sort) {
-                case 'title_asc':
-                    $hotelsQuery->orderBy('title', 'asc');
-                    break;
-                case 'title_desc':
-                    $hotelsQuery->orderBy('title', 'desc');
-                    break;
-            }
-        }
+        $hotelsQuery = $this->getHotelsQuery($request);
 
         $viewType = $request->get('viewType', 'grid');
         $perPage = self::PAGINATION_PARAMS[$viewType];
@@ -72,10 +38,12 @@ class ListingController extends Controller
         ]);
     }
 
-    public function mapView(): View
+    public function mapView(Request $request): View
     {
+        $hotelsQuery = $this->getHotelsQuery($request);
+
         return view('pages.listing.map', [
-            'hotels' => Hotel::active()->get(),
+            'hotels' => $hotelsQuery->get(),
         ]);
     }
 
@@ -202,5 +170,46 @@ class ListingController extends Controller
             ->filterByFeatures($request->input('features'))
             ->filterByLocations($request->input('locations'))
             ->active();
+    }
+
+    private function getHotelsQuery(Request $request)
+    {
+        // Search & Filter
+        $hotelsQuery = $request->has('requestType') && $request->get('requestType') === 'search'
+            ? $this->applySearch($request)
+            : $this->applyFilters($request);
+
+        if ($request->has('type')) {
+            $hotelsQuery->filterByTypes($request->get('type'))
+                ->active();
+        }
+
+        if ($request->has('viewType') && $request->get('viewType') === 'liked') {
+            $hotelsQuery->whereHas('likes', function ($query) {
+                $userId = auth()->id();
+                $ipAddress = request()->ip();
+
+                $query->when($userId, function ($query) use ($userId) {
+                    $query->where('liked_by', $userId);
+                })->when(!$userId, function ($query) use ($ipAddress) {
+                    $query->where('ip_address', $ipAddress);
+                });
+            });
+        }
+
+        // Sorting
+        if ($request->has('sort')) {
+            $sort = $request->get('sort');
+            switch ($sort) {
+                case 'title_asc':
+                    $hotelsQuery->orderBy('title', 'asc');
+                    break;
+                case 'title_desc':
+                    $hotelsQuery->orderBy('title', 'desc');
+                    break;
+            }
+        }
+
+        return $hotelsQuery;
     }
 }
