@@ -12,7 +12,7 @@
             <!-- Image Top -->
             <div class="flex justify-between items-center z-10">
                 <div class="flex items-center space-x-2">
-                    <div class="card-tag-button bg-[#5A6BC9bb]">
+                    <div class="card-tag-button random-bg-color">
                         {{ Str::limit($topic->category->title, 3) }}
                     </div>
                 </div>

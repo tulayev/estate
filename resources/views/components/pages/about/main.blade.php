@@ -25,7 +25,7 @@
                     <div class="animLeft">
                         <a
                             href="#"
-                            class="main-button-about"
+                            class="secondary-button"
                         >
                             <img
                                 src="{{ asset('assets/images/icons/phone-green.svg') }}"
@@ -39,7 +39,7 @@
                     <div class="animLeft">
                         <a
                             href="#"
-                            class="main-button-about"
+                            class="secondary-button"
                         >
                             <img
                                 src="{{ asset('assets/images/icons/facebook-white.svg') }}"
@@ -53,7 +53,7 @@
                     <div class="animLeft">
                         <a
                             href="#"
-                            class="main-button-about"
+                            class="secondary-button"
                         >
                             <img
                                 src="{{ asset('assets/images/icons/whatsapp-green.svg') }}"

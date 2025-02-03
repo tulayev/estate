@@ -43,7 +43,7 @@
                     <div class="animLeft">
                         <a
                             href="#modalForm"
-                            class="main-button-about bg-white/10"
+                            class="secondary-button bg-white/10"
                         >
                             <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('club/main.tag_1') }}</span>
                         </a>
@@ -51,7 +51,7 @@
                     <div class="animLeft">
                         <a
                             href="#modalForm"
-                            class="main-button-about bg-white/10"
+                            class="secondary-button bg-white/10"
                         >
                             <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('club/main.tag_2') }}</span>
                         </a>
@@ -59,7 +59,7 @@
                     <div class="animLeft">
                         <a
                             href="#modalForm"
-                            class="main-button-about bg-white/10"
+                            class="secondary-button bg-white/10"
                         >
                             <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('club/main.tag_3') }}</span>
                         </a>

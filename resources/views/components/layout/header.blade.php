@@ -11,7 +11,10 @@
 >
     <div class="relative">
         <div class="container">
-            <nav class="flex justify-between items-center pt-10" :class="open ? 'pb-24' : 'pb-10'">
+            <nav
+                class="flex justify-between items-center pt-10"
+                :class="open ? 'pb-24' : 'pb-10'"
+            >
                 <!-- Logo -->
                 <div class="animLeft">
                     <a href="{{ route('pages.home.index') }}">
@@ -92,8 +95,8 @@
                         </li>
                     </ul>
                     <!-- Locale Switcher -->
-                    <ul class="{{ $mapView ? '' : 'bg-opacity-10' }} animRight flex justify-between items-center rounded-[100px] bg-white relative md:w-[60px] xl:w-[120px] xxl:w-[235px] md:ml-4 md:pl-2 xl:ml-6 xl:pl-6 xxl:ml-[72px] xxl:pl-[72px]">
-                        <li class="md:font-semibold lg:font-bold md:text-sm xl:text-base xxl:text-lg xxl:font-black">
+                    <ul class="{{ $mapView ? '' : 'bg-opacity-10' }} animRight flex justify-between items-center rounded-[100px] bg-white relative md:pl-2 md:w-[60px] xl:w-[120px] xxl:w-[235px] md:ml-4 xl:ml-6 xxl:ml-[72px]">
+                        <li class="w-full xxl:w-1/2 flex justify-around md:font-semibold lg:font-bold md:text-sm xl:text-base xxl:text-lg xxl:font-black">
                             <a href="#">
                                 {{ config()->get('locales')[app()->getLocale()] }}
                             </a>
@@ -116,12 +119,15 @@
                                     @endforeach
                                 </ul>
                             </div>
+                            <a href="#">
+                                USD
+                            </a>
                         </li>
                         <li>
                             <img
                                 src="{{ asset('assets/images/icons/locale-icon.svg') }}"
                                 alt="locale-icon"
-                                class="hidden"
+                                class="hidden xxl:block"
                             />
                         </li>
                     </ul>

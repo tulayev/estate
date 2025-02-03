@@ -27,7 +27,7 @@
                     <div class="animLeft">
                         <a
                             href="#modalForm"
-                            class="main-button-about bg-[#69A8A4]"
+                            class="secondary-button bg-[#69A8A4]"
                         >
                             <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('listing/index/main.tag_1') }}</span>
                         </a>
@@ -35,7 +35,7 @@
                     <div class="animLeft">
                         <a
                             href="#modalForm"
-                            class="main-button-about bg-[#23334B]"
+                            class="secondary-button bg-[#23334B]"
                         >
                             <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('listing/index/main.tag_2') }}</span>
                         </a>
@@ -43,7 +43,7 @@
                     <div class="animLeft">
                         <a
                             href="#modalForm"
-                            class="main-button-about bg-[#767E94]"
+                            class="secondary-button bg-[#767E94]"
                         >
                             <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('listing/index/main.tag_3') }}</span>
                         </a>

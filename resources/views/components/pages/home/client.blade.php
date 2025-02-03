@@ -19,7 +19,7 @@
                     />
                     <div class="border-rounded h-full overflow-hidden absolute w-[90%] left-1/2 top-[-20px] -translate-x-1/2">
                         <img
-                            class="hidden absolute left-0 top-0 z-[99]"
+                            class="absolute left-0 top-0 z-[99]"
                             src="{{ asset('assets/images/client_1.png') }}"
                             alt="client 1"
                         />
@@ -41,7 +41,7 @@
                     />
                     <div class="border-rounded h-full overflow-hidden absolute w-[90%] left-1/2 top-[-20px] -translate-x-1/2">
                         <img
-                            class="hidden absolute left-0 top-0 z-[99]"
+                            class="absolute left-0 top-0 z-[99]"
                             src="{{ asset('assets/images/client_2.png') }}"
                             alt="client 2"
                         />
@@ -63,7 +63,7 @@
                     />
                     <div class="border-rounded h-full overflow-hidden absolute w-[90%] left-1/2 top-[-20px] -translate-x-1/2">
                         <img
-                            class="hidden absolute left-0 top-[-10px] z-[99] "
+                            class="absolute left-0 top-[-10px] z-[99] "
                             src="{{ asset('assets/images/client_3.png') }}"
                             alt="client 3"
                         />
