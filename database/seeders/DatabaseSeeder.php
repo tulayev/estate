@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
             MoonshineUserRoleSeeder::class,
             MoonshineUserSeeder::class,
             TypeSeeder::class,
+            TagSeeder::class,
+            FeatureSeeder::class,
             HotelSeeder::class,
             TopicCategorySeeder::class,
             TopicSeeder::class,

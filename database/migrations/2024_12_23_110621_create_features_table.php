@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('features', function (Blueprint $table) {
             $table->id();
             $table->json('name');
-            $table->string('icon')->nullable();
             $table->timestamps();
         });
     }

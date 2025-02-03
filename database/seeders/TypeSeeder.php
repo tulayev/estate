@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Type;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TypeSeeder extends Seeder
 {
@@ -13,23 +13,19 @@ class TypeSeeder extends Seeder
     public function run(): void
     {
         $types = [
-            [
-                'en' => 'primary',
-                'ru' => 'первичный',
-            ],
-            [
-                'en' => 'resale',
-                'ru' => 'перепродажа',
-            ],
-            [
-                'en' => 'land',
-                'ru' => 'земля',
-            ],
+            'For Rent'   => 'Для аренды',
+            'Completed'  => 'Завершено',
+            'Primary'    => 'Первичный',
+            'Off Plan'   => 'На этапе строительства',
+            'Structure'  => 'Структура',
         ];
 
-        foreach ($types as $typeData) {
-            Type::create([
-                'name' => $typeData,
+        foreach ($types as $en => $ru) {
+            DB::table('types')->insert([
+                'name' => json_encode([
+                    'en' => $en,
+                    'ru' => $ru,
+                ]),
             ]);
         }
     }

@@ -27,8 +27,8 @@ class Hotel extends Model
         'price',
         'main_image',
         'gallery',
-        'main_image_old',
-        'gallery_old',
+        'main_image_url',
+        'gallery_url',
         'active',
         'created_by',
     ];

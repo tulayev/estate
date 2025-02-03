@@ -10,7 +10,7 @@
             <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10">
                 <div
                     class="relative bg-cover bg-center bg-no-repeat border-rounded p-4 md:p-8 xl:p-10 bg-gradient-50"
-                    style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_old ?? asset('assets/images/object-background.png') }}');"
+                    style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}');"
                 >
                     <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
                     <!-- Image Top -->
@@ -63,8 +63,8 @@
                             />
                         </div>
                     @endforeach
-                @elseif ($hotel->gallery_old)
-                    @foreach(Helper::splitString($hotel->gallery_old, ';') as $image)
+                @elseif ($hotel->gallery_url)
+                    @foreach(Helper::splitString($hotel->gallery_url, ';') as $image)
                         <div>
                             <img
                                 src="{{ $image }}"

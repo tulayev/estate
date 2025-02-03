@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-use App\Helpers\Constants;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\Translatable\HasTranslations;
 
 class Feature extends Model
@@ -14,25 +13,13 @@ class Feature extends Model
 
     protected $fillable = [
         'name',
-        'icon',
     ];
 
     protected $translatable = [
         'name',
     ];
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::deleting(function ($feature) {
-            if (!is_null($feature->icon) && Storage::disk(Constants::PUBLIC_DISK)->exists($feature->icon)) {
-                Storage::disk(Constants::PUBLIC_DISK)->delete($feature->icon);
-            }
-        });
-    }
-
-    public function hotels()
+    public function hotels(): BelongsToMany
     {
         return $this->belongsToMany(Hotel::class, 'hotel_feature');
     }

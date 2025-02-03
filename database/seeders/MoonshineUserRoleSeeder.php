@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Helpers\Constants;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use MoonShine\Models\MoonshineUserRole;
 

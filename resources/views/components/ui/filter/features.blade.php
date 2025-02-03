@@ -55,11 +55,6 @@
                 @click="toggleFeature('{{ $feature->id }}')"
             >
                 <div>
-                    <img
-                        src="{{ ImagePathResolver::resolve($feature->icon) ?? asset('assets/images/icons/gym.png') }}"
-                        alt="{{ $feature->name }}"
-                        class="m-auto"
-                    />
                     <p
                         class="modal-subtitle text-center"
                         :class="isFeatureSelected('{{ $feature->id }}') ? 'text-white' : 'text-primary'"

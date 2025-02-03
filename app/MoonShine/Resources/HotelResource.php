@@ -170,9 +170,9 @@ class HotelResource extends ModelResource
                     ->removable()
                     ->multiple(),
 
-                Text::make('Main Image URL', 'main_image_old'),
+                Text::make('Main Image URL', 'main_image_url'),
 
-                Textarea::make('Gallery URLs (separate by coma)', 'gallery_old'),
+                Textarea::make('Gallery URLs (separate by coma)', 'gallery_url'),
             ]),
         ];
     }
@@ -196,8 +196,8 @@ class HotelResource extends ModelResource
             'main_image' => 'nullable|image|max:2048',
             'gallery' => 'nullable|array',
             'gallery.*' => 'image|max:2048',
-            'main_image_old' => 'nullable|string',
-            'gallery_old' => 'nullable|string',
+            'main_image_url' => 'nullable|string',
+            'gallery_url' => 'nullable|string',
         ];
     }
 

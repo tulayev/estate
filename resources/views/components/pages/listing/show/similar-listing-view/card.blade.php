@@ -10,7 +10,7 @@
         >
             <div
                 class="relative bg-cover bg-center bg-no-repeat flex flex-col justify-between border-rounded p-2 h-[200px]"
-                style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_old ?? asset('assets/images/object-background.png') }}');"
+                style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}');"
             >
                 <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
                 <!-- Image Top -->

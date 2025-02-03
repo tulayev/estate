@@ -32,6 +32,8 @@
                       asset('assets/images/primary_bg.png'),
                       asset('assets/images/resale_bg.png'),
                       asset('assets/images/land_bg.png'),
+                      asset('assets/images/land_bg.png'),
+                      asset('assets/images/land_bg.png'),
                 ];
                 $i = 0;
                 @endphp
