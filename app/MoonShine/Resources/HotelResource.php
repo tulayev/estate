@@ -172,7 +172,7 @@ class HotelResource extends ModelResource
 
                 Text::make('Main Image URL', 'main_image_url'),
 
-                Textarea::make('Gallery URLs (separate by coma)', 'gallery_url'),
+                Textarea::make('Gallery URLs (separate by semicolon \';\')', 'gallery_url'),
             ]),
         ];
     }

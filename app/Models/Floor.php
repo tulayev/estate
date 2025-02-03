@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Helpers\Constants;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
 
 class Floor extends Model
@@ -20,7 +21,17 @@ class Floor extends Model
         'hotel_id',
     ];
 
-    protected static function boot()
+    public function hotel(): BelongsTo
+    {
+        return $this->belongsTo(Hotel::class);
+    }
+
+    public function getFormattedAreaAttribute(): string
+    {
+        return number_format($this->area, 2);
+    }
+
+    protected static function boot(): void
     {
         parent::boot();
 
@@ -29,15 +40,5 @@ class Floor extends Model
                 Storage::disk(Constants::PUBLIC_DISK)->delete($floor->image);
             }
         });
-    }
-
-    public function hotel()
-    {
-        return $this->belongsTo(Hotel::class);
-    }
-
-    public function getFormattedAreaAttribute()
-    {
-        return number_format($this->area, 2);
     }
 }
