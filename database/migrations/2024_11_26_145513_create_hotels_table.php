@@ -20,7 +20,7 @@ return new class extends Migration
             $table->json('location');
             $table->decimal('latitude', 10, 8)->nullable();
             $table->decimal('longitude', 11, 8)->nullable();
-            $table->decimal('price', 11, 3);
+            $table->decimal('price', 13, 3);
             $table->string('main_image')->nullable();
             $table->json('gallery')->nullable();
             $table->string('main_image_url')->nullable();

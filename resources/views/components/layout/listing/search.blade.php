@@ -59,73 +59,74 @@
 <!-- Filter Modal -->
 <div
     id="searchModal"
-    class="w-[85vw] h-[85vh] m-auto bg-white rounded-[31px] shadow-card"
     uk-modal
 >
-    <form
-        id="filterForm"
-        action="{{ route('pages.listing.index') }}"
-        class="p-4 sm:p-6 lg:p-8 xl:px-11 xl:py-9"
-    >
-        <div class="flex justify-between items-center">
-            <h2 class="section-title">
-                {{ __('general.filter_popup_name') }}
-            </h2>
-
-            <div>
-                <button>
-                    <img
-                        class="uk-modal-close w-5 h-5"
-                        src="{{ asset('assets/images/icons/modal-close.svg') }}"
-                        alt="close"
-                    />
-                </button>
-            </div>
-        </div>
-
-        <!-- Type -->
-        @if ($types)
-            <x-ui.filter.types :types="$types" />
-        @endif
-
-        <!-- Keywords & Price range -->
-        <div class="uk-child-width-1-1 uk-child-width-1-2@m mt-4 sm:mt-6 md:mt-10 xl:mt-20" uk-grid>
-            <!-- Keywords -->
-            <x-ui.filter.keywords />
-            <!-- Price Range -->
-            <x-ui.filter.ranges.price-range
-                :step="100"
-                :minValue="0"
-                :maxValue="$maxPrice"
-            />
-        </div>
-
-        <!-- Map -->
-        @if ($locations)
-            <x-ui.filter.map :locations="$locations" />
-        @endif
-        <!-- Features -->
-        @if ($features)
-            <x-ui.filter.features :features="$features" />
-        @endif
-        <!-- Tags -->
-        @if ($tags)
-            <x-ui.filter.tags :tags="$tags" />
-        @endif
-
-        <!--  Results button -->
-        <div
-            x-data="filtersHandler()"
-            class="mt-4 sm:mt-6 md:mt-8 lg:mt-12 xl:mt-24"
+    <div class="uk-modal-dialog uk-modal-body w-[85vw] h-[90vh] bg-white rounded-[31px] shadow-card overflow-x-hidden mt-4">
+        <form
+            id="filterForm"
+            action="{{ route('pages.listing.index') }}"
+            class="p-4 sm:p-6 lg:p-8 xl:px-11 xl:py-9"
         >
-            <button
-                id="showResultsButton"
-                type="submit"
-                class="w-full bg-primary border-rounded modal-subtitle text-white text-center py-2 sm:py-4 xl:py-7"
-                x-text="buttonText"
-            ></button>
-        </div>
-    </form>
+            <div class="flex justify-between items-center">
+                <h2 class="section-title">
+                    {{ __('general.filter_popup_name') }}
+                </h2>
+
+                <div>
+                    <button>
+                        <img
+                            class="uk-modal-close w-5 h-5"
+                            src="{{ asset('assets/images/icons/modal-close.svg') }}"
+                            alt="close"
+                        />
+                    </button>
+                </div>
+            </div>
+
+            <!-- Type -->
+            @if ($types)
+                <x-ui.filter.types :types="$types" />
+            @endif
+
+            <!-- Keywords & Price range -->
+            <div class="uk-child-width-1-1 uk-child-width-1-2@m mt-4 sm:mt-6 md:mt-10 xl:mt-20" uk-grid>
+                <!-- Keywords -->
+                <x-ui.filter.keywords />
+                <!-- Price Range -->
+                <x-ui.filter.ranges.price-range
+                    :step="100"
+                    :minValue="0"
+                    :maxValue="$maxPrice"
+                />
+            </div>
+
+            <!-- Map -->
+            @if ($locations)
+                <x-ui.filter.map :locations="$locations" />
+            @endif
+            <!-- Features -->
+            @if ($features)
+                <x-ui.filter.features :features="$features" />
+            @endif
+            <!-- Tags -->
+            @if ($tags)
+                <x-ui.filter.tags :tags="$tags" />
+            @endif
+
+            <!--  Results button -->
+            <div
+                x-data="filtersHandler()"
+                class="mt-4 sm:mt-6 md:mt-8 lg:mt-12 xl:mt-24"
+            >
+                <button
+                    id="showResultsButton"
+                    type="submit"
+                    class="w-full bg-primary border-rounded modal-subtitle text-white text-center py-2 sm:py-4 xl:py-7"
+                    x-text="buttonText"
+                ></button>
+            </div>
+        </form>
+    </div>
 </div>
 
 <script defer>

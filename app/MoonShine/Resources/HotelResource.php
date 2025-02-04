@@ -192,7 +192,7 @@ class HotelResource extends ModelResource
             'location' => 'required|string',
             'latitude' => 'nullable|numeric|between:-90,90',
             'longitude' => 'nullable|numeric|between:-180,180',
-            'price' => 'required|numeric|min:0|regex:/^\d+(\.\d{1,3})?$/',
+            'price' => 'required|numeric|min:0|max:9999999999.999|regex:/^\d+(\.\d{1,3})?$/',
             'main_image' => 'nullable|image|max:2048',
             'gallery' => 'nullable|array',
             'gallery.*' => 'image|max:2048',

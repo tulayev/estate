@@ -58,8 +58,14 @@ a:hover {
 }
 
 /* Uikit Modal */
-.uk-modal {
-    padding: 0 !important;
+.uk-modal,
+.uk-modal-body {
+    padding: 0;
+}
+
+.uk-modal-dialog {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Uikit Accordion */

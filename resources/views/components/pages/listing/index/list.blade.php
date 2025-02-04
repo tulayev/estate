@@ -99,6 +99,14 @@
                     const hotelsWrapper = document.getElementById('hotelsWrapper');
                     hotelsWrapper.insertAdjacentHTML('beforeend', response.data);
 
+                    // Reapply random background colors to newly added elements
+                    document.querySelectorAll('.random-bg-color').forEach((element) => {
+                        if (!element.dataset.bgAssigned) {
+                            element.classList.add(window.getRandomColor());
+                            element.dataset.bgAssigned = "true"; // Prevent reassigning
+                        }
+                    });
+
                     if (this.currentPage >= this.lastPage) {
                         this.hasMorePages = false;
                     }
