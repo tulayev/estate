@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Enums\TopicType;
+use App\Models\TopicCategory;
 use App\Models\TopicLike;
 use App\Models\Topic;
 use Illuminate\Http\JsonResponse;
@@ -13,8 +15,17 @@ class InsightController extends Controller
 {
     public function index(Request $request): View | string
     {
+        $topicCategories = TopicCategory::all();
         $topicsQuery = Topic::query()
             ->active();
+
+        if ($request->has('type')) {
+            $topicsQuery->byType(TopicType::from($request->get('type')));
+        }
+
+        if ($request->has('category')) {
+            $topicsQuery->byCategory($request->get('category'));
+        }
 
         if ($request->has('filter') && $request->get('filter') === 'liked') {
             $topicsQuery->whereHas('likes', function ($query) {
@@ -43,6 +54,7 @@ class InsightController extends Controller
 
         return view('pages.insight.index', [
             'topics' => $topics,
+            'topicCategories' => $topicCategories,
         ]);
     }
 

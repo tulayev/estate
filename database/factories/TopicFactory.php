@@ -36,7 +36,7 @@ class TopicFactory extends Factory
             'minutes_to_read' => ceil($wordCount / $wordsPerMinute),
             'views' => $this->faker->numberBetween(0, 1000),
             'active' => $this->faker->boolean(),
-            'topic_category_id' => TopicCategory::factory(),
+            'topic_category_id' => $this->faker->numberBetween(1, 3),
             'created_by' => 1,
         ];
     }

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Helpers\Constants;
+use App\Helpers\Enums\TopicType;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -32,12 +34,26 @@ class Topic extends Model
         'body',
     ];
 
-    public function scopeActive($query)
+    protected $casts = [
+        'type' => TopicType::class,
+    ];
+
+    public function scopeActive(Builder $query): Builder
     {
         return $query->where('active', true);
     }
 
-    public function scopeSearchByTitle($query, $searchTerm)
+    public function scopeByType(Builder $query, TopicType $topicType): Builder
+    {
+        return $query->where('type', $topicType->value);
+    }
+
+    public function scopeByCategory(Builder $query, $categoryId): Builder
+    {
+        return $query->where('topic_category_id', $categoryId);
+    }
+
+    public function scopeSearchByTitle(Builder $query, $searchTerm): Builder
     {
         $locale = app()->getLocale();
 

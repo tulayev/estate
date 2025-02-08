@@ -27,7 +27,7 @@ return new class extends Migration
             $table->text('gallery_url')->nullable();
             $table->boolean('active')->default(false);
             $table->boolean('ie_verified')->default(false);
-            $table->unsignedTinyInteger('ie_score')->nullable();
+            $table->unsignedTinyInteger('ie_score')->default(0);
             $table->foreignId('created_by')
                 ->nullable()
                 ->constrained('moonshine_users')

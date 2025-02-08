@@ -1,3 +1,7 @@
+@props([
+    'topicCategories' => null,
+])
+
 <main class="main-section relative p-2">
     <img
         class="border-rounded object-cover h-[250px] sm:h-auto sm:object-contain"
@@ -21,32 +25,22 @@
                 </div>
             </div>
 
-            <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-4 md:mt-12 xl:mt-16">
-                <div class="animLeft">
-                    <a
-                        href="#"
-                        class="secondary-button bg-[#69A8A4]"
-                    >
-                        <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('insight/index/main.tag_1') }}</span>
-                    </a>
+            @if ($topicCategories)
+                <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-4 md:mt-12 xl:mt-16">
+                    @foreach($topicCategories as $category)
+                        <div class="animLeft">
+                            <a
+                                href="{{ route('pages.insight.index', ['category' => $category->id]) }}"
+                                class="secondary-button random-bg-color"
+                            >
+                                <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">
+                                    {{ $category->title }}
+                                </span>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
-                <div class="animLeft">
-                    <a
-                        href="#"
-                        class="secondary-button bg-[#23334B]"
-                    >
-                        <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('insight/index/main.tag_1') }}</span>
-                    </a>
-                </div>
-                <div class="animLeft">
-                    <a
-                        href="#"
-                        class="secondary-button bg-[#767E94]"
-                    >
-                        <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('insight/index/main.tag_1') }}</span>
-                    </a>
-                </div>
-            </div>
+            @endif
         </div>
     </div>
     <!-- Search -->

@@ -73,6 +73,14 @@ class HotelResource extends ModelResource
 
             Image::make('Main Image', 'main_image'),
 
+            BelongsToMany::make('Tags', 'tags', 'name', resource: new TagResource())
+                ->inLine('|'),
+
+            Number::make('IE Score', 'ie_score')
+                ->stars()
+                ->min(0)
+                ->max(100),
+
             $this->getPublishedField()?->sortable(),
         ];
     }
@@ -147,19 +155,20 @@ class HotelResource extends ModelResource
                     ->min(0)
                     ->step(0.001),
 
-                BelongsToMany::make('Types', 'types', 'name', resource: new TypeResource()),
+                BelongsToMany::make('Types', 'types', 'name', resource: new TypeResource())
+                    ->selectMode(),
 
-                BelongsToMany::make('Tags', 'tags', 'name', resource: new TagResource()),
+                BelongsToMany::make('Tags', 'tags', 'name', resource: new TagResource())
+                    ->selectMode(),
 
-                BelongsToMany::make('Features', 'features', 'name', resource: new FeatureResource()),
+                BelongsToMany::make('Features', 'features', 'name', resource: new FeatureResource())
+                    ->selectMode(),
 
                 $this->getPublishedField(),
 
-                Switcher::make('IE Verified', 'ie_verified')
-                    ->default(false),
+                Switcher::make('IE Verified', 'ie_verified'),
 
-                Number::make('IE Score', 'ie_score')
-                    ->required(),
+                Number::make('IE Score', 'ie_score'),
             ]),
 
             Block::make('Media', [

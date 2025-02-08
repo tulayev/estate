@@ -53,4 +53,10 @@ return [
     'filter_popup_bathrooms' => 'ванные',
     'filter_popup_tags' => 'теги',
     'filter_popup_submit' => 'показать результаты',
+
+    /*
+     * Topic Types
+     */
+    'topic_types.for_investors' => 'Инвесторам',
+    'topic_types.for_developers' => 'Застройщикам',
 ];

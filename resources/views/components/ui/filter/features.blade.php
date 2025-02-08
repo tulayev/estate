@@ -48,22 +48,26 @@
             x-bind:value="selectedFeatures.join(',')"
         />
 
-        @foreach($features as $feature)
-            <div
-                class="feature shadow-card border-rounded flex justify-center items-center cursor-pointer w-[150px] h-[100px]"
-                :class="isFeatureSelected('{{ $feature->id }}') ? 'bg-primary' : 'bg-white'"
-                @click="toggleFeature('{{ $feature->id }}')"
-            >
+        <div class="uk-grid-small" uk-grid uk-height-match="target: > div > .feature">
+            @foreach($features as $feature)
                 <div>
-                    <p
-                        class="modal-subtitle text-center"
-                        :class="isFeatureSelected('{{ $feature->id }}') ? 'text-white' : 'text-primary'"
+                    <div
+                        class="feature shadow-card border-rounded flex justify-center items-center cursor-pointer w-[150px] h-[100px]"
+                        :class="isFeatureSelected('{{ $feature->id }}') ? 'bg-primary' : 'bg-white'"
+                        @click="toggleFeature('{{ $feature->id }}')"
                     >
-                        {{ $feature->name }}
-                    </p>
+                        <div>
+                            <p
+                                class="modal-subtitle text-center"
+                                :class="isFeatureSelected('{{ $feature->id }}') ? 'text-white' : 'text-primary'"
+                            >
+                                {{ $feature->name }}
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
     </div>
 </div>
 

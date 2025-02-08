@@ -52,5 +52,11 @@ return [
     'filter_popup_bedrooms' => 'bedrooms',
     'filter_popup_bathrooms' => 'bathrooms',
     'filter_popup_tags' => 'tags',
-    'filter_popup_submit' => 'show results',    
+    'filter_popup_submit' => 'show results',
+
+    /*
+     * Topic Types
+     */
+    'topic_types.for_investors' => 'For Investors',
+    'topic_types.for_developers' => 'For Developers',
 ];

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Helpers\Constants;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -46,17 +47,17 @@ class Hotel extends Model
         'longitude' => 'float',
     ];
 
-    public function scopeActive($query)
+    public function scopeActive(Builder $query): Builder
     {
         return $query->where('active', true);
     }
 
-    public function scopeLocations($query)
+    public function scopeLocations(Builder $query): Builder
     {
         return $query->select('location', 'longitude', 'latitude')->distinct();
     }
 
-    public function scopeSearchByTitle($query, $keyword)
+    public function scopeSearchByTitle(Builder $query, $keyword): Builder
     {
         if ($keyword) {
             $query->whereRaw('LOWER(title) LIKE ?', ['%' . strtolower($keyword) . '%']);
@@ -65,7 +66,7 @@ class Hotel extends Model
         return $query;
     }
 
-    public function scopeSearchByLocations($query, $searchTerm)
+    public function scopeSearchByLocations(Builder $query, $searchTerm): Builder
     {
         $locale = app()->getLocale();
 
@@ -79,7 +80,7 @@ class Hotel extends Model
         return $query;
     }
 
-    public function scopeFilterByPrice($query, $min = null, $max = null)
+    public function scopeFilterByPrice(Builder $query, $min = null, $max = null): Builder
     {
         if ($min !== null && $min != 0) {
             $query->where('price', '>=', $min);
@@ -91,7 +92,7 @@ class Hotel extends Model
         return $query;
     }
 
-    public function scopeFilterByBedrooms($query, $min = null, $max = null)
+    public function scopeFilterByBedrooms(Builder $query, $min = null, $max = null): Builder
     {
         if ($min !== null && $min != 0) {
             $query->where(function ($q) use ($min) {
@@ -114,7 +115,7 @@ class Hotel extends Model
         return $query;
     }
 
-    public function scopeFilterByBathrooms($query, $min = null, $max = null)
+    public function scopeFilterByBathrooms(Builder $query, $min = null, $max = null): Builder
     {
         if ($min !== null && $min != 0) {
             $query->where(function ($q) use ($min) {
@@ -137,43 +138,43 @@ class Hotel extends Model
         return $query;
     }
 
-    public function scopeFilterByTypes($query, $types)
+    public function scopeFilterByTypes(Builder $query, $types): Builder
     {
         if (!empty($types)) {
             $typesArray = explode(',', $types);
 
             $query->whereHas('types', function ($q) use ($typesArray) {
-                $q->whereIn('types.id', $typesArray); // Specify `types.id`
+                $q->whereIn('types.id', $typesArray);
             });
         }
         return $query;
     }
 
-    public function scopeFilterByTags($query, $tags)
+    public function scopeFilterByTags(Builder $query, $tags): Builder
     {
         if (!empty($tags)) {
             $tagsArray = explode(',', $tags);
 
             $query->whereHas('tags', function ($q) use ($tagsArray) {
-                $q->whereIn('tags.id', $tagsArray); // Specify `tags.id`
+                $q->whereIn('tags.id', $tagsArray);
             });
         }
         return $query;
     }
 
-    public function scopeFilterByFeatures($query, $features)
+    public function scopeFilterByFeatures(Builder $query, $features): Builder
     {
         if (!empty($features)) {
             $featuresArray = explode(',', $features);
 
             $query->whereHas('features', function ($q) use ($featuresArray) {
-                $q->whereIn('features.id', $featuresArray); // Specify `features.id`
+                $q->whereIn('features.id', $featuresArray);
             });
         }
         return $query;
     }
 
-    public function scopeFilterByLocations($query, $locations)
+    public function scopeFilterByLocations(Builder $query, $locations): Builder
     {
         $locale = app()->getLocale();
 
@@ -222,17 +223,17 @@ class Hotel extends Model
         return $this->hasMany(HotelLike::class);
     }
 
-    public function getAreaAttribute()
+    public function getAreaAttribute(): float
     {
         return $this->floors()->sum('area');
     }
 
-    public function getBedroomsAttribute()
+    public function getBedroomsAttribute(): int
     {
         return $this->floors()->sum('bedrooms');
     }
 
-    public function getBathroomsAttribute()
+    public function getBathroomsAttribute(): int
     {
         return $this->floors()->sum('bathrooms');
     }

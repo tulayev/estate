@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\TopicCategory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TopicCategorySeeder extends Seeder
 {
@@ -12,6 +12,19 @@ class TopicCategorySeeder extends Seeder
      */
     public function run(): void
     {
-        TopicCategory::factory(5)->create();
+        $topicCategories = [
+            'Research' => 'Исследование',
+            'New'      => 'Новинка',
+            'Opinion'  => 'Мысль',
+        ];
+
+        foreach ($topicCategories as $en => $ru) {
+            DB::table('topic_categories')->insert([
+                'title' => json_encode([
+                    'en' => $en,
+                    'ru' => $ru,
+                ]),
+            ]);
+        }
     }
 }

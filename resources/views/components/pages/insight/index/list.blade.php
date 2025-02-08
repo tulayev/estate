@@ -5,7 +5,8 @@
 <section class="section">
     <div class="container pb-10 sm:pb-24">
         <div class="w-full flex justify-end">
-            <a href="{{ route('pages.insight.index', ['filter' => 'liked']) }}">
+            @php($queryParams = request()->query())
+            <a href="{{ route('pages.insight.index', array_merge($queryParams, ['filter' => 'liked'])) }}">
                 <img src="{{ asset('assets/images/icons/heart-red.svg') }}" alt="like-view" />
             </a>
         </div>
@@ -53,9 +54,10 @@
                 this.currentPage++;
 
                 try {
-                    const queryParams = new URLSearchParams({
-                        page: this.currentPage,
-                    });
+                    const existingParams = new URLSearchParams(window.location.search);
+                    const queryParams = new URLSearchParams(existingParams);
+
+                    queryParams.set('page', this.currentPage);
 
                     const response = await axios.get(`?${queryParams.toString()}`, {
                         headers: {
@@ -65,6 +67,14 @@
 
                     const topicsWrapper = document.getElementById('topicsWrapper');
                     topicsWrapper.insertAdjacentHTML('beforeend', response.data);
+
+                    // Reapply random background colors to newly added elements
+                    document.querySelectorAll('.random-bg-color').forEach((element) => {
+                        if (!element.dataset.bgAssigned) {
+                            element.classList.add(window.getRandomColor());
+                            element.dataset.bgAssigned = "true"; // Prevent reassigning
+                        }
+                    });
 
                     if (this.currentPage >= this.lastPage) {
                         this.hasMorePages = false;
