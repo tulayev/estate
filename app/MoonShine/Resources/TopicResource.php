@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources;
 
 use App\Helpers\Constants;
+use App\Helpers\Enums\TopicType;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Topic;
 
 use MoonShine\Attributes\Icon;
 use MoonShine\Decorations\Block;
+use MoonShine\Fields\Enum;
 use MoonShine\Fields\Image;
 use MoonShine\Fields\Relationships\BelongsTo;
 use MoonShine\Fields\Slug;
@@ -110,6 +112,9 @@ class TopicResource extends ModelResource
                     ->removable(),
 
                 $this->getPublishedField(),
+
+                Enum::make('Type', 'type')
+                    ->attach(TopicType::class),
             ])
         ];
     }
@@ -126,6 +131,7 @@ class TopicResource extends ModelResource
             'title' => 'required|string|max:255',
             'body' => 'required|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'type' => 'required',
         ];
     }
 

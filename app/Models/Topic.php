@@ -22,6 +22,7 @@ class Topic extends Model
         'views',
         'image',
         'active',
+        'type',
         'topic_category_id',
         'created_by',
     ];

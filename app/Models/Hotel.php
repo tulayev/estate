@@ -30,6 +30,8 @@ class Hotel extends Model
         'main_image_url',
         'gallery_url',
         'active',
+        'ie_verified',
+        'ie_score',
         'created_by',
     ];
 

@@ -154,6 +154,12 @@ class HotelResource extends ModelResource
                 BelongsToMany::make('Features', 'features', 'name', resource: new FeatureResource()),
 
                 $this->getPublishedField(),
+
+                Switcher::make('IE Verified', 'ie_verified')
+                    ->default(false),
+
+                Number::make('IE Score', 'ie_score')
+                    ->required(),
             ]),
 
             Block::make('Media', [
@@ -198,6 +204,8 @@ class HotelResource extends ModelResource
             'gallery.*' => 'image|max:2048',
             'main_image_url' => 'nullable|string',
             'gallery_url' => 'nullable|string',
+            'ie_verified' => 'required',
+            'ie_score' => 'required|numeric|min:0|max:100',
         ];
     }
 

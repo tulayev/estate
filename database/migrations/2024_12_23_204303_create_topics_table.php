@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\Enums\TopicType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('views')->default(0);
             $table->string('image')->nullable();
             $table->boolean('active')->default(false);
+            $table->enum('type', TopicType::values())->nullable();
             $table->foreignId('topic_category_id')
                 ->nullable()
                 ->constrained('topic_categories')
