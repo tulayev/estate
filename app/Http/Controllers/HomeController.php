@@ -11,6 +11,7 @@ class HomeController extends Controller
     public function index(): View
     {
         $hotels = Hotel::active()
+            ->ieVerified()
             ->inRandomOrder()
             ->limit(3)
             ->get();

@@ -5,7 +5,7 @@
 @if ($hotel)
     <div>
         <div
-            class="relative bg-cover bg-center bg-no-repeat flex flex-col justify-between border-rounded p-3 h-[300px]"
+            class="relative bg-cover bg-center bg-no-repeat flex flex-col justify-between border-rounded p-3 h-[220px] md:h-[300px]"
             style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}');"
         >
             <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
@@ -45,11 +45,13 @@
             >
                 <div class="flex justify-between items-center uppercase text-sm sm:text-base md:text-lg">
                     <div class="flex items-center space-x-2">
-                        <img
-                            class="w-6"
-                            src="{{ asset('assets/images/icons/verified.svg') }}"
-                            alt="verified"
-                        />
+                        @if ($hotel->ie_verified)
+                            <img
+                                class="w-6"
+                                src="{{ asset('assets/images/icons/verified.svg') }}"
+                                alt="verified"
+                            />
+                        @endif
                         <p class="text-white sm:font-bold">
                             {{ Str::limit($hotel->title, 5) }}
                         </p>

@@ -3,7 +3,7 @@
 ])
 
 <div
-    class="mt-8 sm:mt-10 md:mt-20 lg:mt-30 xl:mt-40"
+    class="mt-8 sm:mt-10 md:mt-20 xl:mt-24"
     x-data="features()"
 >
     <h3 class="modal-subtitle text-primary">
@@ -48,11 +48,11 @@
             x-bind:value="selectedFeatures.join(',')"
         />
 
-        <div class="uk-grid-small" uk-grid uk-height-match="target: > div > .feature">
+        <div class="uk-grid-small uk-child-width-1-2 uk-child-width-auto@s" uk-grid uk-height-match="target: > div > .feature">
             @foreach($features as $feature)
                 <div>
                     <div
-                        class="feature shadow-card border-rounded flex justify-center items-center cursor-pointer w-[150px] h-[100px]"
+                        class="feature shadow-card border-rounded flex justify-center items-center cursor-pointer p-2 sm:p-4 md:px-6 md:py-8"
                         :class="isFeatureSelected('{{ $feature->id }}') ? 'bg-primary' : 'bg-white'"
                         @click="toggleFeature('{{ $feature->id }}')"
                     >

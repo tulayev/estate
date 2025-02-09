@@ -45,11 +45,13 @@
                 <a href="{{ route('pages.listing.show', $hotel->slug) }}">
                     <div class="flex flex-col justify-between h-full text-[#505050] p-4 md:p-6 text-base md:text-lg xl:text-xl">
                         <div class="flex items-center space-x-2">
-                            <img
-                                class="w-6"
-                                src="{{ asset('assets/images/icons/verified.svg') }}"
-                                alt="verified"
-                            />
+                            @if ($hotel->ie_verified)
+                                <img
+                                    class="w-6"
+                                    src="{{ asset('assets/images/icons/verified.svg') }}"
+                                    alt="verified"
+                                />
+                            @endif
                             <h2 class="sm:font-bold xl:font-black">
                                 {{ $hotel->title }}
                             </h2>

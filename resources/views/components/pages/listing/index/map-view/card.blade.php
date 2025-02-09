@@ -46,11 +46,13 @@
                 >
                     <div class="flex justify-between items-center uppercase text-sm sm:text-base md:text-lg">
                         <div class="flex items-center space-x-2">
-                            <img
-                                class="w-6"
-                                src="{{ asset('assets/images/icons/verified.svg') }}"
-                                alt="verified"
-                            />
+                            @if ($hotel->ie_verified)
+                                <img
+                                    class="w-6"
+                                    src="{{ asset('assets/images/icons/verified.svg') }}"
+                                    alt="verified"
+                                />
+                            @endif
                             <p class="text-white sm:font-bold">
                                 {{ $hotel->title }}
                             </p>

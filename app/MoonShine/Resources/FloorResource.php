@@ -27,8 +27,8 @@ use MoonShine\Components\MoonShineComponent;
 class FloorResource extends ModelResource
 {
     protected string $model = Floor::class;
-
     protected string $title = 'Floors';
+    protected bool $withPolicy = true;
 
     /**
      * @return list<MoonShineComponent|Field>
@@ -87,7 +87,7 @@ class FloorResource extends ModelResource
             'hotel_id' => 'required|exists:hotels,id',
         ];
     }
-    
+
     public function redirectAfterSave(): string
     {
         return url('/admin/resource/floor-resource/index-page');

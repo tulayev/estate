@@ -22,8 +22,8 @@ use MoonShine\Components\MoonShineComponent;
 class TopicCategoryResource extends ModelResource
 {
     protected string $model = TopicCategory::class;
-
     protected string $title = 'Topic Categories';
+    protected bool $withPolicy = true;
 
     /**
      * @return list<MoonShineComponent|Field>

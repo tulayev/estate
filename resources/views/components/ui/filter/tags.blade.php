@@ -3,7 +3,7 @@
 ])
 
 <div
-    class="mt-8 sm:mt-10 md:mt-20 lg:mt-30 xl:mt-40"
+    class="mt-8 sm:mt-10 md:mt-20 xl:mt-24"
     x-data="tags()"
 >
     <h3 class="modal-subtitle text-primary">
@@ -12,7 +12,7 @@
         <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetTags">x</span>
         <span x-text="selectedTagNames().join(', ')"></span>
     </h3>
-    <div class="mt-6 tags flex flex-wrap gap-4">
+    <div class="mt-6 tags uk-child-width-1-2 uk-child-width-auto@s uk-grid-small" uk-grid>
         <input
             type="hidden"
             name="tags"
@@ -21,12 +21,14 @@
         />
 
         @foreach($tags as $tag)
-            <div
-                class="tag random-bg-color modal-subtitle cursor-pointer text-white text-center p-3 border-rounded"
-                :class="isTagSelected('{{ $tag->id }}') ? 'hidden' : ''"
-                @click="addTag('{{ $tag->id }}')"
-            >
-                {{ $tag->name }}
+            <div>
+                <div
+                    class="tag random-bg-color modal-subtitle cursor-pointer text-white text-center p-3 border-rounded"
+                    :class="isTagSelected('{{ $tag->id }}') ? 'hidden' : ''"
+                    @click="addTag('{{ $tag->id }}')"
+                >
+                    {{ $tag->name }}
+                </div>
             </div>
         @endforeach
     </div>

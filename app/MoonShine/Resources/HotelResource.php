@@ -31,12 +31,12 @@ use MoonShine\Components\MoonShineComponent;
 class HotelResource extends ModelResource
 {
     protected string $model = Hotel::class;
-
     protected string $title = 'Objects';
+    protected bool $withPolicy = true;
 
     public function query(): Builder
     {
-        if (auth()->user()->moonshine_user_role_id === Constants::ROLES['Developer']) {
+        if ($this->isUserInRole(Constants::ROLES['Developer'])) {
             return parent::query()
                 ->where('created_by', '=', auth()->user()->id);
         }
@@ -46,19 +46,11 @@ class HotelResource extends ModelResource
 
     public function getBadge(): string
     {
-        if (auth()->user()->moonshine_user_role_id === Constants::ROLES['Admin']) {
+        if ($this->isUserInRole(Constants::ROLES['Admin'])) {
             return strval(Hotel::where('active', false)->count());
         }
 
         return '';
-    }
-
-    public function getPublishedField(): Switcher | null
-    {
-        return auth()->user()->moonshine_user_role_id === Constants::ROLES['Admin']
-            ? Switcher::make('Published', 'active')
-                ->default(true)
-            : null;
     }
 
     /**
@@ -76,10 +68,7 @@ class HotelResource extends ModelResource
             BelongsToMany::make('Tags', 'tags', 'name', resource: new TagResource())
                 ->inLine('|'),
 
-            Number::make('IE Score', 'ie_score')
-                ->stars()
-                ->min(0)
-                ->max(100),
+            $this->getIeScoreField(),
 
             $this->getPublishedField()?->sortable(),
         ];
@@ -166,9 +155,9 @@ class HotelResource extends ModelResource
 
                 $this->getPublishedField(),
 
-                Switcher::make('IE Verified', 'ie_verified'),
+                $this->getIeVerifiedField(),
 
-                Number::make('IE Score', 'ie_score'),
+                $this->getIeScoreField(),
             ]),
 
             Block::make('Media', [
@@ -226,5 +215,37 @@ class HotelResource extends ModelResource
     public function redirectAfterSave(): string
     {
         return url('/admin/resource/hotel-resource/index-page');
+    }
+
+    private function isUserInRole($role): bool
+    {
+        return auth()->user()->moonshine_user_role_id === $role;
+    }
+
+    private function getPublishedField(): Switcher | null
+    {
+        return $this->isUserInRole(Constants::ROLES['Admin'])
+            ? Switcher::make('Published', 'active')
+                ->default(true)
+            : null;
+    }
+
+    private function getIeVerifiedField(): Switcher | null
+    {
+        return $this->isUserInRole(Constants::ROLES['Admin'])
+            ? Switcher::make('IE Verified', 'ie_verified')
+                ->default(true)
+            : null;
+    }
+
+    private function getIeScoreField(): Number | null
+    {
+        return $this->isUserInRole(Constants::ROLES['Admin'])
+            ? Number::make('IE Score', 'ie_score')
+                ->buttons()
+                ->stars()
+                ->min(0)
+                ->max(100)
+            : null;
     }
 }

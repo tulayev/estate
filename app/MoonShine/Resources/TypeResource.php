@@ -22,8 +22,8 @@ use MoonShine\Components\MoonShineComponent;
 class TypeResource extends ModelResource
 {
     protected string $model = Type::class;
-
     protected string $title = 'Types';
+    protected bool $withPolicy = true;
 
     /**
      * @return list<MoonShineComponent|Field>

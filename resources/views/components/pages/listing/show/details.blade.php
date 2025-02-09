@@ -36,11 +36,13 @@
                     <!-- Image Bottom -->
                     <div class="relative text-white uppercase mt-20 sm:mt-40 md:mt-64 lg:mt-80 xl:mt-96">
                         <div class="flex items-center space-x-2 sm:space-x-3">
-                            <img
-                                class="w-10"
-                                src="{{ asset('assets/images/icons/verified.svg') }}"
-                                alt="verified"
-                            />
+                            @if ($hotel->ie_verified)
+                                <img
+                                    class="w-10"
+                                    src="{{ asset('assets/images/icons/verified.svg') }}"
+                                    alt="verified"
+                                />
+                            @endif
                             <h3 class="section-title-white">
                                 {{ $hotel->title }}
                             </h3>

@@ -13,7 +13,7 @@
         <span x-text="selectedTypeNames().join(', ')"></span>
     </h3>
 
-    <div class="uk-child-width-1-3 mt-6 sm:mt-8 md:mt-12" uk-grid>
+    <div class="uk-child-width-1-2 uk-child-width-1-3@s uk-grid-small mt-6 sm:mt-8 md:mt-12" uk-grid>
         <input
             type="hidden"
             name="types"

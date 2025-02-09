@@ -31,8 +31,8 @@ use MoonShine\Components\MoonShineComponent;
 class TopicResource extends ModelResource
 {
     protected string $model = Topic::class;
-
     protected string $title = 'Topics';
+    protected bool $withPolicy = true;
 
     public function getBadge(): string
     {
@@ -41,14 +41,6 @@ class TopicResource extends ModelResource
         }
 
         return '';
-    }
-
-    public function getPublishedField(): Switcher | null
-    {
-        return auth()->user()->moonshine_user_role_id === Constants::ROLES['Admin']
-            ? Switcher::make('Published', 'active')
-                ->default(true)
-            : null;
     }
 
     /**
@@ -143,5 +135,18 @@ class TopicResource extends ModelResource
     public function redirectAfterSave(): string
     {
         return url('/admin/resource/topic-resource/index-page');
+    }
+
+    private function isUserInRole($role): bool
+    {
+        return auth()->user()->moonshine_user_role_id === $role;
+    }
+
+    private function getPublishedField(): Switcher | null
+    {
+        return $this->isUserInRole(Constants::ROLES['Admin'])
+            ? Switcher::make('Published', 'active')
+                ->default(true)
+            : null;
     }
 }

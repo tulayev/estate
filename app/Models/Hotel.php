@@ -52,6 +52,11 @@ class Hotel extends Model
         return $query->where('active', true);
     }
 
+    public function scopeIeVerified(Builder $query): Builder
+    {
+        return $query->where('ie_verified', true);
+    }
+
     public function scopeLocations(Builder $query): Builder
     {
         return $query->select('location', 'longitude', 'latitude')->distinct();

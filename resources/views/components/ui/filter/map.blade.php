@@ -13,7 +13,7 @@
         <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetLocations">x</span>
         <span x-text="selectedLocationsString().join(', ')"></span>
     </h3>
-    <div class="mt-6 sm:mt-8 md:mt-10 features flex justify-around flex-wrap gap-2 sm:gap-4">
+    <div class="mt-6 sm:mt-8 md:mt-10 features uk-child-width-1-2 uk-child-width-auto@s uk-grid-small" uk-grid>
         <input
             type="hidden"
             name="locations"
@@ -22,12 +22,14 @@
         />
 
         @foreach($locations as $location)
-            <div
-                class="location flex justify-center items-center cursor-pointer modal-subtitle shadow-card border-rounded w-[175px] h-[65px] sm:w-[200px] sm:h-[70px] lg:w-[250px] lg:h-[90px]"
-                :class="isLocationSelected('{{ $location->latitude }}', '{{ $location->longitude }}') ? 'bg-primary text-white' : 'bg-white text-primary'"
-                @click="toggleLocation('{{ $location->latitude }}', '{{ $location->longitude }}', '{{ $location->location }}')"
-            >
-                {{ Str::limit($location->location, 12) }}
+            <div>
+                <div
+                    class="location flex justify-center items-center cursor-pointer modal-subtitle shadow-card border-rounded p-2 sm:p-4 md:px-6 md:py-8"
+                    :class="isLocationSelected('{{ $location->latitude }}', '{{ $location->longitude }}') ? 'bg-primary text-white' : 'bg-white text-primary'"
+                    @click="toggleLocation('{{ $location->latitude }}', '{{ $location->longitude }}', '{{ $location->location }}')"
+                >
+                    {{ Str::limit($location->location, 12) }}
+                </div>
             </div>
         @endforeach
     </div>
