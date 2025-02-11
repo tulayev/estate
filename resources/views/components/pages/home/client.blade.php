@@ -8,70 +8,46 @@
         </button>
     </div>
 
-    <div class="container pt-6 md:pt-12 xl:pt-24">
-        <div class="uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid>
+    <div class="container pb-10 sm:pb-24">
+        <div class="mt-10 uk-child-width-1-1 uk-child-width-1-2@s" uk-grid>
             <div>
-                <div class="relative">
-                    <img
-                        class="w-full"
-                        src="{{ asset('assets/images/client_1_bg.png') }}"
-                        alt="background"
-                    />
-                    <div class="border-rounded h-full overflow-hidden absolute w-[90%] left-1/2 top-[-20px] -translate-x-1/2">
-                        <img
-                            class="absolute left-0 top-0 z-[99]"
-                            src="{{ asset('assets/images/client_1.png') }}"
-                            alt="client 1"
-                        />
-                    </div>
-                    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white w-[80%]">
-                        <h3 class="second-title whitespace-nowrap pb-5">{!! __('home/client.client_name_1') !!}</h3>
-                        <p class="text-sm md:text-xl">
+                <div class="relative bg-cover bg-no-repeat text-white rounded-lg sm:border-rounded h-full"
+                     style="background-color: rgb(15 31 61 / var(--tw-bg-opacity, 1))">
+                    <div class="rounded-lg sm:border-rounded absolute inset-0"></div>
+                    <div class="relative px-2 sm:px-4 xl:px-11 py-2 sm:py-4 xl:py-8">
+                        <h4 class="font-bold uppercase text-white text-sm sm:text-lg xl:text-3xl">
+                            {!! __('home/client.client_name_1') !!}
+                        </h4>
+                        <p class="mt-2 xl:mt-4 text-xs sm:text-base lg:text-xl">
                             {{ __('home/client.client_desc_1') }}
                         </p>
                     </div>
                 </div>
             </div>
             <div>
-                <div class="relative">
-                    <img
-                        class="w-full"
-                        src="{{ asset('assets/images/client_1_bg.png') }}"
-                        alt="background"
-                    />
-                    <div class="border-rounded h-full overflow-hidden absolute w-[90%] left-1/2 top-[-20px] -translate-x-1/2">
-                        <img
-                            class="absolute left-0 top-0 z-[99]"
-                            src="{{ asset('assets/images/client_2.png') }}"
-                            alt="client 2"
-                        />
-                    </div>
-                    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white w-[80%]">
-                        <h3 class="second-title whitespace-nowrap pb-5">{!! __('home/client.client_name_2') !!}</h3>
-                        <p class="text-sm md:text-xl">
+                <div class="relative bg-cover bg-no-repeat text-white rounded-lg sm:border-rounded h-full"
+                     style="background-color: rgb(15 31 61 / var(--tw-bg-opacity, 1))">
+                    <div class="rounded-lg sm:border-rounded absolute inset-0"></div>
+                    <div class="relative px-2 sm:px-4 xl:px-11 py-2 sm:py-4 xl:py-8">
+                        <h4 class="font-bold uppercase text-white text-sm sm:text-lg xl:text-3xl">
+                            {!! __('home/client.client_name_2') !!}
+                        </h4>
+                        <p class="mt-2 xl:mt-4 text-xs sm:text-base lg:text-xl">
                             {{ __('home/client.client_desc_2') }}
                         </p>
                     </div>
                 </div>
             </div>
             <div>
-                <div class="relative">
-                    <img
-                        class="w-full"
-                        src="{{ asset('assets/images/client_1_bg.png') }}"
-                        alt="background"
-                    />
-                    <div class="border-rounded h-full overflow-hidden absolute w-[90%] left-1/2 top-[-20px] -translate-x-1/2">
-                        <img
-                            class="absolute left-0 top-[-10px] z-[99] "
-                            src="{{ asset('assets/images/client_3.png') }}"
-                            alt="client 3"
-                        />
-                    </div>
-                    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white w-[80%]">
-                        <h3 class="second-title whitespace-nowrap pb-5">{!! __('home/client.client_name_3') !!}</h3>
-                        <p class="text-sm md:text-xl">
-                            {{ __('home/client.client_desc_3') }}
+                <div class="relative bg-cover bg-no-repeat text-white rounded-lg sm:border-rounded h-full"
+                     style="background-color: rgb(15 31 61 / var(--tw-bg-opacity, 1))">
+                    <div class="rounded-lg sm:border-rounded absolute inset-0"></div>
+                    <div class="relative px-2 sm:px-4 xl:px-11 py-2 sm:py-4 xl:py-8">
+                        <h4 class="font-bold uppercase text-white text-sm sm:text-lg xl:text-3xl">
+                            {!! __('home/client.client_name_2') !!}
+                        </h4>
+                        <p class="mt-2 xl:mt-4 text-xs sm:text-base lg:text-xl">
+                            {{ __('home/client.client_desc_2') }}
                         </p>
                     </div>
                 </div>
