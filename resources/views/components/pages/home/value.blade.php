@@ -8,7 +8,7 @@
         </p>
     </div>
 
-    <div class="container pt-6 md:pt-12 xl:pt-24">
+    <div class="container">
         <div class="w-full">
             <ul class="uk-nav-default uk-nav-parent-icon" uk-nav="multiple: false">
                 <li class="uk-parent">
