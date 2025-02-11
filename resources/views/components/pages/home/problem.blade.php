@@ -23,11 +23,11 @@ use App\Helpers\Enums\TopicType;
                 </p>
                 <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-4 mt-4 sm:mt-8 lg:mt-10 xl:mt-20">
                     <p class="text-white font-bold text-xs xl:text-xl">{{ __('home/problem.p_2') }}</p>
-                    <a href="{{ route('pages.insight.index', ['type' => TopicType::FOR_INVESTORS->value]) }}">
-                        <button class="primary-button text-xs xl:text-lg">{{ TopicType::FOR_INVESTORS->label() }}</button>
+                    <a href="{{ route('pages.insight.index', ['type' => TopicType::FOR_INVESTORS->value]) }}" class="primary-button text-xs xl:text-lg">
+                        {{ TopicType::FOR_INVESTORS->label() }}
                     </a>
-                    <a href="{{ route('pages.insight.index', ['type' => TopicType::FOR_DEVELOPERS->value]) }}">
-                        <button class="primary-button bg-[#5C687A] text-xs xl:text-lg">{{ TopicType::FOR_DEVELOPERS->label() }}</button>
+                    <a href="{{ route('pages.insight.index', ['type' => TopicType::FOR_DEVELOPERS->value]) }}" class="primary-button text-xs xl:text-lg">
+                        {{ TopicType::FOR_DEVELOPERS->label() }}
                     </a>
                 </div>
             </div>
