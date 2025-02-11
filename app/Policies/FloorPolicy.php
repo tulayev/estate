@@ -15,7 +15,7 @@ class FloorPolicy
 
     public function viewAny(MoonshineUser $user): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if ($user->moonshineUserRole->id !== Constants::ROLES['Developer']) {
             return true;
         }
 
@@ -24,56 +24,52 @@ class FloorPolicy
 
     public function view(MoonshineUser $user, Floor $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
-            return true;
+        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+            return $item->created_by === $user->id;
         }
 
-        return false;
+        return true;
     }
 
     public function create(MoonshineUser $user): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
-            return true;
-        }
-
-        return false;
+        return true;
     }
 
     public function update(MoonshineUser $user, Floor $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
-            return true;
+        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+            return $item->created_by === $user->id;
         }
 
-        return false;
+        return true;
     }
 
     public function delete(MoonshineUser $user, Floor $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
-            return true;
+        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+            return $item->created_by === $user->id;
         }
 
-        return false;
+        return true;
     }
 
     public function restore(MoonshineUser $user, Floor $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
-            return true;
+        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+            return $item->created_by === $user->id;
         }
 
-        return false;
+        return true;
     }
 
     public function forceDelete(MoonshineUser $user, Floor $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
-            return true;
+        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+            return $item->created_by === $user->id;
         }
 
-        return false;
+        return true;
     }
 
     public function massDelete(MoonshineUser $user): bool
