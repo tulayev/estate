@@ -1,3 +1,7 @@
+@php
+use App\Helpers\Enums\TopicType;
+@endphp
+
 @props([
     'hotels' => null,
 ])
@@ -22,9 +26,11 @@
                 >
                     <div class="rounded-lg sm:border-rounded absolute inset-0 bg-[#0F1F3DE5] opacity-90"></div>
                     <div class="relative px-2 sm:px-4 xl:px-11 py-2 sm:py-4 xl:py-8">
-                        <h4 class="font-bold uppercase text-white text-sm sm:text-lg xl:text-3xl">
-                            {{ __('home/verified.for_whom1') }}
-                        </h4>
+                        <a href="{{ route('pages.insight.index', ['type' => TopicType::FOR_INVESTORS->value]) }}">
+                            <h4 class="font-bold uppercase text-white text-sm sm:text-lg xl:text-3xl">
+                                {{ TopicType::FOR_INVESTORS->label() }}
+                            </h4>
+                        </a>
                         <p class="mt-2 xl:mt-4 text-xs sm:text-base lg:text-xl">
                             {!! __('home/verified.for_whom1_desc') !!}
                         </p>
@@ -38,9 +44,11 @@
                 >
                     <div class="rounded-lg sm:border-rounded absolute inset-0 bg-[#5C687AE5] opacity-90"></div>
                     <div class="relative px-2 sm:px-4 xl:px-11 py-2 sm:py-4 xl:py-8">
-                        <h4 class="font-bold uppercase text-white text-sm sm:text-lg xl:text-3xl">
-                            {{ __('home/verified.for_whom2') }}
-                        </h4>
+                        <a href="{{ route('pages.insight.index', ['type' => TopicType::FOR_DEVELOPERS->value]) }}">
+                            <h4 class="font-bold uppercase text-white text-sm sm:text-lg xl:text-3xl">
+                                {{ TopicType::FOR_DEVELOPERS->label() }}
+                            </h4>
+                        </a>
                         <p class="mt-2 xl:mt-4 text-xs sm:text-base lg:text-xl">
                             {!! __('home/verified.for_whom2_desc') !!}
                         </p>
