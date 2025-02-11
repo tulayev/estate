@@ -10,11 +10,8 @@
             </h2>
 
             <div class="space-x-3 hidden sm:flex">
-                <button class="primary-button">
-                    previous
-                </button>
-                <button class="primary-button">
-                    next
+                <button class="primary-button" onclick="document.getElementById('contactSection').scrollIntoView({behavior: 'smooth'})">
+                    {{ __('home/discuss.action_1') }}
                 </button>
             </div>
         </div>
