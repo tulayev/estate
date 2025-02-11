@@ -15,17 +15,17 @@ class TopicPolicy
 
     public function viewAny(MoonshineUser $user): bool
     {
-        if ($user->moonshineUserRole->id !== Constants::ROLES['Developer']) {
-            return true;
+        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+            return false;
         }
 
-        return false;
+        return true;
     }
 
     public function view(MoonshineUser $user, Topic $item): bool
     {
         if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
-            return $item->created_by === $user->id;
+            return false;
         }
 
         return true;
@@ -33,13 +33,17 @@ class TopicPolicy
 
     public function create(MoonshineUser $user): bool
     {
+        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+            return false;
+        }
+
         return true;
     }
 
     public function update(MoonshineUser $user, Topic $item): bool
     {
         if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
-            return $item->created_by === $user->id;
+            return false;
         }
 
         return true;
@@ -48,7 +52,7 @@ class TopicPolicy
     public function delete(MoonshineUser $user, Topic $item): bool
     {
         if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
-            return $item->created_by === $user->id;
+            return false;
         }
 
         return true;
@@ -57,7 +61,7 @@ class TopicPolicy
     public function restore(MoonshineUser $user, Topic $item): bool
     {
         if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
-            return $item->created_by === $user->id;
+            return false;
         }
 
         return true;
@@ -66,7 +70,7 @@ class TopicPolicy
     public function forceDelete(MoonshineUser $user, Topic $item): bool
     {
         if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
-            return $item->created_by === $user->id;
+            return false;
         }
 
         return true;
@@ -74,6 +78,10 @@ class TopicPolicy
 
     public function massDelete(MoonshineUser $user): bool
     {
+        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+            return false;
+        }
+
         if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
             return true;
         }

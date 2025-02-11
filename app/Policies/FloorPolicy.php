@@ -25,7 +25,7 @@ class FloorPolicy
     public function view(MoonshineUser $user, Floor $item): bool
     {
         if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
-            return $item->created_by === $user->id;
+            return $item->hotel->created_by === $user->id;
         }
 
         return true;
@@ -39,7 +39,7 @@ class FloorPolicy
     public function update(MoonshineUser $user, Floor $item): bool
     {
         if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
-            return $item->created_by === $user->id;
+            return $item->hotel->created_by === $user->id;
         }
 
         return true;
@@ -48,7 +48,7 @@ class FloorPolicy
     public function delete(MoonshineUser $user, Floor $item): bool
     {
         if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
-            return $item->created_by === $user->id;
+            return $item->hotel->created_by === $user->id;
         }
 
         return true;
@@ -57,7 +57,7 @@ class FloorPolicy
     public function restore(MoonshineUser $user, Floor $item): bool
     {
         if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
-            return $item->created_by === $user->id;
+            return $item->hotel->created_by === $user->id;
         }
 
         return true;
@@ -66,7 +66,7 @@ class FloorPolicy
     public function forceDelete(MoonshineUser $user, Floor $item): bool
     {
         if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
-            return $item->created_by === $user->id;
+            return $item->hotel->created_by === $user->id;
         }
 
         return true;
