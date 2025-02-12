@@ -58,17 +58,17 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 }),
 
             MenuItem::make(
-                static fn() => 'Objects',
+                static fn() => __('Moonshine/Objects/Objects.Objects'),
                 new HotelResource()
             ),
 
             MenuItem::make(
-                static fn() => 'Floors',
+                static fn() => __('Moonshine/Floors/Floors.Floors'),
                 new FloorResource()
             ),
 
             MenuItem::make(
-                static fn() => 'Types',
+                static fn() => __('Moonshine/Types/Types.Types'),
                 new TypeResource()
             )
                 ->canSee(function (Request $request) {
@@ -76,7 +76,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 }),
 
             MenuItem::make(
-                static fn() => 'Tags',
+                static fn() => __('Moonshine/Tags/Tags.Tags'),
                 new TagResource()
             )
                 ->canSee(function (Request $request) {
@@ -84,7 +84,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 }),
 
             MenuItem::make(
-                static fn() => 'Features',
+                static fn() => __('Moonshine/Features/Features.Features'),
                 new FeatureResource()
             )
                 ->canSee(function (Request $request) {
@@ -92,7 +92,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 }),
 
             MenuItem::make(
-                static fn() => 'Topics',
+                static fn() => __('Moonshine/Topics/Topics.Topics'),
                 new TopicResource()
             )
                 ->canSee(function (Request $request) {
@@ -100,7 +100,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 }),
 
             MenuItem::make(
-                static fn() => 'Topic Categories',
+                static fn() => __('Moonshine/TopicCategories/TopicCategories.TopicCategories'),
                 new TopicCategoryResource()
             )
                 ->canSee(function (Request $request) {

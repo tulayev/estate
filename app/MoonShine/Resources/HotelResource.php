@@ -61,11 +61,11 @@ class HotelResource extends ModelResource
         return [
             ID::make()->sortable(),
 
-            Text::make('Title', 'title')->sortable(),
+            Text::make(__('Moonshine/Objects/HotelResources.title'), 'title')->sortable(),
 
-            Image::make('Main Image', 'main_image'),
+            Image::make(__('Moonshine/Objects/HotelResources.main_image'), 'main_image'),
 
-            BelongsToMany::make('Tags', 'tags', 'name', resource: new TagResource())
+            BelongsToMany::make(__('Moonshine/Objects/HotelResources.tags'), 'tags', 'name', resource: new TagResource())
                 ->inLine('|'),
 
             $this->getIeScoreField(),
@@ -79,31 +79,31 @@ class HotelResource extends ModelResource
         return [
             ID::make(),
 
-            Text::make('Title', 'title'),
+            Text::make(__('Moonshine/Objects/HotelResources.title'), 'title'),
 
             Slug::make('Slug', 'slug'),
 
-            Text::make('Description', 'description'),
+            Text::make(__('Moonshine/Objects/HotelResources.description'), 'description'),
 
-            Text::make('Code Name', 'codename'),
+            Text::make(__('Moonshine/Objects/HotelResources.code_name'), 'codename'),
 
-            Text::make('Location', 'location'),
+            Text::make(__('Moonshine/Objects/HotelResources.location'), 'location'),
 
-            Number::make('Latitude', 'latitude'),
+            Number::make(__('Moonshine/Objects/HotelResources.latitude'), 'latitude'),
 
-            Number::make('Longitude', 'longitude'),
+            Number::make(__('Moonshine/Objects/HotelResources.longitude'), 'longitude'),
 
-            Number::make('Price', 'price'),
+            Number::make(__('Moonshine/Objects/HotelResources.price'), 'price'),
 
-            BelongsToMany::make('Types', 'types', 'name', resource: new TypeResource()),
+            BelongsToMany::make(__('Moonshine/Objects/HotelResources.types'), 'types', 'name', resource: new TypeResource()),
 
-            BelongsToMany::make('Tags', 'tags', 'name', resource: new TagResource()),
+            BelongsToMany::make(__('Moonshine/Objects/HotelResources.tags'), 'tags', 'name', resource: new TagResource()),
 
-            BelongsToMany::make('Features', 'features', 'name', resource: new FeatureResource()),
+            BelongsToMany::make(__('Moonshine/Objects/HotelResources.features'), 'features', 'name', resource: new FeatureResource()),
 
-            Image::make('Main Image', 'main_image'),
+            Image::make(__('Moonshine/Objects/HotelResources.main_image'), 'main_image'),
 
-            Image::make('Gallery', 'gallery')
+            Image::make(__('Moonshine/Objects/HotelResources.gallery'), 'gallery')
                 ->multiple(),
 
             $this->getPublishedField(),
@@ -113,10 +113,10 @@ class HotelResource extends ModelResource
     public function formFields(): array
     {
         return [
-            Block::make('General Information', [
+            Block::make(__('Moonshine/Objects/HotelResources.general_information'), [
                 ID::make()->sortable(),
 
-                Text::make('Title', 'title')
+                Text::make(__('Moonshine/Objects/HotelResources.title'), 'title')
                     ->required()
                     ->sortable(),
 
@@ -125,32 +125,32 @@ class HotelResource extends ModelResource
                     ->unique()
                     ->readonly(),
 
-                TinyMce::make('Description', 'description')
+                TinyMce::make(__('Moonshine/Objects/HotelResources.description'), 'description')
                     ->required(),
 
-                Text::make('Code Name', 'codename'),
+                Text::make(__('Moonshine/Objects/HotelResources.code_name'), 'codename'),
 
-                Text::make('Location', 'location')
+                Text::make(__('Moonshine/Objects/HotelResources.location'), 'location')
                     ->required(),
 
-                Number::make('Latitude', 'latitude')
+                Number::make(__('Moonshine/Objects/HotelResources.latitude'), 'latitude')
                     ->step(0.000001),
 
-                Number::make('Longitude', 'longitude')
+                Number::make(__('Moonshine/Objects/HotelResources.longitude'), 'longitude')
                     ->step(0.000001),
 
-                Number::make('Price', 'price')
+                Number::make(__('Moonshine/Objects/HotelResources.price'), 'price')
                     ->required()
                     ->min(0)
                     ->step(0.001),
 
-                BelongsToMany::make('Types', 'types', 'name', resource: new TypeResource())
+                BelongsToMany::make(__('Moonshine/Objects/HotelResources.types'), 'types', 'name', resource: new TypeResource())
                     ->selectMode(),
 
-                BelongsToMany::make('Tags', 'tags', 'name', resource: new TagResource())
+                BelongsToMany::make(__('Moonshine/Objects/HotelResources.tags'), 'tags', 'name', resource: new TagResource())
                     ->selectMode(),
 
-                BelongsToMany::make('Features', 'features', 'name', resource: new FeatureResource())
+                BelongsToMany::make(__('Moonshine/Objects/HotelResources.features'), 'features', 'name', resource: new FeatureResource())
                     ->selectMode(),
 
                 $this->getPublishedField(),
@@ -160,23 +160,23 @@ class HotelResource extends ModelResource
                 $this->getIeScoreField(),
             ]),
 
-            Block::make('Media', [
-                Image::make('Main Image', 'main_image')
+            Block::make(__('Moonshine/Objects/HotelResources.media'), [
+                Image::make(__('Moonshine/Objects/HotelResources.main_image'), 'main_image')
                     ->disk(Constants::PUBLIC_DISK)
                     ->dir(Constants::UPLOAD_PATH)
                     ->allowedExtensions(['png', 'jpg', 'jpeg'])
                     ->removable(),
 
-                Image::make('Gallery', 'gallery')
+                Image::make(__('Moonshine/Objects/HotelResources.gallery'), 'gallery')
                     ->disk(Constants::PUBLIC_DISK)
                     ->dir(Constants::UPLOAD_PATH)
                     ->allowedExtensions(['png', 'jpg', 'jpeg'])
                     ->removable()
                     ->multiple(),
 
-                Text::make('Main Image URL', 'main_image_url'),
+                Text::make(__('Moonshine/Objects/HotelResources.main_image_url'), 'main_image_url'),
 
-                Textarea::make('Gallery URLs (separate by semicolon \';\')', 'gallery_url'),
+                Textarea::make(__('Moonshine/Objects/HotelResources.gallery_urls'), 'gallery_url'),
             ]),
         ];
     }
