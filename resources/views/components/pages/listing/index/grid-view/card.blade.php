@@ -5,7 +5,7 @@
 @if ($hotel)
     <div>
         <div
-            class="relative bg-cover bg-center bg-no-repeat flex flex-col justify-between border-rounded p-3 h-[220px] md:h-[300px]"
+            class="relative bg-cover bg-center bg-no-repeat flex flex-col justify-between border-rounded p-3 h-[220px] md:h-[300px] hover:shadow-xl transition-shadow duration-300"
             style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}');"
         >
             <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
@@ -65,7 +65,7 @@
             </a>
         </div>
         <!-- Bottom -->
-        <div class="shadow-card border-rounded mt-[-54px] sm:mt-[-44px] px-3 sm:px-5 pt-[68px] pb-4 sm:pb-6">
+        <div class="shadow-card border-rounded mt-[-54px] sm:mt-[-44px] px-3 sm:px-5 pt-[68px] pb-4 sm:pb-6 hover:shadow-lg transition-shadow duration-300">
             <div class="flex justify-between uppercase text-[#505050] text-sm sm:text-base md:text-lg xl:text-xl sm:font-bold md:font-black">
                 <div>
                     <p>📍 {{ Str::limit($hotel->location, 5) }}</p>
