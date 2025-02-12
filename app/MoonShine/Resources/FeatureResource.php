@@ -34,7 +34,7 @@ class FeatureResource extends ModelResource
             Block::make([
                 ID::make()->sortable(),
 
-                Text::make('Name', 'name')->required(),
+                Text::make(__('Moonshine/Features/FeatureResource.name'), 'name')->required(),
             ]),
         ];
     }
