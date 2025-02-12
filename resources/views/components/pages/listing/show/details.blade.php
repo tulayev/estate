@@ -13,7 +13,7 @@
                     style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}');"
                 >
                     
-                    <div class="absolute border-rounded inset-0  bg-gradient-to-t from-black opacity-50"></div>
+                    <div class="absolute border-rounded inset-0  from-black opacity-50 bg-gradient-to-b"></div>
                     <!-- Image Top -->
                     <div class="relative flex flex-col space-y-2 sm:space-y-0 sm:flex-row justify-between items-center">
                         @if ($hotel->tags)
