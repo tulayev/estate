@@ -1,18 +1,18 @@
 /* Slider */
-new Swiper('.swiper', {
+new Swiper(".swiper", {
     loop: true,
     slidesPerView: 3,
     direction: "horizontal",
     spaceBetween: 30,
     freeMode: true,
-    freeModeMomentum: false,
-    freeModeMomentumBounce: false,
-    speed: 12000,
+    freeModeMomentum: true,
+    freeModeMomentumBounce: true,
+    speed: 15000,
     clickable: false,
     autoplay: {
         delay: 0,
         disableOnInteraction: true,
-        reverseDirection: true,
+        reverseDirection: false,
     },
     grabCursor: false,
     breakpoints: {
@@ -28,5 +28,5 @@ new Swiper('.swiper', {
         "@1.50": {
             slidesPerView: 6,
         },
-    }
+    },
 });

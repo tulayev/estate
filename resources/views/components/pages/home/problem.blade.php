@@ -1,3 +1,7 @@
+@php
+use App\Helpers\Enums\TopicType;
+@endphp
+
 @props([
     'types' => null,
 ])
@@ -9,18 +13,22 @@
             class="border-rounded relative px-5 sm:px-10 xl:px-20 py-5 sm:py-10 md:py-20 lg:py-30 xl:py-32 xxl:py-60"
             style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
         >
-            <div class="absolute border-rounded inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
+            <div class="absolute border-rounded inset-0 bg-black opacity-70"></div>
             <div class="relative z-10">
                 <h2 class="section-title-white text-lg sm:text-2xl xl:text-5xl">
                     {{ __('home/problem.title') }}
                 </h2>
-                <p class="text-white text-sm lg:text-base xl:text-2xl mt-4 sm:mt-5 lg:mt-10">
+                <p class="text-white text-sm lg:text-base xl:text-2xl mt-4 sm:mt-5 lg:mt-10 xl:mt-20">
                     {{ __('home/problem.p_1') }}
                 </p>
                 <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-4 mt-4 sm:mt-8 lg:mt-10 xl:mt-20">
                     <p class="text-white font-bold text-xs xl:text-xl">{{ __('home/problem.p_2') }}</p>
-                    <button class="primary-button text-xs xl:text-lg">{{ __('home/problem.for_investors') }}</button>
-                    <button class="primary-button bg-[#5C687A] text-xs xl:text-lg">{{ __('home/problem.for_developers') }}</button>
+                    <a href="{{ route('pages.insight.index', ['type' => TopicType::FOR_INVESTORS->value]) }}" class="primary-button text-xs xl:text-lg">
+                        {{ TopicType::FOR_INVESTORS->label() }}
+                    </a>
+                    <a href="{{ route('pages.insight.index', ['type' => TopicType::FOR_DEVELOPERS->value]) }}" class="primary-button text-xs xl:text-lg">
+                        {{ TopicType::FOR_DEVELOPERS->label() }}
+                    </a>
                 </div>
             </div>
         </div>

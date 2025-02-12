@@ -43,15 +43,15 @@
     }
 
     .section-title {
-        @apply leading-none text-primary uppercase mr-[1rem] text-[1.5rem] font-bold xl:text-[45px] xl:font-black;
+        @apply leading-none text-primary uppercase mr-[1rem] text-[1.5rem] font-bold xl:text-[35px] xl:font-black;
     }
 
     .section-title-white {
-        @apply text-white uppercase font-bold xl:font-black text-2xl xl:text-[45px];
+        @apply text-white uppercase font-bold xl:font-black text-2xl xl:text-[35px];
     }
 
     .second-title {
-        @apply text-white uppercase font-bold text-lg md:text-2xl xl:text-4xl;
+        @apply text-white uppercase font-bold text-md md:text-xl xl:text-2xl;
     }
 
     .collapse-title {
