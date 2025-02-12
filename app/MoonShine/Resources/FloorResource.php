@@ -36,32 +36,32 @@ class FloorResource extends ModelResource
     public function fields(): array
     {
         $hotels = auth()->user()->moonshine_user_role_id === Constants::ROLES['Developer']
-            ? BelongsTo::make('Hotel', 'hotel', 'title', resource: new HotelResource())
+            ? BelongsTo::make(__('Moonshine/Floors/FloorResources.object'), 'hotel', 'title', resource: new HotelResource())
                 ->valuesQuery(fn (Builder $query, Field $field) => $query->where('created_by', auth()->user()->id))
-            : BelongsTo::make('Hotel', 'hotel', 'title', resource: new HotelResource());
+            : BelongsTo::make(__('Moonshine/Floors/FloorResources.object'), 'hotel', 'title', resource: new HotelResource());
 
         return [
             Block::make([
                 ID::make()->sortable(),
 
-                Number::make('Floor', 'floor')
+                Number::make(__('Moonshine/Floors/FloorResources.floor'), 'floor')
                     ->required(),
 
                 $hotels
                     ->searchable()
                     ->required(),
 
-                Number::make('Bedrooms', 'bedrooms')
+                Number::make(__('Moonshine/Floors/FloorResources.bedrooms'), 'bedrooms')
                     ->required(),
 
-                Number::make('Bathrooms', 'bathrooms')
+                Number::make(__('Moonshine/Floors/FloorResources.bathrooms'), 'bathrooms')
                     ->required(),
 
-                Number::make('Area', 'area')
+                Number::make(__('Moonshine/Floors/FloorResources.area'), 'area')
                     ->step(0.01)
                     ->required(),
 
-                Image::make('Image', 'image')
+                Image::make(__('Moonshine/Floors/FloorResources.image'), 'image')
                     ->disk(Constants::PUBLIC_DISK)
                     ->dir(Constants::UPLOAD_PATH)
                     ->allowedExtensions(['png', 'jpg', 'jpeg'])

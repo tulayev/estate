@@ -33,7 +33,7 @@ class TagResource extends ModelResource
         return [
             Block::make([
                 ID::make()->sortable(),
-                Text::make('Name', 'name')->required(),
+                Text::make(__('Moonshine/Tags/TagResource.name'), 'name')->required(),
             ]),
         ];
     }

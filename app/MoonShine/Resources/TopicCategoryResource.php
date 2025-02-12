@@ -34,7 +34,7 @@ class TopicCategoryResource extends ModelResource
             Block::make([
                 ID::make()->sortable(),
 
-                Text::make('Title', 'title')
+                Text::make(__('Moonshine/TopicCategories/TopicCategoryResource.title'), 'title')
                     ->required(),
             ]),
         ];

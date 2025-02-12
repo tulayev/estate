@@ -2,7 +2,7 @@
     'hotel' => null,
 ])
 
-@if ($hotel->floors)
+@if ($hotel->floors->count() > 0)
     <section class="section">
         <div class="container">
             <h2 class="section-title">

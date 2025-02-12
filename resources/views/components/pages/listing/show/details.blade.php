@@ -9,10 +9,11 @@
             <!-- Main -->
             <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10">
                 <div
-                    class="relative bg-cover bg-center bg-no-repeat border-rounded p-4 md:p-8 xl:p-10 bg-gradient-50"
+                    class="relative bg-cover bg-center bg-no-repeat border-rounded p-4 md:p-8 xl:p-10"
                     style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}');"
                 >
-                    <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
+                    
+                    <div class="absolute border-rounded inset-0  from-black opacity-50 bg-gradient-to-b"></div>
                     <!-- Image Top -->
                     <div class="relative flex flex-col space-y-2 sm:space-y-0 sm:flex-row justify-between items-center">
                         @if ($hotel->tags)
@@ -26,7 +27,7 @@
                         @endif
                         <div>
                             <a
-                                href="#"
+                                onclick="document.getElementById('contactSection').scrollIntoView({behavior: 'smooth'})"
                                 class="main-button"
                             >
                                 <span>request online tour</span>

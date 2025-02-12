@@ -33,7 +33,7 @@ class TypeResource extends ModelResource
         return [
             Block::make([
                 ID::make()->sortable(),
-                Text::make('Name', 'name')->required(),
+                Text::make(__('Moonshine/Types/TypeResource.name'), 'name')->required(),
             ]),
         ];
     }

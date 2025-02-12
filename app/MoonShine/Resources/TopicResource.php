@@ -51,9 +51,9 @@ class TopicResource extends ModelResource
         return [
             ID::make()->sortable(),
 
-            Text::make('Title', 'title')->sortable(),
+            Text::make(__('Moonshine/Topics/TopicResource.title'), 'title')->sortable(),
 
-            Image::make('Image', 'image'),
+            Image::make(__('Moonshine/Topics/TopicResource.image'), 'image'),
 
             $this->getPublishedField()?->sortable(),
         ];
@@ -64,13 +64,13 @@ class TopicResource extends ModelResource
         return [
             ID::make(),
 
-            Text::make('Title', 'title'),
+            Text::make(__('Moonshine/Topics/TopicResource.title'), 'title'),
 
-            BelongsTo::make('Category', 'category', 'title', resource: new TopicCategoryResource()),
+            BelongsTo::make(__('Moonshine/Topics/TopicResource.category'), 'category', 'title', resource: new TopicCategoryResource()),
 
-            Text::make('Body', 'body'),
+            Text::make(__('Moonshine/Topics/TopicResource.body'), 'body'),
 
-            Image::make('Image', 'image'),
+            Image::make(__('Moonshine/Topics/TopicResource.image'), 'image'),
 
             $this->getPublishedField(),
         ];
@@ -82,22 +82,22 @@ class TopicResource extends ModelResource
             Block::make([
                 ID::make()->sortable(),
 
-                Text::make('Title', 'title')
+                Text::make(__('Moonshine/Topics/TopicResource.title'), 'title')
                     ->required(),
 
-                Slug::make('Slug', 'slug')
+                Slug::make(__('Moonshine/Topics/TopicResource.slug'), 'slug')
                     ->from('title')
                     ->unique()
                     ->readonly(),
 
-                BelongsTo::make('Category', 'category', 'title', resource: new TopicCategoryResource())
+                BelongsTo::make(__('Moonshine/Topics/TopicResource.category'), 'category', 'title', resource: new TopicCategoryResource())
                     ->searchable()
                     ->required(),
 
-                TinyMce::make('Body', 'body')
+                TinyMce::make(__('Moonshine/Topics/TopicResource.body'), 'body')
                     ->required(),
 
-                Image::make('Image', 'image')
+                Image::make(__('Moonshine/Topics/TopicResource.image'), 'image')
                     ->disk(Constants::PUBLIC_DISK)
                     ->dir(Constants::UPLOAD_PATH)
                     ->allowedExtensions(['jpg', 'jpeg', 'png'])
@@ -105,7 +105,7 @@ class TopicResource extends ModelResource
 
                 $this->getPublishedField(),
 
-                Enum::make('Type', 'type')
+                Enum::make(__('Moonshine/Topics/TopicResource.type'), 'type')
                     ->attach(TopicType::class),
             ])
         ];
@@ -145,7 +145,7 @@ class TopicResource extends ModelResource
     private function getPublishedField(): Switcher | null
     {
         return $this->isUserInRole(Constants::ROLES['Admin'])
-            ? Switcher::make('Published', 'active')
+            ? Switcher::make(__('Moonshine/Topics/TopicResource.published'), 'active')
                 ->default(true)
             : null;
     }
