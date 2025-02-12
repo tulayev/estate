@@ -134,10 +134,12 @@ class HotelResource extends ModelResource
                     ->required(),
 
                 Number::make('Latitude', 'latitude')
-                    ->step(0.000001),
+                    ->step(0.000001)
+                    ->required(),
 
                 Number::make('Longitude', 'longitude')
-                    ->step(0.000001),
+                    ->step(0.000001)
+                    ->required(),
 
                 Number::make('Price', 'price')
                     ->required()
@@ -194,16 +196,15 @@ class HotelResource extends ModelResource
             'description' => 'required|string',
             'codename' => 'nullable|string|max:255',
             'location' => 'required|string',
-            'latitude' => 'nullable|numeric|between:-90,90',
-            'longitude' => 'nullable|numeric|between:-180,180',
+            'latitude' => 'required|numeric|between:-90,90',
+            'longitude' => 'required|numeric|between:-180,180',
             'price' => 'required|numeric|min:0|max:9999999999.999|regex:/^\d+(\.\d{1,3})?$/',
             'main_image' => 'nullable|image|max:2048',
             'gallery' => 'nullable|array',
             'gallery.*' => 'image|max:2048',
             'main_image_url' => 'nullable|string',
             'gallery_url' => 'nullable|string',
-            'ie_verified' => 'required',
-            'ie_score' => 'required|numeric|min:0|max:100',
+            'ie_score' => 'nullable|numeric|min:0|max:100',
         ];
     }
 
