@@ -26,7 +26,7 @@
                         @endif
                         <div>
                             <a
-                                href="#"
+                                onclick="document.getElementById('contactSection').scrollIntoView({behavior: 'smooth'})"
                                 class="main-button"
                             >
                                 <span>request online tour</span>
