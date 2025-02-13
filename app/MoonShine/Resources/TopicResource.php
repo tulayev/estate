@@ -31,8 +31,12 @@ use MoonShine\Components\MoonShineComponent;
 class TopicResource extends ModelResource
 {
     protected string $model = Topic::class;
-    protected string $title = 'Topics';
     protected bool $withPolicy = true;
+
+    public function title(): string
+    {
+        return __('Moonshine/Topics/Topics.Topics');
+    }
 
     public function getBadge(): string
     {

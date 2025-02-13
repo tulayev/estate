@@ -15,10 +15,11 @@
                 </h1>
                 
                 <div class="inline-flex flex-row sm:flex-row sm:items-center sm:space-x-3 space-y-3 sm:space-y-0 ml-2">
-                    <div class="animLeft">
+                    <div class="animLeft" uk-lightbox>
                         <a
-                            href="#"
+                            href="https://www.youtube.com/"
                             class="main-button"
+                            data-attrs="width: 1280; height: 720;"
                         >
                             <img
                                 src="{{ asset('assets/images/icons/play.svg') }}"

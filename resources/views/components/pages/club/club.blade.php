@@ -19,7 +19,7 @@ use App\Helpers\Enums\TopicType;
                 class="relative bg-cover bg-center bg-no-repeat border-rounded text-white flex"
                 style="background-image: url('{{ asset('assets/images/club/what-is-bg.png') }}')"
             >
-                <div class="absolute border-rounded inset-0 bg-gradient-100"></div>
+                <div class="absolute border-rounded inset-0 bg-gradient-to-t from-black to-transparent"></div>
                 <div class="relative p-6 w-full xl:w-1/2">
                     <div>
                         <h2 class="font-bold text-white uppercase text-lg xl:text-4xl">
@@ -33,7 +33,7 @@ use App\Helpers\Enums\TopicType;
                 <img
                     src="{{ asset('assets/images/club/team.png') }}"
                     alt="Team"
-                    class="absolute w-1/2 right-0 bottom-0"
+                    class="absolute w-1/2 right-0 bottom-0 hidden lg:block"
                 />
             </div>
         </a>
@@ -43,7 +43,7 @@ use App\Helpers\Enums\TopicType;
                 class="relative bg-cover bg-center bg-no-repeat border-rounded text-white flex justify-end mt-4 md:mt-8 xl:mt-16"
                 style="background-image: url('{{ asset('assets/images/club/what-is-bg.png') }}')"
             >
-                <div class="absolute border-rounded inset-0 bg-gradient-100"></div>
+                <div class="absolute border-rounded inset-0 bg-gradient-to-t from-black to-transparent"></div>
                 <div class="relative p-6 w-full xl:w-1/2">
                     <div>
                         <h2 class="font-bold text-white uppercase text-lg xl:text-4xl">
@@ -57,7 +57,7 @@ use App\Helpers\Enums\TopicType;
                 <img
                     src="{{ asset('assets/images/club/team-dev.png') }}"
                     alt="Team"
-                    class="absolute w-1/2 left-0 bottom-0"
+                    class="absolute w-1/2 left-0 bottom-0 hidden lg:block"
                 />
             </div>
         </a>

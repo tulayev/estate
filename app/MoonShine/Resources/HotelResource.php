@@ -31,8 +31,12 @@ use MoonShine\Components\MoonShineComponent;
 class HotelResource extends ModelResource
 {
     protected string $model = Hotel::class;
-    protected string $title = 'Objects';
     protected bool $withPolicy = true;
+
+    public function title(): string
+    {
+        return __('Moonshine/Objects/Objects.Objects');
+    }
 
     public function query(): Builder
     {

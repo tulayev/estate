@@ -22,8 +22,12 @@ use MoonShine\Components\MoonShineComponent;
 class TagResource extends ModelResource
 {
     protected string $model = Tag::class;
-    protected string $title = 'Tags';
     protected bool $withPolicy = true;
+
+    public function title(): string
+    {
+        return __('Moonshine/Tags/Tags.Tags');
+    }
 
     /**
      * @return list<MoonShineComponent|Field>
