@@ -27,8 +27,12 @@ use MoonShine\Components\MoonShineComponent;
 class FloorResource extends ModelResource
 {
     protected string $model = Floor::class;
-    protected string $title = 'Floors';
     protected bool $withPolicy = true;
+
+    public function title(): string
+    {
+        return __('Moonshine/Floors/Floors.Floors');
+    }
 
     /**
      * @return list<MoonShineComponent|Field>

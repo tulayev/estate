@@ -22,7 +22,7 @@
                         </div>
                     @endif
                     <div class="flex items-center space-x-2">
-                        <button>
+                        <button class="hidden">
                             <img
                                 src="{{ asset('assets/images/icons/filter.svg') }}"
                                 alt="filter"
@@ -33,7 +33,7 @@
                             @click="toggleLike"
                         >
                             <img
-                                :src="isLiked ? '{{ asset('assets/images/icons/heart-red.svg') }}' : '{{ asset('assets/images/icons/heart.svg') }}'"
+                                :src="isLiked ? '{{ asset('assets/images/icons/heart-blue.svg') }}' : '{{ asset('assets/images/icons/heart.svg') }}'"
                                 alt="like"
                             />
                         </button>

@@ -7,7 +7,7 @@
         <div class="w-full flex justify-end">
             @php($queryParams = request()->query())
             <a href="{{ route('pages.insight.index', array_merge($queryParams, ['filter' => 'liked'])) }}">
-                <img src="{{ asset('assets/images/icons/heart-red.svg') }}" alt="like-view" />
+                <img src="{{ asset('assets/images/icons/heart-blue.svg') }}" alt="like-view" />
             </a>
         </div>
 

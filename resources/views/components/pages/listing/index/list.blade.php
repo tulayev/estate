@@ -12,7 +12,7 @@
             @php($queryParams = request()->query())
             <div class="flex items-center space-x-2 md:space-x-4 xl:space-x-8">
                 <a href="{{ route('pages.listing.index', array_merge($queryParams, ['viewType' => 'liked'])) }}">
-                    <img src="{{ asset('assets/images/icons/heart-red.svg') }}" alt="like-view" />
+                    <img src="{{ asset('assets/images/icons/heart-blue.svg') }}" alt="like-view" />
                 </a>
                 <a href="{{ route('pages.listing.map', $queryParams) }}">
                     <img src="{{ asset('assets/images/icons/map-view.png') }}" alt="map-view" />

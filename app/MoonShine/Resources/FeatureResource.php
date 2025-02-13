@@ -22,8 +22,12 @@ use MoonShine\Components\MoonShineComponent;
 class FeatureResource extends ModelResource
 {
     protected string $model = Feature::class;
-    protected string $title = 'Features';
     protected bool $withPolicy = true;
+
+    public function title(): string
+    {
+        return __('Moonshine/Features/Features.Features');
+    }
 
     /**
      * @return list<MoonShineComponent|Field>

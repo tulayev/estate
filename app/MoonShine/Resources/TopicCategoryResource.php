@@ -22,8 +22,12 @@ use MoonShine\Components\MoonShineComponent;
 class TopicCategoryResource extends ModelResource
 {
     protected string $model = TopicCategory::class;
-    protected string $title = 'Topic Categories';
     protected bool $withPolicy = true;
+
+    public function title(): string
+    {
+        return __('Moonshine/TopicCategories/TopicCategories.TopicCategories');
+    }
 
     /**
      * @return list<MoonShineComponent|Field>
@@ -34,7 +38,7 @@ class TopicCategoryResource extends ModelResource
             Block::make([
                 ID::make()->sortable(),
 
-                Text::make(__('Moonshine/TopicCategories/TopicCategoryResource.title'), 'title')
+                Text::make('Title', 'title')
                     ->required(),
             ]),
         ];
