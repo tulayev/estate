@@ -17,7 +17,6 @@
         type="hidden"
         name="tags"
         :value="selectedTags.join(',')"
-        x-bind:value="selectedTags.join(',')"
     />
 
     <div class="mt-6 tags uk-child-width-1-2 uk-child-width-auto@s uk-grid-small" uk-grid>

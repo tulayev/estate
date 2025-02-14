@@ -21,21 +21,23 @@
                     :topics="$topics"
                 />
             </div>
-        @endif
 
-        @if ($topics->hasMorePages())
-            <div
-                class="w-full flex justify-center mt-4 md:mt-6 xl:mt-10"
-                x-data="topicPagination()"
-            >
-                <button
-                    x-show="hasMorePages"
-                    @click="loadMore"
-                    class="bg-white text-primary rounded-[100px] modal-subtitle py-5 w-full hover:text-white hover:bg-primary"
+            @if ($topics->hasMorePages())
+                <div
+                    class="w-full flex justify-center mt-4 md:mt-6 xl:mt-10"
+                    x-data="topicPagination()"
                 >
-                    {{ __('general.see_more') }}
-                </button>
-            </div>
+                    <button
+                        x-show="hasMorePages"
+                        @click="loadMore"
+                        class="bg-white text-primary rounded-[100px] modal-subtitle py-5 w-full hover:text-white hover:bg-primary"
+                    >
+                        {{ __('general.see_more') }}
+                    </button>
+                </div>
+            @endif
+        @else
+            <h2 class="section-title mt-4 md:mt-10">Nothing found 😞</h2>
         @endif
     </div>
 </section>

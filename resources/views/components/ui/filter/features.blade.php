@@ -46,7 +46,6 @@
             type="hidden"
             name="features"
             :value="selectedFeatures.join(',')"
-            x-bind:value="selectedFeatures.join(',')"
         />
 
         <div class="uk-grid-small uk-child-width-1-2 uk-child-width-auto@s" uk-grid uk-height-match="target: > div > .feature">

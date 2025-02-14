@@ -133,7 +133,7 @@ class HotelResource extends ModelResource
                     ->readonly(),
 
                 TinyMce::make(__('Moonshine/Objects/HotelResources.description'), 'description')
-                    ->required(),   
+                    ->required(),
 
                 Text::make(__('Moonshine/Objects/HotelResources.code_name'), 'codename'),
 
@@ -209,7 +209,7 @@ class HotelResource extends ModelResource
             'main_image' => 'nullable|image|max:2048',
             'gallery' => 'nullable|array',
             'gallery.*' => 'image|max:2048',
-            'main_image_url' => 'nullable|string',
+            'main_image_url' => 'nullable|url',
             'gallery_url' => ['nullable', 'string', new GalleryUrl()],
             'ie_score' => 'nullable|numeric|min:0|max:100',
         ];

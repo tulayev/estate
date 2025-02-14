@@ -5,8 +5,7 @@
 <!-- Desktop -->
 <header
     class="header absolute top-0 left-0 w-full z-[999] uk-visible@m"
-    uk-scrollspy="target: .animLeft; cls: animate__animated animate__fadeIn; delay: 100;"
-    uk-sticky="animation: uk-animation-slide-top; sel-target: .header; cls-active: {{ $mapView ? 'bg-white' : 'bg-primary' }} uk-navbar-sticky; cls-inactive: z-[999]; top: 200;"
+    uk-sticky="sel-target: .header; cls-active: {{ $mapView ? 'bg-white' : 'bg-primary' }} uk-navbar-sticky; cls-inactive: z-[999]; top: 200;"
     x-data="listingDropdown()"
 >
     <div class="relative">

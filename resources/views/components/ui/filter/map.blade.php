@@ -20,7 +20,6 @@
         type="hidden"
         name="locations"
         :value="selectedLocationsString().join(',')"
-        x-bind:value="selectedLocationsString().join(',')"
     />
 
     <div class="mt-6 sm:mt-8 md:mt-10 features uk-child-width-1-2 uk-child-width-auto@s uk-grid-small" uk-grid>

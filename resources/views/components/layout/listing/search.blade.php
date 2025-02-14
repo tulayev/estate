@@ -164,13 +164,17 @@
 
         init() {
             document.addEventListener('DOMContentLoaded', () => {
-                // Initialize the filters and fetch results count
-                this.filters = Object.fromEntries(new FormData(document.getElementById('filterForm')).entries());
-                this.fetchResultsCount();
-
                 // Add event listeners to filter inputs
-                document.querySelectorAll('#filterForm input, #filterForm select').forEach(input => {
-                    input.addEventListener('change', event => this.updateFilters(event));
+                const observer = new MutationObserver(mutations => {
+                    mutations.forEach(mutation => {
+                        console.log('Hidden input changed:', mutation.target.value);
+                        this.filters = Object.fromEntries(new FormData(document.getElementById('filterForm')).entries());
+                        this.fetchResultsCount();
+                    });
+                });
+                const formInputs = document.querySelectorAll('#filterForm input[type="hidden"]');
+                formInputs.forEach(input => {
+                    observer.observe(input, { attributes: true, attributeFilter: ['value'] });
                 });
             });
         }

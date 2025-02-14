@@ -1,6 +1,8 @@
-<!-- Newsletter -->
 <section class="section">
-    <div class="container">
+    <div
+        class="container"
+        x-data="newsletterDropdown()"
+    >
         <h2 class="section-title mb-16">
             {{ __('general.newsetter_title') }}
         </h2>
@@ -25,29 +27,31 @@
 
             <!-- Preferences Input -->
             <div class="uk-width-1-2@s form-drop-down px-4 text-center">
-        <span class="text-lg font-bold text-[#c6c6c6] block">
-            {{ __('general.newsetter_choose') }}
-        </span>
-                <div
-                    uk-dropdown="mode: hover; pos: bottom-justify;"
-                    class="uk-dropdown uk-overflow-hidden uk-padding-remove"
+                <input
+                    type="text"
+                    class="modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none"
+                    placeholder="{{ __('general.newsetter_choose') }}"
+                    x-model="query"
+                    @focus="open = true"
+                    @click.away="open = false"
+                />
+
+                <ul
+                    x-show="open"
+                    class="px-3 py-4 space-y-2 absolute rounded-[14px] top-16 bg-white border border-borderColor w-full shadow-lg z-50 max-h-48 overflow-auto"
                 >
-                    <ul
-                        class="uk-nav uk-dropdown-nav uk-scrollable max-h-[50vw] sm:max-h-[20vw] overflow-y-auto p-2 shadow-md"
-                    >
-                        <li class="uk-active"><a href="#">Active</a></li>
-                        <li><a href="#">Item 1</a></li>
-                        <li class="uk-nav-header">Header</li>
-                        <li><a href="#">Item 2</a></li>
-                        <li><a href="#">Item 3</a></li>
-                        <li><a href="#">Item 4</a></li>
-                        <li class="uk-nav-divider"></li>
-                        <li><a href="#">Item 5</a></li>
-                        <li><a href="#">Item 6</a></li>
-                        <li><a href="#">Item 7</a></li>
-                        <li><a href="#">Item 8</a></li>
-                    </ul>
-                </div>
+                    <li class="uk-active"><a href="#">Active</a></li>
+                    <li><a href="#">Item 1</a></li>
+                    <li class="uk-nav-header">Header</li>
+                    <li><a href="#">Item 2</a></li>
+                    <li><a href="#">Item 3</a></li>
+                    <li><a href="#">Item 4</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="#">Item 5</a></li>
+                    <li><a href="#">Item 6</a></li>
+                    <li><a href="#">Item 7</a></li>
+                    <li><a href="#">Item 8</a></li>
+                </ul>
             </div>
 
             <!-- Submit Button -->
@@ -59,3 +63,15 @@
         </form>
     </div>
 </section>
+
+
+<script defer>
+    function newsletterDropdown() {
+        return {
+            locale: '{{ app()->getLocale() }}',
+            id: '',
+            query: '',
+            open: false,
+        };
+    }
+</script>

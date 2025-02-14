@@ -6,7 +6,7 @@
     <div class="container">
         <div class="w-full flex justify-between">
             <div class="collapse-title">
-                For sale | off plan
+                {{ __('listing/index/list.for_sale_off_plan') }}
             </div>
             <div class="flex items-center space-x-2 md:space-x-4 xl:space-x-8">
                 <a href="{{ route('pages.listing.index', ['viewType' => 'liked']) }}">
@@ -36,8 +36,8 @@
             x-data="mapViewHandler({{ $hotels->toJson() }})"
             x-init="initMapView()"
         >
-            <div 
-                class="absolute top-4 left-4 w-1/2 md:w-[40%] space-y-4 h-[100vh] overflow-y-scroll z-[999]" 
+            <div
+                class="absolute top-4 left-4 w-1/2 md:w-[40%] space-y-4 h-[100%] overflow-y-scroll z-[999]"
                 style="scrollbar-width: none; -ms-overflow-style: none;"
             >
                 <div id="dynamicCardContainer" class="space-y-4"></div>

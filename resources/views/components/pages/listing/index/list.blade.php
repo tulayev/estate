@@ -67,6 +67,8 @@
                     </div>
                 @endif
             </div>
+        @else
+            <h2 class="section-title mt-4 md:mt-10">Nothing found 😞</h2>
         @endif
     </div>
 </section>
