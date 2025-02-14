@@ -18,9 +18,12 @@
                     @if ($hotel->tags)
                         <div class="flex items-center space-x-2">
                             @foreach($hotel->tags->take(2) as $tag)
-                                <div class="card-tag-button random-bg-color">
+                                <a
+                                    href="{{ route('pages.listing.index', ['tag' => $tag->id]) }}"
+                                    class="card-tag-button random-bg-color hover:text-primary"
+                                >
                                     {{ Str::limit($tag->name, 3) }}
-                                </div>
+                                </a>
                             @endforeach
                         </div>
                     @endif

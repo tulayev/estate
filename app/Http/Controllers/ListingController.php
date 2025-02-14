@@ -184,6 +184,16 @@ class ListingController extends Controller
                 ->active();
         }
 
+        if ($request->has('tag')) {
+            $hotelsQuery->filterByTags($request->get('tag'))
+                ->active();
+        }
+
+        if ($request->has('feature')) {
+            $hotelsQuery->filterByFeatures($request->get('feature'))
+                ->active();
+        }
+
         if ($request->has('viewType') && $request->get('viewType') === 'liked') {
             $hotelsQuery->whereHas('likes', function ($query) {
                 $userId = auth()->id();

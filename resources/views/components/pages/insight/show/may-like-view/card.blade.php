@@ -11,9 +11,12 @@
             <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
             <!-- Image Top -->
             <div class="flex justify-end items-center z-10">
-                <h3 class="card-tag-button random-bg-color">
+                <a
+                    href="{{ route('pages.insight.index', ['category' => $topic->category->id]) }}"
+                    class="card-tag-button random-bg-color hover:text-primary"
+                >
                     {{ Str::limit($topic->category->title, 3) }}
-                </h3>
+                </a>
             </div>
             <!-- Image Bottom -->
             <a

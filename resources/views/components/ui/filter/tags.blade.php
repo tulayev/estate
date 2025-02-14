@@ -12,14 +12,15 @@
         <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetTags">x</span>
         <span x-text="selectedTagNames().join(', ')"></span>
     </h3>
-    <div class="mt-6 tags uk-child-width-1-2 uk-child-width-auto@s uk-grid-small" uk-grid>
-        <input
-            type="hidden"
-            name="tags"
-            :value="selectedTags.join(',')"
-            x-bind:value="selectedTags.join(',')"
-        />
 
+    <input
+        type="hidden"
+        name="tags"
+        :value="selectedTags.join(',')"
+        x-bind:value="selectedTags.join(',')"
+    />
+
+    <div class="mt-6 tags uk-child-width-1-2 uk-child-width-auto@s uk-grid-small" uk-grid>
         @foreach($tags as $tag)
             <div>
                 <div

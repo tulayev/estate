@@ -5,8 +5,8 @@
 <!-- Desktop -->
 <header
     class="header absolute top-0 left-0 w-full z-[999] uk-visible@m"
-    uk-scrollspy="target: .animLeft; cls: animate__animated animate__lightSpeedInLeft; delay: 300;"
-    uk-sticky="animation: uk-animation-slide-top; sel-target: .header; cls-active: {{ $mapView ? 'bg-white' : 'bg-primary' }} uk-navbar-sticky; cls-inactive: z-[9999]; top: 200;"
+    uk-scrollspy="target: .animLeft; cls: animate__animated animate__fadeIn; delay: 100;"
+    uk-sticky="animation: uk-animation-slide-top; sel-target: .header; cls-active: {{ $mapView ? 'bg-white' : 'bg-primary' }} uk-navbar-sticky; cls-inactive: z-[999]; top: 200;"
     x-data="listingDropdown()"
 >
     <div class="relative">
@@ -34,7 +34,7 @@
                         <li class="animRight">
                             <a
                                 href="{{ route('pages.listing.index') }}"
-                                class="line-animation md:text-sm xl:text-base xxl:text-xl xl:font-bold xxl:font-black"
+                                class="line-animation md:text-sm xl:text-base xxl:text-xl font-black"
                                 @mouseenter="open = true"
                                 @mouseleave="open = false"
                             >
@@ -72,7 +72,7 @@
                         <li class="animRight">
                             <a
                                 href="{{ route('pages.club.index') }}"
-                                class="line-animation md:text-sm xl:text-base xxl:text-xl xl:font-bold xxl:font-black"
+                                class="line-animation md:text-sm xl:text-base xxl:text-xl font-black"
                             >
                                 {{ __('general.nav_ic') }}
                             </a>
@@ -80,23 +80,23 @@
                         <li class="animRight">
                             <a
                                 href="{{ route('pages.insight.index') }}"
-                                class="line-animation md:text-sm xl:text-base xxl:text-xl xl:font-bold xxl:font-black"
+                                class="line-animation md:text-sm xl:text-base xxl:text-xl font-black"
                             >
-                                {!! __('general.nav_insights') !!}
+                                {{ __('general.nav_insights') }}
                             </a>
                         </li>
                         <li class="animRight">
                             <a
                                 href="{{ route('pages.about.index') }}"
-                                class="line-animation md:text-sm xl:text-base xxl:text-xl xl:font-bold xxl:font-black"
+                                class="line-animation md:text-sm xl:text-base xxl:text-xl font-black"
                             >
-                                {!! __('general.nav_about') !!}
+                                {{ __('general.nav_about') }}
                             </a>
                         </li>
                     </ul>
                     <!-- Locale Switcher -->
                     <ul class="{{ $mapView ? '' : 'bg-opacity-10' }} animRight flex justify-center items-center rounded-[100px] bg-white relative w-[60px] md:ml-4 xl:ml-6 xxl:ml-[72px]">
-                        <li class="w-full xxl:w-1/2 flex justify-around md:font-semibold lg:font-bold md:text-sm xl:text-base xxl:text-lg xxl:font-black">
+                        <li class="w-full xxl:w-1/2 flex justify-around font-black md:text-sm xl:text-base xxl:text-lg">
                             <a href="#">
                                 {{ config()->get('locales')[app()->getLocale()] }}
                             </a>
@@ -183,33 +183,33 @@
                             <li>
                                 <a
                                     href="{{ route('pages.listing.index') }}"
-                                    class="nav-link-offcanvas"
+                                    class="uppercase"
                                 >
-                                    Listings
+                                    {{ __('general.nav_listings') }}
                                 </a>
                             </li>
                             <li>
                                 <a
                                     href="{{ route('pages.club.index') }}"
-                                    class="nav-link-offcanvas"
+                                    class="uppercase"
                                 >
-                                    Insider Club
+                                    {{ __('general.nav_ic') }}
                                 </a>
                             </li>
                             <li>
                                 <a
                                     href="{{ route('pages.insight.index') }}"
-                                    class="nav-link-offcanvas"
+                                    class="uppercase"
                                 >
-                                    Insights
+                                    {{ __('general.nav_insights') }}
                                 </a>
                             </li>
                             <li>
                                 <a
                                     href="{{ route('pages.about.index') }}"
-                                    class="nav-link-offcanvas"
+                                    class="uppercase"
                                 >
-                                    About us
+                                    {{ __('general.nav_about') }}
                                 </a>
                             </li>
                             <li>

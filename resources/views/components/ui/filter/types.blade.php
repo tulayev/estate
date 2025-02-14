@@ -13,14 +13,14 @@
         <span x-text="selectedTypeNames().join(', ')"></span>
     </h3>
 
-    <div class="uk-child-width-1-2 uk-child-width-1-3@s uk-grid-small mt-6 sm:mt-8 md:mt-12" uk-grid>
-        <input
-            type="hidden"
-            name="types"
-            :value="selectedTypes.join(',')"
-            x-bind:value="selectedTypes.join(',')"
-        />
+    <input
+        type="hidden"
+        name="types"
+        :value="selectedTypes.join(',')"
+        x-bind:value="selectedTypes.join(',')"
+    />
 
+    <div class="uk-child-width-1-2 uk-child-width-1-3@s uk-grid-small mt-6 sm:mt-8 md:mt-12" uk-grid>
         @foreach($types as $type)
             <div>
                 <div

@@ -5,23 +5,35 @@
 <section class="pt-6 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20">
     <div class="container">
         @if ($hotel)
-            <h2 class="modal-subtitle">off plan | {{ $hotel->title }}</h2>
+            <h2 class="modal-subtitle">
+                @if ($hotel->types && $hotel->types->first())
+                    <a
+                        href="{{ route('pages.listing.index', ['type' => $hotel->types->first()->id]) }}"
+                        class="hover:text-secondary"
+                    >
+                        {{ $hotel->types->first()->name }}
+                    </a>
+                @endif
+                | {{ $hotel->title }}
+            </h2>
             <!-- Main -->
             <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10">
                 <div
                     class="relative bg-cover bg-center bg-no-repeat border-rounded p-4 md:p-8 xl:p-10"
                     style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}');"
                 >
-                    
                     <div class="absolute border-rounded inset-0  from-black opacity-50 bg-gradient-to-b"></div>
                     <!-- Image Top -->
                     <div class="relative flex flex-col space-y-2 sm:space-y-0 sm:flex-row justify-between items-center">
                         @if ($hotel->tags)
                             <div class="flex items-center space-x-2">
                                 @foreach($hotel->tags->take(3) as $tag)
-                                    <div class="card-tag-button random-bg-color">
+                                    <a
+                                        href="{{ route('pages.listing.index', ['tag' => $tag->id]) }}"
+                                        class="card-tag-button random-bg-color hover:text-primary"
+                                    >
                                         {{ $tag->name }}
-                                    </div>
+                                    </a>
                                 @endforeach
                             </div>
                         @endif
@@ -142,11 +154,12 @@
                     <div class="uk-child-width-1-2 uk-child-width-1-3@m uk-grid-small" uk-grid>
                         @foreach($hotel->features as $feature)
                             <div>
-                                <div class="shadow-card rounded-[28px] flex justify-center items-center bg-white py-3 sm:py-6">
-                                    <span class="collapse-title">
-                                        {{ $feature->name }}
-                                    </span>
-                                </div>
+                                <a
+                                    href="{{ route('pages.listing.index', ['feature' => $feature->id]) }}"
+                                    class="shadow-card rounded-[28px] flex justify-center items-center bg-white py-3 sm:py-6 collapse-title hover:text-secondary"
+                                >
+                                    {{ $feature->name }}
+                                </a>
                             </div>
                         @endforeach
                     </div>

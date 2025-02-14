@@ -60,7 +60,7 @@
                         <button
                             x-show="hasMorePages"
                             @click="loadMore"
-                            class="bg-white text-primary rounded-[100px] modal-subtitle py-5 w-full"
+                            class="bg-white text-primary rounded-[100px] modal-subtitle py-5 w-full hover:text-white hover:bg-primary"
                         >
                             {{ __('general.see_more') }}
                         </button>

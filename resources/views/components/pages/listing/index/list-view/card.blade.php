@@ -13,9 +13,12 @@
                     @if ($hotel->tags)
                         <div class="flex items-center space-x-2">
                             @foreach($hotel->tags->take(2) as $tag)
-                                <div class="card-tag-button random-bg-color">
+                                <a
+                                    href="{{ route('pages.listing.index', ['tag' => $tag->id]) }}"
+                                    class="card-tag-button random-bg-color hover:text-primary"
+                                >
                                     {{ Str::limit($tag->name, 10) }}
-                                </div>
+                                </a>
                             @endforeach
                         </div>
                     @endif
@@ -23,8 +26,14 @@
                         <button class="hidden">
                             <img src="{{ asset('assets/images/icons/filter.svg') }}" alt="filter" />
                         </button>
-                        <button x-data="likeHandler({{ $hotel->id }}, @json($hotel->isLiked))" @click="toggleLike">
-                            <img :src="isLiked ? '{{ asset('assets/images/icons/heart-blue.svg') }}' : '{{ asset('assets/images/icons/heart.svg') }}'" alt="like" />
+                        <button
+                            x-data="likeHandler({{ $hotel->id }}, @json($hotel->isLiked))"
+                            @click="toggleLike"
+                        >
+                            <img
+                                :src="isLiked ? '{{ asset('assets/images/icons/heart-blue.svg') }}' : '{{ asset('assets/images/icons/heart.svg') }}'"
+                                alt="like"
+                            />
                         </button>
                     </div>
                 </div>

@@ -9,15 +9,18 @@
                 class="relative bg-cover bg-center bg-no-repeat w-full md:w-1/2 flex flex-col justify-between border-rounded p-2 h-[250px] xl:h-auto"
                 style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}');"
             >
-                <div class="absolute border-rounded inset-0 bg-gradient-50 "></div>
+                <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
                 <!-- Image Top -->
                 <div class="flex justify-between items-center z-10">
                     @if ($hotel->tags)
                         <div class="flex items-center space-x-2">
                             @foreach($hotel->tags->take(2) as $tag)
-                                <div class="card-tag-button random-bg-color hover:bg-[#c2c6dbbb]">
+                                <a
+                                    href="{{ route('pages.listing.index', ['tag' => $tag->id]) }}"
+                                    class="card-tag-button random-bg-color hover:bg-[#c2c6dbbb]"
+                                >
                                     {{ Str::limit($tag->name, 10) }}
-                                </div>
+                                </a>
                             @endforeach
                         </div>
                     @endif
