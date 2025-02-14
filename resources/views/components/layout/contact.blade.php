@@ -10,7 +10,7 @@
             <div class="white-button">
                 <ul class="flex items-center space-x-8 h-full">
                     <li>
-                        <a href="#">
+                        <a href="https://wa.me/66922407355">
                             <img
                                 src="{{ asset('assets/images/icons/whatsapp.svg') }}"
                                 alt="whatsapp"
@@ -18,30 +18,23 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="https://www.linkedin.com/company/ignatev-estate" target="_blank">
                             <img
-                                src="{{ asset('assets/images/icons/x.svg') }}"
-                                alt="x" />
+                                src="{{ asset('assets/images/icons/linkedin.svg') }}"
+                                alt="linkedin" />
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="https://www.instagram.com/ignatev_estate.phuket/" target="_blank">
                             <img
                                 src="{{ asset('assets/images/icons/instagram.svg') }}"
                                 alt="instagram"
                             />
                         </a>
                     </li>
+                   
                     <li>
-                        <a href="#">
-                            <img
-                                src="{{ asset('assets/images/icons/youtube.svg') }}"
-                                alt="youtube"
-                            />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
+                        <a href="https://www.facebook.com/Istategroup" target="_blank">
                             <img
                                 src="{{ asset('assets/images/icons/facebook.svg') }}"
                                 alt="facebook"
@@ -49,15 +42,16 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="https://t.me/ignatevestate" target="_blank">
                             <img
-                                src="{{ asset('assets/images/icons/vk.svg') }}"
-                                alt="vk"
+                                src="{{ asset('assets/images/icons/telegram.svg') }}"
+                                alt="telegram"
                             />
                         </a>
                     </li>
+                    
                     <li>
-                        <a href="#">
+                        <a href="mailto:info@ignatev-estate.com">
                             <img
                                 src="{{ asset('assets/images/icons/mail.svg') }}"
                                 alt="mail"
@@ -70,7 +64,7 @@
                 href="tel:+7 (972) 928-30-12"
                 class="white-button"
             >
-                +7 (972) 928-30-12
+                +66 (92) 240 7355
             </a>
         </div>
     </div>

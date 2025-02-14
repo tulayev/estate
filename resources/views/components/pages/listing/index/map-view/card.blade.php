@@ -16,7 +16,7 @@
                         <div class="flex items-center space-x-2">
                             @foreach($hotel->tags->take(2) as $tag)
                                 <div class="card-tag-button random-bg-color hover:bg-[#c2c6dbbb]">
-                                    {{ Str::limit($tag->name, 3) }}
+                                    {{ Str::limit($tag->name, 10) }}
                                 </div>
                             @endforeach
                         </div>
@@ -44,7 +44,7 @@
                     href="{{ route('pages.listing.show', $hotel->slug) }}"
                     class="z-10"
                 >
-                    <div class="flex justify-between items-center uppercase text-sm sm:text-base md:text-lg">
+                    <div class="flex justify-between items-center uppercase text-sm">
                         <div class="flex items-center space-x-2">
                             @if ($hotel->ie_verified)
                                 <img

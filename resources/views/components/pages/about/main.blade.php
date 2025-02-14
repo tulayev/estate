@@ -33,12 +33,12 @@
                                 width="53"
                                 height="53"
                             />
-                            <span class="pr-2 overflow-hidden whitespace-nowrap text-ellipsis normal-case"> +7 (972) 928-30-12</span>
+                            <span class="pr-2 overflow-hidden whitespace-nowrap text-ellipsis normal-case"> +66 (92) 240 7355</span>
                         </a>
                     </div>
                     <div class="animLeft">
                         <a
-                            href="#"
+                            href="https://www.facebook.com/istategroup" target="_blank"
                             class="secondary-button"
                         >
                             <img
@@ -52,7 +52,7 @@
                     </div>
                     <div class="animLeft">
                         <a
-                            href="#"
+                            href="https://wa.me/66922407355" target="_blank"
                             class="secondary-button"
                         >
                             <img

@@ -45,7 +45,7 @@ return [
     'filter_popup_name' => 'фильтры',
     'filter_popup_type' => 'тип',
     'filter_popup_keywords' => 'критерии',
-    'filter_popup_keywords_placeholder' => 'например',
+    'filter_popup_keywords_placeholder' => 'например: patong villa',
     'filter_popup_price' => 'диапазон цен',
     'filter_popup_location' => 'расположение',
     'filter_popup_facilities' => 'удобства',

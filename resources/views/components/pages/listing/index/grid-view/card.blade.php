@@ -15,7 +15,7 @@
                     <div class="flex items-center space-x-2">
                         @foreach($hotel->tags->take(2) as $tag)
                             <div class="card-tag-button random-bg-color">
-                                {{ Str::limit($tag->name, 3) }}
+                                {{ Str::limit($tag->name, 10) }}
                             </div>
                         @endforeach
                     </div>
@@ -43,7 +43,7 @@
                 href="{{ route('pages.listing.show', $hotel->slug) }}"
                 class="z-10"
             >
-                <div class="flex justify-between items-center uppercase text-sm sm:text-base md:text-lg">
+                <div class="flex justify-between items-center uppercase text-xs">
                     <div class="flex items-center space-x-2">
                         @if ($hotel->ie_verified)
                             <img
@@ -53,7 +53,7 @@
                             />
                         @endif
                         <p class="text-white sm:font-bold">
-                            {{ Str::limit($hotel->title, 5) }}
+                            {{ Str::limit($hotel->title, 20) }}
                         </p>
                     </div>
                     <div>
@@ -66,9 +66,9 @@
         </div>
         <!-- Bottom -->
         <div class="shadow-card border-rounded mt-[-54px] sm:mt-[-44px] px-3 sm:px-5 pt-[68px] pb-4 sm:pb-6 hover:shadow-lg transition-shadow duration-300">
-            <div class="flex justify-between uppercase text-[#505050] text-sm sm:text-base md:text-lg xl:text-xl sm:font-bold md:font-black">
+            <div class="flex justify-between uppercase text-[#505050] text-sm  sm:font-bold md:font-black">
                 <div>
-                    <p>📍 {{ Str::limit($hotel->location, 5) }}</p>
+                    <p>📍 {{ Str::limit($hotel->location, 20) }}</p>
                 </div>
                 <div class="flex justify-between space-x-6">
                     <p>🛏️ {{ $hotel->bedrooms }}</p>

@@ -9,4 +9,5 @@ return [
     'main_desc' => 'Are you ready to be part of something extraordinary?<br>
                     Welcome to the Insider’s Club, where the future of Phuket’s 
                     real estate isn’t just forecasted — it’s shaped.',
+    'search_placeholder' => 'search',
 ];
