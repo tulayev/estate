@@ -18,8 +18,8 @@
         <input
             type="text"
             name="title"
-            placeholder="search"
-            class="modal-subtitle w-full text-primary placeholder-secondary bg-transparent border-none text-center outline-none"
+            placeholder="{{ __('club/main.search_placeholder') }}"
+            class="modal-subtitle w-full text-primary placeholder-secondary bg-transparent border-none text-left outline-none px-2"
             x-model="query"
             @input.debounce="fetchTopics"
             @focus="onFocus"
@@ -32,7 +32,7 @@
             <img
                 src="{{ asset('assets/images/icons/filter-dark.svg') }}"
                 alt="circle"
-                class="w-10"
+                class="hidden w-10"
             />
             <ul
                 x-show="open && suggestions.length > 0"

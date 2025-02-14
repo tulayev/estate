@@ -45,7 +45,7 @@ return [
     'filter_popup_name' => 'filters',
     'filter_popup_type' => 'type',
     'filter_popup_keywords' => 'keywords',
-    'filter_popup_keywords_placeholder' => 'for example',
+    'filter_popup_keywords_placeholder' => 'for example: Patong villa',
     'filter_popup_price' => 'price range',
     'filter_popup_location' => 'location',
     'filter_popup_facilities' => 'facilities',

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->json('description');
             $table->string('codename')->nullable();
             $table->json('location');
+            $table->json('location_description')->nullable();
             $table->decimal('latitude', 10, 8)->nullable();
             $table->decimal('longitude', 11, 8)->nullable();
             $table->decimal('price', 13, 3);

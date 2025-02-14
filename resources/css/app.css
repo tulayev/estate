@@ -34,7 +34,7 @@
     }
 
     .card-tag-button {
-        @apply text-[#F4F4F4] uppercase rounded-lg sm:border-rounded text-sm sm:text-base sm:font-bold px-2 sm:px-4 py-2 sm:py-2;
+        @apply text-[#F4F4F4] uppercase rounded-lg sm:border-rounded text-xs sm:text-xs sm:font-bold px-2 sm:px-4 py-2 sm:py-2;
     }
 
     /* Titles */

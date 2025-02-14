@@ -13,6 +13,8 @@
         <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetLocations">x</span>
         <span x-text="selectedLocationsString().join(', ')"></span>
     </h3>
+    <div id="map" class="border-rounded w-full mt-4 sm:mt-6 h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]"></div>
+
     <div class="mt-6 sm:mt-8 md:mt-10 features uk-child-width-1-2 uk-child-width-auto@s uk-grid-small" uk-grid>
         <input
             type="hidden"
@@ -33,8 +35,6 @@
             </div>
         @endforeach
     </div>
-
-    <div id="map" class="border-rounded w-full mt-4 sm:mt-6 h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]"></div>
 </div>
 
 <script defer>

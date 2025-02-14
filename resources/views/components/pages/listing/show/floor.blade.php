@@ -2,9 +2,9 @@
     'hotel' => null,
 ])
 
-@if ($hotel->floors->count() > 0)
-    <section class="section">
-        <div class="container">
+<section class="section">
+    <div class="container">
+        @if ($hotel->floors->count() > 0)
             <h2 class="section-title">
                 floor plans
             </h2>
@@ -53,20 +53,20 @@
                     </ul>
                 </div>
             </div>
-            <!-- Map -->
-            <div class="mt-6 md:mt-12 xl:mt-24">
-                <div class="h-[375px] sm:h-[400px] md:h-[500px] xl:h-[650px]">
-                    <iframe
-                        src="https://www.google.com/maps?q={{ $hotel->latitude }},{{ $hotel->longitude }}&hl=es;z=14&output=embed"
-                        width="100%"
-                        height="100%"
-                        class="border-none border-rounded"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                    ></iframe>
-                </div>
+        @endif
+        <!-- Map -->
+        <div class="mt-6 md:mt-12 xl:mt-24">
+            <div class="h-[375px] sm:h-[400px] md:h-[500px] xl:h-[650px]">
+                <iframe
+                    src="https://www.google.com/maps?q={{ $hotel->latitude }},{{ $hotel->longitude }}&hl=es;z=14&output=embed"
+                    width="100%"
+                    height="100%"
+                    class="border-none border-rounded"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
             </div>
         </div>
-    </section>
-@endif
+    </div>
+</section>
