@@ -82,6 +82,11 @@ a:hover {
     padding-bottom: 14px;
 }
 
+/* Uikit dropdown */
+.uk-dropdown {
+    min-width: 60px;
+}
+
 /* NoUI Slider */
 /* Track background */
 .noUi-target {

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources;
 
 use App\Helpers\Constants;
+use App\Rules\GalleryUrl;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Hotel;
@@ -205,7 +206,7 @@ class HotelResource extends ModelResource
             'gallery' => 'nullable|array',
             'gallery.*' => 'image|max:2048',
             'main_image_url' => 'nullable|string',
-            'gallery_url' => 'nullable|string',
+            'gallery_url' => ['nullable', 'string', new GalleryUrl()],
             'ie_score' => 'nullable|numeric|min:0|max:100',
         ];
     }

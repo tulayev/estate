@@ -95,13 +95,13 @@
                         </li>
                     </ul>
                     <!-- Locale Switcher -->
-                    <ul class="{{ $mapView ? '' : 'bg-opacity-10' }} animRight flex justify-between items-center rounded-[100px] bg-white relative md:pl-2 md:w-[60px] xl:w-[120px] xxl:w-[235px] md:ml-4 xl:ml-6 xxl:ml-[72px]">
+                    <ul class="{{ $mapView ? '' : 'bg-opacity-10' }} animRight flex justify-center items-center rounded-[100px] bg-white relative w-[60px] md:ml-4 xl:ml-6 xxl:ml-[72px]">
                         <li class="w-full xxl:w-1/2 flex justify-around md:font-semibold lg:font-bold md:text-sm xl:text-base xxl:text-lg xxl:font-black">
                             <a href="#">
                                 {{ config()->get('locales')[app()->getLocale()] }}
                             </a>
                             <div
-                                class="rounded-lg p-2.5 "
+                                class="rounded-[100px] p-0"
                                 uk-dropdown="pos: bottom-justify; animation: uk-animation-slide-top-small; duration: 400; mode: click"
                             >
                                 <ul>
@@ -119,15 +119,14 @@
                                     @endforeach
                                 </ul>
                             </div>
-                            <a href="#">
+                            <a href="#" class="hidden">
                                 USD
                             </a>
                         </li>
-                        <li>
+                        <li class="hidden">
                             <img
                                 src="{{ asset('assets/images/icons/locale-icon.svg') }}"
                                 alt="locale-icon"
-                                class="hidden xxl:block"
                             />
                         </li>
                     </ul>
