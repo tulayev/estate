@@ -178,7 +178,7 @@ use App\Helpers\Enums\TopicType;
                                     src="{{ $typeImages[$i++] }}"
                                     alt="{{ $type->name }}"
                                 />
-                                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                <div class="absolute-centralize">
                                     <h4 class="text-2xl text-white font-bold uppercase group-hover:text-primary">
                                         {{ $type->name }}
                                     </h4>
