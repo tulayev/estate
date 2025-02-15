@@ -156,20 +156,18 @@
             }
         },
 
-        updateFilters(event) {
-            const formData = new FormData(event.target.form);
-            this.filters = Object.fromEntries(formData.entries());
+        updateFilters() {
+            this.filters = Object.fromEntries(new FormData(document.getElementById('filterForm')).entries());
             this.fetchResultsCount();
         },
 
         init() {
             document.addEventListener('DOMContentLoaded', () => {
+                this.updateFilters();
                 // Add event listeners to filter inputs
                 const observer = new MutationObserver(mutations => {
-                    mutations.forEach(mutation => {
-                        console.log('Hidden input changed:', mutation.target.value);
-                        this.filters = Object.fromEntries(new FormData(document.getElementById('filterForm')).entries());
-                        this.fetchResultsCount();
+                    mutations.forEach(() => {
+                        this.updateFilters();
                     });
                 });
                 const formInputs = document.querySelectorAll('#filterForm input[type="hidden"]');

@@ -4,7 +4,7 @@
 
 <section class="section">
     <div class="container">
-        @if ($hotel->floors->count() > 0)
+        @if (!empty($hotel->floors))
             <h2 class="section-title">
                 floor plans
             </h2>

@@ -57,7 +57,7 @@ class Topic extends Model
     {
         $locale = app()->getLocale();
 
-        if ($searchTerm) {
+        if (!empty($searchTerm)) {
             $query->whereRaw(
                 "LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, '$.\"{$locale}\"'))) LIKE ?",
                 ['%' . strtolower($searchTerm) . '%']

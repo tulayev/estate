@@ -11,7 +11,7 @@
         <div>
             <input
                 id="priceFrom"
-                name="price_from"
+                name="price_min"
                 type="text"
                 class="modal-subtitle text-primary placeholder-primary placeholder-opacity-50 w-full py-4 border-b-[2px] border-borderColor focus:outline-none focus:border-blue-500"
                 placeholder="From"
@@ -20,7 +20,7 @@
         <div>
             <input
                 id="priceTo"
-                name="price_to"
+                name="price_max"
                 type="text"
                 class="modal-subtitle text-primary placeholder-primary placeholder-opacity-50 w-full py-4 border-b-[2px] border-borderColor focus:outline-none focus:border-blue-500"
                 placeholder="To"

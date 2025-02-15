@@ -66,7 +66,7 @@ class Hotel extends Model
 
     public function scopeSearchByTitle(Builder $query, $keyword): Builder
     {
-        if ($keyword) {
+        if (!empty($keyword)) {
             $query->whereRaw('LOWER(title) LIKE ?', ['%' . strtolower($keyword) . '%']);
         }
 
@@ -77,7 +77,7 @@ class Hotel extends Model
     {
         $locale = app()->getLocale();
 
-        if ($searchTerm) {
+        if (!empty($searchTerm)) {
             $query->whereRaw(
                 "LOWER(JSON_UNQUOTE(JSON_EXTRACT(location, '$.\"{$locale}\"'))) LIKE ?",
                 ['%' . strtolower($searchTerm) . '%']
@@ -89,10 +89,10 @@ class Hotel extends Model
 
     public function scopeFilterByPrice(Builder $query, $min = null, $max = null): Builder
     {
-        if ($min !== null && $min != 0) {
+        if (!empty($min)) {
             $query->where('price', '>=', $min);
         }
-        if ($max !== null && $max != 0) {
+        if (!empty($max)) {
             $query->where('price', '<=', $max);
         }
 
@@ -101,19 +101,19 @@ class Hotel extends Model
 
     public function scopeFilterByBedrooms(Builder $query, $min = null, $max = null): Builder
     {
-        if ($min !== null && $min != 0) {
+        if (!empty($min)) {
             $query->where(function ($q) use ($min) {
                 $q->whereRaw(
-                    '(SELECT SUM(bedrooms) FROM floors WHERE floors.hotel_id = hotels.id) >= ?',
+                    '(SELECT COALESCE(SUM(bedrooms), 0) FROM floors WHERE floors.hotel_id = hotels.id) >= ?',
                     [$min]
                 );
             });
         }
 
-        if ($max !== null && $max != 0) {
+        if (!empty($max)) {
             $query->where(function ($q) use ($max) {
                 $q->whereRaw(
-                    '(SELECT SUM(bedrooms) FROM floors WHERE floors.hotel_id = hotels.id) <= ?',
+                    '(SELECT COALESCE(SUM(bedrooms), 0) FROM floors WHERE floors.hotel_id = hotels.id) <= ?',
                     [$max]
                 );
             });
@@ -124,19 +124,19 @@ class Hotel extends Model
 
     public function scopeFilterByBathrooms(Builder $query, $min = null, $max = null): Builder
     {
-        if ($min !== null && $min != 0) {
+        if (!empty($min)) {
             $query->where(function ($q) use ($min) {
                 $q->whereRaw(
-                    '(SELECT SUM(bathrooms) FROM floors WHERE floors.hotel_id = hotels.id) >= ?',
+                    '(SELECT COALESCE(SUM(bathrooms), 0) FROM floors WHERE floors.hotel_id = hotels.id) >= ?',
                     [$min]
                 );
             });
         }
 
-        if ($max !== null && $max != 0) {
+        if (!empty($max)) {
             $query->where(function ($q) use ($max) {
                 $q->whereRaw(
-                    '(SELECT SUM(bathrooms) FROM floors WHERE floors.hotel_id = hotels.id) <= ?',
+                    '(SELECT COALESCE(SUM(bathrooms), 0) FROM floors WHERE floors.hotel_id = hotels.id) <= ?',
                     [$max]
                 );
             });
