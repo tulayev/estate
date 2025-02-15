@@ -1,58 +1,60 @@
 <!-- Search Form -->
-<form
-    id="searchForm"
-    action="{{ route('pages.listing.index') }}"
-    class="uk-visible@s text-secondary z-10 bg-white font-semibold uppercase rounded-full flex justify-between items-center absolute px-3 left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 w-[90vw] lg:w-[70vw] h-[50px] xl:h-[70px] text-sm xl:text-xl"
-    autocomplete="off"
->
-    <input
-        type="hidden"
-        name="requestType"
-        value="search"
-    />
-
-    <div>
-        <img
-            src="{{ asset('assets/images/icons/circle.png') }}"
-            alt="circle"
-            class="w-6 lg:w-8 xl:w-10"
+<div>
+    <form
+        id="searchForm"
+        action="{{ route('pages.listing.index') }}"
+        class="uk-visible@s z-10 bg-white rounded-full flex justify-between items-center absolute left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 px-2 w-[85vw] lg:w-[91vw] xl:w-[67vw] h-[50px] xl:h-[70px]"
+        autocomplete="off"
+    >
+        <input
+            type="hidden"
+            name="requestType"
+            value="search"
         />
-    </div>
 
-    <x-ui.search.keywords-input />
-
-    <x-ui.search.type-input :types="$types" />
-
-    <x-ui.search.location-input />
-
-    <x-ui.search.beds-input />
-
-    <x-ui.search.price-input
-        :step="100"
-        :minValue="0"
-        :maxValue="$maxPrice"
-    />
-
-    <div class="h-full flex items-center justify-end w-[8%] md:space-x-2 xl:space-x-4">
-        <button
-            class="text-xl md:text-3xl bg-transparent border-none outline-none"
-            type="button"
-            uk-toggle="target: #searchModal"
-        >
-            +
-        </button>
-        <button
-            class="w-5 md:w-[30px] xl:w-[50px] h-5 md:h-[30px] xl:h-[50px] bg-primary rounded-full flex items-center justify-center"
-            type="submit"
-        >
+        <div>
             <img
-                class="w-2 md:w-[14px] xl:w-[20px]"
-                src="{{ asset('assets/images/icons/search.svg') }}"
-                alt="search"
+                src="{{ asset('assets/images/icons/circle.png') }}"
+                alt="circle"
+                class="w-6 lg:w-8 xl:w-10"
             />
-        </button>
-    </div>
-</form>
+        </div>
+
+        <x-ui.search.keywords-input />
+
+        <x-ui.search.type-input :types="$types" />
+
+        <x-ui.search.location-input />
+
+        <x-ui.search.beds-input />
+
+        <x-ui.search.price-input
+            :step="100"
+            :minValue="0"
+            :maxValue="$maxPrice"
+        />
+
+        <div class="h-full flex items-center justify-end w-[8%] md:space-x-2 xl:space-x-4">
+            <button
+                class="text-xl md:text-3xl bg-transparent border-none outline-none"
+                type="button"
+                uk-toggle="target: #searchModal"
+            >
+                +
+            </button>
+            <button
+                class="w-5 md:w-[30px] xxl:w-[50px] h-5 md:h-[30px] xxl:h-[50px] bg-primary rounded-full flex items-center justify-center"
+                type="submit"
+            >
+                <img
+                    class="w-2 md:w-[12px] xxl:w-[20px]"
+                    src="{{ asset('assets/images/icons/search.svg') }}"
+                    alt="search"
+                />
+            </button>
+        </div>
+    </form>
+</div>
 
 <!-- Filter Modal -->
 <div
