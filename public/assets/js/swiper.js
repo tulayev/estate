@@ -1,8 +1,8 @@
 /* Slider */
-new Swiper(".swiper", {
+new Swiper('.swiper', {
     loop: true,
     slidesPerView: 3,
-    direction: "horizontal",
+    direction: 'horizontal',
     spaceBetween: 30,
     freeMode: true,
     freeModeMomentum: true,
@@ -16,17 +16,32 @@ new Swiper(".swiper", {
     },
     grabCursor: false,
     breakpoints: {
-        "@0.00": {
+        '@0.00': {
             slidesPerView: 2,
         },
-        "@0.75": {
+        '@0.75': {
             slidesPerView: 3,
         },
-        "@1.00": {
+        '@1.00': {
             slidesPerView: 4,
         },
-        "@1.50": {
+        '@1.50': {
             slidesPerView: 6,
         },
+    },
+});
+
+/* Home Page slider */
+new Swiper('.homeSlider', {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    loop: true,
+    autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
     },
 });

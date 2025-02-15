@@ -9,41 +9,161 @@ use App\Helpers\Enums\TopicType;
 <section class="section">
     <div class="container">
         <!-- Slider -->
-        <div
-            class="border-rounded relative px-5 sm:px-10 xl:px-20 py-5 sm:py-10 md:py-20 lg:py-30 xl:py-32 xxl:py-60"
-            style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
-        >
-            <div class="absolute border-rounded inset-0 bg-black opacity-70"></div>
-            <div class="relative z-10">
-                <h2 class="section-title-white text-lg sm:text-2xl xl:text-5xl">
-                    {{ __('home/problem.title') }}
-                </h2>
-                <p class="text-white text-sm lg:text-base xl:text-2xl mt-4 sm:mt-5 lg:mt-10 xl:mt-20">
-                    {{ __('home/problem.p_1') }}
-                </p>
-                <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-4 mt-4 sm:mt-8 lg:mt-10 xl:mt-20">
-                    <p class="text-white font-bold text-xs xl:text-xl">{{ __('home/problem.p_2') }}</p>
-                    <a href="{{ route('pages.insight.index', ['type' => TopicType::FOR_INVESTORS->value]) }}" class="primary-button text-xs xl:text-lg">
-                        {{ TopicType::FOR_INVESTORS->label() }}
-                    </a>
-                    <a href="{{ route('pages.insight.index', ['type' => TopicType::FOR_DEVELOPERS->value]) }}" class="primary-button text-xs xl:text-lg">
-                        {{ TopicType::FOR_DEVELOPERS->label() }}
-                    </a>
+        <div class="swiper homeSlider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div
+                        class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[400px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
+                        style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
+                    >
+                        <div class="absolute border-rounded inset-0 bg-black opacity-70"></div>
+                        <div class="relative z-10 flex flex-col justify-center">
+                            <h2 class="section-title-white text-lg sm:text-2xl xl:text-5xl">
+                                Your Guide to Secure & Profitable Investments
+                            </h2>
+                            <p class="text-white text-sm lg:text-base xl:text-2xl mt-4 sm:mt-5 lg:mt-10 xl:mt-20">
+                                Phuket’s real estate market is flourishing, with over 250 new developments and more than 200 developers competing for attention.
+                                While the opportunities for families to build wealth and secure their future are immense, navigating this dynamic market presents unique challenges.
+                                Making informed decisions amidst a sea of marketing promises requires expertise, precision, and deep local insight.
+                            </p>
+                            <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-4 mt-4 sm:mt-8 lg:mt-10 xl:mt-20">
+                                <p class="text-white font-bold text-xs xl:text-xl">
+                                    {{ __('home/problem.p_2') }}
+                                </p>
+                                <a
+                                    href="{{ route('pages.insight.index', ['type' => TopicType::FOR_INVESTORS->value]) }}"
+                                    class="primary-button text-xs xl:text-lg"
+                                >
+                                    {{ TopicType::FOR_INVESTORS->label() }}
+                                </a>
+                                <a
+                                    href="{{ route('pages.insight.index', ['type' => TopicType::FOR_DEVELOPERS->value]) }}"
+                                    class="primary-button text-xs xl:text-lg"
+                                >
+                                    {{ TopicType::FOR_DEVELOPERS->label() }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div
+                        class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[400px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
+                        style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
+                    >
+                        <div class="absolute border-rounded inset-0 bg-black opacity-70"></div>
+                        <div class="relative z-10 flex flex-col justify-center">
+                            <h2 class="section-title-white text-lg sm:text-2xl xl:text-5xl">
+                                In Phuket's Off-Plan Market, We Protect Your Investment & Dreams from Hidden Risks
+                            </h2>
+                            <p class="text-white text-sm lg:text-base xl:text-2xl mt-4 sm:mt-5 lg:mt-10 xl:mt-20">
+                                In a market filled with glossy brochures and polished promises, it’s easy to dream big—but what about the risks they don’t tell you about?
+                                At Ignatev Estate, we prioritize your investment security by uncovering what truly lies beneath the surface.
+                            </p>
+                            <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-4 mt-4 sm:mt-8 lg:mt-10 xl:mt-20">
+                                <p class="text-white font-bold text-xs xl:text-xl">
+                                    {{ __('home/problem.p_2') }}
+                                </p>
+                                <a
+                                    href="{{ route('pages.insight.index', ['type' => TopicType::FOR_INVESTORS->value]) }}"
+                                    class="primary-button text-xs xl:text-lg"
+                                >
+                                    {{ TopicType::FOR_INVESTORS->label() }}
+                                </a>
+                                <a
+                                    href="{{ route('pages.insight.index', ['type' => TopicType::FOR_DEVELOPERS->value]) }}"
+                                    class="primary-button text-xs xl:text-lg"
+                                >
+                                    {{ TopicType::FOR_DEVELOPERS->label() }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div
+                        class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[400px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
+                        style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
+                    >
+                        <div class="absolute border-rounded inset-0 bg-black opacity-70"></div>
+                        <div class="relative z-10 flex flex-col justify-center">
+                            <h2 class="section-title-white text-lg sm:text-2xl xl:text-5xl">
+                                Connect Your Project with Investors – Secure Early-Stage Finance
+                            </h2>
+                            <p class="text-white text-sm lg:text-base xl:text-2xl mt-4 sm:mt-5 lg:mt-10 xl:mt-20">
+                                Exceptional projects deserve to be showcased to ultra-high-net-worth (UHNW) families,
+                                private equity funds, and discerning investors who value substance over flashy marketing.
+                            </p>
+                            <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-4 mt-4 sm:mt-8 lg:mt-10 xl:mt-20">
+                                <p class="text-white font-bold text-xs xl:text-xl">
+                                    {{ __('home/problem.p_2') }}
+                                </p>
+                                <a
+                                    href="{{ route('pages.insight.index', ['type' => TopicType::FOR_INVESTORS->value]) }}"
+                                    class="primary-button text-xs xl:text-lg"
+                                >
+                                    {{ TopicType::FOR_INVESTORS->label() }}
+                                </a>
+                                <a
+                                    href="{{ route('pages.insight.index', ['type' => TopicType::FOR_DEVELOPERS->value]) }}"
+                                    class="primary-button text-xs xl:text-lg"
+                                >
+                                    {{ TopicType::FOR_DEVELOPERS->label() }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div
+                        class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[400px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
+                        style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
+                    >
+                        <div class="absolute border-rounded inset-0 bg-black opacity-70"></div>
+                        <div class="relative z-10 flex flex-col justify-center">
+                            <h2 class="section-title-white text-lg sm:text-2xl xl:text-5xl">
+                                Our Promise
+                            </h2>
+                            <p class="text-white text-sm lg:text-base xl:text-2xl mt-4 sm:mt-5 lg:mt-10 xl:mt-20">
+                                When we present an opportunity, it’s more than just clarity—it’s confidence, built on verified data, documented evidence, and thorough analysis.
+                                For families and institutional investors, we provide the assurance needed to make sound, impactful decisions.
+                            </p>
+                            <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-4 mt-4 sm:mt-8 lg:mt-10 xl:mt-20">
+                                <p class="text-white font-bold text-xs xl:text-xl">
+                                    {{ __('home/problem.p_2') }}
+                                </p>
+                                <a
+                                    href="{{ route('pages.insight.index', ['type' => TopicType::FOR_INVESTORS->value]) }}"
+                                    class="primary-button text-xs xl:text-lg"
+                                >
+                                    {{ TopicType::FOR_INVESTORS->label() }}
+                                </a>
+                                <a
+                                    href="{{ route('pages.insight.index', ['type' => TopicType::FOR_DEVELOPERS->value]) }}"
+                                    class="primary-button text-xs xl:text-lg"
+                                >
+                                    {{ TopicType::FOR_DEVELOPERS->label() }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!-- Swiper Pagination -->
+            <div class="swiper-pagination"></div>
         </div>
         <!-- Cards -->
         @if ($types)
             <div class="uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m mt-5 xl:mt-10" uk-grid>
                 @php
-                $typeImages = [
-                      asset('assets/images/primary_bg.png'),
-                      asset('assets/images/resale_bg.png'),
-                      asset('assets/images/land_bg.png'),
-                      asset('assets/images/land_bg.png'),
-                      asset('assets/images/land_bg.png'),
-                ];
-                $i = 0;
+                    $typeImages = [
+                          asset('assets/images/primary_bg.png'),
+                          asset('assets/images/resale_bg.png'),
+                          asset('assets/images/land_bg.png'),
+                          asset('assets/images/land_bg.png'),
+                          asset('assets/images/land_bg.png'),
+                    ];
+                    $i = 0;
                 @endphp
                 @foreach($types as $type)
                     <div>

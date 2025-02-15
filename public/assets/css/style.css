@@ -121,6 +121,23 @@ a:hover {
     background-color: #C6C6C6;
 }
 
+/* Swiper Bullets */
+.swiper-pagination-bullet {
+    width: 14px;
+    height: 14px;
+    background-color: #C6C6C6;
+    border-radius: 50%;
+    transition: all 0.3s ease-in-out;
+}
+
+.swiper-pagination-bullet-active {
+    width: 72px;
+    height: 14px;
+    border-radius: 100px;
+    background-color: #888888;
+    transition: all 0.3s ease-in-out;
+}
+
 /* Custom tooltips */
 .custom-tooltip {
     position: absolute;
