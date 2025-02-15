@@ -4,13 +4,13 @@
 
 <div
     x-data="typeDropdown({{ json_encode($types) }})"
-    class="relative px-10 border-r border-borderColor h-full flex items-center justify-center w-[15%]"
+    class="relative border-r border-borderColor h-full flex items-center justify-center w-[16%]"
 >
     <input type="hidden" name="type" x-model="id" />
     <input
         type="text"
         placeholder="{{ __('general.search_type') }}"
-        class="modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none"
+        class="w-full modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none"
         x-model="query"
         @focus="open = true"
         @click.away="open = false"

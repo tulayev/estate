@@ -15,7 +15,7 @@
         <img
             src="{{ asset('assets/images/icons/circle.png') }}"
             alt="circle"
-            class="w-10"
+            class="w-6 lg:w-8 xl:w-10"
         />
     </div>
 
@@ -33,26 +33,24 @@
         :maxValue="$maxPrice"
     />
 
-    <div class="h-full flex items-center justify-end w-[12%] md:w-[10%] lg:w-[12%] space-x-5">
+    <div class="h-full flex items-center justify-end w-[8%] md:space-x-2 xl:space-x-4">
         <button
-            class="text-3xl bg-transparent border-none outline-none"
+            class="text-xl md:text-3xl bg-transparent border-none outline-none"
             type="button"
             uk-toggle="target: #searchModal"
         >
             +
         </button>
-        <div class="w-[30px] xl:w-[50px] h-[30px] xl:h-[50px]">
-            <button
-                class="w-[30px] xl:w-[50px] h-[30px] xl:h-[50px] bg-primary rounded-full flex items-center justify-center"
-                type="submit"
-            >
-                <img
-                    class="w-[14px] xl:w-[20px]"
-                    src="{{ asset('assets/images/icons/search.svg') }}"
-                    alt="search"
-                />
-            </button>
-        </div>
+        <button
+            class="w-5 md:w-[30px] xl:w-[50px] h-5 md:h-[30px] xl:h-[50px] bg-primary rounded-full flex items-center justify-center"
+            type="submit"
+        >
+            <img
+                class="w-2 md:w-[14px] xl:w-[20px]"
+                src="{{ asset('assets/images/icons/search.svg') }}"
+                alt="search"
+            />
+        </button>
     </div>
 </form>
 

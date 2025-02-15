@@ -1,12 +1,12 @@
 <div
     x-data="locationDropdown()"
-    class="relative px-10 border-r border-borderColor h-full flex items-center justify-center w-[20%]"
+    class="relative border-r border-borderColor h-full flex items-center justify-center w-[24%]"
 >
     <input
         type="text"
         name="location"
         placeholder="{{ __('general.search_location') }}"
-        class="modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none"
+        class="w-full modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none"
         x-model="query"
         @input.debounce="fetchLocations"
         @focus="onFocus"

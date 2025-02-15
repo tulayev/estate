@@ -6,7 +6,7 @@
 
 <div
     x-data="priceDropdown()"
-    class="relative px-10 border-r border-borderColor h-full flex items-center justify-center w-[15%] xl:w-[24%]"
+    class="relative border-r border-borderColor h-full flex items-center justify-center w-[28%]"
 >
     <div
         @click="showInputs = true"
@@ -17,7 +17,7 @@
             id="priceInput"
             type="text"
             placeholder="{{ __('general.search_price') }}"
-            class="modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none"
+            class="w-full modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none"
             readonly
         />
     </div>
@@ -101,7 +101,7 @@
             priceInputHandles[1].querySelector('.custom-tooltip').innerText = Math.round(values[1]);
 
             priceInput.value = (priceInputFrom.value != {{ $minValue }} && priceInputTo.value != {{ $maxValue }})
-                ? `From ${priceInputFrom.value} To ${priceInputTo.value}`
+                ? `[${priceInputFrom.value}; ${priceInputTo.value}]`
                 : '';
         });
     });
