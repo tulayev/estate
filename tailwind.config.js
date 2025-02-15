@@ -6,6 +6,10 @@ module.exports = {
     darkMode: false, // or 'media' or 'class'
     theme: {
         extend: {
+            animation: {
+                'spin-slow': 'spin 3s linear infinite',
+                'spin-fast': 'spin 500ms linear infinite',
+            },
             colors: {
                 primary: '#0F1F3D',
                 secondary: '#C6C6C6',

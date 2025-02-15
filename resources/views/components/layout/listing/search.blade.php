@@ -12,7 +12,7 @@
             value="search"
         />
 
-        <div>
+        <div class="animate-spin-fast">
             <img
                 src="{{ asset('assets/images/icons/circle.png') }}"
                 alt="circle"
@@ -34,7 +34,7 @@
             :maxValue="$maxPrice"
         />
 
-        <div class="h-full flex items-center justify-end w-[8%] md:space-x-2 xl:space-x-4">
+        <div class="h-full flex items-center justify-end w-[8%] md:space-x-2 xl:space-x-3">
             <button
                 class="text-xl md:text-3xl bg-transparent border-none outline-none"
                 type="button"
@@ -43,11 +43,11 @@
                 +
             </button>
             <button
-                class="w-5 md:w-[30px] xxl:w-[50px] h-5 md:h-[30px] xxl:h-[50px] bg-primary rounded-full flex items-center justify-center"
+                class="w-6 h-6 lg:w-8 lg:h-8 xl:w-10 xl:h-10 bg-primary rounded-full flex items-center justify-center"
                 type="submit"
             >
                 <img
-                    class="w-2 md:w-[12px] xxl:w-[20px]"
+                    class="w-3 lg:w-4 xl:w-5"
                     src="{{ asset('assets/images/icons/search.svg') }}"
                     alt="search"
                 />

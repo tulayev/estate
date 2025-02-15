@@ -30,14 +30,14 @@
             id="priceInputFrom"
             name="price_min"
             type="text"
-            class="modal-subtitle text-center bg-[#f4f4f4] rounded-[10px] p-2 border-b border-borderColor w-1/2"
+            class="w-1/2 modal-subtitle text-center bg-secondary rounded-xl p-2 border-b border-borderColor"
             readonly
         />
         <input
             id="priceInputTo"
             name="price_max"
             type="text"
-            class="modal-subtitle text-center bg-[#f4f4f4] rounded-[10px] p-2 border-b border-borderColor w-1/2"
+            class="w-1/2 modal-subtitle text-center bg-secondary rounded-xl p-2 border-b border-borderColor"
             readonly
         />
     </div>
