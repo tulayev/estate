@@ -1,73 +1,71 @@
+@props([
+    'locations' => [],
+])
+
 <div
-    x-data="locationDropdown()"
+    x-data="locationDropdown({{ json_encode($locations) }})"
     class="relative border-r border-borderColor h-full flex items-center justify-center w-[24%]"
 >
     <input
+        type="hidden"
+        name="locations"
+        x-model="selectedLocations.map(l => l[locale])"
+    />
+
+    <input
         type="text"
-        name="location"
         placeholder="{{ __('general.search_location') }}"
         class="w-full modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none"
-        x-model="query"
-        @input.debounce="fetchLocations"
-        @focus="onFocus"
+        x-model="displayText"
+        @focus="open = true"
         @click.away="open = false"
+        readonly
     />
     <ul
-        x-show="open && suggestions.length > 0"
+        x-show="open && filteredLocations.length > 0"
         class="absolute top-16 bg-white border border-borderColor w-full rounded shadow-lg z-50 max-h-40 overflow-auto"
     >
         <template
-            x-for="{ location, longitude, latitude } in suggestions"
+            x-for="{ location, longitude, latitude } in filteredLocations"
             :key="longitude"
         >
             <li
-                @click="selectLocation(getLocalizedLocationName(location))"
+                @click="toggleSelection(location)"
                 class="px-2 py-4 rounded-[14px] cursor-pointer font-black text-primary hover:bg-primary hover:text-white"
+                :class="selectedLocations.includes(location) ? 'bg-primary text-white' : ''"
             >
-                <span x-text="getLocalizedLocationName(location)"></span>
+                <span x-text="location[locale]"></span>
             </li>
         </template>
     </ul>
 </div>
 
 <script defer>
-    function locationDropdown() {
+    function locationDropdown(locations) {
         return {
-            API_URI: '{{ route('hotels.search.locations') }}',
             locale: '{{ app()->getLocale() }}',
-            query: '',
+            selectedLocations: [],
             open: false,
-            suggestions: [],
+            filteredLocations: locations,
 
-            fetchLocations() {
-                const url = this.query
-                    ? `${this.API_URI}?q=${encodeURIComponent(this.query)}`
-                    : this.API_URI;
-
-                axios.get(url)
-                    .then((response) => {
-                        this.suggestions = response.data;
-                    })
-                    .catch((error) => {
-                        console.error('Error fetching locations:', error);
-                    });
-            },
-
-            onFocus() {
-                this.open = true;
-                if (!this.query) {
-                    this.fetchLocations(); // Fetch all locations if the query is empty
+            get displayText() {
+                if (this.selectedLocations.length === 0) {
+                    return '';
+                } else if (this.selectedLocations.length <= 1) {
+                    return this.selectedLocations.map(l => l[this.locale]);
+                } else {
+                    return `${this.selectedLocations.length} items selected`;
                 }
             },
 
-            selectLocation(location) {
-                this.query = location;
-                this.open = false;
+            toggleSelection(location) {
+                const index = this.selectedLocations.indexOf(location);
+                if (index === -1) {
+                    this.selectedLocations.push(location);
+                } else {
+                    this.selectedLocations = this.selectedLocations.filter(l => l !== location);
+                }
             },
-
-            getLocalizedLocationName(location) {
-                return location[this.locale];
-            }
         };
     }
 </script>

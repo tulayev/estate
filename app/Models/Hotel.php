@@ -73,20 +73,6 @@ class Hotel extends Model
         return $query;
     }
 
-    public function scopeSearchByLocations(Builder $query, $searchTerm): Builder
-    {
-        $locale = app()->getLocale();
-
-        if (!empty($searchTerm)) {
-            $query->whereRaw(
-                "LOWER(JSON_UNQUOTE(JSON_EXTRACT(location, '$.\"{$locale}\"'))) LIKE ?",
-                ['%' . strtolower($searchTerm) . '%']
-            );
-        }
-
-        return $query;
-    }
-
     public function scopeFilterByPrice(Builder $query, $min = null, $max = null): Builder
     {
         if (!empty($min)) {

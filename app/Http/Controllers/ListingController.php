@@ -151,7 +151,7 @@ class ListingController extends Controller
         return Hotel::query()
             ->with(['floors', 'types', 'tags', 'features'])
             ->searchByTitle($request->input('title'))
-            ->searchByLocations($request->input('location'))
+            ->filterByLocations($request->input('locations'))
             ->filterByBedrooms($request->input('beds'), $request->input('beds'))
             ->filterByPrice($request->input('price_min'), $request->input('price_max'))
             ->active();

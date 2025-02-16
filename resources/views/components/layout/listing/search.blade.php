@@ -24,7 +24,7 @@
 
         <x-ui.search.type-input :types="$types" />
 
-        <x-ui.search.location-input />
+        <x-ui.search.location-input :locations="$locations" />
 
         <x-ui.search.beds-input />
 
