@@ -6,6 +6,7 @@ return [
     'media' => 'Media',
     'gallery' => 'Gallery',
     'main_image' => 'Main Image',
+    'location_description' => 'Location Description',
     'tags' => 'Tags',
     'types' => 'Types',
     'features' => 'Features',

@@ -73,6 +73,10 @@ class HotelSeeder extends Seeder
                         'en' => 'Phuket',
                         'ru' => 'Пхукет',
                     ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
+                    ],
                     'tags'    => [1],                  // Villa
                     'features' => [1,2,3,4,5,6,7],      // BBQ area, Fully equipped kitchen, Jacuzzi, Laundry Area, Salt Water Swimming Pool, Private Wi‑Fi, Co‑Working Space
                     'types'     => [1]                   // For Rent
@@ -93,6 +97,10 @@ class HotelSeeder extends Seeder
                     'location'       => [
                         'en' => 'Phuket',
                         'ru' => 'Пхукет',
+                    ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
                     ],
                     'tags'    => [1],                // Villa
                     'features' => [8,9,1,10,11,12,13,2,3,4,14,6,15,16,17],
@@ -115,6 +123,10 @@ class HotelSeeder extends Seeder
                         'en' => 'Cherngtalay',
                         'ru' => 'Чернгталай',
                     ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
+                    ],
                     'tags'    => [2],                // Apartment
                     'features' => [8,9,12,18,19,13,20,21,22,4,24,14,25,26],
                     'types'     => [1]               // For Rent
@@ -135,6 +147,10 @@ class HotelSeeder extends Seeder
                     'location'       => [
                         'en' => 'Bangtao',
                         'ru' => 'Бангтао',
+                    ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
                     ],
                     'tags'    => [1,3],             // Villa, Projects
                     'features' => [27,8,9,12,28,2,3,24,5,6,29,30],
@@ -157,6 +173,10 @@ class HotelSeeder extends Seeder
                         'en' => 'Koh Kaew',
                         'ru' => 'Кох Каев',
                     ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
+                    ],
                     'tags'    => [1,3],             // Villa, Projects
                     'features' => [8,5,6],
                     'types'     => [4,3]              // Off Plan, Primary
@@ -177,6 +197,10 @@ class HotelSeeder extends Seeder
                     'location'       => [
                         'en' => 'Phuket',
                         'ru' => 'Пхукет',
+                    ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
                     ],
                     'tags'    => [1,3],
                     'features' => [27,8,9,12,2,3,31,24,5,6,30],
@@ -199,6 +223,10 @@ class HotelSeeder extends Seeder
                         'en' => 'Cherngtalay',
                         'ru' => 'Чернгталай',
                     ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
+                    ],
                     'tags'    => [1,3],
                     'features' => [8,32,12,22,33,5,6,34],
                     'types'     => [4,2]             // Off Plan, Completed
@@ -219,6 +247,10 @@ class HotelSeeder extends Seeder
                     'location'       => [
                         'en' => 'Surin',
                         'ru' => 'Сурин',
+                    ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
                     ],
                     'tags'    => [3,2],             // Projects, Apartment
                     'features' => [8,32,12,21,5],
@@ -241,6 +273,10 @@ class HotelSeeder extends Seeder
                         'en' => 'Layan',
                         'ru' => 'Лаян',
                     ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
+                    ],
                     'tags'    => [1,3],
                     'features' => [8,9,12,2,3,22,31,24,5,6,29,35],
                     'types'     => [5,4,3]          // Structure, Off Plan, Primary
@@ -261,6 +297,10 @@ class HotelSeeder extends Seeder
                     'location'       => [
                         'en' => 'Naiyang',
                         'ru' => 'Найянг',
+                    ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
                     ],
                     'tags'    => [1,3],
                     'features' => [8,12,5],
@@ -283,6 +323,10 @@ class HotelSeeder extends Seeder
                         'en' => 'Pasak',
                         'ru' => 'Пасак',
                     ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
+                    ],
                     'tags'    => [1,3],
                     'features' => [8,12,5,34,33,17],
                     'types'     => [4,2]          // Off Plan, Completed
@@ -303,6 +347,10 @@ class HotelSeeder extends Seeder
                     'location'       => [
                         'en' => 'Phuket',
                         'ru' => 'Пхукет',
+                    ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
                     ],
                     'tags'    => [1,3],
                     'features' => [8,2,5,6],
@@ -325,6 +373,10 @@ class HotelSeeder extends Seeder
                         'en' => 'Phuket',
                         'ru' => 'Пхукет',
                     ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
+                    ],
                     'tags'    => [1,3],
                     'features' => [8,12,2,5,6,30],
                     'types'     => [4,3]          // Off Plan, Primary
@@ -345,6 +397,10 @@ class HotelSeeder extends Seeder
                     'location'       => [
                         'en' => 'Layan',
                         'ru' => 'Лаян',
+                    ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
                     ],
                     'tags'    => [1,3],
                     'features' => [8,13,35],
@@ -367,6 +423,10 @@ class HotelSeeder extends Seeder
                         'en' => 'Phuket',
                         'ru' => 'Пхукет',
                     ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
+                    ],
                     'tags'    => [1,3],
                     'features' => [8,12,2,21,5,6],
                     'types'     => [4]            // Off Plan
@@ -387,6 +447,10 @@ class HotelSeeder extends Seeder
                     'location'       => [
                         'en' => 'Chalong',
                         'ru' => 'Чалонг',
+                    ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
                     ],
                     'tags'    => [1,3],
                     'features' => [8,5,6,34,35,17],
@@ -409,6 +473,10 @@ class HotelSeeder extends Seeder
                         'en' => 'Layan',
                         'ru' => 'Лаян',
                     ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
+                    ],
                     'tags'    => [1,3],
                     'features' => [8,12,3,5,6],
                     'types'     => [4,3]          // Off Plan, Primary
@@ -429,6 +497,10 @@ class HotelSeeder extends Seeder
                     'location'       => [
                         'en' => 'Phuket',
                         'ru' => 'Пхукет',
+                    ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
                     ],
                     'tags'    => [],   // none attached
                     'features' => [],
@@ -451,6 +523,10 @@ class HotelSeeder extends Seeder
                         'en' => 'Phuket',
                         'ru' => 'Пхукет',
                     ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
+                    ],
                     'tags'    => [3,4],         // Projects, Condominium
                     'features' => [8,12,31,14],
                     'types'     => [4]            // Off Plan
@@ -471,6 +547,10 @@ class HotelSeeder extends Seeder
                     'location'       => [
                         'en' => 'Phuket',
                         'ru' => 'Пхукет',
+                    ],
+                    'location_description' => [
+                        'en' => 'Quiet paradise with 5km white sand beach and premium hotels',
+                        'ru' => 'Тихий рай с 5 км белоснежным пляжем и премиальными отелями',
                     ],
                     'tags'    => [1,3],          // Villa, Projects
                     'features' => [8,12,2,5],       // 24-hour Security, CCTV, Fully equipped kitchen, Salt Water Swimming Pool

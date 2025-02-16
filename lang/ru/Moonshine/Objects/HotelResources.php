@@ -17,6 +17,7 @@ return [
     'price' => 'Цена',
     'main_image_url' => 'Основное изображение (URL)',
     'gallery_urls' => 'Галерея (URL разделитель - точка с запятой \';\')',
+    'location_description' => 'Описание местоположения',
     'published' => 'Опубликовано',
     'ie_verified' => 'IE Verified',
     'ie_score' => 'IE Score',
