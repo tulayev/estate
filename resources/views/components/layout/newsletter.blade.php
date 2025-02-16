@@ -17,40 +17,29 @@
             <div class="uk-width-1-4@s sm:border-r sm:border-borderColor flex items-center justify-center h-full">
                 <div class="text-lg font-bold text-center w-full p-2">
                     <input
-                        type="text"
-                        name="name"
+                        type="email"
+                        name="email"
                         placeholder="{{ __('general.newsetter_email') }}"
-                        class="text-lg outline-none uppercase text-center text-black placeholder:text-[#c6c6c6] box-border w-full"
+                        class="w-full modal-subtitle placeholder-secondary text-center outline-none"
                     />
                 </div>
             </div>
-
             <!-- Preferences Input -->
             <div class="uk-width-1-2@s form-drop-down px-4 text-center">
                 <input
                     type="text"
-                    class="modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none"
+                    name="preferences"
                     placeholder="{{ __('general.newsetter_choose') }}"
+                    class="w-full modal-subtitle placeholder-secondary text-center outline-none"
                     x-model="query"
                     @focus="open = true"
                     @click.away="open = false"
                 />
-
                 <ul
                     x-show="open"
-                    class="px-3 py-4 space-y-2 absolute rounded-[14px] top-16 bg-white border border-borderColor w-full shadow-lg z-50 max-h-48 overflow-auto"
+                    class="px-3 py-4 space-y-2 absolute rounded-[14px] top-full bg-white border border-borderColor w-full shadow-lg z-50 max-h-48 overflow-auto"
                 >
-                    <li class="uk-active"><a href="#">Active</a></li>
                     <li><a href="#">Item 1</a></li>
-                    <li class="uk-nav-header">Header</li>
-                    <li><a href="#">Item 2</a></li>
-                    <li><a href="#">Item 3</a></li>
-                    <li><a href="#">Item 4</a></li>
-                    <li class="uk-nav-divider"></li>
-                    <li><a href="#">Item 5</a></li>
-                    <li><a href="#">Item 6</a></li>
-                    <li><a href="#">Item 7</a></li>
-                    <li><a href="#">Item 8</a></li>
                 </ul>
             </div>
 

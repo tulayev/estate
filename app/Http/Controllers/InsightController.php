@@ -15,7 +15,8 @@ class InsightController extends Controller
 {
     public function index(Request $request): View | string
     {
-        $topicCategories = TopicCategory::all();
+        $topicCategories = TopicCategory::take(3)
+            ->get();
         $topicsQuery = Topic::query()
             ->active();
 

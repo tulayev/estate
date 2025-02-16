@@ -35,26 +35,10 @@
                 <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-4 md:mt-12 xl:mt-16">
                     <div class="animLeft">
                         <a
-                            href="#"
-                            class="secondary-button bg-[#69A8A4]"
+                            href="{{ route('pages.insight.index', ['category' => $topic->category->id]) }}"
+                            class="secondary-button bg-color-{{ $topic->category->id }} hover:text-primary"
                         >
                             <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">research</span>
-                        </a>
-                    </div>
-                    <div class="animLeft">
-                        <a
-                            href="#"
-                            class="secondary-button bg-[#23334B]"
-                        >
-                            <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">luxury</span>
-                        </a>
-                    </div>
-                    <div class="animLeft">
-                        <a
-                            href="#"
-                            class="secondary-button bg-[#767E94]"
-                        >
-                            <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">summer</span>
                         </a>
                     </div>
                 </div>

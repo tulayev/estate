@@ -13,7 +13,7 @@
             <div class="flex justify-end items-center z-10">
                 <a
                     href="{{ route('pages.insight.index', ['category' => $topic->category->id]) }}"
-                    class="card-tag-button random-bg-color hover:text-primary"
+                    class="card-tag-button bg-color-{{ $topic->category->id }} hover:text-primary"
                 >
                     {{ Str::limit($topic->category->title, 3) }}
                 </a>

@@ -31,7 +31,7 @@
                         <div class="animLeft">
                             <a
                                 href="{{ route('pages.insight.index', ['category' => $category->id]) }}"
-                                class="secondary-button random-bg-color"
+                                class="secondary-button bg-color-{{ $category->id }} hover:text-primary"
                             >
                                 <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">
                                     {{ $category->title }}
