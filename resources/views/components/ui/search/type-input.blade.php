@@ -48,6 +48,10 @@
             selectedTypes: [],
             open: false,
             filteredTypes: types,
+            localizedInputText: {
+                en: 'items selected',
+                ru: 'элементов выбрано',
+            },
 
             get displayText() {
                 if (this.selectedTypes.length === 0) {
@@ -55,7 +59,7 @@
                 } else if (this.selectedTypes.length <= 1) {
                     return this.selectedTypes.map(t => t.name[this.locale]);
                 } else {
-                    return `${this.selectedTypes.length} items selected`;
+                    return `${this.selectedTypes.length} ${this.localizedInputText[this.locale]}`;
                 }
             },
 

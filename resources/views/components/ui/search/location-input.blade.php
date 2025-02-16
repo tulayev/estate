@@ -47,6 +47,10 @@
             selectedLocations: [],
             open: false,
             filteredLocations: locations,
+            localizedInputText: {
+                en: 'items selected',
+                ru: 'элементов выбрано',
+            },
 
             get displayText() {
                 if (this.selectedLocations.length === 0) {
@@ -54,7 +58,7 @@
                 } else if (this.selectedLocations.length <= 1) {
                     return this.selectedLocations.map(l => l[this.locale]);
                 } else {
-                    return `${this.selectedLocations.length} items selected`;
+                    return `${this.selectedLocations.length} ${this.localizedInputText[this.locale]}`;
                 }
             },
 

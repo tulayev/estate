@@ -55,7 +55,7 @@ const homeSlider = new Swiper('.homeSlider', {
     },
 });
 
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
     setTimeout(() => {
         document.querySelectorAll('.homeSlider').forEach(slider => {
             slider.swiper.update();

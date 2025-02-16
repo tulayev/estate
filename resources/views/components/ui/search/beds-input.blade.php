@@ -9,10 +9,14 @@
     />
     <button
         type="button"
-        class="flex items-center justify-center"
+        class="flex justify-center items-center space-x-2"
         @click="toggleDropdown"
     >
-        🛏️ <span class="ml-2" x-text="selectedBeds === 0 ? '' : selectedBeds"></span>
+        <span>🛏️</span>
+        <span
+            class="modal-subtitle"
+            x-text="selectedBeds === 0 ? '' : selectedBeds"
+        ></span>
     </button>
     <div
         x-show="open"
@@ -43,9 +47,9 @@
     function bedDropdown() {
         return {
             open: false,
-            selectedBeds: 0, // Default bed count
-            minBeds: 1,      // Minimum bed count
-            maxBeds: 100,     // Maximum bed count
+            selectedBeds: 0,
+            minBeds: 1,
+            maxBeds: 100,
 
             toggleDropdown() {
                 this.open = !this.open;
@@ -61,7 +65,7 @@
                 if (this.selectedBeds > this.minBeds) {
                     this.selectedBeds--;
                 }
-            }
+            },
         };
     }
 </script>
