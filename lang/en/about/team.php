@@ -34,5 +34,6 @@ return [
                         execution and market analysis. We are changing the game in our
                         industry, providing a level of clarity and confidence that
                         wasn\'t available before.',
-    'action_btn' => 'Hide',
+    'action_btn_pre' => 'Read More',
+    'action_btn_post' => 'Hide',
 ];
