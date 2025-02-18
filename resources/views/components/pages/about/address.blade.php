@@ -1,6 +1,6 @@
 <section class="section">
     <div class="container">
-        <div class="uk-card uk-card-default uk-width-1-1 uk-margin-auto rounded-lg">
+        <div class="uk-card uk-card-default uk-width-1-1 uk-margin-auto border-rounded">
             <div class="uk-child-width-1-2@m" uk-grid>
                 <div>
                     <iframe

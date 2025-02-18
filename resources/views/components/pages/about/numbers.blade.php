@@ -5,7 +5,7 @@
         </h2>
         <div class="uk-flex uk-flex-column uk-flex-middle">
             <!-- Card 1 -->
-            <div class="uk-card uk-card-default uk-card-body uk-margin uk-border-rounded">
+            <div class="border-rounded uk-card uk-card-default uk-card-body uk-margin">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
                     <!-- Left Section -->
                     <div class="col-span-1 flex justify-center sm:justify-start text-center items-center">
@@ -23,7 +23,7 @@
             </div>
 
             <!-- Card 2 -->
-            <div class="uk-card uk-card-default uk-card-body uk-margin uk-border-rounded">
+            <div class="uk-card uk-card-default uk-card-body uk-margin border-rounded">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
                     <!-- Left Section -->
                     <div class="col-span-1 flex justify-center sm:justify-start text-center items-center">

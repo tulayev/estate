@@ -11,7 +11,7 @@
         </div>
 
         <div class="mt-5">
-            <div class="uk-card uk-card-default uk-border-rounded uk-padding-large">
+            <div class="uk-card uk-card-default border-rounded uk-padding-large">
                 <div class="uk-grid-large" uk-grid>
                     <!-- Left Section: Image -->
                     <div class="uk-width-1-3@m uk-flex uk-flex-center uk-flex-middle">
@@ -30,7 +30,7 @@
                             <span class="text-gray-500 bg-gray-100 px-2 py-1 rounded-full">CEO</span>
                         </div>
                         <!-- Description -->
-                        <p class="text-sm sm:text-base md:text-lg xl:text-[24px] mt-4 lg:mt-6">
+                        <p class="text-sm sm:text-base md:text-lg xl:text-2rem mt-4 lg:mt-6">
                             {{ __('about/team.member_experience1') }}
                         </p>
                         <!-- Buttons Section -->
@@ -81,19 +81,24 @@
                 </div>
 
                 <div class="uk-card-body uk-background-default">
-                    <h4 class="uk-text-bold xl:text-[30px] lg:text-[28px] mb-4">
+                    <h4 class="uk-text-bold sm:text-base xl:text-2rem lg:text-2rem mb-4">
                         {{ __('about/team.member_bio') }}
                     </h4>
-                    <p class="uk-text-light xl:text-[30px] lg:text-[28px]">
-                        {{ __('about/team.member_desc1') }}
-                    </p>
-                    <p class="uk-text-light xl:text-[30px] lg:text-[28px] mt-10">
-                         {{ __('about/team.member_desc2') }}
-                    </p>
-                    <div class="uk-text-center uk-margin-top">
-                        <button class="border-none uk-button uk-button-default uk-text-uppercase uk-text-bold">
-                            {{ __('about/team.action_btn') }}
-                        </button>
+                    <div x-data="{ show: false }">
+                        <p x-show="show" class="uk-text-light sm:text-base xl:text-2rem lg:text-2rem mt-4">
+                            {{ __('about/team.member_desc1') }}
+                        </p>
+                        <p x-show="show" class="uk-text-light sm:text-base xl:text-2rem lg:text-2rem mt-10">
+                             {{ __('about/team.member_desc2') }}
+                        </p>
+                        <div class="uk-text-center uk-margin-top">
+                            <button @click="show = !show" class="border-none uk-button uk-button-default uk-text-uppercase uk-text-bold">
+                           <span x-show="!show">{{ __('about/team.action_btn_pre') }}</span>
+                           <span x-show="show">{{ __('about/team.action_btn_post') }}</span>
+                            </button>
+                        </div>
+                    </div>
+                    
                     </div>
                 </div>
             </div>
