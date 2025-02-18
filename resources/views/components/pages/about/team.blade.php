@@ -11,7 +11,7 @@
         </div>
 
         <div class="mt-5">
-            <div class="uk-card uk-card-default uk-border-rounded uk-padding-large">
+            <div class="uk-card uk-card-default border-rounded uk-padding-large">
                 <div class="uk-grid-large" uk-grid>
                     <!-- Left Section: Image -->
                     <div class="uk-width-1-3@m uk-flex uk-flex-center uk-flex-middle">
