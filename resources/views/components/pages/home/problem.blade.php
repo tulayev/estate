@@ -2,10 +2,6 @@
 use App\Helpers\Enums\TopicType;
 @endphp
 
-@props([
-    'types' => null,
-])
-
 <section class="section">
     <div class="container">
         <!-- Slider -->
@@ -153,40 +149,68 @@ use App\Helpers\Enums\TopicType;
             <div class="swiper-pagination"></div>
         </div>
         <!-- Cards -->
-        @if ($types)
+        @if ($primary && $resales && $land)
             <div class="uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m mt-5 xl:mt-10" uk-grid>
-                @php
-                    $typeImages = [
-                          asset('assets/images/primary_bg.png'),
-                          asset('assets/images/resale_bg.png'),
-                          asset('assets/images/land_bg.png'),
-                          asset('assets/images/land_bg.png'),
-                          asset('assets/images/land_bg.png'),
-                    ];
-                    $i = 0;
-                @endphp
-                @foreach($types as $type)
-                    <div>
-                        <a
-                            href="{{ route('pages.listing.index', ['type' => $type->id]) }}"
-                            class="group"
-                        >
-                            <div class="relative">
-                                <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
-                                <img
-                                    class="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110"
-                                    src="{{ $typeImages[$i++] }}"
-                                    alt="{{ $type->name }}"
-                                />
-                                <div class="absolute-centralize">
-                                    <h4 class="text-2xl text-white font-bold uppercase group-hover:text-primary">
-                                        {{ $type->name }}
-                                    </h4>
-                                </div>
+                <div>
+                    <a
+                        href="{{ route('pages.listing.index', ['type' => $primary->id]) }}"
+                        class="group"
+                    >
+                        <div class="relative">
+                            <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
+                            <img
+                                class="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110"
+                                src="{{ asset('assets/images/primary_bg.png') }}"
+                                alt="{{ $primary->name }}"
+                            />
+                            <div class="absolute-centralize">
+                                <h4 class="text-2xl text-white font-bold uppercase group-hover:text-primary">
+                                    {{ $primary->name }}
+                                </h4>
                             </div>
-                        </a>
-                    </div>
-                @endforeach
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <a
+                        href="{{ route('pages.listing.index', ['type' => $resales->id]) }}"
+                        class="group"
+                    >
+                        <div class="relative">
+                            <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
+                            <img
+                                class="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110"
+                                src="{{ asset('assets/images/resale_bg.png') }}"
+                                alt="{{ $resales->name }}"
+                            />
+                            <div class="absolute-centralize">
+                                <h4 class="text-2xl text-white font-bold uppercase group-hover:text-primary">
+                                    {{ $resales->name }}
+                                </h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <a
+                        href="{{ route('pages.listing.index', ['tag' => $land->id]) }}"
+                        class="group"
+                    >
+                        <div class="relative">
+                            <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
+                            <img
+                                class="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110"
+                                src="{{ asset('assets/images/land_bg.png') }}"
+                                alt="{{ $land->name }}"
+                            />
+                            <div class="absolute-centralize">
+                                <h4 class="text-2xl text-white font-bold uppercase group-hover:text-primary">
+                                    {{ $land->name }}
+                                </h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         @endif
     </div>

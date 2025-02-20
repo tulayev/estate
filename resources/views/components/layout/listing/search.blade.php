@@ -84,8 +84,12 @@
             </div>
 
             <!-- Type -->
-            @if ($types)
-                <x-ui.filter.types :types="$types" />
+            @if ($primary && $resales && $land)
+                <x-ui.filter.types
+                    :primary="$primary"
+                    :resales="$resales"
+                    :land="$land"
+                />
             @endif
 
             <!-- Keywords & Price range -->
@@ -110,6 +114,7 @@
             @endif
             <!-- Tags -->
             @if ($tags)
+                @php($tags = $tags->where('id', '<>', Constants::SYSTEM_TAG_IDS['land']))
                 <x-ui.filter.tags :tags="$tags" />
             @endif
 

@@ -22,7 +22,7 @@
         readonly
     />
     <ul
-        x-show="open && filteredLocations.length > 0"
+        x-show="open && filteredLocations && filteredLocations.length > 0"
         class="absolute top-16 bg-white border border-borderColor w-full rounded shadow-lg z-50 max-h-40 overflow-auto"
     >
         <template

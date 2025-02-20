@@ -14,7 +14,12 @@ class Constants
         'Developer' => 3,
     ];
 
-    public const IDENTICAL_COLOR_PAGES = [
-        'home',
+    public const SYSTEM_TYPE_IDS = [
+        'primary' => 3,
+        'resales' => 6,
+    ];
+
+    public const SYSTEM_TAG_IDS = [
+        'land' => 6,
     ];
 }

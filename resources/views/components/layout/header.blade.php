@@ -39,7 +39,7 @@
                             >
                                 {{ __('general.nav_listings') }}
                             </a>
-                            @if ($types)
+                            @if ($primary && $resales && $land)
                                 <div
                                     x-show="open"
                                     @mouseenter="open = true"
@@ -53,17 +53,30 @@
                                     class="absolute bg-transparent border-none mt-4 w-full left-0"
                                 >
                                     <div class="container flex justify-between space-x-6">
-                                        @foreach($types as $type)
-                                            <a
-                                                href="{{ route('pages.listing.index', ['type' => $type->id]) }}"
-                                                class="w-full"
-                                            >
-                                                <div class="{{ $mapView ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
-                                                    {{ $type->name }}
-                                                </div>
-                                            </a>
-
-                                        @endforeach
+                                        <a
+                                            href="{{ route('pages.listing.index', ['type' => $primary->id]) }}"
+                                            class="w-full"
+                                        >
+                                            <div class="{{ $mapView ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
+                                                {{ $primary->name }}
+                                            </div>
+                                        </a>
+                                        <a
+                                            href="{{ route('pages.listing.index', ['type' => $resales->id]) }}"
+                                            class="w-full"
+                                        >
+                                            <div class="{{ $mapView ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
+                                                {{ $resales->name }}
+                                            </div>
+                                        </a>
+                                        <a
+                                            href="{{ route('pages.listing.index', ['tag' => $land->id]) }}"
+                                            class="w-full"
+                                        >
+                                            <div class="{{ $mapView ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
+                                                {{ $land->name }}
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
                             @endif

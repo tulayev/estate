@@ -2,9 +2,7 @@
 
     <x-pages.home.main />
 
-    <x-pages.home.problem
-        :types="$types"
-    />
+    <x-pages.home.problem />
 
     <x-pages.home.media />
 

@@ -42,6 +42,10 @@ class TypePolicy
 
     public function update(MoonshineUser $user, Type $item): bool
     {
+        if (in_array($item->id, Constants::SYSTEM_TYPE_IDS)) {
+            return false;
+        }
+
         if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
             return true;
         }
@@ -51,6 +55,10 @@ class TypePolicy
 
     public function delete(MoonshineUser $user, Type $item): bool
     {
+        if (in_array($item->id, Constants::SYSTEM_TYPE_IDS)) {
+            return false;
+        }
+
         if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
             return true;
         }
@@ -69,6 +77,10 @@ class TypePolicy
 
     public function forceDelete(MoonshineUser $user, Type $item): bool
     {
+        if (in_array($item->id, Constants::SYSTEM_TYPE_IDS)) {
+            return false;
+        }
+
         if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
             return true;
         }

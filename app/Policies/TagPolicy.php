@@ -42,6 +42,10 @@ class TagPolicy
 
     public function update(MoonshineUser $user, Tag $item): bool
     {
+        if (in_array($item->id, Constants::SYSTEM_TAG_IDS)) {
+            return false;
+        }
+
         if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
             return true;
         }
@@ -51,6 +55,10 @@ class TagPolicy
 
     public function delete(MoonshineUser $user, Tag $item): bool
     {
+        if (in_array($item->id, Constants::SYSTEM_TAG_IDS)) {
+            return false;
+        }
+
         if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
             return true;
         }
@@ -69,6 +77,10 @@ class TagPolicy
 
     public function forceDelete(MoonshineUser $user, Tag $item): bool
     {
+        if (in_array($item->id, Constants::SYSTEM_TAG_IDS)) {
+            return false;
+        }
+
         if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
             return true;
         }

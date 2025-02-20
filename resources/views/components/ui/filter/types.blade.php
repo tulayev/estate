@@ -1,5 +1,7 @@
 @props([
-    'types' => null,
+    'primary' => null,
+    'resales' => null,
+    'land' => null,
 ])
 
 <div
@@ -9,28 +11,50 @@
     <h3 class="modal-subtitle text-primary">
         {{ __('general.filter_popup_type') }}
         <span class="font-bold">|</span>
-        <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetTypes">x</span>
+        <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetSelectedItems">x</span>
         <span x-text="selectedTypeNames().join(', ')"></span>
     </h3>
 
     <input
         type="hidden"
         name="types"
-        :value="selectedTypes.join(',')"
+        :value="selectedTypeIds.join(',')"
+    />
+
+    <input
+        type="hidden"
+        name="tags"
+        :value="selectedTagIds.join(',')"
     />
 
     <div class="uk-child-width-1-2 uk-child-width-1-3@s uk-grid-small mt-6 sm:mt-8 md:mt-12" uk-grid>
-        @foreach($types as $type)
-            <div>
-                <div
-                    class="modal-subtitle random-bg-color cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
-                    :class="isTypeSelected('{{ $type->id }}') ? 'hidden' : ''"
-                    @click="addType('{{ $type->id }}')"
-                >
-                    {{ $type->name }}
-                </div>
+        <div>
+            <div
+                class="modal-subtitle random-bg-color cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
+                :class="isTypeSelected('{{ $primary->id }}') ? 'hidden' : ''"
+                @click="addType('{{ $primary->id }}')"
+            >
+                {{ $primary->name }}
             </div>
-        @endforeach
+        </div>
+        <div>
+            <div
+                class="modal-subtitle random-bg-color cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
+                :class="isTypeSelected('{{ $resales->id }}') ? 'hidden' : ''"
+                @click="addType('{{ $resales->id }}')"
+            >
+                {{ $resales->name }}
+            </div>
+        </div>
+        <div>
+            <div
+                class="modal-subtitle random-bg-color cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
+                :class="isTagSelected('{{ $land->id }}') ? 'hidden' : ''"
+                @click="addTag('{{ $land->id }}')"
+            >
+                {{ $land->name }}
+            </div>
+        </div>
     </div>
 </div>
 
@@ -38,28 +62,53 @@
     function types() {
         return {
             locale: '{{ app()->getLocale() }}',
-            selectedTypes: [],
-            allTypes: @json($types),
+            selectedTypeIds: [],
+            selectedTagIds: [],
+            allTypeIds: [
+                @json($primary),
+                @json($resales)
+            ],
+            allTagIds: [
+                @json($land)
+            ],
 
-            addType(type) {
-                if (!this.selectedTypes.includes(type)) {
-                    this.selectedTypes.push(type);
+            addType(id) {
+                if (!this.selectedTypeIds.includes(id)) {
+                    this.selectedTypeIds.push(id);
                 }
             },
 
-            isTypeSelected(type) {
-                return this.selectedTypes.includes(type);
+            addTag(id) {
+                if (!this.selectedTagIds.includes(id)) {
+                    this.selectedTagIds.push(id);
+                }
             },
 
-            resetTypes() {
-                this.selectedTypes = [];
+            isTypeSelected(id) {
+                return this.selectedTypeIds.includes(id);
+            },
+
+            isTagSelected(id) {
+                return this.selectedTagIds.includes(id);
+            },
+
+            resetSelectedItems() {
+                this.selectedTypeIds = [];
+                this.selectedTagIds = [];
             },
 
             selectedTypeNames() {
-                return this.selectedTypes.map(id => {
-                    const type = this.allTypes.find(type => type.id == id);
-                    return type ? type.name[this.locale] : '';
-                });
+                const data = [
+                    this.selectedTypeIds.map(id => {
+                        const type = this.allTypeIds.find(type => type.id == id);
+                        return type ? type.name[this.locale] : '';
+                    }),
+                    this.selectedTagIds.map(id => {
+                        const tag = this.allTagIds.find(tag => tag.id == id);
+                        return tag ? tag.name[this.locale] : '';
+                    }),
+                ];
+                return data.flat();
             }
         }
     }
