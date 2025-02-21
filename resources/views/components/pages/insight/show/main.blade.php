@@ -12,8 +12,8 @@
         <div class="container absolute-centralize">
             <div class="main-wrapper">
                 <div class="flex flex-row items-left justify-between">
-                    <h1 class="main-title animLeft mt-2 lg:mt-10">
-                        {{ Str::limit($topic->title, 10) }}
+                    <h1 class="main-title-insight animLeft mt-2 lg:mt-10">
+                        {{ Str::limit($topic->title) }}
                     </h1>
                     <div class="flex flex-row items-center md:items-right space-x-2 text-white text-sm animLeft ml-2 md:p-2 md:mt-10">
                         <div class="border-rounded bg-white/10 text-white p-2">

@@ -1,4 +1,4 @@
-<section class="section">
+<section class="section hidden">
     <div class="container">
         <h2 class="section-title mb-5 sm:mb-10">
             {{ __('home/media.title') }}

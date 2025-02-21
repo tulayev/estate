@@ -6,7 +6,7 @@
     <div class="container">
         @if (!empty($hotel->floors))
             <h2 class="section-title">
-                floor plans
+                {{ __('listing/show/floor.title') }}
             </h2>
             <!-- Floors -->
             <div class="mt-6 md:mt-12 xl:mt-24">

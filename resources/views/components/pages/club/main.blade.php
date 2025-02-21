@@ -17,7 +17,7 @@
                 <div class="inline-flex flex-row sm:flex-row sm:items-center sm:space-x-3 space-y-3 sm:space-y-0 ml-2">
                     <div class="animLeft" uk-lightbox>
                         <a
-                            href="https://www.youtube.com/"
+                            href="https://www.youtube.com/watch?v=wLx_Ag4vm_U"
                             class="main-button"
                             data-attrs="width: 1280; height: 720;"
                         >

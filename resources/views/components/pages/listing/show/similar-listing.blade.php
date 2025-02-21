@@ -5,10 +5,10 @@
 <section class="section">
     <div class="container flex items-center justify-between">
         <h2 class="section-title">
-            similar listings
+            {{ __('listing/show/similar.title') }}
         </h2>
         <button class="primary-button">
-            subscribe to similar listings
+            {{ __('listing/show/similar.button') }}
         </button>
     </div>
 
