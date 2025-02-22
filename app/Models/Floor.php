@@ -19,6 +19,7 @@ class Floor extends Model
         'bathrooms',
         'area',
         'hotel_id',
+        'price',
     ];
 
     public function hotel(): BelongsTo

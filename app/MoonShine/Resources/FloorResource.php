@@ -65,6 +65,10 @@ class FloorResource extends ModelResource
                     ->step(0.01)
                     ->required(),
 
+                Number::make(__('Moonshine/Floors/FloorResources.price'), 'price')
+                    ->step(0.01)
+                    ->required(),
+
                 Image::make(__('Moonshine/Floors/FloorResources.image'), 'image')
                     ->disk(Constants::PUBLIC_DISK)
                     ->dir(Constants::UPLOAD_PATH)
@@ -88,6 +92,7 @@ class FloorResource extends ModelResource
             'bedrooms' => 'required|integer|min:0',
             'bathrooms' => 'required|integer|min:0',
             'area' => 'required|numeric|min:0|regex:/^\d+(\.\d{1,2})?$/',
+            'price' => 'required|numeric|min:0|regex:/^\d+(\.\d{1,2})?$/',
             'hotel_id' => 'required|exists:hotels,id',
         ];
     }
