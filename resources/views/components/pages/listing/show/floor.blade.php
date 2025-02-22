@@ -37,6 +37,13 @@
                                                 📐 {{ $floor->area }} m<sup>2</sup>
                                             </p>
                                         </div>
+                                        @if (!empty($floor->price) && $floor->price != 0)
+                                        <div>
+                                            <p class="shadow-card border-rounded p-2 sm:px-4 sm:py-2">
+                                               💲 {{ $floor->price }}
+                                            </p>
+                                        </div>
+                                        @endif
                                     </div>
                                 </a>
                                 <ul class="uk-nav-sub">
