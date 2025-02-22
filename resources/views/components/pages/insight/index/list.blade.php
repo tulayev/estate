@@ -4,7 +4,10 @@
 
 <section class="section">
     <div class="container pb-10 sm:pb-24">
-        <div class="w-full flex justify-end">
+        <div class="w-full flex justify-between">
+            <div class="collapse-title">
+                {{ __('insight/index/list.insights_grid') }}
+            </div>
             @php($queryParams = request()->query())
             <a href="{{ route('pages.insight.index', array_merge($queryParams, ['filter' => 'liked'])) }}">
                 <img src="{{ asset('assets/images/icons/heart-blue.svg') }}" alt="like-view" />
@@ -37,7 +40,7 @@
                 </div>
             @endif
         @else
-            <h2 class="section-title mt-4 md:mt-10">Nothing found 😞</h2>
+            <h2 class="section-title mt-4 md:mt-10">{{ __('general.nothing_found') }}</h2>
         @endif
     </div>
 </section>

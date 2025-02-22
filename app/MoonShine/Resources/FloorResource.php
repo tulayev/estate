@@ -48,7 +48,7 @@ class FloorResource extends ModelResource
             Block::make([
                 ID::make()->sortable(),
 
-                Number::make(__('Moonshine/Floors/FloorResources.floor'), 'floor')
+                Text::make(__('Moonshine/Floors/FloorResources.floor'), 'floor')
                     ->required(),
 
                 $hotels
@@ -62,6 +62,10 @@ class FloorResource extends ModelResource
                     ->required(),
 
                 Number::make(__('Moonshine/Floors/FloorResources.area'), 'area')
+                    ->step(0.01)
+                    ->required(),
+
+                Number::make(__('Moonshine/Floors/FloorResources.price'), 'price')
                     ->step(0.01)
                     ->required(),
 
@@ -83,11 +87,12 @@ class FloorResource extends ModelResource
     public function rules(Model $item): array
     {
         return [
-            'floor' => 'required|integer|min:1',
+            'floor' => 'required|string',
             'image' => 'nullable|image|max:2048',
             'bedrooms' => 'required|integer|min:0',
             'bathrooms' => 'required|integer|min:0',
             'area' => 'required|numeric|min:0|regex:/^\d+(\.\d{1,2})?$/',
+            'price' => 'required|numeric|min:0|regex:/^\d+(\.\d{1,2})?$/',
             'hotel_id' => 'required|exists:hotels,id',
         ];
     }

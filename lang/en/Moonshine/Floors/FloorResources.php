@@ -7,4 +7,5 @@ return [
     'bathrooms' => 'Bathrooms',
     'area' => 'Area',
     'image' => 'Image',
+    'price' => 'Price',
    ];

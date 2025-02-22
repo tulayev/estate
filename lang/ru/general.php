@@ -30,6 +30,7 @@ return [
      * Listing
      */
     'see_more' => 'далее',
+    'nothing_found' => 'ничего не найдено, уточните поиск',
 
     /*
      * Search

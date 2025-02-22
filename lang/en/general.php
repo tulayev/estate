@@ -30,6 +30,7 @@ return [
      * Listing
      */
     'see_more' => 'see more',
+    'nothing_found' => 'nothing found, refine your search',
 
     /*
      * Search

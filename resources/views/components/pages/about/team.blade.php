@@ -6,7 +6,7 @@
                 href="#contactSection"
                 class="primary-button"
             >
-                Contact Us
+                {{ __('about/team.contact_us') }}
             </a>
         </div>
 

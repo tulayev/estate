@@ -42,6 +42,10 @@
         @apply text-white uppercase font-bold lg:font-black text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl;
     }
 
+    .main-title-insight {
+        @apply text-white uppercase font-bold lg:font-black text-lg sm:text-lg md:text-xl lg:text-2xl xl:text-3xl;
+    }
+
     .section-title {
         @apply leading-none text-primary uppercase mr-[1rem] text-[1.5rem] font-bold xl:text-[35px] xl:font-black;
     }
@@ -51,7 +55,7 @@
     }
 
     .second-title {
-        @apply text-white uppercase font-bold text-md md:text-xl xl:text-2xl;
+        @apply text-white uppercase font-bold text-lg md:text-xl xl:text-2xl;
     }
 
     .collapse-title {

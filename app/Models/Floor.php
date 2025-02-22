@@ -19,6 +19,7 @@ class Floor extends Model
         'bathrooms',
         'area',
         'hotel_id',
+        'price',
     ];
 
     public function hotel(): BelongsTo
@@ -29,6 +30,11 @@ class Floor extends Model
     public function getFormattedAreaAttribute(): string
     {
         return number_format($this->area, 2);
+    }
+
+    public function getPriceAttribute($value)
+    {
+        return number_format($value, 2, '.', ',');
     }
 
     protected static function boot(): void

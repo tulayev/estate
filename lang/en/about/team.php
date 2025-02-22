@@ -3,6 +3,7 @@
 return [
     'title' => 'our leadership team',
     'team_member1' => 'pavel ignatev',
+    'contact_us' => 'contact us',
     'member_experience1' => 'My experience highlights include top senior positions at
                             global powerhouses including Ernst & Young (EY), Ancor
                             International Group, ICM Asset Management, AV Group, Federal
