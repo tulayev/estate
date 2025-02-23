@@ -180,7 +180,7 @@
                             <div>
                                 <a
                                     href="{{ route('pages.listing.index', ['feature' => $feature->id]) }}"
-                                    class="shadow-card rounded-[28px] flex justify-center items-center bg-white py-3 sm:py-6 collapse-title hover:text-secondary"
+                                    class="shadow-card text-sm rounded-[28px] flex justify-center items-center bg-white py-3 sm:py-6 px-4 collapse-title hover:text-secondary"
                                 >
                                     {{ $feature->name }}
                                 </a>
