@@ -59,7 +59,7 @@
                         </div>
                         <div>
                         <span class="sm:font-bold">
-                            ${{ $hotel->price }}
+                            ${{ number_format($hotel->price, 2, '.', ',') }}
                         </span>
                         </div>
                     </div>

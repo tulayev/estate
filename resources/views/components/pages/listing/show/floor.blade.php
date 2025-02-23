@@ -19,7 +19,7 @@
                                     <div class="flex flex-wrap w-[90%] space-x-2 sm:space-x-4 text-primary text-xs sm:text-sm md:text-lg xl:text-xl sm:font-bold xl:font-black">
                                         <div>
                                             <p class="shadow-card border-rounded p-2 sm:px-4 sm:py-2">
-                                                Floor {{ $floor->floor }}
+                                                {{ $floor->floor }}
                                             </p>
                                         </div>
                                         <div>
