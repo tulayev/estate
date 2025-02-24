@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Helpers\Constants;
 use App\Models\Feature;
 use App\Models\Hotel;
+use App\Models\Location;
 use App\Models\Tag;
 use App\Models\Type;
 use Illuminate\Support\Facades\View;
@@ -27,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $locations = Hotel::locations()->get();
+        $locations = Location::all();
         $types = Type::all();
         $tags = Tag::all();
         $features = Feature::all();
