@@ -15,13 +15,13 @@ use App\Helpers\Enums\TopicType;
                     >
                         <div class="absolute border-rounded inset-0 bg-black opacity-70"></div>
                         <div class="relative z-10 flex flex-col justify-center">
-                            <h2 class="section-title-white text-lg sm:text-2xl xl:text-5xl">
-                                Your Guide to Secure & Profitable Investments
+                            <h2 class="section-title-white text-lg sm:text-2xl xl:text-3xl">
+                                Your Exclusive Access to Secure & Profitable Investments in Phuket
                             </h2>
-                            <p class="text-white text-sm lg:text-base xl:text-2xl mt-4 sm:mt-5 lg:mt-10 xl:mt-20">
-                                Phuket’s real estate market is flourishing, with over 250 new developments and more than 200 developers competing for attention.
-                                While the opportunities for families to build wealth and secure their future are immense, navigating this dynamic market presents unique challenges.
-                                Making informed decisions amidst a sea of marketing promises requires expertise, precision, and deep local insight.
+                            <p class="text-white text-sm lg:text-base xl:text-xl mt-4 sm:mt-5 lg:mt-5">
+                                Phuket’s real estate market is expanding rapidly, with over 250 new developments and 200+ developers competing for investor attention. While opportunities for high returns are abundant, navigating this dynamic environment requires expertise, precision, and strategic insight.
+                                <br>
+                                At Ignatev Estate, we don’t just sell real estate—we secure high-value investments for serious investors. Using our proprietary ClearView® Ranking System, we cut through the noise, analyzing each project through strict investment criteria to ensure maximum profitability and minimum risk.
                             </p>
                             <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-4 mt-4 sm:mt-8 lg:mt-10 xl:mt-20">
                                 <p class="text-white font-bold text-xs xl:text-xl">
@@ -51,12 +51,20 @@ use App\Helpers\Enums\TopicType;
                     >
                         <div class="absolute border-rounded inset-0 bg-black opacity-70"></div>
                         <div class="relative z-10 flex flex-col justify-center">
-                            <h2 class="section-title-white text-lg sm:text-2xl xl:text-5xl">
-                                In Phuket's Off-Plan Market, We Protect Your Investment & Dreams from Hidden Risks
+                            <h2 class="section-title-white text-lg sm:text-2xl xl:text-3xl">
+                                Why Invest with Ignatev Estate?
                             </h2>
-                            <p class="text-white text-sm lg:text-base xl:text-2xl mt-4 sm:mt-5 lg:mt-10 xl:mt-20">
-                                In a market filled with glossy brochures and polished promises, it’s easy to dream big—but what about the risks they don’t tell you about?
-                                At Ignatev Estate, we prioritize your investment security by uncovering what truly lies beneath the surface.
+                            <p class="text-white text-sm lg:text-base xl:text-xl mt-4 sm:mt-5 lg:mt-5">
+                                📊 Verified, High-Yield Projects – We evaluate every development through a 50+ factor due diligence process, ensuring only the most profitable investments make the cut.
+                                <br>
+                                <br>
+                                💰 Discounts Up to 35% – Gain early access to off-market deals before they reach the general public, securing pre-launch pricing and maximizing returns.
+                                <br>
+                                <br>
+                                📈 Clear Exit Strategies – Every deal is structured with a defined ROI plan, whether through appreciation-based resale or rental income.
+                                <br>
+                                <br>
+                                🔍 Unmatched Due Diligence – We conduct face-to-face developer interviews, legal verifications, and financial projections to protect your capital at every step.
                             </p>
                             <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-4 mt-4 sm:mt-8 lg:mt-10 xl:mt-20">
                                 <p class="text-white font-bold text-xs xl:text-xl">
@@ -86,12 +94,23 @@ use App\Helpers\Enums\TopicType;
                     >
                         <div class="absolute border-rounded inset-0 bg-black opacity-70"></div>
                         <div class="relative z-10 flex flex-col justify-center">
-                            <h2 class="section-title-white text-lg sm:text-2xl xl:text-5xl">
-                                Connect Your Project with Investors – Secure Early-Stage Finance
+                            <h2 class="section-title-white text-lg sm:text-2xl xl:text-3xl">
+                                We specialize in working with serious investors, not retail buyers.
                             </h2>
-                            <p class="text-white text-sm lg:text-base xl:text-2xl mt-4 sm:mt-5 lg:mt-10 xl:mt-20">
-                                Exceptional projects deserve to be showcased to ultra-high-net-worth (UHNW) families,
-                                private equity funds, and discerning investors who value substance over flashy marketing.
+                            <p class="text-white text-sm lg:text-base xl:text-xl mt-4 sm:mt-5 lg:mt-5">
+                                ✔ High-Net-Worth Individuals – Seeking $500K+ secure, high-yield investments.
+                                <br>
+                                <br>
+                                ✔ Family Offices & Institutional Investors – Diversifying portfolios with structured real estate allocations.
+                                <br>
+                                <br>
+                                ✔ Entrepreneurs & Business Owners – Protecting and growing capital through off-market real estate.
+                                <br>
+                                <br>
+                                ✔ Experienced Investors – Looking for discounted, high-growth assets in a thriving market.
+                                <br>
+                                <br>
+                                📌 If you’re looking for high-return real estate deals with professional guidance, we’re your trusted partner.
                             </p>
                             <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-4 mt-4 sm:mt-8 lg:mt-10 xl:mt-20">
                                 <p class="text-white font-bold text-xs xl:text-xl">
@@ -121,12 +140,20 @@ use App\Helpers\Enums\TopicType;
                     >
                         <div class="absolute border-rounded inset-0 bg-black opacity-70"></div>
                         <div class="relative z-10 flex flex-col justify-center">
-                            <h2 class="section-title-white text-lg sm:text-2xl xl:text-5xl">
-                                Our Promise
+                            <h2 class="section-title-white text-lg sm:text-2xl xl:text-3xl">
+                                Who We Work With
                             </h2>
-                            <p class="text-white text-sm lg:text-base xl:text-2xl mt-4 sm:mt-5 lg:mt-10 xl:mt-20">
-                                When we present an opportunity, it’s more than just clarity—it’s confidence, built on verified data, documented evidence, and thorough analysis.
-                                For families and institutional investors, we provide the assurance needed to make sound, impactful decisions.
+                            <p class="text-white text-sm lg:text-base xl:text-xl mt-4 sm:mt-5 lg:mt-10 xl:mt-20">
+                                When we present an opportunity, it’s more than just clarity—it’s confidence, built on verified data, documented evidence, and thorough analysis. For families and institutional investors, we provide the assurance needed to make sound, impactful decisions
+                                <br>
+                                <br>
+                                ✅ Quantified Assessments – Every project is ranked based on key investment metrics.
+                                <br>
+                                <br>
+                                ✅ Evidence-Backed Decisions – No marketing hype, just data-driven insights.
+                                <br>
+                                <br>
+                                ✅ Full Investment Lifecycle Support – From deal structuring to asset management, we protect your interests at every stage.
                             </p>
                             <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-4 mt-4 sm:mt-8 lg:mt-10 xl:mt-20">
                                 <p class="text-white font-bold text-xs xl:text-xl">
