@@ -6,6 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>{{ env('APP_NAME', 'Estate') }}</title>
     <link rel="icon" href="{{ asset('assets/images/icons/logo-icon.svg') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.0/flowbite.min.css">
     <!-- NoUISlider css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider/dist/nouislider.min.css" />
     <!-- Swiper css -->

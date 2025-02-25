@@ -4,10 +4,10 @@ use App\Helpers\Enums\TopicType;
 
 <section class="section">
     <div class="container">
-        <!-- Slider -->
-        <div class="swiper homeSlider">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
+        <div id="carousel" class="relative w-full" data-carousel="slide">
+            <div class="relative h-56 overflow-hidden rounded-lg md:h-[50rem]">
+                <!-- First slide -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <div
                         class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[400px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
                         style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
@@ -42,7 +42,8 @@ use App\Helpers\Enums\TopicType;
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
+                <!-- Second slide -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <div
                         class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[400px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
                         style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
@@ -76,7 +77,8 @@ use App\Helpers\Enums\TopicType;
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
+                <!-- Third slide -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <div
                         class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[400px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
                         style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
@@ -110,7 +112,8 @@ use App\Helpers\Enums\TopicType;
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
+                <!-- Fourth slide -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <div
                         class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[400px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
                         style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
@@ -145,9 +148,23 @@ use App\Helpers\Enums\TopicType;
                     </div>
                 </div>
             </div>
-            <!-- Swiper Pagination -->
-            <div class="swiper-pagination"></div>
+            <!-- Slider controls -->
+            <button type="button" class="absolute top-1/2 left-0 z-30 px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                <span class="inline-flex items-center justify-center w-10 h-10 bg-gray-800/30 rounded-full group-hover:bg-gray-800/50">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </span>
+            </button>
+            <button type="button" class="absolute top-1/2 right-0 z-30 px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                <span class="inline-flex items-center justify-center w-10 h-10 bg-gray-800/30 rounded-full group-hover:bg-gray-800/50">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </span>
+            </button>
         </div>
+
         <!-- Cards -->
         @if ($primary && $resales && $land)
             <div class="uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m mt-5 xl:mt-10" uk-grid>
@@ -215,3 +232,5 @@ use App\Helpers\Enums\TopicType;
         @endif
     </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
