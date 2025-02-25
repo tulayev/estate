@@ -155,6 +155,17 @@ class Hotel extends Model
         return $query;
     }
 
+    public function scopeFilterByLocations(Builder $query, $locations): Builder
+    {
+        if (!empty($locations)) {
+            $locationsArray = explode(',', $locations);
+            $query->whereHas('locations', function ($q) use ($locationsArray) {
+                $q->whereIn('locations.id', $locationsArray);
+            });
+        }
+        return $query;
+    }
+
     public function scopeFilterByFeatures(Builder $query, $features): Builder
     {
         if (!empty($features)) {
@@ -167,24 +178,6 @@ class Hotel extends Model
         return $query;
     }
 
-    public function scopeFilterByLocations(Builder $query, $locations): Builder
-    {
-        $locale = app()->getLocale();
-
-        if (!empty($locations)) {
-            $locationArray = explode(',', $locations);
-
-            foreach ($locationArray as $location) {
-                $location = trim($location);
-
-                $query->orWhereRaw(
-                    "LOWER(JSON_UNQUOTE(JSON_EXTRACT(location, '$.\"{$locale}\"'))) LIKE ?",
-                    ['%' . strtolower($location) . '%']
-                );
-            }
-        }
-        return $query;
-    }
 
     public function author(): BelongsTo
     {
@@ -209,6 +202,11 @@ class Hotel extends Model
     public function types(): BelongsToMany
     {
         return $this->belongsToMany(Type::class, 'hotel_type');
+    }
+
+    public function locations(): BelongsToMany
+    {
+        return $this->belongsToMany(Type::class, 'hotel_location');
     }
 
     public function likes(): HasMany

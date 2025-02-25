@@ -26,7 +26,7 @@
                 <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-3 space-y-3 sm:space-y-0">
                     <div class="animLeft">
                         <a
-                            href="#modalForm"
+                            href="#"
                             class="secondary-button bg-[#69A8A4]"
                         >
                             <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('listing/index/main.tag_1') }}</span>
@@ -34,7 +34,7 @@
                     </div>
                     <div class="animLeft">
                         <a
-                            href="#modalForm"
+                            href="#"
                             class="secondary-button bg-[#23334B]"
                         >
                             <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('listing/index/main.tag_2') }}</span>
@@ -42,7 +42,7 @@
                     </div>
                     <div class="animLeft">
                         <a
-                            href="#modalForm"
+                            href="#"
                             class="secondary-button bg-[#767E94]"
                         >
                             <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('listing/index/main.tag_3') }}</span>

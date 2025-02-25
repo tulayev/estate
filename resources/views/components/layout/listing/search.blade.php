@@ -84,11 +84,12 @@
             </div>
 
             <!-- Type -->
-            @if ($primary && $resales && $land)
+            @if ($primary && $resales && $land && $rent)
                 <x-ui.filter.types
                     :primary="$primary"
                     :resales="$resales"
                     :land="$land"
+                    :rent="$rent"
                 />
             @endif
 

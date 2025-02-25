@@ -15,6 +15,7 @@ class Constants
     ];
 
     public const SYSTEM_TYPE_IDS = [
+        'rent' => 1,
         'primary' => 3,
         'resales' => 6,
     ];
