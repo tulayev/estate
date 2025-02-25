@@ -5,11 +5,12 @@ use App\Helpers\Enums\TopicType;
 <section class="section">
     <div class="container">
         <div id="carousel" class="relative w-full" data-carousel="slide">
-            <div class="relative h-56 overflow-hidden rounded-lg md:h-[50rem]">
+            <div class="relative h-56 rounded-lg md:h-[50rem] overflow-scroll md:overflow-hidden">
+
                 <!-- First slide -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <div
-                        class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[400px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
+                        class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[500px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
                         style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
                     >
                         <div class="absolute border-rounded inset-0 bg-black opacity-70"></div>
@@ -45,7 +46,7 @@ use App\Helpers\Enums\TopicType;
                 <!-- Second slide -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <div
-                        class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[400px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
+                        class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[500px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
                         style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
                     >
                         <div class="absolute border-rounded inset-0 bg-black opacity-70"></div>
@@ -80,7 +81,7 @@ use App\Helpers\Enums\TopicType;
                 <!-- Third slide -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <div
-                        class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[400px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
+                        class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[500px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
                         style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
                     >
                         <div class="absolute border-rounded inset-0 bg-black opacity-70"></div>
@@ -115,7 +116,7 @@ use App\Helpers\Enums\TopicType;
                 <!-- Fourth slide -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <div
-                        class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[400px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
+                        class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[500px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
                         style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
                     >
                         <div class="absolute border-rounded inset-0 bg-black opacity-70"></div>
