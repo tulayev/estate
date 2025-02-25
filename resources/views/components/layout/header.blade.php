@@ -39,7 +39,7 @@
                             >
                                 {{ __('general.nav_listings') }}
                             </a>
-                            @if ($primary && $resales && $land)
+                            @if ($primary && $resales && $land && $rent)
                                 <div
                                     x-show="open"
                                     @mouseenter="open = true"
@@ -67,6 +67,14 @@
                                         >
                                             <div class="{{ $mapView ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
                                                 {{ $resales->name }}
+                                            </div>
+                                        </a>
+                                        <a
+                                            href="{{ route('pages.listing.index', ['type' => $rent->id]) }}"
+                                            class="w-full"
+                                        >
+                                            <div class="{{ $mapView ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
+                                                {{ $rent->name }}
                                             </div>
                                         </a>
                                         <a

@@ -194,7 +194,7 @@ use App\Helpers\Enums\TopicType;
         </div>
 
         <!-- Cards -->
-        @if ($primary && $resales && $land)
+        @if ($primary && $resales && $land && $rent)
             <div class="uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m mt-5 xl:mt-10" uk-grid>
                 <div>
                     <a
@@ -251,6 +251,26 @@ use App\Helpers\Enums\TopicType;
                             <div class="absolute-centralize">
                                 <h4 class="text-2xl text-white font-bold uppercase group-hover:text-primary">
                                     {{ $land->name }}
+                                </h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <a
+                        href="{{ route('pages.listing.index', ['type' => $rent->id]) }}"
+                        class="group"
+                    >
+                        <div class="relative">
+                            <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
+                            <img
+                                class="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110"
+                                src="{{ asset('assets/images/rent.png') }}"
+                                alt="{{ $rent->name }}"
+                            />
+                            <div class="absolute-centralize">
+                                <h4 class="text-2xl text-white font-bold uppercase group-hover:text-primary">
+                                    {{ $rent->name }}
                                 </h4>
                             </div>
                         </div>

@@ -2,6 +2,7 @@
     'primary' => null,
     'resales' => null,
     'land' => null,
+    'rent' => null,
 ])
 
 <div
@@ -53,6 +54,15 @@
                 @click="addTag('{{ $land->id }}')"
             >
                 {{ $land->name }}
+            </div>
+        </div>
+        <div>
+            <div
+                class="modal-subtitle random-bg-color cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
+                :class="isTagSelected('{{ $rent->id }}') ? 'hidden' : ''"
+                @click="addTag('{{ $rent->id }}')"
+            >
+                {{ $rent->name }}
             </div>
         </div>
     </div>
