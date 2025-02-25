@@ -3,20 +3,26 @@
 ])
 
 @if ($hotel)
-    <div>
+    <div class="relative">
+        <a
+            href="{{ route('pages.listing.show', $hotel->slug) }}"
+            class="absolute inset-0 z-10"
+        ></a>
+
         <div
             class="relative bg-cover bg-center bg-no-repeat flex flex-col justify-between border-rounded p-3 h-[220px] md:h-[300px] hover:shadow-xl transition-shadow duration-300"
             style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}');"
         >
             <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
             <!-- Image Top -->
-            <div class="flex justify-between items-center z-10">
+            <div class="flex justify-between items-center z-20">
                 @if ($hotel->tags)
                     <div class="flex items-center space-x-2">
                         @foreach($hotel->tags->take(2) as $tag)
                             <a
                                 href="{{ route('pages.listing.index', ['tag' => $tag->id]) }}"
                                 class="card-tag-button random-bg-color hover:text-primary"
+                                @click.stop
                             >
                                 {{ Str::limit($tag->name, 10) }}
                             </a>
@@ -32,7 +38,7 @@
                     </button>
                     <button
                         x-data="likeHandler({{ $hotel->id }}, @json($hotel->isLiked))"
-                        @click="toggleLike"
+                        @click.stop="toggleLike"
                     >
                         <img
                             :src="isLiked ? '{{ asset('assets/images/icons/heart-blue.svg') }}' : '{{ asset('assets/images/icons/heart.svg') }}'"
@@ -42,34 +48,29 @@
                 </div>
             </div>
             <!-- Image Bottom -->
-            <a
-                href="{{ route('pages.listing.show', $hotel->slug) }}"
-                class="z-10"
-            >
-                <div class="flex justify-between items-center uppercase text-xs">
-                    <div class="flex items-center space-x-2">
-                        @if ($hotel->ie_verified)
-                            <img
-                                class="w-6"
-                                src="{{ asset('assets/images/icons/verified.svg') }}"
-                                alt="verified"
-                            />
-                        @endif
-                        <p class="text-white sm:font-bold">
-                            {{ Str::limit($hotel->title, 20) }}
-                        </p>
-                    </div>
-                    <div>
-                        <span class="text-white sm:font-bold">
-                            ${{ number_format($hotel->price, 2, '.', ',') }}
-                        </span>
-                    </div>
+            <div class="flex justify-between items-center uppercase text-xs z-20">
+                <div class="flex items-center space-x-2">
+                    @if ($hotel->ie_verified)
+                        <img
+                            class="w-6"
+                            src="{{ asset('assets/images/icons/verified.svg') }}"
+                            alt="verified"
+                        />
+                    @endif
+                    <p class="text-white sm:font-bold">
+                        {{ Str::limit($hotel->title, 20) }}
+                    </p>
                 </div>
-            </a>
+                <div>
+                    <span class="text-white sm:font-bold">
+                        ${{ number_format($hotel->price, 2, '.', ',') }}
+                    </span>
+                </div>
+            </div>
         </div>
         <!-- Bottom -->
-        <div class="shadow-card border-rounded mt-[-54px] sm:mt-[-44px] px-3 sm:px-5 pt-[68px] pb-4 sm:pb-6 hover:shadow-lg transition-shadow duration-300">
-            <div class="flex justify-between uppercase text-[#505050] text-sm  sm:font-bold md:font-black">
+        <div class="shadow-card border-rounded mt-[-54px] sm:mt-[-44px] px-3 sm:px-5 pt-[68px] pb-4 sm:pb-6 hover:shadow-lg transition-shadow duration-300 z-20">
+            <div class="flex justify-between uppercase text-[#505050] text-sm sm:font-bold md:font-black">
                 <div>
                     <p>📍 {{ Str::limit($hotel->location, 20) }}</p>
                 </div>
