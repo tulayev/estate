@@ -13,14 +13,14 @@ class Location extends Model
 
     protected $fillable = [
         'location',
-        'description',
-        'description_ru',
         'longitude',
         'latitude',
+        'description_json'
     ];
 
     protected $translatable = [
-        'location'
+        'location',
+        'description_json'
     ];
 
     public function hotels(): BelongsToMany

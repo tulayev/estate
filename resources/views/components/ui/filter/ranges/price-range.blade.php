@@ -5,7 +5,7 @@
 ])
 
 <div>
-    <h3 class="modal-subtitle text-primary">Price range</h3>
+    <h3 class="modal-subtitle text-primary">{{ __('general.filter_popup_price') }}</h3>
 
     <div class="uk-child-width-1-2 mt-2 md:mt-4 xl:mt-6" uk-grid>
         <div>
