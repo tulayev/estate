@@ -27,8 +27,8 @@
             <div>
                 <div
                     class="location flex justify-center items-center cursor-pointer modal-subtitle shadow-card border-rounded p-2 sm:p-4 md:px-6 md:py-8"
-                    :class="isLocationSelected('{{ $location->latitude }}', '{{ $location->longitude }}') ? 'bg-primary text-white' : 'bg-white text-primary'"
-                    @click="toggleLocation('{{ $location->latitude }}', '{{ $location->longitude }}', '{{ $location->location }}')"
+                    :class="isLocationSelected('{{ $location->id }}') ? 'bg-primary text-white' : 'bg-white text-primary'"
+                    @click="toggleLocation('{{ $location->id }}', '{{ $location->latitude }}', '{{ $location->longitude }}', '{{ $location->location }}')"
                 >
                     {{ Str::limit($location->location, 12) }}
                 </div>
@@ -60,27 +60,27 @@
                 }).addTo(this.map);
             },
 
-            toggleLocation(lat, lng, name) {
+            toggleLocation(id, lat, lng, name) {
                 if (!this.validate(lat, lng)) {
                     return;
                 }
 
-                if (this.isLocationSelected(lat, lng)) {
+                if (this.isLocationSelected(id)) {
                     // Remove from selected locations
                     this.selectedLocations = this.selectedLocations.filter(
-                        loc => loc.lat !== lat || loc.lng !== lng
+                        loc => loc.id !== id
                     );
                     this.removeMarker(lat, lng); // Remove marker
                 } else {
                     // Add to selected locations
-                    this.selectedLocations.push({ lat, lng, name });
+                    this.selectedLocations.push({ id, lat, lng, name });
                     this.addMarker(lat, lng, name); // Add marker
                     this.zoomToMarker(lat, lng); // Zoom to marker
                 }
             },
 
-            isLocationSelected(lat, lng) {
-                return this.selectedLocations.some(loc => loc.lat == lat && loc.lng == lng);
+            isLocationSelected(id) {
+                return this.selectedLocations.some(loc => loc.id == id);
             },
 
             zoomToMarker(lat, lng, zoomLevel = 15) {
