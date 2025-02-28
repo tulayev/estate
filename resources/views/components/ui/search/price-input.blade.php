@@ -83,6 +83,11 @@
             step: {{ $step }}
         });
 
+        // Function to format numbers with thousands separators
+        function formatNumberWithCommas(number) {
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
         // Create tooltips dynamically
         const priceInputHandles = priceInputSlider.querySelectorAll('.noUi-handle');
         priceInputHandles.forEach(handle => {
@@ -94,14 +99,17 @@
 
         // Update tooltips and input values on slider change
         priceInputSlider.noUiSlider.on('update', (values) => {
-            priceInputFrom.value = Math.round(values[0]);
-            priceInputTo.value = Math.round(values[1]);
+            const formattedFromValue = formatNumberWithCommas(Math.round(values[0]));
+            const formattedToValue = formatNumberWithCommas(Math.round(values[1]));
 
-            priceInputHandles[0].querySelector('.custom-tooltip').innerText = Math.round(values[0]);
-            priceInputHandles[1].querySelector('.custom-tooltip').innerText = Math.round(values[1]);
+            priceInputFrom.value = formattedFromValue;
+            priceInputTo.value = formattedToValue;
 
-            priceInput.value = (priceInputFrom.value != {{ $minValue }} && priceInputTo.value != {{ $maxValue }})
-                ? `[${priceInputFrom.value}; ${priceInputTo.value}]`
+            priceInputHandles[0].querySelector('.custom-tooltip').innerText = formattedFromValue;
+            priceInputHandles[1].querySelector('.custom-tooltip').innerText = formattedToValue;
+
+            priceInput.value = (priceInputFrom.value != formatNumberWithCommas({{ $minValue }}) && priceInputTo.value != formatNumberWithCommas({{ $maxValue }}))
+                ? `${formattedFromValue} - ${formattedToValue}`
                 : '';
         });
     });
