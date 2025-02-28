@@ -4,7 +4,12 @@ return [
     'title' => 'value, no strings attached',
     'p_1' => 'We believe in proving our worth upfront. That’s why some of our most valuable insights and some services are
             free. Get the clarity you need without commitment, and see why smart investors and developers trust us from the
-            start.',
+            start.
+            <br>
+            <br>
+            We don’t just provide unique, exclusive, and curated listings—we create opportunities. 
+            Again, for investors, it’s about clarity and confidence. For developers, it’s about visibility and trust.  Get in touch with us – we deliver value, no strings attached!
+            ',
     'ul_item_name_1' => 'Reliable Off-Plan<br/>Properties',
     'ul_item_name_1_desc' => 'We connect buyers and investors to real and reliable opportunities through carefully selected off-plan projects that offer genuine value and clear potential.',
     'ul_item_name_2' => 'Personalized Investment<br/>Insights',

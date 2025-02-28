@@ -4,7 +4,7 @@
             {{ __('home/value.title') }}
         </h2>
         <p class="text mb-10">
-            {{ __('home/value.p_1') }}
+            {!! __('home/value.p_1') !!}
         </p>
     </div>
 
