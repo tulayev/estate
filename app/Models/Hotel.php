@@ -90,7 +90,7 @@ class Hotel extends Model
         if (!empty($min)) {
             $query->where(function ($q) use ($min) {
                 $q->whereRaw(
-                    '(SELECT COALESCE(SUM(bedrooms), 0) FROM floors WHERE floors.hotel_id = hotels.id) >= ?',
+                    '(SELECT MIN(floors.bedrooms) FROM floors WHERE floors.hotel_id = hotels.id GROUP BY floors.hotel_id) >= ?',
                     [$min]
                 );
             });
@@ -99,7 +99,7 @@ class Hotel extends Model
         if (!empty($max)) {
             $query->where(function ($q) use ($max) {
                 $q->whereRaw(
-                    '(SELECT COALESCE(SUM(bedrooms), 0) FROM floors WHERE floors.hotel_id = hotels.id) <= ?',
+                    '(SELECT MAX(floors.bedrooms) FROM floors WHERE floors.hotel_id = hotels.id GROUP BY floors.hotel_id) <= ?',
                     [$max]
                 );
             });
@@ -113,7 +113,7 @@ class Hotel extends Model
         if (!empty($min)) {
             $query->where(function ($q) use ($min) {
                 $q->whereRaw(
-                    '(SELECT COALESCE(SUM(bathrooms), 0) FROM floors WHERE floors.hotel_id = hotels.id) >= ?',
+                    '(SELECT MIN(floors.bathrooms) FROM floors WHERE floors.hotel_id = hotels.id GROUP BY floors.hotel_id) >= ?',
                     [$min]
                 );
             });
@@ -122,7 +122,7 @@ class Hotel extends Model
         if (!empty($max)) {
             $query->where(function ($q) use ($max) {
                 $q->whereRaw(
-                    '(SELECT COALESCE(SUM(bathrooms), 0) FROM floors WHERE floors.hotel_id = hotels.id) <= ?',
+                    '(SELECT MAX(floors.bathrooms) FROM floors WHERE floors.hotel_id = hotels.id GROUP BY floors.hotel_id) <= ?',
                     [$max]
                 );
             });
