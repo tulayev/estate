@@ -62,11 +62,14 @@
 
         // Update tooltips and input values on slider change
         priceSlider.noUiSlider.on('update', (values) => {
-            priceFromInput.value = Math.round(values[0]);
-            priceToInput.value = Math.round(values[1]);
+            const formattedValue0 = Math.round(values[0]).toLocaleString();
+            const formattedValue1 = Math.round(values[1]).toLocaleString();
 
-            priceHandles[0].querySelector('.custom-tooltip').innerText = Math.round(values[0]);
-            priceHandles[1].querySelector('.custom-tooltip').innerText = Math.round(values[1]);
+            priceFromInput.value = formattedValue0;
+            priceToInput.value = formattedValue1;
+
+            priceHandles[0].querySelector('.custom-tooltip').innerText = formattedValue0;
+            priceHandles[1].querySelector('.custom-tooltip').innerText = formattedValue1;
         });
     });
 </script>
