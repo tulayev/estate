@@ -13,8 +13,8 @@
             class="border-rounded bg-no-repeat p-4 md:p-8 xl:p-10"
             style="background-image: url('{{ asset('assets/images/discuss.png') }}')"
         >
-            <p class="text-white uppercase text-xs sm:text-sm md:text-lg xl:text-2xl">
-                {{ __('home/discuss.p_1') }}
+            <p class="text-white uppercase text-md ">
+                {!! __('home/discuss.p_1') !!}
             </p>
         </div>
     </div>

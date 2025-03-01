@@ -13,13 +13,12 @@
             <ul class="uk-nav-default uk-nav-parent-icon" uk-nav="multiple: false">
                 <li class="uk-parent">
                     <a href="#">
-                        <span class="collapse-title">Question 1</span>
+                        <span class="text-primary uppercase text-xs sm:text-sm md:text-lg xl:text-xl sm:font-bold xl:font-black">{!!__('home/faq.question_1') !!}</span>
                     </a>
                     <ul class="uk-nav-sub">
                         <li>
                             <p class="text-sm sm:text-xl py-2 sm:py-4">
-                                We connect buyers and investors to real opportunities through carefully selected
-                                off-plan projects that offer genuine value and clear potential.
+                                {!! __('home/faq.answer_1') !!}
                             </p>
                         </li>
                     </ul>
@@ -28,13 +27,12 @@
 
                 <li class="uk-parent">
                     <a href="#">
-                        <span class="collapse-title">Question 2</span>
+                        <span class="text-primary uppercase text-xs sm:text-sm md:text-lg xl:text-xl sm:font-bold xl:font-black">{{ __('home/faq.question_2') }}</span>
                     </a>
                     <ul class="uk-nav-sub">
                         <li>
                             <p class="text-sm sm:text-xl py-2 sm:py-4">
-                                We connect buyers and investors to real opportunities through carefully selected
-                                off-plan projects that offer genuine value and clear potential.
+                                {!! __('home/faq.answer_2') !!}
                             </p>
                         </li>
                     </ul>
@@ -43,13 +41,12 @@
 
                 <li class="uk-parent">
                     <a href="#">
-                        <span class="collapse-title">Question 3</span>
+                        <span class="text-primary uppercase text-xs sm:text-sm md:text-lg xl:text-xl sm:font-bold xl:font-black">{!! __('home/faq.question_3') !!}</span>
                     </a>
                     <ul class="uk-nav-sub">
                         <li>
                             <p class="text-sm sm:text-xl py-2 sm:py-4">
-                                We connect buyers and investors to real opportunities through carefully selected
-                                off-plan projects that offer genuine value and clear potential.
+                                {!! __('home/faq.answer_3') !!}
                             </p>
                         </li>
                     </ul>
@@ -58,17 +55,59 @@
 
                 <li class="uk-parent">
                     <a href="#">
-                        <span class="collapse-title">Question 4</span>
+                        <span class="text-primary uppercase text-xs sm:text-sm md:text-lg xl:text-xl sm:font-bold xl:font-black">{!! __('home/faq.question_4') !!}</span>
                     </a>
                     <ul class="uk-nav-sub">
                         <li>
                             <p class="text-sm sm:text-xl py-2 sm:py-4">
-                                We connect buyers and investors to real opportunities through carefully selected
-                                off-plan projects that offer genuine value and clear potential.
+                                {!! __('home/faq.answer_4') !!}
                             </p>
                         </li>
                     </ul>
                 </li>
+                <li class="uk-nav-divider"></li>
+
+                <li class="uk-parent">
+                    <a href="#">
+                        <span class="text-primary uppercase text-xs sm:text-sm md:text-lg xl:text-xl sm:font-bold xl:font-black">{!! __('home/faq.question_5') !!}</span>
+                    </a>
+                    <ul class="uk-nav-sub">
+                        <li>
+                            <p class="text-sm sm:text-xl py-2 sm:py-4">
+                                {!! __('home/faq.answer_5') !!}
+                            </p>
+                        </li>
+                    </ul>
+                </li>
+                <li class="uk-nav-divider"></li>
+
+                <li class="uk-parent">
+                    <a href="#">
+                        <span class="text-primary uppercase text-xs sm:text-sm md:text-lg xl:text-xl sm:font-bold xl:font-black">{!! __('home/faq.question_6') !!}</span>
+                    </a>
+                    <ul class="uk-nav-sub">
+                        <li>
+                            <p class="text-sm sm:text-xl py-2 sm:py-4">
+                                {!! __('home/faq.answer_6') !!}
+                            </p>
+                        </li>
+                    </ul>
+                </li>
+                <li class="uk-nav-divider"></li>
+
+                <li class="uk-parent">
+                    <a href="#">
+                        <span class="text-primary uppercase text-xs sm:text-sm md:text-lg xl:text-xl sm:font-bold xl:font-black">{!! __('home/faq.question_7') !!}</span>
+                    </a>
+                    <ul class="uk-nav-sub">
+                        <li>
+                            <p class="text-sm sm:text-xl py-2 sm:py-4">
+                                {!! __('home/faq.answer_7') !!}
+                            </p>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="uk-nav-divider"></li>
             </ul>
         </div>

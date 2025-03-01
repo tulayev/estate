@@ -148,21 +148,28 @@ class ListingController extends Controller
 
     private function applySearch(Request $request)
     {
+        $priceMin = str_replace(',', '', $request->input('price_min'));
+        $priceMax = str_replace(',', '', $request->input('price_max'));
+
         return Hotel::query()
             ->with(['floors', 'types', 'tags', 'features'])
             ->searchByTitle($request->input('title'))
             ->filterByLocations($request->input('locations'))
             ->filterByBedrooms($request->input('beds'), $request->input('beds'))
-            ->filterByPrice($request->input('price_min'), $request->input('price_max'))
+            ->filterByPrice($priceMin, $priceMax)
             ->active();
     }
 
     private function applyFilters(Request $request)
     {
+        // Remove commas from price inputs
+        $priceMin = str_replace(',', '', $request->input('price_min'));
+        $priceMax = str_replace(',', '', $request->input('price_max'));
+
         return Hotel::query()
             ->with(['floors', 'types', 'tags', 'features'])
             ->searchByTitle($request->input('title'))
-            ->filterByPrice($request->input('price_min'), $request->input('price_max'))
+            ->filterByPrice($priceMin, $priceMax)
             ->filterByBedrooms($request->input('bedrooms_min'), $request->input('bedrooms_max'))
             ->filterByBathrooms($request->input('bathrooms_min'), $request->input('bathrooms_max'))
             ->filterByTypes($request->input('types'))
