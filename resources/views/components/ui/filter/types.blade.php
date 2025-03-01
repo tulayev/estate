@@ -110,11 +110,11 @@
             selectedTypeNames() {
                 const data = [
                     this.selectedTypeIds.map(id => {
-                        const type = this.allTypeIds.find(type => type.id == id);
+                        const type = this.allTypeIds.find(t => t.id == id);
                         return type ? type.name[this.locale] : '';
                     }),
                     this.selectedTagIds.map(id => {
-                        const tag = this.allTagIds.find(tag => tag.id == id);
+                        const tag = this.allTagIds.find(t => t.id == id);
                         return tag ? tag.name[this.locale] : '';
                     }),
                 ];

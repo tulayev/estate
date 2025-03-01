@@ -32,7 +32,7 @@ class Floor extends Model
         return number_format($this->area, 2);
     }
 
-    public function getPriceAttribute($value)
+    public function getPriceAttribute($value): string
     {
         return number_format($value, 2, '.', ',');
     }

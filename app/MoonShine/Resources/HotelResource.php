@@ -92,8 +92,6 @@ class HotelResource extends ModelResource
 
             Text::make(__('Moonshine/Objects/HotelResources.code_name'), 'codename'),
 
-            Text::make(__('Moonshine/Objects/HotelResources.location'), 'location'),
-
             Text::make(__('Moonshine/Objects/HotelResources.location_description'), 'location_description'),
 
             Number::make(__('Moonshine/Objects/HotelResources.latitude'), 'latitude'),
@@ -107,6 +105,8 @@ class HotelResource extends ModelResource
             BelongsToMany::make(__('Moonshine/Objects/HotelResources.tags'), 'tags', 'name', resource: new TagResource()),
 
             BelongsToMany::make(__('Moonshine/Objects/HotelResources.features'), 'features', 'name', resource: new FeatureResource()),
+
+            BelongsToMany::make(__('Moonshine/Objects/HotelResources.locations'), 'locations', 'name', resource: new LocationResource()),
 
             Image::make(__('Moonshine/Objects/HotelResources.main_image'), 'main_image'),
 
@@ -137,9 +137,6 @@ class HotelResource extends ModelResource
 
                 Text::make(__('Moonshine/Objects/HotelResources.code_name'), 'codename'),
 
-                Text::make(__('Moonshine/Objects/HotelResources.location'), 'location')
-                    ->required(),
-
                 TinyMce::make(__('Moonshine/Objects/HotelResources.location_description'), 'location_description'),
 
                 Number::make(__('Moonshine/Objects/HotelResources.latitude'), 'latitude')
@@ -160,6 +157,9 @@ class HotelResource extends ModelResource
                     ->selectMode(),
 
                 BelongsToMany::make(__('Moonshine/Objects/HotelResources.features'), 'features', 'name', resource: new FeatureResource())
+                    ->selectMode(),
+
+                BelongsToMany::make(__('Moonshine/Objects/HotelResources.locations'), 'locations', 'name', resource: new LocationResource())
                     ->selectMode(),
 
                 $this->getPublishedField(),
@@ -202,7 +202,6 @@ class HotelResource extends ModelResource
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'codename' => 'nullable|string|max:255',
-            'location' => 'required|string',
             'latitude' => 'required|numeric|between:-90,90',
             'longitude' => 'required|numeric|between:-180,180',
             'price' => 'required|numeric|min:0|max:9999999999.999|regex:/^\d+(\.\d{1,3})?$/',

@@ -12,15 +12,15 @@ class Location extends Model
     use HasFactory, HasTranslations;
 
     protected $fillable = [
-        'location',
+        'name',
+        'description',
         'longitude',
         'latitude',
-        'description_json'
     ];
 
     protected $translatable = [
-        'location',
-        'description_json'
+        'name',
+        'description',
     ];
 
     public function hotels(): BelongsToMany

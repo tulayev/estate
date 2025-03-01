@@ -16,7 +16,7 @@
     <input
         type="hidden"
         name="tags"
-        :value="selectedTags.join(',')"
+        :value="selectedIds.join(',')"
     />
 
     <div class="mt-6 tags uk-child-width-1-2 uk-child-width-auto@s uk-grid-small" uk-grid>
@@ -38,26 +38,26 @@
     function tags() {
         return {
             locale: '{{ app()->getLocale() }}',
-            selectedTags: [],
+            selectedIds: [],
             allTags: @json($tags),
 
-            addTag(tag) {
-                if (!this.selectedTags.includes(tag)) {
-                    this.selectedTags.push(tag);
+            addTag(id) {
+                if (!this.selectedIds.includes(id)) {
+                    this.selectedIds.push(id);
                 }
             },
 
-            isTagSelected(tag) {
-                return this.selectedTags.includes(tag);
+            isTagSelected(id) {
+                return this.selectedIds.includes(id);
             },
 
             resetTags() {
-                this.selectedTags = [];
+                this.selectedIds = [];
             },
 
             selectedTagNames() {
-                return this.selectedTags.map(id => {
-                    const tag = this.allTags.find(tag => tag.id == id);
+                return this.selectedIds.map(id => {
+                    const tag = this.allTags.find(t => t.id == id);
                     return tag ? tag.name[this.locale] : '';
                 });
             }

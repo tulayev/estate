@@ -194,11 +194,11 @@ use App\Helpers\Enums\TopicType;
                             <img
                                 class="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110"
                                 src="{{ asset('assets/images/resale_bg.png') }}"
-                                alt="{{ $resales->getTranslation('name', app()->getLocale()) }}"
+                                alt="{{ $resales->name }}"
                             />
                             <div class="absolute-centralize">
                                 <h4 class="text-2xl text-white font-bold uppercase group-hover:text-primary">
-                                    {{ $resales->getTranslation('name', app()->getLocale()) }}
+                                    {{ $resales->name }}
                                 </h4>
                             </div>
                         </div>
@@ -214,11 +214,11 @@ use App\Helpers\Enums\TopicType;
                             <img
                                 class="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110"
                                 src="{{ asset('assets/images/land_bg.png') }}"
-                                alt="{{ $land->getTranslation('name', app()->getLocale()) }}"
+                                alt="{{ $land->name }}"
                             />
                             <div class="absolute-centralize">
                                 <h4 class="text-2xl text-white font-bold uppercase group-hover:text-primary">
-                                    {{ $land->getTranslation('name', app()->getLocale()) }}
+                                    {{ $land->name }}
                                 </h4>
                             </div>
                         </div>

@@ -11,7 +11,7 @@
         {{ __('general.filter_popup_location') }}
         <span class="font-bold">|</span>
         <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetLocations">x</span>
-        <span x-text="selectedLocationsString().join(', ')"></span>
+        <span x-text="selectedLocationNames().join(', ')"></span>
     </h3>
 
     <div id="map" class="border-rounded w-full mt-4 sm:mt-6 h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]"></div>
@@ -19,7 +19,7 @@
     <input
         type="hidden"
         name="locations"
-        :value="selectedLocationsString().join(',')"
+        :value="selectedIds.join(',')"
     />
 
     <div class="mt-6 sm:mt-8 md:mt-10 features uk-child-width-1-2 uk-child-width-auto@s uk-grid-small" uk-grid>
@@ -28,9 +28,9 @@
                 <div
                     class="location flex justify-center items-center cursor-pointer modal-subtitle shadow-card border-rounded p-2 sm:p-4 md:px-6 md:py-8"
                     :class="isLocationSelected('{{ $location->id }}') ? 'bg-primary text-white' : 'bg-white text-primary'"
-                    @click="toggleLocation('{{ $location->id }}', '{{ $location->latitude }}', '{{ $location->longitude }}', '{{ $location->location }}')"
+                    @click="toggleLocation('{{ $location->id }}', '{{ $location->latitude }}', '{{ $location->longitude }}', '{{ $location->name }}')"
                 >
-                    {{ Str::limit($location->location, 12) }}
+                    {{ Str::limit($location->name, 12) }}
                 </div>
             </div>
         @endforeach
@@ -40,17 +40,19 @@
 <script defer>
     function mapHandler() {
         return {
+            locale: '{{ app()->getLocale() }}',
             map: null,
-            markers: {}, // Store markers with keys as "lat,lng"
-            selectedLocations: [], // Track selected locations
+            markers: {},
+            selectedIds: [],
+            selectedLocations: [],
+            allLocations: @json($locations),
 
-            // Initialize the map
             initMap() {
                 this.map = L.map('map', {
-                    center: [0, 0],
-                    zoom: 2,
-                    minZoom: 2, // Prevent excessive zoom out
-                    maxZoom: 18, // Optional: Limit zooming in
+                    center: [7.8804, 98.3923],
+                    zoom: 8,
+                    minZoom: 2,
+                    maxZoom: 18,
                     attributionControl: false
                 });
 
@@ -58,6 +60,16 @@
                     maxZoom: 19,
                     attributionControl: false
                 }).addTo(this.map);
+
+                this.addAllMarkers();
+            },
+
+            addAllMarkers() {
+                this.allLocations.forEach(l => {
+                    if (this.validate(l.latitude, l.longitude)) {
+                        this.addMarker(l.latitude, l.longitude, l.name[this.locale]);
+                    }
+                });
             },
 
             toggleLocation(id, lat, lng, name) {
@@ -66,25 +78,20 @@
                 }
 
                 if (this.isLocationSelected(id)) {
-                    // Remove from selected locations
-                    this.selectedLocations = this.selectedLocations.filter(
-                        loc => loc.id !== id
-                    );
-                    this.removeMarker(lat, lng); // Remove marker
+                    this.selectedLocations = this.selectedLocations.filter(l => l.id !== id);
+                    this.removeMarker(lat, lng);
                 } else {
-                    // Add to selected locations
                     this.selectedLocations.push({ id, lat, lng, name });
-                    this.addMarker(lat, lng, name); // Add marker
-                    this.zoomToMarker(lat, lng); // Zoom to marker
+                    this.zoomToMarker(lat, lng);
                 }
             },
 
             isLocationSelected(id) {
-                return this.selectedLocations.some(loc => loc.id == id);
+                return this.selectedLocations.some(l => l.id == id);
             },
 
             zoomToMarker(lat, lng, zoomLevel = 15) {
-                this.map.flyTo([lat, lng], zoomLevel); // Smooth zoom animation
+                this.map.flyTo([lat, lng], zoomLevel);
             },
 
             addMarker(lat, lng, name) {
@@ -98,12 +105,11 @@
                     const marker = L.marker([lat, lng])
                         .addTo(this.map)
                         .bindTooltip(name, {
-                            permanent: true, // Tooltip is always visible
-                            direction: 'top', // Position the text above the marker
-                            className: 'marker-tooltip' // Optional: Custom styling
+                            permanent: true,
+                            direction: 'top',
+                            className: 'marker-tooltip'
                         });
 
-                    // Add click event to zoom to the marker
                     marker.on('click', () => {
                         this.zoomToMarker(lat, lng);
                     });
@@ -120,9 +126,9 @@
 
                 const key = `${lat},${lng}`;
                 if (this.markers[key]) {
-                    this.markers[key].unbindPopup(); // Ensure the popup is unbound
-                    this.map.removeLayer(this.markers[key]); // Remove marker from the map
-                    delete this.markers[key]; // Delete marker reference
+                    this.markers[key].unbindPopup();
+                    this.map.removeLayer(this.markers[key]);
+                    delete this.markers[key];
                 }
             },
 
@@ -138,16 +144,19 @@
                 return true;
             },
 
-            selectedLocationsString() {
-                return this.selectedLocations.map(loc => loc.name);
-            },
-
             resetLocations() {
                 Object.values(this.markers).forEach(marker => {
                     this.map.removeLayer(marker);
                 });
                 this.markers = {};
                 this.selectedLocations = [];
+            },
+
+            selectedLocationNames() {
+                return this.selectedIds.map(id => {
+                    const location = this.allLocations.find(l => l.id == id);
+                    return location ? location.name[this.locale] : '';
+                });
             },
         };
     }

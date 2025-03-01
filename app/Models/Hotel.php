@@ -22,8 +22,6 @@ class Hotel extends Model
         'slug',
         'description',
         'codename',
-        'location',
-        'location_description',
         'latitude',
         'longitude',
         'price',
@@ -39,8 +37,6 @@ class Hotel extends Model
 
     protected $translatable = [
         'description',
-        'location',
-        'location_description',
     ];
 
     protected $casts = [
@@ -159,6 +155,7 @@ class Hotel extends Model
     {
         if (!empty($locations)) {
             $locationsArray = explode(',', $locations);
+
             $query->whereHas('locations', function ($q) use ($locationsArray) {
                 $q->whereIn('locations.id', $locationsArray);
             });
@@ -206,7 +203,7 @@ class Hotel extends Model
 
     public function locations(): BelongsToMany
     {
-        return $this->belongsToMany(Type::class, 'hotel_location');
+        return $this->belongsToMany(Location::class, 'hotel_location');
     }
 
     public function likes(): HasMany

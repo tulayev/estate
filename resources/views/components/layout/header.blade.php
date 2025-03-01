@@ -58,7 +58,7 @@
                                             class="w-full"
                                         >
                                             <div class="{{ $mapView ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
-                                                {{ $primary->getTranslation('name', app()->getLocale()) }}
+                                                {{ $primary->name }}
                                             </div>
                                         </a>
                                         <a
@@ -66,7 +66,7 @@
                                             class="w-full"
                                         >
                                             <div class="{{ $mapView ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
-                                                {{ $resales->getTranslation('name', app()->getLocale()) }}
+                                                {{ $resales->name }}
                                             </div>
                                         </a>
                                         <a
@@ -74,7 +74,7 @@
                                             class="w-full"
                                         >
                                             <div class="{{ $mapView ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
-                                                {{ $rent->getTranslation('name', app()->getLocale()) }}
+                                                {{ $rent->name }}
                                             </div>
                                         </a>
                                         <a
@@ -82,7 +82,7 @@
                                             class="w-full"
                                         >
                                             <div class="{{ $mapView ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
-                                                {{ $land->getTranslation('name', app()->getLocale()) }}
+                                                {{ $land->name }}
                                             </div>
                                         </a>
                                     </div>

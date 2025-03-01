@@ -11,7 +11,7 @@ return [
     'features' => 'Характеристики',
     'description' => 'Описание',
     'code_name' => 'Кодовое название',
-    'location' => 'Местоположение',
+    'locations' => 'Местоположения',
     'latitude' => 'Широта',
     'longitude' => 'Долгота',
     'price' => 'Цена',

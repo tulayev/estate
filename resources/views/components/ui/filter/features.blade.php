@@ -45,7 +45,7 @@
         <input
             type="hidden"
             name="features"
-            :value="selectedFeatures.join(',')"
+            :value="selectedIds.join(',')"
         />
 
         <div class="uk-grid-small uk-child-width-1-2 uk-child-width-auto@s" uk-grid uk-height-match="target: > div > .feature">
@@ -75,28 +75,28 @@
     function features() {
         return {
             locale: '{{ app()->getLocale() }}',
-            selectedFeatures: [],
+            selectedIds: [],
             allFeatures: @json($features),
 
-            toggleFeature(feature) {
-                if (this.selectedFeatures.includes(feature)) {
-                    this.selectedFeatures = this.selectedFeatures.filter(f => f !== feature);
+            toggleFeature(id) {
+                if (this.selectedIds.includes(id)) {
+                    this.selectedIds = this.selectedIds.filter(f => f !== id);
                 } else {
-                    this.selectedFeatures.push(feature);
+                    this.selectedIds.push(id);
                 }
             },
 
-            isFeatureSelected(feature) {
-                return this.selectedFeatures.includes(feature);
+            isFeatureSelected(id) {
+                return this.selectedIds.includes(id);
             },
 
             resetFeatures() {
-                this.selectedFeatures = [];
+                this.selectedIds = [];
             },
 
             selectedFeatureNames() {
-                return this.selectedFeatures.map(id => {
-                    const feature = this.allFeatures.find(feature => feature.id == id);
+                return this.selectedIds.map(id => {
+                    const feature = this.allFeatures.find(f => f.id == id);
                     return feature ? feature.name[this.locale] : '';
                 });
             }
