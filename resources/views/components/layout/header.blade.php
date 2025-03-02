@@ -11,8 +11,8 @@
     <div class="relative">
         <div class="container">
             <nav
-                class="flex justify-between items-center pt-10"
-                :class="open ? 'pb-24' : 'pb-10'"
+                class="flex justify-between items-center pt-12"
+                :class="open ? 'pb-24' : 'pb-12'"
             >
                 <!-- Logo -->
                 <div class="animLeft">
@@ -29,7 +29,7 @@
                     class="{{ $mapView ? 'text-primary' : 'text-[#f4f4f4]' }} uk-visible@m uk-navbar-right"
                     uk-scrollspy="target: .animRight; cls: uk-animation-slide-right; delay: 300;"
                 >
-                    <ul class="flex uk-flex-middle uppercase" uk-grid>
+                    <ul class="flex items-center uppercase" uk-grid>
                         <li class="animRight">
                             <a
                                 href="{{ route('pages.listing.index') }}"
@@ -50,7 +50,7 @@
                                     x-transition:leave="transition transform ease-in duration-200"
                                     x-transition:leave-start="opacity-100 scale-100"
                                     x-transition:leave-end="opacity-0 scale-95"
-                                    class="absolute bg-transparent border-none mt-4 w-full left-0"
+                                    class="absolute bg-transparent border-none mt-6 w-full left-0"
                                 >
                                     <div class="container flex justify-between space-x-6">
                                         <a
@@ -113,41 +113,43 @@
                                 {{ __('general.nav_about') }}
                             </a>
                         </li>
-                    </ul>
-                    <!-- Locale Switcher -->
-                    <ul class="{{ $mapView ? '' : 'bg-opacity-10' }} animRight flex justify-center items-center rounded-[100px] bg-white relative w-[60px] md:ml-4 xl:ml-6 xxl:ml-[72px]">
-                        <li class="w-full xxl:w-1/2 flex justify-around font-black md:text-sm xl:text-base xxl:text-lg">
-                            <a href="#">
-                                {{ config()->get('locales')[app()->getLocale()] }}
-                            </a>
-                            <div
-                                class="rounded-[100px] p-0"
-                                uk-dropdown="pos: bottom-justify; animation: uk-animation-slide-top-small; duration: 400; mode: click"
-                            >
-                                <ul>
-                                    @foreach(config()->get('locales') as $k => $v)
-                                        @if($k !== app()->getLocale())
-                                            <li class="text-center whitespace-nowrap">
-                                                <a
-                                                    href="{{ route('change-locale', $k) }}"
-                                                    class="text-primary"
-                                                >
-                                                    {{ $v }}
-                                                </a>
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <a href="#" class="hidden">
-                                USD
-                            </a>
-                        </li>
-                        <li class="hidden">
-                            <img
-                                src="{{ asset('assets/images/icons/locale-icon.svg') }}"
-                                alt="locale-icon"
-                            />
+                        <!-- Locale Switcher -->
+                        <li class="animRight">
+                            <ul class="{{ $mapView ? '' : 'bg-opacity-10' }} flex justify-center items-center rounded-[100px] bg-white relative w-[60px]">
+                                <li class="w-full xxl:w-1/2 flex justify-around font-black md:text-sm xl:text-base xxl:text-lg">
+                                    <a href="#">
+                                        {{ config()->get('locales')[app()->getLocale()] }}
+                                    </a>
+                                    <div
+                                        class="rounded-[100px] p-0"
+                                        uk-dropdown="pos: bottom-justify; animation: uk-animation-slide-top-small; duration: 400; mode: click"
+                                    >
+                                        <ul>
+                                            @foreach(config()->get('locales') as $k => $v)
+                                                @if($k !== app()->getLocale())
+                                                    <li class="text-center whitespace-nowrap">
+                                                        <a
+                                                            href="{{ route('change-locale', $k) }}"
+                                                            class="text-primary"
+                                                        >
+                                                            {{ $v }}
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    <a href="#" class="hidden">
+                                        USD
+                                    </a>
+                                </li>
+                                <li class="hidden">
+                                    <img
+                                        src="{{ asset('assets/images/icons/locale-icon.svg') }}"
+                                        alt="locale-icon"
+                                    />
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

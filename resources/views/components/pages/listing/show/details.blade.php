@@ -77,7 +77,7 @@
                         uk-lightbox="animation: fade"
                     >
                         @if ($hotel->gallery)
-                            @foreach($hotel->gallery as $index => $image)
+                            @foreach($hotel->gallery as $image)
                                 <div>
                                     <a href="{{ ImagePathResolver::resolve($image) }}">
                                         <img
@@ -86,15 +86,10 @@
                                             class="border-rounded"
                                         />
                                     </a>
-                                    <div class="uk-position-center uk-panel">
-                                        <h3 class="modal-subtitle">
-                                            {{ $index + 1 }}
-                                        </h3>
-                                    </div>
                                 </div>
                             @endforeach
                         @elseif ($hotel->gallery_url)
-                            @foreach(Helper::splitString($hotel->gallery_url, ';') as $index => $image)
+                            @foreach(Helper::splitString($hotel->gallery_url, ';') as $image)
                                 <div>
                                     <a href="{{ $image }}">
                                         <img
@@ -103,11 +98,6 @@
                                             class="border-rounded"
                                         />
                                     </a>
-                                    <div class="uk-position-center uk-panel">
-                                        <h3 class="modal-subtitle">
-                                            {{ $index + 1 }}
-                                        </h3>
-                                    </div>
                                 </div>
                             @endforeach
                         @endif
@@ -149,7 +139,7 @@
 
                         <div>
                             <p>
-                                🛏️ {{ $hotel->bedrooms }} bedrooms
+                                🛏️ {{ $hotel->bedrooms }} {{ __('general.filter_popup_bedrooms') }}
                             </p>
                         </div>
                         <div>

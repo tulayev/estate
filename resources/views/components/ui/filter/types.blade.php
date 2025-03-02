@@ -28,7 +28,16 @@
         :value="selectedTagIds.join(',')"
     />
 
-    <div class="uk-child-width-1-2 uk-child-width-1-3@s uk-grid-small mt-6 sm:mt-8 md:mt-12" uk-grid>
+    <div class="uk-child-width-1-2 uk-child-width-expand@s uk-grid-small mt-6 sm:mt-8 md:mt-12" uk-grid>
+        <div>
+            <div
+                class="modal-subtitle random-bg-color cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
+                :class="isTypeSelected('{{ $rent->id }}') ? 'hidden' : ''"
+                @click="addType('{{ $rent->id }}')"
+            >
+                {{ $rent->name }}
+            </div>
+        </div>
         <div>
             <div
                 class="modal-subtitle random-bg-color cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
@@ -56,15 +65,6 @@
                 {{ $land->name }}
             </div>
         </div>
-        <div>
-            <div
-                class="modal-subtitle random-bg-color cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
-                :class="isTagSelected('{{ $rent->id }}') ? 'hidden' : ''"
-                @click="addTag('{{ $rent->id }}')"
-            >
-                {{ $rent->name }}
-            </div>
-        </div>
     </div>
 </div>
 
@@ -75,8 +75,9 @@
             selectedTypeIds: [],
             selectedTagIds: [],
             allTypeIds: [
+                @json($rent),
                 @json($primary),
-                @json($resales)
+                @json($resales),
             ],
             allTagIds: [
                 @json($land)

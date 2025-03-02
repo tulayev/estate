@@ -33,10 +33,10 @@ class AppServiceProvider extends ServiceProvider
         $tags = Tag::all();
         $features = Feature::all();
         $maxPrice = Hotel::getMaxPrice();
+        $rent = $types->find(Constants::SYSTEM_TYPE_IDS['rent']);
         $primary = $types->find(Constants::SYSTEM_TYPE_IDS['primary']);
         $resales = $types->find(Constants::SYSTEM_TYPE_IDS['resales']);
         $land = $tags->find(Constants::SYSTEM_TAG_IDS['land']);
-        $rent = $types->find(Constants::SYSTEM_TYPE_IDS['rent']);
 
         View::composer([
                 'components.layout.listing.search',
@@ -49,10 +49,10 @@ class AppServiceProvider extends ServiceProvider
                     ->with('features', $features)
                     ->with('locations', $locations)
                     ->with('maxPrice', $maxPrice)
+                    ->with('rent', $rent)
                     ->with('primary', $primary)
                     ->with('resales', $resales)
-                    ->with('land', $land)
-                    ->with('rent', $rent);
+                    ->with('land', $land);
         });
 
         View::composer('components.layout.header', function ($view) use ($types) {
