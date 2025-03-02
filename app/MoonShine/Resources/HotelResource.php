@@ -137,8 +137,6 @@ class HotelResource extends ModelResource
 
                 Text::make(__('Moonshine/Objects/HotelResources.code_name'), 'codename'),
 
-                TinyMce::make(__('Moonshine/Objects/HotelResources.location_description'), 'location_description'),
-
                 Number::make(__('Moonshine/Objects/HotelResources.latitude'), 'latitude')
                     ->step(0.000001),
 

@@ -8,8 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Location;
 
 use MoonShine\Attributes\Icon;
+use MoonShine\Fields\Number;
+use MoonShine\Fields\Relationships\BelongsToMany;
+use MoonShine\Fields\Text;
+use MoonShine\Fields\TinyMce;
 use MoonShine\Resources\ModelResource;
-use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
 use MoonShine\Fields\Field;
 use MoonShine\Components\MoonShineComponent;
@@ -17,7 +20,7 @@ use MoonShine\Components\MoonShineComponent;
 /**
  * @extends ModelResource<Location>
  */
-#[Icon('heroicons.circle-stack')]
+#[Icon('heroicons.map-pin')]
 class LocationResource extends ModelResource
 {
     protected string $model = Location::class;
@@ -28,12 +31,52 @@ class LocationResource extends ModelResource
     /**
      * @return list<MoonShineComponent|Field>
      */
-    public function fields(): array
+    public function indexFields(): array
     {
         return [
-            Block::make([
-                ID::make()->sortable(),
-            ]),
+            ID::make()->sortable(),
+
+            Text::make('Name', 'name')->sortable(),
+
+            BelongsToMany::make('Objects', 'hotels', 'title', resource: new HotelResource())
+                ->inLine('|'),
+        ];
+    }
+
+    public function detailFields(): array
+    {
+        return [
+            ID::make(),
+
+            Text::make('Name', 'name'),
+
+            Text::make('Description', 'description'),
+
+            Number::make('Latitude', 'latitude'),
+
+            Number::make('Longitude', 'longitude'),
+        ];
+    }
+
+    public function formFields(): array
+    {
+        return [
+            ID::make()->sortable(),
+
+            Text::make('Name', 'name')
+                ->required()
+                ->sortable(),
+
+            TinyMce::make('Description', 'description')
+                ->required(),
+
+            Number::make('Latitude', 'latitude')
+                ->step(0.000001)
+                ->required(),
+
+            Number::make('Longitude', 'longitude')
+                ->step(0.000001)
+                ->required(),
         ];
     }
 
@@ -45,6 +88,11 @@ class LocationResource extends ModelResource
      */
     public function rules(Model $item): array
     {
-        return [];
+        return [
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'latitude' => 'required|numeric|between:-90,90',
+            'longitude' => 'required|numeric|between:-180,180',
+        ];
     }
 }

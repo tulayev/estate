@@ -9,6 +9,7 @@ use App\Helpers\Constants;
 use App\MoonShine\Resources\FeatureResource;
 use App\MoonShine\Resources\FloorResource;
 use App\MoonShine\Resources\HotelResource;
+use App\MoonShine\Resources\LocationResource;
 use App\MoonShine\Resources\MoonshineUserResource;
 use App\MoonShine\Resources\TagResource;
 use App\MoonShine\Resources\TopicCategoryResource;
@@ -86,6 +87,14 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
             MenuItem::make(
                 static fn() => __('Moonshine/Features/Features.Features'),
                 new FeatureResource()
+            )
+                ->canSee(function (Request $request) {
+                    return $request->user('moonshine')?->moonshine_user_role_id === Constants::ROLES['Admin'];
+                }),
+
+            MenuItem::make(
+                static fn() => 'Locations',
+                new LocationResource()
             )
                 ->canSee(function (Request $request) {
                     return $request->user('moonshine')?->moonshine_user_role_id === Constants::ROLES['Admin'];
