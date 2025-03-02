@@ -23,7 +23,7 @@
     />
     <ul
         x-show="open && filteredTypes.length > 0"
-        class="px-3 py-4 space-y-2 absolute rounded-[14px] top-16 bg-white border border-borderColor w-full shadow-lg z-50 max-h-48 overflow-auto"
+        class="px-3 py-4 space-y-2 absolute border-rounded top-16 bg-white border border-borderColor w-full shadow-lg z-50 max-h-48 overflow-auto"
     >
         <template
             x-for="type in filteredTypes"
@@ -31,8 +31,8 @@
         >
             <li
                 @click="toggleSelection(type)"
-                class="random-bg-color px-2 py-4 rounded-[14px] cursor-pointer font-black text-center text-primary hover:bg-primary hover:text-white"
-                :class="selectedIds.includes(type.id) ? 'bg-primary text-white' : ''"
+                class="random-bg-color px-2 py-4 border-rounded cursor-pointer font-black text-center text-white hover:bg-primary"
+                :class="selectedIds.includes(type.id) ? 'bg-primary' : ''"
             >
                 <span x-text="type.name[locale]"></span>
             </li>

@@ -233,7 +233,7 @@ class Hotel extends Model
 
     public function getFormattedPriceAttribute(): string
     {
-        return number_format($this->price, 3);
+        return number_format($this->price, 2, '.', ',');
     }
 
     public function getIsLikedAttribute(): bool

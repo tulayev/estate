@@ -101,12 +101,12 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.instagram.com/ignatev_estate.phuket/" target="_blank">
+                                    <a href="https://www.instagram.com/ignatev_estate" target="_blank">
                                         <img src="{{ asset('assets/images/icons/instagram.svg') }}" alt="instagram" />
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.facebook.com/Istategroup" target="_blank">
+                                    <a href="https://www.facebook.com/share/1EHwWjnqSo" target="_blank">
                                         <img src="{{ asset('assets/images/icons/facebook.svg') }}" alt="facebook" />
                                     </a>
                                 </li>
@@ -146,12 +146,12 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.instagram.com/ignatev_estate.phuket/" target="_blank">
+                                    <a href="https://www.instagram.com/ignatev_estate" target="_blank">
                                         <img src="{{ asset('assets/images/icons/instagram.svg') }}" alt="instagram" />
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.facebook.com/Istategroup" target="_blank">
+                                    <a href="https://www.facebook.com/share/1EHwWjnqSo" target="_blank">
                                         <img src="{{ asset('assets/images/icons/facebook.svg') }}" alt="facebook" />
                                     </a>
                                 </li>

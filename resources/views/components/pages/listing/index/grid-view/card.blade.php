@@ -3,18 +3,52 @@
 ])
 
 @if ($hotel)
-    <div class="relative">
+    <div class="relative group">
         <a
             href="{{ route('pages.listing.show', $hotel->slug) }}"
             class="absolute inset-0 z-10"
         ></a>
 
-        <div
-            class="relative bg-cover bg-center bg-no-repeat flex flex-col justify-between border-rounded p-3 h-[220px] md:h-[300px] hover:shadow-xl transition-shadow duration-300"
-            style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}');"
-        >
+        <div class="relative bg-cover bg-center bg-no-repeat flex flex-col justify-between border-rounded p-3 h-[220px] md:h-[300px] hover:shadow-xl transition-shadow duration-300">
+            <!-- Swiper Slider (Initially Hidden) -->
+            @if ($hotel->gallery || $hotel->gallery_url)
+                <div class="swiper listing-slider absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div class="swiper-wrapper">
+                        @if ($hotel->gallery)
+                            @foreach($hotel->gallery as $image)
+                                <div class="swiper-slide">
+                                    <img
+                                        src="{{ ImagePathResolver::resolve($image) }}"
+                                        class="w-full h-full object-cover border-rounded"
+                                        alt="{{ $hotel->title }}"
+                                    />
+                                </div>
+                            @endforeach
+                        @elseif ($hotel->gallery_url)
+                            @foreach(Helper::splitString($hotel->gallery_url, ';') as $image)
+                                <div class="swiper-slide">
+                                    <img
+                                        src="{{ $image }}"
+                                        class="w-full h-full object-cover border-rounded"
+                                        alt="{{ $hotel->title }}"
+                                    />
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+                    <!-- Prev & Next Buttons -->
+                    <div class="swiper-button-prev z-20"></div>
+                    <div class="swiper-button-next z-20"></div>
+                </div>
+            @endif
+            <!-- Static Background (Visible Until Hover) -->
+            <div
+                class="absolute inset-0 bg-cover bg-center bg-no-repeat border-rounded transition-opacity duration-500 group-hover:opacity-0"
+                style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}');"
+            ></div>
+            <!-- Gradient Overlay -->
             <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
-            <!-- Image Top -->
+            <!-- Tags -->
             <div class="flex justify-between items-center z-20">
                 @if ($hotel->tags)
                     <div class="flex items-center space-x-2">
@@ -41,7 +75,7 @@
                         @click.stop="toggleLike"
                     >
                         <img
-                            :src="isLiked ? '{{ asset('assets/images/icons/heart-blue.svg') }}' : '{{ asset('assets/images/icons/heart.svg') }}'"
+                            :src="isLiked ? '{{ asset('assets/images/icons/heart-red.svg') }}' : '{{ asset('assets/images/icons/heart.svg') }}'"
                             alt="like"
                         />
                     </button>
@@ -63,7 +97,7 @@
                 </div>
                 <div>
                     <span class="text-white sm:font-bold">
-                        ${{ number_format($hotel->price, 2, '.', ',') }}
+                        ฿{{ $hotel->formatted_price }}
                     </span>
                 </div>
             </div>
@@ -71,9 +105,11 @@
         <!-- Bottom -->
         <div class="shadow-card border-rounded mt-[-54px] sm:mt-[-44px] px-3 sm:px-5 pt-[68px] pb-4 sm:pb-6 hover:shadow-lg transition-shadow duration-300 z-20">
             <div class="flex justify-between uppercase text-[#505050] text-sm sm:font-bold md:font-black">
-                <div>
-                    <p>📍 {{ Str::limit($hotel->location, 20) }}</p>
-                </div>
+                @if ($hotel->locations && $hotel->locations->first())
+                    <div>
+                        <p>📍 {{ Str::limit($hotel->locations->first()->name, 20) }}</p>
+                    </div>
+                @endif
                 <div class="flex justify-between space-x-6">
                     <p>🛏️ {{ $hotel->bedrooms }}</p>
                     <p>🛁 {{ $hotel->bathrooms }}</p>

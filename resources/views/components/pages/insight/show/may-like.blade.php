@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <div class="mt-4 md:mt-8 lg:mt-12 xl:mt-16 swiper">
+        <div class="swiper card-slider mt-4 md:mt-8 lg:mt-12 xl:mt-16">
             <div class="swiper-wrapper">
                 @foreach($similarTopics as $topic)
                     <div class="swiper-slide">

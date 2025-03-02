@@ -37,7 +37,7 @@
                 />
                 <ul
                     x-show="open"
-                    class="px-3 py-4 space-y-2 absolute rounded-[14px] top-full bg-white border border-borderColor w-full shadow-lg z-50 max-h-48 overflow-auto"
+                    class="px-3 py-4 space-y-2 absolute border-rounded top-full bg-white border border-borderColor w-full shadow-lg z-50 max-h-48 overflow-auto"
                 >
                     <li><a href="#">Item 1</a></li>
                 </ul>

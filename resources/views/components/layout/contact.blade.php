@@ -25,16 +25,16 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.instagram.com/ignatev_estate.phuket/" target="_blank">
+                        <a href="https://www.instagram.com/ignatev_estate" target="_blank">
                             <img
                                 src="{{ asset('assets/images/icons/instagram.svg') }}"
                                 alt="instagram"
                             />
                         </a>
                     </li>
-                   
+
                     <li>
-                        <a href="https://www.facebook.com/Istategroup" target="_blank">
+                        <a href="https://www.facebook.com/share/1EHwWjnqSo" target="_blank">
                             <img
                                 src="{{ asset('assets/images/icons/facebook.svg') }}"
                                 alt="facebook"
@@ -49,7 +49,7 @@
                             />
                         </a>
                     </li>
-                    
+
                     <li>
                         <a href="mailto:info@ignatev-estate.com">
                             <img
@@ -89,14 +89,14 @@
                 <div>
                     <div class="form-input-anim">
                         <input
-                            type="text"
-                            name="text"
+                            type="email"
+                            name="email"
                             class="input w-full px-[30px] border-rounded focus:outline-none"
                             autocomplete="off"
                             required
                         />
                         <label for="text" class="label-name">
-                            <span class="content-name">{{ __('general.form_number') }}</span>
+                            <span class="content-name">{{ __('general.form_email') }}</span>
                         </label>
                     </div>
                 </div>

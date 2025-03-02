@@ -47,7 +47,7 @@
                 type="submit"
             >
                 <img
-                    class="w-3 lg:w-4 xl:w-5"
+                    class="w-2 lg:w-4"
                     src="{{ asset('assets/images/icons/search.svg') }}"
                     alt="search"
                 />

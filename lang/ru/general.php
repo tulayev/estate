@@ -15,6 +15,7 @@ return [
     'contact_us' => 'обратная связь',
     'form_name' => 'Введите ваше имя',
     'form_number' => 'Введите ваш номер телефона',
+    'form_email' => 'Введите ваш e-mail',
     'form_message' => 'Сообщение',
     'form_submit' => 'Отправить',
 

@@ -12,7 +12,7 @@
         </button>
     </div>
 
-    <div class="p-2 mt-6 md:mt-12 xl:mt-24 swiper">
+    <div class="swiper card-slider p-2 mt-6 md:mt-12 xl:mt-24">
         <div class="swiper-wrapper">
             @foreach($similarHotels as $hotel)
                 <div class="swiper-slide">

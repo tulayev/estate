@@ -15,6 +15,7 @@ return [
     'contact_us' => 'contact us',
     'form_name' => 'Enter your name',
     'form_number' => 'Enter your number',
+    'form_email' => 'Enter your e-mail',
     'form_message' => 'Message',
     'form_submit' => 'Send',
 

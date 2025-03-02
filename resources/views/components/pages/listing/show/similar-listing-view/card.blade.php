@@ -34,16 +34,18 @@
                         {{ Str::limit($hotel->title, 10) }}
                     </p>
                     <p>
-                       ${{ number_format($hotel->price, 2, '.', ',') }}
+                       ฿{{ $hotel->formatted_price }}
                     </p>
                 </div>
             </div>
             <!-- Bottom -->
             <div class="shadow-card border-rounded mt-[-54px] sm:mt-[-44px] px-3 sm:px-5 pt-[68px] pb-4 sm:pb-6">
                 <div class="flex justify-between uppercase text-[#505050] text-xs  sm:font-bold md:font-black">
-                    <div>
-                        <p>📍 {{ Str::limit($hotel->location, 10) }}</p>
-                    </div>
+                    @if ($hotel->locations && $hotel->locations->first())
+                        <div>
+                            <p>📍 {{ Str::limit($hotel->locations->first()->name, 10) }}</p>
+                        </div>
+                    @endif
                     <div class="flex justify-between space-x-6">
                         <p>🛏️ {{ $hotel->bedrooms }}</p>
                         <p>🛁 {{ $hotel->bathrooms }}</p>

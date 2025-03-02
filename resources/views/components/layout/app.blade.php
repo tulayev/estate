@@ -6,12 +6,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>{{ env('APP_NAME', 'Estate') }}</title>
     <link rel="icon" href="{{ asset('assets/images/icons/logo-icon.svg') }}">
-    <!-- Flowbite css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.0/flowbite.min.css">
     <!-- NoUISlider css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider/dist/nouislider.min.css" />
     <!-- Swiper css -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- Leaflet css -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
     <!-- Uikit css -->
@@ -25,7 +23,7 @@
     <!-- NoUISlider js -->
     <script defer src="https://cdn.jsdelivr.net/npm/nouislider/dist/nouislider.min.js"></script>
     <!-- Swiper js -->
-    <script defer src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script defer src="{{ asset('assets/js/swiper.js') }}"></script>
     <!-- Leaflet js -->
     <script defer src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>

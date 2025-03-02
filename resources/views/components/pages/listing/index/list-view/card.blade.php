@@ -31,7 +31,7 @@
                             @click="toggleLike"
                         >
                             <img
-                                :src="isLiked ? '{{ asset('assets/images/icons/heart-blue.svg') }}' : '{{ asset('assets/images/icons/heart.svg') }}'"
+                                :src="isLiked ? '{{ asset('assets/images/icons/heart-red.svg') }}' : '{{ asset('assets/images/icons/heart.svg') }}'"
                                 alt="like"
                             />
                         </button>
@@ -50,7 +50,7 @@
                         </div>
                         <div>
                             <span class="text-white sm:font-bold">
-                                ${{ number_format($hotel->price, 2, '.', ',') }}
+                                ฿{{ $hotel->formatted_price }}
                             </span>
                         </div>
                     </div>
@@ -74,7 +74,9 @@
                             </p>
                         </div>
                         <div class="flex space-x-4 sm:font-bold xl:font-black">
-                            <p>📍 {{ $hotel->location }}</p>
+                            @if ($hotel->locations && $hotel->locations->first())
+                                <p>📍 {{ $hotel->locations->first()->name }}</p>
+                            @endif
                             <p>🛏️ {{ $hotel->bedrooms }}</p>
                             <p>🛁 {{ $hotel->bathrooms }}</p>
                         </div>

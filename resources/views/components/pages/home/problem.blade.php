@@ -4,11 +4,10 @@ use App\Helpers\Enums\TopicType;
 
 <section class="section">
     <div class="container">
-        <div id="carousel" class="relative w-full" data-carousel="slide">
-            <div class="relative h-56 rounded-lg md:h-[50rem] overflow-scroll md:overflow-hidden">
-
-                <!-- First slide -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+        <!-- Slider -->
+        <div class="swiper home-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
                     <div
                         class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[500px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
                         style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
@@ -41,8 +40,7 @@ use App\Helpers\Enums\TopicType;
                         </div>
                     </div>
                 </div>
-                <!-- Second slide -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <div class="swiper-slide">
                     <div
                         class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[500px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
                         style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
@@ -75,8 +73,7 @@ use App\Helpers\Enums\TopicType;
                         </div>
                     </div>
                 </div>
-                <!-- Third slide -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <div class="swiper-slide">
                     <div
                         class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[500px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
                         style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
@@ -109,8 +106,7 @@ use App\Helpers\Enums\TopicType;
                         </div>
                     </div>
                 </div>
-                <!-- Fourth slide -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <div class="swiper-slide">
                     <div
                         class="flex border-rounded relative px-5 sm:px-10 xl:px-20 h-[500px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
                         style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
@@ -120,7 +116,7 @@ use App\Helpers\Enums\TopicType;
                             <h2 class="section-title-white text-lg sm:text-2xl xl:text-3xl">
                                 {{ __('home/problem.slide_4_h2') }}
                             </h2>
-                            <p class="text-white text-sm lg:text-base xl:text-xl mt-4 sm:mt-5 lg:mt-10 xl:mt-20">
+                            <p class="text-white text-sm lg:text-base xl:text-xl mt-4 sm:mt-5 lg:mt-5">
                                 {!! __('home/problem.slide_4_p') !!}
                             </p>
                             <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-4 mt-4 sm:mt-8 lg:mt-10 xl:mt-20">
@@ -144,21 +140,8 @@ use App\Helpers\Enums\TopicType;
                     </div>
                 </div>
             </div>
-            <!-- Slider controls -->
-            <button type="button" class="absolute top-1/2 left-0 z-30 px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                <span class="inline-flex items-center justify-center w-10 h-10 bg-gray-800/30 rounded-full group-hover:bg-gray-800/50">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                    </svg>
-                </span>
-            </button>
-            <button type="button" class="absolute top-1/2 right-0 z-30 px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                <span class="inline-flex items-center justify-center w-10 h-10 bg-gray-800/30 rounded-full group-hover:bg-gray-800/50">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </span>
-            </button>
+            <!-- Swiper Pagination -->
+            <div class="swiper-pagination"></div>
         </div>
 
         <!-- Cards -->
@@ -248,5 +231,3 @@ use App\Helpers\Enums\TopicType;
         @endif
     </div>
 </section>
-
-<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
