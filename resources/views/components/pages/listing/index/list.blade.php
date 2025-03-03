@@ -58,6 +58,7 @@
                         x-data="hotelPagination()"
                     >
                         <button
+                            id="seeMore"
                             x-show="hasMorePages"
                             @click="loadMore"
                             class="bg-white text-primary rounded-[100px] modal-subtitle py-5 w-full hover:text-white hover:bg-primary"

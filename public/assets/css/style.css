@@ -57,6 +57,13 @@ a:hover {
     }
 }
 
+/* Lazy load background images */
+.lazy-bg {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 /* Uikit Modal */
 .uk-modal,
 .uk-modal-body {
