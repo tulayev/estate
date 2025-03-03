@@ -55,18 +55,46 @@ class Hotel extends Model
         return $query->where('ie_verified', true);
     }
 
-    public function scopeLocations(Builder $query): Builder
+    public function scopeFullSearch(Builder $query, $keyword): Builder
     {
-        return $query->select('location', 'longitude', 'latitude')->distinct();
-    }
+        // Split input by multiple possible separators: comma, space, semicolon, or pipe (|)
+        $keywords = preg_split('/[\s,;|]+/', $keyword, -1, PREG_SPLIT_NO_EMPTY);
+        $locale = app()->getLocale();
 
-    public function scopeSearchByTitle(Builder $query, $keyword): Builder
-    {
-        if (!empty($keyword)) {
-            $query->whereRaw('LOWER(title) LIKE ?', ['%' . strtolower($keyword) . '%']);
+        if (empty($keywords)) {
+            return $query;
         }
 
-        return $query;
+        return $query->select('hotels.*')
+            ->leftJoin('hotel_tag', 'hotel_tag.hotel_id', '=', 'hotels.id')
+            ->leftJoin('tags', 'tags.id', '=', 'hotel_tag.tag_id')
+            ->leftJoin('hotel_type', 'hotel_type.hotel_id', '=', 'hotels.id')
+            ->leftJoin('types', 'types.id', '=', 'hotel_type.type_id')
+            ->leftJoin('hotel_feature', 'hotel_feature.hotel_id', '=', 'hotels.id')
+            ->leftJoin('features', 'features.id', '=', 'hotel_feature.feature_id')
+            ->leftJoin('hotel_location', 'hotel_location.hotel_id', '=', 'hotels.id')
+            ->leftJoin('locations', 'locations.id', '=', 'hotel_location.location_id')
+            ->where(function ($q) use ($keywords, $locale) {
+                foreach ($keywords as $word) {
+                    $word = strtolower(trim($word));
+
+                    $q->where(function ($subQuery) use ($word, $locale) {
+                        // 1. Search by full match (LIKE)
+                        $subQuery->whereRaw("LOWER(hotels.title) LIKE LOWER(?)", ["%{$word}%"])
+                            ->orWhereRaw("SOUNDEX(LOWER(hotels.title)) = SOUNDEX(LOWER(?))", [$word])
+                            ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(tags.name, '$.$locale'))) LIKE LOWER(?)", ["%{$word}%"])
+                            ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(types.name, '$.$locale'))) LIKE LOWER(?)", ["%{$word}%"])
+                            ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(features.name, '$.$locale'))) LIKE LOWER(?)", ["%{$word}%"])
+                            ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(locations.name, '$.$locale'))) LIKE LOWER(?)", ["%{$word}%"])
+                            // 2. Search by SOUNDEX (typos)
+                            ->orWhereRaw("SOUNDEX(LOWER(JSON_UNQUOTE(JSON_EXTRACT(tags.name, '$.$locale')))) = SOUNDEX(LOWER(?))", [$word])
+                            ->orWhereRaw("SOUNDEX(LOWER(JSON_UNQUOTE(JSON_EXTRACT(types.name, '$.$locale')))) = SOUNDEX(LOWER(?))", [$word])
+                            ->orWhereRaw("SOUNDEX(LOWER(JSON_UNQUOTE(JSON_EXTRACT(features.name, '$.$locale')))) = SOUNDEX(LOWER(?))", [$word])
+                            ->orWhereRaw("SOUNDEX(LOWER(JSON_UNQUOTE(JSON_EXTRACT(locations.name, '$.$locale')))) = SOUNDEX(LOWER(?))", [$word]);
+                    });
+                }
+            })
+            ->distinct();
     }
 
     public function scopeFilterByPrice(Builder $query, $min = null, $max = null): Builder
