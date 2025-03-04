@@ -18,7 +18,7 @@
                         href="{{ route('pages.listing.index') }}"
                         class="hover:text-secondary"
                     >
-                        listings
+                        {{__('listing/index/main.title')}}
                     </a>
                 @endif
                 | {{ $hotel->title }}
