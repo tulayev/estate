@@ -13,6 +13,13 @@
                     >
                         {{ $hotel->types->first()->name }}
                     </a>
+                @else
+                    <a
+                        href="{{ route('pages.listing.index') }}"
+                        class="hover:text-secondary"
+                    >
+                        {{__('listing/index/main.title')}}
+                    </a>
                 @endif
                 | {{ $hotel->title }}
             </h2>
