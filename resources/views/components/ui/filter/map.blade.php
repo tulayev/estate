@@ -22,7 +22,7 @@
         :value="selectedIds.join(',')"
     />
 
-    <div class="mt-6 sm:mt-8 md:mt-10 features uk-child-width-1-2 uk-child-width-auto@s uk-grid-small" uk-grid>
+    <div class="mt-6 sm:mt-8 md:mt-10 locations uk-child-width-1-2 uk-child-width-auto@s uk-grid-small" uk-grid>
         @foreach($locations as $location)
             <div>
                 <div
@@ -62,6 +62,10 @@
                 }).addTo(this.map);
 
                 this.addAllMarkers();
+            },
+
+            reverseGeoJsonCoordinates(coordinates) {
+                return coordinates.map(c => [c[1], c[0]]);
             },
 
             addAllMarkers() {

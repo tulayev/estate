@@ -38,7 +38,6 @@ Route::prefix('listings')->group(function () {
     Route::get('/{slug}', [ListingController::class, 'show'])->name('pages.listing.show');
     Route::post('/{hotelId}/like', [ListingController::class, 'like'])->name('hotel.like');
     Route::post('/search/count', [ListingController::class, 'hotelsCount'])->name('hotels.search.count');
-    Route::get('/search/locations', [ListingController::class, 'searchLocations'])->name('hotels.search.locations');
 });
 
 Route::get('/club', [ClubController::class, 'index'])->name('pages.club.index');

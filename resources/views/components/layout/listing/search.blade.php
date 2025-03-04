@@ -148,14 +148,14 @@
 
         async fetchResultsCount() {
             try {
-                const response = await axios.post(this.API_URI, this.filters, {
+                const { data } = await axios.post(this.API_URI, this.filters, {
                     headers: {
                         'Content-Type': 'application/json',
                         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
                     },
                 });
 
-                this.buttonText = `${this.buttonTextsLocalized[this.locale]} (${response.data.count === 0 ? '' : response.data.count})`;
+                this.buttonText = `${data.count === 0 ? this.buttonTextsLocalized[this.locale] : `${this.buttonTextsLocalized[this.locale]} (${data.count})`}`;
             } catch (error) {
                 console.error('Error updating results count:', error);
                 this.buttonText = 'Error loading results';
@@ -163,20 +163,26 @@
         },
 
         updateFilters() {
-            this.filters = Object.fromEntries(new FormData(document.getElementById('filterForm')).entries());
-            this.fetchResultsCount();
+            const filterForm = document.getElementById('filterForm');
+
+            if (filterForm) {
+                this.filters = Object.fromEntries(new FormData(filterForm).entries());
+                this.fetchResultsCount();
+            }
         },
 
         init() {
             document.addEventListener('DOMContentLoaded', () => {
-                this.updateFilters();
+                this.fetchResultsCount();
                 // Add event listeners to filter inputs
                 const observer = new MutationObserver(mutations => {
                     mutations.forEach(() => {
                         this.updateFilters();
                     });
                 });
+
                 const formInputs = document.querySelectorAll('#filterForm input[type="hidden"]');
+
                 formInputs.forEach(input => {
                     observer.observe(input, { attributes: true, attributeFilter: ['value'] });
                 });

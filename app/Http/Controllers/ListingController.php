@@ -121,29 +121,15 @@ class ListingController extends Controller
 
     public function hotelsCount(Request $request): JsonResponse
     {
+        if (empty($request->all())) {
+            return response()
+                ->json(['count' => 0]);
+        }
+
         $count = $this->applyFilters($request)->count();
 
         return response()
             ->json(['count' => $count]);
-    }
-
-    public function searchLocations(Request $request): JsonResponse
-    {
-        $locale = app()->getLocale();
-        $query = $request->get('q', '');
-        $locations = Hotel::locations();
-
-        if ($query) {
-            $locations = $locations->whereRaw(
-                "LOWER(JSON_UNQUOTE(JSON_EXTRACT(location, '$.\"{$locale}\"'))) LIKE ?",
-                ['%' . strtolower($query) . '%']
-            );
-        }
-
-        $locations = $locations->limit(10)->get();
-
-        return response()
-            ->json($locations);
     }
 
     private function applySearch(Request $request)
