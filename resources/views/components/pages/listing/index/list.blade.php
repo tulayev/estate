@@ -4,7 +4,7 @@
 ])
 
 <section class="section">
-    <div class="container pb-10 sm:pb-24">
+    <div class="container">
         <div class="w-full flex justify-between">
             <div class="collapse-title">
                 {{ __('listing/index/list.for_sale_off_plan') }}

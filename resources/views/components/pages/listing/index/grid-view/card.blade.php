@@ -78,7 +78,7 @@
                 </div>
             </div>
             <!-- Image Bottom -->
-            <div class="flex justify-between items-center uppercase text-xs z-20 relative">
+            <div class="flex justify-between items-center uppercase text-xs z-20 pb-2 relative">
                 <div class="flex items-center space-x-2">
                     @if ($hotel->ie_verified)
                         <img

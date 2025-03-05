@@ -4,7 +4,17 @@
 
 <section class="section">
     <div class="container">
-        @if (!empty($hotel->floors))
+        @php
+            $validFloors = $hotel->floors->filter(function($floor) {
+                return !($floor->floor === 'N/A' 
+                && $floor->image === 'N/A'
+                && $floor->bedrooms == 0 
+                && $floor->bathrooms == 0 
+                && $floor->price == 0.000);
+            });
+        @endphp
+
+        @if ($validFloors->isNotEmpty())
             <h2 class="section-title">
                 {{ __('listing/show/floor.title') }}
             </h2>
@@ -12,47 +22,56 @@
             <div class="mt-6 md:mt-12 xl:mt-24">
                 <div class="border-rounded bg-white shadow-card">
                     <ul class="uk-nav-default uk-nav-parent-icon" uk-nav="multiple: false">
-                        @php($floors = $hotel->floors->sortBy('floor'))
-                        @foreach($floors as $floor)
+                        @foreach($validFloors->sortBy('floor') as $floor)
                             <li class="uk-parent px-4">
                                 <a href="#">
                                     <div class="flex flex-wrap w-[90%] space-x-2 sm:space-x-4 text-primary text-xs sm:text-sm md:text-lg xl:text-xl sm:font-bold xl:font-black">
-                                        <div>
-                                            <p class="shadow-card border-rounded p-2 sm:px-4 sm:py-2">
-                                                {{ $floor->floor }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="shadow-card border-rounded p-2 sm:px-4 sm:py-2">
-                                                🛏️ {{ $floor->bedrooms }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="shadow-card border-rounded p-2 sm:px-4 sm:py-2">
-                                                🛁 {{ $floor->bathrooms }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="shadow-card border-rounded p-2 sm:px-4 sm:py-2">
-                                                📐 {{ $floor->area }} m<sup>2</sup>
-                                            </p>
-                                        </div>
-                                        @if (!empty($floor->price) && $floor->price != 0)
-                                        <div>
-                                            <p class="shadow-card border-rounded p-2 sm:px-4 sm:py-2">
-                                               💲 {{ $floor->price }}
-                                            </p>
-                                        </div>
+                                        @if ($floor->floor !== 'N/A')
+                                            <div>
+                                                <p class="shadow-card border-rounded p-2 sm:px-4 sm:py-2">
+                                                    {{ $floor->floor }}
+                                                </p>
+                                            </div>
+                                        @endif
+                                        @if ($floor->bedrooms > 0)
+                                            <div>
+                                                <p class="shadow-card border-rounded p-2 sm:px-4 sm:py-2">
+                                                    🛏️ {{ $floor->bedrooms }}
+                                                </p>
+                                            </div>
+                                        @endif
+                                        @if ($floor->bathrooms > 0)
+                                            <div>
+                                                <p class="shadow-card border-rounded p-2 sm:px-4 sm:py-2">
+                                                    🛁 {{ $floor->bathrooms }}
+                                                </p>
+                                            </div>
+                                        @endif
+                                        @if ($floor->area > 0)
+                                            <div>
+                                                <p class="shadow-card border-rounded p-2 sm:px-4 sm:py-2">
+                                                    📐 {{ $floor->area }} m<sup>2</sup>
+                                                </p>
+                                            </div>
+                                        @endif
+                                        @if ($floor->price > 0)
+                                            <div>
+                                                <p class="shadow-card border-rounded p-2 sm:px-4 sm:py-2">
+                                                   💲 {{ $floor->price }}
+                                                </p>
+                                            </div>
                                         @endif
                                     </div>
                                 </a>
                                 <ul class="uk-nav-sub">
-                                    <li>
-                                        <img
-                                            src="{{ ImagePathResolver::resolve($floor->image) ?? asset('assets/images/floor-placeholder.png') }}"
-                                            alt="Floor {{ $floor->floor }}"
-                                        />
-                                    </li>
+                                    @if ($floor->image !== 'N/A')
+                                        <li>
+                                            <img
+                                                src="{{ ImagePathResolver::resolve($floor->image) ?? asset('assets/images/floor-placeholder.png') }}"
+                                                alt="Floor {{ $floor->floor }}"
+                                            />
+                                        </li>
+                                    @endif
                                 </ul>
                             </li>
                             <li class="uk-nav-divider"></li>
