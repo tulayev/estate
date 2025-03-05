@@ -26,22 +26,8 @@ return [
                     <br>
                     <br>
                     🔍 Unmatched Due Diligence – We conduct face-to-face developer interviews, legal verifications, and financial projections to protect your capital at every step.',
-    'slide_3_h2' => 'We specialize in working with serious investors, not retail buyers.',
-    'slide_3_p' => '✔ High-Net-Worth Individuals – Seeking $500K+ secure, high-yield investments.
-                    <br>
-                    <br>
-                    ✔ Family Offices & Institutional Investors – Diversifying portfolios with structured real estate allocations.
-                    <br>
-                    <br>
-                    ✔ Entrepreneurs & Business Owners – Protecting and growing capital through off-market real estate.
-                    <br>
-                    <br>
-                    ✔ Experienced Investors – Looking for discounted, high-growth assets in a thriving market.
-                    <br>
-                    <br>
-                    📌 If you’re looking for high-return real estate deals with professional guidance, we’re your trusted partner.',
-    'slide_4_h2' => 'Who We Work With',
-    'slide_4_p' => 'When we present an opportunity, it’s more than just clarity—it’s confidence, built on verified data, documented evidence, and thorough analysis. For families and institutional investors, we provide the assurance needed to make sound, impactful decisions.
+    'slide_3_h2' => 'The ClearView® Investment Advantage',
+    'slide_3_p' => 'Unlike traditional real estate agencies, our approach is rooted in data, analytics, and financial intelligence. Our ClearView® methodology blends global real estate fundamentals with AI-powered insights, ensuring that every investment meets strict profitability, liquidity, and risk mitigation criteria.
                     <br>
                     <br>
                     ✅ Quantified Assessments – Every project is ranked based on key investment metrics.
@@ -51,6 +37,14 @@ return [
                     <br>
                     <br>
                     ✅ Full Investment Lifecycle Support – From deal structuring to asset management, we protect your interests at every stage.',
+    'slide_4_h2' => 'Who We Work With<br>We specialize in working with serious investors, not retail buyers.',
+    'slide_4_p' => '✔️ High-Net-Worth Individuals – Seeking $500K+ secure, high-yield investments.<br>
+                    ✔️ Family Offices & Institutional Investors – Diversifying portfolios with structured real estate allocations.<br>
+                    ✔️ Entrepreneurs & Business Owners – Protecting and growing capital through off-market real estate.<br>
+                    ✔️ Experienced Investors – Looking for discounted, high-growth assets in a thriving market.
+                    <br>
+                    <br>
+                    📌 If you’re looking for high-return real estate deals with professional guidance, we’re your trusted partner.',
     'card_1' => 'primary',
     'card_2' => 'resale',
     'card_3' => 'land',   

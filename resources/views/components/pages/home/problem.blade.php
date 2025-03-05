@@ -114,7 +114,7 @@ use App\Helpers\Enums\TopicType;
                         <div class="absolute border-rounded inset-0 bg-black opacity-70"></div>
                         <div class="relative z-10 flex flex-col justify-center">
                             <h2 class="section-title-white text-lg sm:text-2xl xl:text-3xl">
-                                {{ __('home/problem.slide_4_h2') }}
+                                {!!__('home/problem.slide_4_h2') !!}
                             </h2>
                             <p class="text-white text-sm lg:text-base xl:text-xl mt-4 sm:mt-5 lg:mt-5">
                                 {!! __('home/problem.slide_4_p') !!}
