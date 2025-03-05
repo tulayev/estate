@@ -16,6 +16,7 @@ return [
                                 <br>
                     At Ignatev Estate, we don’t just sell real estate—we secure high-value investments for serious investors. Using our proprietary ClearView® Ranking System, we cut through the noise, analyzing each project through strict investment criteria to ensure maximum profitability and minimum risk.',
     'slide_2_h2' => 'Why Invest with Ignatev Estate?',
+    'slide_2_action' => 'see available projects',
     'slide_2_p' => '📊 Verified, High-Yield Projects – We evaluate every development through a 50+ factor due diligence process, ensuring only the most profitable investments make the cut.
                     <br>
                     <br>
@@ -27,6 +28,7 @@ return [
                     <br>
                     🔍 Unmatched Due Diligence – We conduct face-to-face developer interviews, legal verifications, and financial projections to protect your capital at every step.',
     'slide_3_h2' => 'The ClearView® Investment Advantage',
+    'slide_3_action' => 'get in touch with us',
     'slide_3_p' => 'Unlike traditional real estate agencies, our approach is rooted in data, analytics, and financial intelligence. Our ClearView® methodology blends global real estate fundamentals with AI-powered insights, ensuring that every investment meets strict profitability, liquidity, and risk mitigation criteria.
                     <br>
                     <br>
