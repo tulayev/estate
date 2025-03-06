@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            <div class="m-2 w-2/3 md:w-1/2">
+            <div class="m-2 w-2/3 md:w-1/2 mt-4 md:mt-12 xl:mt-16">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-3 space-y-3 sm:space-y-0">
                     <div class="animLeft">
                         <a

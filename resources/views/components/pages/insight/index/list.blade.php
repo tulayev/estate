@@ -3,7 +3,7 @@
 ])
 
 <section class="section">
-    <div class="container pb-10 sm:pb-24">
+    <div class="container">
         <div class="w-full flex justify-between">
             <div class="collapse-title">
                 {{ __('insight/index/list.insights_grid') }}

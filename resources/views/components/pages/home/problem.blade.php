@@ -54,20 +54,11 @@ use App\Helpers\Enums\TopicType;
                                 {!! __('home/problem.slide_2_p') !!}
                             </p>
                             <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-4 mt-4 sm:mt-8 lg:mt-10 xl:mt-20">
-                                <p class="text-white font-bold text-xs xl:text-xl">
-                                    {{ __('home/problem.p_2') }}
-                                </p>
                                 <a
-                                    href="{{ route('pages.insight.index', ['type' => TopicType::FOR_INVESTORS->value]) }}"
+                                    href="{{ route('pages.listing.index') }}"
                                     class="primary-button text-xs xl:text-lg"
                                 >
-                                    {{ TopicType::FOR_INVESTORS->label() }}
-                                </a>
-                                <a
-                                    href="{{ route('pages.insight.index', ['type' => TopicType::FOR_DEVELOPERS->value]) }}"
-                                    class="primary-button text-xs xl:text-lg"
-                                >
-                                    {{ TopicType::FOR_DEVELOPERS->label() }}
+                                    {{ __('home/problem.slide_2_action') }}
                                 </a>
                             </div>
                         </div>
@@ -87,20 +78,12 @@ use App\Helpers\Enums\TopicType;
                                 {!! __('home/problem.slide_3_p') !!}
                             </p>
                             <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-4 mt-4 sm:mt-8 lg:mt-10 xl:mt-20">
-                                <p class="text-white font-bold text-xs xl:text-xl">
-                                    {{ __('home/problem.p_2') }}
-                                </p>
+                                
                                 <a
-                                    href="{{ route('pages.insight.index', ['type' => TopicType::FOR_INVESTORS->value]) }}"
+                                    href="#contactSection"
                                     class="primary-button text-xs xl:text-lg"
                                 >
-                                    {{ TopicType::FOR_INVESTORS->label() }}
-                                </a>
-                                <a
-                                    href="{{ route('pages.insight.index', ['type' => TopicType::FOR_DEVELOPERS->value]) }}"
-                                    class="primary-button text-xs xl:text-lg"
-                                >
-                                    {{ TopicType::FOR_DEVELOPERS->label() }}
+                                    {{ __('home/problem.slide_3_action') }}
                                 </a>
                             </div>
                         </div>
@@ -114,26 +97,18 @@ use App\Helpers\Enums\TopicType;
                         <div class="absolute border-rounded inset-0 bg-black opacity-70"></div>
                         <div class="relative z-10 flex flex-col justify-center">
                             <h2 class="section-title-white text-lg sm:text-2xl xl:text-3xl">
-                                {{ __('home/problem.slide_4_h2') }}
+                                {!!__('home/problem.slide_4_h2') !!}
                             </h2>
                             <p class="text-white text-sm lg:text-base xl:text-xl mt-4 sm:mt-5 lg:mt-5">
                                 {!! __('home/problem.slide_4_p') !!}
                             </p>
                             <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-x-4 mt-4 sm:mt-8 lg:mt-10 xl:mt-20">
-                                <p class="text-white font-bold text-xs xl:text-xl">
-                                    {{ __('home/problem.p_2') }}
-                                </p>
+                                
                                 <a
-                                    href="{{ route('pages.insight.index', ['type' => TopicType::FOR_INVESTORS->value]) }}"
+                                    href="#contactSection"
                                     class="primary-button text-xs xl:text-lg"
                                 >
-                                    {{ TopicType::FOR_INVESTORS->label() }}
-                                </a>
-                                <a
-                                    href="{{ route('pages.insight.index', ['type' => TopicType::FOR_DEVELOPERS->value]) }}"
-                                    class="primary-button text-xs xl:text-lg"
-                                >
-                                    {{ TopicType::FOR_DEVELOPERS->label() }}
+                                    {{ __('home/problem.slide_3_action') }}
                                 </a>
                             </div>
                         </div>
