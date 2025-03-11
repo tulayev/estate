@@ -4,11 +4,14 @@
 
 @if ($hotel)
     <div class="relative group">
-        <a href="{{ route('pages.listing.show', $hotel->slug) }}" class="absolute inset-0 z-10"></a>
+        <a
+            href="{{ route('pages.listing.show', $hotel->slug) }}"
+            class="absolute inset-0 z-10">
+        </a>
         <div class="relative bg-cover bg-center bg-no-repeat flex flex-col justify-between border-rounded p-3 h-[220px] md:h-[300px] hover:shadow-xl transition-shadow duration-300">
             <!-- Swiper Slider (Initially Hidden) -->
             @if ($hotel->gallery || $hotel->gallery_url)
-                <div class="swiper listing-slider absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 pointer-events-none">
+                <div class="swiper listing-slider absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none">
                     <div class="swiper-wrapper">
                         @if ($hotel->gallery)
                             @foreach($hotel->gallery as $image)

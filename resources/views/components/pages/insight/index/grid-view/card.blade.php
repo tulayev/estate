@@ -3,14 +3,18 @@
 ])
 
 @if ($topic)
-    <div>
+    <div class="relative group">
+        <a
+            href="{{ route('pages.insight.show', $topic->slug) }}"
+            class="absolute inset-0 z-10">
+        </a>
         <div
             class="relative bg-cover bg-center bg-no-repeat flex flex-col justify-between border-rounded p-3 h-[300px]"
             style="background-image: url('{{ ImagePathResolver::resolve($topic->image) ?? asset('assets/images/insights/insight-card-bg.png') }}');"
         >
             <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
             <!-- Image Top -->
-            <div class="flex justify-between items-center relative">
+            <div class="flex justify-between items-center relative z-10">
                 <div class="flex items-center space-x-2">
                     <a
                         href="{{ route('pages.insight.index', ['category' => $topic->category->id]) }}"
@@ -32,23 +36,18 @@
                 </div>
             </div>
             <!-- Image Bottom -->
-            <a
-                href="{{ route('pages.insight.show', $topic->slug) }}"
-                class="z-10"
-            >
-                <div class="flex justify-between items-center uppercase text-sm sm:text-base md:text-lg">
-                    <div class="flex items-center space-x-2">
-                        <p class="text-white sm:font-bold">
-                            {{ Str::limit($topic->title, 10) }}
-                        </p>
-                    </div>
-                    <div>
-                        <span class="text-white sm:font-bold">
-                            {{ $topic->minutes_to_read }} min
-                        </span>
-                    </div>
+            <div class="flex justify-between items-center uppercase text-sm sm:text-base md:text-lg">
+                <div class="flex items-center space-x-2">
+                    <p class="text-white sm:font-bold group-hover:text-primary">
+                        {{ Str::limit($topic->title, 10) }}
+                    </p>
                 </div>
-            </a>
+                <div>
+                    <span class="text-white sm:font-bold group-hover:text-primary">
+                        {{ $topic->minutes_to_read }} min
+                    </span>
+                </div>
+            </div>
         </div>
     </div>
 @endif

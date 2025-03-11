@@ -38,7 +38,7 @@
                 />
                 <ul
                     x-show="open && suggestions.length > 0"
-                    class="absolute top-16 left-0 bg-white border border-borderColor w-full rounded-b-[14px] shadow-lg max-h-56 overflow-auto"
+                    class="absolute top-16 left-0 bg-white border border-borderColor w-full rounded-b-[14px] shadow-lg max-h-44 overflow-auto"
                 >
                     <template
                         x-for="{ id, title } in suggestions"
