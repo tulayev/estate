@@ -130,12 +130,12 @@ use App\Helpers\Enums\TopicType;
                         <div class="relative">
                             <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
                             <img
-                                class="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110"
+                                class="w-full h-full border-rounded transition-shadow duration-300 ease-in-out group-hover:shadow-xl"
                                 src="{{ asset('assets/images/primary_bg.png') }}"
                                 alt="{{ $primary->name }}"
                             />
                             <div class="absolute-centralize">
-                                <h4 class="text-2xl text-white font-bold uppercase group-hover:text-primary">
+                                <h4 class="text-2xl text-white font-bold uppercase group-hover:text-primary group-hover:font-black">
                                     {{ $primary->name }}
                                 </h4>
                             </div>
@@ -150,12 +150,12 @@ use App\Helpers\Enums\TopicType;
                         <div class="relative">
                             <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
                             <img
-                                class="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110"
+                                class="w-full h-full border-rounded transition-shadow duration-300 ease-in-out group-hover:shadow-xl"
                                 src="{{ asset('assets/images/resale_bg.png') }}"
                                 alt="{{ $resales->name }}"
                             />
                             <div class="absolute-centralize">
-                                <h4 class="text-2xl text-white font-bold uppercase group-hover:text-primary">
+                                <h4 class="text-2xl text-white font-bold uppercase group-hover:text-primary group-hover:font-black">
                                     {{ $resales->name }}
                                 </h4>
                             </div>
@@ -170,12 +170,12 @@ use App\Helpers\Enums\TopicType;
                         <div class="relative">
                             <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
                             <img
-                                class="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110"
+                                class="w-full h-full border-rounded transition-shadow duration-300 ease-in-out group-hover:shadow-xl"
                                 src="{{ asset('assets/images/land_bg.png') }}"
                                 alt="{{ $land->name }}"
                             />
                             <div class="absolute-centralize">
-                                <h4 class="text-2xl text-white font-bold uppercase group-hover:text-primary">
+                                <h4 class="text-2xl text-white font-bold uppercase group-hover:text-primary group-hover:font-black">
                                     {{ $land->name }}
                                 </h4>
                             </div>
@@ -190,12 +190,12 @@ use App\Helpers\Enums\TopicType;
                         <div class="relative">
                             <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
                             <img
-                                class="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110"
+                                class="w-full h-full border-rounded transition-shadow duration-300 ease-in-out group-hover:shadow-xl"
                                 src="{{ asset('assets/images/rent.png') }}"
                                 alt="{{ $rent->name }}"
                             />
                             <div class="absolute-centralize">
-                                <h4 class="text-2xl text-white font-bold uppercase group-hover:text-primary">
+                                <h4 class="text-2xl text-white font-bold uppercase group-hover:text-primary group-hover:font-black">
                                     {{ $rent->name }}
                                 </h4>
                             </div>
