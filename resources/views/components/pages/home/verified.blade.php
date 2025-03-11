@@ -17,7 +17,7 @@ use App\Helpers\Enums\TopicType;
             <span>ie verified</span>
         </h2>
     </div>
-    <div class="container pb-10 sm:pb-24">
+    <div class="container">
         <div class="mt-10 uk-child-width-1-1 uk-child-width-1-2@s" uk-grid>
             <div>
                 <div
