@@ -10,7 +10,7 @@
         >
             <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
             <!-- Image Top -->
-            <div class="flex justify-between items-center z-10">
+            <div class="flex justify-between items-center relative">
                 <div class="flex items-center space-x-2">
                     <a
                         href="{{ route('pages.insight.index', ['category' => $topic->category->id]) }}"

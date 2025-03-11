@@ -42,7 +42,7 @@
                             class="secondary-button"
                         >
                             <img
-                                src="{{ asset('assets/images/icons/facebook-white.svg') }}"
+                                src="{{ asset('assets/images/icons/facebook-about.svg') }}"
                                 alt="Facebook"
                                 width="53"
                                 height="53"

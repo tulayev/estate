@@ -43,7 +43,7 @@
     </div>
     <!-- Dropdown -->
     <div
-        class="w-full absolute top-16 bg-white shadow-lg border border-borderColor rounded z-50 pt-10 px-4 pb-4"
+        class="pt-10 px-4 pb-4 absolute top-16 bg-white border border-borderColor w-full rounded-b-[14px] shadow-lg z-50"
         x-show="showInputs"
         @click.outside="resetDropdown"
     >

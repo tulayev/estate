@@ -88,11 +88,11 @@
                 <div class="mt-4 sm:mt-10">
                     <!-- Desktop -->
                     <div class="flex space-x-4 items-center uk-visible@s">
-                        <div class="white-button">
+                        <div class="white-button bg-white/10">
                             <ul class="flex items-center space-x-8 h-full">
                                 <li>
                                     <a href="https://wa.me/66922407355">
-                                        <img src="{{ asset('assets/images/icons/whatsapp.svg') }}" alt="whatsapp" />
+                                        <img src="{{ asset('assets/images/icons/whatsapp-white.svg') }}" alt="whatsapp" />
                                     </a>
                                 </li>
                                 <li>
@@ -102,12 +102,12 @@
                                 </li>
                                 <li>
                                     <a href="https://www.instagram.com/ignatev_estate" target="_blank">
-                                        <img src="{{ asset('assets/images/icons/instagram.svg') }}" alt="instagram" />
+                                        <img src="{{ asset('assets/images/icons/instagram-white.svg') }}" alt="instagram" />
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://www.facebook.com/share/1EHwWjnqSo" target="_blank">
-                                        <img src="{{ asset('assets/images/icons/facebook.svg') }}" alt="facebook" />
+                                        <img src="{{ asset('assets/images/icons/facebook-white.svg') }}" alt="facebook" />
                                     </a>
                                 </li>
                                 <li>
@@ -117,7 +117,7 @@
                                 </li>
                                 <li>
                                     <a href="mailto:info@ignatev-estate.com">
-                                        <img src="{{ asset('assets/images/icons/mail.svg') }}" alt="mail" />
+                                        <img src="{{ asset('assets/images/icons/mail-white.svg') }}" alt="mail" />
                                     </a>
                                 </li>
                             </ul>
@@ -125,9 +125,13 @@
                         <div>
                             <a
                                 href="tel:+66 (92) 240 7355"
-                                class="white-button flex justify-center items-center"
+                                class="white-button bg-white/10 flex justify-center items-center"
                             >
-                                <span>+66 (92) 240 7355</span>
+                                <img
+                                    src="{{ asset('assets/images/icons/phone-white.svg') }}"
+                                    alt="Phone"
+                                />
+                                <span class="text-white">+66 (92) 240 7355</span>
                             </a>
                         </div>
                     </div>

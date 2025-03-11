@@ -30,7 +30,7 @@
                             <span class="text-gray-500 bg-gray-100 px-2 py-1 rounded-full">CEO</span>
                         </div>
                         <!-- Description -->
-                        <p class="text-sm sm:text-base md:text-lg xl:text-2rem mt-4 lg:mt-6">
+                        <p class="text-sm sm:text-base md:text-lg mt-4 lg:mt-6">
                             {{ __('about/team.member_experience1') }}
                         </p>
                         <!-- Buttons Section -->
@@ -81,14 +81,14 @@
                 </div>
 
                 <div class="uk-card-body uk-background-default">
-                    <h4 class="uk-text-bold sm:text-base xl:text-2rem lg:text-2rem mb-4">
+                    <h4 class="uk-text-bold mb-4">
                         {{ __('about/team.member_bio') }}
                     </h4>
                     <div x-data="{ show: false }">
-                        <p x-show="show" class="uk-text-light sm:text-base xl:text-2rem lg:text-2rem mt-4">
+                        <p x-show="show" class="uk-text-light mt-4">
                             {{ __('about/team.member_desc1') }}
                         </p>
-                        <p x-show="show" class="uk-text-light sm:text-base xl:text-2rem lg:text-2rem mt-10">
+                        <p x-show="show" class="uk-text-light mt-10">
                              {{ __('about/team.member_desc2') }}
                         </p>
                         <div class="uk-text-center uk-margin-top">
@@ -98,7 +98,6 @@
                             </button>
                         </div>
                     </div>
-                    
                     </div>
                 </div>
             </div>

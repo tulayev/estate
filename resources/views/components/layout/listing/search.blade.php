@@ -3,7 +3,7 @@
     <form
         id="searchForm"
         action="{{ route('pages.listing.index') }}"
-        class="uk-visible@s z-10 bg-white rounded-full flex justify-between items-center absolute left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 px-2 w-[85vw] lg:w-[91vw] xl:w-[67vw] h-[50px] xl:h-[70px]"
+        class="uk-visible@s z-10 bg-white rounded-full flex justify-between items-center absolute left-1/2 bottom-0 xl:bottom-[-10px] -translate-x-1/2 px-4 w-[85vw] lg:w-[91vw] xl:w-[65vw] h-[50px] xl:h-[62px]"
         autocomplete="off"
     >
         <input
@@ -34,22 +34,19 @@
             :maxValue="$maxPrice"
         />
 
-        <div class="h-full flex items-center justify-end w-[8%] md:space-x-2 xl:space-x-3">
+        <div class="h-full flex items-center justify-end w-[8%] md:space-x-2 xxl:space-x-4">
             <button
-                class="text-xl md:text-3xl bg-transparent border-none outline-none"
+                class="text-secondary text-xl md:text-3xl xxl:text-4xl font-black bg-transparent border-none outline-none"
                 type="button"
                 uk-toggle="target: #searchModal"
             >
                 +
             </button>
-            <button
-                class="w-6 h-6 lg:w-8 lg:h-8 xl:w-10 xl:h-10 bg-primary rounded-full flex items-center justify-center"
-                type="submit"
-            >
+            <button type="submit">
                 <img
-                    class="w-2 lg:w-4"
-                    src="{{ asset('assets/images/icons/search.svg') }}"
+                    src="{{ asset('assets/images/icons/search-icon.svg') }}"
                     alt="search"
+                    class="w-6 lg:w-8 xl:w-10"
                 />
             </button>
         </div>
@@ -163,17 +160,39 @@
         },
 
         updateFilters() {
-            const filterForm = document.getElementById('filterForm');
+            const setDisabledStyles = (button) => {
+                button.disabled = true;
+                button.style.opacity = '0.5';
+                button.style.cursor = 'not-allowed';
+            };
 
-            if (filterForm) {
+            const setEnabledStyles = (button) => {
+                button.disabled = false;
+                button.style.opacity = '1';
+                button.style.cursor = 'pointer';
+            };
+
+            const filterForm = document.getElementById('filterForm');
+            const showResultsButton = document.getElementById('showResultsButton');
+
+            if (filterForm && showResultsButton) {
                 this.filters = Object.fromEntries(new FormData(filterForm).entries());
-                this.fetchResultsCount();
+
+                const { features, locations, tags, types, title } = this.filters;
+
+                if (features === '' && locations === '' && tags === '' && types === '' && title === '') {
+                    this.buttonText = this.buttonTextsLocalized[this.locale];
+                     setDisabledStyles(showResultsButton);
+                } else {
+                    this.fetchResultsCount();
+                    setEnabledStyles(showResultsButton);
+                }
             }
         },
 
         init() {
             document.addEventListener('DOMContentLoaded', () => {
-                this.fetchResultsCount();
+                this.updateFilters();
                 // Add event listeners to filter inputs
                 const observer = new MutationObserver(mutations => {
                     mutations.forEach(() => {

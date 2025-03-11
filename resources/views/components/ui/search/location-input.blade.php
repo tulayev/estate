@@ -24,7 +24,7 @@
     />
     <ul
         x-show="open && filteredLocations.length > 0"
-        class="absolute top-16 bg-white border border-borderColor w-full rounded shadow-lg z-50 max-h-40 overflow-auto"
+        class="absolute top-16 bg-white border border-borderColor w-full rounded-b-[14px] shadow-lg z-50 max-h-40 overflow-auto"
     >
         <template
             x-for="location in filteredLocations"
@@ -32,7 +32,7 @@
         >
             <li
                 @click="toggleSelection(location)"
-                class="px-2 py-4 border-rounded cursor-pointer font-black text-primary hover:bg-primary hover:text-white"
+                class="px-2 py-4 rounded-[14px] cursor-pointer font-black text-primary hover:bg-primary hover:text-white"
                 :class="selectedIds.includes(location.id) ? 'bg-primary text-white' : ''"
             >
                 <span x-text="location.name[locale]"></span>

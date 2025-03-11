@@ -9,7 +9,7 @@
     }
 
     .section {
-        @apply pt-8 sm:pt-16 md:pt-24 lg:pt-36 xl:pt-[7rem];
+        @apply pt-8 sm:pt-16 md:pt-24 xl:pt-28;
     }
 
     .container {
@@ -47,7 +47,7 @@
     }
 
     .section-title {
-        @apply leading-none text-primary uppercase mr-[1rem] text-[1.5rem] font-bold xl:text-[35px] xl:font-black;
+        @apply leading-none text-primary uppercase mr-4 text-2xl font-bold xl:text-[35px] xl:font-black;
     }
 
     .section-title-white {
@@ -99,37 +99,5 @@
     /* Miscellaneous */
     .absolute-centralize {
         @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
-    }
-
-    /* Swiper Buttons */
-    .swiper-button-prev,
-    .swiper-button-next {
-        background: radial-gradient(
-            circle,
-            rgba(0, 0, 0, 0.8),
-            rgba(0, 0, 0, 0.5)
-        ); /* Dark circle with gradient */
-        border-radius: 50%; /* Circular shape */
-        width: 30px; /* Smaller width */
-        height: 30px; /* Smaller height */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-    }
-
-    .swiper-button-prev:hover,
-    .swiper-button-next:hover {
-        background: radial-gradient(
-            circle,
-            rgba(0, 0, 0, 1),
-            rgba(0, 0, 0, 0.7)
-        ); /* Darker gradient on hover */
-    }
-
-    .swiper-button-prev::after,
-    .swiper-button-next::after {
-        font-size: 12px; /* Smaller icon size */
-        color: white; /* Icon color */
     }
 }

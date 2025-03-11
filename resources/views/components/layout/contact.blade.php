@@ -62,9 +62,13 @@
             </div>
             <a
                 href="tel:+7 (972) 928-30-12"
-                class="white-button"
+                class="white-button flex"
             >
-                +66 (92) 240 7355
+                <img
+                    src="{{ asset('assets/images/icons/phone.svg') }}"
+                    alt="Phone"
+                />
+                <span>+66 (92) 240 7355</span>
             </a>
         </div>
     </div>

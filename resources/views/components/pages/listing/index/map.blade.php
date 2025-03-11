@@ -2,7 +2,7 @@
     'hotels' => null,
 ])
 
-<section class="pt-8 sm:pt-16 md:pt-24 lg:pt-36 xl:pt-10 fixed">
+<section class="pt-8 sm:pt-16 md:pt-24 lg:pt-36 fixed">
     <div class="container">
         <div class="w-full flex justify-between">
             <div class="collapse-title">

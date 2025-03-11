@@ -5,7 +5,7 @@
     <form
         id="searchForm"
         action="{{ route('pages.insight.index') }}"
-        class="uk-visible@s z-10 bg-white rounded-full flex justify-between items-center absolute left-1/2 bottom-0 xl:bottom-[-15px] -translate-x-1/2 px-2 w-[85vw] lg:w-[91vw] xl:w-[67vw] h-[50px] xl:h-[70px]"
+        class="uk-visible@s z-10 bg-white rounded-full flex justify-between items-center absolute left-1/2 bottom-0 xl:bottom-[-10px] -translate-x-1/2 px-4 w-[85vw] lg:w-[91vw] xl:w-[65vw] h-[50px] xl:h-[62px]"
         autocomplete="off"
     >
         <div class="animate-spin-fast">
@@ -38,7 +38,7 @@
                 />
                 <ul
                     x-show="open && suggestions.length > 0"
-                    class="absolute top-[70px] left-0 bg-white border-rounded w-full shadow-card max-h-56 overflow-auto"
+                    class="absolute top-16 left-0 bg-white border border-borderColor w-full rounded-b-[14px] shadow-lg max-h-56 overflow-auto"
                 >
                     <template
                         x-for="{ id, title } in suggestions"
@@ -46,21 +46,18 @@
                     >
                         <li
                             @click="selectTopic(getLocalizedTitle(title))"
-                            class="p-4 relative z-40 rounded-xl cursor-pointer font-black text-primary hover:bg-primary hover:text-white"
+                            class="p-4 relative z-40 rounded-[14px] cursor-pointer font-black text-primary hover:bg-primary hover:text-white"
                         >
                             <span x-text="getLocalizedTitle(title)"></span>
                         </li>
                     </template>
                 </ul>
             </div>
-            <button
-                class="w-6 h-6 lg:w-8 lg:h-8 xl:w-10 xl:h-10 bg-primary rounded-full flex items-center justify-center"
-                type="submit"
-            >
+            <button type="submit">
                 <img
-                    class="w-2 lg:w-4"
-                    src="{{ asset('assets/images/icons/search.svg') }}"
+                    src="{{ asset('assets/images/icons/search-icon.svg') }}"
                     alt="search"
+                    class="w-6 lg:w-8 xl:w-10"
                 />
             </button>
         </div>
@@ -93,7 +90,7 @@
             onFocus() {
                 this.open = true;
                 if (!this.query) {
-                    this.fetchTopics(); // Fetch all topics if the query is empty
+                    this.fetchTopics();
                 }
             },
 
