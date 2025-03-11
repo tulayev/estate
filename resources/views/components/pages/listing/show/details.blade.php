@@ -26,10 +26,10 @@
             <!-- Main -->
             <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10">
                 <div
-                    class="relative bg-cover bg-center bg-no-repeat border-rounded p-4 md:p-8 xl:p-10"
+                    class="relative bg-cover bg-center bg-no-repeat border-rounded px-4 pt-4 pb-4 md:px-8 md:pt-8 md:pb-10"
                     style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}');"
                 >
-                    <div class="absolute border-rounded inset-0  from-black opacity-50 bg-gradient-to-b"></div>
+                    <div class="absolute border-rounded inset-0 bg-gradient-to-t from-black to-transparent"></div>
                     <!-- Image Top -->
                     <div class="relative flex flex-col space-y-2 sm:space-y-0 sm:flex-row justify-between items-center">
                         @if ($hotel->tags)
@@ -129,7 +129,7 @@
 
             <!-- Description -->
             <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 rounded-[28px] shadow-card bg-white px-3 py-5">
-                <div class="text-primary text-center items-center uppercase border-b border-borderColor text-xs sm:text-sm md:text-lg xl:text-xl sm:font-bold xl:font-black px-4 pb-4 md:pb-8">
+                <div class="collapse-title text-sm items-center uppercase border-b border-borderColor p-4">
                     <div class="uk-child-width-1-2 uk-child-width-1-4@s uk-grid-small" uk-grid>
                         @if ($hotel->types)
                             <div>
@@ -156,33 +156,36 @@
                         </div>
                     </div>
                 </div>
-                <div
-                    class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 px-4"
-                    x-data="{ expanded: false }"
-                >
-                    <p
-                        class="collapse-title font-normal normal-case"
-                        x-show="expanded"
-                        x-cloak
-                    >
+                <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 px-4">
+                    @if (mb_strlen($hotel->description) >= 350)
+                        <div x-data="{ expanded: false }">
+                            <p
+                                class="collapse-title font-normal normal-case"
+                                x-show="expanded"
+                                x-cloak
+                            >
+                                {!! $hotel->description !!}
+                            </p>
+                            <p
+                                class="collapse-title font-normal normal-case"
+                                x-show="!expanded"
+                                x-cloak
+                            >
+                                {!! Str::limit(strip_tags($hotel->description), 350) !!}
+                            </p>
+                            <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 text-center">
+                                <button
+                                    type="button"
+                                    class="modal-subtitle"
+                                    @click="expanded = !expanded"
+                                >
+                                    <span x-text="expanded ? 'See less' : 'See more'"></span>
+                                </button>
+                            </div>
+                        </div>
+                    @else
                         {!! $hotel->description !!}
-                    </p>
-                    <p
-                        class="collapse-title font-normal normal-case"
-                        x-show="!expanded"
-                        x-cloak
-                    >
-                        {!! Str::limit(strip_tags($hotel->description), 350) !!}
-                    </p>
-                    <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 text-center">
-                        <button
-                            type="button"
-                            class="modal-subtitle"
-                            @click="expanded = !expanded"
-                        >
-                            <span x-text="expanded ? 'See less' : 'See more'"></span>
-                        </button>
-                    </div>
+                    @endif
                 </div>
             </div>
             <!-- Features -->
@@ -193,7 +196,7 @@
                             <div>
                                 <a
                                     href="{{ route('pages.listing.index', ['feature' => $feature->id]) }}"
-                                    class="shadow-card text-sm rounded-[28px] flex justify-center items-center bg-white py-3 sm:py-6 px-4 collapse-title hover:text-secondary"
+                                    class="collapse-title text-sm shadow-card rounded-[28px] flex justify-center items-center bg-white py-3 sm:py-6 px-4 hover:text-secondary"
                                 >
                                     {{ $feature->name }}
                                 </a>
