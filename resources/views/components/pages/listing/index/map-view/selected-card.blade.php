@@ -13,8 +13,8 @@
             <div class="flex justify-between items-center z-10">
                 @if ($hotel->tags)
                     <div class="flex items-center space-x-2">
-                        @foreach($hotel->tags->take(2) as $tag)
-                            <div class="card-tag-button random-bg-color hover:text-primary">
+                        @foreach($hotel->tags->take(2) as $index => $tag)
+                            <div class="card-tag-button bg-color-{{ $index + 1 }} bg-opacity-60 hover:text-primary">
                                 {{ Str::limit($tag->name, 10) }}
                             </div>
                         @endforeach

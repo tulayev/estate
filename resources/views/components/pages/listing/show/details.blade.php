@@ -34,10 +34,10 @@
                     <div class="relative flex flex-col space-y-2 sm:space-y-0 sm:flex-row justify-between items-center">
                         @if ($hotel->tags)
                             <div class="flex items-center space-x-2">
-                                @foreach($hotel->tags->take(3) as $tag)
+                                @foreach($hotel->tags->take(3) as $index => $tag)
                                     <a
                                         href="{{ route('pages.listing.index', ['tag' => $tag->id]) }}"
-                                        class="card-tag-button random-bg-color hover:text-primary"
+                                        class="card-tag-button bg-color-{{ $index + 1 }} bg-opacity-60 hover:text-primary"
                                     >
                                         {{ $tag->name }}
                                     </a>

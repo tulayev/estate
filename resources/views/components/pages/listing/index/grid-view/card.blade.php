@@ -51,10 +51,10 @@
             <div class="flex justify-between items-center z-20 relative">
                 @if ($hotel->tags)
                     <div class="flex items-center space-x-2">
-                        @foreach($hotel->tags->take(2) as $tag)
+                        @foreach($hotel->tags->take(2) as $index => $tag)
                             <a
                                 href="{{ route('pages.listing.index', ['tag' => $tag->id]) }}"
-                                class="card-tag-button random-bg-color hover:text-primary"
+                                class="card-tag-button bg-color-{{ $index + 1 }} bg-opacity-60 hover:text-primary"
                                 @click.stop
                             >
                                 {{ Str::limit($tag->name, 10) }}
