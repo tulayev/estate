@@ -97,7 +97,7 @@
                                 </li>
                                 <li>
                                     <a href="https://www.linkedin.com/company/ignatev-estate" target="_blank">
-                                        <img src="{{ asset('assets/images/icons/linkedin.svg') }}" alt="linkedin" />
+                                        <img src="{{ asset('assets/images/icons/linkedin-white.svg') }}" alt="linkedin" />
                                     </a>
                                 </li>
                                 <li>
@@ -112,7 +112,7 @@
                                 </li>
                                 <li>
                                     <a href="https://t.me/ignatevestate" target="_blank">
-                                        <img src="{{ asset('assets/images/icons/telegram.svg') }}" alt="telegram" />
+                                        <img src="{{ asset('assets/images/icons/telegram-white.svg') }}" alt="telegram" />
                                     </a>
                                 </li>
                                 <li>
