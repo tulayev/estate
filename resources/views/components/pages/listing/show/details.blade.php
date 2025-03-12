@@ -68,7 +68,7 @@
                             </h3>
                         </div>
                         <p class="text-sm sm:text-base md:text-lg font-bold xl:font-black mt-2 sm:mt-4 ml-12">
-                            ฿{{ $hotel->formatted_price }}
+                            ฿{{ $hotel->formatted_price }} 
                         </p>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                                         <img
                                             src="{{ ImagePathResolver::resolve($image) }}"
                                             alt="{{ $hotel->title }}"
-                                            class="border-rounded"
+                                            class="border-rounded object-cover w-full h-64"
                                         />
                                     </a>
                                 </div>
@@ -102,7 +102,7 @@
                                         <img
                                             src="{{ $image }}"
                                             alt="{{ $hotel->title }}"
-                                            class="border-rounded"
+                                            class="border-rounded object-cover w-full h-64"
                                         />
                                     </a>
                                 </div>
