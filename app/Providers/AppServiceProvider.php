@@ -8,6 +8,7 @@ use App\Models\Hotel;
 use App\Models\Location;
 use App\Models\Tag;
 use App\Models\Type;
+use App\Models\TopicCategory;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -33,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
         $tags = Tag::all();
         $features = Feature::all();
         $maxPrice = Hotel::getMaxPrice();
+        $titles = TopicCategory::all();
         $rent = $types->find(Constants::SYSTEM_TYPE_IDS['rent']);
         $primary = $types->find(Constants::SYSTEM_TYPE_IDS['primary']);
         $resales = $types->find(Constants::SYSTEM_TYPE_IDS['resales']);
@@ -40,10 +42,11 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer([
                 'components.layout.listing.search',
+                'components.layout.insight.search',
                 'components.layout.header',
                 'components.pages.home.problem',
             ],
-            function ($view) use ($types, $tags, $features, $locations, $maxPrice, $primary, $resales, $land, $rent) {
+            function ($view) use ($types, $tags, $features, $locations, $maxPrice, $primary, $resales, $land, $rent, $titles) {
                 $view->with('types', $types)
                     ->with('tags', $tags)
                     ->with('features', $features)
@@ -52,7 +55,8 @@ class AppServiceProvider extends ServiceProvider
                     ->with('rent', $rent)
                     ->with('primary', $primary)
                     ->with('resales', $resales)
-                    ->with('land', $land);
+                    ->with('land', $land)
+                    ->with('titles', $titles);
         });
 
         View::composer('components.layout.header', function ($view) use ($types) {

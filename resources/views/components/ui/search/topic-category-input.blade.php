@@ -1,0 +1,84 @@
+@props([
+    'titles' => [],
+])
+
+<div
+    x-data="topicCategoryDropdown({{ json_encode($titles) }})"
+    class="relative border-r border-borderColor h-full flex items-center justify-center w-[16%]"
+>
+    <input
+        type="hidden"
+        name="topic_category"
+        x-model="selectedIds"
+    />
+
+    <div class="relative w-full modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none">
+        <input
+            type="text"
+            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+            x-model="displayText"
+            @focus="open = true"
+            @click.away="open = false"
+            readonly
+        />
+        <img
+            src="{{ asset('assets/images/icons/filter-dark.svg') }}"
+            alt="search"
+            class="w-6 h-6 mx-auto"
+        />
+    </div>
+    <ul
+        x-show="open && filteredTopicCategories.length > 0"
+        class="px-3 py-4 space-y-2 absolute top-16 bg-white border border-borderColor w-full rounded-b-[14px] shadow-lg z-50 max-h-48 overflow-auto"
+    >
+        <template
+            x-for="topicCategory in filteredTopicCategories"
+            :key="topicCategory.id"
+        >
+            <li
+                @click="toggleSelection(topicCategory)"
+                class="random-bg-color px-2 py-4 rounded-[10px] cursor-pointer font-black text-center text-white hover:bg-primary"
+                :class="selectedIds.includes(topicCategory.id) ? 'bg-primary' : ''"
+            >
+                <span x-text="topicCategory.title[locale]"></span>
+            </li>
+        </template>
+    </ul>
+</div>
+
+<script defer>
+    function topicCategoryDropdown(titles) {
+        return {
+            locale: '{{ app()->getLocale() }}',
+            selectedIds: [],
+            selectedTopicCategories: [],
+            open: false,
+            filteredTopicCategories: titles,
+            localizedInputText: {
+                en: 'items selected',
+                ru: 'элементов выбрано',
+            },
+
+            get displayText() {
+                if (this.selectedTopicCategories.length === 0) {
+                    return '';
+                } else if (this.selectedTopicCategories.length <= 1) {
+                    return this.selectedTopicCategories.map(t => t.title[this.locale]);
+                } else {
+                    return `${this.selectedTopicCategories.length} ${this.localizedInputText[this.locale]}`;
+                }
+            },
+
+            toggleSelection(topicCategory) {
+                const index = this.selectedIds.indexOf(topicCategory.id);
+                if (index === -1) {
+                    this.selectedIds.push(topicCategory.id);
+                    this.selectedTopicCategories.push(topicCategory);
+                } else {
+                    this.selectedIds.splice(index, 1);
+                    this.selectedTopicCategories = this.selectedTopicCategories.filter(t => t.id !== topicCategory.id);
+                }
+            },
+        };
+    }
+</script>
