@@ -7,25 +7,27 @@
         <div class="w-full flex justify-between">
             <div class="collapse-title">
                 {{ __('listing/index/list.for_sale_off_plan') }}
+                @if (request()->has('sort'))
+                    <span class="normal-case ml-4 font-normal">
+                        @switch(request()->get('sort'))
+                            @case('title_asc')
+                                Title Ascending
+                                @break
+                            @case('title_desc')
+                                Title Descending
+                                @break
+                            @case('price_asc')
+                                Price Low to High
+                                @break
+                            @case('price_desc')
+                                Price High to Low
+                                @break
+                        @endswitch
+                    </span>
+                @endif
             </div>
-            <div class="flex items-center space-x-2 md:space-x-4 xl:space-x-8">
-                <a href="{{ route('pages.listing.index', ['viewType' => 'liked']) }}">
-                    <img src="{{ asset('assets/images/icons/heart-blue.svg') }}" alt="like-view" />
-                </a>
-                <a href="{{ route('pages.listing.map') }}">
-                    <img src="{{ asset('assets/images/icons/map-view.png') }}" alt="map-view" />
-                </a>
-                <a href="{{ route('pages.listing.index', ['viewType' => 'list']) }}">
-                    <img src="{{ asset('assets/images/icons/list-view.svg') }}" alt="list-view" />
-                </a>
-                <a href="{{ route('pages.listing.index', ['viewType' => 'grid']) }}">
-                    <img src="{{ asset('assets/images/icons/grid-view.svg') }}" alt="grid-view" />
-                </a>
-                @php($sort = request()->get('sort') === 'title_asc' ? 'title_desc' : 'title_asc')
-                <a href="{{ route('pages.listing.index', ['sort' => $sort]) }}">
-                    <img src="{{ asset('assets/images/icons/sort-icon.svg') }}" alt="sort" />
-                </a>
-            </div>
+
+            <x-ui.switcher-panel.toggle-view />
         </div>
     </div>
 

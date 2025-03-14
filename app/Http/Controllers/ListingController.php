@@ -209,6 +209,12 @@ class ListingController extends Controller
                 case 'title_desc':
                     $hotelsQuery->orderBy('title', 'desc');
                     break;
+                case 'price_asc':
+                    $hotelsQuery->orderBy('price', 'asc');
+                    break;
+                case 'price_desc':
+                    $hotelsQuery->orderBy('price', 'desc');
+                    break;
             }
         }
 

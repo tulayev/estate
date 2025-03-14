@@ -20,6 +20,7 @@
                                         src="{{ ImagePathResolver::resolve($image) }}"
                                         class="w-full h-full object-cover border-rounded"
                                         alt="{{ $hotel->title }}"
+                                        loading="lazy"
                                     />
                                 </div>
                             @endforeach
@@ -30,6 +31,7 @@
                                         src="{{ $image }}"
                                         class="w-full h-full object-cover border-rounded"
                                         alt="{{ $hotel->title }}"
+                                        loading="lazy"
                                     />
                                 </div>
                             @endforeach

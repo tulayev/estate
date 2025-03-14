@@ -91,6 +91,7 @@
                                             src="{{ ImagePathResolver::resolve($image) }}"
                                             alt="{{ $hotel->title }}"
                                             class="border-rounded object-cover w-full h-64"
+                                            loading="lazy"
                                         />
                                     </a>
                                 </div>
@@ -103,6 +104,7 @@
                                             src="{{ $image }}"
                                             alt="{{ $hotel->title }}"
                                             class="border-rounded object-cover w-full h-64"
+                                            loading="lazy"
                                         />
                                     </a>
                                 </div>
