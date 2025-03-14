@@ -8,7 +8,7 @@
         class="uk-visible@s z-10 bg-white rounded-full flex justify-between items-center absolute left-1/2 bottom-0 xl:bottom-[-10px] -translate-x-1/2 px-4 w-[85vw] lg:w-[91vw] xl:w-[65vw] h-[50px] xl:h-[62px]"
         autocomplete="off"
     >
-        <div class="animate-spin-fast">
+        <div class="animate-spin-slow">
             <img
                 src="{{ asset('assets/images/icons/circle.png') }}"
                 alt="circle"

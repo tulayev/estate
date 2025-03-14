@@ -9,7 +9,7 @@
     }
 
     .section {
-        @apply pt-8 sm:pt-16 md:pt-24 xl:pt-28;
+        @apply pt-8 sm:pt-16 md:pt-24 xl:pt-24;
     }
 
     .container {
@@ -18,11 +18,11 @@
 
     /* Buttons */
     .main-button {
-        @apply bg-white/10 text-white uppercase font-semibold inline-flex items-center text-sm xl:text-lg space-x-2 px-[22px] py-1 lg:py-[12px] rounded-full;
+        @apply bg-white/10 text-white uppercase font-semibold inline-flex items-center text-sm xl:text-[0.9rem] space-x-2 px-[22px] py-1 lg:py-[12px] rounded-full;
     }
 
     .secondary-button {
-        @apply bg-white/10 text-white uppercase font-semibold inline-flex items-center text-sm xl:text-lg space-x-2 rounded-full;
+        @apply bg-white/10 text-white uppercase font-semibold inline-flex items-center text-sm xl:text-[0.9rem] space-x-2 rounded-full;
     }
 
     .primary-button {
@@ -60,6 +60,10 @@
 
     .collapse-title {
         @apply text-primary uppercase text-xs sm:text-sm md:text-lg xl:text-2xl sm:font-bold xl:font-black;
+    }
+
+    .collapse-title-object-description {
+        @apply text-primary uppercase text-xs sm:text-sm md:text-lg xl:text-[1rem] sm:font-bold xl:font-black;
     }
 
     .modal-subtitle {

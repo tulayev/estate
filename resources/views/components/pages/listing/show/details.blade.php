@@ -129,7 +129,7 @@
 
             <!-- Description -->
             <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 rounded-[28px] shadow-card bg-white px-3 py-5">
-                <div class="collapse-title text-sm items-center uppercase border-b border-borderColor p-4">
+                <div class="collapse-title text-[1rem] items-center uppercase border-b border-borderColor p-4">
                     <div class="uk-child-width-1-2 uk-child-width-1-4@s uk-grid-small" uk-grid>
                         @if ($hotel->types)
                             <div>
@@ -160,14 +160,14 @@
                     @if (mb_strlen($hotel->description) >= 350)
                         <div x-data="{ expanded: false }">
                             <p
-                                class="collapse-title font-normal normal-case"
+                                class="w font-normal normal-case"
                                 x-show="expanded"
                                 x-cloak
                             >
                                 {!! $hotel->description !!}
                             </p>
                             <p
-                                class="collapse-title font-normal normal-case"
+                                class="collapse-title-object-description font-normal normal-case"
                                 x-show="!expanded"
                                 x-cloak
                             >
@@ -190,10 +190,10 @@
             </div>
             <!-- Features -->
             @if ($hotel->features)
-                <div class="mt-2 md:mt-4 lg:mt-6 xl:mt-8">
+                <div class="mt-2 md:mt-4 lg:mt-6 xl:mt-8" x-data="{ showAll: false }">
                     <div class="uk-child-width-1-2 uk-child-width-1-3@m uk-grid-small" uk-grid>
-                        @foreach($hotel->features as $feature)
-                            <div>
+                        @foreach($hotel->features as $index => $feature)
+                            <div x-show="showAll || {{ $index }} < 3">
                                 <a
                                     href="{{ route('pages.listing.index', ['feature' => $feature->id]) }}"
                                     class="collapse-title text-sm shadow-card rounded-[28px] flex justify-center items-center bg-white py-3 sm:py-6 px-4 hover:text-secondary"
@@ -203,6 +203,17 @@
                             </div>
                         @endforeach
                     </div>
+                    @if($hotel->features->count() > 3)
+                        <div class="text-center mt-4">
+                            <button
+                                type="button"
+                                class="modal-subtitle"
+                                @click="showAll = !showAll"
+                            >
+                                <span x-text="showAll ? 'Show less' : 'Show more'"></span>
+                            </button>
+                        </div>
+                    @endif
                 </div>
             @endif
         @endif
