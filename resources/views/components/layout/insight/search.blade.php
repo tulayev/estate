@@ -28,14 +28,10 @@
                 @click.away="open = false"
             />
         </div>
-
+        <x-ui.search.topic-category-input :topicCategories="$topicCategories" />
         <div class="h-full flex items-center justify-end w-[12%] space-x-4">
             <div>
-                <img
-                    src="{{ asset('assets/images/icons/filter-dark.svg') }}"
-                    alt="circle"
-                    class="hidden w-10"
-                />
+                
                 <ul
                     x-show="open && suggestions.length > 0"
                     class="absolute top-16 left-0 bg-white border border-borderColor w-full rounded-b-[14px] shadow-lg max-h-44 overflow-auto"
@@ -53,6 +49,7 @@
                     </template>
                 </ul>
             </div>
+            
             <button type="submit">
                 <img
                     src="{{ asset('assets/images/icons/search-icon.svg') }}"
@@ -60,6 +57,7 @@
                     class="w-6 lg:w-8 xl:w-10"
                 />
             </button>
+            
         </div>
     </form>
 </div>
@@ -67,7 +65,7 @@
 <script defer>
     function topicsDropdown() {
         return {
-            API_URI: '{{ route('topics.search.titles') }}',
+            API_URI: '{{ route('topics.search.topicCategories') }}',
             locale: '{{ app()->getLocale() }}',
             query: '',
             open: false,
