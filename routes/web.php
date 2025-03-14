@@ -46,7 +46,7 @@ Route::prefix('insights')->group(function() {
     Route::get('/', [InsightController::class, 'index'])->name('pages.insight.index');
     Route::get('/{slug}', [InsightController::class, 'show'])->name('pages.insight.show');
     Route::post('/{topicId}/like', [InsightController::class, 'like'])->name('topic.like');
-    Route::get('/search/topics', [InsightController::class, 'searchTopics'])->name('topics.search.topicCategories');
+    Route::get('/search/topics', [InsightController::class, 'searchTopics'])->name('topics.search.titles');
 });
 
 Route::get('/about-us', [AboutController::class, 'index'])->name('pages.about.index');

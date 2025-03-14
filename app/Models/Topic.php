@@ -48,9 +48,14 @@ class Topic extends Model
         return $query->where('type', $topicType->value);
     }
 
-    public function scopeByCategory(Builder $query, $categoryId): Builder
+    public function scopeByCategory(Builder $query, $categories): Builder
     {
-        return $query->where('topic_category_id', $categoryId);
+        if (!empty($categories)) {
+            $categoriesArray = explode(',', $categories);
+
+            $query->whereIn('topic_category_id', $categoriesArray);
+        }
+        return $query;
     }
 
     public function scopeSearchByTitle(Builder $query, $searchTerm): Builder

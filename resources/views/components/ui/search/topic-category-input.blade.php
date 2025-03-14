@@ -4,32 +4,36 @@
 
 <div
     x-data="topicCategoryDropdown({{ json_encode($topicCategories) }})"
-    class="relative border-r border-borderColor h-full flex items-center justify-center w-[16%]"
+    class="relative border-r border-borderColor h-full flex items-center justify-center w-[23%]"
 >
     <input
         type="hidden"
-        name="topic_category"
+        name="category"
         x-model="selectedIds"
     />
 
     <div class="relative w-full modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none">
         <input
             type="text"
-            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+            class="w-full modal-subtitle placeholder-secondary bg-transparent border-none text-center outline-none"
             x-model="displayText"
             @focus="open = true"
             @click.away="open = false"
+            :hidden="displayText == ''"
             readonly
         />
         <img
             src="{{ asset('assets/images/icons/filter-dark.svg') }}"
             alt="search"
-            class="w-6 h-6 mx-auto"
+            class="w-6 h-6 mx-auto cursor-pointer"
+            @click="open = true"
+            @click.away="open = false"
+            :hidden="displayText != ''"
         />
     </div>
     <ul
         x-show="open && filteredTopicCategories.length > 0"
-        class="px-3 py-4 space-y-2 absolute top-16 bg-white border border-borderColor w-full rounded-b-[14px] shadow-lg z-50 max-h-48 overflow-auto"
+        class="px-3 py-4 space-y-2 absolute top-16 bg-white border border-borderColor w-full rounded-b-[14px] shadow-lg z-50 max-h-36 overflow-auto"
     >
         <template
             x-for="topicCategory in filteredTopicCategories"
