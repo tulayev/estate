@@ -74,6 +74,8 @@ class FloorResource extends ModelResource
                     ->dir(Constants::UPLOAD_PATH)
                     ->allowedExtensions(['png', 'jpg', 'jpeg'])
                     ->removable(),
+
+                Text::make(__('Moonshine/Floors/FloorResources.image'), 'image_url'),
             ])
         ];
     }
@@ -89,6 +91,7 @@ class FloorResource extends ModelResource
         return [
             'floor' => 'required|string',
             'image' => 'nullable|image|max:2048',
+            'image_url' => 'nullable|string',
             'bedrooms' => 'required|integer|min:0',
             'bathrooms' => 'required|integer|min:0',
             'area' => 'required|numeric|min:0|regex:/^\d+(\.\d{1,2})?$/',

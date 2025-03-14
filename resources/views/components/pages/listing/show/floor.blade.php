@@ -6,10 +6,11 @@
     <div class="container">
         @php
             $validFloors = $hotel->floors->filter(function($floor) {
-                return !($floor->floor === 'N/A' 
-                && $floor->image === 'N/A'
-                && $floor->bedrooms == 0 
-                && $floor->bathrooms == 0 
+                return !($floor->floor === 'N/A'
+                && $floor->image === null
+                && $floor->image_url === null
+                && $floor->bedrooms == 0
+                && $floor->bathrooms == 0
                 && $floor->price == 0.000);
             });
         @endphp
@@ -64,14 +65,12 @@
                                     </div>
                                 </a>
                                 <ul class="uk-nav-sub">
-                                    @if ($floor->image !== 'N/A')
-                                        <li>
-                                            <img
-                                                src="{{ ImagePathResolver::resolve($floor->image) ?? asset('assets/images/floor-placeholder.png') }}"
-                                                alt="Floor {{ $floor->floor }}"
-                                            />
-                                        </li>
-                                    @endif
+                                    <li>
+                                        <img
+                                            src="{{ ImagePathResolver::resolve($floor->image) ?? $floor->image_url ?? asset('assets/images/floor-placeholder.png') }}"
+                                            alt="{{ $floor->floor }}"
+                                        />
+                                    </li>
                                 </ul>
                             </li>
                             <li class="uk-nav-divider"></li>

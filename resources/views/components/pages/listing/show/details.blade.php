@@ -68,7 +68,7 @@
                             </h3>
                         </div>
                         <p class="text-sm sm:text-base md:text-lg font-bold xl:font-black mt-2 sm:mt-4 ml-12">
-                            ฿{{ $hotel->formatted_price }} 
+                            ฿{{ $hotel->formatted_price }}
                         </p>
                     </div>
                 </div>
@@ -129,7 +129,7 @@
 
             <!-- Description -->
             <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 rounded-[28px] shadow-card bg-white px-3 py-5">
-                <div class="collapse-title text-[1rem] items-center uppercase border-b border-borderColor p-4">
+                <div class="collapse-title text-base items-center uppercase border-b border-borderColor p-4">
                     <div class="uk-child-width-1-2 uk-child-width-1-4@s uk-grid-small" uk-grid>
                         @if ($hotel->types)
                             <div>

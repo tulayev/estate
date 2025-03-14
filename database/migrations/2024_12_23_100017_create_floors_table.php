@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('floor');
             $table->string('image')->nullable();
+            $table->string('image_url')->nullable();
             $table->integer('bedrooms');
             $table->integer('bathrooms');
             $table->decimal('area');

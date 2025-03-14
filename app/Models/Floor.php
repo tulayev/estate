@@ -15,6 +15,7 @@ class Floor extends Model
     protected $fillable = [
         'floor',
         'image',
+        'image_url',
         'bedrooms',
         'bathrooms',
         'area',

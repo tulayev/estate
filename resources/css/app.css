@@ -63,7 +63,7 @@
     }
 
     .collapse-title-object-description {
-        @apply text-primary uppercase text-xs sm:text-sm md:text-lg xl:text-[1rem] sm:font-bold xl:font-black;
+        @apply text-primary uppercase text-xs sm:text-sm md:text-base sm:font-bold xl:font-black;
     }
 
     .modal-subtitle {
