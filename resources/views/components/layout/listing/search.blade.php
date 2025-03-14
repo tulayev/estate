@@ -12,7 +12,7 @@
             value="search"
         />
 
-        <div class="animate-spin-fast">
+        <div class="animate-spin-slow">
             <img
                 src="{{ asset('assets/images/icons/circle.png') }}"
                 alt="circle"

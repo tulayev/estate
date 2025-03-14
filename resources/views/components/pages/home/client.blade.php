@@ -8,7 +8,7 @@
         </button>
     </div>
 
-    <div class="container pb-10 sm:pb-24">
+    <div class="container">
         <div class="mt-10 uk-child-width-1-1 uk-child-width-1-2@s" uk-grid>
             <div>
                 <div class="relative bg-cover bg-no-repeat text-white rounded-lg sm:border-rounded h-full"

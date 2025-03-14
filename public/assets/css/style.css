@@ -77,15 +77,15 @@ a:hover {
 }
 
 /* Uikit Accordion */
-.uk-nav-parent-icon>.uk-parent>a::after {
+.uk-nav-parent-icon > .uk-parent > a::after {
     background-image: url("../images/icons/plus.svg");
 }
 
-.uk-nav-parent-icon>.uk-parent.uk-open>a::after {
+.uk-nav-parent-icon > .uk-parent.uk-open > a::after {
     background-image: url("../images/icons/minus.svg");
 }
 
-.uk-nav>li>a {
+.uk-nav > li > a {
     padding-top: 14px;
     padding-bottom: 14px;
 }
@@ -99,7 +99,7 @@ a:hover {
 /* Track background */
 .noUi-target {
     border: none;
-    background-color: #0F1F3D;
+    background-color: #0f1f3d;
     border-radius: 8px;
     height: 8px;
 }
@@ -107,7 +107,7 @@ a:hover {
 /* Handles */
 .noUi-horizontal .noUi-handle {
     top: -8px;
-    background: #0F1F3D;
+    background: #0f1f3d;
     width: 24px;
     height: 24px;
     border-radius: 50%;
@@ -126,14 +126,14 @@ a:hover {
 
 /* Connect line between handles */
 .noUi-connect {
-    background-color: #C6C6C6;
+    background-color: #c6c6c6;
 }
 
 /* Swiper Bullets */
 .swiper-pagination-bullet {
     width: 14px;
     height: 14px;
-    background-color: #C6C6C6;
+    background-color: #c6c6c6;
     border-radius: 50%;
     transition: all 0.3s ease-in-out;
 }
