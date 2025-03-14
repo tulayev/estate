@@ -69,6 +69,7 @@
                                         <img
                                             src="{{ ImagePathResolver::resolve($floor->image) ?? $floor->image_url ?? asset('assets/images/floor-placeholder.png') }}"
                                             alt="{{ $floor->floor }}"
+                                            loading="lazy"
                                         />
                                     </li>
                                 </ul>

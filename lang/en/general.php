@@ -61,4 +61,7 @@ return [
      */
     'topic_types.for_investors' => 'For Investors',
     'topic_types.for_developers' => 'For Developers',
+
+    'show_more' => 'show more',
+    'show_less' => 'show less',
 ];

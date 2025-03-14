@@ -19,7 +19,7 @@
     <input
         type="hidden"
         name="locations"
-        :value="selectedIds.join(',')"
+        :value="selectedLocations.map(l => l.id).join(',')"
     />
 
     <div class="mt-6 sm:mt-8 md:mt-10 locations uk-child-width-1-2 uk-child-width-auto@s uk-grid-small" uk-grid>
@@ -43,7 +43,6 @@
             locale: '{{ app()->getLocale() }}',
             map: null,
             markers: {},
-            selectedIds: [],
             selectedLocations: [],
             allLocations: @json($locations),
 
@@ -74,24 +73,6 @@
                         this.addMarker(l.latitude, l.longitude, l.name[this.locale]);
                     }
                 });
-            },
-
-            toggleLocation(id, lat, lng, name) {
-                if (!this.validate(lat, lng)) {
-                    return;
-                }
-
-                if (this.isLocationSelected(id)) {
-                    this.selectedLocations = this.selectedLocations.filter(l => l.id !== id);
-                    this.removeMarker(lat, lng);
-                } else {
-                    this.selectedLocations.push({ id, lat, lng, name });
-                    this.zoomToMarker(lat, lng);
-                }
-            },
-
-            isLocationSelected(id) {
-                return this.selectedLocations.some(l => l.id == id);
             },
 
             zoomToMarker(lat, lng, zoomLevel = 15) {
@@ -148,6 +129,24 @@
                 return true;
             },
 
+            toggleLocation(id, lat, lng, name) {
+                if (!this.validate(lat, lng)) {
+                    return;
+                }
+
+                if (this.isLocationSelected(id)) {
+                    this.selectedLocations = this.selectedLocations.filter(l => l.id !== id);
+                    this.removeMarker(lat, lng);
+                } else {
+                    this.selectedLocations.push({ id, lat, lng, name });
+                    this.zoomToMarker(lat, lng);
+                }
+            },
+
+            isLocationSelected(id) {
+                return this.selectedLocations.some(l => l.id == id);
+            },
+
             resetLocations() {
                 Object.values(this.markers).forEach(marker => {
                     this.map.removeLayer(marker);
@@ -157,7 +156,7 @@
             },
 
             selectedLocationNames() {
-                return this.selectedIds.map(id => {
+                return this.selectedLocations.map(({ id }) => {
                     const location = this.allLocations.find(l => l.id == id);
                     return location ? location.name[this.locale] : '';
                 });

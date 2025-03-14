@@ -67,7 +67,7 @@
                                 {{ $hotel->title }}
                             </h3>
                         </div>
-                        <p class="text-sm sm:text-base md:text-lg font-bold xl:font-black mt-2 sm:mt-4 ml-12">
+                        <p class="text-sm sm:text-base md:text-lg font-bold xl:font-black mt-2 sm:mt-4 {{ $hotel->ie_verified ? 'ml-12' : '' }}">
                             ฿{{ $hotel->formatted_price }}
                         </p>
                     </div>
@@ -156,30 +156,23 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 px-4">
                     @if (mb_strlen($hotel->description) >= 350)
                         <div x-data="{ expanded: false }">
-                            <p
-                                class="w font-normal normal-case"
-                                x-show="expanded"
-                                x-cloak
-                            >
+                            <div x-show="expanded">
                                 {!! $hotel->description !!}
-                            </p>
-                            <p
-                                class="collapse-title-object-description font-normal normal-case"
-                                x-show="!expanded"
-                                x-cloak
-                            >
-                                {!! Str::limit(strip_tags($hotel->description), 350) !!}
-                            </p>
+                            </div>
+                            <div x-show="!expanded">
+                                {!! Str::limit($hotel->description, 350) !!}
+                            </div>
                             <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 text-center">
                                 <button
                                     type="button"
                                     class="modal-subtitle"
                                     @click="expanded = !expanded"
                                 >
-                                    <span x-text="expanded ? 'See less' : 'See more'"></span>
+                                    <span x-text="expanded ? '{{ __('general.show_less') }}' : '{{ __('general.show_more') }}'"></span>
                                 </button>
                             </div>
                         </div>
@@ -190,7 +183,10 @@
             </div>
             <!-- Features -->
             @if ($hotel->features)
-                <div class="mt-2 md:mt-4 lg:mt-6 xl:mt-8" x-data="{ showAll: false }">
+                <div
+                    class="mt-2 md:mt-4 lg:mt-6 xl:mt-8"
+                    x-data="{ showAll: false }"
+                >
                     <div class="uk-child-width-1-2 uk-child-width-1-3@m uk-grid-small" uk-grid>
                         @foreach($hotel->features as $index => $feature)
                             <div x-show="showAll || {{ $index }} < 3">
@@ -210,7 +206,7 @@
                                 class="modal-subtitle"
                                 @click="showAll = !showAll"
                             >
-                                <span x-text="showAll ? 'Show less' : 'Show more'"></span>
+                                <span x-text="showAll ? '{{ __('general.show_less') }}' : '{{ __('general.show_more') }}'"></span>
                             </button>
                         </div>
                     @endif

@@ -22,7 +22,7 @@
                                     href="{{ route('pages.listing.index', ['tag' => $tag->id]) }}"
                                     class="card-tag-button bg-color-{{ $index + 1 }} bg-opacity-60 hover:text-primary"
                                 >
-                                    {{ Str::limit($tag->name, 3) }}
+                                    {{ Str::limit($tag->name, 10) }}
                                 </a>
                             @endforeach
                         </div>
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <!-- Bottom -->
-            <div class="shadow-card border-rounded mt-[-54px] sm:mt-[-44px] px-3 sm:px-5 pt-[68px] pb-4 sm:pb-6">
+            <div class="shadow border-rounded mt-[-54px] sm:mt-[-44px] px-3 sm:px-5 pt-[68px] pb-4 sm:pb-6">
                 <div class="flex justify-between uppercase text-[#505050] text-xs  sm:font-bold md:font-black">
                     @if ($hotel->locations && $hotel->locations->first())
                         <div>

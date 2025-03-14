@@ -61,4 +61,7 @@ return [
      */
     'topic_types.for_investors' => 'Инвесторам',
     'topic_types.for_developers' => 'Застройщикам',
+
+    'show_more' => 'развернуть',
+    'show_less' => 'свернуть',
 ];
