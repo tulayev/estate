@@ -1,9 +1,9 @@
 @props([
-    'titles' => [],
+    'topicCategories' => [],
 ])
 
 <div
-    x-data="topicCategoryDropdown({{ json_encode($titles) }})"
+    x-data="topicCategoryDropdown({{ json_encode($topicCategories) }})"
     class="relative border-r border-borderColor h-full flex items-center justify-center w-[16%]"
 >
     <input
@@ -47,13 +47,13 @@
 </div>
 
 <script defer>
-    function topicCategoryDropdown(titles) {
+    function topicCategoryDropdown(topicCategories) {
         return {
             locale: '{{ app()->getLocale() }}',
             selectedIds: [],
             selectedTopicCategories: [],
             open: false,
-            filteredTopicCategories: titles,
+            filteredTopicCategories: topicCategories,
             localizedInputText: {
                 en: 'items selected',
                 ru: 'элементов выбрано',

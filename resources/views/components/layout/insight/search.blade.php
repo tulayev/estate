@@ -28,7 +28,7 @@
                 @click.away="open = false"
             />
         </div>
-        <x-ui.search.topic-category-input :titles="$titles" />
+        <x-ui.search.topic-category-input :topicCategories="$topicCategories" />
         <div class="h-full flex items-center justify-end w-[12%] space-x-4">
             <div>
                 
@@ -65,7 +65,7 @@
 <script defer>
     function topicsDropdown() {
         return {
-            API_URI: '{{ route('topics.search.titles') }}',
+            API_URI: '{{ route('topics.search.topicCategories') }}',
             locale: '{{ app()->getLocale() }}',
             query: '',
             open: false,

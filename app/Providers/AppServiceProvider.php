@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
         $tags = Tag::all();
         $features = Feature::all();
         $maxPrice = Hotel::getMaxPrice();
-        $titles = TopicCategory::all();
+        $topicCategories = TopicCategory::all();
         $rent = $types->find(Constants::SYSTEM_TYPE_IDS['rent']);
         $primary = $types->find(Constants::SYSTEM_TYPE_IDS['primary']);
         $resales = $types->find(Constants::SYSTEM_TYPE_IDS['resales']);
@@ -46,7 +46,7 @@ class AppServiceProvider extends ServiceProvider
                 'components.layout.header',
                 'components.pages.home.problem',
             ],
-            function ($view) use ($types, $tags, $features, $locations, $maxPrice, $primary, $resales, $land, $rent, $titles) {
+            function ($view) use ($types, $tags, $features, $locations, $maxPrice, $primary, $resales, $land, $rent, $topicCategories) {
                 $view->with('types', $types)
                     ->with('tags', $tags)
                     ->with('features', $features)
@@ -56,7 +56,7 @@ class AppServiceProvider extends ServiceProvider
                     ->with('primary', $primary)
                     ->with('resales', $resales)
                     ->with('land', $land)
-                    ->with('titles', $titles);
+                    ->with('topicCategories', $topicCategories);
         });
 
         View::composer('components.layout.header', function ($view) use ($types) {
