@@ -138,6 +138,12 @@ a:hover {
     background-color: #c6c6c6;
 }
 
+/* Swiper */
+.swiper {
+    overflow: hidden;
+    border-radius: 25px;
+}
+
 /* Swiper Bullets */
 .swiper-pagination-bullet {
     width: 14px;

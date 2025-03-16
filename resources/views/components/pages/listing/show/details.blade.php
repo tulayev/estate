@@ -60,21 +60,23 @@
                     </div>
                     <!-- Image Bottom -->
                     <div class="relative text-white uppercase mt-20 sm:mt-40 md:mt-64 lg:mt-80 xl:mt-96">
-                        <div class="flex items-center space-x-2 sm:space-x-3">
+                        <div class="flex items-start space-x-2 sm:space-x-3">
                             @if ($hotel->ie_verified)
                                 <img
-                                    class="w-10"
+                                    class="w-6 sm:w-8 md:w-10"
                                     src="{{ asset('assets/images/icons/verified.svg') }}"
                                     alt="verified"
                                 />
                             @endif
-                            <h3 class="section-title-white">
-                                {{ $hotel->title }}
-                            </h3>
+                            <div>
+                                <h3 class="text-white text-base sm:text-lg md:text-2xl xl:text-3xl font-bold xl:font-black">
+                                    {{ $hotel->title }}
+                                </h3>
+                                <p class="text-sm sm:text-base md:text-lg font-bold xl:font-black mt-2 sm:mt-4">
+                                    ฿{{ $hotel->formatted_price }}
+                                </p>
+                            </div>
                         </div>
-                        <p class="text-sm sm:text-base md:text-lg font-bold xl:font-black mt-2 sm:mt-4 {{ $hotel->ie_verified ? 'ml-12' : '' }}">
-                            ฿{{ $hotel->formatted_price }}
-                        </p>
                     </div>
                 </div>
             </div>

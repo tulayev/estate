@@ -62,6 +62,13 @@
                                                 </p>
                                             </div>
                                         @endif
+                                        @if ($floor->postfix !== 'N/A')
+                                            <div>
+                                                <p class="shadow-card border-rounded p-2 sm:px-4 sm:py-2">
+                                                    {{ $floor->postfix }}
+                                                </p>
+                                            </div>
+                                        @endif
                                     </div>
                                 </a>
                                 <ul class="uk-nav-sub">

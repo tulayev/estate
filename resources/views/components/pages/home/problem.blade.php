@@ -5,14 +5,14 @@ use App\Helpers\Enums\TopicType;
 <section class="section">
     <div class="container">
         <!-- Slider -->
-        <div class="swiper home-slider border-rounded">
+        <div class="swiper home-slider">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div
-                        class="flex  relative px-5 sm:px-10 xl:px-20 h-[500px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
+                        class="flex relative bg-cover bg-center bg-no-repeat px-5 sm:px-10 xl:px-20 h-[650px] sm:h-[550px] xl:h-[750px]"
                         style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
                     >
-                        <div class="absolute inset-0 bg-black opacity-70"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-black/50"></div>
                         <div class="relative z-10 flex flex-col justify-center">
                             <h2 class="section-title-white text-lg sm:text-2xl xl:text-3xl">
                                 {{ __('home/problem.slide_1_h2') }}
@@ -42,10 +42,10 @@ use App\Helpers\Enums\TopicType;
                 </div>
                 <div class="swiper-slide">
                     <div
-                        class="flex relative px-5 sm:px-10 xl:px-20 h-[500px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
+                        class="flex relative bg-cover bg-center bg-no-repeat px-5 sm:px-10 xl:px-20 h-[650px] sm:h-[550px] xl:h-[750px]"
                         style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
                     >
-                        <div class="absolute inset-0 bg-black opacity-70"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-black/50"></div>
                         <div class="relative z-10 flex flex-col justify-center">
                             <h2 class="section-title-white text-lg sm:text-2xl xl:text-3xl">
                                 {{ __('home/problem.slide_2_h2') }}
@@ -66,10 +66,10 @@ use App\Helpers\Enums\TopicType;
                 </div>
                 <div class="swiper-slide">
                     <div
-                        class="flex relative px-5 sm:px-10 xl:px-20 h-[500px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
+                        class="flex relative bg-cover bg-center bg-no-repeat px-5 sm:px-10 xl:px-20 h-[650px] sm:h-[550px] xl:h-[750px]"
                         style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
                     >
-                        <div class="absolute inset-0 bg-black opacity-70"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-black/50"></div>
                         <div class="relative z-10 flex flex-col justify-center">
                             <h2 class="section-title-white text-lg sm:text-2xl xl:text-3xl">
                                 {{ __('home/problem.slide_3_h2') }}
@@ -91,10 +91,10 @@ use App\Helpers\Enums\TopicType;
                 </div>
                 <div class="swiper-slide">
                     <div
-                        class="flex relative px-5 sm:px-10 xl:px-20 h-[500px] sm:h-[500px] md:h-[600px] xl:h-[800px] xxl:h-[850px]"
+                        class="flex relative bg-cover bg-center bg-no-repeat px-5 sm:px-10 xl:px-20 h-[650px] sm:h-[550px] xl:h-[750px]"
                         style="background-image: url('{{ asset('assets/images/problem_main_bg.png') }}')"
                     >
-                        <div class="absolute inset-0 bg-black opacity-70"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-black/50"></div>
                         <div class="relative z-10 flex flex-col justify-center">
                             <h2 class="section-title-white text-lg sm:text-2xl xl:text-3xl">
                                 {!!__('home/problem.slide_4_h2') !!}
@@ -116,7 +116,7 @@ use App\Helpers\Enums\TopicType;
                 </div>
             </div>
             <!-- Swiper Pagination -->
-            <div class="swiper-pagination"></div>
+            <div class="swiper-pagination mb-2 md:mb-8 xl:mb-12"></div>
         </div>
 
         <!-- Cards -->
