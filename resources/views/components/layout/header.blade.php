@@ -1,7 +1,4 @@
-@props([
-    'mapView' => false,
-])
-
+@php($mapView = count(request()->segments()) === 2)
 <!-- Desktop -->
 <header
     class="header absolute top-0 left-0 w-full z-[999] uk-visible@m"

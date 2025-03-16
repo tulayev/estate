@@ -1,4 +1,4 @@
-<x-layout.listing-layout>
+<x-layout.app>
 
     <main class="main-section relative mt-2 sm:mt-40">
         <x-layout.listing.search />
@@ -18,8 +18,4 @@
         :similarHotels="$similarHotels"
     />
 
-    <x-layout.contact />
-
-    <x-layout.footer />
-
-</x-layout.listing-layout>
+</x-layout.app>

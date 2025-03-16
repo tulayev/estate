@@ -1,8 +1,17 @@
 @props([
     'hotels' => null,
 ])
+<style>
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
 
-<section class="pt-8 sm:pt-16 md:pt-24 lg:pt-36 fixed">
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+</style>
+<main class="pt-8 sm:pt-16 md:pt-24 lg:pt-44">
     <div class="container">
         <div class="w-full flex justify-between">
             <div class="collapse-title">
@@ -38,10 +47,7 @@
             x-data="mapViewHandler({{ $hotels->toJson() }})"
             x-init="initMapView()"
         >
-            <div
-                class="absolute top-4 left-4 w-1/2 md:w-[40%] space-y-4 h-[100%] overflow-y-scroll z-[999]"
-                style="scrollbar-width: none; -ms-overflow-style: none;"
-            >
+            <div class="absolute top-4 left-4 w-1/2 md:w-[40%] space-y-4 h-[100%] overflow-y-auto z-[999] no-scrollbar">
                 <div id="dynamicCardContainer" class="space-y-4"></div>
 
                 <div x-ref="hotelList">
@@ -61,7 +67,7 @@
             <div id="mapView" class="border-rounded w-[100vw] h-[100vh]"></div>
         </div>
     @endif
-</section>
+</main>
 
 <script defer>
     function mapViewHandler(hotels) {
