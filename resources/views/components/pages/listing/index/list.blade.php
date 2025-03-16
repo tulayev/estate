@@ -57,6 +57,7 @@
                     <div
                         class="w-full flex justify-center mt-4 md:mt-6 xl:mt-10"
                         x-data="hotelPagination()"
+                        x-init="initializeCardsSlider()"
                     >
                         <button
                             id="seeMore"
@@ -81,6 +82,7 @@
             currentPage: 1,
             hasMorePages: {{ $hotels->hasMorePages() ? 'true' : 'false' }},
             lastPage: {{ $hotels->lastPage() }},
+            swiperInstances: [],
 
             async loadMore() {
                 if (!this.hasMorePages)
@@ -104,6 +106,7 @@
                     hotelsWrapper.insertAdjacentHTML('beforeend', response.data);
 
                     this.lazyLoadImages();
+                    this.initializeCardsSlider();
 
                     if (this.currentPage >= this.lastPage) {
                         this.hasMorePages = false;
@@ -132,6 +135,26 @@
                 });
 
                 lazyImages.forEach((img) => observer.observe(img));
+            },
+
+            initializeCardsSlider() {
+                this.swiperInstances.forEach(swiper => swiper.destroy(true, true));
+                this.swiperInstances = [];
+
+                document.querySelectorAll('.listing-slider').forEach(slider => {
+                    const swiper = new Swiper(slider, {
+                        loop: true,
+                        slidesPerView: 1,
+                        spaceBetween: 0,
+                        autoplay: false,
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                    });
+
+                    this.swiperInstances.push(swiper);
+                });
             },
         };
     }

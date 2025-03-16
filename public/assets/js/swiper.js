@@ -56,16 +56,4 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         },
     });
-
-    /* Listings slider */
-    const listingSlider = new Swiper('.listing-slider', {
-        loop: true,
-        slidesPerView: 1,
-        spaceBetween: 0,
-        autoplay: false,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
 });
