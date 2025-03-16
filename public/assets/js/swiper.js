@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         grabCursor: false,
         breakpoints: {
             0: { // For very small screens (like mobile)
-                slidesPerView: 1,
+                slidesPerView: 2,
             },
             640: {
                 slidesPerView: 2,

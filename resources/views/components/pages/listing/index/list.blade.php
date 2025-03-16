@@ -103,13 +103,7 @@
                     const hotelsWrapper = document.getElementById('hotelsWrapper');
                     hotelsWrapper.insertAdjacentHTML('beforeend', response.data);
 
-                    // Reapply random background colors to newly added elements
-                    document.querySelectorAll('.random-bg-color').forEach((element) => {
-                        if (!element.dataset.bgAssigned) {
-                            element.classList.add(window.getRandomColor());
-                            element.dataset.bgAssigned = "true"; // Prevent reassigning
-                        }
-                    });
+                    this.lazyLoadImages();
 
                     if (this.currentPage >= this.lastPage) {
                         this.hasMorePages = false;
@@ -117,7 +111,28 @@
                 } catch (error) {
                     console.error("Error loading more hotels:", error);
                 }
-            }
+            },
+
+            lazyLoadImages() {
+                const lazyImages = document.querySelectorAll('.lazy-image');
+
+                const lazyLoad = (entry) => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.getAttribute('data-src');
+                        img.onload = () => {
+                            img.classList.add('loaded');
+                        };
+                        observer.unobserve(img);
+                    }
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(lazyLoad);
+                });
+
+                lazyImages.forEach((img) => observer.observe(img));
+            },
         };
     }
 </script>

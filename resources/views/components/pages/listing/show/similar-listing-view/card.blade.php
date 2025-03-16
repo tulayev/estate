@@ -4,17 +4,19 @@
 
 @if ($hotel)
     <div>
-        <a
-            href="{{ route('pages.listing.show', $hotel->slug) }}"
-            class="z-10"
-        >
-            <div
-                class="relative bg-cover bg-center bg-no-repeat flex flex-col justify-between border-rounded p-2 h-[200px]"
-                style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}');"
-            >
+        <a href="{{ route('pages.listing.show', $hotel->slug) }}">
+            <div class="relative flex flex-col justify-between p-2 h-[200px]">
+                <div class="absolute inset-0">
+                    <img
+                        data-src="{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}"
+                        class="lazy-image"
+                        alt="{{ $hotel->title }}"
+                        loading="lazy"
+                    />
+                </div>
                 <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
                 <!-- Image Top -->
-                <div class="items-left z-10 absolute">
+                <div class="absolute">
                     @if ($hotel->tags)
                         <div class="flex items-center space-x-2">
                             @foreach($hotel->tags->take(2) as $index => $tag)
@@ -40,7 +42,7 @@
             </div>
             <!-- Bottom -->
             <div class="shadow border-rounded mt-[-54px] sm:mt-[-44px] px-3 sm:px-5 pt-[68px] pb-4 sm:pb-6">
-                <div class="flex justify-between uppercase text-[#505050] text-xs  sm:font-bold md:font-black">
+                <div class="flex justify-between uppercase text-[#505050] text-xs sm:font-bold md:font-black">
                     @if ($hotel->locations && $hotel->locations->first())
                         <div>
                             <p>📍 {{ Str::limit($hotel->locations->first()->name, 10) }}</p>

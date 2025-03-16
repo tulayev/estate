@@ -8,7 +8,7 @@
             href="{{ route('pages.listing.show', $hotel->slug) }}"
             class="absolute inset-0 z-10">
         </a>
-        <div class="relative bg-cover bg-center bg-no-repeat flex flex-col justify-between border-rounded p-3 h-[220px] md:h-[300px] hover:shadow-xl transition-shadow duration-300">
+        <div class="relative flex flex-col justify-between p-3 h-[220px] md:h-[300px] hover:shadow-xl transition-shadow duration-300">
             <!-- Swiper Slider (Initially Hidden) -->
             @if ($hotel->gallery || $hotel->gallery_url)
                 <div class="swiper listing-slider absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none">
@@ -43,10 +43,14 @@
                 </div>
             @endif
             <!-- Static Background (Visible Until Hover) -->
-            <div
-                class="absolute inset-0 bg-cover bg-center bg-no-repeat border-rounded transition-opacity duration-500 group-hover:opacity-0"
-                style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}');"
-            ></div>
+            <div class="absolute inset-0 transition-opacity duration-500 group-hover:opacity-0">
+                <img
+                    data-src="{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}"
+                    class="lazy-image"
+                    alt="{{ $hotel->title }}"
+                    loading="lazy"
+                />
+            </div>
             <!-- Gradient Overlay -->
             <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
             <!-- Tags -->

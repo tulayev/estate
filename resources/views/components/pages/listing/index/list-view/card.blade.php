@@ -9,8 +9,15 @@
             class="absolute inset-0 z-10">
         </a>
         <div class="shadow-card border-rounded flex transition-shadow duration-300 ease-in-out group-hover:shadow-xl">
-            <div class="relative bg-cover bg-center bg-no-repeat flex flex-col justify-between border-rounded p-3 w-full h-[250px] sm:w-[30%]"
-                 style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}');">
+            <div class="relative flex flex-col justify-between p-3 w-full h-[250px] sm:w-[30%]">
+                <div class="absolute inset-0">
+                    <img
+                        data-src="{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}"
+                        class="lazy-image"
+                        alt="{{ $hotel->title }}"
+                        loading="lazy"
+                    />
+                </div>
                 <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
                 <!-- Image Top -->
                 <div class="flex justify-between items-center z-10">

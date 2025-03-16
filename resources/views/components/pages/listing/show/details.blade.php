@@ -25,10 +25,15 @@
             </h2>
             <!-- Main -->
             <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10">
-                <div
-                    class="relative bg-cover bg-center bg-no-repeat border-rounded px-4 pt-4 pb-4 md:px-8 md:pt-8 md:pb-10"
-                    style="background-image: url('{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}');"
-                >
+                <div class="relative px-4 pt-4 pb-4 md:px-8 md:pt-8 md:pb-10">
+                    <div class="absolute inset-0">
+                        <img
+                            data-src="{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}"
+                            class="lazy-image"
+                            alt="{{ $hotel->title }}"
+                            loading="lazy"
+                        />
+                    </div>
                     <div class="absolute border-rounded inset-0 bg-gradient-to-t from-black to-transparent"></div>
                     <!-- Image Top -->
                     <div class="relative flex flex-col space-y-2 sm:space-y-0 sm:flex-row justify-between items-center">

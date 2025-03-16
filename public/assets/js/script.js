@@ -22,29 +22,47 @@ function randomBgColor() {
 }
 
 function lazyLoadBgImages() {
-    const lazyBgElements = document.querySelectorAll('.lazy-bg');
+    const lazyElements = document.querySelectorAll('.lazy-background');
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.style.backgroundImage = `url('${entry.target.dataset.bg}')`;
-                observer.unobserve(entry.target);
-            }
-        });
+    const lazyLoad = (entry) => {
+        if (entry.isIntersecting) {
+            const element = entry.target;
+            const bgUrl = element.getAttribute('data-bg');
+            element.style.setProperty('--bg-url', `url(${bgUrl})`);
+            element.classList.add('loaded');
+            observer.unobserve(element);
+        }
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(lazyLoad);
     });
 
-    lazyBgElements.forEach((el) => observer.observe(el));
+    lazyElements.forEach((el) => observer.observe(el));
 }
 
-function seeMore() {
-    const seeMoreButton = document.querySelector('#seeMore');
+function lazyLoadImages() {
+    const lazyImages = document.querySelectorAll('.lazy-image');
 
-    if (seeMoreButton) {
-        seeMoreButton.addEventListener('click', () => lazyLoadBgImages());
-    }
+    const lazyLoad = (entry) => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.getAttribute('data-src');
+            img.onload = () => {
+                img.classList.add('loaded');
+            };
+            observer.unobserve(img);
+        }
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(lazyLoad);
+    });
+
+    lazyImages.forEach((img) => observer.observe(img));
 }
 
 onDOMLoaded(() => overlay());
 onDOMLoaded(() => randomBgColor());
 onDOMLoaded(() => lazyLoadBgImages());
-onDOMLoaded(() => seeMore());
+onDOMLoaded(() => lazyLoadImages());
