@@ -21,26 +21,6 @@ function randomBgColor() {
     });
 }
 
-function lazyLoadBgImages() {
-    const lazyElements = document.querySelectorAll('.lazy-background');
-
-    const lazyLoad = (entry) => {
-        if (entry.isIntersecting) {
-            const element = entry.target;
-            const bgUrl = element.getAttribute('data-bg');
-            element.style.setProperty('--bg-url', `url(${bgUrl})`);
-            element.classList.add('loaded');
-            observer.unobserve(element);
-        }
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(lazyLoad);
-    });
-
-    lazyElements.forEach((el) => observer.observe(el));
-}
-
 function lazyLoadImages() {
     const lazyImages = document.querySelectorAll('.lazy-image');
 
@@ -64,5 +44,4 @@ function lazyLoadImages() {
 
 onDOMLoaded(() => overlay());
 onDOMLoaded(() => randomBgColor());
-onDOMLoaded(() => lazyLoadBgImages());
 onDOMLoaded(() => lazyLoadImages());

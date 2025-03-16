@@ -45,7 +45,8 @@
             <!-- Static Background (Visible Until Hover) -->
             <div class="absolute inset-0 transition-opacity duration-500 group-hover:opacity-0">
                 <img
-                    data-src="{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}"
+                    src="{{ asset('assets/images/object-background.png') }}"
+                    data-src="{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url }}"
                     class="lazy-image"
                     alt="{{ $hotel->title }}"
                     loading="lazy"

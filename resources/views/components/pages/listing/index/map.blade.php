@@ -73,9 +73,9 @@
 
             initMapView() {
                 // Initialize the map without zoom control
-                this.map = L.map("mapView", {
-                    center: [0, 0],
-                    zoom: 2,
+                this.map = L.map('mapView', {
+                    center: [7.8804, 98.3923],
+                    zoom: 8,
                     minZoom: 2,
                     maxZoom: 18,
                     attributionControl: false,
@@ -87,10 +87,10 @@
                     position: 'topright'
                 }).addTo(this.map);
 
-                L.tileLayer(
-                    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                    { maxZoom: 19, attributionControl: false }
-                ).addTo(this.map);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attributionControl: false
+                }).addTo(this.map);
 
                 // Add markers for hotels
                 hotels.forEach((hotel) => {
@@ -101,11 +101,11 @@
             },
 
             addMarker(hotel) {
-                const { latitude: lat, longitude: lng, location } = hotel;
+                const { latitude: lat, longitude: lng, title } = hotel;
 
                 const marker = L.marker([lat, lng])
                     .addTo(this.map)
-                    .bindTooltip(location[this.locale], {
+                    .bindTooltip(title, {
                         permanent: true,
                         direction: "top",
                         className: "marker-tooltip",
@@ -146,7 +146,7 @@
 
             validate(lat, lng) {
                 return !isNaN(parseFloat(lat)) && !isNaN(parseFloat(lng));
-            }
+            },
         };
     }
 </script>
