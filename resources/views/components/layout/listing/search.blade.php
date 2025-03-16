@@ -29,7 +29,7 @@
         <x-ui.search.beds-input />
 
         <x-ui.search.price-input
-            :step="100"
+            :step="1"
             :minValue="0"
             :maxValue="$maxPrice"
         />
