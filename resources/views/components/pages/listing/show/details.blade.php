@@ -52,7 +52,7 @@
                         <div>
                             <a
                                 href="#contactSection"
-                                class="main-button"
+                                class="card-tag-button bg-color-2 bg-opacity-60 hover:text-primary"
                             >
                                 request online tour
                             </a>
