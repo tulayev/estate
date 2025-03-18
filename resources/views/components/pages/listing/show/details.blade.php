@@ -198,7 +198,7 @@
                 >
                     <div class="uk-child-width-1-2 uk-child-width-1-3@m uk-grid-small" uk-grid>
                         @foreach($hotel->features as $index => $feature)
-                            <div x-show="showAll || {{ $index }} < 3">
+                            <div x-show="showAll || {{ $index }} < 9">
                                 <a
                                     href="{{ route('pages.listing.index', ['feature' => $feature->id]) }}"
                                     class="collapse-title text-sm shadow-card rounded-[28px] flex justify-center items-center bg-white py-3 sm:py-6 px-4 hover:text-secondary"
@@ -208,11 +208,11 @@
                             </div>
                         @endforeach
                     </div>
-                    @if($hotel->features->count() > 3)
+                    @if($hotel->features->count() > 9)
                         <div class="text-center mt-4">
                             <button
                                 type="button"
-                                class="modal-subtitle"
+                                class="bg-white text-primary rounded-[100px] modal-subtitle py-5 w-full hover:text-white hover:bg-primary"
                                 @click="showAll = !showAll"
                             >
                                 <span x-text="showAll ? '{{ __('general.show_less') }}' : '{{ __('general.show_more') }}'"></span>
