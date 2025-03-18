@@ -1,4 +1,4 @@
-<section class="section">
+<section class="hidden section">
     <div class="container">
         <div class="shadow-card bg-white rounded-[28px]">
             <div class="flex flex-col lg:flex-row items-center relative">
