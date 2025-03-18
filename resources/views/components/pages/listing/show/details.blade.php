@@ -139,7 +139,7 @@
             <!-- Description -->
             <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 rounded-[28px] shadow-card bg-white px-3 py-5">
                 <div class="collapse-title text-base items-center uppercase border-b border-borderColor p-4">
-                    <div class="uk-child-width-1-2 uk-child-width-1-4@s uk-grid-small" uk-grid>
+                    <div class="uk-child-width-1-2 uk-child-width-1-4@s uk-grid-small text-center" uk-grid>
                         @if ($hotel->types)
                             <div>
                                 <p>
