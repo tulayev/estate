@@ -1,0 +1,27 @@
+name: Trigger Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger-external-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger repository_dispatch event
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const response = await github.rest.repos.createDispatchEvent({
+              owner: 'KuzinYD',          // GitHub account of the external repository
+              repo: 'PlaywrightTests',  // Name of the external repository
+              event_type: 'run-tests',  // Custom event type
+              client_payload: {
+                branch: 'main'          // Optional: Specify branch or other data
+              }
+            });
+            console.log(response.status);
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
