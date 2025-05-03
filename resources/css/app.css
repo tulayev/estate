@@ -18,23 +18,23 @@
 
     /* Buttons */
     .main-button {
-        @apply bg-white/10 text-white uppercase font-semibold inline-flex items-center text-sm xl:text-[0.9rem] space-x-2 px-[22px] py-1 lg:py-[12px] rounded-full;
+        @apply bg-white/10 text-white uppercase border-rounded font-semibold inline-flex items-center text-sm xl:text-[0.9rem] space-x-2 px-[22px] py-1 lg:py-[12px];
     }
 
     .secondary-button {
-        @apply bg-white/10 text-white uppercase font-semibold inline-flex items-center text-sm xl:text-[0.9rem] space-x-2 rounded-full;
+        @apply bg-white/10 text-white uppercase border-rounded font-semibold inline-flex items-center text-sm xl:text-[0.9rem] space-x-2;
     }
 
     .primary-button {
-        @apply bg-primary text-[#F4F4F4] uppercase rounded-2xl sm:border-rounded font-semibold px-2 py-2 md:px-5 md:py-3;
+        @apply bg-primary text-[#F4F4F4] uppercase border-rounded font-semibold px-2 py-2 md:px-5 md:py-3;
     }
 
     .white-button {
-        @apply bg-white text-primary uppercase rounded-2xl sm:border-rounded font-semibold px-2 py-2 md:px-5 md:py-3;
+        @apply bg-white text-primary uppercase border-rounded font-semibold px-2 py-2 md:px-5 md:py-3;
     }
 
     .card-tag-button {
-        @apply text-[#F4F4F4] uppercase rounded-lg sm:border-rounded text-xs font-bold sm:font-black px-2 py-2 sm:px-4;
+        @apply text-[#F4F4F4] uppercase border-rounded text-xs font-bold sm:font-black px-2 py-2 sm:px-4;
     }
 
     /* Titles */

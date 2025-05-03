@@ -1,4 +1,4 @@
-<section class="section">
+<section id="atYourServiceSection" class="section">
     <div class="container flex items-center justify-between">
         <h2 class="section-title">
             {{ __('home/discuss.title') }}
@@ -10,7 +10,7 @@
 
     <div class="container pt-6 md:pt-12 xl:pt-24">
         <div
-            class="border-rounded bg-no-repeat p-4 md:p-8 xl:p-10"
+            class="border-rounded bg-cover bg-center bg-no-repeat p-4 md:p-8 xl:p-10"
             style="background-image: url('{{ asset('assets/images/discuss.png') }}')"
         >
             <p class="text-white uppercase text-md ">

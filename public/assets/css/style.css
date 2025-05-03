@@ -86,12 +86,28 @@ a:hover {
 }
 
 /* Uikit Accordion */
+.uk-nav li > a > * {
+    flex: 0 1 auto;
+}
+
 .uk-nav-parent-icon > .uk-parent > a::after {
     background-image: url("../images/icons/plus.svg");
 }
 
 .uk-nav-parent-icon > .uk-parent.uk-open > a::after {
     background-image: url("../images/icons/minus.svg");
+}
+
+.uk-nav-parent-icon > .uk-parent > a::after,
+.uk-nav-parent-icon > .uk-parent.uk-open > a::after {
+    display: none;
+}
+
+@media (min-width: 640px) {
+    .uk-nav-parent-icon > .uk-parent > a::after,
+    .uk-nav-parent-icon > .uk-parent.uk-open > a::after {
+        display: block;
+    }
 }
 
 .uk-nav > li > a {

@@ -18,14 +18,14 @@ use App\Helpers\Enums\TopicType;
         </h2>
     </div>
     <div class="container">
-        <div class="mt-10 uk-child-width-1-1 uk-child-width-1-2@s" uk-grid>
+        <div class="mt-10 uk-grid-large uk-child-width-1-1 uk-child-width-1-2@s" uk-grid>
             <div>
                 <div
-                    class="relative bg-cover bg-no-repeat text-white rounded-lg sm:border-rounded h-full"
+                    class="relative bg-cover bg-center bg-no-repeat text-white border-rounded h-full"
                     style="background-image: url('{{ asset('assets/images/verified_1.png') }}');"
                 >
-                    <div class="rounded-lg sm:border-rounded absolute inset-0 bg-[#0F1F3DE5] opacity-90"></div>
-                    <div class="relative px-2 sm:px-4 xl:px-11 py-2 sm:py-4 xl:py-8">
+                    <div class="border-rounded absolute inset-0 bg-[#0F1F3DE5] opacity-90"></div>
+                    <div class="relative px-4 py-4 xl:px-11 xl:py-8 lg:px-14 lg:py-10">
                         <a href="{{ route('pages.insight.index', ['type' => TopicType::FOR_INVESTORS->value]) }}">
                             <h4 class="font-bold uppercase text-white text-sm sm:text-lg xl:text-3xl">
                                 {{ TopicType::FOR_INVESTORS->label() }}
@@ -39,11 +39,11 @@ use App\Helpers\Enums\TopicType;
             </div>
             <div>
                 <div
-                    class="relative bg-cover bg-no-repeat text-white rounded-lg sm:border-rounded h-full"
+                    class="relative bg-cover bg-center bg-no-repeat text-white border-rounded h-full"
                     style="background-image: url('{{ asset('assets/images/verified_2.png') }}');"
                 >
-                    <div class="rounded-lg sm:border-rounded absolute inset-0 bg-[#5C687AE5] opacity-90"></div>
-                    <div class="relative px-2 sm:px-4 xl:px-11 py-2 sm:py-4 xl:py-8">
+                    <div class="border-rounded absolute inset-0 bg-[#0F1F3DE5] opacity-90"></div>
+                    <div class="relative px-4 py-4 xl:px-11 xl:py-8 lg:px-14 lg:py-10">
                         <a href="{{ route('pages.insight.index', ['type' => TopicType::FOR_DEVELOPERS->value]) }}">
                             <h4 class="font-bold uppercase text-white text-sm sm:text-lg xl:text-3xl">
                                 {{ TopicType::FOR_DEVELOPERS->label() }}
