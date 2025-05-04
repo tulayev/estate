@@ -3,7 +3,7 @@
         <h2 class="section-title mb-5 xl:mb-10 flex space-x-3">
             {{ __('home/value.title') }}
         </h2>
-        <p class="text mb-10">
+        <p class="mb-5 xl:mb-10">
             {!! __('home/value.p_1') !!}
         </p>
     </div>

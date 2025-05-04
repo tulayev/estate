@@ -1,9 +1,9 @@
 <section class="section">
     <div class="container">
-        <h2 class="section-title mb-16">
+        <h2 class="section-title mb-5 xl:mb-10">
            {{ __('about/numbers.title') }}
         </h2>
-        <div class="uk-flex uk-flex-column uk-flex-middle">
+        <div class="flex flex-col items-center">
             <!-- Card 1 -->
             <div class="border-rounded uk-card uk-card-default uk-card-body uk-margin">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">

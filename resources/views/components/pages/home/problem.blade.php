@@ -9,7 +9,7 @@ use App\Helpers\Enums\TopicType;
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div
-                        class="flex relative bg-cover bg-center bg-no-repeat px-5 sm:px-10 xl:px-20 h-[800px] sm:h-[550px] xl:h-[750px]"
+                        class="flex relative bg-cover bg-center bg-no-repeat px-5 sm:px-10 xl:px-20 h-[775px] sm:h-[550px] xl:h-[750px]"
                         style="background-image: url('{{ asset('assets/images/home/home_slider_1.jpg') }}')"
                     >
                         <div class="absolute inset-0 bg-gradient-to-t from-black to-black/50"></div>
@@ -42,7 +42,7 @@ use App\Helpers\Enums\TopicType;
                 </div>
                 <div class="swiper-slide">
                     <div
-                        class="flex relative bg-cover bg-center bg-no-repeat px-5 sm:px-10 xl:px-20 h-[800px] sm:h-[550px] xl:h-[750px]"
+                        class="flex relative bg-cover bg-center bg-no-repeat px-5 sm:px-10 xl:px-20 h-[775px] sm:h-[550px] xl:h-[750px]"
                         style="background-image: url('{{ asset('assets/images/home/home_slider_2.jpg') }}')"
                     >
                         <div class="absolute inset-0 bg-gradient-to-t from-black to-black/50"></div>
@@ -66,7 +66,7 @@ use App\Helpers\Enums\TopicType;
                 </div>
                 <div class="swiper-slide">
                     <div
-                        class="flex relative bg-cover bg-center bg-no-repeat px-5 sm:px-10 xl:px-20 h-[800px] sm:h-[550px] xl:h-[750px]"
+                        class="flex relative bg-cover bg-center bg-no-repeat px-5 sm:px-10 xl:px-20 h-[775px] sm:h-[550px] xl:h-[750px]"
                         style="background-image: url('{{ asset('assets/images/home/home_slider_3.jpg') }}')"
                     >
                         <div class="absolute inset-0 bg-gradient-to-t from-black to-black/50"></div>
@@ -91,7 +91,7 @@ use App\Helpers\Enums\TopicType;
                 </div>
                 <div class="swiper-slide">
                     <div
-                        class="flex relative bg-cover bg-center bg-no-repeat px-5 sm:px-10 xl:px-20 h-[800px] sm:h-[550px] xl:h-[750px]"
+                        class="flex relative bg-cover bg-center bg-no-repeat px-5 sm:px-10 xl:px-20 h-[775px] sm:h-[550px] xl:h-[750px]"
                         style="background-image: url('{{ asset('assets/images/home/home_slider_4.jpg') }}')"
                     >
                         <div class="absolute inset-0 bg-gradient-to-t from-black to-black/50"></div>

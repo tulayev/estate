@@ -3,7 +3,7 @@
         class="container"
         x-data="newsletterDropdown()"
     >
-        <h2 class="section-title mb-16">
+        <h2 class="section-title mb-5 xl:mb-10">
             {{ __('general.newsetter_title') }}
         </h2>
 
@@ -15,7 +15,7 @@
         >
             <!-- Email Input -->
             <div class="uk-width-1-4@s sm:border-r sm:border-borderColor flex items-center justify-center h-full">
-                <div class="text-lg font-bold text-center w-full p-2">
+                <div class="text-lg font-bold text-center w-full px-2 py-2">
                     <input
                         type="email"
                         name="email"
@@ -25,22 +25,24 @@
                 </div>
             </div>
             <!-- Preferences Input -->
-            <div class="uk-width-1-2@s form-drop-down px-4 text-center">
-                <input
-                    type="text"
-                    name="preferences"
-                    placeholder="{{ __('general.newsetter_choose') }}"
-                    class="w-full modal-subtitle placeholder-secondary text-center outline-none"
-                    x-model="query"
-                    @focus="open = true"
-                    @click.away="open = false"
-                />
-                <ul
-                    x-show="open"
-                    class="px-3 py-4 space-y-2 absolute border-rounded top-full bg-white border border-borderColor w-full shadow-lg z-50 max-h-48 overflow-auto"
-                >
-                    <li><a href="#">Item 1</a></li>
-                </ul>
+            <div class="uk-width-1-2@s form-drop-down flex items-center justify-center h-full">
+                <div class="text-lg font-bold text-center w-full px-4 py-2">
+                    <input
+                        type="text"
+                        name="preferences"
+                        placeholder="{{ __('general.newsetter_choose') }}"
+                        class="w-full modal-subtitle placeholder-secondary text-center outline-none"
+                        x-model="query"
+                        @focus="open = true"
+                        @click.away="open = false"
+                    />
+                    <ul
+                        x-show="open"
+                        class="px-3 py-4 space-y-2 absolute border-rounded top-full bg-white border border-borderColor w-full shadow-lg z-50 max-h-48 overflow-auto"
+                    >
+                        <li><a href="#">Item 1</a></li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Submit Button -->

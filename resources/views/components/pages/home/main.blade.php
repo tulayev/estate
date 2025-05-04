@@ -4,7 +4,7 @@
         src="{{ asset('assets/images/main-background.png') }}"
         alt="main"
     />
-    <div class="container absolute-centralize">
+    <div class="px-10 container absolute-centralize">
         <div
             class="main-wrapper"
             uk-scrollspy="target: .animLeft; cls: uk-animation-slide-left; delay: 300;"

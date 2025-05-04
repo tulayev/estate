@@ -9,21 +9,21 @@
             src="{{ ImagePathResolver::resolve($topic->image) ?? asset('assets/images/insights/index/main-bg.png') }}"
             alt="{{ $topic->title }}"
         />
-        <div class="container absolute-centralize">
+        <div class="px-10 container absolute-centralize">
             <div class="main-wrapper">
                 <div class="flex flex-row items-left justify-between">
-                    <h1 class="main-title-insight animLeft mt-2 lg:mt-10">
+                    <h1 class="main-title-insight animLeft mt-2 lg:mt-10 w-1/2 sm:w-3/4">
                         {{ Str::limit($topic->title) }}
                     </h1>
-                    <div class="flex flex-row items-center md:items-right space-x-2 text-white text-sm animLeft ml-2 md:p-2 md:mt-10">
-                        <div class="border-rounded bg-white/10 text-white p-2">
+
+                    <div class="flex flex-row items-center md:items-right space-x-2 text-white text-sm animLeft ml-2 md:p-2 md:mt-10 w-1/2 sm:w-1/4">
+                        <div class="border-rounded bg-white/10 text-white p-1 sm:p-2">
                             {{ $topic->minutes_to_read }} mins read
                         </div>
-                        <div class="border-rounded bg-white/10 text-white p-2">
+                        <div class="border-rounded bg-white/10 text-white p-1 sm:p-2">
                             👁 {{ $topic->views }}
                         </div>
                     </div>
-
                 </div>
 
                 <div class="animLeft hidden sm:flex text-sm lg:text-lg mt-2 lg:mt-10">

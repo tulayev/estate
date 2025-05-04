@@ -6,28 +6,25 @@
 <section class="section">
     <div class="container">
         <div class="w-full flex justify-between">
-            <div class="collapse-title">
-                {{ __('listing/index/list.for_sale_off_plan') }}
-                @if (request()->has('sort'))
-                    <span class="normal-case ml-4 font-normal">
-                        @switch(request()->get('sort'))
-                            @case('title_asc')
-                                Title Ascending
-                                @break
-                            @case('title_desc')
-                                Title Descending
-                                @break
-                            @case('price_asc')
-                                Price Low to High
-                                @break
-                            @case('price_desc')
-                                Price High to Low
-                                @break
-                        @endswitch
-                    </span>
-                @endif
-            </div>
-
+            <h2 class="section-title">{{ __('listing/index/list.for_sale_off_plan') }}</h2>
+            @if (request()->has('sort'))
+                <span class="normal-case ml-4 font-semibold">
+                    @switch(request()->get('sort'))
+                        @case('title_asc')
+                            Title Ascending
+                            @break
+                        @case('title_desc')
+                            Title Descending
+                            @break
+                        @case('price_asc')
+                            Price Low to High
+                            @break
+                        @case('price_desc')
+                            Price High to Low
+                            @break
+                    @endswitch
+                </span>
+            @endif
             <x-ui.switcher-panel.toggle-view />
         </div>
 

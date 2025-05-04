@@ -3,7 +3,7 @@
     class="section"
 >
     <div class="container flex items-center justify-between mb-10">
-        <h2 class="section-title flex space-x-3">
+        <h2 class="section-title">
             {{ __('general.contact_us') }}
         </h2>
         <div class="flex items-center space-x-4 uk-visible@m">

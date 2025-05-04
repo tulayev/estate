@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         breakpoints: {
             0: {
                 spaceBetween: 0,
-                speed: 400,
+                speed: 400, // speed in milliseconds
             },
         },
     });

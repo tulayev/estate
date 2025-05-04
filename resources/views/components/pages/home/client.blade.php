@@ -23,7 +23,7 @@
 
 <section id="ourClientsSection" class="section">
     <div class="container flex items-center justify-between">
-        <h2 class="section-title flex space-x-3">
+        <h2 class="section-title">
             {{ __('home/client.title') }}
         </h2>
         <button class="primary-button">

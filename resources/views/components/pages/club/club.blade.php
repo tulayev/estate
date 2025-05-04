@@ -4,7 +4,7 @@ use App\Helpers\Enums\TopicType;
 
 <section class="section">
     <div class="container flex items-center justify-between">
-        <h2 class="section-title flex space-x-3">
+        <h2 class="section-title">
             {{ __('club/club.title') }}
         </h2>
         <button class="primary-button" onclick="document.getElementById('contactSection').scrollIntoView({behavior: 'smooth'})">
@@ -18,7 +18,7 @@ use App\Helpers\Enums\TopicType;
             class="relative bg-cover bg-center bg-no-repeat border-rounded text-white flex"
             style="background-image: url('{{ asset('assets/images/club/what-is-bg.png') }}')"
         >
-            <div class="absolute border-rounded inset-0 bg-gradient-to-t from-black to-black/60"></div>
+            <div class="absolute border-rounded inset-0 bg-gradient-to-t from-black to-black/70"></div>
             <div class="relative p-6 w-full xl:w-1/2">
                 <div>
                     <h2 class="font-bold text-white uppercase text-lg xl:text-4xl">
@@ -40,7 +40,7 @@ use App\Helpers\Enums\TopicType;
             class="relative bg-cover bg-center bg-no-repeat border-rounded text-white flex justify-end mt-4 md:mt-8 xl:mt-16"
             style="background-image: url('{{ asset('assets/images/club/what-is-bg.png') }}')"
         >
-            <div class="absolute border-rounded inset-0 bg-gradient-to-t from-black to-black/60"></div>
+            <div class="absolute border-rounded inset-0 bg-gradient-to-t from-black to-black/70"></div>
             <div class="relative p-6 w-full xl:w-1/2">
                 <div>
                     <h2 class="font-bold text-white uppercase text-lg xl:text-4xl">

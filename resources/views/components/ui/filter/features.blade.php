@@ -15,11 +15,11 @@
     <div class="mt-6 sm:mt-8 xl:mt-12 uk-grid-column-medium uk-child-width-1-1 uk-child-width-1-2@xl" uk-grid>
         <div>
             <h4 class="modal-subtitle text-secondary">
-                {{ __('general.filter_popup_bathrooms') }}
+                {{ __('general.filter_popup_bedrooms') }}
             </h4>
             <div class="shadow-card border-rounded mt-3 p-4 sm:p-6 xl:px-14 xl:py-7 flex items-center justify-around xl:justify-between">
-                <img src="{{ asset('assets/images/icons/bath.png') }}" alt="bath" />
-                <x-ui.filter.ranges.bath-range
+                <img src="{{ asset('assets/images/icons/bed.png') }}" alt="bed" />
+                <x-ui.filter.ranges.bed-range
                     :step="1"
                     :minValue="0"
                     :maxValue="100"
@@ -28,11 +28,11 @@
         </div>
         <div>
             <h4 class="modal-subtitle text-secondary">
-                {{ __('general.filter_popup_bedrooms') }}
+                {{ __('general.filter_popup_bathrooms') }}
             </h4>
             <div class="shadow-card border-rounded mt-3 p-4 sm:p-6 xl:px-14 xl:py-7 flex items-center justify-around xl:justify-between">
-                <img src="{{ asset('assets/images/icons/bed.png') }}" alt="bed" />
-                <x-ui.filter.ranges.bed-range
+                <img src="{{ asset('assets/images/icons/bath.png') }}" alt="bath" />
+                <x-ui.filter.ranges.bath-range
                     :step="1"
                     :minValue="0"
                     :maxValue="100"

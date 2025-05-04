@@ -4,17 +4,17 @@
         src="{{ asset('assets/images/club/main-bg.png') }}"
         alt="main"
     />
-    <div class="container absolute-centralize">
+    <div class="px-10 container absolute-centralize">
         <div
-            class="main-wrapper "
+            class="main-wrapper"
             uk-scrollspy="target: .animLeft; cls: uk-animation-slide-left; delay: 300;"
         >
             <div class="flex flex-row justify-between items-left mt-2 lg:mt-10">
                 <h1 class="main-title animLeft">
                     {{ __('club/main.title') }}
                 </h1>
-                
-                <div class="inline-flex flex-row sm:flex-row sm:items-center sm:space-x-3 space-y-3 sm:space-y-0 ml-2">
+
+                <div class="hidden sm:inline-flex flex-row sm:flex-row sm:items-center sm:space-x-3 space-y-3 sm:space-y-0 ml-2">
                     <div class="animLeft" uk-lightbox>
                         <a
                             href="https://www.youtube.com/watch?v=wLx_Ag4vm_U"
@@ -28,9 +28,7 @@
                             <span>{{ __('club/main.action_1') }}</span>
                         </a>
                     </div>
-                    
                 </div>
-            </div>
             </div>
 
             <div class="animLeft hidden sm:flex text-sm lg:text-lg mt-2 lg:mt-10">
@@ -39,8 +37,8 @@
                 </div>
             </div>
 
-            <div class="m-2 w-2/3 md:w-1/2">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-3 space-y-3 sm:space-y-0 lg:mt-10">
+            <div class="mt-5 lg:mt-20">
+                <div class="inline-flex flex-col sm:flex-row sm:items-center sm:space-x-3 space-y-3 sm:space-y-0">
                     <div class="animLeft">
                         <a
                             href="#modalForm"

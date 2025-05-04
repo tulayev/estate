@@ -6,7 +6,7 @@
     <section class="section">
         <div class="container">
             <div class="flex items-center justify-between">
-                <h2 class="section-title flex space-x-3">
+                <h2 class="section-title">
                     {{ $topic->title }}
                 </h2>
             </div>

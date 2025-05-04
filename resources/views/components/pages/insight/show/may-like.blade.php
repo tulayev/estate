@@ -3,9 +3,9 @@
 ])
 
 @if ($similarTopics)
-    <section class="section">
+    <section class="section mt-4">
         <div class="container flex items-center justify-between">
-            <h2 class="section-title flex space-x-3">
+            <h2 class="section-title">
                 {{ __('insight/show/may-like.title') }}
             </h2>
 

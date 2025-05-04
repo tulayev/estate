@@ -8,7 +8,7 @@
         src="{{ asset('assets/images/insights/index/main-bg.png') }}"
         alt="main"
     />
-    <div class="container absolute-centralize">
+    <div class="px-10 container absolute-centralize">
         <div class="main-wrapper">
             <div class="flex flex-row items-left">
                 <h1 class="main-title animLeft mt-2 lg:mt-10">

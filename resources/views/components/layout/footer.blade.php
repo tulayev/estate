@@ -1,5 +1,5 @@
 <footer>
-    <div class="p-5 pt-6 md:pt-12 xl:pt-24">
+    <div class="px-5 pb-5 pt-6 md:pt-12 xl:pt-24">
         <div class="h-[800px] relative">
             <!-- Map -->
             <iframe

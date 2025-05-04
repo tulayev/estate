@@ -1,6 +1,6 @@
 <section class="section">
     <div class="container">
-        <h2 class="section-title mb-16">
+        <h2 class="section-title mb-5 xl:mb-10">
             {{ __('about/focus.title') }}
         </h2>
 
@@ -59,7 +59,7 @@
             <div>
                 <div
                     class="uk-card uk-card-default uk-card-body border-rounded uk-margin"
-                    
+
                 >
                     <div class="flex flex-col text-center items-center justify-center h-[12rem]">
                         <span class="font-bold text-[5rem]">🗓</span>
