@@ -9,6 +9,8 @@ use App\Models\Location;
 use App\Models\Tag;
 use App\Models\Type;
 use App\Models\TopicCategory;
+use App\Services\CurrencyConversionService;
+use App\Services\ICurrencyConversionService;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
         if (!$this->app->environment('production')) {
             $this->app->register('App\Providers\FakerServiceProvider');
         }
+
+        $this->app->singleton(ICurrencyConversionService::class, CurrencyConversionService::class);
     }
 
     /**
