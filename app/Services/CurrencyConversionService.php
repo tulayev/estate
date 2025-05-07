@@ -7,19 +7,28 @@ use Illuminate\Support\Facades\Http;
 
 interface ICurrencyConversionService
 {
-    public function getUserCountry(): string;
-    public function getCurrencyCode(string $countryCode): string;
-    public function getCurrencySymbol(string $currencyCode): string;
-    public function convert(float $amount, string $from = 'THB', string $to = null): float;
     public function convertWithSymbol(float $amount): array;
 }
 
 class CurrencyConversionService implements ICurrencyConversionService
 {
-    public function getUserCountry(): string
+    public function convertWithSymbol(float $amount): array
     {
-//        $ip = request()->ip();
-        $ip = '90.156.166.218';
+        $country = $this->getUserCountry();
+        $currency = $this->getCurrencyCode($country);
+        $symbol = $this->getCurrencySymbol($currency);
+        $converted = $this->convert($amount, 'THB', $currency);
+
+        return [
+            'value' => $converted,
+            'symbol' => $symbol,
+            'currency' => $currency,
+        ];
+    }
+
+    private function getUserCountry(): string
+    {
+        $ip = request()->ip();
         $country = Cache::remember("geo_country_{$ip}", 3600, function () use ($ip) {
             $response = Http::get("http://ip-api.com/json/{$ip}?fields=countryCode");
             return $response->json('countryCode') ?? 'TH';
@@ -28,12 +37,12 @@ class CurrencyConversionService implements ICurrencyConversionService
         return $country;
     }
 
-    public function getCurrencyCode(string $countryCode): string
+    private function getCurrencyCode(string $countryCode): string
     {
         return config("currencies.{$countryCode}.code", 'THB');
     }
 
-    public function getCurrencySymbol(string $currencyCode): string
+    private function getCurrencySymbol(string $currencyCode): string
     {
         $currencies = config('currencies');
 
@@ -45,7 +54,7 @@ class CurrencyConversionService implements ICurrencyConversionService
         return '฿'; // fallback to THB
     }
 
-    public function convert(float $amount, string $from = 'THB', string $to = null): float
+    private function convert(float $amount, string $from = 'THB', string $to = null): float
     {
         $to = $to ?? $this->getCurrencyCode($this->getUserCountry());
 
@@ -61,19 +70,5 @@ class CurrencyConversionService implements ICurrencyConversionService
         });
 
         return $amount * ($rates[$to] ?? 1);
-    }
-
-    public function convertWithSymbol(float $amount): array
-    {
-        $country = $this->getUserCountry();
-        $currency = $this->getCurrencyCode($country);
-        $symbol = $this->getCurrencySymbol($currency);
-        $converted = $this->convert($amount, 'THB', $currency);
-
-        return [
-            'value' => $converted,
-            'symbol' => $symbol,
-            'currency' => $currency,
-        ];
     }
 }
