@@ -132,8 +132,7 @@
                         uk-slider-item="next"
                     ></a>
                 </div>
-                <!-- Uikit slider dot navigation -->
-                <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+                
             </div>
 
             <!-- Description -->
