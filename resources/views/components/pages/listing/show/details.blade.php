@@ -26,19 +26,20 @@
             <!-- Main -->
             <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10">
                 <div class="relative px-4 pt-4 pb-4 md:px-8 md:pt-8 md:pb-10">
-                    <div class="absolute inset-0">
+                    <div class="absolute inset-0 pointer-events-none">
                         <img
                             data-src="{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}"
-                            class="lazy-image"
+                            class="lazy-image cursor-pointer pointer-events-auto"
                             alt="{{ $hotel->title }}"
                             loading="lazy"
+                            onclick="document.querySelector('.uk-slider-items a')?.click()"
                         />
                     </div>
-                    <div class="absolute border-rounded inset-0 bg-gradient-to-t from-black to-transparent"></div>
+                    <div class="absolute border-rounded inset-0 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
                     <!-- Image Top -->
-                    <div class="relative flex flex-col space-y-2 sm:space-y-0 sm:flex-row justify-between items-center">
+                    <div class="relative flex flex-col space-y-2 sm:space-y-0 sm:flex-row justify-between items-center pointer-events-auto">
                         @if ($hotel->tags)
-                            <div class="flex items-center space-x-2">
+                            <div class="flex items-center space-x-2" onclick="event.stopPropagation()">
                                 @foreach($hotel->tags->take(3) as $index => $tag)
                                     <a
                                         href="{{ route('pages.listing.index', ['tag' => $tag->id]) }}"
@@ -49,7 +50,7 @@
                                 @endforeach
                             </div>
                         @endif
-                        <div>
+                        <div onclick="event.stopPropagation()">
                             <a
                                 href="#contactSection"
                                 class="card-tag-button bg-color-2 bg-opacity-60 hover:text-primary"
@@ -59,7 +60,7 @@
                         </div>
                     </div>
                     <!-- Image Bottom -->
-                    <div class="relative text-white uppercase mt-20 sm:mt-40 md:mt-64 lg:mt-80 xl:mt-96">
+                    <div class="relative text-white uppercase mt-20 sm:mt-40 md:mt-64 lg:mt-80 xl:mt-96 pointer-events-auto" onclick="event.stopPropagation()">
                         <div class="flex items-start space-x-2 sm:space-x-3">
                             @if ($hotel->ie_verified)
                                 <img
@@ -132,7 +133,6 @@
                         uk-slider-item="next"
                     ></a>
                 </div>
-                
             </div>
 
             <!-- Description -->
