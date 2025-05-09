@@ -118,8 +118,8 @@
                         <!-- Locale Switcher -->
 
                         <li>
-                            <ul class="{{ $mapView ? '' : 'bg-opacity-10' }} flex justify-center items-center rounded-[100px] bg-white relative w-[60px]">
-                                <li class="w-full xxl:w-1/2 flex justify-around font-black md:text-sm xl:text-base xxl:text-lg">
+                            <ul class="{{ $mapView ? '' : 'bg-opacity-10' }} border-rounded bg-white relative w-[120px]">
+                                <li class="flex justify-around items-center w-full font-black md:text-sm xl:text-base xxl:text-lg">
                                     <a href="#">
                                         {{ config()->get('locales')[app()->getLocale()] }}
                                     </a>
@@ -142,8 +142,8 @@
                                             @endforeach
                                         </ul>
                                     </div>
-                                    <a href="#" class="hidden">
-                                        USD
+                                    <a href="#">
+                                        {{ Helper::getClientCurrency() }}
                                     </a>
                                 </li>
                                 <li class="hidden">

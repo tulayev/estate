@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 
 interface ICurrencyConversionService
 {
+    public function getClientCurrency(): string;
     public function convertWithSymbol(float $amount): array;
 }
 
@@ -25,6 +26,11 @@ class CurrencyConversionService implements ICurrencyConversionService
             'symbol' => $symbol,
             'currency' => $currency,
         ];
+    }
+
+    public function getClientCurrency(): string
+    {
+        return $this->getCurrencyCode($this->getUserCountry());
     }
 
     private function getUserCountry(): string
