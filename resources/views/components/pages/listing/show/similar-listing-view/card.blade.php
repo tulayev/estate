@@ -36,7 +36,8 @@
                         {{ Str::limit($hotel->title, 10) }}
                     </p>
                     <p>
-                       ฿{{ $hotel->formatted_price }}
+                        @php($converted = Helper::getCurrencyConvertedValue($hotel->price))
+                        {{ $converted['symbol'] . ' ' . $converted['value'] }}
                     </p>
                 </div>
             </div>

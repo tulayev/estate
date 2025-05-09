@@ -73,7 +73,8 @@
                                     {{ $hotel->title }}
                                 </h3>
                                 <p class="text-sm sm:text-base md:text-lg font-bold xl:font-black mt-2 sm:mt-4">
-                                    ฿{{ $hotel->formatted_price }}
+                                    @php($converted = Helper::getCurrencyConvertedValue($hotel->price))
+                                    {{ $converted['symbol'] . ' ' . $converted['value'] }}
                                 </p>
                             </div>
                         </div>

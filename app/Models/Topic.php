@@ -85,7 +85,7 @@ class Topic extends Model
     public function getIsLikedAttribute(): bool
     {
         $userId = auth()->id();
-        $ipAddress = request()->ip();
+        $ipAddress = request()->getClientIp();
 
         return $this->likes()
             ->when($userId, function ($query) use ($userId) {

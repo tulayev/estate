@@ -31,7 +31,7 @@ class InsightController extends Controller
         if ($request->has('filter') && $request->get('filter') === 'liked') {
             $topicsQuery->whereHas('likes', function ($query) {
                 $userId = auth()->id();
-                $ipAddress = request()->ip();
+                $ipAddress = request()->getClientIp();
 
                 $query->when($userId, function ($query) use ($userId) {
                     $query->where('liked_by', $userId);

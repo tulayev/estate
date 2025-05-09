@@ -259,15 +259,10 @@ class Hotel extends Model
         return number_format($this->area, 2);
     }
 
-    public function getFormattedPriceAttribute(): string
-    {
-        return number_format($this->price, 2, '.', ',');
-    }
-
     public function getIsLikedAttribute(): bool
     {
         $userId = auth()->id();
-        $ipAddress = request()->ip();
+        $ipAddress = request()->getClientIp();
 
         return $this->likes()
             ->when($userId, function ($query) use ($userId) {

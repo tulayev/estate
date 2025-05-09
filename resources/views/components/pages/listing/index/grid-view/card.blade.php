@@ -103,7 +103,8 @@
                 </div>
                 <div>
                     <span class="text-white sm:font-bold">
-                        ฿{{ $hotel->formatted_price }}
+                        @php($converted = Helper::getCurrencyConvertedValue($hotel->price))
+                        {{ $converted['symbol'] . ' ' . $converted['value'] }}
                     </span>
                 </div>
             </div>

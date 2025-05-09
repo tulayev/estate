@@ -58,7 +58,8 @@
                                         @if ($floor->price > 0)
                                             <div>
                                                 <p class="shadow-card border-rounded p-2 sm:px-4 sm:py-2">
-                                                   ฿ {{ $floor->price }}
+                                                    @php($converted = Helper::getCurrencyConvertedValue($floor->price))
+                                                    {{ $converted['symbol'] . ' ' . $converted['value'] }}
                                                 </p>
                                             </div>
                                         @endif
