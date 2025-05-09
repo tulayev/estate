@@ -8,10 +8,23 @@
     <h3 class="modal-subtitle text-primary">{{ __('general.filter_popup_price') }}</h3>
 
     <div class="uk-child-width-1-2 mt-2 md:mt-4 xl:mt-6" uk-grid>
+        <input
+            id="priceMin"
+            type="hidden"
+            name="price_min"
+            value=""
+        />
+
+        <input
+            id="priceMax"
+            type="hidden"
+            name="price_max"
+            value=""
+        />
+
         <div>
             <input
                 id="priceFrom"
-                name="price_min"
                 type="text"
                 class="modal-subtitle text-primary placeholder-primary placeholder-opacity-50 w-full py-4 border-b-[2px] border-borderColor focus:outline-none focus:border-blue-500"
                 placeholder="From"
@@ -20,7 +33,6 @@
         <div>
             <input
                 id="priceTo"
-                name="price_max"
                 type="text"
                 class="modal-subtitle text-primary placeholder-primary placeholder-opacity-50 w-full py-4 border-b-[2px] border-borderColor focus:outline-none focus:border-blue-500"
                 placeholder="To"
@@ -40,6 +52,8 @@
         const priceSlider = document.getElementById('priceSlider');
         const priceFromInput = document.getElementById('priceFrom');
         const priceToInput = document.getElementById('priceTo');
+        const priceMin = document.getElementById('priceMin');
+        const priceMax = document.getElementById('priceMax');
 
         noUiSlider.create(priceSlider, {
             start: [{{ $minValue }}, {{ $maxValue }}],
@@ -62,8 +76,14 @@
 
         // Update tooltips and input values on slider change
         priceSlider.noUiSlider.on('update', (values) => {
-            const formattedValue0 = Math.round(values[0]).toLocaleString();
-            const formattedValue1 = Math.round(values[1]).toLocaleString();
+            const minValue = Math.round(values[0]);
+            const maxValue = Math.round(values[1]);
+
+            priceMin.setAttribute('value', minValue);
+            priceMax.setAttribute('value', maxValue);
+
+            const formattedValue0 = minValue.toLocaleString();
+            const formattedValue1 = maxValue.toLocaleString();
 
             priceFromInput.value = formattedValue0;
             priceToInput.value = formattedValue1;

@@ -144,6 +144,8 @@
             buttonText: '',
             filters: {},
             touchedFields: {},
+            fetchResultsCountDebounced: null,
+            resultsCount: 0,
 
             async fetchResultsCount() {
                 try {
@@ -154,7 +156,8 @@
                         },
                     });
 
-                    this.buttonText = `${data.count === 0 ? this.buttonTextsLocalized[this.locale] : `${this.buttonTextsLocalized[this.locale]} (${data.count})`}`;
+                    this.resultsCount = data.count;
+                    this.buttonText = `${this.resultsCount === 0 ? this.buttonTextsLocalized[this.locale] : `${this.buttonTextsLocalized[this.locale]} (${this.resultsCount})`}`;
                 } catch (error) {
                     console.error('Error updating results count:', error);
                     this.buttonText = 'Error loading results';
@@ -190,7 +193,7 @@
                         this.buttonText = this.buttonTextsLocalized[this.locale];
                         setDisabledStyles(showResultsButton);
                     } else {
-                        this.fetchResultsCount();
+                        this.fetchResultsCountDebounced();
                         setEnabledStyles(showResultsButton);
                     }
                 }
@@ -210,6 +213,14 @@
                 window.location.href = `{{ route('pages.listing.index') }}?${params}`;
             },
 
+            debounce(func, wait) {
+                let timeout;
+                return function (...args) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(this, args), wait);
+                };
+            },
+
             init() {
                 document.addEventListener('DOMContentLoaded', () => {
                     const listingFilterForm = document.getElementById('listingFilterForm');
@@ -217,7 +228,7 @@
                     if (!listingFilterForm) {
                         return;
                     }
-
+                    this.fetchResultsCountDebounced = this.debounce(this.fetchResultsCount.bind(this), 300);
                     this.updateFilters();
 
                     // Add event listeners to filter inputs
@@ -244,6 +255,9 @@
                     });
 
                     const hiddenInputs = listingFilterForm.querySelectorAll('input[type="hidden"]');
+
+                    console.log(hiddenInputs);
+
                     hiddenInputs.forEach(input => {
                         observer.observe(input, { attributes: true, attributeFilter: ['value'] });
                     });
