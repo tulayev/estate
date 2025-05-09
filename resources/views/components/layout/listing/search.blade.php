@@ -38,7 +38,7 @@
             <button
                 class="text-secondary text-xl md:text-3xl xxl:text-4xl font-black bg-transparent border-none outline-none"
                 type="button"
-                uk-toggle="target: #searchModal"
+                uk-toggle="target: #listingFilterModal"
             >
                 +
             </button>
@@ -55,12 +55,12 @@
 
 <!-- Filter Modal -->
 <div
-    id="searchModal"
+    id="listingFilterModal"
     uk-modal
 >
     <div class="uk-modal-dialog uk-modal-body w-[85vw] h-[90vh] bg-white rounded-[31px] shadow-card overflow-x-hidden mt-4">
         <form
-            id="filterForm"
+            id="listingFilterForm"
             action="{{ route('pages.listing.index') }}"
             class="p-4 sm:p-6 lg:p-8 xl:px-11 xl:py-9"
         >
@@ -123,9 +123,9 @@
             >
                 <button
                     id="showResultsButton"
-                    type="submit"
                     class="w-full bg-primary border-rounded modal-subtitle text-white text-center py-2 sm:py-4 xl:py-7"
                     x-text="buttonText"
+                    @click.prevent="submitSearch"
                 ></button>
             </div>
         </form>
@@ -133,79 +133,122 @@
 </div>
 
 <script defer>
-    const filtersHandler = () => ({
-        buttonTextsLocalized: {
-            en: 'show results',
-            ru: 'показать результаты'
-        },
-        locale: '{{ app()->getLocale() }}',
-        API_URI: '{{ route('hotels.search.count') }}',
-        buttonText: '',
-        filters: {},
+    function filtersHandler() {
+        return {
+            buttonTextsLocalized: {
+                en: 'show results',
+                ru: 'показать результаты'
+            },
+            locale: '{{ app()->getLocale() }}',
+            API_URI: '{{ route('hotels.search.count') }}',
+            buttonText: '',
+            filters: {},
+            touchedFields: {},
 
-        async fetchResultsCount() {
-            try {
-                const { data } = await axios.post(this.API_URI, this.filters, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-                    },
-                });
+            async fetchResultsCount() {
+                try {
+                    const {data} = await axios.post(this.API_URI, this.filters, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                        },
+                    });
 
-                this.buttonText = `${data.count === 0 ? this.buttonTextsLocalized[this.locale] : `${this.buttonTextsLocalized[this.locale]} (${data.count})`}`;
-            } catch (error) {
-                console.error('Error updating results count:', error);
-                this.buttonText = 'Error loading results';
-            }
-        },
-
-        updateFilters() {
-            const setDisabledStyles = (button) => {
-                button.disabled = true;
-                button.style.opacity = '0.5';
-                button.style.cursor = 'not-allowed';
-            };
-
-            const setEnabledStyles = (button) => {
-                button.disabled = false;
-                button.style.opacity = '1';
-                button.style.cursor = 'pointer';
-            };
-
-            const filterForm = document.getElementById('filterForm');
-            const showResultsButton = document.getElementById('showResultsButton');
-
-            if (filterForm && showResultsButton) {
-                this.filters = Object.fromEntries(new FormData(filterForm).entries());
-
-                const { features, locations, tags, types, title } = this.filters;
-
-                if (features === '' && locations === '' && tags === '' && types === '' && title === '') {
-                    this.buttonText = this.buttonTextsLocalized[this.locale];
-                     setDisabledStyles(showResultsButton);
-                } else {
-                    this.fetchResultsCount();
-                    setEnabledStyles(showResultsButton);
+                    this.buttonText = `${data.count === 0 ? this.buttonTextsLocalized[this.locale] : `${this.buttonTextsLocalized[this.locale]} (${data.count})`}`;
+                } catch (error) {
+                    console.error('Error updating results count:', error);
+                    this.buttonText = 'Error loading results';
                 }
-            }
-        },
+            },
 
-        init() {
-            document.addEventListener('DOMContentLoaded', () => {
-                this.updateFilters();
-                // Add event listeners to filter inputs
-                const observer = new MutationObserver(mutations => {
-                    mutations.forEach(() => {
-                        this.updateFilters();
+            updateFilters() {
+                const setDisabledStyles = (button) => {
+                    button.disabled = true;
+                    button.style.opacity = '0.5';
+                    button.style.cursor = 'not-allowed';
+                };
+
+                const setEnabledStyles = (button) => {
+                    button.disabled = false;
+                    button.style.opacity = '1';
+                    button.style.cursor = 'pointer';
+                };
+
+                const listingFilterForm = document.getElementById('listingFilterForm');
+                const showResultsButton = document.getElementById('showResultsButton');
+
+                if (listingFilterForm && showResultsButton) {
+                    const filters = {};
+
+                    for (const [key, value] of Object.entries(this.touchedFields)) {
+                        filters[key] = value;
+                    }
+
+                    this.filters = filters;
+
+                    if (Object.keys(filters).length === 0 || Object.values(filters).every(v => v === '')) {
+                        this.buttonText = this.buttonTextsLocalized[this.locale];
+                        setDisabledStyles(showResultsButton);
+                    } else {
+                        this.fetchResultsCount();
+                        setEnabledStyles(showResultsButton);
+                    }
+                }
+            },
+
+            submitSearch() {
+                const params = new URLSearchParams();
+
+                for (const [key, value] of Object.entries(this.touchedFields)) {
+                    if (Array.isArray(value)) {
+                        value.forEach(v => params.append(key, v));
+                    } else {
+                        params.append(key, value);
+                    }
+                }
+
+                window.location.href = `{{ route('pages.listing.index') }}?${params}`;
+            },
+
+            init() {
+                document.addEventListener('DOMContentLoaded', () => {
+                    const listingFilterForm = document.getElementById('listingFilterForm');
+
+                    if (!listingFilterForm) {
+                        return;
+                    }
+
+                    this.updateFilters();
+
+                    // Add event listeners to filter inputs
+                    listingFilterForm.querySelectorAll('input, select, textarea').forEach(input => {
+                        input.addEventListener('change', (e) => {
+                            const name = e.target.name;
+                            const value = e.target.value;
+
+                            this.touchedFields[name] = value;
+                            this.updateFilters();
+                        });
+                    });
+
+                    // Also handle hidden inputs updated by JS
+                    const observer = new MutationObserver(mutations => {
+                        mutations.forEach(mutation => {
+                            const input = mutation.target;
+
+                            if (input.name) {
+                                this.touchedFields[input.name] = input.value;
+                                this.updateFilters();
+                            }
+                        });
+                    });
+
+                    const hiddenInputs = listingFilterForm.querySelectorAll('input[type="hidden"]');
+                    hiddenInputs.forEach(input => {
+                        observer.observe(input, { attributes: true, attributeFilter: ['value'] });
                     });
                 });
-
-                const formInputs = document.querySelectorAll('#filterForm input[type="hidden"]');
-
-                formInputs.forEach(input => {
-                    observer.observe(input, { attributes: true, attributeFilter: ['value'] });
-                });
-            });
+            }
         }
-    });
+    }
 </script>

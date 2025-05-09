@@ -279,7 +279,7 @@
                                     <button
                                         class="absolute top-1 right-1 text-3xl bg-transparent border-none outline-none"
                                         type="button"
-                                        uk-toggle="target: #searchModal"
+                                        uk-toggle="target: #listingFilterModal"
                                     >
                                         +
                                     </button>
