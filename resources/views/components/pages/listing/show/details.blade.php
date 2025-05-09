@@ -82,7 +82,7 @@
                 </div>
             </div>
             <!-- Gallery -->
-            <div uk-slider="autoplay: true">
+            <div class="hidden md:block" uk-slider="autoplay: true">
                 <div
                     class="uk-position-relative uk-visible-toggle uk-light mt-4 md:mt-6"
                     tabindex="-1"
@@ -220,6 +220,34 @@
                     @endif
                 </div>
             @endif
+
+            <!-- Visual cue for mobile: floating button, appears when main image is in viewport -->
+            <div x-data="{
+                show: false,
+                observer: null,
+                init() {
+                    const target = this.$el.parentElement.querySelector('img.lazy-image');
+                    this.observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            this.show = entry.isIntersecting;
+                        });
+                    }, { threshold: 0.5 });
+                    if (target) this.observer.observe(target);
+                },
+                openGallery() {
+                    document.querySelector('.uk-slider-items a')?.click();
+                }
+            }" x-init="init()" class="md:hidden">
+                <button
+                    x-show="show"
+                    @click="openGallery"
+                    class="fixed left-1/2 bottom-8 z-50 -translate-x-1/2 bg-primary text-white font-bold rounded-full shadow-lg flex items-center px-6 py-3 text-base transition-opacity duration-300"
+                    style="opacity: 0.95;"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A2 2 0 0122 9.618V17a2 2 0 01-2 2H4a2 2 0 01-2-2V7a2 2 0 012-2h7.382a2 2 0 011.447.618L15 10zm0 0V6a2 2 0 012-2h2a2 2 0 012 2v4" /></svg>
+                    {{ __('View Gallery') }}
+                </button>
+            </div>
         @endif
     </div>
 </section>
