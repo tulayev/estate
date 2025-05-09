@@ -32,7 +32,7 @@ use App\Helpers\Enums\TopicType;
             <img
                 src="{{ asset('assets/images/club/team.png') }}"
                 alt="Team"
-                class="absolute w-1/2 right-0 bottom-0 hidden lg:block"
+                class="absolute w-1/2 right-0 bottom-0 hidden lg:block brightness-50"
             />
         </div>
         <!-- For developers -->
@@ -54,7 +54,7 @@ use App\Helpers\Enums\TopicType;
             <img
                 src="{{ asset('assets/images/club/team-dev.png') }}"
                 alt="Team"
-                class="absolute w-1/2 left-0 bottom-0 hidden lg:block"
+                class="absolute w-1/2 left-0 bottom-0 hidden lg:block brightness-50"
             />
         </div>
     </div>
