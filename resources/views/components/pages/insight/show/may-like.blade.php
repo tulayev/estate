@@ -3,7 +3,7 @@
 ])
 
 @if ($similarTopics)
-    <section class="section mt-4">
+    <section class="section">
         <div class="container flex items-center justify-between">
             <h2 class="section-title">
                 {{ __('insight/show/may-like.title') }}

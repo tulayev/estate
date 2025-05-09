@@ -4,7 +4,7 @@
 
 <div
     x-data="topicCategoryDropdown({{ json_encode($topicCategories) }})"
-    class="relative border-r border-borderColor h-full flex items-center justify-center w-[23%]"
+    class="relative border-r border-borderColor h-full flex items-center justify-center w-[20%]"
 >
     <input
         type="hidden"
@@ -25,7 +25,7 @@
         <img
             src="{{ asset('assets/images/icons/filter-dark.svg') }}"
             alt="search"
-            class="w-6 h-6 mx-auto cursor-pointer"
+            class="w-5 md:w-6 mx-auto cursor-pointer"
             @click="open = true"
             @click.away="open = false"
             :hidden="displayText != ''"

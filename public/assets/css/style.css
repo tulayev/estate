@@ -120,6 +120,11 @@ a:hover {
     min-width: 60px;
 }
 
+/* Uikit Slider */
+.objectSlider > *:first-child {
+    padding-left: 0 !important;
+}
+
 /* NoUI Slider */
 /* Track background */
 .noUi-target {

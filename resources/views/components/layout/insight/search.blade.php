@@ -5,7 +5,7 @@
     <form
         id="searchForm"
         action="{{ route('pages.insight.index') }}"
-        class="uk-visible@s z-10 bg-white rounded-full flex justify-between items-center absolute left-1/2 bottom-0 xl:bottom-[-10px] -translate-x-1/2 px-4 w-[85vw] lg:w-[91vw] xl:w-[65vw] h-[50px] xl:h-[62px]"
+        class="uk-visible@s z-10 bg-white rounded-full flex justify-between items-center absolute left-1/2 bottom-0 sm:bottom-[-12px] xl:bottom-[-22px] -translate-x-1/2 px-4 w-[85vw] lg:w-[91vw] xl:w-[65vw] h-[50px] xl:h-[62px]"
         autocomplete="off"
     >
         <div class="animate-spin-slow">
@@ -31,7 +31,7 @@
 
         <x-ui.search.topic-category-input :topicCategories="$topicCategories" />
 
-        <div class="h-full flex items-center justify-end w-[5%] space-x-4">
+        <div class="h-full flex items-center justify-end w-[8%] space-x-4">
             <div>
                 <ul
                     x-show="open && suggestions.length > 0"
@@ -58,7 +58,6 @@
                     class="w-6 lg:w-8 xl:w-10"
                 />
             </button>
-
         </div>
     </form>
 </div>

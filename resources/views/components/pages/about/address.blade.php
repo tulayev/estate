@@ -12,7 +12,7 @@
                     ></iframe>
                 </div>
                 <div class="uk-width-1-2@m uk-width-2-3@xl">
-                    <div class="flex flex-col justify-between h-full px-4 py-2 sm:px-6 sm:py-4 xl:px-10 xl:pt-8 xl:pb-12">
+                    <div class="flex flex-col justify-between h-full px-4 py-2 sm:px-6 sm:py-4 xl:px-10 xl:pt-10 xl:pb-12">
                         <div class="flex items-center space-x-4">
                             <img
                                 src="{{ asset('/assets/images/icons/logo-icon.svg') }}"
@@ -23,7 +23,7 @@
                                 IGNATEV ESTATE
                             </h2>
                         </div>
-                        <div class="space-y-4 mt-4 text-[#5c687a] uppercase font-semibold xl:font-black text-sm md:text-lg xl:text-xl">
+                        <div class="space-y-4 mt-4 text-[#5c687a] uppercase font-semibold xl:font-black text-sm md:text-base xl:text-lg">
                             <p>
                                 📍 Plaza Del Mar, No. 1 Pasak-Koktanod Rd, Cherngtalay, Thalang,
                                 Phuket 83110

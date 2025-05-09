@@ -1,4 +1,4 @@
-@php($mapView = count(request()->segments()) === 2 && !strpos(request()->fullUrl(), 'insights'))
+@php($mapView = count(request()->segments()) === 2 && !str_contains(request()->fullUrl(), 'insights'))
 <!-- Desktop -->
 <header
     class="header absolute top-0 left-0 w-full z-[999] uk-visible@m"
@@ -265,7 +265,7 @@
                             <li class="p-0 sm:hidden relative">
                                 <form
                                     id="mobileSearch"
-                                    action="{{ route('pages.listing.index') }}"
+                                    action="{{ str_contains(request()->fullUrl(), 'insights') ? route('pages.insight.index') : route('pages.listing.index') }}"
                                     autocomplete="off"
                                     @keydown.enter="$event.target.closest('form').submit()"
                                 >

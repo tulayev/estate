@@ -88,7 +88,7 @@
                     tabindex="-1"
                 >
                     <div
-                        class="uk-grid-small uk-slider-items uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-4@m"
+                        class="objectSlider uk-grid-small uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m"
                         uk-lightbox="animation: fade"
                     >
                         @if ($hotel->gallery)
@@ -98,7 +98,7 @@
                                         <img
                                             src="{{ ImagePathResolver::resolve($image) }}"
                                             alt="{{ $hotel->title }}"
-                                            class="border-rounded object-cover w-full h-64"
+                                            class="border-rounded object-cover w-full h-32 md:h-64"
                                             loading="lazy"
                                         />
                                     </a>
@@ -111,7 +111,7 @@
                                         <img
                                             src="{{ $image }}"
                                             alt="{{ $hotel->title }}"
-                                            class="border-rounded object-cover w-full h-64"
+                                            class="border-rounded object-cover w-full h-32 md:h-64"
                                             loading="lazy"
                                         />
                                     </a>

@@ -5,9 +5,9 @@
 <section class="section">
     <div class="container">
         <div class="w-full flex justify-between">
-            <div class="collapse-title">
+            <h2 class="section-title">
                 {{ __('insight/index/list.insights_grid') }}
-            </div>
+            </h2>
             @php($queryParams = request()->query())
             <a href="{{ route('pages.insight.index', array_merge($queryParams, ['filter' => 'liked'])) }}">
                 <img src="{{ asset('assets/images/icons/heart-blue.svg') }}" alt="like-view" />
