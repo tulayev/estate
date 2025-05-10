@@ -203,6 +203,14 @@ class Hotel extends Model
         return $query;
     }
 
+    public function scopeFilterByIeVerified(Builder $query, $ieVerified): Builder
+    {
+        if (!is_null($ieVerified)) {
+            $ieVerified = filter_var($ieVerified, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+            $query->where('ie_verified', $ieVerified);
+        }
+        return $query;
+    }
 
     public function author(): BelongsTo
     {

@@ -243,10 +243,21 @@
                         });
                     });
 
+                    // Hidden inputs
                     const hiddenInputs = listingFilterForm.querySelectorAll('input[type="hidden"]');
-
                     hiddenInputs.forEach(input => {
                         observer.observe(input, { attributes: true, attributeFilter: ['value'] });
+                    });
+
+                    // Checkboxes
+                    const checkboxes = listingFilterForm.querySelectorAll('input[type="checkbox"]');
+                    checkboxes.forEach(checkbox => {
+                        checkbox.addEventListener('change', () => {
+                            if (checkbox.name) {
+                                this.touchedFields[checkbox.name] = checkbox.checked ? true : false;
+                                this.updateFilters();
+                            }
+                        });
                     });
                 });
             }
