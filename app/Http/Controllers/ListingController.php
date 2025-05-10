@@ -24,6 +24,11 @@ class ListingController extends Controller
         $perPage = self::PAGINATION_PARAMS[$viewType];
 
         $hotels = $hotelsQuery->paginate($perPage);
+        $latestHotels = $hotelsQuery->where('main_image_url', '!=', '')
+            ->orWhere('main_image', '!=', '')
+            ->orderBy('created_at', 'desc')
+            ->take(5)
+            ->get();
 
         if ($request->ajax()) {
             return view('components.pages.listing.index.view-type.list', [
@@ -35,6 +40,7 @@ class ListingController extends Controller
         return view('pages.listing.index', [
             'hotels' => $hotels,
             'viewType' => $viewType,
+            'latestHotels' => $latestHotels,
         ]);
     }
 

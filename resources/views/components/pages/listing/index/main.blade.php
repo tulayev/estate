@@ -1,58 +1,62 @@
-<main class="main-section relative p-2">
-    <img
-        class="main-section-image"
-        src="{{ asset('assets/images/listings/index/listings-main-bg.png') }}"
-        alt="main"
-    />
-    <div class="px-10 container absolute-centralize">
-        <div
-            class="main-wrapper "
-            uk-scrollspy="target: .animLeft; cls: uk-animation-slide-left; delay: 300;"
-        >
-            <div class="flex flex-row items-left">
-                <h1 class="main-title animLeft mt-2 lg:mt-10">
-                    {{ __('listing/index/main.title') }}
-                </h1>
+@props([
+    'latestHotels' => null,
+])
 
-            </div>
+@if ($latestHotels)
+    <main class="main-section relative p-2">
+        <div class="swiper listings-slider">
+            <div class="swiper-wrapper">
+                @foreach($latestHotels as $hotel)
+                    <div class="swiper-slide">
+                        <img
+                            class="w-full h-[250px] lg:h-[500px] xl:h-[750px]"
+                            src="{{ $hotel->main_image_url ?? ImagePathResolver::resolve($hotel->main_image) ?? asset('assets/images/listings/index/listings-main-bg.png') }}"
+                            alt="{{ $hotel->title }}"
+                        />
+                        <div class="px-10 container absolute-centralize">
+                            <div class="main-wrapper">
+                                <div class="flex flex-row items-left">
+                                    <a
+                                        href="{{ route('pages.listing.show', ['slug' => $hotel->slug]) }}"
+                                        class="group"
+                                    >
+                                        <h1 class="main-title mt-2 lg:mt-10 group-hover:text-primary">
+                                            {{ $hotel->title }}
+                                        </h1>
+                                    </a>
+                                </div>
 
-            <div class="animLeft hidden sm:flex text-sm lg:text-lg mt-2 lg:mt-10">
-                <div class="pl-2 text-white">
-                    {!! __('listing/index/main.main_desc') !!}
-                </div>
+                                <div class="hidden sm:flex text-sm lg:text-lg mt-2 lg:mt-10">
+                                    <div class="pl-2 text-white">
+                                        {!! Str::limit($hotel->description, 100) !!}
+                                    </div>
+                                </div>
+                                @if ($hotel->tags)
+                                    <div class="m-2 w-2/3 md:w-1/2 mt-4 md:mt-12 xl:mt-16">
+                                        <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-3 space-y-3 sm:space-y-0">
+                                            @foreach($hotel->tags->take(3) as $index => $tag)
+                                                <div>
+                                                    <a
+                                                        href="{{ route('pages.listing.index', ['tag' => $tag->id]) }}"
+                                                        class="secondary-button bg-color-{{ $index + 1 }}"
+                                                    >
+                                                        <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ $tag->name }}</span>
+                                                    </a>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-
-            <div class="m-2 w-2/3 md:w-1/2 mt-4 md:mt-12 xl:mt-16">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-3 space-y-3 sm:space-y-0">
-                    <div class="animLeft">
-                        <a
-                            href="#"
-                            class="secondary-button bg-[#69A8A4]"
-                        >
-                            <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('listing/index/main.tag_1') }}</span>
-                        </a>
-                    </div>
-                    <div class="animLeft">
-                        <a
-                            href="#"
-                            class="secondary-button bg-[#23334B]"
-                        >
-                            <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('listing/index/main.tag_2') }}</span>
-                        </a>
-                    </div>
-                    <div class="animLeft">
-                        <a
-                            href="#"
-                            class="secondary-button bg-[#767E94]"
-                        >
-                            <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ __('listing/index/main.tag_3') }}</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <!-- Swiper Pagination -->
+            <div class="swiper-pagination mb-2 md:mb-8 xl:mb-12"></div>
         </div>
-    </div>
 
-    <!-- Search -->
-    <x-layout.listing.search />
-</main>
+        <!-- Search -->
+        <x-layout.listing.search />
+    </main>
+@endif

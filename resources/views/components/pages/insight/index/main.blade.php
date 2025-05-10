@@ -11,7 +11,7 @@
                         <img
                             class="main-section-image"
                             src="{{ ImagePathResolver::resolve($topic->image) ?? asset('assets/images/insights/index/main-bg.png') }}"
-                            alt="main"
+                            alt="{{ $topic->title }}"
                         />
                         <div class="px-10 container absolute-centralize">
                             <div class="main-wrapper">

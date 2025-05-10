@@ -75,4 +75,23 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         },
     });
+
+    const listingMainSlider = new Swiper('.listings-slider', {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 30,
+        autoplay: {
+            delay: 3000,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            0: {
+                spaceBetween: 0,
+                speed: 400, // speed in milliseconds
+            },
+        },
+    });
 });

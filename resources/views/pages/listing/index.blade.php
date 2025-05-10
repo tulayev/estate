@@ -1,6 +1,8 @@
 <x-layout.app>
 
-    <x-pages.listing.index.main />
+    <x-pages.listing.index.main
+        :latestHotels="$latestHotels"
+    />
 
     <x-pages.listing.index.list
         :hotels="$hotels"
