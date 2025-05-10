@@ -15,12 +15,13 @@ class InsightController extends Controller
 {
     public function index(Request $request): View | string
     {
-        $topicCategories = TopicCategory::take(3)
-            ->get();
-
         $topicsQuery = $this->getTopicsQuery($request);
 
         $topics = $topicsQuery->paginate(6);
+
+        $latestTopics = $topicsQuery->orderBy('created_at', 'desc')
+            ->take(3)
+            ->get();
 
         if ($request->ajax()) {
             return view('components.pages.insight.index.view-type.list', [
@@ -30,7 +31,7 @@ class InsightController extends Controller
 
         return view('pages.insight.index', [
             'topics' => $topics,
-            'topicCategories' => $topicCategories,
+            'latestTopics' => $latestTopics,
         ]);
     }
 

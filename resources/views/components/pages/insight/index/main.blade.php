@@ -1,48 +1,59 @@
 @props([
-    'topicCategories' => null,
+    'latestTopics' => null,
 ])
 
-<main class="main-section relative p-2">
-    <img
-        class="main-section-image"
-        src="{{ asset('assets/images/insights/index/main-bg.png') }}"
-        alt="main"
-    />
-    <div class="px-10 container absolute-centralize">
-        <div class="main-wrapper">
-            <div class="flex flex-row items-left">
-                <h1 class="main-title animLeft mt-2 lg:mt-10">
-                    {!! __('insight/index/main.title') !!}
-                </h1>
-                <span class="hidden text-white  text-lg animLeft  ml-2 p-2 lg:mt-10">
-                    1h
-                </span>
-            </div>
+@if ($latestTopics)
+    <main class="main-section relative p-2">
+        <div class="swiper insights-slider">
+            <div class="swiper-wrapper">
+                @foreach($latestTopics as $topic)
+                    <div class="swiper-slide">
+                        <img
+                            class="main-section-image"
+                            src="{{ ImagePathResolver::resolve($topic->image) ?? asset('assets/images/insights/index/main-bg.png') }}"
+                            alt="main"
+                        />
+                        <div class="px-10 container absolute-centralize">
+                            <div class="main-wrapper">
+                                <div class="flex flex-row items-left">
+                                    <a
+                                        href="{{ route('pages.insight.show', ['slug' => $topic->slug]) }}"
+                                        class="group"
+                                    >
+                                        <h1 class="main-title animLeft mt-2 lg:mt-10 group-hover:text-primary">
+                                            {{ $topic->title }}
+                                        </h1>
+                                    </a>
+                                    <span class="hidden text-white  text-lg animLeft ml-2 p-2 lg:mt-10">
+                                        {{ $topic->minutes_to_read }}
+                                    </span>
+                                </div>
 
-            <div class="animLeft hidden sm:flex text-sm lg:text-lg mt-2 lg:mt-10">
-                <div class="pl-2 text-white">
-                    {!! __('insight/index/main.main_desc') !!}
-                </div>
-            </div>
+                                <div class="animLeft hidden sm:flex text-sm lg:text-lg mt-2 lg:mt-10">
+                                    <div class="pl-2 text-white">
+                                        {!! $topic->body !!}
+                                    </div>
+                                </div>
 
-            @if ($topicCategories)
-                <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-4 md:mt-12 xl:mt-16">
-                    @foreach($topicCategories as $category)
-                        <div class="animLeft">
-                            <a
-                                href="{{ route('pages.insight.index', ['category' => $category->id]) }}"
-                                class="secondary-button bg-color-{{ $category->id }} hover:text-primary"
-                            >
-                                <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">
-                                    {{ $category->title }}
-                                </span>
-                            </a>
+                                <div class="animLeft mt-4 md:mt-12 xl:mt-16">
+                                    <a
+                                        href="{{ route('pages.insight.index', ['category' => $topic->category->id]) }}"
+                                        class="secondary-button bg-color-{{ $topic->category->id }} hover:text-primary"
+                                    >
+                                        <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">
+                                            {{ $topic->category->title }}
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                    @endforeach
-                </div>
-            @endif
+                    </div>
+                @endforeach
+            </div>
+            <!-- Swiper Pagination -->
+            <div class="swiper-pagination mb-2 md:mb-8 xl:mb-12"></div>
         </div>
-    </div>
-    <!-- Search -->
-    <x-layout.insight.search />
-</main>
+        <!-- Search -->
+        <x-layout.insight.search />
+    </main>
+@endif

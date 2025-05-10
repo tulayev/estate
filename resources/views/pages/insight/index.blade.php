@@ -1,7 +1,7 @@
 <x-layout.app>
 
     <x-pages.insight.index.main
-        :topicCategories="$topicCategories"
+        :latestTopics="$latestTopics"
     />
 
     <x-pages.insight.index.list
