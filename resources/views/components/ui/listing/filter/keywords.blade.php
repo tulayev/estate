@@ -21,7 +21,5 @@
         </div>
     </div>
 
-    <div class="mt-2 md:mt-6 xl:mt-10">
-        <x-ui.listing.filter.switchers.verified-switcher />
-    </div>
+    <x-ui.listing.filter.switchers.verified-switcher />
 </div>

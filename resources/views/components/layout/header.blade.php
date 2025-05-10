@@ -17,7 +17,7 @@
                 <div class="animLeft">
                     <a href="{{ route('pages.home.index') }}">
                         <img
-                            class="w-[260px] md:w-[180px] lg:w-[200px] xl:w-[165px] xxl:w-[230px] uk-animation-fade"
+                            class="w-[260px] md:w-[140px] lg:w-[200px] xl:w-[165px] xxl:w-[230px] uk-animation-fade"
                             src="{{ $mapView ? asset('assets/images/icons/logo-primary.svg') : asset('assets/images/icons/logo-white.svg') }}"
                             alt="Logo"
                         />
@@ -118,7 +118,7 @@
                         <!-- Locale Switcher -->
 
                         <li>
-                            <ul class="{{ $mapView ? '' : 'bg-opacity-10' }} border-rounded bg-white relative w-[120px]">
+                            <ul class="{{ $mapView ? '' : 'bg-opacity-10' }} border-rounded bg-white relative md:w-[80px] lg:w-[120px]">
                                 <li class="flex justify-around items-center w-full font-black md:text-sm xl:text-base xxl:text-lg">
                                     <a href="#">
                                         {{ config()->get('locales')[app()->getLocale()] }}

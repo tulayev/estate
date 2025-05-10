@@ -254,7 +254,7 @@
                     checkboxes.forEach(checkbox => {
                         checkbox.addEventListener('change', () => {
                             if (checkbox.name) {
-                                this.touchedFields[checkbox.name] = checkbox.checked ? true : false;
+                                this.touchedFields[checkbox.name] = !!checkbox.checked;
                                 this.updateFilters();
                             }
                         });
