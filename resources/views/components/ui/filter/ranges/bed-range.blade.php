@@ -6,14 +6,14 @@
 
 <div class="w-[130px] sm:w-[300px] md:w-[430px] lg:w-[520px]">
     <input
-        id="bedFrom"
-        name="bedrooms_min"
+        id="bedroomsMin"
         type="hidden"
+        name="bedrooms_min"
     />
     <input
-        id="bedTo"
-        name="bedrooms_max"
+        id="bedroomsMax"
         type="hidden"
+        name="bedrooms_max"
     />
 
     <div class="flex justify-center items-center">
@@ -27,8 +27,8 @@
 <script defer>
     document.addEventListener('DOMContentLoaded', () => {
         const bedSlider = document.getElementById('bedSlider');
-        const bedFromInput = document.getElementById('bedFrom');
-        const bedToInput = document.getElementById('bedTo');
+        const bedroomsMinInput = document.getElementById('bedroomsMin');
+        const bedroomsMaxInput = document.getElementById('bedroomsMax');
 
         noUiSlider.create(bedSlider, {
             start: [{{ $minValue }}, {{ $maxValue }}],
@@ -51,8 +51,8 @@
 
         // Update tooltips and input values on slider change
         bedSlider.noUiSlider.on('update', (values) => {
-            bedFromInput.value = Math.round(values[0]);
-            bedToInput.value = Math.round(values[1]);
+            bedroomsMinInput.value = Math.round(values[0]);
+            bedroomsMaxInput.value = Math.round(values[1]);
 
             bedHandles[0].querySelector('.custom-tooltip').innerText = Math.round(values[0]);
             bedHandles[1].querySelector('.custom-tooltip').innerText = Math.round(values[1]);

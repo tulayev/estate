@@ -17,12 +17,14 @@
     </h3>
 
     <input
+        id="types"
         type="hidden"
         name="types"
         :value="selectedTypeIds.join(',')"
     />
 
     <input
+        id="tags"
         type="hidden"
         name="tags"
         :value="selectedTagIds.join(',')"

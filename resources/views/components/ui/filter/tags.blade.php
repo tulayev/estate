@@ -14,6 +14,7 @@
     </h3>
 
     <input
+        id="tags"
         type="hidden"
         name="tags"
         :value="selectedIds.join(',')"

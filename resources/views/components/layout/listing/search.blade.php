@@ -231,18 +231,7 @@
                     this.fetchResultsCountDebounced = this.debounce(this.fetchResultsCount.bind(this), 300);
                     this.updateFilters();
 
-                    // Add event listeners to filter inputs
-                    listingFilterForm.querySelectorAll('input, select, textarea').forEach(input => {
-                        input.addEventListener('change', (e) => {
-                            const name = e.target.name;
-                            const value = e.target.value;
-
-                            this.touchedFields[name] = value;
-                            this.updateFilters();
-                        });
-                    });
-
-                    // Also handle hidden inputs updated by JS
+                    // Handle hidden inputs updated by JS and populate form data
                     const observer = new MutationObserver(mutations => {
                         mutations.forEach(mutation => {
                             const input = mutation.target;
@@ -255,8 +244,6 @@
                     });
 
                     const hiddenInputs = listingFilterForm.querySelectorAll('input[type="hidden"]');
-
-                    console.log(hiddenInputs);
 
                     hiddenInputs.forEach(input => {
                         observer.observe(input, { attributes: true, attributeFilter: ['value'] });

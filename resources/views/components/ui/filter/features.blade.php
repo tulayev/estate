@@ -43,6 +43,7 @@
     <div class="features mt-6 md:mt-10 flex justify-around flex-wrap gap-2 sm:gap-4">
 
         <input
+            id="features"
             type="hidden"
             name="features"
             :value="selectedIds.join(',')"

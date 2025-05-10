@@ -6,14 +6,14 @@
 
 <div class="w-[130px] sm:w-[300px] md:w-[430px] lg:w-[520px]">
     <input
-        id="bathFrom"
-        name="bathrooms_min"
+        id="bathroomsMin"
         type="hidden"
+        name="bathrooms_min"
     />
     <input
-        id="bathTo"
-        name="bathrooms_max"
+        id="bathroomsMax"
         type="hidden"
+        name="bathrooms_max"
     />
 
     <div class="flex justify-center items-center">
@@ -27,8 +27,8 @@
 <script defer>
     document.addEventListener('DOMContentLoaded', () => {
         const bathSlider = document.getElementById('bathSlider');
-        const bathFromInput = document.getElementById('bathFrom');
-        const bathToInput = document.getElementById('bathTo');
+        const bathroomsMinInput = document.getElementById('bathroomsMin');
+        const bathroomsMaxInput = document.getElementById('bathroomsMax');
 
         noUiSlider.create(bathSlider, {
             start: [{{ $minValue }}, {{ $maxValue }}],
@@ -51,8 +51,8 @@
 
         // Update tooltips and input values on slider change
         bathSlider.noUiSlider.on('update', (values) => {
-            bathFromInput.value = Math.round(values[0]);
-            bathToInput.value = Math.round(values[1]);
+            bathroomsMinInput.value = Math.round(values[0]);
+            bathroomsMaxInput.value = Math.round(values[1]);
 
             bathHandles[0].querySelector('.custom-tooltip').innerText = Math.round(values[0]);
             bathHandles[1].querySelector('.custom-tooltip').innerText = Math.round(values[1]);
