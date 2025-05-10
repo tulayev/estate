@@ -19,7 +19,7 @@
             </h4>
             <div class="shadow-card border-rounded mt-3 p-4 sm:p-6 xl:px-14 xl:py-7 flex items-center justify-around xl:justify-between">
                 <img src="{{ asset('assets/images/icons/bed.png') }}" alt="bed" />
-                <x-ui.filter.ranges.bed-range
+                <x-ui.listing.filter.ranges.bed-range
                     :step="1"
                     :minValue="0"
                     :maxValue="100"
@@ -32,7 +32,7 @@
             </h4>
             <div class="shadow-card border-rounded mt-3 p-4 sm:p-6 xl:px-14 xl:py-7 flex items-center justify-around xl:justify-between">
                 <img src="{{ asset('assets/images/icons/bath.png') }}" alt="bath" />
-                <x-ui.filter.ranges.bath-range
+                <x-ui.listing.filter.ranges.bath-range
                     :step="1"
                     :minValue="0"
                     :maxValue="100"

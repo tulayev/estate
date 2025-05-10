@@ -29,7 +29,7 @@
             />
         </div>
 
-        <x-ui.search.topic-category-input :topicCategories="$topicCategories" />
+        <x-ui.insight.search.inputs.topic-category-input :topicCategories="$topicCategories" />
 
         <div class="h-full flex items-center justify-end w-[8%] space-x-4">
             <div>

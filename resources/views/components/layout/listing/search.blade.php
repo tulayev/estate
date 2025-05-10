@@ -20,15 +20,15 @@
             />
         </div>
 
-        <x-ui.search.keywords-input />
+        <x-ui.listing.search.inputs.keywords-input />
 
-        <x-ui.search.type-input :types="$types" />
+        <x-ui.listing.search.inputs.type-input :types="$types" />
 
-        <x-ui.search.location-input :locations="$locations" />
+        <x-ui.listing.search.inputs.location-input :locations="$locations" />
 
-        <x-ui.search.beds-input />
+        <x-ui.listing.search.inputs.beds-input />
 
-        <x-ui.search.price-input
+        <x-ui.listing.search.inputs.price-input
             :step="1"
             :minValue="0"
             :maxValue="$maxPrice"
@@ -82,7 +82,7 @@
 
             <!-- Type -->
             @if ($primary && $resales && $land && $rent)
-                <x-ui.filter.types
+                <x-ui.listing.filter.types
                     :primary="$primary"
                     :resales="$resales"
                     :land="$land"
@@ -93,9 +93,9 @@
             <!-- Keywords & Price range -->
             <div class="uk-child-width-1-1 uk-child-width-1-2@m mt-4 sm:mt-6 md:mt-10 xl:mt-20" uk-grid>
                 <!-- Keywords -->
-                <x-ui.filter.keywords />
+                <x-ui.listing.filter.keywords />
                 <!-- Price Range -->
-                <x-ui.filter.ranges.price-range
+                <x-ui.listing.filter.ranges.price-range
                     :step="100"
                     :minValue="0"
                     :maxValue="$maxPrice"
@@ -104,16 +104,16 @@
 
             <!-- Map -->
             @if ($locations)
-                <x-ui.filter.map :locations="$locations" />
+                <x-ui.listing.filter.map :locations="$locations" />
             @endif
             <!-- Features -->
             @if ($features)
-                <x-ui.filter.features :features="$features" />
+                <x-ui.listing.filter.features :features="$features" />
             @endif
             <!-- Tags -->
             @if ($tags)
                 @php($tags = $tags->where('id', '<>', Constants::SYSTEM_TAG_IDS['land']))
-                <x-ui.filter.tags :tags="$tags" />
+                <x-ui.listing.filter.tags :tags="$tags" />
             @endif
 
             <!--  Results button -->
