@@ -15,7 +15,7 @@
                     {!! $topic->body !!}
                 </p>
                 <img
-                    class="border-rounded object-cover h-[250px] sm:h-auto sm:object-contain"
+                    class="main-section-image"
                     src="{{ ImagePathResolver::resolve($topic->image) ?? asset('assets/images/insights/index/main-bg.png') }}"
                     alt="{{ $topic->title }}"
                 />

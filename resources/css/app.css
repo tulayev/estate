@@ -8,6 +8,10 @@
         @apply px-5 py-5;
     }
 
+    .main-section-image {
+        @apply border-rounded w-full object-cover sm:object-contain sm:h-auto
+    }
+
     .section {
         @apply pt-8 sm:pt-16 md:pt-24;
     }

@@ -1,6 +1,6 @@
 <main class="main-section relative">
     <img
-        class="border-rounded object-cover h-[250px] sm:h-auto sm:object-contain"
+        class="main-section-image"
         src="{{ asset('assets/images/main-background.png') }}"
         alt="main"
     />

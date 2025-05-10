@@ -4,7 +4,7 @@
 
 <main class="main-section relative p-2">
     <img
-        class="border-rounded object-cover h-[250px] sm:h-auto sm:object-contain"
+        class="main-section-image"
         src="{{ asset('assets/images/insights/index/main-bg.png') }}"
         alt="main"
     />
