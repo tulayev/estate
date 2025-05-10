@@ -9,8 +9,24 @@
     <h3 class="modal-subtitle text-primary">
         {{ __('general.filter_popup_facilities') }}
         <span class="font-bold">|</span>
-        <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetFeatures">x</span>
-        <span x-text="selectedFeatureNames().join(', ')"></span>
+        <span
+            class="font-normal cursor-pointer hover:text-red-500 hover:font-black"
+            @click="resetFeatures"
+        >
+            x
+        </span>
+        <span>
+            <template
+                x-for="(name, index) in selectedFeatureNames()"
+                :key="selectedIds[index]"
+            >
+                <span
+                    class="cursor-pointer hover:text-red-500"
+                    @click="removeFeature(selectedIds[index])"
+                    x-text="name + (index < selectedFeatureNames().length - 1 ? ', ' : '')"
+                ></span>
+            </template>
+        </span>
     </h3>
     <div class="mt-6 sm:mt-8 xl:mt-12 uk-grid-column-medium uk-child-width-1-1 uk-child-width-1-2@xl" uk-grid>
         <div>
@@ -89,6 +105,10 @@
 
             isFeatureSelected(id) {
                 return this.selectedIds.includes(id);
+            },
+
+            removeFeature(id) {
+                this.selectedIds = this.selectedIds.filter(selectedId => selectedId !== id);
             },
 
             resetFeatures() {

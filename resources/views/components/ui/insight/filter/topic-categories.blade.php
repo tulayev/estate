@@ -9,8 +9,24 @@
     <h3 class="modal-subtitle text-primary">
         Categories
         <span class="font-bold">|</span>
-        <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetTopicCategories">x</span>
-        <span x-text="selectedTopicCategoryNames().join(', ')"></span>
+        <span
+            class="font-normal cursor-pointer hover:text-red-500 hover:font-black"
+            @click="resetTopicCategories"
+        >
+            x
+        </span>
+        <span>
+            <template
+                x-for="(title, index) in selectedTopicCategoryTitles()"
+                :key="selectedIds[index]"
+            >
+                <span
+                    class="cursor-pointer hover:text-red-500"
+                    @click="removeTopicCategory(selectedIds[index])"
+                    x-text="title + (index < selectedTopicCategoryTitles().length - 1 ? ', ' : '')"
+                ></span>
+            </template>
+        </span>
     </h3>
 
     <input
@@ -52,11 +68,15 @@
                 return this.selectedIds.includes(id);
             },
 
+            removeTopicCategory(id) {
+                this.selectedIds = this.selectedIds.filter(selectedId => selectedId !== id);
+            },
+
             resetTopicCategories() {
                 this.selectedIds = [];
             },
 
-            selectedTopicCategoryNames() {
+            selectedTopicCategoryTitles() {
                 return this.selectedIds.map(id => {
                     const topicCategory = this.allTopicCategories.find(tc => tc.id == id);
                     return topicCategory ? topicCategory.title[this.locale] : '';
@@ -65,4 +85,3 @@
         }
     }
 </script>
-

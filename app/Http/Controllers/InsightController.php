@@ -20,7 +20,7 @@ class InsightController extends Controller
         $topics = $topicsQuery->paginate(6);
 
         $latestTopics = $topicsQuery->orderBy('created_at', 'desc')
-            ->take(3)
+            ->take(5)
             ->get();
 
         if ($request->ajax()) {

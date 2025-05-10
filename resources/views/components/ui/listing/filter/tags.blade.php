@@ -9,8 +9,24 @@
     <h3 class="modal-subtitle text-primary">
         {{ __('general.filter_popup_tags') }}
         <span class="font-bold">|</span>
-        <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetTags">x</span>
-        <span x-text="selectedTagNames().join(', ')"></span>
+        <span
+            class="font-normal cursor-pointer hover:text-red-500 hover:font-black"
+            @click="resetTags"
+        >
+            x
+        </span>
+        <span>
+            <template
+                x-for="(name, index) in selectedTagNames()"
+                :key="selectedIds[index]"
+            >
+                <span
+                    class="cursor-pointer hover:text-red-500"
+                    @click="removeTag(selectedIds[index])"
+                    x-text="name + (index < selectedTagNames().length - 1 ? ', ' : '')"
+                ></span>
+            </template>
+        </span>
     </h3>
 
     <input
@@ -50,6 +66,10 @@
 
             isTagSelected(id) {
                 return this.selectedIds.includes(id);
+            },
+
+            removeTag(id) {
+                this.selectedIds = this.selectedIds.filter(selectedId => selectedId !== id);
             },
 
             resetTags() {
