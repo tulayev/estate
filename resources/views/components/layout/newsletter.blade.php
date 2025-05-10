@@ -15,7 +15,7 @@
         >
             <!-- Email Input -->
             <div class="uk-width-1-4@s sm:border-r sm:border-borderColor flex items-center justify-center h-full">
-                <div class="text-lg font-bold text-center w-full px-2 py-2">
+                <div class="text-lg font-bold text-center w-full p-4 sm:p-2">
                     <input
                         type="email"
                         name="email"
@@ -26,7 +26,7 @@
             </div>
             <!-- Preferences Input -->
             <div class="uk-width-1-2@s form-drop-down flex items-center justify-center h-full">
-                <div class="text-lg font-bold text-center w-full px-4 py-2">
+                <div class="text-lg font-bold text-center w-full p-4 sm:p-2">
                     <input
                         type="text"
                         name="preferences"
@@ -38,7 +38,7 @@
                     />
                     <ul
                         x-show="open"
-                        class="px-3 py-4 space-y-2 absolute border-rounded top-full bg-white border border-borderColor w-full shadow-lg z-50 max-h-48 overflow-auto"
+                        class="p-2 space-y-2 absolute top-full left-0 bg-white border border-borderColor w-full rounded-b-[14px] shadow-lg max-h-40 overflow-auto z-50"
                     >
                         <li><a href="#">Item 1</a></li>
                     </ul>
