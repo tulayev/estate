@@ -9,7 +9,7 @@
     }
 
     .main-section-image {
-        @apply border-rounded w-full object-cover sm:object-contain sm:h-auto
+        @apply border-rounded object-cover sm:object-contain h-[250px] sm:h-auto
     }
 
     .section {
