@@ -263,27 +263,52 @@
                                 </ul>
                             </li>
                             <li class="p-0 sm:hidden relative">
-                                <form
-                                    id="mobileSearch"
-                                    action="{{ str_contains(request()->fullUrl(), 'insights') ? route('pages.insight.index') : route('pages.listing.index') }}"
-                                    autocomplete="off"
-                                    @keydown.enter="$event.target.closest('form').submit()"
-                                >
-                                    <input
-                                        id="name"
-                                        type="text"
-                                        name="title"
-                                        placeholder="Search..."
-                                        class="w-full border-b-2 border-gray-300 bg-transparent focus:outline-none focus:border-blue-500 py-2 placeholder-secondary"
-                                    />
-                                    <button
-                                        class="absolute top-1 right-1 text-3xl bg-transparent border-none outline-none"
-                                        type="button"
-                                        uk-toggle="target: #listingFilterModal"
+                                @php($isInsightsPage = str_contains(request()->fullUrl(), 'insights'))
+                                @if ($isInsightsPage)
+                                    <form
+                                        id="mobileSearch"
+                                        action="{{ route('pages.insight.index') }}"
+                                        autocomplete="off"
+                                        @keydown.enter="$event.target.closest('form').submit()"
                                     >
-                                        +
-                                    </button>
-                                </form>
+                                        <input
+                                            id="title"
+                                            type="text"
+                                            name="title"
+                                            placeholder="Search..."
+                                            class="w-full border-b-2 border-gray-300 bg-transparent focus:outline-none focus:border-blue-500 py-2 placeholder-secondary"
+                                        />
+                                        <button
+                                            class="absolute top-1 right-1 text-3xl bg-transparent border-none outline-none"
+                                            type="button"
+                                            uk-toggle="target: #insightFilterModal"
+                                        >
+                                            +
+                                        </button>
+                                    </form>
+                                @else
+                                    <form
+                                        id="mobileSearch"
+                                        action="{{ route('pages.listing.index') }}"
+                                        autocomplete="off"
+                                        @keydown.enter="$event.target.closest('form').submit()"
+                                    >
+                                        <input
+                                            id="title"
+                                            type="text"
+                                            name="title"
+                                            placeholder="Search..."
+                                            class="w-full border-b-2 border-gray-300 bg-transparent focus:outline-none focus:border-blue-500 py-2 placeholder-secondary"
+                                        />
+                                        <button
+                                            class="absolute top-1 right-1 text-3xl bg-transparent border-none outline-none"
+                                            type="button"
+                                            uk-toggle="target: #listingFilterModal"
+                                        >
+                                            +
+                                        </button>
+                                    </form>
+                                @endif
                             </li>
                         </ul>
                     </div>

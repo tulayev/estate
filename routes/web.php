@@ -47,6 +47,7 @@ Route::prefix('insights')->group(function() {
     Route::get('/{slug}', [InsightController::class, 'show'])->name('pages.insight.show');
     Route::post('/{topicId}/like', [InsightController::class, 'like'])->name('topic.like');
     Route::get('/search/topics', [InsightController::class, 'searchTopics'])->name('topics.search.titles');
+    Route::post('/search/count', [InsightController::class, 'topicsCount'])->name('topics.search.count');
 });
 
 Route::get('/about-us', [AboutController::class, 'index'])->name('pages.about.index');

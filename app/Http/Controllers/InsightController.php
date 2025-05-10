@@ -17,33 +17,8 @@ class InsightController extends Controller
     {
         $topicCategories = TopicCategory::take(3)
             ->get();
-        $topicsQuery = Topic::query()
-            ->active();
 
-        if ($request->has('type')) {
-            $topicsQuery->byType(TopicType::from($request->get('type')));
-        }
-
-        if ($request->has('category')) {
-            $topicsQuery->byCategory($request->get('category'));
-        }
-
-        if ($request->has('filter') && $request->get('filter') === 'liked') {
-            $topicsQuery->whereHas('likes', function ($query) {
-                $userId = auth()->id();
-                $ipAddress = request()->getClientIp();
-
-                $query->when($userId, function ($query) use ($userId) {
-                    $query->where('liked_by', $userId);
-                })->when(!$userId, function ($query) use ($ipAddress) {
-                    $query->where('ip_address', $ipAddress);
-                });
-            });
-        }
-
-        if ($request->has('title')) {
-            $topicsQuery->searchByTitle($request->get('title'));
-        }
+        $topicsQuery = $this->getTopicsQuery($request);
 
         $topics = $topicsQuery->paginate(6);
 
@@ -145,5 +120,51 @@ class InsightController extends Controller
 
         return response()
             ->json($topics);
+    }
+
+    public function topicsCount(Request $request): JsonResponse
+    {
+        if (empty($request->all())) {
+            return response()
+                ->json(['count' => 0]);
+        }
+
+        $count = $this->getTopicsQuery($request)->count();
+
+        return response()
+            ->json(['count' => $count]);
+    }
+
+    private function getTopicsQuery(Request $request)
+    {
+        $topicsQuery = Topic::query()
+            ->active();
+
+        if ($request->has('type')) {
+            $topicsQuery->byType(TopicType::from($request->get('type')));
+        }
+
+        if ($request->has('category')) {
+            $topicsQuery->byCategory($request->get('category'));
+        }
+
+        if ($request->has('filter') && $request->get('filter') === 'liked') {
+            $topicsQuery->whereHas('likes', function ($query) {
+                $userId = auth()->id();
+                $ipAddress = request()->getClientIp();
+
+                $query->when($userId, function ($query) use ($userId) {
+                    $query->where('liked_by', $userId);
+                })->when(!$userId, function ($query) use ($ipAddress) {
+                    $query->where('ip_address', $ipAddress);
+                });
+            });
+        }
+
+        if ($request->has('title')) {
+            $topicsQuery->searchByTitle($request->get('title'));
+        }
+
+        return $topicsQuery;
     }
 }
