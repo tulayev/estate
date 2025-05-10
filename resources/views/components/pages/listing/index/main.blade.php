@@ -8,6 +8,7 @@
             <div class="swiper-wrapper">
                 @foreach($latestHotels as $hotel)
                     <div class="swiper-slide">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-black/50"></div>
                         <img
                             class="w-full h-[250px] lg:h-[500px] xl:h-[750px]"
                             src="{{ $hotel->main_image_url ?? ImagePathResolver::resolve($hotel->main_image) ?? asset('assets/images/listings/index/listings-main-bg.png') }}"
