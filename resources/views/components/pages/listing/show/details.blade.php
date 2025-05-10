@@ -37,7 +37,7 @@
                     </div>
                     <div class="absolute border-rounded inset-0 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
                     <!-- Image Top -->
-                    <div class="relative flex flex-col space-y-2 sm:space-y-0 sm:flex-row justify-between items-center pointer-events-auto">
+                    <div class="relative flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-2 sm:space-y-0 pointer-events-auto">
                         @if ($hotel->tags)
                             <div class="flex items-center space-x-2" onclick="event.stopPropagation()">
                                 @foreach($hotel->tags->take(3) as $index => $tag)
@@ -64,13 +64,13 @@
                         <div class="flex items-start space-x-2 sm:space-x-3">
                             @if ($hotel->ie_verified)
                                 <img
-                                    class="w-6 sm:w-8 md:w-10"
+                                    class="w-5 sm:w-8 md:w-10"
                                     src="{{ asset('assets/images/icons/verified.svg') }}"
                                     alt="verified"
                                 />
                             @endif
                             <div>
-                                <h3 class="text-white text-base sm:text-lg md:text-2xl xl:text-3xl font-bold xl:font-black">
+                                <h3 class="text-white text-sm sm:text-lg md:text-2xl xl:text-3xl font-bold xl:font-black">
                                     {{ $hotel->title }}
                                 </h3>
                                 <p class="text-sm sm:text-base md:text-lg font-bold xl:font-black mt-2 sm:mt-4">
@@ -188,6 +188,18 @@
                     @else
                         {!! $hotel->description !!}
                     @endif
+                </div>
+
+                <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 px-4">
+                    <dl>
+                        <dt class="collapse-title text-sm">IE Score</dt>
+                        <dd class="flex items-center mb-3">
+                            <div class="w-full bg-gray-200 me-2 h-2.5 border-rounded">
+                                <div class="bg-primary h-2.5 border-rounded" style="width: {{ $hotel->ie_score }}%"></div>
+                            </div>
+                            <span class="collapse-title text-sm">{{ $hotel->ie_score }}</span>
+                        </dd>
+                    </dl>
                 </div>
             </div>
             <!-- Features -->
