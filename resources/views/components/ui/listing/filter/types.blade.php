@@ -12,8 +12,30 @@
     <h3 class="modal-subtitle text-primary">
         {{ __('general.filter_popup_type') }}
         <span class="font-bold">|</span>
-        <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetSelectedItems">x</span>
-        <span x-text="selectedTypeNames().join(', ')"></span>
+        <span
+            class="font-normal cursor-pointer hover:text-red-500 hover:font-black"
+            @click="resetSelectedItems"
+        >
+            x
+        </span>
+
+        <template x-for="id in selectedTypeIds" :key="id">
+            <span
+                class="cursor-pointer hover:text-red-500"
+                @click="removeType(id)"
+            >
+              <span x-text="allTypeIds.find(t => t.id == id).name[locale]"></span>
+            </span>
+        </template>
+
+        <template x-for="id in selectedTagIds" :key="id">
+            <span
+                class="cursor-pointer hover:text-red-500"
+                @click="removeTag(id)"
+            >
+              <span x-text="allTagIds.find(t => t.id == id).name[locale]"></span>
+            </span>
+        </template>
     </h3>
 
     <input
@@ -103,6 +125,13 @@
 
             isTagSelected(id) {
                 return this.selectedTagIds.includes(id);
+            },
+
+            removeType(id) {
+                this.selectedTypeIds = this.selectedTypeIds.filter(i => i !== id)
+            },
+            removeTag(id) {
+                this.selectedTagIds = this.selectedTagIds.filter(i => i !== id)
             },
 
             resetSelectedItems() {
