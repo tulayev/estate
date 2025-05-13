@@ -93,7 +93,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 }),
 
             MenuItem::make(
-                static fn() => 'Locations',
+                static fn() => __('Moonshine/Locations/Locations.Locations'),
                 new LocationResource()
             )
                 ->canSee(function (Request $request) {

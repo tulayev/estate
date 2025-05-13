@@ -35,7 +35,7 @@
                             onclick="document.querySelector('.uk-slider-items a')?.click()"
                         />
                     </div>
-                    <div class="absolute border-rounded inset-0 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
+                    <div class="absolute border-rounded inset-0 bg-gradient-to-t from-black/70 to-transparent pointer-events-none"></div>
                     <!-- Image Top -->
                     <div class="relative flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-2 sm:space-y-0 pointer-events-auto">
                         @if ($hotel->tags)
@@ -89,7 +89,7 @@
                     tabindex="-1"
                 >
                     <div
-                        class="objectSlider uk-grid-small uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m"
+                        class="objectSlider uk-grid uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m"
                         uk-lightbox="animation: fade"
                     >
                         @if ($hotel->gallery)

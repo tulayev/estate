@@ -20,7 +20,7 @@
                                         href="{{ route('pages.insight.show', ['slug' => $topic->slug]) }}"
                                         class="group"
                                     >
-                                        <h1 class="main-title animLeft mt-2 lg:mt-10 group-hover:text-primary">
+                                        <h1 class="main-title-insight animLeft mt-2 lg:mt-10 group-hover:text-primary">
                                             {{ $topic->title }}
                                         </h1>
                                     </a>

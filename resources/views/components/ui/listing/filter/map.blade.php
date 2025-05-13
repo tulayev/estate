@@ -24,17 +24,30 @@
     />
 
     <div class="mt-6 sm:mt-8 md:mt-10 locations uk-child-width-1-2 uk-child-width-auto@s uk-grid-small" uk-grid>
-        @foreach($locations as $location)
+        <template x-for="(location, index) in visibleLocations" :key="location.id">
             <div>
                 <div
                     class="location flex justify-center items-center cursor-pointer modal-subtitle shadow-card border-rounded p-2 sm:p-4 md:px-6 md:py-8"
-                    :class="isLocationSelected('{{ $location->id }}') ? 'bg-primary text-white' : 'bg-white text-primary'"
-                    @click="toggleLocation('{{ $location->id }}', '{{ $location->latitude }}', '{{ $location->longitude }}', '{{ $location->name }}')"
+                    :class="isLocationSelected(location.id) ? 'bg-primary text-white' : 'bg-white text-primary'"
+                    @click="toggleLocation(location.id, location.latitude, location.longitude, location.name)"
                 >
-                    {{ Str::limit($location->name, 12) }}
+                    <span x-text="limitText(location.name[locale], 12)"></span>
                 </div>
             </div>
-        @endforeach
+        </template>
+    </div>
+    
+    <div
+        class="w-full flex justify-center mt-4 md:mt-6 xl:mt-10"
+    >
+        <button
+            type="button"
+            @click.prevent="toggleShowMore"
+            class="bg-white text-primary rounded-[100px] modal-subtitle py-5 w-full hover:text-white hover:bg-primary"
+            x-text="showingAll ? '{{ __('general.show_less') }}' : '{{ __('general.show_more') }}'"
+            x-show="allLocations.length > defaultVisibleCount"
+        >
+        </button>
     </div>
 </div>
 
@@ -46,7 +59,13 @@
             markers: {},
             selectedLocations: [],
             allLocations: @json($locations),
+            defaultVisibleCount: 12,
+            showingAll: false,
 
+            get visibleLocations() {
+                return this.showingAll ? this.allLocations : this.allLocations.slice(0, this.defaultVisibleCount);
+            },
+            
             initMap() {
                 this.map = L.map('map', {
                     center: [7.8804, 98.3923],
@@ -161,6 +180,14 @@
                     const location = this.allLocations.find(l => l.id == id);
                     return location ? location.name[this.locale] : '';
                 });
+            },
+
+            toggleShowMore() {
+                this.showingAll = !this.showingAll;
+            },
+
+            limitText(text, length) {
+                return text.length > length ? text.substring(0, length) + '...' : text;
             },
         };
     }

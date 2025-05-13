@@ -9,7 +9,7 @@
     }
 
     .main-section-image {
-        @apply border-rounded object-cover sm:object-contain h-[250px] sm:h-auto
+        @apply border-rounded object-cover sm:object-contain h-[250px] sm:h-auto;
     }
 
     .section {
@@ -22,15 +22,15 @@
 
     /* Buttons */
     .main-button {
-        @apply bg-white/10 text-white uppercase border-rounded font-semibold inline-flex items-center text-sm xl:text-[0.9rem] space-x-2 px-[22px] py-1 lg:py-[12px];
+        @apply bg-white/10 text-white uppercase border-rounded font-bold inline-flex items-center text-sm xl:text-[0.9rem] space-x-2 px-[22px] py-1 lg:py-[12px];
     }
 
     .secondary-button {
-        @apply bg-white/10 text-white uppercase border-rounded font-semibold inline-flex items-center text-sm xl:text-[0.9rem] space-x-2;
+        @apply bg-white/10 text-white uppercase border-rounded font-bold inline-flex items-center text-sm xl:text-[0.9rem] space-x-2;
     }
 
     .primary-button {
-        @apply bg-primary text-[#F4F4F4] uppercase border-rounded font-semibold px-2 py-2 md:px-5 md:py-3;
+        @apply bg-primary text-[#F4F4F4] uppercase border-rounded font-bold px-2 py-2 md:px-5 md:py-3;
     }
 
     .white-button {
@@ -43,7 +43,7 @@
 
     /* Titles */
     .main-title {
-        @apply text-white uppercase font-bold lg:font-black text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl;
+        @apply text-white uppercase font-bold lg:font-black text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl xl:leading-[4rem];
     }
 
     .main-title-insight {
