@@ -10,8 +10,24 @@
     <h3 class="modal-subtitle text-primary">
         {{ __('general.filter_popup_location') }}
         <span class="font-bold">|</span>
-        <span class="font-normal cursor-pointer hover:text-red-500 hover:font-black" @click="resetLocations">x</span>
-        <span x-text="selectedLocationNames().join(', ')"></span>
+        <span
+            class="font-normal cursor-pointer hover:text-red-500 hover:font-black"
+            @click="resetLocations"
+        >
+            x
+        </span>
+        <span>
+            <template
+                x-for="(name, index) in selectedLocationNames()"
+                :key="index"
+            >
+                <span
+                    class="cursor-pointer hover:text-red-500"
+                    @click="removeLocation(selectedLocations.map(l => l.id)[index])"
+                    x-text="name + (index < selectedLocationNames().length - 1 ? ', ' : '')"
+                ></span>
+            </template>
+        </span>
     </h3>
 
     <div id="map" class="border-rounded w-full mt-4 sm:mt-6 h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]"></div>
@@ -36,7 +52,7 @@
             </div>
         </template>
     </div>
-    
+
     <div
         class="w-full flex justify-center mt-4 md:mt-6 xl:mt-10"
     >
@@ -65,7 +81,7 @@
             get visibleLocations() {
                 return this.showingAll ? this.allLocations : this.allLocations.slice(0, this.defaultVisibleCount);
             },
-            
+
             initMap() {
                 this.map = L.map('map', {
                     center: [7.8804, 98.3923],
@@ -165,6 +181,10 @@
 
             isLocationSelected(id) {
                 return this.selectedLocations.some(l => l.id == id);
+            },
+
+            removeLocation(id) {
+                this.selectedLocations = this.selectedLocations.filter(l => l.id !== id);
             },
 
             resetLocations() {

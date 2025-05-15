@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         grabCursor: false,
         breakpoints: {
             0: { // For very small screens (like mobile)
-                slidesPerView: 2,
+                slidesPerView: 1,
             },
             640: {
                 slidesPerView: 2,
@@ -40,10 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
     /* Home Page slider */
     const homeSlider = new Swiper('.home-slider', {
         loop: true,
+        loopedSlides: 4,
         slidesPerView: 1,
         spaceBetween: 30,
+        speed: 2000, // transition duration
         autoplay: {
-            delay: 3000,
+            delay: 3000, // must be greater than speed
+            disableOnInteraction: false,
         },
         pagination: {
             el: '.swiper-pagination',

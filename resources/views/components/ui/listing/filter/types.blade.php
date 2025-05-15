@@ -130,6 +130,7 @@
             removeType(id) {
                 this.selectedTypeIds = this.selectedTypeIds.filter(i => i !== id)
             },
+
             removeTag(id) {
                 this.selectedTagIds = this.selectedTagIds.filter(i => i !== id)
             },
@@ -137,20 +138,6 @@
             resetSelectedItems() {
                 this.selectedTypeIds = [];
                 this.selectedTagIds = [];
-            },
-
-            selectedTypeNames() {
-                const data = [
-                    this.selectedTypeIds.map(id => {
-                        const type = this.allTypeIds.find(t => t.id == id);
-                        return type ? type.name[this.locale] : '';
-                    }),
-                    this.selectedTagIds.map(id => {
-                        const tag = this.allTagIds.find(t => t.id == id);
-                        return tag ? tag.name[this.locale] : '';
-                    }),
-                ];
-                return data.flat();
             }
         }
     }

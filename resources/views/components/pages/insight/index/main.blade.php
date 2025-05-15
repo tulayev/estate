@@ -8,8 +8,9 @@
             <div class="swiper-wrapper">
                 @foreach($latestTopics as $topic)
                     <div class="swiper-slide">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-black/50"></div>
                         <img
-                            class="main-section-image"
+                            class="w-full h-[250px] lg:h-[500px] xl:h-[750px]"
                             src="{{ ImagePathResolver::resolve($topic->image) ?? asset('assets/images/insights/index/main-bg.png') }}"
                             alt="{{ $topic->title }}"
                         />

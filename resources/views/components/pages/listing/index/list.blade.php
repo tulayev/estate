@@ -41,7 +41,7 @@
                         </div>
                     @break
                     @default
-                        <div id="hotelsWrapper" class="uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid>
+                        <div id="hotelsWrapper" class="uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@l" uk-grid>
                             <x-pages.listing.index.view-type.list
                                 :hotels="$hotels"
                                 :viewType="$viewType"
