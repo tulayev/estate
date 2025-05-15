@@ -18,7 +18,7 @@ use App\Helpers\Enums\TopicType;
         </h2>
     </div>
     <div class="container">
-        <div class="mt-10 uk-grid-large uk-child-width-1-1 uk-child-width-1-2@s" uk-grid>
+        <div class="mt-10 uk-grid-medium uk-child-width-1-1 uk-child-width-1-2@s" uk-grid>
             <div>
                 <div
                     class="relative bg-cover bg-center bg-no-repeat text-white border-rounded h-full"

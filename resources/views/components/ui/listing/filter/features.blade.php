@@ -57,7 +57,6 @@
         </div>
     </div>
     <div class="features mt-6 md:mt-10 flex justify-around flex-wrap gap-2 sm:gap-4">
-
         <input
             id="features"
             type="hidden"
@@ -66,24 +65,37 @@
         />
 
         <div class="uk-grid-small uk-child-width-1-2 uk-child-width-auto@s" uk-grid uk-height-match="target: > div > .feature">
-            @foreach($features as $feature)
+            <template x-for="(feature, index) in visibleFeatures" :key="feature.id">
                 <div>
                     <div
                         class="feature shadow-card border-rounded flex justify-center items-center cursor-pointer p-2 sm:p-4 md:px-6 md:py-8"
-                        :class="isFeatureSelected('{{ $feature->id }}') ? 'bg-primary' : 'bg-white'"
-                        @click="toggleFeature('{{ $feature->id }}')"
+                        :class="isFeatureSelected(feature.id) ? 'bg-primary' : 'bg-white'"
+                        @click="toggleFeature(feature.id)"
                     >
                         <div>
                             <p
                                 class="modal-subtitle text-center"
-                                :class="isFeatureSelected('{{ $feature->id }}') ? 'text-white' : 'text-primary'"
+                                :class="isFeatureSelected(feature.id) ? 'text-white' : 'text-primary'"
+                                x-text="feature.name[locale]"
                             >
-                                {{ $feature->name }}
                             </p>
                         </div>
                     </div>
                 </div>
-            @endforeach
+            </template>
+        </div>
+        
+        <div
+            class="w-full flex justify-center mt-4 md:mt-6 xl:mt-10"
+        >
+            <button
+                type="button"
+                @click.prevent="toggleShowMore"
+                class="bg-white text-primary rounded-[100px] modal-subtitle py-5 w-full hover:text-white hover:bg-primary"
+                x-text="showingAll ? '{{ __('general.show_less') }}' : '{{ __('general.show_more') }}'"
+                x-show="allFeatures.length > defaultVisibleCount"
+            >
+            </button>
         </div>
     </div>
 </div>
@@ -94,6 +106,16 @@
             locale: '{{ app()->getLocale() }}',
             selectedIds: [],
             allFeatures: @json($features),
+            defaultVisibleCount: 12,
+            showingAll: false,
+            
+            get visibleFeatures() {
+                return this.showingAll ? this.allFeatures : this.allFeatures.slice(0, this.defaultVisibleCount);
+            },
+            
+            toggleShowMore() {
+                this.showingAll = !this.showingAll;
+            },
 
             toggleFeature(id) {
                 if (this.selectedIds.includes(id)) {

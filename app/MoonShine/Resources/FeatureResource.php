@@ -32,7 +32,7 @@ class FeatureResource extends ModelResource
     /**
      * @return list<MoonShineComponent|Field>
      */
-    public function fields(): array
+    public function indexFields(): array
     {
         return [
             Block::make([
@@ -40,6 +40,23 @@ class FeatureResource extends ModelResource
 
                 Text::make(__('Moonshine/Features/FeatureResource.name'), 'name')->required(),
             ]),
+        ];
+    }
+
+    public function detailFields(): array
+    {
+        return [
+            ID::make(),
+
+            Text::make(__('Moonshine/Features/FeatureResource.name'), 'name'),
+        ];
+    }
+
+    public function formFields(): array
+    {
+        return [
+            ID::make()->sortable(),
+            Text::make(__('Moonshine/Features/FeatureResource.name'), 'name')->required(),
         ];
     }
 

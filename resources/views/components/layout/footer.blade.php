@@ -1,5 +1,5 @@
 <footer>
-    <div class="px-5 pb-5 pt-6 md:pt-12 xl:pt-24">
+    <div class="pb-5 pt-6 md:pt-12 xl:pt-24">
         <div class="h-[800px] relative">
             <!-- Map -->
             <iframe
@@ -11,7 +11,7 @@
                 referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
             <!-- Footer Links -->
-            <div class="bg-[#0F1F3Ddd] border-rounded absolute left-0 bottom-0 w-full flex flex-col items-center py-2 sm:py-10">
+            <div class="bg-[#0F1F3Ddd] border-rounded absolute left-0 bottom-0 w-full flex flex-col items-center py-2 sm:py-10 px-5">
                 <nav>
                     <!-- Desktop -->
                     <ul class="uppercase uk-grid-small uk-visible@s" uk-grid>
@@ -136,37 +136,37 @@
                         </div>
                     </div>
                     <!-- Mobile -->
-                    <div class="uk-grid-small uk-child-width-1-1 px-6 uk-hidden@s" uk-grid>
-                        <div class="white-button">
+                    <div class="flex flex-col space-y-4 items-center uk-hidden@s" >
+                        <div class="white-button bg-white/10">
                             <ul class="flex items-center space-x-8 h-full">
                                 <li>
                                     <a href="https://wa.me/66922407355">
-                                        <img src="{{ asset('assets/images/icons/whatsapp.svg') }}" alt="whatsapp" />
+                                        <img src="{{ asset('assets/images/icons/whatsapp-white.svg') }}" alt="whatsapp" />
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://www.linkedin.com/company/ignatev-estate" target="_blank">
-                                        <img src="{{ asset('assets/images/icons/linkedin.svg') }}" alt="linkedin" />
+                                        <img src="{{ asset('assets/images/icons/linkedin-white.svg') }}" alt="linkedin" />
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://www.instagram.com/ignatev_estate" target="_blank">
-                                        <img src="{{ asset('assets/images/icons/instagram.svg') }}" alt="instagram" />
+                                        <img src="{{ asset('assets/images/icons/instagram-white.svg') }}" alt="instagram" />
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://www.facebook.com/share/1EHwWjnqSo" target="_blank">
-                                        <img src="{{ asset('assets/images/icons/facebook.svg') }}" alt="facebook" />
+                                        <img src="{{ asset('assets/images/icons/facebook-white.svg') }}" alt="facebook" />
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://t.me/ignatevestate" target="_blank">
-                                        <img src="{{ asset('assets/images/icons/telegram.svg') }}" alt="telegram" />
+                                        <img src="{{ asset('assets/images/icons/telegram-white.svg') }}" alt="telegram" />
                                     </a>
                                 </li>
                                 <li>
                                     <a href="mailto:info@ignatev-estate.com">
-                                        <img src="{{ asset('assets/images/icons/mail.svg') }}" alt="mail" />
+                                        <img src="{{ asset('assets/images/icons/mail-white.svg') }}" alt="mail" />
                                     </a>
                                 </li>
                             </ul>
@@ -174,9 +174,9 @@
                         <div>
                             <a
                                 href="tel:+66 (92) 240 7355"
-                                class="white-button flex justify-center items-center"
+                                class="white-button bg-white/10 flex justify-center items-center"
                             >
-                                <span>+66 (92) 240 7355</span>
+                                <span class="text-white">+66 (92) 240 7355</span>
                             </a>
                         </div>
                     </div>

@@ -26,8 +26,10 @@ class LocationResource extends ModelResource
     protected string $model = Location::class;
     protected bool $withPolicy = true;
 
-    protected string $title = 'Locations';
-
+    public function title(): string
+    {
+        return __('Moonshine/Locations/Locations.Locations');
+    }
     /**
      * @return list<MoonShineComponent|Field>
      */

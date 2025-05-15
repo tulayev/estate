@@ -53,7 +53,8 @@ class FloorResource extends ModelResource
 
                 $hotels
                     ->searchable()
-                    ->required(),
+                    ->required()
+                    ->sortable(),
 
                 Number::make(__('Moonshine/Floors/FloorResources.bedrooms'), 'bedrooms')
                     ->required(),
