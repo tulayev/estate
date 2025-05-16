@@ -3,7 +3,7 @@
 ])
 
 @if ($latestTopics)
-    <main class="main-section relative p-2">
+    <main class="main-section relative">
         <div class="swiper insights-slider">
             <div class="swiper-wrapper">
                 @foreach($latestTopics as $topic)

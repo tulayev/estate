@@ -3,7 +3,7 @@
 ])
 
 @if ($latestHotels)
-    <main class="main-section relative p-2">
+    <main class="main-section relative">
         <div class="swiper listings-slider">
             <div class="swiper-wrapper">
                 @foreach($latestHotels as $hotel)
