@@ -54,8 +54,8 @@
                     @foreach($hotels as $hotel)
                         <div
                             id="hotel_{{ $hotel->id }}"
-                            @click="selectHotel({{ $hotel->id }})"
-                            class="transition-all duration-300 mb-2"
+                            @click="handleHotelClick({{ $hotel }})"
+                            class="transition-all duration-300 mb-2 cursor-pointer"
                         >
                             <x-pages.listing.index.map-view.card
                                 :hotel="$hotel"
@@ -75,7 +75,8 @@
             locale: '{{ app()->getLocale() }}',
             map: null,
             markers: {},
-            selectedHotel: null,
+            clickStates: {},
+            lastClickedHotelId: null,
 
             initMapView() {
                 // Initialize the map without zoom control
@@ -97,13 +98,27 @@
                     maxZoom: 19,
                     attributionControl: false
                 }).addTo(this.map);
+            },
 
-                // Add markers for hotels
-                hotels.forEach((hotel) => {
-                    if (this.validate(hotel.latitude, hotel.longitude)) {
-                        this.addMarker(hotel);
+            handleHotelClick(hotel) {
+                const id = hotel.id;
+
+                if (this.lastClickedHotelId !== id) {
+                    // Reset previous hotel click state
+                    if (this.lastClickedHotelId !== null) {
+                        this.clickStates[this.lastClickedHotelId] = 0;
                     }
-                });
+                    this.lastClickedHotelId = id;
+                }
+
+                if (!this.clickStates[id]) {
+                    // First click: show marker
+                    this.addMarker(hotel);
+                    this.clickStates[id] = 1;
+                } else {
+                    // Second click: go to hotel page
+                    window.location.href = `/listings/${hotel.slug}`;
+                }
             },
 
             addMarker(hotel) {
@@ -123,7 +138,12 @@
                     this.map.flyTo([lat, lng], 15); // Smooth zoom animation
                 });
 
+                this.map.flyTo([lat, lng], 15);
                 this.markers[hotel.id] = marker;
+            },
+
+            validate(lat, lng) {
+                return !isNaN(parseFloat(lat)) && !isNaN(parseFloat(lng));
             },
 
             async fetchAndAppendCard(hotelId) {
@@ -148,11 +168,7 @@
                 } catch (error) {
                     console.error("Error fetching card data:", error.response || error.message);
                 }
-            },
-
-            validate(lat, lng) {
-                return !isNaN(parseFloat(lat)) && !isNaN(parseFloat(lng));
-            },
+            }
         };
     }
 </script>

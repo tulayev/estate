@@ -48,54 +48,47 @@
                     </div>
                 </div>
                 <!-- Image Bottom -->
-                <a
-                    href="{{ route('pages.listing.show', $hotel->slug) }}"
-                    class="z-10"
-                >
-                    <div class="flex justify-between items-center uppercase text-sm">
-                        <div class="flex items-center space-x-2">
-                            @if ($hotel->ie_verified)
-                                <img
-                                    class="w-6"
-                                    src="{{ asset('assets/images/icons/verified.svg') }}"
-                                    alt="verified"
-                                />
-                            @endif
-                            <p class="text-white sm:font-bold">
-                                {{ $hotel->title }}
-                            </p>
-                        </div>
-                        <div>
-                        <span class="text-white sm:font-bold">
-                            @php($converted = Helper::getCurrencyConvertedValue($hotel->price))
-                            {{ $converted['symbol'] . ' ' . $converted['value'] }}
-                        </span>
-                        </div>
+                <div class="flex justify-between items-center uppercase text-sm">
+                    <div class="flex items-center space-x-2">
+                        @if ($hotel->ie_verified)
+                            <img
+                                class="w-6"
+                                src="{{ asset('assets/images/icons/verified.svg') }}"
+                                alt="verified"
+                            />
+                        @endif
+                        <p class="text-white sm:font-bold">
+                            {{ $hotel->title }}
+                        </p>
                     </div>
-                </a>
+                    <div>
+                    <span class="text-white sm:font-bold">
+                        @php($converted = Helper::getCurrencyConvertedValue($hotel->price))
+                        {{ $converted['symbol'] . ' ' . $converted['value'] }}
+                    </span>
+                    </div>
+                </div>
             </div>
 
             <div class="hidden md:block md:w-1/2">
-                <a href="{{ route('pages.listing.show', $hotel->slug) }}">
-                    <div class="flex flex-col justify-between h-full text-[#505050] p-4 text-base md:text-lg xl:text-xl">
-                        <div class="flex justify-between uppercase sm:font-bold xl:font-black">
-                            @if ($hotel->locations && $hotel->locations->first())
-                                <div>
-                                    <p>📍 {{ Str::limit($hotel->locations->first()->name, 10) }}</p>
-                                </div>
-                            @endif
-                            <div class="flex justify-between space-x-6">
-                                <p>🛏️ {{ $hotel->bedrooms }}</p>
-                                <p>🛁 {{ $hotel->bathrooms }}</p>
+                <div class="flex flex-col justify-between h-full text-[#505050] p-4 text-base md:text-lg xl:text-xl">
+                    <div class="flex justify-between uppercase sm:font-bold xl:font-black">
+                        @if ($hotel->locations && $hotel->locations->first())
+                            <div>
+                                <p>📍 {{ Str::limit($hotel->locations->first()->name, 10) }}</p>
                             </div>
-                        </div>
-                        <div>
-                            <p>
-                                {{ Str::limit($hotel->description, 200) }}
-                            </p>
+                        @endif
+                        <div class="flex justify-between space-x-6">
+                            <p>🛏️ {{ $hotel->bedrooms }}</p>
+                            <p>🛁 {{ $hotel->bathrooms }}</p>
                         </div>
                     </div>
-                </a>
+                    <div>
+                        <p>
+                            {{ Str::limit($hotel->description, 200) }}
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
