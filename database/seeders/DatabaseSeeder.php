@@ -11,15 +11,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-//        $this->call([
+        $this->call([
 //            MoonshineUserRoleSeeder::class,
 //            MoonshineUserSeeder::class,
 //            TypeSeeder::class,
 //            TagSeeder::class,
 //            FeatureSeeder::class,
 //            HotelSeeder::class,
-//            TopicCategorySeeder::class,
-//            TopicSeeder::class,
-//        ]);
+            TopicCategorySeeder::class,
+            TopicSeeder::class,
+        ]);
     }
 }

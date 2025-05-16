@@ -20,6 +20,7 @@ class Topic extends Model
         'title',
         'slug',
         'body',
+        'main_ideas',
         'minutes_to_read',
         'views',
         'image',

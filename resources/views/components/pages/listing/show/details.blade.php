@@ -191,9 +191,9 @@
                 </div>
             </div>
 
-            <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 px-4">
-                <div class="rounded-full bg-primary opacity-90 flex items-center h-[70px]">
-                    <div class="w-[15%] flex justify-center space-x-2">
+            <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10">
+                <div class="rounded-full bg-primary opacity-90 flex items-center h-[30px] sm:h-[50px] lg:h-[70px]">
+                    <div class="w-1/3 sm:w-1/4 lg:w-[15%] flex justify-center space-x-2">
                         <img
                             src="{{ asset('assets/images/icons/logo-icon-white.svg') }}"
                             alt="Logo White"
@@ -203,19 +203,24 @@
                              IE Score
                         </span>
                     </div>
-                    <div class="w-[65%]">
-                        <div class="w-full h-[40px] bg-white rounded-full">
-                            <div class="h-[40px] bg-gradient-to-r from-primary to-[#7DA2BD] rounded-full border border-white" style="width: 45%">
-                                <div class="h-full flex justify-end items-center pr-4">
-                                    <span class="collapse-title text-white">
-                                        45
-                                    </span>
-                                </div>
+                    <div class="w-1/3 sm:w-1/2 lg:w-[65%]">
+                        <div class="w-full bg-white rounded-full">
+                            <div
+                                class="h-5 sm:h-[30px] lg:h-[40px] bg-gradient-to-r from-primary to-[#7DA2BD] rounded-full border-white {{ $hotel->ie_score > 0 ? 'border' : '' }}"
+                                style="width: {{ $hotel->ie_score }}%"
+                            >
+                                @if ($hotel->ie_score > 0)
+                                    <div class="h-full flex justify-end items-center pr-2 sm:pr-4">
+                                        <span class="collapse-title text-white">
+                                            {{ $hotel->ie_score }}
+                                        </span>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
-                    <div class="w-[20%] collapse-title text-sm text-center text-white">
-                        <a href="{{ url('/insights/about-ie-score') }}" class="underline hover:text-secondary">
+                    <div class="w-1/3 sm:w-1/4 lg:w-[20%] collapse-title text-sm text-center text-white">
+                        <a href="#" class="underline hover:text-secondary">
                             Learn More
                         </a>
                     </div>
@@ -225,7 +230,7 @@
             <!-- Features -->
             @if ($hotel->features)
                 <div
-                    class="mt-2 md:mt-4 lg:mt-6 xl:mt-8"
+                    class="mt-4 md:mt-6 lg:mt-8 xl:mt-10"
                     x-data="{ showAll: false }"
                 >
                     <div class="uk-child-width-1-2 uk-child-width-1-3@m uk-grid-small" uk-grid>

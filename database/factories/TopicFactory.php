@@ -33,6 +33,10 @@ class TopicFactory extends Factory
                 'en' => $fakerEn->realTextBetween(200, 400, 2),
                 'ru' => $fakerRu->realTextBetween(200, 400, 2),
             ],
+            'main_ideas' => [
+                'en' => $fakerEn->realTextBetween(200, 400, 2),
+                'ru' => $fakerRu->realTextBetween(200, 400, 2),
+            ],
             'minutes_to_read' => ceil($wordCount / $wordsPerMinute),
             'views' => $this->faker->numberBetween(0, 1000),
             'active' => $this->faker->boolean(),

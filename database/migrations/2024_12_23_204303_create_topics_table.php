@@ -17,6 +17,7 @@ return new class extends Migration
             $table->json('title');
             $table->string('slug')->unique();
             $table->json('body');
+            $table->json('main_ideas')->nullable();
             $table->unsignedInteger('minutes_to_read')->nullable();
             $table->unsignedBigInteger('views')->default(0);
             $table->string('image')->nullable();

@@ -1,8 +1,5 @@
-<section
-    id="contactSection"
-    class="section"
->
-    <div class="container flex items-center justify-between mb-10">
+<section id="contactSection" class="section mt-8 sm:mt-0">
+    <div class="container flex items-center justify-between">
         <h2 class="section-title">
             {{ __('general.contact_us') }}
         </h2>
@@ -73,8 +70,8 @@
         </div>
     </div>
 
-    <div class="container">
-        <form class="mt-4 sm:mt-6 md:mt-8 lg:mt-10 w-full relative z-[4]">
+    <div class="container mt-4 sm:mt-6 md:mt-8 lg:mt-10">
+        <form class="w-full relative">
             <div class="uk-grid-small uk-child-width-1-1 uk-child-width-1-2@s" uk-grid>
                 <div>
                     <div class="form-input-anim">

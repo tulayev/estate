@@ -8,13 +8,13 @@
             href="{{ route('pages.listing.show', $hotel->slug) }}"
             class="absolute inset-0 z-10">
         </a>
-        <div class="shadow-card border-rounded flex transition-shadow duration-300 ease-in-out group-hover:shadow-xl">
-            <div class="relative flex flex-col justify-between p-3 w-full h-[250px] sm:w-[30%]">
+        <div class="shadow-card border-rounded flex transition-shadow duration-300 ease-in-out group-hover:shadow-xl h-[150px] md:h-[170px] lg:h-[200px] xxl:h-[250px]">
+            <div class="relative flex flex-col justify-between p-2 lg:p-3 w-full sm:w-[40%] lg:w-[30%]">
                 <div class="absolute inset-0">
                     <img
                         data-src="{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}"
-                        class="lazy-image"
                         alt="{{ $hotel->title }}"
+                        class="lazy-image"
                         loading="lazy"
                     />
                 </div>
@@ -67,27 +67,39 @@
                 </div>
             </div>
 
-            <div class="hidden sm:block w-[70%]">
-                <div class="flex flex-col justify-between h-full text-[#505050] p-4 md:p-6 text-base md:text-lg xl:text-xl">
+            <div class="hidden sm:block sm:w-[60%] lg:w-[70%]">
+                <div class="flex flex-col justify-around md:justify-between h-full text-[#505050] p-2 md:p-4 text-sm md:text-base xxl:text-lg">
                     <div class="flex items-center space-x-2">
                         @if ($hotel->ie_verified)
-                            <img class="w-6" src="{{ asset('assets/images/icons/verified.svg') }}" alt="verified" />
+                            <img
+                                class="w-6"
+                                src="{{ asset('assets/images/icons/verified.svg') }}"
+                                alt="verified"
+                            />
                         @endif
                         <h2 class="sm:font-bold xl:font-black group-hover:text-primary">
                             {{ $hotel->title }}
                         </h2>
                     </div>
-                    <div>
+                    <div class="hidden md:block">
                         <p class="group-hover:text-primary">
                             {{ Str::limit($hotel->description, 100) }}
                         </p>
                     </div>
-                    <div class="flex space-x-4 sm:font-bold xl:font-black group-hover:text-primary">
-                        @if ($hotel->locations && $hotel->locations->first())
-                            <p>📍 {{ $hotel->locations->first()->name }}</p>
-                        @endif
-                        <p>🛏️ {{ $hotel->bedrooms }}</p>
-                        <p>🛁 {{ $hotel->bathrooms }}</p>
+                    <div class="flex justify-between sm:font-bold xl:font-black group-hover:text-primary">
+                        <div class="flex space-x-4">
+                            @if ($hotel->locations && $hotel->locations->first())
+                                <p>📍 {{ $hotel->locations->first()->name }}</p>
+                            @endif
+                            <p>🛏️ {{ $hotel->bedrooms }}</p>
+                            <p>🛁 {{ $hotel->bathrooms }}</p>
+                        </div>
+                        <div>
+                            <p>
+                                @php($converted = Helper::getCurrencyConvertedValue($hotel->price))
+                                {{ $converted['symbol'] . ' ' . $converted['value'] }}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

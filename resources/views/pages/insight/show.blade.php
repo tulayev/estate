@@ -4,6 +4,10 @@
         :topic="$topic"
     />
 
+    <x-pages.insight.show.main-ideas
+        :topic="$topic"
+    />
+
     <x-pages.insight.show.topic
         :topic="$topic"
     />

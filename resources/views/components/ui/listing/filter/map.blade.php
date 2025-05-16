@@ -30,7 +30,30 @@
         </span>
     </h3>
 
-    <div id="map" class="border-rounded w-full mt-4 sm:mt-6 h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]"></div>
+    <div
+        id="map"
+        class="relative border-rounded w-full mt-4 sm:mt-6 h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]"
+    >
+        <div
+            class="absolute bottom-4 left-4 right-4 z-[999]"
+            x-show="selectedLocations.length > 0"
+        >
+            <div class="flex bg-white border-rounded">
+                <div class="w-1/5 bg-primary border-rounded flex justify-center items-center p-2">
+                    <h3
+                        class="section-title-white text-center"
+                        x-text="selectedLocations.length > 0 ? selectedLocations[selectedLocations.length - 1].name[locale] : ''"
+                    ></h3>
+                </div>
+                <div class="w-4/5 px-4 py-6">
+                    <p
+                        class="text-sm sm:text-base xl:text-lg"
+                        x-text="selectedLocations.length > 0 ? selectedLocations[selectedLocations.length - 1].description[locale] : ''"
+                    ></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <input
         id="locations"
@@ -45,7 +68,7 @@
                 <div
                     class="location flex justify-center items-center cursor-pointer modal-subtitle shadow-card border-rounded p-2 sm:p-4 md:px-6 md:py-8"
                     :class="isLocationSelected(location.id) ? 'bg-primary text-white' : 'bg-white text-primary'"
-                    @click="toggleLocation(location.id, location.latitude, location.longitude, location.name)"
+                    @click="toggleLocation(location.id, location.latitude, location.longitude, location.name, location.description)"
                 >
                     <span x-text="limitText(location.name[locale], 12)"></span>
                 </div>
@@ -165,7 +188,7 @@
                 return true;
             },
 
-            toggleLocation(id, lat, lng, name) {
+            toggleLocation(id, lat, lng, name, description) {
                 if (!this.validate(lat, lng)) {
                     return;
                 }
@@ -174,7 +197,7 @@
                     this.selectedLocations = this.selectedLocations.filter(l => l.id !== id);
                     this.removeMarker(lat, lng);
                 } else {
-                    this.selectedLocations.push({ id, lat, lng, name });
+                    this.selectedLocations.push({ id, lat, lng, name, description });
                     this.zoomToMarker(lat, lng);
                 }
             },

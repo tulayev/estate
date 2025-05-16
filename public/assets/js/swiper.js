@@ -16,22 +16,25 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         grabCursor: false,
         breakpoints: {
-            0: { // For very small screens (like mobile)
+            0: {
                 slidesPerView: 1,
             },
             640: {
                 slidesPerView: 2,
             },
             768: {
-                slidesPerView: 3,
+                slidesPerView: 2,
             },
             1024: {
-                slidesPerView: 4,
+                slidesPerView: 3,
             },
             1280: {
-                slidesPerView: 5,
+                slidesPerView: 4,
             },
             1536: {
+                slidesPerView: 5,
+            },
+            1920: {
                 slidesPerView: 6,
             },
         },

@@ -74,6 +74,8 @@ class TopicResource extends ModelResource
 
             Text::make(__('Moonshine/Topics/TopicResource.body'), 'body'),
 
+            Text::make(__('Moonshine/Topics/TopicResource.body'), 'main_ideas'),
+
             Image::make(__('Moonshine/Topics/TopicResource.image'), 'image'),
 
             $this->getPublishedField(),
@@ -100,6 +102,8 @@ class TopicResource extends ModelResource
 
                 TinyMce::make(__('Moonshine/Topics/TopicResource.body'), 'body')
                     ->required(),
+
+                TinyMce::make(__('Moonshine/Topics/TopicResource.body'), 'main_ideas'),
 
                 Image::make(__('Moonshine/Topics/TopicResource.image'), 'image')
                     ->disk(Constants::PUBLIC_DISK)
