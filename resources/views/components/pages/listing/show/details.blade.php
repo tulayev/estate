@@ -215,7 +215,9 @@
                         </div>
                     </div>
                     <div class="w-[20%] collapse-title text-sm text-center text-white">
-                        Learn More
+                        <a href="{{ url('/insights/about-ie-score') }}" class="underline hover:text-secondary">
+                            Learn More
+                        </a>
                     </div>
                 </div>
             </div>
