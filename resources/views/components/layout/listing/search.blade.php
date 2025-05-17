@@ -1,5 +1,5 @@
 <!-- Search Form -->
-@php($searchBarBottomPosition = request()->segment(1) === null ? 'bottom-0 xl:bottom-[-10px]' : 'bottom-0 sm:bottom-[-16px] xl:bottom-[-22px]')
+@php($searchBarBottomPosition = request()->segment(1) === null ? 'bottom-0 xl:bottom-[-10px]' : 'bottom-0 sm:bottom-[-16px] md:bottom-[-2px] xl:bottom-[-12px]')
 <div>
     <form
         id="listingSearchForm"
