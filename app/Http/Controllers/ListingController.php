@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\HotelQueryBuilder;
 use App\Models\Hotel;
 use App\Models\HotelLike;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -150,23 +152,23 @@ class ListingController extends Controller
             ->active();
     }
 
-    private function applyFilters(Request $request)
+    private function applyFilters(Request $request): Builder
     {
-        $priceMin = str_replace(',', '', $request->input('price_min'));
-        $priceMax = str_replace(',', '', $request->input('price_max'));
+        $hotelsQuery = HotelQueryBuilder::for($request)
+            ->withPrice(
+                str_replace(',', '', $request->input('price_min')),
+                str_replace(',', '', $request->input('price_max'))
+            )
+            ->withBedrooms($request->input('bedrooms_min'), $request->input('bedrooms_max'))
+            ->withBathrooms($request->input('bathrooms_min'), $request->input('bathrooms_max'))
+            ->withTypes($request->input('types'))
+            ->withTags($request->input('tags'))
+            ->withLocations($request->input('locations'))
+            ->withFeatures($request->input('features'))
+            ->withIEVerified($request->input('ie_verified'))
+            ->build();
 
-        return Hotel::query()
-            ->with(['floors', 'types', 'tags', 'features', 'locations'])
-            ->fullSearch($request->input('title'))
-            ->filterByPrice($priceMin, $priceMax)
-            ->filterByBedrooms($request->input('bedrooms_min'), $request->input('bedrooms_max'))
-            ->filterByBathrooms($request->input('bathrooms_min'), $request->input('bathrooms_max'))
-            ->filterByTypes($request->input('types'))
-            ->filterByTags($request->input('tags'))
-            ->filterByFeatures($request->input('features'))
-            ->filterByLocations($request->input('locations'))
-            ->filterByIeVerified($request->input('ie_verified'))
-            ->active();
+        return $hotelsQuery;
     }
 
     private function getHotelsQuery(Request $request)
