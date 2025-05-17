@@ -12,8 +12,8 @@ class PriceSpecification implements ISpecification
 
     public function __construct($min = null, $max = null)
     {
-        $this->min = is_null($min) ? null : (float)$min;
-        $this->max = is_null($max) ? null : (float)$max;
+        $this->min = $min;
+        $this->max = $max;
     }
 
     public function apply(Builder $query): Builder

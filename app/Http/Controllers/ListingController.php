@@ -132,33 +132,8 @@ class ListingController extends Controller
                 ->json(['count' => 0]);
         }
 
-        $count = $this->applyFilters($request)->count();
-
-        return response()
-            ->json(['count' => $count]);
-    }
-
-    private function applySearch(Request $request)
-    {
-        $priceMin = str_replace(',', '', $request->input('price_min'));
-        $priceMax = str_replace(',', '', $request->input('price_max'));
-
-        return Hotel::query()
-            ->with(['floors', 'types', 'tags', 'features', 'locations'])
-            ->fullSearch($request->input('title'))
-            ->filterByLocations($request->input('locations'))
-            ->filterByBedrooms($request->input('beds'), $request->input('beds'))
-            ->filterByPrice($priceMin, $priceMax)
-            ->active();
-    }
-
-    private function applyFilters(Request $request): Builder
-    {
-        $hotelsQuery = HotelQueryBuilder::for($request)
-            ->withPrice(
-                str_replace(',', '', $request->input('price_min')),
-                str_replace(',', '', $request->input('price_max'))
-            )
+        $query = HotelQueryBuilder::for($request)
+            ->withPrice($request->input('price_min'), $request->input('price_max'))
             ->withBedrooms($request->input('bedrooms_min'), $request->input('bedrooms_max'))
             ->withBathrooms($request->input('bathrooms_min'), $request->input('bathrooms_max'))
             ->withTypes($request->input('types'))
@@ -168,30 +143,48 @@ class ListingController extends Controller
             ->withIEVerified($request->input('ie_verified'))
             ->build();
 
-        return $hotelsQuery;
+        $count = $query->count();
+
+        return response()
+            ->json(['count' => $count]);
     }
 
-    private function getHotelsQuery(Request $request)
+    private function getHotelsQuery(Request $request): Builder
     {
-        // Search & Filter
-        $hotelsQuery = $request->has('requestType') && $request->get('requestType') === 'search'
-            ? $this->applySearch($request)
-            : $this->applyFilters($request);
+        $builder = HotelQueryBuilder::for($request);
 
-        if ($request->has('type')) {
-            $hotelsQuery->filterByTypes($request->get('type'))
-                ->active();
+        // Category filters (type, tag, feature)
+        if ($type = $request->get('type')) {
+            $builder->withTypes($type);
         }
 
-        if ($request->has('tag')) {
-            $hotelsQuery->filterByTags($request->get('tag'))
-                ->active();
+        if ($tag = $request->get('tag')) {
+            $builder->withTags($tag);
         }
 
-        if ($request->has('feature')) {
-            $hotelsQuery->filterByFeatures($request->get('feature'))
-                ->active();
+        if ($feature = $request->get('feature')) {
+            $builder->withFeatures($feature);
         }
+
+        // Search & Filter logic
+        if ($request->get('requestType') === 'search') {
+            $builder
+                ->withPrice($request->input('price_min'), $request->input('price_max'))
+                ->withBedrooms($request->input('beds'), $request->input('beds'))
+                ->withLocations($request->input('locations'));
+        } else {
+            $builder
+                ->withPrice($request->input('price_min'), $request->input('price_max'))
+                ->withBedrooms($request->input('bedrooms_min'), $request->input('bedrooms_max'))
+                ->withBathrooms($request->input('bathrooms_min'), $request->input('bathrooms_max'))
+                ->withTypes($request->input('types'))
+                ->withTags($request->input('tags'))
+                ->withLocations($request->input('locations'))
+                ->withFeatures($request->input('features'))
+                ->withIEVerified($request->input('ie_verified'));
+        }
+
+        $hotelsQuery = $builder->build();
 
         if ($request->has('viewType') && $request->get('viewType') === 'liked') {
             $hotelsQuery->whereHas('likes', function ($query) {
