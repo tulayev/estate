@@ -33,6 +33,7 @@ class Topic extends Model
     protected $translatable = [
         'title',
         'body',
+        'main_ideas',
     ];
 
     protected $casts = [
