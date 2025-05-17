@@ -39,9 +39,9 @@
             x-show="selectedLocations.length > 0"
         >
             <div class="flex bg-white border-rounded">
-                <div class="w-1/5 bg-primary border-rounded flex justify-center items-center p-2">
+                <div class="hidden md:flex w-1/5 bg-primary border-rounded justify-center items-center p-2">
                     <h3
-                        class="section-title-white text-center"
+                        class="section-title-white md:text-lg text-center"
                         x-text="selectedLocations.length > 0 ? selectedLocations[selectedLocations.length - 1].name[locale] : ''"
                     ></h3>
                 </div>
