@@ -3,7 +3,7 @@
 ])
 
 @if ($topic)
-    <main class="main-section relative p-2">
+    <main class="main-section relative">
         <img
             class="main-section-image"
             src="{{ ImagePathResolver::resolve($topic->image) ?? asset('assets/images/insights/index/main-bg.png') }}"
