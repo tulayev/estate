@@ -10,7 +10,7 @@
                     <div class="swiper-slide">
                         <div class="absolute inset-0 bg-gradient-to-t from-black to-black/50"></div>
                         <img
-                            class="w-full h-[250px] lg:h-[500px] xl:h-[750px]"
+                            class="w-full h-[350px] lg:h-[500px] xl:h-[750px]"
                             src="{{ $hotel->main_image_url ?? ImagePathResolver::resolve($hotel->main_image) ?? asset('assets/images/listings/index/listings-main-bg.png') }}"
                             alt="{{ $hotel->title }}"
                         />
@@ -54,7 +54,7 @@
                 @endforeach
             </div>
             <!-- Swiper Pagination -->
-            <div class="swiper-pagination mb-2 md:mb-8 xl:mb-12"></div>
+            <div class="swiper-pagination mb-6 md:mb-8 xl:mb-12"></div>
         </div>
 
         <!-- Search -->
