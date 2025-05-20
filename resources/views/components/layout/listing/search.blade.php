@@ -1,10 +1,9 @@
 <!-- Search Form -->
-@php($searchBarBottomPosition = request()->segment(1) === null ? 'bottom-0 xl:bottom-[-10px]' : 'bottom-0 sm:bottom-[-16px] md:bottom-[-2px] xl:bottom-[-12px]')
 <div>
     <form
         id="listingSearchForm"
         action="{{ route('pages.listing.index') }}"
-        class="uk-visible@s z-10 bg-white rounded-full flex justify-between items-center absolute left-1/2 {{ $searchBarBottomPosition }} -translate-x-1/2 px-4 w-[85vw] lg:w-[91vw] xl:w-[65vw] h-[50px] xl:h-[62px]"
+        class="uk-visible@s z-10 bg-white rounded-full flex justify-between items-center absolute left-1/2  bottom-[-3px] xl:bottom-[-9px] -translate-x-1/2 px-4 w-[85vw] lg:w-[91vw] xl:w-[65vw] h-[50px] xl:h-[62px]"
         autocomplete="off"
     >
         <input
