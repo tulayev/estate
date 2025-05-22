@@ -1,19 +1,17 @@
 @php($mapView = count(request()->segments()) === 2 && !str_contains(request()->fullUrl(), 'insights'))
 <!-- Desktop -->
 <header
-    class="header absolute top-0 left-0 w-full z-[999] uk-visible@m"
+    class="header absolute top-4 left-0 w-full z-[999] uk-visible@m"
     uk-sticky="sel-target: .header; cls-active: {{ $mapView ? 'bg-white' : 'bg-primary' }} uk-navbar-sticky; cls-inactive: z-[999]; top: 200;"
     x-data="listingDropdown()"
 >
     <div class="relative">
         <div class="container">
             <nav
-                class="flex justify-between items-center pt-12"
+                class="navbar flex justify-between items-center pt-12"
                 :class="open ? 'pb-24' : 'pb-12'"
             >
-
                 <!-- Logo -->
-
                 <div class="animLeft">
                     <a href="{{ route('pages.home.index') }}">
                         <img
@@ -23,12 +21,10 @@
                         />
                     </a>
                 </div>
-
                 <!-- Navbar Links -->
-
                 <div
                     class="{{ $mapView ? 'text-primary' : 'text-[#f4f4f4]' }} uk-visible@m uk-navbar-right"
-                    uk-scrollspy="target: .animRight; cls: uk-animation-slide-right; delay: 300;"
+                    uk-scrollspy="target: .navbar; cls: uk-animation-slide-right; delay: 300;"
                 >
                     <ul class="flex items-center uppercase" uk-grid>
                         <li>

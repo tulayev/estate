@@ -190,46 +190,6 @@
                     @endif
                 </div>
             </div>
-
-            <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10">
-                <div class="rounded-full bg-primary opacity-90 flex items-center h-[30px] sm:h-[50px] lg:h-[70px]">
-                    <div class="w-1/3 sm:w-1/4 lg:w-[15%] flex justify-center space-x-2">
-                        <img
-                            src="{{ asset('assets/images/icons/logo-icon-white.svg') }}"
-                            alt="Logo White"
-                            class="w-5"
-                        />
-                        <span class="collapse-title text-sm text-center text-white">
-                             IE Score
-                        </span>
-                    </div>
-                    <div class="w-1/3 sm:w-1/2 lg:w-[65%]">
-                        <div class="w-full bg-white rounded-full">
-                            <div
-                                class="h-5 sm:h-[30px] lg:h-[40px] bg-gradient-to-r from-primary to-[#7DA2BD] rounded-full border-white {{ $hotel->ie_score > 0 ? 'border' : '' }}"
-                                style="width: {{ $hotel->ie_score }}%"
-                            >
-                                @if ($hotel->ie_score > 0)
-                                    <div class="h-full flex justify-end items-center pr-2 sm:pr-4">
-                                        <span class="collapse-title text-white">
-                                            {{ $hotel->ie_score }}
-                                        </span>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-1/3 sm:w-1/4 lg:w-[20%] collapse-title text-sm text-center text-white">
-                        <a
-                            href="{{ url('/insights/about-ie-score') }}"
-                            class="underline hover:text-secondary"
-                        >
-                            Learn More
-                        </a>
-                    </div>
-                </div>
-            </div>
-
             <!-- Features -->
             @if ($hotel->features)
                 <div
@@ -261,29 +221,55 @@
                     @endif
                 </div>
             @endif
-
+            <!-- IE Score -->
+            @if ($hotel->ie_score > 0)
+                <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10">
+                    <div class="rounded-full bg-primary opacity-90 flex items-center h-[30px] sm:h-[50px] lg:h-[70px]">
+                        <div class="w-1/3 sm:w-1/4 lg:w-[15%] flex justify-center space-x-2">
+                            <img
+                                src="{{ asset('assets/images/icons/logo-icon-white.svg') }}"
+                                alt="Logo White"
+                                class="w-5"
+                            />
+                            <span class="collapse-title text-sm text-center text-white">
+                                 IE Score
+                            </span>
+                        </div>
+                        <div class="w-1/3 sm:w-1/2 lg:w-[65%]">
+                            <div class="w-full bg-white rounded-full">
+                                <div
+                                    class="h-5 sm:h-[30px] lg:h-[40px] bg-gradient-to-r from-primary to-[#7DA2BD] rounded-full border border-white"
+                                    style="width: {{ $hotel->ie_score }}%"
+                                >
+                                    <div class="h-full flex justify-end items-center pr-2 sm:pr-4">
+                                        <span class="collapse-title text-white">
+                                            {{ $hotel->ie_score }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-1/3 sm:w-1/4 lg:w-[20%] collapse-title text-sm text-center text-white">
+                            <a
+                                href="{{ url('/insights/about-ie-score') }}"
+                                class="hover:text-secondary"
+                            >
+                                Learn More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endif
             <!-- Visual cue for mobile: floating button, appears when main image is in viewport -->
-            <div x-data="{
-                show: false,
-                observer: null,
-                init() {
-                    const target = this.$el.parentElement.querySelector('img.lazy-image');
-                    this.observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            this.show = entry.isIntersecting;
-                        });
-                    }, { threshold: 0.5 });
-                    if (target) this.observer.observe(target);
-                },
-                openGallery() {
-                    document.querySelector('.uk-slider-items a')?.click();
-                }
-            }" x-init="init()" class="md:hidden">
+            <div
+                x-data="mobileGallery()"
+                x-init="init()"
+                class="md:hidden"
+            >
                 <button
                     x-show="show"
                     @click="openGallery"
-                    class="fixed left-1/2 bottom-8 z-50 -translate-x-1/2 bg-primary text-white font-bold rounded-full shadow-lg flex items-center px-6 py-3 text-base transition-opacity duration-300"
-                    style="opacity: 0.95;"
+                    class="fixed left-1/2 bottom-8 z-50 -translate-x-1/2 bg-primary text-white font-bold rounded-full shadow-lg flex items-center px-6 py-3 opacity-95 transition-opacity duration-300"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A2 2 0 0122 9.618V17a2 2 0 01-2 2H4a2 2 0 01-2-2V7a2 2 0 012-2h7.382a2 2 0 011.447.618L15 10zm0 0V6a2 2 0 012-2h2a2 2 0 012 2v4" /></svg>
                     {{ __('View Gallery') }}
@@ -292,3 +278,28 @@
         @endif
     </div>
 </section>
+
+<script defer>
+    function mobileGallery() {
+        return {
+            show: false,
+            observer: null,
+
+            init() {
+                const target = this.$el.parentElement.querySelector('img.lazy-image');
+                this.observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        this.show = entry.isIntersecting;
+                    });
+                }, { threshold: 0.5 });
+                if (target) {
+                    this.observer.observe(target);
+                }
+            },
+
+            openGallery() {
+                document.querySelector('.uk-slider-items a')?.click();
+            }
+        }
+    }
+</script>
