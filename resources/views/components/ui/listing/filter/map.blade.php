@@ -62,7 +62,7 @@
         :value="selectedLocations.map(l => l.id).join(',')"
     />
 
-    <div class="mt-6 sm:mt-8 md:mt-10 locations uk-child-width-1-2 uk-child-width-auto@s uk-grid-small" uk-grid>
+    <div class="mt-6 sm:mt-8 md:mt-10 locations uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-grid-small" uk-grid>
         <template x-for="(location, index) in visibleLocations" :key="location.id">
             <div>
                 <div
