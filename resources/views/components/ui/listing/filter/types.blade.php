@@ -52,38 +52,34 @@
         :value="selectedTagIds.join(',')"
     />
 
-    <div class="uk-child-width-1-2 uk-child-width-expand@s uk-grid-small mt-6 sm:mt-8 md:mt-12" uk-grid>
-        <div>
+    <div class="uk-child-width-4-1@s uk-child-width-expand@m uk-grid-small uk-grid-match uk-margin mt-6 sm:mt-8 md:mt-12" uk-grid>
+        <div x-show="!isTypeSelected('{{ $rent->id }}')" class="uk-width-auto uk-margin-top">
             <div
                 class="modal-subtitle random-bg-color cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
-                :class="isTypeSelected('{{ $rent->id }}') ? 'hidden' : ''"
                 @click="addType('{{ $rent->id }}')"
             >
                 {{ $rent->name }}
             </div>
         </div>
-        <div>
+        <div x-show="!isTypeSelected('{{ $primary->id }}')" class="uk-width-auto uk-margin-top">
             <div
                 class="modal-subtitle random-bg-color cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
-                :class="isTypeSelected('{{ $primary->id }}') ? 'hidden' : ''"
                 @click="addType('{{ $primary->id }}')"
             >
                 {{ $primary->name }}
             </div>
         </div>
-        <div>
+        <div x-show="!isTypeSelected('{{ $resales->id }}')" class="uk-width-auto uk-margin-top">
             <div
                 class="modal-subtitle random-bg-color cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
-                :class="isTypeSelected('{{ $resales->id }}') ? 'hidden' : ''"
                 @click="addType('{{ $resales->id }}')"
             >
                 {{ $resales->name }}
             </div>
         </div>
-        <div>
+        <div x-show="!isTagSelected('{{ $land->id }}')" class="uk-width-auto uk-margin-top">
             <div
                 class="modal-subtitle random-bg-color cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
-                :class="isTagSelected('{{ $land->id }}') ? 'hidden' : ''"
                 @click="addTag('{{ $land->id }}')"
             >
                 {{ $land->name }}
