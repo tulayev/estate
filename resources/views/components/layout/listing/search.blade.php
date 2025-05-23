@@ -1,11 +1,10 @@
 <!-- Search Form -->
-<div>
-    <form
-        id="listingSearchForm"
-        action="{{ route('pages.listing.index') }}"
-        class="uk-visible@s z-10 bg-white rounded-full flex justify-between items-center absolute left-1/2 bottom-[-3px] xl:bottom-[-9px] -translate-x-1/2 px-4 sm:w-[540px] md:w-[680px] lg:w-[920px] xl:w-[850px] xxl:w-[1260px] h-[50px] xl:h-[62px]"
-        autocomplete="off"
-    >
+<form
+    id="listingSearchForm"
+    action="{{ route('pages.listing.index') }}"
+    class="uk-visible@s z-10 bg-white rounded-full flex justify-between items-center absolute left-1/2 -translate-x-1/2 bottom-[-25px] xl:bottom-[-30px] w-[95%] h-[50px] xl:h-[62px] px-4"
+    autocomplete="off"
+>
         <input
             type="hidden"
             name="requestType"
