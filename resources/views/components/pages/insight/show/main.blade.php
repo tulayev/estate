@@ -45,6 +45,8 @@
             </div>
         </div>
         <!-- Search -->
-        <x-layout.insight.search />
+        <div class="container relative">
+            <x-layout.insight.search />
+        </div>
     </main>
 @endif

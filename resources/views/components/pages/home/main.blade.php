@@ -40,5 +40,7 @@
         </div>
     </div>
     <!-- Search -->
-    <x-layout.listing.search />
+    <div class="container relative">
+        <x-layout.listing.search />
+    </div>
 </main>

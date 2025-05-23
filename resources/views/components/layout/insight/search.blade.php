@@ -3,7 +3,7 @@
     <form
         id="insightSearchForm"
         action="{{ route('pages.insight.index') }}"
-        class="uk-visible@s z-10 bg-white rounded-full flex justify-between items-center absolute left-1/2 bottom-[-3px] xl:bottom-[-9px] -translate-x-1/2 px-4 sm:w-[540px] md:w-[680px] lg:w-[920px] xl:w-[850px] xxl:w-[1260px] h-[50px] xl:h-[62px]"
+        class="uk-visible@s z-10 bg-white rounded-full flex justify-between items-center absolute left-1/2 bottom-[-25px] xl:bottom-[-30px] -translate-x-1/2 px-4 w-[95%] h-[50px] xl:h-[62px]"
         autocomplete="off"
     >
         <div class="animate-spin-slow">
