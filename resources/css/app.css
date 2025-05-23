@@ -13,7 +13,7 @@
     }
 
     .section {
-        @apply pt-8 sm:pt-16 md:pt-24;
+        @apply mt-8 sm:mt-0 pt-8 sm:pt-16 md:pt-24;
     }
 
     .container {

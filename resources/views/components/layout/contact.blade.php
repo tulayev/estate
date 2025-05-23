@@ -1,4 +1,4 @@
-<section id="contactSection" class="section mt-8 sm:mt-0">
+<section id="contactSection" class="section">
     <div class="container flex items-center justify-between">
         <h2 class="section-title">
             {{ __('general.contact_us') }}

@@ -2,7 +2,7 @@
 use App\Helpers\Enums\TopicType;
 @endphp
 
-<section id="sliderSection" class="section">
+<section id="sliderSection" class="section mt-0">
     <div class="container">
         <!-- Slider -->
         <div class="swiper home-slider">
