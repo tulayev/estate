@@ -1,4 +1,5 @@
 @php($mapView = count(request()->segments()) === 2 && !str_contains(request()->fullUrl(), 'insights'))
+@php($currentCurrency = Helper::getClientCurrency(session()->get('countryCode')))
 <!-- Desktop -->
 <header
     class="header absolute top-4 left-0 w-full z-[999] uk-visible@m"
@@ -110,9 +111,7 @@
                                 {{ __('general.nav_about') }}
                             </a>
                         </li>
-
-                        <!-- Locale Switcher -->
-
+                        <!-- Locale & Currency Switcher -->
                         <li>
                             <ul class="{{ $mapView ? '' : 'bg-opacity-10' }} border-rounded bg-white relative md:w-[80px] lg:w-[120px]">
                                 <li class="flex justify-around items-center w-full font-black md:text-sm xl:text-base xxl:text-lg">
@@ -139,8 +138,27 @@
                                         </ul>
                                     </div>
                                     <a href="#">
-                                        {{ Helper::getClientCurrency() }}
+                                        {{ $currentCurrency }}
                                     </a>
+                                    <div
+                                        class="border-rounded p-0"
+                                        uk-dropdown="pos: bottom-justify; animation: uk-animation-slide-top-small; duration: 400; mode: click"
+                                    >
+                                        <ul>
+                                            @foreach(Constants::SELECTABLE_CURRENCIES as $k => $v)
+                                                @if($v !== $currentCurrency)
+                                                    <li class="text-center whitespace-nowrap">
+                                                        <a
+                                                            href="{{ route('change-currency', $k) }}"
+                                                            class="text-primary"
+                                                        >
+                                                            {{ $v }}
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                 </li>
                                 <li class="hidden">
                                     <img
@@ -166,9 +184,7 @@
 >
     <div class="uk-container uk-container-large">
         <nav class="uk-navbar" uk-navbar>
-
             <!-- Logo -->
-
             <div class="uk-navbar-left">
                 <a
                     class="uk-navbar-item uk-logo animateText uk-padding-remove uk-scrollspy-inview"
@@ -182,9 +198,7 @@
                 </a>
                 <hr class="border-none outline-none w-[2px] h-[50px] mx-2 lg:mx-4 xl:mx-16 bg-[#11111109] uk-visible@m">
             </div>
-
             <!-- Burger Menu -->
-
             <div class="uk-navbar-right">
                 <a
                     href="#"
@@ -238,6 +252,7 @@
                                     {{ __('general.nav_about') }}
                                 </a>
                             </li>
+                            <!-- Locale Switcher -->
                             <li class="pl-0">
                                 <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav>
                                     <li class="uk-parent uk-active">
@@ -258,6 +273,28 @@
                                     </li>
                                 </ul>
                             </li>
+                            <!-- Currency Switcher -->
+                            <li class="pl-0">
+                                <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav>
+                                    <li class="uk-parent uk-active">
+                                        <a href="#">
+                                            {{ $currentCurrency }}
+                                        </a>
+                                        <ul class="uk-nav-sub" hidden>
+                                            @foreach(Constants::SELECTABLE_CURRENCIES as $k => $v)
+                                                @if($v !== $currentCurrency)
+                                                    <li>
+                                                        <a href="{{ route('change-currency', $k) }}">
+                                                            {{ $v }}
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- Search -->
                             <li class="p-0 sm:hidden relative">
                                 @php($isInsightsPage = str_contains(request()->fullUrl(), 'insights'))
                                 @if ($isInsightsPage)

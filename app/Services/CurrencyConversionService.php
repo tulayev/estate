@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 
 interface ICurrencyConversionService
 {
-    public function getClientCurrency(): string;
+    public function getClientCurrency(string $countryCode = null): string;
     public function convertWithSymbol(float $amount): array;
 }
 
@@ -16,8 +16,7 @@ class CurrencyConversionService implements ICurrencyConversionService
 {
     public function convertWithSymbol(float $amount): array
     {
-        $country = $this->getUserCountry();
-        $currency = $this->getCurrencyCode($country);
+        $currency = $this->getClientCurrency(session()->get('countryCode'));
         $symbol = $this->getCurrencySymbol($currency);
         $converted = $this->convert($amount, 'THB', $currency);
 
@@ -28,9 +27,14 @@ class CurrencyConversionService implements ICurrencyConversionService
         ];
     }
 
-    public function getClientCurrency(): string
+    public function getClientCurrency(string $countryCode = null): string
     {
-        return $this->getCurrencyCode($this->getUserCountry());
+        return $this->getCurrencyCode($countryCode ?? $this->getUserCountry());
+    }
+
+    private function getCurrencyCode(string $countryCode): string
+    {
+        return config("currencies.{$countryCode}.code", 'THB');
     }
 
     private function getUserCountry(): string
@@ -43,11 +47,6 @@ class CurrencyConversionService implements ICurrencyConversionService
         });
     }
 
-    private function getCurrencyCode(string $countryCode): string
-    {
-        return config("currencies.{$countryCode}.code", 'THB');
-    }
-
     private function getCurrencySymbol(string $currencyCode): string
     {
         $currencies = config('currencies');
@@ -58,12 +57,12 @@ class CurrencyConversionService implements ICurrencyConversionService
             }
         }
 
-        return '฿'; // fallback to THB
+        return '฿';
     }
 
     private function convert(float $amount, string $from, string $to = null): float
     {
-        $to = $to ?? $this->getCurrencyCode($this->getUserCountry());
+        $to = $to ?? $this->getClientCurrency();
 
         if ($from === $to) {
             return round($amount, 2);

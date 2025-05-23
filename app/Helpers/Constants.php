@@ -23,4 +23,10 @@ class Constants
     public const SYSTEM_TAG_IDS = [
         'land' => 6,
     ];
+
+    public const SELECTABLE_CURRENCIES = [
+        'TH' => 'THB',
+        'US' => 'USD',
+        'RU' => 'RUB',
+    ];
 }

@@ -22,10 +22,10 @@ class Helper
         return $service->convertWithSymbol($value);
     }
 
-    public static function getClientCurrency(): string
+    public static function getClientCurrency(string | null $currency): string
     {
         $service = app(ICurrencyConversionService::class);
 
-        return $service->getClientCurrency();
+        return $service->getClientCurrency($currency);
     }
 }

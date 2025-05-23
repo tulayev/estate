@@ -29,6 +29,11 @@ Route::get('/change-locale/{locale}', function($locale) {
     return redirect()->back();
 })->name('change-locale');
 
+Route::get('/change-currency/{countryCode}', function($countryCode) {
+    session()->put('countryCode', $countryCode);
+    return redirect()->back();
+})->name('change-currency');
+
 Route::get('/', [HomeController::class, 'index'])->name('pages.home.index');
 
 Route::prefix('listings')->group(function () {
