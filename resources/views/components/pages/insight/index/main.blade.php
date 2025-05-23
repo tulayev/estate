@@ -55,6 +55,8 @@
             <div class="swiper-pagination mb-6 md:mb-8 xl:mb-12"></div>
         </div>
         <!-- Search -->
-        <x-layout.insight.search />
+        <div class="container relative">
+            <x-layout.insight.search />
+        </div>
     </main>
 @endif
