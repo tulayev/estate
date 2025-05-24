@@ -148,7 +148,7 @@
 
             async fetchResultsCount() {
                 try {
-                    const {data} = await axios.post(this.API_URI, this.filters, {
+                    const { data } = await axios.post(this.API_URI, this.filters, {
                         headers: {
                             'Content-Type': 'application/json',
                             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,

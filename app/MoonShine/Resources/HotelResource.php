@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources;
 
+use App\Events\HotelCreated;
 use App\Helpers\Constants;
 use App\Rules\GalleryUrl;
 use Illuminate\Contracts\Database\Eloquent\Builder;
@@ -220,6 +221,15 @@ class HotelResource extends ModelResource
     public function redirectAfterSave(): string
     {
         return url('/admin/resource/hotel-resource/index-page');
+    }
+
+    protected function afterCreated(Model $item): Model
+    {
+        event(new HotelCreated($item->load([
+            'tags','features','locations','types'
+        ])));
+
+        return $item;
     }
 
     private function isUserInRole($role): bool

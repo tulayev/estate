@@ -5,6 +5,7 @@ use App\Http\Controllers\ClubController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InsightController;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -53,6 +54,13 @@ Route::prefix('insights')->group(function() {
     Route::post('/{topicId}/like', [InsightController::class, 'like'])->name('topic.like');
     Route::get('/search/topics', [InsightController::class, 'searchTopics'])->name('topics.search.titles');
     Route::post('/search/count', [InsightController::class, 'topicsCount'])->name('topics.search.count');
+});
+
+Route::prefix('subscriptions')->group(function () {
+    Route::post('/subscribe/{hotelId}', [SubscriptionController::class, 'subscribe'])->name('subscribe.hotel');
+    Route::post('/verify', [SubscriptionController::class, 'verify'])->name('subscription.verify');
+    Route::get('/unsubscribe/{token}', [SubscriptionController::class, 'unsubscribe'])->name('subscription.unsubscribe');
+    Route::get('/subscription-status/{hotelId}', [SubscriptionController::class, 'status'])->name('subscription.status');
 });
 
 Route::get('/about-us', [AboutController::class, 'index'])->name('pages.about.index');

@@ -1,10 +1,10 @@
 <x-layout.app>
-    <main 
-        class="uk-visible@s main-section relative mt-2 sm:mt-14 md:mt-28 xl:mt-40 xxl:mt-48" 
+    <main
+        class="uk-visible@s main-section relative mt-2 sm:mt-14 md:mt-28 xl:mt-40 xxl:mt-48"
         x-data="searchVisibility"
     >
-        <div 
-            class="container relative" 
+        <div
+            class="container relative"
             x-show="visible && !$store.navbar.isHovered"
             x-transition:enter="transition ease-out duration-300"
             x-transition:enter-start="opacity-0"
@@ -16,11 +16,18 @@
             <x-layout.listing.search />
         </div>
     </main>
-    
+
     <x-pages.listing.show.details :hotel="$hotel" />
+
     <x-pages.listing.show.history />
+
     <x-pages.listing.show.floor :hotel="$hotel" />
-    <x-pages.listing.show.similar-listing :similarHotels="$similarHotels" />
+
+    <x-pages.listing.show.similar-listing
+        :similarHotels="$similarHotels"
+        :hotel="$hotel"
+    />
+
 
     <script defer>
         document.addEventListener('alpine:init', () => {
@@ -31,12 +38,12 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const navbar = document.querySelector('.navbar');
-            
+
             if (navbar) {
                 navbar.addEventListener('mouseenter', () => {
                     Alpine.store('navbar').isHovered = true;
                 });
-                
+
                 navbar.addEventListener('mouseleave', () => {
                     Alpine.store('navbar').isHovered = false;
                 });
