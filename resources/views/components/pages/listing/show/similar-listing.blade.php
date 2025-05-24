@@ -75,10 +75,11 @@
                             class="primary-button"
                             @click="sendCode()"
                             :disabled="loading"
+                            x-show="!loading"
                         >
-                            <span x-show="!loading">Get code</span>
-                            <span x-show="loading">Sending code</span>
+                            Get code
                         </button>
+                        <div x-show="loading" uk-spinner></div>
                     </div>
                 </div>
 
@@ -107,10 +108,11 @@
                             class="primary-button"
                             @click="verifyCode()"
                             :disabled="loading"
+                            x-show="!loading"
                         >
-                            <span x-show="!loading">Verify</span>
-                            <span x-show="loading">Verifying</span>
+                            Verify
                         </button>
+                        <div x-show="loading" uk-spinner></div>
                     </div>
                 </div>
 
@@ -148,6 +150,10 @@
                     });
                 },
 
+                unsubscribe() {
+                    window.location.href = this.unsubscribeUrl;
+                },
+
                 async checkSubscriptionStatus() {
                     try {
                         const { data } = await axios.get('{{ route('subscription.status', $hotel->id) }}');
@@ -159,7 +165,7 @@
                     }
                 },
 
-                // send (or resend) the verification code
+                // Send or resend the verification code
                 async sendCode() {
                     this.errors = {};
 
@@ -171,9 +177,11 @@
                     this.loading = true;
 
                     try {
-                        const res = await axios.post(this.subscribeUrl, { email: this.email })
+                        const { status } = await axios.post(this.subscribeUrl, {
+                            email: this.email
+                        });
                         // 202 = code sent; 200 = already verified -> subscription created
-                        if (res.status === 202) {
+                        if (status === 202) {
                             this.step = 'verify';
                         } else {
                             await this.checkSubscriptionStatus();
@@ -181,16 +189,20 @@
                         }
                     }
                     catch (e) {
-                        if (e.response?.status === 422) {
-                            // validation error
-                            this.errors = e.response.data.errors || { email: e.response.data.message };
-                        }
-                        else if (e.response?.status === 409) {
-                            // already subscribed
-                            this.step = 'done';
-                        }
-                        else {
-                            this.errors.email = e.response?.data?.message || 'Unexpected error';
+                        const statusCode = e.response?.status;
+
+                        switch (statusCode) {
+                            case 422:
+                                // Validation error
+                                this.errors = e.response.data.errors || { email: e.response.data.message };
+                                break;
+                            case 409:
+                                // Already subscribed
+                                this.step = 'done';
+                                break;
+                            default:
+                                this.errors.email = e.response?.data?.message || 'Unexpected error';
+                                break;
                         }
                     }
                     finally {
@@ -198,7 +210,7 @@
                     }
                 },
 
-                // verify the code, then subscribe
+                // Verify the code, then subscribe
                 async verifyCode() {
                     this.errors = {};
 
@@ -210,13 +222,13 @@
                     this.loading = true;
 
                     try {
-                        // first, verify the subscriber
+                        // First, verify the subscriber
                         await axios.post(this.verifyUrl, {
                             email: this.email,
-                            code:  this.code
+                            code: this.code
                         });
 
-                        // now that they’re verified, hit subscribe again to actually create the subscription
+                        // Now that they're verified, hit subscribe again to actually create the subscription
                         await axios.post(this.subscribeUrl, {
                             email: this.email
                         });
@@ -235,10 +247,6 @@
                     finally {
                         this.loading = false;
                     }
-                },
-
-                async unsubscribe() {
-                    window.location.href = this.unsubscribeUrl;
                 },
             }
         }
