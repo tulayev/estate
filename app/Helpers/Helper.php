@@ -6,7 +6,7 @@ use App\Services\ICurrencyConversionService;
 
 class Helper
 {
-    public static function splitString($value, $separator = ','): array | null
+    public static function splitString(string $value, string $separator = ','): array | null
     {
         if ($value) {
             return explode($separator, $value);
@@ -27,5 +27,15 @@ class Helper
         $service = app(ICurrencyConversionService::class);
 
         return $service->getClientCurrency($currency);
+    }
+
+    public static function maskEmail(string $email): string
+    {
+        [$name, $domain] = explode('@', $email);
+
+        $visible = strlen($name) >= 3 ? 3 : 1;
+        $masked = substr($name, 0, $visible) . str_repeat('*', max(0, strlen($name) - $visible));
+
+        return $masked . '@' . $domain;
     }
 }

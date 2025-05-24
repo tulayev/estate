@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Helpers\Helper;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class Subscription extends Model
@@ -26,8 +28,16 @@ class Subscription extends Model
 
     protected static function booted(): void
     {
-        static::creating(function ($sub) {
-            $sub->unsubscribe_token = Str::random(32);
+        static::creating(function ($subscription) {
+            $subscription->unsubscribe_token = Str::random(32);
+        });
+
+        static::created(function ($subscription) {
+            Log::channel('subscriptions')->info('!!New subscription!!', [
+                'object' => $subscription->hotel->title,
+                'subscriber' => Helper::maskEmail($subscription->subscriber->email),
+                'subscribed_at' => now(),
+            ]);
         });
     }
 }

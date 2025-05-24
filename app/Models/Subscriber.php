@@ -26,15 +26,14 @@ class Subscriber extends Model
 
     public function isExpired(): bool
     {
-        return $this->verification_expires_at
-            && now()->greaterThan($this->verification_expires_at);
+        return $this->verification_expires_at && now()->greaterThan($this->verification_expires_at);
     }
 
     protected static function booted(): void
     {
-        static::creating(function ($s) {
-            $s->verification_code = random_int(100000, 999999);
-            $s->verification_expires_at = now()->addDay();
+        static::creating(function ($subscriber) {
+            $subscriber->verification_code = random_int(100000, 999999);
+            $subscriber->verification_expires_at = now()->addDay();
         });
     }
 }
