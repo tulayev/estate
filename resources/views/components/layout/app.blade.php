@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>{{ env('APP_NAME', 'Estate') }}</title>
+    {!! SEOMeta::generate() !!}
     <link rel="icon" href="{{ asset('assets/images/icons/logo-icon.svg') }}">
     <!-- NoUISlider css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider/dist/nouislider.min.css" />
