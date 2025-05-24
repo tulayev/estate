@@ -49,9 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
         loopedSlides: 4,
         slidesPerView: 1,
         spaceBetween: 30,
-        speed: 2000, // transition duration
         autoplay: {
-            delay: 3000, // must be greater than speed
+            delay: 5000, // must be greater than speed
             disableOnInteraction: false,
         },
         pagination: {
@@ -61,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
         breakpoints: {
             0: {
                 spaceBetween: 0,
-                speed: 400, // speed in milliseconds
             },
         },
     });
