@@ -52,7 +52,7 @@
             id="subscriptionModal"
             uk-modal
         >
-            <div class="uk-modal-dialog mt-8 p-6 bg-white border-rounded shadow-card w-fit max-w-md">
+            <div class="uk-modal-dialog uk-margin-auto-vertical p-6 bg-white border-rounded shadow-card w-fit max-w-md">
                 <h3 class="modal-subtitle mb-4">
                     {{ __('listing/show/similar.button') }}
                 </h3>
