@@ -25,7 +25,6 @@ return new class extends Migration
 
             // one row per subscriber/hotel
             $table->unique(['subscriber_id','hotel_id']);
-
         });
     }
 

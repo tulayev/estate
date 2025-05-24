@@ -18,13 +18,13 @@ class SubscriptionController extends Controller
             'email' => 'required|email',
         ]);
 
-        // 1) get-or-create subscriber
+        // Get or create subscriber
         $subscriber = Subscriber::firstOrNew([
             'email' => $data['email']
         ]);
 
         if (!$subscriber->exists || !$subscriber->verified) {
-            // (re)generate code if needed
+            // (Re)generate code if needed
             $subscriber->verification_code = random_int(100000, 999999);
             $subscriber->verification_expires_at = now()->addDay();
             $subscriber->verified = false;
@@ -38,7 +38,7 @@ class SubscriptionController extends Controller
             ], 202);
         }
 
-        // 2) subscriber is already verified -> create subscription
+        // Subscriber is already verified, then create subscription
         $exists = Subscription::where('subscriber_id', $subscriber->id)
             ->where('hotel_id', $hotelId)
             ->exists();

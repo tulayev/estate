@@ -35,7 +35,7 @@ class InsightController extends Controller
         ]);
     }
 
-    public function show($slug): View
+    public function show(string $slug): View
     {
         $topic = Topic::active()
             ->where('slug', $slug)
@@ -55,7 +55,8 @@ class InsightController extends Controller
 
         if (!Cache::has($cacheKey)) {
             $topic->increment('views');
-            Cache::put($cacheKey, true, now()->addMinutes(30)); // Prevent duplicate views for 30 minutes
+            // Prevent duplicate views for 30 minutes
+            Cache::put($cacheKey, true, now()->addMinutes(30));
         }
 
         return view('pages.insight.show', [
@@ -64,7 +65,7 @@ class InsightController extends Controller
         ]);
     }
 
-    public function like(Request $request, $topicId): JsonResponse
+    public function like(Request $request, int $topicId): JsonResponse
     {
         $topic = Topic::active()
             ->findOrFail($topicId);
@@ -89,8 +90,7 @@ class InsightController extends Controller
         if ($existingLike) {
             $existingLike->delete();
 
-            return response()
-                ->json([], 204);
+            return response()->json([], 204);
         }
 
         TopicLike::create([
@@ -99,8 +99,7 @@ class InsightController extends Controller
             'ip_address' => $userId ? null : $ipAddress,
         ]);
 
-        return response()
-            ->json([], 201);
+        return response()->json([], 201);
     }
 
     public function searchTopics(Request $request): JsonResponse
@@ -119,21 +118,22 @@ class InsightController extends Controller
 
         $topics = $topics->limit(10)->get();
 
-        return response()
-            ->json($topics);
+        return response()->json($topics);
     }
 
     public function topicsCount(Request $request): JsonResponse
     {
         if (empty($request->all())) {
-            return response()
-                ->json(['count' => 0]);
+            return response()->json([
+                'count' => 0,
+            ]);
         }
 
         $count = $this->getTopicsQuery($request)->count();
 
-        return response()
-            ->json(['count' => $count]);
+        return response()->json([
+            'count' => $count,
+        ]);
     }
 
     private function getTopicsQuery(Request $request)

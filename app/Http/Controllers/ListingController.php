@@ -53,7 +53,7 @@ class ListingController extends Controller
         ]);
     }
 
-    public function mapViewShow(Request $request, $hotelId): string
+    public function mapViewShow(Request $request, int $hotelId): string
     {
         $hotel = Hotel::active()->findOrFail($hotelId);
 
@@ -66,7 +66,7 @@ class ListingController extends Controller
         return '';
     }
 
-    public function show($slug): View
+    public function show(string $slug): View
     {
         $hotel = Hotel::active()
             ->where('slug', $slug)
@@ -86,14 +86,15 @@ class ListingController extends Controller
         ]);
     }
 
-    public function like(Request $request, $hotelId): JsonResponse
+    public function like(Request $request, int $hotelId): JsonResponse
     {
         $hotel = Hotel::active()
             ->findOrFail($hotelId);
 
         if (!$hotel) {
-            return response()
-                ->json(['message' => 'Object not found'], 404);
+            return response()->json([
+                'message' => 'Object not found',
+            ], 404);
         }
 
         $userId = auth()->check() ? auth()->user()->id : null;
@@ -111,8 +112,7 @@ class ListingController extends Controller
         if ($existingLike) {
             $existingLike->delete();
 
-            return response()
-                ->json([], 204);
+            return response()->json([], 204);
         }
 
         HotelLike::create([
@@ -121,15 +121,15 @@ class ListingController extends Controller
             'ip_address' => $userId ? null : $ipAddress,
         ]);
 
-        return response()
-            ->json([], 201);
+        return response()->json([], 201);
     }
 
     public function hotelsCount(Request $request): JsonResponse
     {
         if (empty($request->all())) {
-            return response()
-                ->json(['count' => 0]);
+            return response()->json([
+                'count' => 0,
+            ]);
         }
 
         $query = HotelQueryBuilder::for($request)
@@ -145,8 +145,9 @@ class ListingController extends Controller
 
         $count = $query->count();
 
-        return response()
-            ->json(['count' => $count]);
+        return response()->json([
+            'count' => $count,
+        ]);
     }
 
     private function getHotelsQuery(Request $request): Builder
@@ -168,13 +169,11 @@ class ListingController extends Controller
 
         // Search & Filter logic
         if ($request->get('requestType') === 'search') {
-            $builder
-                ->withPrice($request->input('price_min'), $request->input('price_max'))
+            $builder->withPrice($request->input('price_min'), $request->input('price_max'))
                 ->withBedrooms($request->input('beds'), $request->input('beds'))
                 ->withLocations($request->input('locations'));
         } else {
-            $builder
-                ->withPrice($request->input('price_min'), $request->input('price_max'))
+            $builder->withPrice($request->input('price_min'), $request->input('price_max'))
                 ->withBedrooms($request->input('bedrooms_min'), $request->input('bedrooms_max'))
                 ->withBathrooms($request->input('bathrooms_min'), $request->input('bathrooms_max'))
                 ->withTypes($request->input('types'))

@@ -28,7 +28,7 @@ class NotifySimilarSubscribers
                     $originalHotel = $subscription->hotel;
                     $matches = 0;
 
-                    // helper to count intersection of two relations
+                    // Helper to count intersection of two relations
                     $intersectCount = fn($a, $b) => count(
                         array_intersect(
                             $originalHotel->{$a}->pluck('id')->toArray(),
@@ -36,34 +36,33 @@ class NotifySimilarSubscribers
                         )
                     );
 
-                    // tags overlap?
+                    // Tags overlap?
                     if ($intersectCount('tags','tags') > 0) {
                         $matches++;
                     }
 
-                    // features overlap?
+                    // Features overlap?
                     if ($intersectCount('features','features') > 0) {
                         $matches++;
                     }
 
-                    // locations overlap?
+                    // Locations overlap?
                     if ($intersectCount('locations','locations') > 0) {
                         $matches++;
                     }
 
-                    // types overlap?
+                    // Types overlap?
                     if ($intersectCount('types','types') > 0) {
                         $matches++;
                     }
 
-                    // price within ±15%
+                    // Price within ±15%?
                     $low  = $originalHotel->price * 0.85;
                     $high = $originalHotel->price * 1.15;
                     if ($newHotel->price >= $low && $newHotel->price <= $high) {
                         $matches++;
                     }
 
-                    // if at least 3 criteria matched -> notify
                     if ($matches >= self::MATCHES_COUNT) {
                         Mail::to($subscription->subscriber->email)
                             ->queue(new NewSimilarHotel($subscription, $newHotel));
