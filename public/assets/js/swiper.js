@@ -22,13 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             500: {
                 slidesPerView: 2,
             },
-            640: {
-                slidesPerView: 2,
-            },
-            768: {
-                slidesPerView: 2,
-            },
-            1024: {
+            873: {
                 slidesPerView: 3,
             },
             1280: {

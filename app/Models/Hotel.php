@@ -33,10 +33,12 @@ class Hotel extends Model
         'ie_verified',
         'ie_score',
         'created_by',
+        'physical_address',
     ];
 
     protected $translatable = [
         'description',
+        'physical_address',
     ];
 
     protected $casts = [
