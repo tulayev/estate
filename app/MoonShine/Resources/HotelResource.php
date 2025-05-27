@@ -135,6 +135,9 @@ class HotelResource extends ModelResource
                     ->required(),
                     TinyMce::make(__('Moonshine/Objects/HotelResources.description'), 'description')
                     ->required(),
+                
+                    Text::make(__('Moonshine/Objects/HotelResources.address'), 'physical_address')
+                    ->translatable(),
                     
                 Text::make(__('Moonshine/Objects/HotelResources.code_name'), 'codename'),
 
