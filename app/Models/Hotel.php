@@ -21,6 +21,7 @@ class Hotel extends Model
         'title',
         'slug',
         'description',
+        'physical_address',
         'codename',
         'latitude',
         'longitude',
@@ -33,7 +34,6 @@ class Hotel extends Model
         'ie_verified',
         'ie_score',
         'created_by',
-        'physical_address',
     ];
 
     protected $translatable = [

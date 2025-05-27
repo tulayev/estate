@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->json('description')->nullable();
+            $table->json('physical_address')->nullable();
             $table->string('codename')->nullable();
             $table->json('location');
             $table->json('location_description')->nullable();

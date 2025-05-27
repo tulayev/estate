@@ -6,6 +6,7 @@ namespace App\Providers;
 
 
 use App\Helpers\Constants;
+use App\MoonShine\Resources\ContactResource;
 use App\MoonShine\Resources\FeatureResource;
 use App\MoonShine\Resources\FloorResource;
 use App\MoonShine\Resources\HotelResource;
@@ -114,6 +115,14 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
             )
                 ->canSee(function (Request $request) {
                     return $request->user('moonshine')?->moonshine_user_role_id === Constants::ROLES['Admin'];
+                }),
+
+            MenuItem::make(
+                static fn() => 'Contacts',
+                new ContactResource()
+            )
+                ->canSee(function (Request $request) {
+                    return $request->user('moonshine')?->moonshine_user_role_id !== Constants::ROLES['Developer'];
                 }),
         ];
     }
