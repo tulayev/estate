@@ -15,7 +15,7 @@ class ContactPolicy
 
     public function viewAny(MoonshineUser $user): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin'] || $user->moonshineUserRole->id === Constants::ROLES['Moderator']) {
+        if ($user->moonshineUserRole->id !== Constants::ROLES['Developer']) {
             return true;
         }
 
@@ -24,7 +24,7 @@ class ContactPolicy
 
     public function view(MoonshineUser $user, Contact $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin'] || $user->moonshineUserRole->id === Constants::ROLES['Moderator']) {
+        if ($user->moonshineUserRole->id !== Constants::ROLES['Developer']) {
             return true;
         }
 
