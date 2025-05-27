@@ -95,7 +95,7 @@
         @if ($hotel->address_json)
             <div class="mt-6 md:mt-12 xl:mt-24">
                 <div class="text-base md:text-lg xl:text-xl 2xl:text-2xl text-gray-500 font-bold">
-                    {!! json_decode($hotel->address_json)->{app()->getLocale()} !!}
+                    {{ $hotel->getTranslation('address_json', app()->getLocale()) }}
                 </div>
             </div>
         @endif

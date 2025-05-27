@@ -18,6 +18,7 @@ return [
     'price' => 'Price',
     'main_image_url' => 'Main Image URL',
     'gallery_urls' => 'Gallery URLs (separate by semicolon \';\')',
+    'address' => 'Address',
     'published' => 'Published',
     'ie_verified' => 'IE Verified',
     'ie_score' => 'IE Score',
