@@ -131,10 +131,13 @@ class HotelResource extends ModelResource
                 Slug::make('Slug', 'slug')
                     ->from('title')
                     ->unique()
-                    ->readonly(),                TinyMce::make(__('Moonshine/Objects/HotelResources.description'), 'description')
+                    ->readonly()                
+                    ->required(),
+                    TinyMce::make(__('Moonshine/Objects/HotelResources.description'), 'description')
                     ->required(),
 
-                Text::make(__('Moonshine/Objects/HotelResources.address'), 'address_json')
+
+                Text::make(__('Moonshine/Objects/HotelResources.address'), 'physical_address')
                     ->translatable(),
                     
                 Text::make(__('Moonshine/Objects/HotelResources.code_name'), 'codename'),

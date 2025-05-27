@@ -92,10 +92,10 @@
         <!-- Map -->
         <div class="mt-6 md:mt-12 xl:mt-24">
             <!-- Address -->
-        @if ($hotel->address_json)
+        @if ($hotel->physical_address)
             <div class="mt-6 md:mt-12 xl:mt-24">
                 <div class="text-base md:text-lg xl:text-xl 2xl:text-2xl text-gray-500 font-bold">
-                    {{ $hotel->getTranslation('address_json', app()->getLocale()) }}
+                    {{ $hotel->getTranslation('physical_address', app()->getLocale()) }}
                 </div>
             </div>
         @endif
