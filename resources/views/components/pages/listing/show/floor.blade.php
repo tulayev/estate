@@ -95,7 +95,7 @@
         @if ($hotel->physical_address)
             <div class="mt-6 md:mt-12 xl:mt-24">
                 <div class="text-base md:text-lg xl:text-xl 2xl:text-2xl text-gray-500 font-bold">
-                    {{ $hotel->getTranslation('physical_address', app()->getLocale()) }}
+                    {{ $hotel->physical_address }}
                 </div>
             </div>
         @endif

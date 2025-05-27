@@ -1,8 +1,8 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const cardSlider = new Swiper(".card-slider", {
+document.addEventListener('DOMContentLoaded', () => {
+    const cardSlider = new Swiper('.card-slider', {
         loop: true,
         slidesPerView: 3,
-        direction: "horizontal",
+        direction: 'horizontal',
         spaceBetween: 30,
         freeMode: true,
         freeModeMomentum: true,
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* Home Page slider */
-    const homeSlider = new Swiper(".home-slider", {
+    const homeSlider = new Swiper('.home-slider', {
         loop: true,
         loopedSlides: 4,
         slidesPerView: 1,
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
             disableOnInteraction: false,
         },
         pagination: {
-            el: ".swiper-pagination",
+            el: '.swiper-pagination',
             clickable: true,
         },
         breakpoints: {
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
     });
 
-    const insightMainSlider = new Swiper(".insights-slider", {
+    const insightMainSlider = new Swiper('.insights-slider', {
         loop: true,
         slidesPerView: 1,
         spaceBetween: 30,
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
             delay: 3000,
         },
         pagination: {
-            el: ".swiper-pagination",
+            el: '.swiper-pagination',
             clickable: true,
         },
         breakpoints: {
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
     });
 
-    const listingMainSlider = new Swiper(".listings-slider", {
+    const listingMainSlider = new Swiper('.listings-slider', {
         loop: true,
         slidesPerView: 1,
         spaceBetween: 30,
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
             delay: 3000,
         },
         pagination: {
-            el: ".swiper-pagination",
+            el: '.swiper-pagination',
             clickable: true,
         },
         breakpoints: {
