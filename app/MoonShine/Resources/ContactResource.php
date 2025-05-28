@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Contact;
 
 use MoonShine\Attributes\Icon;
+use MoonShine\Fields\Relationships\BelongsToMany;
 use MoonShine\Fields\Text;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
@@ -41,6 +42,9 @@ class ContactResource extends ModelResource
                 Text::make('Full name', 'full_name'),
                 Text::make('Phone', 'phone'),
                 Text::make('Email', 'email'),
+                BelongsToMany::make('Objects', 'hotels', 'title', resource: new HotelResource())
+                    ->selectMode()
+                    ->inLine('|'),
             ]),
         ];
     }
