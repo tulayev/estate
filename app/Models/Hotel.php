@@ -57,6 +57,11 @@ class Hotel extends Model
         return $query->where('ie_verified', true);
     }
 
+    public function contacts(): BelongsToMany
+    {
+        return $this->belongsToMany(Contact::class, 'hotel_contact');
+    }
+
     public function scopeFullSearch(Builder $query, $keyword): Builder
     {
         // Split input by multiple possible separators: comma, space, semicolon, or pipe (|)

@@ -27,7 +27,7 @@ class ContactResource extends ModelResource
 
     public function title(): string
     {
-        return 'Contacts';
+        return __('Moonshine/Contacts/Contacts.contacts_list');
     }
 
     /**
@@ -65,5 +65,15 @@ class ContactResource extends ModelResource
             'email' => 'nullable|email|max:255',
             'note' => 'nullable|string|max:1000',
         ];
+    }
+
+    public function redirectAfterSave(): string
+    {
+        return url('/admin/resource/contact-resource/index-page');
+    }
+
+    public function search(): array
+    {
+        return ['full_name', 'phone', 'email'];
     }
 }
