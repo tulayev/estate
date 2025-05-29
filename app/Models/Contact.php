@@ -15,6 +15,7 @@ class Contact extends Model
         'full_name',
         'phone',
         'email',
+        'note',
     ];
 
     public function hotels(): BelongsToMany
