@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ClubController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InsightController;
 use App\Http\Controllers\ListingController;
@@ -64,3 +65,5 @@ Route::prefix('subscriptions')->group(function () {
 });
 
 Route::get('/about-us', [AboutController::class, 'index'])->name('pages.about.index');
+
+Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');

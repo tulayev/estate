@@ -18,6 +18,8 @@ return [
     'form_email' => 'Enter your e-mail',
     'form_message' => 'Message',
     'form_submit' => 'Send',
+    'contact_success' => 'Thank you! Your message has been sent successfully.',
+    'contact_error' => 'Sorry, there was an error sending your message. Please try again.',
 
     /*
      * Newsletter
