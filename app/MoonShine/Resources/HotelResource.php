@@ -171,6 +171,8 @@ class HotelResource extends ModelResource
                 $this->getIeScoreField(),
             ]),
 
+            $this->getContactsBlock(),
+
             Block::make(__('Moonshine/Objects/HotelResources.media'), [
                 Image::make(__('Moonshine/Objects/HotelResources.main_image'), 'main_image')
                     ->disk(Constants::PUBLIC_DISK)
@@ -189,6 +191,8 @@ class HotelResource extends ModelResource
 
                 Textarea::make(__('Moonshine/Objects/HotelResources.gallery_urls'), 'gallery_url'),
             ]),
+
+            
         ];
     }
 
@@ -239,6 +243,16 @@ class HotelResource extends ModelResource
     private function isUserInRole($role): bool
     {
         return auth()->user()->moonshine_user_role_id === $role;
+    }
+
+    private function getContactsBlock(): Block|null
+    {
+        return $this->isUserInRole(Constants::ROLES['Admin'])
+            ? Block::make(__('Moonshine/Objects/HotelResources.contacts'), [
+                BelongsToMany::make(__('Moonshine/Objects/HotelResources.contacts'), 'contacts', fn($item) => $item->full_name . ' - ' . $item->role, resource: new ContactResource())
+                    ->selectMode(),
+            ])
+            : null;
     }
 
     private function getPublishedField(): Switcher | null

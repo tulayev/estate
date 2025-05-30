@@ -22,4 +22,5 @@ return [
     'published' => 'Опубликовано',
     'ie_verified' => 'IE Verified',
     'ie_score' => 'IE Score',
+    'contacts' => 'Контакты',
 ];

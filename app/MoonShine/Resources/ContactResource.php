@@ -27,7 +27,7 @@ class ContactResource extends ModelResource
 
     public function title(): string
     {
-        return 'Contacts';
+        return __('Moonshine/Contacts/Contacts.contacts_list');
     }
 
     /**
@@ -42,6 +42,7 @@ class ContactResource extends ModelResource
                 Text::make('Full name', 'full_name'),
                 Text::make('Phone', 'phone'),
                 Text::make('Email', 'email'),
+                Text::make('Note', 'note'),
                 BelongsToMany::make('Objects', 'hotels', 'title', resource: new HotelResource())
                     ->selectMode()
                     ->inLine('|'),
@@ -62,6 +63,17 @@ class ContactResource extends ModelResource
             'full_name' => 'nullable|string|max:255',
             'phone' => 'nullable|string|max:20|regex:/^\+?[0-9\-\(\)\s]+$/',
             'email' => 'nullable|email|max:255',
+            'note' => 'nullable|string|max:1000',
         ];
+    }
+
+    public function redirectAfterSave(): string
+    {
+        return url('/admin/resource/contact-resource/index-page');
+    }
+
+    public function search(): array
+    {
+        return ['full_name', 'phone', 'email'];
     }
 }

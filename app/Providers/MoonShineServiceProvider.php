@@ -118,7 +118,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 }),
 
             MenuItem::make(
-                static fn() => 'Contacts',
+                static fn() => __('Moonshine/Contacts/Contacts.contacts_list'),
                 new ContactResource()
             )
                 ->canSee(function (Request $request) {
