@@ -94,8 +94,8 @@
             <!-- Address -->
         @if ($hotel->physical_address)
             <div class="mt-6 md:mt-12 xl:mt-24">
-                <div class="text-base md:text-lg xl:text-xl 2xl:text-2xl text-gray-500 font-bold">
-                    {{ $hotel->physical_address }}
+                <div class="text-primary md:text-lg xl:font-black xl:text-xl 2xl:text-2xl font-bold mb-4">
+                    📍 {{ $hotel->physical_address }}
                 </div>
             </div>
         @endif

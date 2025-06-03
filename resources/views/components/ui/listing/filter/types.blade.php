@@ -19,21 +19,21 @@
             x
         </span>
 
-        <template x-for="id in selectedTypeIds" :key="id">
+        <template x-for="(id, index) in selectedTypeIds" :key="id">
             <span
                 class="cursor-pointer hover:text-red-500"
                 @click="removeType(id)"
             >
-              <span x-text="allTypeIds.find(t => t.id == id).name[locale]"></span>
+              <span x-text="(index > 0 ? ', ' : '') + allTypeIds.find(t => t.id == id).name[locale]"></span>
             </span>
         </template>
 
-        <template x-for="id in selectedTagIds" :key="id">
+        <template x-for="(id, index) in selectedTagIds" :key="id">
             <span
                 class="cursor-pointer hover:text-red-500"
                 @click="removeTag(id)"
             >
-              <span x-text="allTagIds.find(t => t.id == id).name[locale]"></span>
+              <span x-text="(selectedTypeIds.length > 0 || index > 0 ? ', ' : '') + allTagIds.find(t => t.id == id).name[locale]"></span>
             </span>
         </template>
     </h3>

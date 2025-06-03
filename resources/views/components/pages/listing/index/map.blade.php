@@ -10,8 +10,13 @@
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
+
+    /* Prevent page scrolling */
+    body {
+        overflow: hidden;
+    }
 </style>
-<main class="pt-8 sm:pt-16 md:pt-24 lg:pt-44">
+<main class="pt-8 sm:pt-16 md:pt-24 lg:pt-44 h-screen overflow-hidden">
     <div class="container">
         <div class="w-full flex justify-between">
             <div class="collapse-title">
@@ -40,7 +45,7 @@
         </div>
     </div>
 
-    @if ($hotels)
+    @if ($hotels->isNotEmpty())
         <!-- Map View -->
         <div
             class="mt-4 md:mt-6 xl:mt-12 relative"
@@ -66,6 +71,13 @@
             </div>
             <div id="mapView" class="border-rounded w-[100vw] h-[100vh]"></div>
         </div>
+    @else
+        <x-ui.nothing-found 
+            :title="__('general.nothing_found')"
+            :message="__('general.search_try_again')"
+            :showSearchTips="true"
+            :backUrl="route('pages.listing.index')"
+        />
     @endif
 </main>
 

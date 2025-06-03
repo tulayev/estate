@@ -1,4 +1,4 @@
-window.getRandomColor = function() {
+window.getRandomColor = function () {
     const colors = ['bg-color-1', 'bg-color-2', 'bg-color-3', 'bg-color-4'];
     return colors[Math.floor(Math.random() * colors.length)];
 };
@@ -11,13 +11,14 @@ function overlay() {
     const overlay = document.getElementById('overlay');
 
     if (overlay) {
-        setTimeout(() => overlay.style.display = 'none', 1000);
+        setTimeout(() => (overlay.style.display = 'none'), 1000);
     }
 }
 
 function randomBgColor() {
-    document.querySelectorAll('.random-bg-color').forEach((element) => {
-        element.classList.add(window.getRandomColor());
+    const colors = ['bg-color-1', 'bg-color-2', 'bg-color-3', 'bg-color-4'];
+    document.querySelectorAll('.random-bg-color').forEach((element, index) => {
+        element.classList.add(colors[index % colors.length]);
     });
 }
 

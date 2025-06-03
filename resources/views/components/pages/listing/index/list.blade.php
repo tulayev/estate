@@ -68,7 +68,13 @@
                 @endif
             </div>
         @else
-            <h2 class="section-title mt-4 md:mt-10">{{ __('general.nothing_found') }}</h2>
+            <x-ui.nothing-found 
+                :title="__('general.nothing_found')"
+                :message="__('general.search_try_again')"
+                :showSearchTips="true"
+                :backUrl="route('pages.listing.index')"
+                data-clean-url="{{ request()->url() }}"
+            />
         @endif
     </div>
 </section>
