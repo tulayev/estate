@@ -33,7 +33,13 @@ return [
      * Listing
      */
     'see_more' => 'see more',
-    'nothing_found' => 'nothing found, refine your search',
+    'nothing_found' => 'Nothing Found',
+    'search_try_again' => 'We couldn\'t find any results matching your search criteria. Please try different keywords or filters.',
+    'search_tips' => 'Search Tips',
+    'search_tip_1' => 'Try using more general keywords',
+    'search_tip_2' => 'Try different filters or remove some filters',
+    'search_tip_3' => 'Check for spelling errors in your search terms',
+    'go_back' => 'Go Back',
 
     /*
      * Search

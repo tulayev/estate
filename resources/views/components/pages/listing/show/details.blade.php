@@ -6,13 +6,15 @@
     <div class="container">
         @if ($hotel)
             <h2 class="modal-subtitle">
-                @if ($hotel->types && $hotel->types->first())
-                    <a
-                        href="{{ route('pages.listing.index', ['type' => $hotel->types->first()->id]) }}"
-                        class="hover:text-secondary"
-                    >
-                        {{ $hotel->types->first()->name }}
-                    </a>
+                @if ($hotel->types && $hotel->types->isNotEmpty())
+                    @foreach($hotel->types as $index => $type)
+                        <a
+                            href="{{ route('pages.listing.index', ['type' => $type->id]) }}"
+                            class="hover:text-secondary"
+                        >
+                            {{ $type->name }}
+                        </a>@if($index < $hotel->types->count() - 1), @endif
+                    @endforeach
                 @else
                     <a
                         href="{{ route('pages.listing.index') }}"
@@ -95,11 +97,11 @@
                         @if ($hotel->gallery)
                             @foreach($hotel->gallery as $image)
                                 <div>
-                                    <a href="{{ ImagePathResolver::resolve($image) }}">
+                                    <a href="{{ ImagePathResolver::resolve($image) }}" class="block aspect-square">
                                         <img
                                             src="{{ ImagePathResolver::resolve($image) }}"
                                             alt="{{ $hotel->title }}"
-                                            class="border-rounded object-cover w-full h-32 md:h-64"
+                                            class="border-rounded object-cover w-full h-full"
                                             loading="lazy"
                                         />
                                     </a>
@@ -108,11 +110,11 @@
                         @elseif ($hotel->gallery_url)
                             @foreach(Helper::splitString($hotel->gallery_url, ';') as $image)
                                 <div>
-                                    <a href="{{ $image }}">
+                                    <a href="{{ $image }}" class="block aspect-square">
                                         <img
                                             src="{{ $image }}"
                                             alt="{{ $hotel->title }}"
-                                            class="border-rounded object-cover w-full h-32 md:h-64"
+                                            class="border-rounded object-cover w-full h-full"
                                             loading="lazy"
                                         />
                                     </a>

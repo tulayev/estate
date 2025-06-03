@@ -8,17 +8,17 @@
             href="{{ route('pages.listing.show', $hotel->slug) }}"
             class="absolute inset-0 z-10">
         </a>
-        <div class="relative flex flex-col justify-between p-3 h-[220px] md:h-[300px] hover:shadow-xl transition-shadow duration-300">
+        <div class="relative flex flex-col justify-between p-3 h-[220px] md:h-[300px] hover:shadow-xl transition-shadow duration-300 border-rounded overflow-hidden">
             <!-- Swiper Slider (Initially Hidden) -->
             @if ($hotel->gallery || $hotel->gallery_url)
-                <div class="swiper listing-slider absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none">
+                <div class="swiper listing-slider absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none border-rounded overflow-hidden">
                     <div class="swiper-wrapper">
                         @if ($hotel->gallery)
                             @foreach($hotel->gallery as $image)
                                 <div class="swiper-slide">
                                     <img
                                         src="{{ ImagePathResolver::resolve($image) }}"
-                                        class="w-full h-full object-cover border-rounded"
+                                        class="w-full h-full object-cover"
                                         alt="{{ $hotel->title }}"
                                         loading="lazy"
                                     />
@@ -29,7 +29,7 @@
                                 <div class="swiper-slide">
                                     <img
                                         src="{{ $image }}"
-                                        class="w-full h-full object-cover border-rounded"
+                                        class="w-full h-full object-cover"
                                         alt="{{ $hotel->title }}"
                                         loading="lazy"
                                     />
@@ -43,11 +43,11 @@
                 </div>
             @endif
             <!-- Static Background (Visible Until Hover) -->
-            <div class="absolute inset-0 transition-opacity duration-500 group-hover:opacity-0">
+            <div class="absolute inset-0 transition-opacity duration-500 group-hover:opacity-0 border-rounded overflow-hidden">
                 <img
                     src="{{ asset('assets/images/object-background.png') }}"
                     data-src="{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url }}"
-                    class="lazy-image"
+                    class="lazy-image w-full h-full object-cover"
                     alt="{{ $hotel->title }}"
                     loading="lazy"
                 />

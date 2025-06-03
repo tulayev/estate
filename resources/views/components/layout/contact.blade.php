@@ -134,7 +134,7 @@
             <button 
                 type="submit"
                 :disabled="loading"
-                class="absolute bg-primary text-white border-rounded w-full bottom-0 text-xl font-bold h-[60px] md:h-[80px] uppercase disabled:opacity-50"
+                class="absolute bg-primary text-white border-rounded w-full bottom-0 text-sm sm:text-base md:text-lg font-bold xl:font-black h-[60px] md:h-[80px] uppercase disabled:opacity-50"
             >
                 <span x-show="!loading">{{ __('general.form_submit') }}</span>
                 <span x-show="loading">Sending...</span>
