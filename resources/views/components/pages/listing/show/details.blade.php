@@ -142,29 +142,34 @@
             <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 rounded-[28px] shadow-card bg-white px-3 py-5">
                 <div class="collapse-title text-sm items-center uppercase border-b border-borderColor p-4">
                     <div class="uk-child-width-1-2 uk-child-width-1-4@s uk-grid-small text-center" uk-grid>
-                        @if ($hotel->types)
+                        @if ($hotel->types && $hotel->types->isNotEmpty())
                             <div>
                                 <p>
                                     🏠 {{ implode(', ', $hotel->types->pluck('name')->toArray()) }}
                                 </p>
                             </div>
                         @endif
-                        <div>
-                            <p>
-                                📐 {{ $hotel->area }} M<sup>2</sup>
-                            </p>
-                        </div>
-
-                        <div>
-                            <p>
-                                🛏️ {{ $hotel->bedrooms }} {{ __('general.filter_popup_bedrooms') }}
-                            </p>
-                        </div>
-                        <div>
-                            <p>
-                                🏷️ {{ $hotel->codename ?? 'N/A' }}
-                            </p>
-                        </div>
+                        @if ($hotel->area > 0)
+                            <div>
+                                <p>
+                                    📐 {{ $hotel->area }} M<sup>2</sup>
+                                </p>
+                            </div>
+                        @endif
+                        @if ($hotel->bedrooms > 0)
+                            <div>
+                                <p>
+                                    🛏️ {{ $hotel->bedrooms }} {{ __('general.filter_popup_bedrooms') }}
+                                </p>
+                            </div>
+                        @endif
+                        @if ($hotel->codename && strlen($hotel->codename) > 0)
+                            <div>
+                                <p>
+                                    🏷️ {{ $hotel->codename }}
+                                </p>
+                            </div>
+                        @endif
                     </div>
                 </div>
 
