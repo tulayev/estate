@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Policies;
 
 use App\Helpers\Constants;
+use App\Helpers\Enums\UserRole;
+use App\Helpers\Helper;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Models\Topic;
 use MoonShine\Models\MoonshineUser;
@@ -15,7 +17,7 @@ class TopicPolicy
 
     public function viewAny(MoonshineUser $user): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+        if (Helper::isUserInRole(UserRole::Developer)) {
             return false;
         }
 
@@ -24,7 +26,7 @@ class TopicPolicy
 
     public function view(MoonshineUser $user, Topic $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+        if (Helper::isUserInRole(UserRole::Developer)) {
             return false;
         }
 
@@ -33,7 +35,7 @@ class TopicPolicy
 
     public function create(MoonshineUser $user): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+        if (Helper::isUserInRole(UserRole::Developer)) {
             return false;
         }
 
@@ -42,7 +44,7 @@ class TopicPolicy
 
     public function update(MoonshineUser $user, Topic $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+        if (Helper::isUserInRole(UserRole::Developer)) {
             return false;
         }
 
@@ -51,7 +53,7 @@ class TopicPolicy
 
     public function delete(MoonshineUser $user, Topic $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+        if (Helper::isUserInRole(UserRole::Developer)) {
             return false;
         }
 
@@ -60,7 +62,7 @@ class TopicPolicy
 
     public function restore(MoonshineUser $user, Topic $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 
@@ -69,7 +71,7 @@ class TopicPolicy
 
     public function forceDelete(MoonshineUser $user, Topic $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 
@@ -78,7 +80,7 @@ class TopicPolicy
 
     public function massDelete(MoonshineUser $user): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 

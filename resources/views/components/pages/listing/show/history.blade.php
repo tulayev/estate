@@ -15,7 +15,7 @@
 {{--                        />--}}
                         @if ($hotel->topic->logo)
                             <img
-                                src="{{ ImagePathResolver::resolve($hotel->topic->logo) }}"
+                                src="{{ Helper::resolveImagePath($hotel->topic->logo) }}"
                                 alt="{{ $hotel->topic->title }}"
                                 class="mx-auto"
                             />

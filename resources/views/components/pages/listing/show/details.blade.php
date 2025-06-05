@@ -30,7 +30,7 @@
                 <div class="relative px-4 pt-4 pb-4 md:px-8 md:pt-8 md:pb-10">
                     <div class="absolute inset-0 pointer-events-none">
                         <img
-                            data-src="{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}"
+                            data-src="{{ Helper::resolveImagePath($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}"
                             class="lazy-image cursor-pointer pointer-events-auto"
                             alt="{{ $hotel->title }}"
                             loading="lazy"
@@ -97,9 +97,9 @@
                         @if ($hotel->gallery)
                             @foreach($hotel->gallery as $image)
                                 <div>
-                                    <a href="{{ ImagePathResolver::resolve($image) }}" class="block aspect-square">
+                                    <a href="{{ Helper::resolveImagePath($image) }}" class="block aspect-square">
                                         <img
-                                            src="{{ ImagePathResolver::resolve($image) }}"
+                                            src="{{ Helper::resolveImagePath($image) }}"
                                             alt="{{ $hotel->title }}"
                                             class="border-rounded object-cover w-full h-full"
                                             loading="lazy"

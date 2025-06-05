@@ -6,14 +6,11 @@ namespace App\MoonShine\Resources;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Feature;
-
 use MoonShine\Attributes\Icon;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
-use MoonShine\Fields\Field;
 use MoonShine\Fields\Text;
-use MoonShine\Components\MoonShineComponent;
 
 /**
  * @extends ModelResource<Feature>
@@ -29,9 +26,6 @@ class FeatureResource extends ModelResource
         return __('Moonshine/Features/Features.Features');
     }
 
-    /**
-     * @return list<MoonShineComponent|Field>
-     */
     public function indexFields(): array
     {
         return [
@@ -56,16 +50,11 @@ class FeatureResource extends ModelResource
     {
         return [
             ID::make()->sortable(),
+
             Text::make(__('Moonshine/Features/FeatureResource.name'), 'name')->required(),
         ];
     }
 
-    /**
-     * @param Feature $item
-     *
-     * @return array<string, string[]|string>
-     * @see https://laravel.com/docs/validation#available-validation-rules
-     */
     public function rules(Model $item): array
     {
         return [

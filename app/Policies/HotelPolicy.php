@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Policies;
 
-use App\Helpers\Constants;
+use App\Helpers\Enums\UserRole;
+use App\Helpers\Helper;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Models\Hotel;
 use MoonShine\Models\MoonshineUser;
@@ -20,7 +21,7 @@ class HotelPolicy
 
     public function view(MoonshineUser $user, Hotel $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+        if (Helper::isUserInRole(UserRole::Developer)) {
             return $item->created_by === $user->id;
         }
 
@@ -34,7 +35,7 @@ class HotelPolicy
 
     public function update(MoonshineUser $user, Hotel $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+        if (Helper::isUserInRole(UserRole::Developer)) {
             return $item->created_by === $user->id;
         }
 
@@ -43,7 +44,7 @@ class HotelPolicy
 
     public function delete(MoonshineUser $user, Hotel $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+        if (Helper::isUserInRole(UserRole::Developer)) {
             return $item->created_by === $user->id;
         }
 
@@ -52,7 +53,7 @@ class HotelPolicy
 
     public function restore(MoonshineUser $user, Hotel $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 
@@ -61,7 +62,7 @@ class HotelPolicy
 
     public function forceDelete(MoonshineUser $user, Hotel $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 
@@ -70,7 +71,7 @@ class HotelPolicy
 
     public function massDelete(MoonshineUser $user): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 

@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Policies;
 
 use App\Helpers\Constants;
+use App\Helpers\Enums\UserRole;
+use App\Helpers\Helper;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Models\Floor;
 use MoonShine\Models\MoonshineUser;
@@ -20,7 +22,7 @@ class FloorPolicy
 
     public function view(MoonshineUser $user, Floor $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+        if (Helper::isUserInRole(UserRole::Developer)) {
             return $item->hotel->created_by === $user->id;
         }
 
@@ -34,7 +36,7 @@ class FloorPolicy
 
     public function update(MoonshineUser $user, Floor $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+        if (Helper::isUserInRole(UserRole::Developer)) {
             return $item->hotel->created_by === $user->id;
         }
 
@@ -43,7 +45,7 @@ class FloorPolicy
 
     public function delete(MoonshineUser $user, Floor $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Developer']) {
+        if (Helper::isUserInRole(UserRole::Developer)) {
             return $item->hotel->created_by === $user->id;
         }
 
@@ -52,7 +54,7 @@ class FloorPolicy
 
     public function restore(MoonshineUser $user, Floor $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 
@@ -61,7 +63,7 @@ class FloorPolicy
 
     public function forceDelete(MoonshineUser $user, Floor $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 
@@ -70,7 +72,7 @@ class FloorPolicy
 
     public function massDelete(MoonshineUser $user): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 

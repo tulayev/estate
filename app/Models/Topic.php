@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-use App\Helpers\Constants;
 use App\Helpers\Enums\TopicType;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Facades\Storage;
 use Spatie\Translatable\HasTranslations;
 
 class Topic extends Model
@@ -107,16 +105,6 @@ class Topic extends Model
         static::creating(function ($topic) {
             $topic->created_by = auth()->user()->id;
             $topic->minutes_to_read = $topic->calculateMinutesToRead();
-        });
-
-        static::deleting(function ($topic) {
-            if (!is_null($topic->image) && Storage::disk(Constants::PUBLIC_DISK)->exists($topic->image)) {
-                Storage::disk(Constants::PUBLIC_DISK)->delete($topic->image);
-            }
-
-            if (!is_null($topic->logo) && Storage::disk(Constants::PUBLIC_DISK)->exists($topic->logo)) {
-                Storage::disk(Constants::PUBLIC_DISK)->delete($topic->logo);
-            }
         });
     }
 

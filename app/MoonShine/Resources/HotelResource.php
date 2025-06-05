@@ -6,11 +6,14 @@ namespace App\MoonShine\Resources;
 
 use App\Events\HotelCreated;
 use App\Helpers\Constants;
+use App\Helpers\Enums\UserRole;
+use App\Helpers\Helper;
 use App\Rules\GalleryUrl;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Hotel;
-
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\File;
 use MoonShine\Attributes\Icon;
 use MoonShine\Fields\Image;
 use MoonShine\Fields\Number;
@@ -25,7 +28,6 @@ use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
 use MoonShine\Fields\Field;
-use MoonShine\Components\MoonShineComponent;
 
 /**
  * @extends ModelResource<Hotel>
@@ -43,9 +45,9 @@ class HotelResource extends ModelResource
 
     public function query(): Builder
     {
-        if ($this->isUserInRole(Constants::ROLES['Developer'])) {
+        if (Helper::isUserInRole(UserRole::Developer)) {
             return parent::query()
-                ->where('created_by', '=', auth()->user()->id);
+                ->where('created_by', auth()->user()->id);
         }
 
         return parent::query();
@@ -53,16 +55,13 @@ class HotelResource extends ModelResource
 
     public function getBadge(): string
     {
-        if ($this->isUserInRole(Constants::ROLES['Admin'])) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return strval(Hotel::where('active', false)->count());
         }
 
         return '';
     }
 
-    /**
-     * @return list<MoonShineComponent|Field>
-     */
     public function indexFields(): array
     {
         return [
@@ -187,13 +186,17 @@ class HotelResource extends ModelResource
             Block::make(__('Moonshine/Objects/HotelResources.media'), [
                 Image::make(__('Moonshine/Objects/HotelResources.main_image'), 'main_image')
                     ->disk(Constants::PUBLIC_DISK)
-                    ->dir(Constants::UPLOAD_PATH)
+                    ->dir(Constants::HOTELS_UPLOAD_PATH)
+                    ->customName(fn(UploadedFile $file, Field $field) =>
+                        Helper::generateFileNameForUploadedFile($file))
                     ->allowedExtensions(['png', 'jpg', 'jpeg'])
                     ->removable(),
 
                 Image::make(__('Moonshine/Objects/HotelResources.gallery'), 'gallery')
                     ->disk(Constants::PUBLIC_DISK)
-                    ->dir(Constants::UPLOAD_PATH)
+                    ->dir(Constants::HOTELS_UPLOAD_PATH)
+                    ->customName(fn(UploadedFile $file, Field $field) =>
+                        Helper::generateFileNameForUploadedFile($file))
                     ->allowedExtensions(['png', 'jpg', 'jpeg'])
                     ->removable()
                     ->multiple(),
@@ -202,17 +205,9 @@ class HotelResource extends ModelResource
 
                 Textarea::make(__('Moonshine/Objects/HotelResources.gallery_urls'), 'gallery_url'),
             ]),
-
-
         ];
     }
 
-    /**
-     * @param Hotel $item
-     *
-     * @return array<string, string[]|string>
-     * @see https://laravel.com/docs/validation#available-validation-rules
-     */
     public function rules(Model $item): array
     {
         return [
@@ -244,21 +239,59 @@ class HotelResource extends ModelResource
 
     protected function afterCreated(Model $item): Model
     {
+        // send notifications for similar listings subscribers
         event(new HotelCreated($item->load([
             'tags','features','locations','types'
         ])));
 
-        return $item;
-    }
+        // move images
+        $basePath = Constants::HOTELS_UPLOAD_PATH;
+        $originalPath = storage_path("app/public/{$basePath}");
+        $hotelPath = "{$originalPath}/{$item->id}";
+        $galleryPath = "{$hotelPath}/gallery";
 
-    private function isUserInRole($role): bool
-    {
-        return auth()->user()->moonshine_user_role_id === $role;
+        if (!empty($item->main_image)) {
+            File::ensureDirectoryExists($hotelPath);
+
+            $filename = basename($item->main_image);
+
+            $source = storage_path("app/public/{$item->main_image}");
+            $target = "{$hotelPath}/{$filename}";
+
+            if (File::exists($source)) {
+                File::move($source, $target);
+            }
+
+            $item->main_image = "{$hotelPath}/{$filename}";
+            $item->save();
+        }
+
+        if (!empty($item->gallery)) {
+            File::ensureDirectoryExists($galleryPath);
+
+            $updatedGallery = collect($item->gallery)->map(function ($path) use ($item, $galleryPath, $originalPath) {
+                $filename = basename($path);
+
+                $source = storage_path("app/public/{$path}");
+                $target = "{$galleryPath}/{$filename}";
+
+                if (File::exists($source)) {
+                    File::move($source, $target);
+                }
+
+                return "{$galleryPath}/{$filename}";
+            })->toArray();
+
+            $item->gallery = $updatedGallery;
+            $item->save();
+        }
+
+        return $item;
     }
 
     private function getContactsBlock(): Block|null
     {
-        return $this->isUserInRole(Constants::ROLES['Admin'])
+        return Helper::isUserInRole(UserRole::Admin)
             ? Block::make(__('Moonshine/Objects/HotelResources.contacts'), [
                 BelongsToMany::make(__('Moonshine/Objects/HotelResources.contacts'), 'contacts', fn($item) => $item->full_name . ' - ' . $item->role, resource: new ContactResource())
                     ->selectMode(),
@@ -268,7 +301,7 @@ class HotelResource extends ModelResource
 
     private function getPublishedField(): Switcher | null
     {
-        return $this->isUserInRole(Constants::ROLES['Admin'])
+        return Helper::isUserInRole(UserRole::Admin)
             ? Switcher::make('Published', 'active')
                 ->default(true)
             : null;
@@ -276,7 +309,7 @@ class HotelResource extends ModelResource
 
     private function getIeVerifiedField(): Switcher | null
     {
-        return $this->isUserInRole(Constants::ROLES['Admin'])
+        return Helper::isUserInRole(UserRole::Admin)
             ? Switcher::make('IE Verified', 'ie_verified')
                 ->default(true)
             : null;
@@ -284,7 +317,7 @@ class HotelResource extends ModelResource
 
     private function getIeScoreField(): Number | null
     {
-        return $this->isUserInRole(Constants::ROLES['Admin'])
+        return Helper::isUserInRole(UserRole::Admin)
             ? Number::make('IE Score', 'ie_score')
                 ->buttons()
                 ->stars()

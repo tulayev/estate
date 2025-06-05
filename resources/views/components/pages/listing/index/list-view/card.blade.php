@@ -12,7 +12,7 @@
             <div class="relative flex flex-col justify-between p-2 lg:p-3 w-full sm:w-[40%] lg:w-[30%]">
                 <div class="absolute inset-0">
                     <img
-                        data-src="{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}"
+                        data-src="{{ Helper::resolveImagePath($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}"
                         alt="{{ $hotel->title }}"
                         class="lazy-image"
                         loading="lazy"

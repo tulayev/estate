@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources;
 
 use App\Helpers\Constants;
+use App\Helpers\Enums\UserRole;
+use App\Helpers\Helper;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Floor;
-
+use Illuminate\Http\UploadedFile;
 use MoonShine\Attributes\Icon;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\Relationships\BelongsTo;
@@ -18,7 +20,6 @@ use MoonShine\Fields\ID;
 use MoonShine\Fields\Field;
 use MoonShine\Fields\Image;
 use MoonShine\Fields\Number;
-use MoonShine\Components\MoonShineComponent;
 
 /**
  * @extends ModelResource<Floor>
@@ -34,16 +35,19 @@ class FloorResource extends ModelResource
         return __('Moonshine/Floors/Floors.Floors');
     }
 
-    /**
-     * @return list<MoonShineComponent|Field>
-     */
+    public function query(): \Illuminate\Contracts\Database\Eloquent\Builder
+    {
+        if (Helper::isUserInRole(UserRole::Developer)) {
+            return parent::query()
+                ->whereHas('hotel', fn($q) =>
+                    $q->where('created_by', auth()->user()->id));
+        }
+
+        return parent::query();
+    }
+
     public function fields(): array
     {
-        $hotels = auth()->user()->moonshine_user_role_id === Constants::ROLES['Developer']
-            ? BelongsTo::make(__('Moonshine/Floors/FloorResources.object'), 'hotel', 'title', resource: new HotelResource())
-                ->valuesQuery(fn (Builder $query, Field $field) => $query->where('created_by', auth()->user()->id))
-            : BelongsTo::make(__('Moonshine/Floors/FloorResources.object'), 'hotel', 'title', resource: new HotelResource());
-
         return [
             Block::make([
                 ID::make()->sortable(),
@@ -51,7 +55,7 @@ class FloorResource extends ModelResource
                 Text::make(__('Moonshine/Floors/FloorResources.floor'), 'floor')
                     ->required(),
 
-                $hotels
+                $this->getHotelsDropdown()
                     ->searchable()
                     ->required()
                     ->sortable(),
@@ -72,7 +76,9 @@ class FloorResource extends ModelResource
 
                 Image::make(__('Moonshine/Floors/FloorResources.image'), 'image')
                     ->disk(Constants::PUBLIC_DISK)
-                    ->dir(Constants::UPLOAD_PATH)
+                    ->dir(Constants::HOTELS_UPLOAD_PATH)
+                    ->customName(fn(UploadedFile $file, Field $field) =>
+                        Helper::generateFileNameForUploadedFile($file))
                     ->allowedExtensions(['png', 'jpg', 'jpeg'])
                     ->removable(),
 
@@ -81,12 +87,6 @@ class FloorResource extends ModelResource
         ];
     }
 
-    /**
-     * @param Floor $item
-     *
-     * @return array<string, string[]|string>
-     * @see https://laravel.com/docs/validation#available-validation-rules
-     */
     public function rules(Model $item): array
     {
         return [
@@ -104,5 +104,14 @@ class FloorResource extends ModelResource
     public function redirectAfterSave(): string
     {
         return url('/admin/resource/floor-resource/index-page');
+    }
+
+    private function getHotelsDropdown(): BelongsTo
+    {
+        $hotelsDropdown = BelongsTo::make(__('Moonshine/Floors/FloorResources.object'), 'hotel', 'title', resource: new HotelResource());
+
+        return Helper::isUserInRole(UserRole::Developer)
+            ? $hotelsDropdown->valuesQuery(fn (Builder $query, Field $field) => $query->where('created_by', auth()->user()->id))
+            : $hotelsDropdown;
     }
 }

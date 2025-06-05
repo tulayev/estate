@@ -8,7 +8,7 @@
             <div class="relative modal-subtitle text-white flex flex-col justify-between p-2 sm:px-4 md:px-5 h-[150px] md:h-[200px]">
                 <div class="absolute inset-0">
                     <img
-                        data-src="{{ ImagePathResolver::resolve($topic->image) ?? asset('assets/images/insights/insight-card-bg.png') }}"
+                        data-src="{{ Helper::resolveImagePath($topic->image) ?? asset('assets/images/insights/insight-card-bg.png') }}"
                         class="lazy-image"
                         alt="{{ $topic->title }}"
                         loading="lazy"

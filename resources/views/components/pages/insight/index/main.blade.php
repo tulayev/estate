@@ -11,7 +11,7 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-black to-black/50"></div>
                         <img
                             class="w-full h-[350px] lg:h-[500px] xl:h-[750px]"
-                            src="{{ ImagePathResolver::resolve($topic->image) ?? asset('assets/images/insights/index/main-bg.png') }}"
+                            src="{{ Helper::resolveImagePath($topic->image) ?? asset('assets/images/insights/index/main-bg.png') }}"
                             alt="{{ $topic->title }}"
                         />
                         <div class="px-10 container absolute-centralize">

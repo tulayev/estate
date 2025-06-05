@@ -6,7 +6,6 @@ namespace App\MoonShine\Resources;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Location;
-
 use MoonShine\Attributes\Icon;
 use MoonShine\Fields\Number;
 use MoonShine\Fields\Relationships\BelongsToMany;
@@ -14,8 +13,6 @@ use MoonShine\Fields\Text;
 use MoonShine\Fields\TinyMce;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Fields\ID;
-use MoonShine\Fields\Field;
-use MoonShine\Components\MoonShineComponent;
 
 /**
  * @extends ModelResource<Location>
@@ -30,9 +27,7 @@ class LocationResource extends ModelResource
     {
         return __('Moonshine/Locations/Locations.Locations');
     }
-    /**
-     * @return list<MoonShineComponent|Field>
-     */
+
     public function indexFields(): array
     {
         return [
@@ -82,12 +77,6 @@ class LocationResource extends ModelResource
         ];
     }
 
-    /**
-     * @param Location $item
-     *
-     * @return array<string, string[]|string>
-     * @see https://laravel.com/docs/validation#available-validation-rules
-     */
     public function rules(Model $item): array
     {
         return [

@@ -6,6 +6,7 @@ namespace App\MoonShine\Resources;
 
 
 use App\Helpers\Constants;
+use App\Helpers\Enums\UserRole;
 use Illuminate\Database\Eloquent\Builder;
 use MoonShine\Attributes\Icon;
 use MoonShine\Decorations\Block;
@@ -47,7 +48,7 @@ class MoonshineUserResource extends \MoonShine\Resources\MoonShineUserResource
                             __('moonshine::ui.resource.role'),
                             'moonshineUserRole',
                             resource: new MoonShineUserRoleResource(),
-                        )->valuesQuery(fn (Builder $query, Field $field) => $query->where('id', '<>', Constants::ROLES['Admin']))
+                        )->valuesQuery(fn (Builder $query, Field $field) => $query->where('id', '<>', UserRole::Admin->value))
                             ->badge('purple')
                             ->required(),
 

@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-use App\Helpers\Constants;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Facades\Storage;
 use MoonShine\Models\MoonshineUser;
 use Spatie\Translatable\HasTranslations;
 
@@ -191,28 +189,6 @@ class Hotel extends Model
 
         static::creating(function ($hotel) {
             $hotel->created_by = auth()->user()->id;
-        });
-
-        static::deleting(function ($hotel) {
-            if (!is_null($hotel->main_image) && Storage::disk(Constants::PUBLIC_DISK)->exists($hotel->main_image)) {
-                Storage::disk(Constants::PUBLIC_DISK)->delete($hotel->main_image);
-            }
-
-            if (is_array($hotel->gallery)) {
-                foreach ($hotel->gallery as $image) {
-                    if (!is_null($image) && Storage::disk(Constants::PUBLIC_DISK)->exists($image)) {
-                        Storage::disk(Constants::PUBLIC_DISK)->delete($image);
-                    }
-                }
-            }
-
-            if ($hotel->floors) {
-                foreach ($hotel->floors as $floor) {
-                    if (!is_null($floor->image) && Storage::disk(Constants::PUBLIC_DISK)->exists($floor->image)) {
-                        Storage::disk(Constants::PUBLIC_DISK)->delete($floor->image);
-                    }
-                }
-            }
         });
     }
 }

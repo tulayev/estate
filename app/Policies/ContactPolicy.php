@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Policies;
 
-use App\Helpers\Constants;
+use App\Helpers\Enums\UserRole;
+use App\Helpers\Helper;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Models\Contact;
 use MoonShine\Models\MoonshineUser;
@@ -15,7 +16,7 @@ class ContactPolicy
 
     public function viewAny(MoonshineUser $user): bool
     {
-        if ($user->moonshineUserRole->id !== Constants::ROLES['Developer']) {
+        if (!Helper::isUserInRole(UserRole::Developer)) {
             return true;
         }
 
@@ -24,7 +25,7 @@ class ContactPolicy
 
     public function view(MoonshineUser $user, Contact $item): bool
     {
-        if ($user->moonshineUserRole->id !== Constants::ROLES['Developer']) {
+        if (!Helper::isUserInRole(UserRole::Developer)) {
             return true;
         }
 
@@ -33,7 +34,7 @@ class ContactPolicy
 
     public function create(MoonshineUser $user): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 
@@ -42,7 +43,7 @@ class ContactPolicy
 
     public function update(MoonshineUser $user, Contact $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 
@@ -51,7 +52,7 @@ class ContactPolicy
 
     public function delete(MoonshineUser $user, Contact $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 
@@ -60,7 +61,7 @@ class ContactPolicy
 
     public function restore(MoonshineUser $user, Contact $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 
@@ -69,7 +70,7 @@ class ContactPolicy
 
     public function forceDelete(MoonshineUser $user, Contact $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 
@@ -78,7 +79,7 @@ class ContactPolicy
 
     public function massDelete(MoonshineUser $user): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 

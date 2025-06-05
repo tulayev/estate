@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
-use App\Helpers\Constants;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Facades\Storage;
 
 class Floor extends Model
 {
@@ -31,16 +29,5 @@ class Floor extends Model
     public function getFormattedAreaAttribute(): string
     {
         return number_format($this->area, 2);
-    }
-
-    protected static function boot(): void
-    {
-        parent::boot();
-
-        static::deleting(function ($floor) {
-            if (!is_null($floor->image) && Storage::disk(Constants::PUBLIC_DISK)->exists($floor->image)) {
-                Storage::disk(Constants::PUBLIC_DISK)->delete($floor->image);
-            }
-        });
     }
 }

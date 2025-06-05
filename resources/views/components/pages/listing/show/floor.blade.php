@@ -75,7 +75,7 @@
                                 <ul class="uk-nav-sub">
                                     <li>
                                         <img
-                                            src="{{ ImagePathResolver::resolve($floor->image) ?? $floor->image_url ?? asset('assets/images/floor-placeholder.png') }}"
+                                            src="{{ Helper::resolveImagePath($floor->image) ?? $floor->image_url ?? asset('assets/images/floor-placeholder.png') }}"
                                             alt="{{ $floor->floor }}"
                                             loading="lazy"
                                         />

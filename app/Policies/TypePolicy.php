@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Policies;
 
 use App\Helpers\Constants;
+use App\Helpers\Enums\UserRole;
+use App\Helpers\Helper;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Models\Type;
 use MoonShine\Models\MoonshineUser;
@@ -15,7 +17,7 @@ class TypePolicy
 
     public function viewAny(MoonshineUser $user): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 
@@ -24,7 +26,7 @@ class TypePolicy
 
     public function view(MoonshineUser $user, Type $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 
@@ -33,7 +35,7 @@ class TypePolicy
 
     public function create(MoonshineUser $user): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 
@@ -46,7 +48,7 @@ class TypePolicy
             return false;
         }
 
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 
@@ -59,7 +61,7 @@ class TypePolicy
             return false;
         }
 
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 
@@ -68,7 +70,7 @@ class TypePolicy
 
     public function restore(MoonshineUser $user, Type $item): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 
@@ -81,7 +83,7 @@ class TypePolicy
             return false;
         }
 
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 
@@ -90,7 +92,7 @@ class TypePolicy
 
     public function massDelete(MoonshineUser $user): bool
     {
-        if ($user->moonshineUserRole->id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
 

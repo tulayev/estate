@@ -6,9 +6,11 @@ namespace App\MoonShine\Resources;
 
 use App\Helpers\Constants;
 use App\Helpers\Enums\TopicType;
+use App\Helpers\Enums\UserRole;
+use App\Helpers\Helper;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Topic;
-
+use Illuminate\Http\UploadedFile;
 use MoonShine\Attributes\Icon;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\Enum;
@@ -21,7 +23,6 @@ use MoonShine\Fields\TinyMce;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Fields\ID;
 use MoonShine\Fields\Field;
-use MoonShine\Components\MoonShineComponent;
 
 /**
  * @extends ModelResource<Topic>
@@ -40,16 +41,13 @@ class TopicResource extends ModelResource
 
     public function getBadge(): string
     {
-        if (auth()->user()->moonshine_user_role_id === Constants::ROLES['Admin']) {
+        if (Helper::isUserInRole(UserRole::Admin)) {
             return strval(Topic::where('active', false)->count());
         }
 
         return '';
     }
 
-    /**
-     * @return list<MoonShineComponent|Field>
-     */
     public function indexFields(): array
     {
         return [
@@ -109,13 +107,17 @@ class TopicResource extends ModelResource
 
                 Image::make(__('Moonshine/Topics/TopicResource.image'), 'image')
                     ->disk(Constants::PUBLIC_DISK)
-                    ->dir(Constants::UPLOAD_PATH)
+                    ->dir(Constants::TOPICS_UPLOAD_PATH)
+                    ->customName(fn(UploadedFile $file, Field $field) =>
+                        Helper::generateFileNameForUploadedFile($file))
                     ->allowedExtensions(['jpg', 'jpeg', 'png'])
                     ->removable(),
 
                 Image::make(__('Moonshine/Topics/TopicResource.logo'), 'logo')
                     ->disk(Constants::PUBLIC_DISK)
-                    ->dir(Constants::UPLOAD_PATH)
+                    ->dir(Constants::TOPICS_UPLOAD_PATH)
+                    ->customName(fn(UploadedFile $file, Field $field) =>
+                        Helper::generateFileNameForUploadedFile($file))
                     ->allowedExtensions(['jpg', 'jpeg', 'png', 'svg'])
                     ->removable(),
 
@@ -127,12 +129,6 @@ class TopicResource extends ModelResource
         ];
     }
 
-    /**
-     * @param Topic $item
-     *
-     * @return array<string, string[]|string>
-     * @see https://laravel.com/docs/validation#available-validation-rules
-     */
     public function rules(Model $item): array
     {
         return [
@@ -154,14 +150,9 @@ class TopicResource extends ModelResource
         return url('/admin/resource/topic-resource/index-page');
     }
 
-    private function isUserInRole($role): bool
-    {
-        return auth()->user()->moonshine_user_role_id === $role;
-    }
-
     private function getPublishedField(): Switcher | null
     {
-        return $this->isUserInRole(Constants::ROLES['Admin'])
+        return Helper::isUserInRole(UserRole::Admin)
             ? Switcher::make(__('Moonshine/Topics/TopicResource.published'), 'active')
                 ->default(true)
             : null;

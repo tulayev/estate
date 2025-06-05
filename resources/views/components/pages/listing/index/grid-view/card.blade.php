@@ -17,7 +17,7 @@
                             @foreach($hotel->gallery as $image)
                                 <div class="swiper-slide">
                                     <img
-                                        src="{{ ImagePathResolver::resolve($image) }}"
+                                        src="{{ Helper::resolveImagePath($image) }}"
                                         class="w-full h-full object-cover"
                                         alt="{{ $hotel->title }}"
                                         loading="lazy"
@@ -46,7 +46,7 @@
             <div class="absolute inset-0 transition-opacity duration-500 group-hover:opacity-0 border-rounded overflow-hidden">
                 <img
                     src="{{ asset('assets/images/object-background.png') }}"
-                    data-src="{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url }}"
+                    data-src="{{ Helper::resolveImagePath($hotel->main_image) ?? $hotel->main_image_url }}"
                     class="lazy-image w-full h-full object-cover"
                     alt="{{ $hotel->title }}"
                     loading="lazy"

@@ -12,8 +12,6 @@ use MoonShine\Fields\Text;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
-use MoonShine\Fields\Field;
-use MoonShine\Components\MoonShineComponent;
 
 /**
  * @extends ModelResource<Type>
@@ -29,25 +27,17 @@ class TypeResource extends ModelResource
         return __('Moonshine/Types/Types.Types');
     }
 
-    /**
-     * @return list<MoonShineComponent|Field>
-     */
     public function fields(): array
     {
         return [
             Block::make([
                 ID::make()->sortable(),
+
                 Text::make(__('Moonshine/Types/TypeResource.name'), 'name')->required(),
             ]),
         ];
     }
 
-    /**
-     * @param Type $item
-     *
-     * @return array<string, string[]|string>
-     * @see https://laravel.com/docs/validation#available-validation-rules
-     */
     public function rules(Model $item): array
     {
         return [

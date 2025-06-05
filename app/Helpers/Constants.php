@@ -4,15 +4,11 @@ namespace App\Helpers;
 
 class Constants
 {
-    public const UPLOAD_PATH = 'upload/images';
+    public const HOTELS_UPLOAD_PATH = 'upload/images/hotels';
+
+    public const TOPICS_UPLOAD_PATH = 'upload/images/topics';
 
     public const PUBLIC_DISK = 'public';
-
-    public const ROLES = [
-        'Admin' => 1,
-        'Moderator' => 2,
-        'Developer' => 3,
-    ];
 
     public const SYSTEM_TYPE_IDS = [
         'rent' => 1,

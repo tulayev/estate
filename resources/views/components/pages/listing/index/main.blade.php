@@ -11,7 +11,7 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-black to-black/50"></div>
                         <img
                             class="w-full h-[350px] lg:h-[500px] xl:h-[750px]"
-                            src="{{ $hotel->main_image_url ?? ImagePathResolver::resolve($hotel->main_image) ?? asset('assets/images/listings/index/listings-main-bg.png') }}"
+                            src="{{ $hotel->main_image_url ?? Helper::resolveImagePath($hotel->main_image) ?? asset('assets/images/listings/index/listings-main-bg.png') }}"
                             alt="{{ $hotel->title }}"
                         />
                         <div class="px-10 container absolute-centralize">

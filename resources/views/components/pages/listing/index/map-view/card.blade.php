@@ -8,7 +8,7 @@
             <div class="relative w-full md:w-1/2 flex flex-col justify-between p-2 h-[250px] xl:h-auto">
                 <div class="absolute inset-0">
                     <img
-                        data-src="{{ ImagePathResolver::resolve($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}"
+                        data-src="{{ Helper::resolveImagePath($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}"
                         class="lazy-image"
                         alt="{{ $hotel->title }}"
                         loading="lazy"

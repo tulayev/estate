@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace App\Providers;
 
 
-use App\Helpers\Constants;
+use App\Helpers\Enums\UserRole;
+use App\Helpers\Helper;
 use App\MoonShine\Resources\ContactResource;
 use App\MoonShine\Resources\FeatureResource;
 use App\MoonShine\Resources\FloorResource;
@@ -20,32 +21,19 @@ use Illuminate\Http\Request;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
 use MoonShine\Menu\MenuGroup;
 use MoonShine\Menu\MenuItem;
-use MoonShine\Contracts\Resources\ResourceContract;
-use MoonShine\Menu\MenuElement;
-use MoonShine\Pages\Page;
-use Closure;
 
 class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
 {
-    /**
-     * @return list<ResourceContract>
-     */
     protected function resources(): array
     {
         return [];
     }
 
-    /**
-     * @return list<Page>
-     */
     protected function pages(): array
     {
         return [];
     }
 
-    /**
-     * @return Closure|list<MenuElement>
-     */
     protected function menu(): array
     {
         return [
@@ -56,7 +44,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 ),
             ])
                 ->canSee(function (Request $request) {
-                    return $request->user('moonshine')?->moonshine_user_role_id === Constants::ROLES['Admin'];
+                    return Helper::isUserInRole(UserRole::Admin);
                 }),
 
             MenuItem::make(
@@ -74,7 +62,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 new TypeResource()
             )
                 ->canSee(function (Request $request) {
-                    return $request->user('moonshine')?->moonshine_user_role_id === Constants::ROLES['Admin'];
+                    return Helper::isUserInRole(UserRole::Admin);
                 }),
 
             MenuItem::make(
@@ -82,7 +70,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 new TagResource()
             )
                 ->canSee(function (Request $request) {
-                    return $request->user('moonshine')?->moonshine_user_role_id === Constants::ROLES['Admin'];
+                    return Helper::isUserInRole(UserRole::Admin);
                 }),
 
             MenuItem::make(
@@ -90,7 +78,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 new FeatureResource()
             )
                 ->canSee(function (Request $request) {
-                    return $request->user('moonshine')?->moonshine_user_role_id === Constants::ROLES['Admin'];
+                    return Helper::isUserInRole(UserRole::Admin);
                 }),
 
             MenuItem::make(
@@ -98,7 +86,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 new LocationResource()
             )
                 ->canSee(function (Request $request) {
-                    return $request->user('moonshine')?->moonshine_user_role_id === Constants::ROLES['Admin'];
+                    return Helper::isUserInRole(UserRole::Admin);
                 }),
 
             MenuItem::make(
@@ -106,7 +94,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 new TopicResource()
             )
                 ->canSee(function (Request $request) {
-                    return $request->user('moonshine')?->moonshine_user_role_id !== Constants::ROLES['Developer'];
+                    return !Helper::isUserInRole(UserRole::Developer);
                 }),
 
             MenuItem::make(
@@ -114,7 +102,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 new TopicCategoryResource()
             )
                 ->canSee(function (Request $request) {
-                    return $request->user('moonshine')?->moonshine_user_role_id === Constants::ROLES['Admin'];
+                    return Helper::isUserInRole(UserRole::Admin);
                 }),
 
             MenuItem::make(
@@ -122,14 +110,11 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 new ContactResource()
             )
                 ->canSee(function (Request $request) {
-                    return $request->user('moonshine')?->moonshine_user_role_id !== Constants::ROLES['Developer'];
+                    return !Helper::isUserInRole(UserRole::Developer);
                 }),
         ];
     }
 
-    /**
-     * @return Closure|array{css: string, colors: array, darkColors: array}
-     */
     protected function theme(): array
     {
         return [];
