@@ -23,7 +23,6 @@ use MoonShine\Fields\Slug;
 use MoonShine\Fields\Switcher;
 use MoonShine\Fields\Text;
 use MoonShine\Fields\Textarea;
-use MoonShine\Fields\TinyMce;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
@@ -89,11 +88,11 @@ class HotelResource extends ModelResource
 
             Slug::make('Slug', 'slug'),
 
-            Text::make(__('Moonshine/Objects/HotelResources.description'), 'description'),
+            Textarea::make(__('Moonshine/Objects/HotelResources.description'), 'description'),
+
+            Text::make(__('Moonshine/Objects/HotelResources.address'), 'physical_address'),
 
             Text::make(__('Moonshine/Objects/HotelResources.code_name'), 'codename'),
-
-            Text::make(__('Moonshine/Objects/HotelResources.location_description'), 'location_description'),
 
             Number::make(__('Moonshine/Objects/HotelResources.latitude'), 'latitude'),
 
@@ -134,17 +133,20 @@ class HotelResource extends ModelResource
                     ->readonly()
                     ->required(),
 
-                TinyMce::make(__('Moonshine/Objects/HotelResources.description'), 'description')
+                Textarea::make(__('Moonshine/Objects/HotelResources.description'), 'description')
                     ->required(),
 
-                Text::make(__('Moonshine/Objects/HotelResources.address'), 'physical_address'),
+                Text::make(__('Moonshine/Objects/HotelResources.address'), 'physical_address')
+                    ->required(),
 
                 Text::make(__('Moonshine/Objects/HotelResources.code_name'), 'codename'),
 
                 Number::make(__('Moonshine/Objects/HotelResources.latitude'), 'latitude')
+                    ->required()
                     ->step(0.000001),
 
                 Number::make(__('Moonshine/Objects/HotelResources.longitude'), 'longitude')
+                    ->required()
                     ->step(0.000001),
 
                 Number::make(__('Moonshine/Objects/HotelResources.price'), 'price')
@@ -170,18 +172,17 @@ class HotelResource extends ModelResource
 
                 $this->getIeScoreField(),
 
+                $this->getContactsDropdown(),
+
                 BelongsTo::make('Topics', 'topic', 'title', resource: new TopicResource())
                     ->searchable()
                     ->nullable()
                     ->valuesQuery(fn($query) =>
-                        $query
-                            ->where('active', true)
+                        $query->where('active', true)
                             ->whereHas('category', fn($q) =>
                                 $q->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, '$.en'))) = ?", ['developer']))
                     ),
             ]),
-
-            $this->getContactsBlock(),
 
             Block::make(__('Moonshine/Objects/HotelResources.media'), [
                 Image::make(__('Moonshine/Objects/HotelResources.main_image'), 'main_image')
@@ -223,7 +224,7 @@ class HotelResource extends ModelResource
             'gallery.*' => 'image|max:2048',
             'main_image_url' => 'nullable|url',
             'gallery_url' => ['nullable', 'string', new GalleryUrl()],
-            'ie_score' => 'nullable|numeric|min:0|max:100',
+            'ie_score' => 'required|numeric|min:0|max:100',
         ];
     }
 
@@ -262,14 +263,14 @@ class HotelResource extends ModelResource
                 File::move($source, $target);
             }
 
-            $item->main_image = "{$hotelPath}/{$filename}";
+            $item->main_image = "{$basePath}/{$item->id}/{$filename}";
             $item->save();
         }
 
         if (!empty($item->gallery)) {
             File::ensureDirectoryExists($galleryPath);
 
-            $updatedGallery = collect($item->gallery)->map(function ($path) use ($item, $galleryPath, $originalPath) {
+            $updatedGallery = collect($item->gallery)->map(function ($path) use ($item, $basePath, $galleryPath, $originalPath) {
                 $filename = basename($path);
 
                 $source = storage_path("app/public/{$path}");
@@ -279,7 +280,7 @@ class HotelResource extends ModelResource
                     File::move($source, $target);
                 }
 
-                return "{$galleryPath}/{$filename}";
+                return "{$basePath}/{$item->id}/gallery/{$filename}";
             })->toArray();
 
             $item->gallery = $updatedGallery;
@@ -289,13 +290,13 @@ class HotelResource extends ModelResource
         return $item;
     }
 
-    private function getContactsBlock(): Block|null
+    private function getContactsDropdown(): BelongsToMany | null
     {
         return Helper::isUserInRole(UserRole::Admin)
-            ? Block::make(__('Moonshine/Objects/HotelResources.contacts'), [
-                BelongsToMany::make(__('Moonshine/Objects/HotelResources.contacts'), 'contacts', fn($item) => $item->full_name . ' - ' . $item->role, resource: new ContactResource())
-                    ->selectMode(),
-            ])
+            ? BelongsToMany::make(__('Moonshine/Objects/HotelResources.contacts'),
+                'contacts',
+                fn($item) => $item->full_name . ' - ' . $item->role, resource: new ContactResource())
+                ->selectMode()
             : null;
     }
 
@@ -323,6 +324,7 @@ class HotelResource extends ModelResource
                 ->stars()
                 ->min(0)
                 ->max(100)
+                ->required()
             : null;
     }
 }
