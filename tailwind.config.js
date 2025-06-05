@@ -3,7 +3,7 @@ module.exports = {
         './resources/**/*.blade.php',
         './public/assets/**/*.js',
     ],
-    darkMode: false, // or 'media' or 'class'
+    darkMode: 'class',
     theme: {
         extend: {
             animation: {

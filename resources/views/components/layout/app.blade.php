@@ -37,7 +37,7 @@
     <!-- Custom scripts js -->
     <script defer src="{{ asset('assets/js/script.js') }}"></script>
 </head>
-<body>
+<body class="dark:bg-gray-900">
     <div
         id="overlay"
         class="fixed w-full h-full top-0 left-0 flex justify-center items-center bg-primary z-[10001]"

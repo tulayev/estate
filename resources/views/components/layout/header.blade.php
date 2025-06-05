@@ -114,7 +114,7 @@
                         </li>
                         <!-- Locale & Currency Switcher -->
                         <li>
-                            <ul class="bg-opacity-10 border-rounded bg-white relative md:w-[80px] lg:w-[120px]">
+                            <ul class="bg-opacity-10 border-rounded bg-white relative md:w-[100px] lg:w-[130px] xxl:w-[170px]">
                                 <li class="flex justify-around items-center w-full font-black md:text-sm xl:text-base xxl:text-lg">
                                     <a href="#">
                                         {{ config()->get('locales')[app()->getLocale()] }}
@@ -160,12 +160,7 @@
                                             @endforeach
                                         </ul>
                                     </div>
-                                </li>
-                                <li class="hidden">
-                                    <img
-                                        src="{{ asset('assets/images/icons/locale-icon.svg') }}"
-                                        alt="locale-icon"
-                                    />
+                                    <a class="theme-toggle" href="#"></a>
                                 </li>
                             </ul>
                         </li>
@@ -343,6 +338,10 @@
                                         </button>
                                     </form>
                                 @endif
+                            </li>
+                            <!-- Theme Switcher -->
+                            <li class="pl-0">
+                                <a class="theme-toggle" href="#"></a>
                             </li>
                         </ul>
                     </div>

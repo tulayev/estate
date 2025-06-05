@@ -43,6 +43,40 @@ function lazyLoadImages() {
     lazyImages.forEach((img) => observer.observe(img));
 }
 
+function switchTheme() {
+    const root = document.documentElement;
+
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark') {
+        root.classList.add('dark');
+    }
+
+    const themeToggleButtons = document.getElementsByClassName('theme-toggle');
+
+    if (themeToggleButtons) {
+        Array.from(themeToggleButtons).forEach(themeToggleButton => {
+            const updateIcon = () => {
+                if (root.classList.contains('dark')) {
+                    themeToggleButton.innerText = '☀️';
+                } else {
+                    themeToggleButton.innerText = '🌙';
+                }
+            };
+
+            updateIcon();
+
+            themeToggleButton.addEventListener('click', () => {
+                root.classList.toggle('dark');
+
+                const isDark = root.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateIcon();
+            });
+        });
+    }
+}
+
 onDOMLoaded(() => overlay());
 onDOMLoaded(() => randomBgColor());
 onDOMLoaded(() => lazyLoadImages());
+onDOMLoaded(() => switchTheme());
