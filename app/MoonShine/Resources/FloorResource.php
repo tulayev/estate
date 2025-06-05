@@ -7,6 +7,7 @@ namespace App\MoonShine\Resources;
 use App\Helpers\Constants;
 use App\Helpers\Enums\UserRole;
 use App\Helpers\Helper;
+use App\Services\IFileUploadService;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Floor;
@@ -104,6 +105,20 @@ class FloorResource extends ModelResource
     public function redirectAfterSave(): string
     {
         return url('/admin/resource/floor-resource/index-page');
+    }
+
+    protected function afterCreated(Model $item): Model
+    {
+        app(IFileUploadService::class)->move($item, Constants::HOTELS_UPLOAD_PATH, 'image');
+
+        return $item;
+    }
+
+    protected function afterUpdated(Model $item): Model
+    {
+        app(IFileUploadService::class)->move($item, Constants::HOTELS_UPLOAD_PATH, 'image');
+
+        return $item;
     }
 
     private function getHotelsDropdown(): BelongsTo

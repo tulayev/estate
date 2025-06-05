@@ -8,6 +8,7 @@ use App\Helpers\Constants;
 use App\Helpers\Enums\TopicType;
 use App\Helpers\Enums\UserRole;
 use App\Helpers\Helper;
+use App\Services\IFileUploadService;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Topic;
 use Illuminate\Http\UploadedFile;
@@ -105,6 +106,11 @@ class TopicResource extends ModelResource
 
                 TinyMce::make('Main Ideas', 'main_ideas'),
 
+                $this->getPublishedField(),
+
+                Enum::make(__('Moonshine/Topics/TopicResource.type'), 'type')
+                    ->attach(TopicType::class),
+
                 Image::make(__('Moonshine/Topics/TopicResource.image'), 'image')
                     ->disk(Constants::PUBLIC_DISK)
                     ->dir(Constants::TOPICS_UPLOAD_PATH)
@@ -120,11 +126,6 @@ class TopicResource extends ModelResource
                         Helper::generateFileNameForUploadedFile($file))
                     ->allowedExtensions(['jpg', 'jpeg', 'png', 'svg'])
                     ->removable(),
-
-                $this->getPublishedField(),
-
-                Enum::make(__('Moonshine/Topics/TopicResource.type'), 'type')
-                    ->attach(TopicType::class),
             ])
         ];
     }
@@ -148,6 +149,22 @@ class TopicResource extends ModelResource
     public function redirectAfterSave(): string
     {
         return url('/admin/resource/topic-resource/index-page');
+    }
+
+    protected function afterCreated(Model $item): Model
+    {
+        app(IFileUploadService::class)->move($item, Constants::TOPICS_UPLOAD_PATH, 'image');
+        app(IFileUploadService::class)->move($item, Constants::TOPICS_UPLOAD_PATH, 'logo');
+
+        return $item;
+    }
+
+    protected function afterUpdated(Model $item): Model
+    {
+        app(IFileUploadService::class)->move($item, Constants::TOPICS_UPLOAD_PATH, 'image');
+        app(IFileUploadService::class)->move($item, Constants::TOPICS_UPLOAD_PATH, 'logo');
+
+        return $item;
     }
 
     private function getPublishedField(): Switcher | null
