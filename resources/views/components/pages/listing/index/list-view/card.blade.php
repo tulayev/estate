@@ -83,7 +83,7 @@
                     </div>
                     <div class="hidden md:block">
                         <p class="group-hover:text-primary">
-                            {{ Str::limit($hotel->description, 100) }}
+                            {{ Str::limit(strip_tags($hotel->description), 100) }}
                         </p>
                     </div>
                     <div class="flex justify-between sm:font-bold xl:font-black group-hover:text-primary">

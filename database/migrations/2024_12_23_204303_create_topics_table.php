@@ -21,6 +21,7 @@ return new class extends Migration
             $table->unsignedInteger('minutes_to_read')->nullable();
             $table->unsignedBigInteger('views')->default(0);
             $table->string('image')->nullable();
+            $table->string('logo')->nullable();
             $table->boolean('active')->default(false);
             $table->enum('type', TopicType::values())->nullable();
             $table->foreignId('topic_category_id')

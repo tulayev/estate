@@ -4,11 +4,14 @@
 
 @if ($topic)
     <main class="main-section relative">
-        <img
-            class="main-section-image"
-            src="{{ ImagePathResolver::resolve($topic->image) ?? asset('assets/images/insights/index/main-bg.png') }}"
-            alt="{{ $topic->title }}"
-        />
+        <div class="relative w-full h-[350px] lg:h-[500px] xl:h-[750px]">
+            <div class="border-rounded absolute inset-0 bg-gradient-to-t from-black to-black/50"></div>
+            <img
+                class="w-full h-full border-rounded"
+                src="{{ ImagePathResolver::resolve($topic->image) ?? asset('assets/images/insights/index/main-bg.png') }}"
+                alt="{{ $topic->title }}"
+            />
+        </div>
         <div class="px-10 container absolute-centralize">
             <div class="main-wrapper">
                 <div class="flex flex-row items-left justify-between">
@@ -28,7 +31,7 @@
 
                 <div class="animLeft hidden sm:flex text-sm lg:text-lg mt-2 lg:mt-10">
                     <div class="pl-2 text-white">
-                        {!! Str::limit($topic->body, 200) !!}
+                        {{ Str::limit(strip_tags($topic->body), 200) }}
                     </div>
                 </div>
 

@@ -34,6 +34,7 @@ class Hotel extends Model
         'ie_verified',
         'ie_score',
         'created_by',
+        'topic_id',
     ];
 
     protected $translatable = [
@@ -107,6 +108,11 @@ class Hotel extends Model
     public function author(): BelongsTo
     {
         return $this->belongsTo(MoonshineUser::class, 'created_by');
+    }
+
+    public function topic(): BelongsTo
+    {
+        return $this->belongsTo(Topic::class);
     }
 
     public function floors(): HasMany

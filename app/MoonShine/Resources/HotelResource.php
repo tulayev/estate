@@ -14,6 +14,7 @@ use App\Models\Hotel;
 use MoonShine\Attributes\Icon;
 use MoonShine\Fields\Image;
 use MoonShine\Fields\Number;
+use MoonShine\Fields\Relationships\BelongsTo;
 use MoonShine\Fields\Relationships\BelongsToMany;
 use MoonShine\Fields\Slug;
 use MoonShine\Fields\Switcher;
@@ -169,6 +170,16 @@ class HotelResource extends ModelResource
                 $this->getIeVerifiedField(),
 
                 $this->getIeScoreField(),
+
+                BelongsTo::make('Topics', 'topic', 'title', resource: new TopicResource())
+                    ->searchable()
+                    ->nullable()
+                    ->valuesQuery(fn($query) =>
+                        $query
+                            ->where('active', true)
+                            ->whereHas('category', fn($q) =>
+                                $q->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, '$.en'))) = ?", ['developer']))
+                    ),
             ]),
 
             $this->getContactsBlock(),
@@ -192,7 +203,7 @@ class HotelResource extends ModelResource
                 Textarea::make(__('Moonshine/Objects/HotelResources.gallery_urls'), 'gallery_url'),
             ]),
 
-            
+
         ];
     }
 

@@ -1,0 +1,12 @@
+use estate;
+
+START TRANSACTION;
+
+ALTER TABLE topics
+ADD COLUMN logo VARCHAR(255) NULL AFTER image;
+
+ALTER TABLE hotels
+ADD COLUMN topic_id BIGINT UNSIGNED NULL AFTER ie_score,
+ADD CONSTRAINT fk_hotels_topic_id FOREIGN KEY (topic_id) REFERENCES topics(id);
+
+COMMIT;

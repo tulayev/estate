@@ -10,15 +10,8 @@
                     {{ $topic->title }}
                 </h2>
             </div>
-            <div class="mt-4 sm:mt-8 md:mt-12 lg:mt-16 xl:mt-20">
-                <p class="mb-8 text-lg">
-                    {!! $topic->body !!}
-                </p>
-                <img
-                    class="main-section-image"
-                    src="{{ ImagePathResolver::resolve($topic->image) ?? asset('assets/images/insights/index/main-bg.png') }}"
-                    alt="{{ $topic->title }}"
-                />
+            <div class="mt-4 sm:mt-8 lg:mt-12">
+                {!! $topic->body !!}
             </div>
         </div>
     </section>

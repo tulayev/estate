@@ -34,6 +34,10 @@ return new class extends Migration
                 ->nullable()
                 ->constrained('moonshine_users')
                 ->nullOnDelete();
+            $table->foreignId('topic_id')
+                ->nullable()
+                ->constrained('topics')
+                ->nullOnDelete();
             $table->timestamps();
         });
     }

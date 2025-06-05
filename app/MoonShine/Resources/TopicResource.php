@@ -74,9 +74,11 @@ class TopicResource extends ModelResource
 
             Text::make(__('Moonshine/Topics/TopicResource.body'), 'body'),
 
-            Text::make(__('Moonshine/Topics/TopicResource.body'), 'main_ideas'),
+            Text::make('Main Ideas', 'main_ideas'),
 
             Image::make(__('Moonshine/Topics/TopicResource.image'), 'image'),
+
+            Image::make(__('Moonshine/Topics/TopicResource.logo'), 'logo'),
 
             $this->getPublishedField(),
         ];
@@ -103,12 +105,18 @@ class TopicResource extends ModelResource
                 TinyMce::make(__('Moonshine/Topics/TopicResource.body'), 'body')
                     ->required(),
 
-                TinyMce::make(__('Moonshine/Topics/TopicResource.body'), 'main_ideas'),
+                TinyMce::make('Main Ideas', 'main_ideas'),
 
                 Image::make(__('Moonshine/Topics/TopicResource.image'), 'image')
                     ->disk(Constants::PUBLIC_DISK)
                     ->dir(Constants::UPLOAD_PATH)
                     ->allowedExtensions(['jpg', 'jpeg', 'png'])
+                    ->removable(),
+
+                Image::make(__('Moonshine/Topics/TopicResource.logo'), 'logo')
+                    ->disk(Constants::PUBLIC_DISK)
+                    ->dir(Constants::UPLOAD_PATH)
+                    ->allowedExtensions(['jpg', 'jpeg', 'png', 'svg'])
                     ->removable(),
 
                 $this->getPublishedField(),
@@ -131,6 +139,7 @@ class TopicResource extends ModelResource
             'title' => 'required|string|max:255',
             'body' => 'required|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'logo' => 'nullable|image|mimes:jpg,jpeg,png,svg|max:2048',
             'type' => 'required',
         ];
     }

@@ -19,7 +19,7 @@
 
     <x-pages.listing.show.details :hotel="$hotel" />
 
-    <x-pages.listing.show.history />
+    <x-pages.listing.show.history :hotel="$hotel" />
 
     <x-pages.listing.show.floor :hotel="$hotel" />
 

@@ -24,6 +24,7 @@ class Topic extends Model
         'minutes_to_read',
         'views',
         'image',
+        'logo',
         'active',
         'type',
         'topic_category_id',
@@ -111,6 +112,10 @@ class Topic extends Model
         static::deleting(function ($topic) {
             if (!is_null($topic->image) && Storage::disk(Constants::PUBLIC_DISK)->exists($topic->image)) {
                 Storage::disk(Constants::PUBLIC_DISK)->delete($topic->image);
+            }
+
+            if (!is_null($topic->logo) && Storage::disk(Constants::PUBLIC_DISK)->exists($topic->logo)) {
+                Storage::disk(Constants::PUBLIC_DISK)->delete($topic->logo);
             }
         });
     }

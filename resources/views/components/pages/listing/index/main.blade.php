@@ -29,7 +29,7 @@
 
                                 <div class="hidden sm:flex text-sm lg:text-lg mt-2 lg:mt-10">
                                     <div class="pl-2 text-white">
-                                        {!! Str::limit($hotel->description, 100) !!}
+                                        {!! Str::limit(strip_tags($hotel->description), 100) !!}
                                     </div>
                                 </div>
                                 @if ($hotel->tags)

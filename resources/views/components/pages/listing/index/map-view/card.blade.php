@@ -85,7 +85,7 @@
                     </div>
                     <div>
                         <p>
-                            {{ Str::limit($hotel->description, 200) }}
+                            {{ Str::limit(strip_tags($hotel->description), 200) }}
                         </p>
                     </div>
                 </div>

@@ -3,6 +3,7 @@
 return [
     'title' => 'Title',
     'image' => 'Image',
+    'logo' => 'Logo',
     'category' => 'Category',
     'body' => 'Body',
     'slug' => 'Slug',
