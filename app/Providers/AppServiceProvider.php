@@ -10,7 +10,9 @@ use App\Models\Tag;
 use App\Models\Type;
 use App\Models\TopicCategory;
 use App\Services\CurrencyConversionService;
+use App\Services\FileUploadService;
 use App\Services\ICurrencyConversionService;
+use App\Services\IFileUploadService;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
         $this->app->singleton(ICurrencyConversionService::class, CurrencyConversionService::class);
+        $this->app->singleton(IFileUploadService::class, FileUploadService::class);
     }
 
     /**

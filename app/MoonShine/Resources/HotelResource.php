@@ -9,6 +9,7 @@ use App\Helpers\Constants;
 use App\Helpers\Enums\UserRole;
 use App\Helpers\Helper;
 use App\Rules\GalleryUrl;
+use App\Services\IFileUploadService;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Hotel;
@@ -245,47 +246,14 @@ class HotelResource extends ModelResource
             'tags','features','locations','types'
         ])));
 
-        // move images
-        $basePath = Constants::HOTELS_UPLOAD_PATH;
-        $originalPath = storage_path("app/public/{$basePath}");
-        $hotelPath = "{$originalPath}/{$item->id}";
-        $galleryPath = "{$hotelPath}/gallery";
+        app(IFileUploadService::class)->move($item, Constants::HOTELS_UPLOAD_PATH, 'main_image', 'gallery');
 
-        if (!empty($item->main_image)) {
-            File::ensureDirectoryExists($hotelPath);
+        return $item;
+    }
 
-            $filename = basename($item->main_image);
-
-            $source = storage_path("app/public/{$item->main_image}");
-            $target = "{$hotelPath}/{$filename}";
-
-            if (File::exists($source)) {
-                File::move($source, $target);
-            }
-
-            $item->main_image = "{$basePath}/{$item->id}/{$filename}";
-            $item->save();
-        }
-
-        if (!empty($item->gallery)) {
-            File::ensureDirectoryExists($galleryPath);
-
-            $updatedGallery = collect($item->gallery)->map(function ($path) use ($item, $basePath, $galleryPath, $originalPath) {
-                $filename = basename($path);
-
-                $source = storage_path("app/public/{$path}");
-                $target = "{$galleryPath}/{$filename}";
-
-                if (File::exists($source)) {
-                    File::move($source, $target);
-                }
-
-                return "{$basePath}/{$item->id}/gallery/{$filename}";
-            })->toArray();
-
-            $item->gallery = $updatedGallery;
-            $item->save();
-        }
+    protected function afterUpdated(Model $item): Model
+    {
+        app(IFileUploadService::class)->move($item, Constants::HOTELS_UPLOAD_PATH, 'main_image', 'gallery');
 
         return $item;
     }
