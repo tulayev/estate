@@ -14,7 +14,6 @@ use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Hotel;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\File;
 use MoonShine\Attributes\Icon;
 use MoonShine\Fields\Image;
 use MoonShine\Fields\Number;
@@ -225,7 +224,6 @@ class HotelResource extends ModelResource
             'gallery.*' => 'image|max:2048',
             'main_image_url' => 'nullable|url',
             'gallery_url' => ['nullable', 'string', new GalleryUrl()],
-            'ie_score' => 'required|numeric|min:0|max:100',
         ];
     }
 
@@ -280,7 +278,7 @@ class HotelResource extends ModelResource
     {
         return Helper::isUserInRole(UserRole::Admin)
             ? Switcher::make('IE Verified', 'ie_verified')
-                ->default(true)
+                ->default(false)
             : null;
     }
 
@@ -292,7 +290,7 @@ class HotelResource extends ModelResource
                 ->stars()
                 ->min(0)
                 ->max(100)
-                ->required()
+                ->default(0)
             : null;
     }
 }

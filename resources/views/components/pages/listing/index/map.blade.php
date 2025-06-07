@@ -19,28 +19,25 @@
 <main class="pt-8 sm:pt-16 md:pt-24 lg:pt-44 h-screen overflow-hidden">
     <div class="container">
         <div class="w-full flex justify-between">
-            <div class="collapse-title">
-                {{ __('listing/index/list.for_sale_off_plan') }}
-                @if (request()->has('sort'))
-                    <span class="normal-case ml-4 font-normal">
-                        @switch(request()->get('sort'))
-                            @case('title_asc')
-                                Title Ascending
-                                @break
-                            @case('title_desc')
-                                Title Descending
-                                @break
-                            @case('price_asc')
-                                Price Low to High
-                                @break
-                            @case('price_desc')
-                                Price High to Low
-                                @break
-                        @endswitch
-                    </span>
-                @endif
-            </div>
-
+            <h2 class="section-title">{{ __('listing/index/list.for_sale_off_plan') }}</h2>
+            @if (request()->has('sort'))
+                <span class="normal-case ml-4 font-normal">
+                    @switch(request()->get('sort'))
+                        @case('title_asc')
+                            Title Ascending
+                            @break
+                        @case('title_desc')
+                            Title Descending
+                            @break
+                        @case('price_asc')
+                            Price Low to High
+                            @break
+                        @case('price_desc')
+                            Price High to Low
+                            @break
+                    @endswitch
+                </span>
+            @endif
             <x-ui.switcher-panel.toggle-view />
         </div>
     </div>
@@ -49,18 +46,22 @@
         <!-- Map View -->
         <div
             class="mt-4 md:mt-6 xl:mt-12 relative"
-            x-data="mapViewHandler({{ $hotels->toJson() }})"
+            x-data="mapViewHandler()"
             x-init="initMapView()"
         >
-            <div class="absolute top-4 left-4 w-1/2 md:w-[40%] space-y-4 h-[100%] overflow-y-auto z-[999] no-scrollbar">
-                <div id="dynamicCardContainer" class="space-y-4"></div>
+            <!-- Desktop View -->
+            <div class="absolute top-auto left-auto bottom-20 md:top-4 md:left-4 md:bottom-auto w-full md:h-full z-[999]">
+                <div id="dynamicCardContainer"></div>
 
-                <div x-ref="hotelList">
+                <div
+                    class="flex md:block w-full md:w-2/5 h-full overflow-x-auto overflow-y-hidden md:overflow-x-hidden md:overflow-y-auto no-scrollbar space-x-4 md:space-x-0 space-y-0 md:space-y-4"
+                    x-ref="hotelList"
+                >
                     @foreach($hotels as $hotel)
                         <div
                             id="hotel_{{ $hotel->id }}"
                             @click="handleHotelClick({{ $hotel }})"
-                            class="transition-all duration-300 mb-2 cursor-pointer"
+                            class="transition-all duration-300 cursor-pointer"
                         >
                             <x-pages.listing.index.map-view.card
                                 :hotel="$hotel"
@@ -69,10 +70,11 @@
                     @endforeach
                 </div>
             </div>
-            <div id="mapView" class="border-rounded w-[100vw] h-[100vh]"></div>
+
+            <div id="mapView" class="border-rounded w-screen h-screen"></div>
         </div>
     @else
-        <x-ui.nothing-found 
+        <x-ui.nothing-found
             :title="__('general.nothing_found')"
             :message="__('general.search_try_again')"
             :showSearchTips="true"
@@ -82,7 +84,7 @@
 </main>
 
 <script defer>
-    function mapViewHandler(hotels) {
+    function mapViewHandler() {
         return {
             locale: '{{ app()->getLocale() }}',
             map: null,
@@ -170,15 +172,15 @@
                         const dynamicContainer = document.getElementById('dynamicCardContainer');
                         dynamicContainer.innerHTML = '';
 
-                        dynamicContainer.insertAdjacentHTML("beforeend", response.data);
+                        dynamicContainer.insertAdjacentHTML('beforeend', response.data);
 
                         dynamicContainer.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start",
+                            behavior: 'smooth',
+                            block: 'start',
                         });
                     }
                 } catch (error) {
-                    console.error("Error fetching card data:", error.response || error.message);
+                    console.error('Error fetching card data:', error.response || error.message);
                 }
             }
         };

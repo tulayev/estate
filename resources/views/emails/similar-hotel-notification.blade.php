@@ -1,6 +1,6 @@
 <h1 class="section-title"># New similar object</h1>
 <h2 class="modal-subtitle">**{{ $hotel->title }}**</h2>
-{{ Str::limit(strip_tags($hotel->description), 100) }}
+{{ Str::limit($hotel->description, 100) }}
 
 <div>
     <a

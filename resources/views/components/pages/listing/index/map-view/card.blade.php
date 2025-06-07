@@ -4,8 +4,8 @@
 
 @if ($hotel)
     <div>
-        <div class="shadow-card bg-white border-rounded flex z-[999]">
-            <div class="relative w-full md:w-1/2 flex flex-col justify-between p-2 h-[250px] xl:h-auto">
+        <div class="w-full shadow-card bg-white border-rounded flex z-[999]">
+            <div class="relative w-1/2 flex flex-col justify-between p-2 h-[200px] md:h-[250px]">
                 <div class="absolute inset-0">
                     <img
                         data-src="{{ Helper::resolveImagePath($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}"
@@ -19,7 +19,7 @@
                 <div class="flex justify-between items-center z-10">
                     @if ($hotel->tags)
                         <div class="flex items-center space-x-2">
-                            @foreach($hotel->tags->take(2) as $index => $tag)
+                            @foreach($hotel->tags->take(1) as $index => $tag)
                                 <a
                                     href="{{ route('pages.listing.index', ['tag' => $tag->id]) }}"
                                     class="card-tag-button bg-color-{{ $index + 1 }} bg-opacity-60 hover:bg-[#c2c6dbbb]"
@@ -70,22 +70,22 @@
                 </div>
             </div>
 
-            <div class="hidden md:block md:w-1/2">
-                <div class="flex flex-col justify-between h-full text-[#505050] p-4 text-base md:text-lg xl:text-xl">
-                    <div class="flex justify-between uppercase sm:font-bold xl:font-black">
+            <div class="w-1/2">
+                <div class="flex flex-col justify-between h-full text-[#505050] p-2 md:p-4 text-sm md:text-base xl:text-lg">
+                    <div class="flex justify-between uppercase md:font-bold xl:font-black">
                         @if ($hotel->locations && $hotel->locations->first())
                             <div>
                                 <p>📍 {{ Str::limit($hotel->locations->first()->name, 10) }}</p>
                             </div>
                         @endif
-                        <div class="flex justify-between space-x-6">
+                        <div class="hidden md:flex justify-between space-x-6">
                             <p>🛏️ {{ $hotel->bedrooms }}</p>
                             <p>🛁 {{ $hotel->bathrooms }}</p>
                         </div>
                     </div>
                     <div>
                         <p>
-                            {{ Str::limit(strip_tags($hotel->description), 200) }}
+                            {{ Str::limit($hotel->description, 100) }}
                         </p>
                     </div>
                 </div>

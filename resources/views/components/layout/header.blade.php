@@ -1,10 +1,10 @@
-@php($mapView = count(request()->segments()) === 2 && !str_contains(request()->fullUrl(), 'insights'))
+@php($isWhiteHeader = count(request()->segments()) === 2 && !str_contains(request()->fullUrl(), 'insights'))
 @php($isNothingFoundPage = View::hasSection('nothing-found-page'))
 @php($currentCurrency = Helper::getClientCurrency(session()->get('countryCode')))
 <!-- Desktop -->
 <header
     class="header absolute top-4 left-0 w-full z-[999] uk-visible@m"
-    uk-sticky="sel-target: .header; cls-active: {{ $mapView ? 'bg-white' : ($isNothingFoundPage ? 'nothing-found-bg' : 'bg-primary') }} uk-navbar-sticky; cls-inactive: z-[999]; top: 200;"
+    uk-sticky="sel-target: .header; cls-active: {{ $isWhiteHeader ? 'bg-white' : ($isNothingFoundPage ? 'nothing-found-bg' : 'bg-primary') }} uk-navbar-sticky; cls-inactive: z-[999]; top: 200;"
     x-data="listingDropdown()"
 >
     <div class="relative">
@@ -18,14 +18,14 @@
                     <a href="{{ route('pages.home.index') }}">
                         <img
                             class="w-[260px] md:w-[140px] lg:w-[200px] xl:w-[165px] xxl:w-[230px] uk-animation-fade"
-                            src="{{ $mapView ? asset('assets/images/icons/logo-primary.svg') : asset('assets/images/icons/logo-white.svg') }}"
+                            src="{{ $isWhiteHeader ? asset('assets/images/icons/logo-primary.svg') : asset('assets/images/icons/logo-white.svg') }}"
                             alt="Logo"
                         />
                     </a>
                 </div>
                 <!-- Navbar Links -->
                 <div
-                    class="{{ $mapView ? 'text-primary' : 'text-[#f4f4f4]' }} uk-visible@m uk-navbar-right"
+                    class="{{ $isWhiteHeader ? 'text-primary' : 'text-[#f4f4f4]' }} uk-visible@m uk-navbar-right"
                     uk-scrollspy="target: .navbar; cls: uk-animation-slide-right; delay: 300;"
                 >
                     <ul class="flex items-center uppercase" uk-grid>
@@ -56,7 +56,7 @@
                                             href="{{ route('pages.listing.index', ['type' => $primary->id]) }}"
                                             class="w-full"
                                         >
-                                            <div class="{{ $mapView || $isNothingFoundPage ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
+                                            <div class="{{ $isWhiteHeader || $isNothingFoundPage ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
                                                 {{ $primary->name }}
                                             </div>
                                         </a>
@@ -64,7 +64,7 @@
                                             href="{{ route('pages.listing.index', ['type' => $resales->id]) }}"
                                             class="w-full"
                                         >
-                                            <div class="{{ $mapView || $isNothingFoundPage ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
+                                            <div class="{{ $isWhiteHeader || $isNothingFoundPage ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
                                                 {{ $resales->name }}
                                             </div>
                                         </a>
@@ -72,7 +72,7 @@
                                             href="{{ route('pages.listing.index', ['type' => $rent->id]) }}"
                                             class="w-full"
                                         >
-                                            <div class="{{ $mapView || $isNothingFoundPage ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
+                                            <div class="{{ $isWhiteHeader || $isNothingFoundPage ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
                                                 {{ $rent->name }}
                                             </div>
                                         </a>
@@ -80,7 +80,7 @@
                                             href="{{ route('pages.listing.index', ['tag' => $land->id]) }}"
                                             class="w-full"
                                         >
-                                            <div class="{{ $mapView || $isNothingFoundPage ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
+                                            <div class="{{ $isWhiteHeader || $isNothingFoundPage ? 'text-primary' : 'bg-opacity-10 text-white' }} bg-white text-center text-base border-rounded py-4 md:text-lg xl:text-xl font-bold xl:font-black">
                                                 {{ $land->name }}
                                             </div>
                                         </a>

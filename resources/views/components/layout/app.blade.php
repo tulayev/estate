@@ -49,8 +49,10 @@
 
     {{ $slot }}
 
-    <x-layout.contact />
+    @if (Route::currentRouteName() !== 'pages.listing.map')
+        <x-layout.contact />
 
-    <x-layout.footer />
+        <x-layout.footer />
+    @endif
 </body>
 </html>

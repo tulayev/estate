@@ -174,27 +174,23 @@
                 </div>
 
                 <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 px-4">
-                    @if (mb_strlen($hotel->description) >= 350)
-                        <div x-data="{ expanded: false }">
-                            <div x-show="expanded">
-                                {!! $hotel->description !!}
-                            </div>
-                            <div x-show="!expanded">
-                                {!! Str::limit($hotel->description, 350) !!}
-                            </div>
-                            <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 text-center">
-                                <button
-                                    type="button"
-                                    class="modal-subtitle"
-                                    @click="expanded = !expanded"
-                                >
-                                    <span x-text="expanded ? '{{ __('general.show_less') }}' : '{{ __('general.show_more') }}'"></span>
-                                </button>
-                            </div>
+                    <div x-data="{ expanded: false }">
+                        <div x-show="expanded">
+                            {{ $hotel->description }}
                         </div>
-                    @else
-                        {!! $hotel->description !!}
-                    @endif
+                        <div x-show="!expanded">
+                            {{ Str::limit($hotel->description, 350) }}
+                        </div>
+                        <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 text-center">
+                            <button
+                                type="button"
+                                class="modal-subtitle"
+                                @click="expanded = !expanded"
+                            >
+                                <span x-text="expanded ? '{{ __('general.show_less') }}' : '{{ __('general.show_more') }}'"></span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- Features -->

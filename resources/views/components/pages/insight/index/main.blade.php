@@ -32,7 +32,7 @@
 
                                 <div class="animLeft hidden sm:flex text-sm lg:text-lg mt-2 lg:mt-10">
                                     <div class="pl-2 text-white">
-                                        {!! $topic->body !!}
+                                        {{ Str::limit(strip_tags($topic->body), 200) }}
                                     </div>
                                 </div>
 

@@ -10,7 +10,7 @@ use MoonShine\Attributes\Icon;
 use MoonShine\Fields\Number;
 use MoonShine\Fields\Relationships\BelongsToMany;
 use MoonShine\Fields\Text;
-use MoonShine\Fields\TinyMce;
+use MoonShine\Fields\Textarea;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Fields\ID;
 
@@ -47,7 +47,7 @@ class LocationResource extends ModelResource
 
             Text::make('Name', 'name'),
 
-            Text::make('Description', 'description'),
+            Textarea::make('Description', 'description'),
 
             Number::make('Latitude', 'latitude'),
 
@@ -64,7 +64,7 @@ class LocationResource extends ModelResource
                 ->required()
                 ->sortable(),
 
-            TinyMce::make('Description', 'description')
+            Textarea::make('Description', 'description')
                 ->required(),
 
             Number::make('Latitude', 'latitude')

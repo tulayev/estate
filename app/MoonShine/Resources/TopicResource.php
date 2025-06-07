@@ -71,10 +71,6 @@ class TopicResource extends ModelResource
 
             BelongsTo::make(__('Moonshine/Topics/TopicResource.category'), 'category', 'title', resource: new TopicCategoryResource()),
 
-            Text::make(__('Moonshine/Topics/TopicResource.body'), 'body'),
-
-            Text::make('Main Ideas', 'main_ideas'),
-
             Image::make(__('Moonshine/Topics/TopicResource.image'), 'image'),
 
             Image::make(__('Moonshine/Topics/TopicResource.logo'), 'logo'),
