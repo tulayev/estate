@@ -4,7 +4,11 @@
   "description": "Ignatev Estate",
   "main": "index.html",
   "scripts": {
-    "tailwindcss": "npx tailwindcss -i ./resources/css/app.css -o ./public/assets/css/tailwind.css --watch"
+    "tailwindcss": "npx tailwindcss -i ./resources/css/app.css -o ./public/assets/css/tailwind.css --watch",
+    "tailwindcss:prod": "npx tailwindcss -i ./resources/css/app.css -o ./public/assets/css/tailwind.css --minify",
+    "storage:link": "php artisan storage:link",
+    "composer:install": "composer install --no-dev",
+    "postinstall": "php artisan storage:link"
   },
   "keywords": [],
   "author": "",
