@@ -49,6 +49,13 @@
         background-color: var(--filter-type-bg-color, rgba(255, 255, 255, 0.1));
     }
 
+    .topic-categories-bg {
+        background-color: var(
+            --topic-categories-bg-color,
+            rgba(255, 255, 255, 0.1)
+        );
+    }
+
     /* Titles */
     .main-title {
         @apply text-white uppercase font-bold lg:font-black text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl xl:leading-[4rem];
