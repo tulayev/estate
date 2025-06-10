@@ -23,7 +23,8 @@
                 <div class="flex items-center space-x-2">
                     <a
                         href="{{ route('pages.insight.index', ['category' => $topic->category->id]) }}"
-                        class="card-tag-button bg-color-{{ $topic->category->id }} hover:text-primary"
+                        class="card-tag-button {{ $topic->category->color_ui_tag ? 'topic-categories-bg' : 'bg-color-' . $topic->category->id }} hover:text-primary"
+                        style="{{ $topic->category->color_ui_tag ? '--topic-categories-bg-color: '.$topic->category->color_ui_tag.';' : '' }}"
                     >
                         {{ $topic->category->title }}
                     </a>

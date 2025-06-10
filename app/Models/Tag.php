@@ -13,6 +13,7 @@ class Tag extends Model
 
     protected $fillable = [
         'name',
+        'color_ui_tag',
     ];
 
     protected $translatable = [

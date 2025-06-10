@@ -1,15 +1,18 @@
 {
-  "name": "estate",
-  "version": "1.0.0",
-  "description": "Ignatev Estate",
-  "main": "index.html",
-  "scripts": {
-    "tailwindcss": "npx tailwindcss -i ./resources/css/app.css -o ./public/assets/css/tailwind.css --watch"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "tailwindcss": "^3.4.17"
-  }
+    "name": "estate",
+    "version": "1.0.0",
+    "description": "Ignatev Estate",
+    "main": "index.html",
+    "scripts": {
+        "tailwindcss": "npx tailwindcss -i ./resources/css/app.css -o ./public/assets/css/tailwind.css --watch",
+        "tailwindcss:prod": "npx tailwindcss -i ./resources/css/app.css -o ./public/assets/css/tailwind.css --minify",
+        "storage:link": "php artisan storage:link",
+        "composer:install": "composer install --no-dev"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "tailwindcss": "^3.4.17"
+    }
 }

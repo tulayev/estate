@@ -39,7 +39,8 @@
                     <div class="animLeft">
                         <a
                             href="{{ route('pages.insight.index', ['category' => $topic->category->id]) }}"
-                            class="secondary-button bg-color-{{ $topic->category->id }} hover:text-primary"
+                            class="secondary-button {{ $topic->category->color_ui_tag ? 'topic-categories-bg' : 'bg-color-' . $topic->category->id }} hover:text-primary"
+                            style="{{ $topic->category->color_ui_tag ? '--topic-categories-bg-color: '.$topic->category->color_ui_tag.';' : '' }}"
                         >
                             <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">research</span>
                         </a>

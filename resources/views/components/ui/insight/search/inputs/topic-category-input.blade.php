@@ -41,8 +41,14 @@
         >
             <li
                 @click="toggleSelection(topicCategory)"
-                class="random-bg-color px-2 py-4 rounded-[10px] cursor-pointer font-black text-center text-white hover:bg-primary"
-                :class="selectedIds.includes(topicCategory.id) ? 'bg-primary' : ''"
+                class="px-2 py-4 rounded-[10px] cursor-pointer font-black text-center text-white hover:bg-primary"
+                :class="{
+                    'bg-primary': selectedIds.includes(topicCategory.id),
+                    'topic-categories-bg': topicCategory.color_ui_tag && !selectedIds.includes(topicCategory.id),
+                    'random-bg-color': !topicCategory.color_ui_tag && !selectedIds.includes(topicCategory.id)
+                }"
+                :style="topicCategory.color_ui_tag && !selectedIds.includes(topicCategory.id) ? 
+                        '--topic-categories-bg-color: ' + topicCategory.color_ui_tag + ';' : ''"
             >
                 <span x-text="topicCategory.title[locale]"></span>
             </li>

@@ -114,7 +114,9 @@ class TopicResource extends ModelResource
                         Helper::generateFileNameForUploadedFile($file))
                     ->allowedExtensions(['jpg', 'jpeg', 'png'])
                     ->removable(),
+            ]),
 
+            Block::make(__('Moonshine/Topics/TopicResource.awards'), [
                 Image::make(__('Moonshine/Topics/TopicResource.logo'), 'logo')
                     ->disk(Constants::PUBLIC_DISK)
                     ->dir(Constants::TOPICS_UPLOAD_PATH)
@@ -122,7 +124,7 @@ class TopicResource extends ModelResource
                         Helper::generateFileNameForUploadedFile($file))
                     ->allowedExtensions(['jpg', 'jpeg', 'png', 'svg'])
                     ->removable(),
-            ])
+            ]),
         ];
     }
 

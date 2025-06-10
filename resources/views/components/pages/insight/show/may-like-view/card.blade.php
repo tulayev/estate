@@ -20,7 +20,8 @@
                     <div class="flex justify-end items-center">
                         <a
                             href="{{ route('pages.insight.index', ['category' => $topic->category->id]) }}"
-                            class="card-tag-button bg-color-{{ $topic->category->id }} hover:text-primary"
+                            class="card-tag-button {{ $topic->category->color_ui_tag ? 'topic-categories-bg' : 'bg-color-' . $topic->category->id }} hover:text-primary"
+                            style="{{ $topic->category->color_ui_tag ? '--topic-categories-bg-color: '.$topic->category->color_ui_tag.';' : '' }}"
                         >
                             {{ Str::limit($topic->category->title, 3) }}
                         </a>

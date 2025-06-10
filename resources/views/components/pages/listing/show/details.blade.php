@@ -13,7 +13,7 @@
                             class="hover:text-secondary"
                         >
                             {{ $type->name }}
-                        </a>@if($index < $hotel->types->count() - 1), @endif
+                        </a>@if($index < $hotel->types->count() - 1) @endif
                     @endforeach
                 @else
                     <a
@@ -45,7 +45,8 @@
                                 @foreach($hotel->tags->take(3) as $index => $tag)
                                     <a
                                         href="{{ route('pages.listing.index', ['tag' => $tag->id]) }}"
-                                        class="card-tag-button bg-color-{{ $index + 1 }} bg-opacity-60 hover:text-primary"
+                                        class="card-tag-button {{ $tag->color_ui_tag ? 'card-tag-button-bg' : 'bg-color-'.($index + 1) }} bg-opacity-60 hover:text-primary"
+                                    style="{{ $tag->color_ui_tag ? '--tag-bg-color: '.$tag->color_ui_tag.';' : '' }}"
                                     >
                                         {{ $tag->name }}
                                     </a>

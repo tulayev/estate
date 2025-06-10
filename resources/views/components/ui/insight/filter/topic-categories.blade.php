@@ -40,7 +40,8 @@
         @foreach($topicCategories as $topicCategory)
             <div>
                 <div
-                    class="topicCategory random-bg-color modal-subtitle cursor-pointer text-white text-center p-3 border-rounded"
+                    class="topicCategory {{ $topicCategory->color_ui_tag ? 'topic-categories-bg' : 'random-bg-color' }} modal-subtitle cursor-pointer text-white text-center p-3 border-rounded"
+                    style="{{ $topicCategory->color_ui_tag ? '--topic-categories-bg-color: '.$topicCategory->color_ui_tag.';' : '' }}"
                     :class="isTopicCategorySelected('{{ $topicCategory->id }}') ? 'hidden' : ''"
                     @click="addTopicCategory('{{ $topicCategory->id }}')"
                 >

@@ -44,10 +44,6 @@ class TagPolicy
 
     public function update(MoonshineUser $user, Tag $item): bool
     {
-        if (in_array($item->id, Constants::SYSTEM_TAG_IDS)) {
-            return false;
-        }
-
         if (Helper::isUserInRole(UserRole::Admin)) {
             return true;
         }
