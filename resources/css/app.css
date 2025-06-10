@@ -41,6 +41,10 @@
         @apply text-[#F4F4F4] uppercase border-rounded text-xs font-black sm:font-black px-2 py-2 sm:px-4;
     }
 
+    .card-tag-button-bg {
+        background-color: var(--tag-bg-color, rgba(255, 255, 255, 0.1));
+    }
+
     /* Titles */
     .main-title {
         @apply text-white uppercase font-bold lg:font-black text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl xl:leading-[4rem];

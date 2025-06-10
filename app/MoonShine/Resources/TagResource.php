@@ -12,6 +12,7 @@ use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
 use MoonShine\Fields\Text;
+use MoonShine\Fields\Color;
 
 /**
  * @extends ModelResource<Tag>
@@ -34,6 +35,12 @@ class TagResource extends ModelResource
                 ID::make()->sortable(),
 
                 Text::make(__('Moonshine/Tags/TagResource.name'), 'name')->required(),
+
+                Color::make(__('Moonshine/Tags/TagResource.color_ui_tag'), 'color_ui_tag')
+                    ->nullable()
+                    ->default('#FFFFFF')
+                    ->hint(__('Moonshine/Tags/TagResource.color_hint')),
+                
             ]),
         ];
     }
@@ -42,6 +49,7 @@ class TagResource extends ModelResource
     {
         return [
             'name' => 'required|string|max:255',
+            'color_ui_tag' => 'nullable|string|max:50',
         ];
     }
 

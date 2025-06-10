@@ -40,9 +40,10 @@
         @foreach($tags as $tag)
             <div>
                 <div
-                    class="tag random-bg-color modal-subtitle cursor-pointer text-white text-center p-3 border-rounded"
+                    class="tag modal-subtitle cursor-pointer text-white text-center p-3 border-rounded {{ $tag->color_ui_tag ? '' : 'random-bg-color' }}"
                     :class="isTagSelected('{{ $tag->id }}') ? 'hidden' : ''"
                     @click="addTag('{{ $tag->id }}')"
+                    style="{{ $tag->color_ui_tag ? 'background-color: '.$tag->color_ui_tag.';' : '' }}"
                 >
                     {{ $tag->name }}
                 </div>

@@ -39,7 +39,8 @@
                                                 <div>
                                                     <a
                                                         href="{{ route('pages.listing.index', ['tag' => $tag->id]) }}"
-                                                        class="secondary-button bg-color-{{ $index + 1 }}"
+                                                        class="secondary-button {{ $tag->color_ui_tag ? 'card-tag-button-bg' : 'bg-color-'.($index + 1) }} bg-opacity-60 hover:text-primary"
+                                                        style="{{ $tag->color_ui_tag ? '--tag-bg-color: '.$tag->color_ui_tag.';' : '' }}"
                                                     >
                                                         <span class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ $tag->name }}</span>
                                                     </a>
