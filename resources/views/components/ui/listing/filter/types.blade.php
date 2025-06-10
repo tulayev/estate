@@ -24,7 +24,7 @@
                 class="cursor-pointer hover:text-red-500"
                 @click="removeType(id)"
             >
-              <span x-text="(index > 0 ? ', ' : '') + allTypeIds.find(t => t.id == id).name[locale]"></span>
+              <span x-text="allTypeIds.find(t => t.id == id).name[locale] + ((selectedTagIds.length > 0 || index < selectedTypeIds.length - 1) ? ',' : '')"></span>
             </span>
         </template>
 
@@ -33,7 +33,7 @@
                 class="cursor-pointer hover:text-red-500"
                 @click="removeTag(id)"
             >
-              <span x-text="(selectedTypeIds.length > 0 || index > 0 ? ', ' : '') + allTagIds.find(t => t.id == id).name[locale]"></span>
+              <span x-text="allTagIds.find(t => t.id == id).name[locale] + (index < selectedTagIds.length - 1 ? ',' : '')"></span>
             </span>
         </template>
     </h3>
