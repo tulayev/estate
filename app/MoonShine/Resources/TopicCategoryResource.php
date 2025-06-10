@@ -12,6 +12,7 @@ use MoonShine\Fields\Text;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
+use MoonShine\Fields\Color;
 
 /**
  * @extends ModelResource<TopicCategory>
@@ -35,6 +36,11 @@ class TopicCategoryResource extends ModelResource
 
                 Text::make('Title', 'title')
                     ->required(),
+
+                Color::make(__('Moonshine/TopicCategories/TopicCategoryResource.color_ui_tag'), 'color_ui_tag')
+                    ->nullable()
+                    ->default('#FFFFFF')
+                    ->hint(__('Moonshine/TopicCategories/TopicCategoryResource.color_hint')),
             ]),
         ];
     }

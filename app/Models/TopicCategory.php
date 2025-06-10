@@ -13,6 +13,7 @@ class TopicCategory extends Model
 
     protected $fillable = [
         'title',
+        'color_ui_tag',
     ];
 
     protected $translatable = [
