@@ -55,32 +55,36 @@
     <div class="uk-child-width-4-1@s uk-child-width-expand@m uk-grid-small uk-grid-match uk-margin mt-6 sm:mt-8 md:mt-12" uk-grid>
         <div x-show="!isTypeSelected('{{ $rent->id }}')" class="uk-width-auto uk-margin-top">
             <div
-                class="modal-subtitle random-bg-color cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
+                class="modal-subtitle {{ $rent->color_ui_tag ? 'filter-type-bg' : 'random-bg-color' }} cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
                 @click="addType('{{ $rent->id }}')"
+                style="{{ $rent->color_ui_tag ? '--filter-type-bg-color: '.$rent->color_ui_tag.';' : '' }}"
             >
                 {{ $rent->name }}
             </div>
         </div>
         <div x-show="!isTypeSelected('{{ $primary->id }}')" class="uk-width-auto uk-margin-top">
             <div
-                class="modal-subtitle random-bg-color cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
+                class="modal-subtitle {{ $primary->color_ui_tag ? 'filter-type-bg' : 'random-bg-color' }} cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
                 @click="addType('{{ $primary->id }}')"
+                style="{{ $primary->color_ui_tag ? '--filter-type-bg-color: '.$primary->color_ui_tag.';' : '' }}"
             >
                 {{ $primary->name }}
             </div>
         </div>
         <div x-show="!isTypeSelected('{{ $resales->id }}')" class="uk-width-auto uk-margin-top">
             <div
-                class="modal-subtitle random-bg-color cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
+                class="modal-subtitle {{ $resales->color_ui_tag ? 'filter-type-bg' : 'random-bg-color' }} cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
                 @click="addType('{{ $resales->id }}')"
+                style="{{ $resales->color_ui_tag ? '--filter-type-bg-color: '.$resales->color_ui_tag.';' : '' }}"
             >
                 {{ $resales->name }}
             </div>
         </div>
         <div x-show="!isTagSelected('{{ $land->id }}')" class="uk-width-auto uk-margin-top">
             <div
-                class="modal-subtitle random-bg-color cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
+                class="modal-subtitle {{ $land->color_ui_tag ? 'filter-type-bg' : 'random-bg-color' }} cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
                 @click="addTag('{{ $land->id }}')"
+                style="{{ $land->color_ui_tag ? '--filter-type-bg-color: '.$land->color_ui_tag.';' : '' }}"
             >
                 {{ $land->name }}
             </div>
