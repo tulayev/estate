@@ -13,7 +13,7 @@
                             class="hover:text-secondary"
                         >
                             {{ $type->name }}
-                        </a>@if($index < $hotel->types->count() - 1), @endif
+                        </a>@if($index < $hotel->types->count() - 1) @endif
                     @endforeach
                 @else
                     <a
