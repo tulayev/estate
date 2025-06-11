@@ -1,8 +1,5 @@
 @props([
-    'primary' => null,
-    'resales' => null,
-    'land' => null,
-    'rent' => null,
+    'types' => null,
 ])
 
 <div
@@ -24,16 +21,7 @@
                 class="cursor-pointer hover:text-red-500"
                 @click="removeType(id)"
             >
-              <span x-text="allTypeIds.find(t => t.id == id).name[locale] + ((selectedTagIds.length > 0 || index < selectedTypeIds.length - 1) ? ',' : '')"></span>
-            </span>
-        </template>
-
-        <template x-for="(id, index) in selectedTagIds" :key="id">
-            <span
-                class="cursor-pointer hover:text-red-500"
-                @click="removeTag(id)"
-            >
-              <span x-text="allTagIds.find(t => t.id == id).name[locale] + (index < selectedTagIds.length - 1 ? ',' : '')"></span>
+              <span x-text="allTypeIds.find(t => t.id == id).name[locale] + (index < selectedTypeIds.length - 1 ? ',' : '')"></span>
             </span>
         </template>
     </h3>
@@ -45,50 +33,20 @@
         :value="selectedTypeIds.join(',')"
     />
 
-    <input
-        id="tags"
-        type="hidden"
-        name="tags"
-        :value="selectedTagIds.join(',')"
-    />
-
     <div class="uk-child-width-4-1@s uk-child-width-expand@m uk-grid-small uk-grid-match uk-margin mt-6 sm:mt-8 md:mt-12" uk-grid>
-        <div x-show="!isTypeSelected('{{ $rent->id }}')" class="uk-width-auto uk-margin-top">
-            <div
-                class="modal-subtitle {{ $rent->color_ui_tag ? 'filter-type-bg' : 'random-bg-color' }} cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
-                @click="addType('{{ $rent->id }}')"
-                style="{{ $rent->color_ui_tag ? '--filter-type-bg-color: '.$rent->color_ui_tag.';' : '' }}"
-            >
-                {{ $rent->name }}
-            </div>
-        </div>
-        <div x-show="!isTypeSelected('{{ $primary->id }}')" class="uk-width-auto uk-margin-top">
-            <div
-                class="modal-subtitle {{ $primary->color_ui_tag ? 'filter-type-bg' : 'random-bg-color' }} cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
-                @click="addType('{{ $primary->id }}')"
-                style="{{ $primary->color_ui_tag ? '--filter-type-bg-color: '.$primary->color_ui_tag.';' : '' }}"
-            >
-                {{ $primary->name }}
-            </div>
-        </div>
-        <div x-show="!isTypeSelected('{{ $resales->id }}')" class="uk-width-auto uk-margin-top">
-            <div
-                class="modal-subtitle {{ $resales->color_ui_tag ? 'filter-type-bg' : 'random-bg-color' }} cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
-                @click="addType('{{ $resales->id }}')"
-                style="{{ $resales->color_ui_tag ? '--filter-type-bg-color: '.$resales->color_ui_tag.';' : '' }}"
-            >
-                {{ $resales->name }}
-            </div>
-        </div>
-        <div x-show="!isTagSelected('{{ $land->id }}')" class="uk-width-auto uk-margin-top">
-            <div
-                class="modal-subtitle {{ $land->color_ui_tag ? 'filter-type-bg' : 'random-bg-color' }} cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
-                @click="addTag('{{ $land->id }}')"
-                style="{{ $land->color_ui_tag ? '--filter-type-bg-color: '.$land->color_ui_tag.';' : '' }}"
-            >
-                {{ $land->name }}
-            </div>
-        </div>
+        @if ($types)
+            @foreach ($types as $type)
+                <div x-show="!isTypeSelected('{{ $type->id }}')" class="uk-width-auto uk-margin-top">
+                    <div
+                        class="modal-subtitle {{ $type->color_ui_tag ? 'filter-type-bg' : 'random-bg-color' }} cursor-pointer border-rounded text-white text-center p-2 md:p-4 lg:p-6"
+                        @click="addType('{{ $type->id }}')"
+                        style="{{ $type->color_ui_tag ? '--filter-type-bg-color: '.$type->color_ui_tag.';' : '' }}"
+                    >
+                        {{ $type->name }}
+                    </div>
+                </div>
+            @endforeach
+        @endif
     </div>
 </div>
 
@@ -97,15 +55,7 @@
         return {
             locale: '{{ app()->getLocale() }}',
             selectedTypeIds: [],
-            selectedTagIds: [],
-            allTypeIds: [
-                @json($rent),
-                @json($primary),
-                @json($resales),
-            ],
-            allTagIds: [
-                @json($land)
-            ],
+            allTypeIds: @json($types),
 
             addType(id) {
                 if (!this.selectedTypeIds.includes(id)) {
@@ -113,31 +63,16 @@
                 }
             },
 
-            addTag(id) {
-                if (!this.selectedTagIds.includes(id)) {
-                    this.selectedTagIds.push(id);
-                }
-            },
-
             isTypeSelected(id) {
                 return this.selectedTypeIds.includes(id);
-            },
-
-            isTagSelected(id) {
-                return this.selectedTagIds.includes(id);
             },
 
             removeType(id) {
                 this.selectedTypeIds = this.selectedTypeIds.filter(i => i !== id)
             },
 
-            removeTag(id) {
-                this.selectedTagIds = this.selectedTagIds.filter(i => i !== id)
-            },
-
             resetSelectedItems() {
                 this.selectedTypeIds = [];
-                this.selectedTagIds = [];
             }
         }
     }
