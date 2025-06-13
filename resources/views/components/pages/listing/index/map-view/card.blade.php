@@ -86,7 +86,7 @@
                     </div>
                     <div>
                         <p>
-                            {{ Str::limit($hotel->description, 100) }}
+                            {{ Str::limit(Helper::removeHtmlTags($hotel->description), 100) }}
                         </p>
                     </div>
                 </div>

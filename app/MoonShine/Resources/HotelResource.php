@@ -23,6 +23,7 @@ use MoonShine\Fields\Slug;
 use MoonShine\Fields\Switcher;
 use MoonShine\Fields\Text;
 use MoonShine\Fields\Textarea;
+use MoonShine\Fields\TinyMce;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
@@ -88,7 +89,7 @@ class HotelResource extends ModelResource
 
             Slug::make('Slug', 'slug'),
 
-            Textarea::make(__('Moonshine/Objects/HotelResources.description'), 'description'),
+            TinyMce::make(__('Moonshine/Objects/HotelResources.description'), 'description'),
 
             Text::make(__('Moonshine/Objects/HotelResources.address'), 'physical_address'),
 
@@ -133,7 +134,7 @@ class HotelResource extends ModelResource
                     ->readonly()
                     ->required(),
 
-                Textarea::make(__('Moonshine/Objects/HotelResources.description'), 'description')
+                TinyMce::make(__('Moonshine/Objects/HotelResources.description'), 'description')
                     ->required(),
 
                 Text::make(__('Moonshine/Objects/HotelResources.address'), 'physical_address')

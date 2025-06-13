@@ -23,7 +23,7 @@
                     </div>
                     <div class="p-2 md:p-4 xl:p-6">
                         <p class="text-primary text-sm sm:text-base md:text-lg xl:text-xl">
-                            {{ Str::limit(strip_tags($hotel->topic->body), 200) }}
+                            {{ Str::limit(Helper::removeHtmlTags($hotel->topic->body), 200) }}
                         </p>
                     </div>
                 </div>

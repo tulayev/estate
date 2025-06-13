@@ -70,7 +70,7 @@
                     </div>
                     <div>
                         <p>
-                            {{ Str::limit($hotel->description, 200) }}
+                            {{ Str::limit(Helper::removeHtmlTags($hotel->description), 200) }}
                         </p>
                     </div>
                 </div>

@@ -177,10 +177,10 @@
                 <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 px-4">
                     <div x-data="{ expanded: false }">
                         <div x-show="expanded">
-                            {{ $hotel->description }}
+                            {!! $hotel->description !!}
                         </div>
                         <div x-show="!expanded">
-                            {{ Str::limit($hotel->description, 350) }}
+                            {{ Str::limit(Helper::removeHtmlTags($hotel->description), 350) }}
                         </div>
                         <div class="mt-4 md:mt-6 lg:mt-8 xl:mt-10 text-center">
                             <button

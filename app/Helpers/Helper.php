@@ -41,6 +41,11 @@ class Helper
         return $masked . '@' . $domain;
     }
 
+    public static function removeHtmlTags(string $html): string
+    {
+        return html_entity_decode(strip_tags($html), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    }
+
     public static function generateFileNameForUploadedFile(UploadedFile $file): string
     {
         return pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME) . now()->format('YmdHis') . '.' . $file->extension();
