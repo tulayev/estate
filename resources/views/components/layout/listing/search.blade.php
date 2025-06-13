@@ -79,12 +79,9 @@
                 </div>
             </div>
 
-            <!-- Type -->
-            @if ($types && count($types) > 0)
-                <x-ui.listing.filter.types
-                    :types="$types"
-                   
-                />
+            <!-- Types -->
+            @if ($types)
+                <x-ui.listing.filter.types :types="$types" />
             @endif
 
             <!-- Keywords & Price range -->

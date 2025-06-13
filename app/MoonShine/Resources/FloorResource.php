@@ -72,8 +72,9 @@ class FloorResource extends ModelResource
                     ->required(),
 
                 Number::make(__('Moonshine/Floors/FloorResources.price'), 'price')
-                    ->step(0.01)
-                    ->required(),
+                    ->required()
+                    ->min(0)
+                    ->step(0.001),
 
                 Image::make(__('Moonshine/Floors/FloorResources.image'), 'image')
                     ->disk(Constants::PUBLIC_DISK)
@@ -97,7 +98,7 @@ class FloorResource extends ModelResource
             'bedrooms' => 'required|integer|min:0',
             'bathrooms' => 'required|integer|min:0',
             'area' => 'required|numeric|min:0|regex:/^\d+(\.\d{1,2})?$/',
-            'price' => 'required|numeric|min:0|regex:/^\d+(\.\d{1,2})?$/',
+            'price' => 'required|numeric|min:0|max:9999999999.999|regex:/^\d+(\.\d{1,3})?$/',
             'hotel_id' => 'required|exists:hotels,id',
         ];
     }
@@ -109,14 +110,16 @@ class FloorResource extends ModelResource
 
     protected function afterCreated(Model $item): Model
     {
-        app(IFileUploadService::class)->move($item, Constants::HOTELS_UPLOAD_PATH, 'image');
+        $basePath = Constants::HOTELS_UPLOAD_PATH . '/' . $item->hotel_id;
+        app(IFileUploadService::class)->move($item, $basePath, 'image', null, 'floors');
 
         return $item;
     }
 
     protected function afterUpdated(Model $item): Model
     {
-        app(IFileUploadService::class)->move($item, Constants::HOTELS_UPLOAD_PATH, 'image');
+        $basePath = Constants::HOTELS_UPLOAD_PATH . '/' . $item->hotel_id;
+        app(IFileUploadService::class)->move($item, $basePath, 'image', null, 'floors');
 
         return $item;
     }

@@ -11,7 +11,8 @@ interface IFileUploadService
         Model $model,
         string $basePath,
         string $mainImageField = null,
-        string $galleryField = null
+        string $galleryField = null,
+        string $subPath = null
     ): void;
 }
 
@@ -21,14 +22,16 @@ class FileUploadService implements IFileUploadService
         Model $model,
         string $basePath,
         string $mainImageField = null,
-        string $galleryField = null
+        string $galleryField = null,
+        string $subPath = null
     ): void {
         $modelId = $model->getKey();
         $storageRoot = storage_path("app/public/{$basePath}");
         $modelPath = "{$storageRoot}/{$modelId}";
         $galleryPath = "{$modelPath}/gallery";
+        $subDirectory = "{$storageRoot}/{$subPath}";
 
-        if (!empty($model->$mainImageField)) {
+        if (!empty($model->$mainImageField) && is_null($subPath)) {
             File::ensureDirectoryExists($modelPath);
 
             $filename = basename($model->$mainImageField);
@@ -40,6 +43,21 @@ class FileUploadService implements IFileUploadService
             }
 
             $model->$mainImageField = "{$basePath}/{$modelId}/{$filename}";
+            $model->save();
+        }
+
+        if (!empty($subPath)) {
+            File::ensureDirectoryExists($subDirectory);
+
+            $filename = basename($model->$mainImageField);
+            $source = storage_path("app/public/{$model->$mainImageField}");
+            $target = "{$subDirectory}/{$filename}";
+
+            if (File::exists($source)) {
+                File::move($source, $target);
+            }
+
+            $model->$mainImageField = "{$basePath}/{$subPath}/{$filename}";
             $model->save();
         }
 

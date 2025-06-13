@@ -174,9 +174,9 @@
 <!-- Mobile -->
 
 <header
-    class="header relative {{ $isNothingFoundPage ? 'nothing-found-bg' : 'bg-primary' }} uk-hidden@m uk-sticky z-[999]"
+    class="header relative {{ $isNothingFoundPage ? 'nothing-found-bg' : 'bg-primary' }} uk-hidden@m uk-sticky z-[1001]"
     uk-scrollspy="target: .animateText; cls: uk-animation-slide-left-small; delay: 300"
-    uk-sticky="animation: uk-animation-slide-top; sel-target: .header; cls-active: uk-navbar-sticky1; cls-inactive: z-[999]; top: 200;"
+    uk-sticky="animation: uk-animation-slide-top; sel-target: .header; cls-active: uk-navbar-sticky1; cls-inactive: z-[1001]; top: 200;"
 >
     <div class="uk-container uk-container-large">
         <nav class="uk-navbar" uk-navbar>
