@@ -45,12 +45,12 @@
     @if ($hotels->isNotEmpty())
         <!-- Map View -->
         <div
-            class="mt-4 md:mt-6 xl:mt-12 relative"
+            class="mt-4 md:mt-6 xl:mt-12 relative h-[calc(100vh-9rem)] md:h-[calc(100vh-16rem)]"
             x-data="mapViewHandler()"
             x-init="initMapView()"
         >
             <!-- Desktop View -->
-            <div class="absolute top-auto left-auto bottom-20 md:top-4 md:left-4 md:bottom-auto w-full md:h-full z-[999]">
+            <div class="absolute top-auto left-auto bottom-4 md:top-4 md:left-4 md:bottom-auto w-full md:h-full z-[999]">
                 <div id="dynamicCardContainer"></div>
 
                 <div
@@ -71,7 +71,7 @@
                 </div>
             </div>
 
-            <div id="mapView" class="border-rounded w-screen h-screen"></div>
+            <div id="mapView" class="border-rounded w-full h-full"></div>
         </div>
     @else
         <x-ui.nothing-found
@@ -100,7 +100,7 @@
                     minZoom: 2,
                     maxZoom: 18,
                     attributionControl: false,
-                    zoomControl: false // Disable default zoom control
+                    zoomControl: false,
                 });
 
                 // Add zoom control to the bottom-right corner
