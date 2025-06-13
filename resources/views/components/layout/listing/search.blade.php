@@ -80,12 +80,10 @@
             </div>
 
             <!-- Type -->
-            @if ($primary && $resales && $land && $rent)
+            @if ($types && count($types) > 0)
                 <x-ui.listing.filter.types
-                    :primary="$primary"
-                    :resales="$resales"
-                    :land="$land"
-                    :rent="$rent"
+                    :types="$types"
+                   
                 />
             @endif
 
@@ -111,7 +109,6 @@
             @endif
             <!-- Tags -->
             @if ($tags)
-                @php($tags = $tags->where('id', '<>', Constants::SYSTEM_TAG_IDS['land']))
                 <x-ui.listing.filter.tags :tags="$tags" />
             @endif
 
