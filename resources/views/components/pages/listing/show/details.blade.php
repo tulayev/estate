@@ -11,9 +11,7 @@
                         <a
                             href="{{ route('pages.listing.index', ['type' => $type->id]) }}"
                             class="hover:text-secondary"
-                        >
-                            {{ $type->name }}
-                        </a>@if($index < $hotel->types->count() - 1) @endif
+                        >{{ trim($type->name) }}</a>@if($index < $hotel->types->count() - 1), @endif
                     @endforeach
                 @else
                     <a
