@@ -46,7 +46,7 @@ class FileUploadService implements IFileUploadService
             $model->save();
         }
 
-        if (!empty($subPath)) {
+        if (!empty($model->$mainImageField) && !empty($subPath)) {
             File::ensureDirectoryExists($subDirectory);
 
             $filename = basename($model->$mainImageField);

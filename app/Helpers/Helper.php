@@ -8,7 +8,7 @@ use Illuminate\Http\UploadedFile;
 
 class Helper
 {
-    public static function splitString(string $value, string $separator = ','): array | null
+    public static function splitString(string $value, string $separator = ','): ?array
     {
         if ($value) {
             return explode($separator, $value);
@@ -24,7 +24,7 @@ class Helper
         return $service->convertWithSymbol($value);
     }
 
-    public static function getClientCurrency(string | null $currency): string
+    public static function getClientCurrency(?string $currency): string
     {
         $service = app(ICurrencyConversionService::class);
 
@@ -56,7 +56,7 @@ class Helper
         return auth()->check() && auth()->user()->moonshine_user_role_id === $role->value;
     }
 
-    public static function resolveImagePath(string | null $imagePath): string | null
+    public static function resolveImagePath(string | null $imagePath): ?string
     {
         if ($imagePath === null) {
             return null;
