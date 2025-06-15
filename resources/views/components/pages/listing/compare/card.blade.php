@@ -9,41 +9,7 @@
             class="absolute inset-0 z-10">
         </a>
         <div class="relative shadow-card border-rounded flex flex-col justify-between p-2 lg:p-3 w-[305px] h-[205px]">
-            <!-- Swiper Slider (Initially Hidden) -->
-            @if ($hotel->gallery || $hotel->gallery_url)
-                <div class="swiper listing-slider absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none border-rounded overflow-hidden">
-                    <div class="swiper-wrapper">
-                        @if ($hotel->gallery)
-                            @foreach($hotel->gallery as $image)
-                                <div class="swiper-slide">
-                                    <img
-                                        src="{{ Helper::resolveImagePath($image) }}"
-                                        class="w-full h-full object-cover"
-                                        alt="{{ $hotel->title }}"
-                                        loading="lazy"
-                                    />
-                                </div>
-                            @endforeach
-                        @elseif ($hotel->gallery_url)
-                            @foreach(Helper::splitString($hotel->gallery_url, ';') as $image)
-                                <div class="swiper-slide">
-                                    <img
-                                        src="{{ $image }}"
-                                        class="w-full h-full object-cover"
-                                        alt="{{ $hotel->title }}"
-                                        loading="lazy"
-                                    />
-                                </div>
-                            @endforeach
-                        @endif
-                    </div>
-                    <!-- Prev & Next Buttons -->
-                    <div class="swiper-button-prev text-secondary font-black hover:text-primary z-30 pointer-events-auto"></div>
-                    <div class="swiper-button-next text-secondary font-black hover:text-primary z-30 pointer-events-auto"></div>
-                </div>
-            @endif
-            <!-- Static Background (Visible Until Hover) -->
-            <div class="absolute inset-0 transition-opacity duration-500 group-hover:opacity-0">
+            <div class="absolute inset-0">
                 <img
                     data-src="{{ Helper::resolveImagePath($hotel->main_image) ?? $hotel->main_image_url ?? asset('assets/images/object-background.png') }}"
                     alt="{{ $hotel->title }}"
