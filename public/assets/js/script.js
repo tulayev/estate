@@ -1,3 +1,5 @@
+import { initCompare } from './compare.js';
+
 window.getRandomColor = function () {
     const colors = ['bg-color-1', 'bg-color-2', 'bg-color-3', 'bg-color-4'];
     return colors[Math.floor(Math.random() * colors.length)];
@@ -80,3 +82,4 @@ onDOMLoaded(() => overlay());
 onDOMLoaded(() => randomBgColor());
 onDOMLoaded(() => lazyLoadImages());
 onDOMLoaded(() => switchTheme());
+onDOMLoaded(() => initCompare());

@@ -25,10 +25,12 @@
                     </div>
                 @endif
                 <div class="flex items-center space-x-2">
-                    <button class="hidden">
+                    <button
+                        data-compare-id="{{ $hotel->id }}"
+                    >
                         <img
-                            src="{{ asset('assets/images/icons/filter.svg') }}"
-                            alt="filter"
+                            src="{{ asset('assets/images/icons/compare.svg') }}"
+                            alt="compare"
                         />
                     </button>
                     <button

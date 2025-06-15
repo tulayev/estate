@@ -50,6 +50,25 @@
                     @break
                 @endswitch
 
+                <!-- Compare button -->
+                <div
+                    id="compareBar"
+                    class="hidden fixed p-5 z-[1001] bottom-4 left-1/2 transform -translate-x-1/2 bg-primary text-white rounded-[100px] modal-subtitle"
+                >
+                    <a
+                        href="#"
+                        id="compareLink"
+                    >
+                        Compare <span id="compareCount">0</span> listings
+                    </a>
+                    <button
+                        id="compareClose"
+                        class="ml-4"
+                    >
+                        ✖
+                    </button>
+                </div>
+
                 @if ($hotels->hasMorePages())
                     <div
                         class="w-full flex justify-center mt-4 md:mt-6 xl:mt-10"
@@ -68,7 +87,7 @@
                 @endif
             </div>
         @else
-            <x-ui.nothing-found 
+            <x-ui.nothing-found
                 :title="__('general.nothing_found')"
                 :message="__('general.search_try_again')"
                 :showSearchTips="true"

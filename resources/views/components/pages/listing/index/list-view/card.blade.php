@@ -68,9 +68,14 @@
                             @endforeach
                         </div>
                     @endif
-                    <div class="flex items-center space-x-2">
-                        <button class="hidden">
-                            <img src="{{ asset('assets/images/icons/filter.svg') }}" alt="filter" />
+                        <div class="flex items-center space-x-2">
+                            <button
+                            data-compare-id="{{ $hotel->id }}"
+                        >
+                            <img
+                                src="{{ asset('assets/images/icons/compare.svg') }}"
+                                alt="compare"
+                            />
                         </button>
                         <button
                             x-data="likeHandler({{ $hotel->id }}, @json($hotel->isLiked))"

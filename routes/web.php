@@ -40,6 +40,7 @@ Route::get('/', [HomeController::class, 'index'])->name('pages.home.index');
 
 Route::prefix('listings')->group(function () {
     Route::get('/', [ListingController::class, 'index'])->name('pages.listing.index');
+    Route::get('/compare', [ListingController::class, 'compare'])->name('pages.listing.compare');
     Route::get('/map-view', [ListingController::class, 'mapView'])->name('pages.listing.map');
     Route::get('/map-view/{hotelId}', [ListingController::class, 'mapViewShow'])->name('pages.listing.map.show');
     Route::get('/{slug}', [ListingController::class, 'show'])->name('pages.listing.show');

@@ -63,7 +63,7 @@
                             @click="handleHotelClick({{ $hotel }})"
                             class="transition-all duration-300 cursor-pointer"
                         >
-                            <x-pages.listing.index.map-view.card
+                            <x-pages.listing.map.card
                                 :hotel="$hotel"
                             />
                         </div>

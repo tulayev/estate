@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Filters\HotelQueryBuilder;
+use App\Helpers\Helper;
 use App\Models\Hotel;
 use App\Models\HotelLike;
 use Illuminate\Database\Eloquent\Builder;
@@ -53,12 +54,22 @@ class ListingController extends Controller
         ]);
     }
 
+    public function compare(Request $request): View
+    {
+        $ids = Helper::splitString($request->input('ids', ''));
+        $hotels = Hotel::whereIn('id', $ids)->get();
+
+        return view('pages.listing.compare', [
+            'hotels' => $hotels,
+        ]);
+    }
+
     public function mapViewShow(Request $request, int $hotelId): string
     {
         $hotel = Hotel::active()->findOrFail($hotelId);
 
         if ($request->ajax()) {
-            return view('components.pages.listing.index.map-view.selected-card', [
+            return view('components.pages.listing.map.selected-card', [
                 'hotel' => $hotel,
             ])->render();
         }

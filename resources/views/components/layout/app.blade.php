@@ -35,7 +35,7 @@
     <!-- Axios js -->
     <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- Custom scripts js -->
-    <script defer src="{{ asset('assets/js/script.js') }}"></script>
+    <script defer type="module" src="{{ asset('assets/js/script.js') }}"></script>
 </head>
 <body class="dark:bg-gray-900">
     <div
