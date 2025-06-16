@@ -39,12 +39,15 @@
                     <!-- Image Top -->
                     <div class="relative flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-2 sm:space-y-0 pointer-events-auto">
                         @if ($hotel->tags)
-                            <div class="flex items-center space-x-2" onclick="event.stopPropagation()">
-                                @foreach($hotel->tags->take(3) as $index => $tag)
+                            <div
+                                class="flex items-center space-x-2"
+                                onclick="event.stopPropagation()"
+                            >
+                                @foreach($hotel->tags->take(2) as $index => $tag)
                                     <a
                                         href="{{ route('pages.listing.index', ['tag' => $tag->id]) }}"
                                         class="card-tag-button {{ $tag->color_ui_tag ? 'card-tag-button-bg' : 'bg-color-'.($index + 1) }} bg-opacity-60 hover:text-primary"
-                                    style="{{ $tag->color_ui_tag ? '--tag-bg-color: '.$tag->color_ui_tag.';' : '' }}"
+                                        style="{{ $tag->color_ui_tag ? '--tag-bg-color: '.$tag->color_ui_tag.';' : '' }}"
                                     >
                                         {{ $tag->name }}
                                     </a>
