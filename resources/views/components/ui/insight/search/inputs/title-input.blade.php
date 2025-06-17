@@ -42,28 +42,27 @@
             open: false,
             suggestions: [],
 
-            fetchTopics() {
+            async fetchTopics() {
                 const url = this.query
                     ? `${this.API_URI}?q=${encodeURIComponent(this.query)}`
                     : this.API_URI;
 
-                fetch(url, {
-                    headers: {
-                        'Accept': 'application/json',
-                    },
-                })
-                .then(response => {
+                try {
+                    const response = await fetch(url, {
+                        headers: {
+                            'Accept': 'application/json',
+                        },
+                    });
+
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
-                    return response.json();
-                })
-                .then(data => {
+
+                    const data = await response.json();
                     this.suggestions = data;
-                })
-                .catch(error => {
+                } catch (error) {
                     console.error('Error fetching topics:', error);
-                });
+                }
             },
 
             onFocus() {
