@@ -39,15 +39,11 @@
                                 alt="compare"
                             />
                         </button>
-                        <button
-                            x-data="likeHandler({{ $hotel->id }}, @json($hotel->isLiked))"
-                            @click="toggleLike"
-                        >
-                            <img
-                                :src="isLiked ? '{{ asset('assets/images/icons/heart-red.svg') }}' : '{{ asset('assets/images/icons/heart.svg') }}'"
-                                alt="like"
-                            />
-                        </button>
+                        <x-ui.buttons.like-button
+                            baseUrl="listings"
+                            :id="$hotel->id"
+                            :is-liked="$hotel->is_liked"
+                        />
                     </div>
                 </div>
                 <!-- Image Bottom -->
@@ -99,31 +95,3 @@
         </div>
     </div>
 @endif
-
-<script defer>
-    function likeHandler(hotelId, initialIsLiked) {
-        return {
-            API_URI: `${hotelId}/like`,
-            isLiked: initialIsLiked,
-
-            async toggleLike() {
-                try {
-                    const { status } = await axios.post(this.API_URI, {}, {
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                        },
-                    });
-
-                    if (status === 204) {
-                        this.isLiked = false;
-                    } else if (status === 201) {
-                        this.isLiked = true;
-                    }
-                } catch (error) {
-                    console.error('Error:', error.message);
-                }
-            },
-        };
-    }
-</script>

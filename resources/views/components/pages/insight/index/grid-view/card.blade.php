@@ -30,15 +30,11 @@
                     </a>
                 </div>
                 <div class="flex items-center space-x-2">
-                    <button
-                        x-data="likeHandler({{ $topic->id }}, @json($topic->isLiked))"
-                        @click="toggleLike"
-                    >
-                        <img
-                            :src="isLiked ? '{{ asset('assets/images/icons/heart-red.svg') }}' : '{{ asset('assets/images/icons/heart.svg') }}'"
-                            alt="like"
-                        />
-                    </button>
+                    <x-ui.buttons.like-button
+                        baseUrl="insights"
+                        :id="$topic->id"
+                        :is-liked="$topic->is_liked"
+                    />
                 </div>
             </div>
             <!-- Image Bottom -->
@@ -57,31 +53,3 @@
         </div>
     </div>
 @endif
-
-<script defer>
-    function likeHandler(topicId, initialIsLiked) {
-        return {
-            API_URI: `insights/${topicId}/like`,
-            isLiked: initialIsLiked,
-
-            async toggleLike() {
-                try {
-                    const { status } = await axios.post(this.API_URI, {}, {
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                        },
-                    });
-
-                    if (status === 204) {
-                        this.isLiked = false;
-                    } else if (status === 201) {
-                        this.isLiked = true;
-                    }
-                } catch (error) {
-                    console.error('Error:', error.message);
-                }
-            },
-        };
-    }
-</script>

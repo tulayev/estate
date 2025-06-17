@@ -1,4 +1,7 @@
 import { initCompare } from './compare.js';
+import { likeHandler } from './likes.js';
+
+window.likeHandler = likeHandler;
 
 window.getRandomColor = function () {
     const colors = ['bg-color-1', 'bg-color-2', 'bg-color-3', 'bg-color-4'];
