@@ -18,4 +18,6 @@
 
     <x-pages.home.faq />
 
+    <x-ui.links.compare-objects-link />
+
 </x-layout.app>

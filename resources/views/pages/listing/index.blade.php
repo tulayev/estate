@@ -11,4 +11,6 @@
 
     <x-layout.newsletter />
 
+    <x-ui.links.compare-objects-link />
+
 </x-layout.app>

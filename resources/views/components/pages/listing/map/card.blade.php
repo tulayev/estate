@@ -31,14 +31,10 @@
                         </div>
                     @endif
                     <div class="flex items-center space-x-2">
-                        <button
-                            data-compare-id="{{ $hotel->id }}"
-                        >
-                            <img
-                                src="{{ asset('assets/images/icons/compare.svg') }}"
-                                alt="compare"
-                            />
-                        </button>
+                        <x-ui.buttons.compare-button
+                            :hotelId="$hotel->id"
+                        />
+
                         <x-ui.buttons.like-button
                             baseUrl="listings"
                             :id="$hotel->id"
