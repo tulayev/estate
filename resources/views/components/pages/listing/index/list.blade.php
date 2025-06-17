@@ -99,14 +99,20 @@
 
                     queryParams.set('page', this.currentPage);
 
-                    const response = await axios.get(`?${queryParams.toString()}`, {
+                    const response = await fetch(`?${queryParams.toString()}`, {
+                        method: 'GET',
                         headers: {
                             'X-Requested-With': 'XMLHttpRequest',
                         },
                     });
 
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const html = await response.text();
                     const hotelsWrapper = document.getElementById('hotelsWrapper');
-                    hotelsWrapper.insertAdjacentHTML('beforeend', response.data);
+                    hotelsWrapper.insertAdjacentHTML('beforeend', html);
 
                     this.lazyLoadImages();
                     this.initializeCardsSlider();

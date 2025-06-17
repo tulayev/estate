@@ -69,14 +69,20 @@
 
                     queryParams.set('page', this.currentPage);
 
-                    const response = await axios.get(`?${queryParams.toString()}`, {
+                    const response = await fetch(`?${queryParams.toString()}`, {
+                        method: 'GET',
                         headers: {
                             'X-Requested-With': 'XMLHttpRequest',
                         },
                     });
 
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const html = await response.text();
                     const topicsWrapper = document.getElementById('topicsWrapper');
-                    topicsWrapper.insertAdjacentHTML('beforeend', response.data);
+                    topicsWrapper.insertAdjacentHTML('beforeend', html);
 
                     this.lazyLoadImages();
 

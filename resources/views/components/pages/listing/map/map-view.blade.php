@@ -162,22 +162,25 @@
 
             async fetchAndAppendCard(hotelId) {
                 try {
-                    const response = await axios.get(`/listings/map-view/${hotelId}`, {
+                    const response = await fetch(`/listings/map-view/${hotelId}`, {
+                        method: 'GET',
                         headers: {
                             'X-Requested-With': 'XMLHttpRequest',
                         },
                     });
 
-                    if (response.status === 200) {
+                    if (response.ok) {
+                        const html = await response.text();
                         const dynamicContainer = document.getElementById('dynamicCardContainer');
                         dynamicContainer.innerHTML = '';
-
-                        dynamicContainer.insertAdjacentHTML('beforeend', response.data);
+                        dynamicContainer.insertAdjacentHTML('beforeend', html);
 
                         dynamicContainer.scrollIntoView({
                             behavior: 'smooth',
                             block: 'start',
                         });
+                    } else {
+                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
                 } catch (error) {
                     console.error('Error fetching card data:', error.response || error.message);

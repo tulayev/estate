@@ -47,13 +47,23 @@
                     ? `${this.API_URI}?q=${encodeURIComponent(this.query)}`
                     : this.API_URI;
 
-                axios.get(url)
-                    .then((response) => {
-                        this.suggestions = response.data;
-                    })
-                    .catch((error) => {
-                        console.error('Error fetching topics:', error);
-                    });
+                fetch(url, {
+                    headers: {
+                        'Accept': 'application/json',
+                    },
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    this.suggestions = data;
+                })
+                .catch(error => {
+                    console.error('Error fetching topics:', error);
+                });
             },
 
             onFocus() {

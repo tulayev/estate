@@ -11,7 +11,7 @@ export function likeHandler(baseUrl, entityId, initialIsLiked, csrfToken) {
                         'Content-Type': 'application/json',
                         'X-CSRF-TOKEN': csrfToken,
                     },
-                    body: JSON.stringify({}), // empty payload, same as axios
+                    body: JSON.stringify({}),
                 });
 
                 if (response.status === 201) {

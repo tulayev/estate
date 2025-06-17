@@ -95,15 +95,26 @@
 
             async fetchResultsCount() {
                 try {
-                    const {data} = await axios.post(this.API_URI, this.filters, {
+                    const response = await fetch(this.API_URI, {
+                        method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                            'Accept': 'application/json',
                         },
+                        body: JSON.stringify(this.filters),
                     });
 
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+
                     this.resultsCount = data.count;
-                    this.buttonText = `${this.resultsCount === 0 ? this.buttonTextsLocalized[this.locale] : `${this.buttonTextsLocalized[this.locale]} (${this.resultsCount})`}`;
+                    this.buttonText = `${this.resultsCount === 0 
+                        ? this.buttonTextsLocalized[this.locale] 
+                        : `${this.buttonTextsLocalized[this.locale]} (${this.resultsCount})`}`;
                 } catch (error) {
                     console.error('Error updating results count:', error);
                     this.buttonText = 'Error loading results';
