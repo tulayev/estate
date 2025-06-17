@@ -71,6 +71,7 @@
                         <div class="flex items-center space-x-2">
                             <button
                             data-compare-id="{{ $hotel->id }}"
+                            title="{{ __('listing/compare.add_to_comparison') }}"
                         >
                             <img
                                 src="{{ asset('assets/images/icons/compare.svg') }}"
