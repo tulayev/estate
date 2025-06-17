@@ -11,16 +11,16 @@
                 <span class="normal-case ml-4 font-semibold">
                     @switch(request()->get('sort'))
                         @case('title_asc')
-                            Title Ascending
+                            {{ __('listing/index/list.title_ascending') }}
                             @break
                         @case('title_desc')
-                            Title Descending
+                            {{ __('listing/index/list.title_descending') }}
                             @break
                         @case('price_asc')
-                            Price Low to High
+                            {{ __('listing/index/list.price_low_to_high') }}
                             @break
                         @case('price_desc')
-                            Price High to Low
+                            {{ __('listing/index/list.price_high_to_low') }}
                             @break
                     @endswitch
                 </span>
@@ -59,7 +59,7 @@
                         href="#"
                         id="compareLink"
                     >
-                        Compare <span id="compareCount">0</span> listings
+                        {{ __('listing/compare.compare') }} <span id="compareCount">0</span> {{ __('listing/compare.listings') }}
                     </a>
                     <button
                         id="compareClose"

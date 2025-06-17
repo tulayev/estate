@@ -4,14 +4,14 @@
 
 @php
     $tableFields = [
-        'Title' => 'title',
-        'Price' => 'price',
-        'Type' => 'types',
-        'Tag' => 'tags',
-        'Address' => 'physical_address',
-        'Area' => 'formatted_area',
-        'Codename' => 'codename',
-        'Bedrooms' => 'bedrooms',
+        __('listing/compare.title') => 'title',
+        __('listing/compare.price') => 'price',
+        __('listing/compare.type') => 'types',
+        __('listing/compare.tag') => 'tags',
+        __('listing/compare.address') => 'physical_address',
+        __('listing/compare.area') => 'formatted_area',
+        __('listing/compare.codename') => 'codename',
+        __('listing/compare.bedrooms') => 'bedrooms',
     ];
 
     $columnCount = count($hotels);
@@ -24,14 +24,14 @@
         <div class="container">
             <div class="flex items-center justify-between">
                 <h2 class="section-title">
-                    Comparison
+                    {{ __('listing/compare.comparison') }}
                 </h2>
 
                 <button
                     id="compareDeleteAll"
                     class="primary-button"
                 >
-                    Delete All
+                    {{ __('listing/compare.delete_all') }}
                 </button>
             </div>
 
@@ -43,11 +43,11 @@
                             <div>
                                 <img
                                     src="{{ asset('assets/images/icons/compare-add.svg') }}"
-                                    alt="Compare Add"
+                                    alt="{{ __('listing/compare.add_to_comparison') }}"
                                     class="mx-auto mb-4"
                                 />
                                 <h3 class="modal-subtitle text-[#525252]">
-                                    Add To Comparison
+                                    {{ __('listing/compare.add_to_comparison') }}
                                 </h3>
                             </div>
                         </div>
