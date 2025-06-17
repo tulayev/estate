@@ -156,7 +156,18 @@
 
                 async checkSubscriptionStatus() {
                     try {
-                        const { data } = await axios.get('{{ route('subscription.status', $hotel->id) }}');
+                        const response = await fetch('{{ route('subscription.status', $hotel->id) }}', {
+                            method: 'GET',
+                            headers: {
+                                'Accept': 'application/json',
+                            },
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+
+                        const data = await response.json();
                         this.subscribed = data.subscribed;
                         this.unsubscribeUrl = data.unsubscribe_url;
                     }
@@ -177,31 +188,43 @@
                     this.loading = true;
 
                     try {
-                        const { status } = await axios.post(this.subscribeUrl, {
-                            email: this.email
+                        const response = await fetch(this.subscribeUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json',
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                            },
+                            body: JSON.stringify({ email: this.email }),
                         });
-                        // 202 = code sent; 200 = already verified -> subscription created
-                        if (status === 202) {
+
+                        if (response.status === 202) {
                             this.step = 'verify';
-                        } else {
+                        } else if (response.status === 200) {
                             await this.checkSubscriptionStatus();
                             this.step = 'done';
+                        } else {
+                            throw response;
                         }
-                    }
-                    catch (e) {
-                        const statusCode = e.response?.status;
+                    } catch (error) {
+                        let statusCode, responseData;
+                        try {
+                            statusCode = error.status;
+                            responseData = await error.json();
+                        } catch {
+                            this.errors.email = 'Unexpected error';
+                            return;
+                        }
 
                         switch (statusCode) {
                             case 422:
-                                // Validation error
-                                this.errors = e.response.data.errors || { email: e.response.data.message };
+                                this.errors = responseData.errors || { email: responseData.message };
                                 break;
                             case 409:
-                                // Already subscribed
                                 this.step = 'done';
                                 break;
                             default:
-                                this.errors.email = e.response?.data?.message || 'Unexpected error';
+                                this.errors.email = responseData.message || 'Unexpected error';
                                 break;
                         }
                     }
@@ -223,14 +246,28 @@
 
                     try {
                         // First, verify the subscriber
-                        await axios.post(this.verifyUrl, {
-                            email: this.email,
-                            code: this.code
+                        await fetch(this.verifyUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                                'Accept': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                email: this.email,
+                                code: this.code,
+                            }),
                         });
 
                         // Now that they're verified, hit subscribe again to actually create the subscription
-                        await axios.post(this.subscribeUrl, {
-                            email: this.email
+                        await fetch(this.subscribeUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                                'Accept': 'application/json',
+                            },
+                            body: JSON.stringify({ email: this.email }),
                         });
 
                         await this.checkSubscriptionStatus();
