@@ -1,6 +1,8 @@
-import { initCompare } from './compare.js';
+import { compareHandler, compareBarHandler } from './compare.js';
 import { likeHandler } from './likes.js';
 
+window.compareHandler = compareHandler;
+window.compareBarHandler = compareBarHandler;
 window.likeHandler = likeHandler;
 
 window.getRandomColor = function () {
@@ -85,4 +87,3 @@ onDOMLoaded(() => overlay());
 onDOMLoaded(() => randomBgColor());
 onDOMLoaded(() => lazyLoadImages());
 onDOMLoaded(() => switchTheme());
-onDOMLoaded(() => initCompare());

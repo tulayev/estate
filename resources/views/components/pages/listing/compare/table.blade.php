@@ -28,8 +28,10 @@
                 </h2>
 
                 <button
-                    id="compareDeleteAll"
+                    x-data="compareDeleteAllHandler()"
+                    @click="deleteAll"
                     class="primary-button"
+                    id="compareDeleteAll"
                 >
                     {{ __('listing/compare.delete_all') }}
                 </button>
@@ -79,4 +81,16 @@
             </div>
         </div>
     </section>
+
+    <script>
+        function compareDeleteAllHandler() {
+            return {
+                compareKey: 'comparison',
+                deleteAll() {
+                    localStorage.removeItem(this.compareKey);
+                    window.location.href = '/listings';
+                }
+            };
+        }
+    </script>
 @endif

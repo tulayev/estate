@@ -2,9 +2,13 @@
     'hotelId' => 0,
 ])
 
-<button data-compare-id="{{ $hotelId }}">
+<button
+    x-data="compareHandler({{ $hotelId }})"
+    @click.stop="toggleCompare"
+    data-compare-id="{{ $hotelId }}"
+>
     <img
-        src="{{ asset('assets/images/icons/compare-plus.svg') }}"
-        alt="{{ __('listing/compare.compare') }}"
+        :src="isCompared ? '{{ asset('assets/images/icons/compare-minus.svg') }}' : '{{ asset('assets/images/icons/compare-plus.svg') }}'"
+        alt="compare icon"
     />
 </button>

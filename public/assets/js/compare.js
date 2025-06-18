@@ -1,82 +1,63 @@
-export function initCompare() {
-    const compareKey = 'comparison';
-    const compared = JSON.parse(localStorage.getItem(compareKey) || '[]');
+export function compareHandler() {
+    return {
+        compareKey: 'comparison',
+        isCompared: false,
 
-    const compareBar = document.getElementById('compareBar');
-    const compareCount = document.getElementById('compareCount');
-    const compareLink = document.getElementById('compareLink');
-    const compareClose = document.getElementById('compareClose');
-    const compareDeleteAll = document.getElementById('compareDeleteAll');
+        init() {
+            const stored = JSON.parse(localStorage.getItem(this.compareKey) || '[]');
+            this.isCompared = stored.includes(this.hotelId);
+        },
 
-    document.addEventListener('click', function (e) {
-        const button = e.target.closest('[data-compare-id]');
-        if (!button) {
-            return;
-        }
+        toggleCompare() {
+            let list = JSON.parse(localStorage.getItem(this.compareKey) || '[]');
+            const index = list.indexOf(this.hotelId);
 
-        const id = button.getAttribute('data-compare-id');
-        toggleCompare(id);
-        updateButtonIcon(button, compared.includes(id));
-    });
-
-    if (compareClose) {
-        compareClose.addEventListener('click', () => {
-            compareBar.style.display = 'none';
-        });
-    }
-
-    if (compareDeleteAll) {
-        compareDeleteAll.addEventListener('click', () => {
-            localStorage.removeItem(compareKey);
-            window.location.href = '/listings';
-        });
-    }
-
-    function updateButtonIcon(button, isCompared) {
-        const img = button.querySelector('img');
-        if (!img) {
-            return;
-        }
-
-        img.src = isCompared
-            ? '/assets/images/icons/compare-minus.svg'
-            : '/assets/images/icons/compare-plus.svg';
-    }
-
-    function toggleCompare(id) {
-        const index = compared.indexOf(id);
-        const isCompared = index !== -1;
-
-        if (isCompared) {
-            compared.splice(index, 1);
-        } else {
-            compared.push(id);
-        }
-
-        localStorage.setItem(compareKey, JSON.stringify(compared));
-        updateCompareBar();
-
-        document.querySelectorAll(`[data-compare-id="${id}"]`).forEach(button => {
-            updateButtonIcon(button, !isCompared);
-        });
-    }
-
-    function updateCompareBar() {
-        if (compareBar && compareCount && compareLink) {
-            if (compared.length >= 2) {
-                compareBar.style.display = 'flex';
-                compareCount.innerText = compared.length;
-                compareLink.href = `/listings/compare?ids=${compared.join(',')}`;
+            if (index !== -1) {
+                list.splice(index, 1);
+                this.isCompared = false;
             } else {
-                compareBar.style.display = 'none';
+                list.push(this.hotelId);
+                this.isCompared = true;
             }
+
+            localStorage.setItem(this.compareKey, JSON.stringify(list));
+            this.updateCompareBar();
+        },
+
+        updateCompareBar() {
+            // Optional: update bar dynamically, or trigger custom event
+            const event = new CustomEvent('compare-updated', { detail: {} });
+            window.dispatchEvent(event);
+        },
+
+        get hotelId() {
+            return String(this.$el.dataset.compareId);
         }
+    };
+}
 
-        document.querySelectorAll('[data-compare-id]').forEach(button => {
-            const id = button.getAttribute('data-compare-id');
-            updateButtonIcon(button, compared.includes(id));
-        });
-    }
+export function compareBarHandler() {
+    return {
+        compareKey: 'comparison',
+        compared: [],
 
-    updateCompareBar();
+        init() {
+            this.refresh();
+            window.addEventListener('compare-updated', () => this.refresh());
+        },
+
+        refresh() {
+            this.compared = JSON.parse(localStorage.getItem(this.compareKey) || '[]');
+        },
+
+        hide() {
+            // Optional: only hide visually without clearing state
+            const el = document.getElementById('compareBar');
+            if (el) el.classList.add('hidden');
+        },
+
+        get compareLink() {
+            return `/listings/compare?ids=${this.compared.join(',')}`;
+        },
+    };
 }
