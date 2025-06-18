@@ -205,8 +205,6 @@
                     hiddenInputs.forEach(input => {
                         observer.observe(input, { attributes: true, attributeFilter: ['value'] });
                     });
-
-                    console.log(hiddenInputs);
                 });
             }
         }
