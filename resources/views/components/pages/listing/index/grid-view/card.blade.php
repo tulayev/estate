@@ -55,9 +55,10 @@
             <!-- Gradient Overlay -->
             <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
             <!-- Tags -->
-            <div class="flex justify-between items-center z-20 relative">
+            <div class="relative z-20">
+                <!-- Tags (Left side) -->
                 @if ($hotel->tags)
-                    <div class="flex items-center space-x-2">
+                    <div class="flex items-center space-x-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300">
                         @foreach($hotel->tags->take(2) as $index => $tag)
                             <a
                                 href="{{ route('pages.listing.index', ['tag' => $tag->id]) }}"
@@ -70,7 +71,7 @@
                         @endforeach
                     </div>
                 @endif
-                <div class="flex items-center space-x-2 relative z-30">
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center space-x-2 absolute top-0 right-0 z-30">
                     <x-ui.buttons.compare-button
                         :hotelId="$hotel->id"
                     />
