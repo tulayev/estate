@@ -71,6 +71,11 @@ export function initCompare() {
                 compareBar.style.display = 'none';
             }
         }
+
+        document.querySelectorAll('[data-compare-id]').forEach(button => {
+            const id = button.getAttribute('data-compare-id');
+            updateButtonIcon(button, compared.includes(id));
+        });
     }
 
     updateCompareBar();
