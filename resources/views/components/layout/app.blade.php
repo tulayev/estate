@@ -35,7 +35,7 @@
     <!-- Alpine js -->
     <script defer src="https://unpkg.com/alpinejs@3.9.6/dist/cdn.min.js"></script>
 </head>
-<body class="dark:bg-gray-900">
+<body class="dark:bg-primary">
     <div
         id="overlay"
         class="fixed w-full h-full top-0 left-0 flex justify-center items-center bg-primary z-[10001]"
