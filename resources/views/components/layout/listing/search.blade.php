@@ -2,7 +2,7 @@
 <form
     id="listingSearchForm"
     action="{{ route('pages.listing.index') }}"
-    class="uk-visible@s z-10 bg-white rounded-full flex justify-between items-center absolute left-1/2 -translate-x-1/2 bottom-[-25px] xl:bottom-[-30px] w-[95%] h-[50px] xl:h-[62px] px-4"
+    class="uk-visible@s z-10 rounded-full flex justify-between items-center absolute left-1/2 -translate-x-1/2 bottom-[-25px] xl:bottom-[-30px] w-[95%] h-[50px] xl:h-[62px] px-4 bg-white dark:bg-darkPrimary"
     autocomplete="off"
 >
         <input
@@ -159,8 +159,8 @@
                     const data = await response.json();
 
                     this.resultsCount = data.count;
-                    this.buttonText = `${this.resultsCount === 0 
-                        ? this.buttonTextsLocalized[this.locale] 
+                    this.buttonText = `${this.resultsCount === 0
+                        ? this.buttonTextsLocalized[this.locale]
                         : `${this.buttonTextsLocalized[this.locale]} (${this.resultsCount})`}`;
                 } catch (error) {
                     console.error('Error updating results count:', error);

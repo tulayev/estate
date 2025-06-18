@@ -107,7 +107,7 @@
         </div>
         <!-- Bottom -->
         <div class="shadow-card border-rounded mt-[-54px] sm:mt-[-44px] px-3 sm:px-5 pt-[68px] pb-4 sm:pb-6 group-hover:shadow-xl transition-shadow duration-300 relative">
-            <div class="flex justify-between uppercase text-[#505050] text-sm sm:font-bold md:font-black group-hover:text-primary">
+            <div class="flex justify-between uppercase text-[#505050] dark:text-white text-sm sm:font-bold md:font-black">
                 @if ($hotel->locations && $hotel->locations->first())
                     <div>
                         <p>📍 {{ Str::limit($hotel->locations->first()->name, 20) }}</p>

@@ -4,7 +4,7 @@
 
 <div
     x-data="typeDropdown({{ json_encode($types) }})"
-    class="relative border-r border-borderColor h-full flex items-center justify-center w-[16%]"
+    class="relative border-r border-borderColor dark:border-primary h-full flex items-center justify-center w-[16%]"
 >
     <input
         type="hidden"
@@ -37,7 +37,7 @@
                     'filter-type-bg': type.color_ui_tag && !selectedIds.includes(type.id),
                     'random-bg-color': !type.color_ui_tag && !selectedIds.includes(type.id)
                 }"
-                :style="type.color_ui_tag && !selectedIds.includes(type.id) ? 
+                :style="type.color_ui_tag && !selectedIds.includes(type.id) ?
                        '--filter-type-bg-color: ' + type.color_ui_tag + ';' : ''"
             >
                 <span x-text="type.name[locale]"></span>

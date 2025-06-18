@@ -4,7 +4,7 @@
 <!-- Desktop -->
 <header
     class="header absolute top-4 left-0 w-full z-[999] uk-visible@m"
-    uk-sticky="sel-target: .header; cls-active: {{ $isWhiteHeader ? 'bg-white' : ($isNothingFoundPage ? 'nothing-found-bg' : 'bg-primary') }} uk-navbar-sticky; cls-inactive: z-[999]; top: 200;"
+    uk-sticky="sel-target: .header; cls-active: {{ $isWhiteHeader ? 'bg-white' : ($isNothingFoundPage ? 'nothing-found-bg' : 'bg-primary dark:bg-darkPrimary') }} uk-navbar-sticky; cls-inactive: z-[999]; top: 200;"
     x-data="listingDropdown()"
 >
     <div class="relative">

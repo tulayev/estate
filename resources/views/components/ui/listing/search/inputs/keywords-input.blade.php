@@ -1,4 +1,4 @@
-<div class="border-r border-borderColor h-full flex items-center justify-center w-[16%]">
+<div class="border-r border-borderColor dark:border-primary h-full flex items-center justify-center w-[16%]">
     <input
         type="text"
         name="title"

@@ -6,7 +6,7 @@
 
 <div
     x-data="priceDropdown()"
-    class="relative border-r border-borderColor h-full flex items-center justify-center w-[28%]"
+    class="relative border-r border-borderColor dark:border-primary h-full flex items-center justify-center w-[28%]"
 >
     <div
         @click="showInputs = true"

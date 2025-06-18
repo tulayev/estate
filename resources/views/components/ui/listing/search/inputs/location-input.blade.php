@@ -4,7 +4,7 @@
 
 <div
     x-data="locationDropdown({{ json_encode($locations) }})"
-    class="relative border-r border-borderColor h-full flex items-center justify-center w-[24%]"
+    class="relative border-r border-borderColor dark:border-primary h-full flex items-center justify-center w-[24%]"
 >
 
     <input

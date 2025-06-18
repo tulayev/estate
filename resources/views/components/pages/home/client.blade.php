@@ -36,8 +36,7 @@
             <div class="mt-10 uk-child-width-1-1 " uk-grid>
                 <template x-for="(review, index) in reviews.slice(0, visibleReviews)" :key="index">
                     <div>
-                        <div class="relative bg-cover bg-no-repeat text-white border-rounded h-full"
-                             style="background-color: rgb(15 31 61 / var(--tw-bg-opacity, 1))">
+                        <div class="relative bg-cover bg-no-repeat text-white border-rounded h-full bg-primary dark:bg-darkPrimary">
                             <div class="border-rounded absolute inset-0"></div>
                             <div class="relative px-4 xl:px-11 py-4 xl:py-8">
                                 <h4 class="font-bold uppercase text-white text-sm sm:text-lg xl:text-3xl">
@@ -55,7 +54,7 @@
                 <button
                     id="seeMore"
                     @click="visibleReviews += 3"
-                    class="bg-white text-primary rounded-[100px] modal-subtitle py-5 w-full hover:text-white hover:bg-primary"
+                    class="bg-white dark:bg-darkPrimary text-primary dark:text-white rounded-[100px] modal-subtitle py-5 w-full hover:text-white dark:hover:text-primary hover:bg-primary dark:hover:bg-white"
                 >
                     {{ __('general.see_more') }}
                 </button>

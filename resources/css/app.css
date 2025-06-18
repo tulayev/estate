@@ -30,11 +30,11 @@
     }
 
     .primary-button {
-        @apply bg-primary text-[#F4F4F4] uppercase border-rounded font-black px-2 py-2 md:px-5 md:py-3;
+        @apply bg-primary dark:bg-darkPrimary text-[#F4F4F4] uppercase border-rounded font-black px-2 py-2 md:px-5 md:py-3;
     }
 
     .white-button {
-        @apply bg-white text-primary uppercase border-rounded font-black px-2 py-2 md:px-5 md:py-3;
+        @apply bg-white dark:bg-darkPrimary text-primary dark:text-white uppercase border-rounded font-black px-2 py-2 md:px-5 md:py-3;
     }
 
     .card-tag-button {
@@ -66,7 +66,7 @@
     }
 
     .section-title {
-        @apply leading-none text-primary uppercase mr-4 text-2xl font-bold xl:text-[35px] xl:font-black;
+        @apply text-primary dark:text-white uppercase leading-none mr-4 text-2xl font-bold xl:text-[35px] xl:font-black;
     }
 
     .section-title-white {
@@ -78,7 +78,7 @@
     }
 
     .collapse-title {
-        @apply text-primary uppercase text-xs sm:text-sm md:text-lg xl:text-2xl sm:font-bold xl:font-black;
+        @apply text-primary dark:text-white uppercase text-xs sm:text-sm md:text-lg xl:text-2xl sm:font-bold xl:font-black;
     }
 
     .collapse-title-object-description {

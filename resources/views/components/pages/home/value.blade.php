@@ -3,7 +3,7 @@
         <h2 class="section-title mb-5 xl:mb-10 flex space-x-3">
             {{ __('home/value.title') }}
         </h2>
-        <p class="mb-5 xl:mb-10">
+        <p class="mb-5 xl:mb-10 dark:text-white">
             {!! __('home/value.p_1') !!}
         </p>
     </div>
@@ -24,7 +24,7 @@
                     </a>
                     <ul class="uk-nav-sub">
                         <li>
-                            <p class="text-sm sm:text-xl py-2 sm:py-4">
+                            <p class="text-sm sm:text-xl py-2 sm:py-4 dark:text-white">
                                 {!! __('home/value.ul_item_name_1_desc') !!}
                             </p>
                         </li>
@@ -45,7 +45,7 @@
                     </a>
                     <ul class="uk-nav-sub">
                         <li>
-                            <p class="text-sm sm:text-xl py-2 sm:py-4">
+                            <p class="text-sm sm:text-xl py-2 sm:py-4 dark:text-white">
                                 {!! __('home/value.ul_item_name_2_desc') !!}
                             </p>
                         </li>
@@ -66,7 +66,7 @@
                     </a>
                     <ul class="uk-nav-sub">
                         <li>
-                            <p class="text-sm sm:text-xl py-2 sm:py-4">
+                            <p class="text-sm sm:text-xl py-2 sm:py-4 dark:text-white">
                                 {!! __('home/value.ul_item_name_3_desc') !!}
                             </p>
                         </li>
@@ -87,7 +87,7 @@
                     </a>
                     <ul class="uk-nav-sub">
                         <li>
-                            <p class="text-sm sm:text-xl py-2 sm:py-4">
+                            <p class="text-sm sm:text-xl py-2 sm:py-4 dark:text-white">
                                 {!! __('home/value.ul_item_name_4_desc') !!}
                             </p>
                         </li>
@@ -108,7 +108,7 @@
                     </a>
                     <ul class="uk-nav-sub">
                         <li>
-                            <p class="text-sm sm:text-xl py-2 sm:py-4">
+                            <p class="text-sm sm:text-xl py-2 sm:py-4 dark:text-white">
                                 {!! __('home/value.ul_item_name_5_desc') !!}
                             </p>
                         </li>
@@ -129,7 +129,7 @@
                     </a>
                     <ul class="uk-nav-sub">
                         <li>
-                            <p class="text-sm sm:text-xl py-2 sm:py-4">
+                            <p class="text-sm sm:text-xl py-2 sm:py-4 dark:text-white">
                                 {!! __('home/value.ul_item_name_6_desc') !!}
                             </p>
                         </li>

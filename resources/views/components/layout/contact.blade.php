@@ -86,7 +86,7 @@
                             type="text"
                             name="name"
                             x-model="formData.name"
-                            class="input w-full px-[30px] border-rounded focus:outline-none"
+                            class="input w-full px-[30px] border-rounded focus:outline-none dark:bg-darkPrimary"
                             autocomplete="off"
                             required
                         />
@@ -101,7 +101,7 @@
                             type="email"
                             name="email"
                             x-model="formData.email"
-                            class="input w-full px-[30px] border-rounded focus:outline-none"
+                            class="input w-full px-[30px] border-rounded focus:outline-none dark:bg-darkPrimary"
                             autocomplete="off"
                             required
                         />
@@ -114,7 +114,7 @@
 
             <div class="form-input-anim mt-4 textarea-wrapper">
                 <textarea
-                    class="input textarea w-full px-[30px] border-rounded focus:outline-none"
+                    class="input textarea w-full px-[30px] border-rounded focus:outline-none dark:bg-darkPrimary"
                     name="message"
                     x-model="formData.message"
                     rows="12"
@@ -131,7 +131,7 @@
                 <span x-text="error"></span>
             </div>
 
-            <button 
+            <button
                 type="submit"
                 :disabled="loading"
                 class="absolute bg-primary text-white border-rounded w-full bottom-0 text-sm sm:text-base md:text-lg font-bold xl:font-black h-[60px] md:h-[80px] uppercase disabled:opacity-50"
@@ -177,7 +177,7 @@
                         this.formData = { name: '', email: '', message: '' };
                     } else {
                         this.error = data.message || '{{ __('general.contact_error') }}';
-                        
+
                         // Show validation errors if available
                         if (data.errors) {
                             const errorMessages = Object.values(data.errors).flat();
