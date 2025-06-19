@@ -53,7 +53,7 @@
                 />
             </div>
             <!-- Gradient Overlay -->
-            <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
+            <div class="absolute border-rounded inset-0 bg-gradient-to-b from-transparent to-black/35"></div>
             <!-- Tags -->
             <div class="relative">
                 <!-- Tags (Left side) -->
