@@ -25,4 +25,10 @@ class Constants
         'US' => 'USD',
         'RU' => 'RUB',
     ];
+
+    public const ROLES = [
+        'Admin' => 'Administrator',
+        'Moderator' => 'Moderator', 
+        'Developer' => 'Developer',
+    ];
 }

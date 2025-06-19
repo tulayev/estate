@@ -1,0 +1,79 @@
+name: Build and Trigger PlayWrightTests Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: estatesite_test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Build Tailwind CSS assets
+        run: npm run tailwindcss:prod
+
+      - name: Run storage:link
+        run: php artisan storage:link
+
+      - name: Copy .env.example to .env
+        run: cp .env.example .env
+      - name: Generate APP_KEY
+        run: php artisan key:generate
+
+      - name: Set up testing DB config
+        run: |
+          echo "DB_CONNECTION=mysql" >> .env
+          echo "DB_HOST=127.0.0.1" >> .env
+          echo "DB_PORT=3306" >> .env
+          echo "DB_DATABASE=estatesite_test" >> .env
+          echo "DB_USERNAME=root" >> .env
+          echo "DB_PASSWORD=root" >> .env
+
+      - name: Run migrations
+        run: php artisan migrate --force
+
+      - name: Seed database
+        run: php artisan db:seed --force
+
+      - name: Run tests
+        run: php artisan test
+
+  trigger:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger workflow in Repo 2
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+            https://api.github.com/repos/KuzinYD/PlaywrightTests/actions/workflows/trigger-tests.yml/dispatches \
+            -d '{"ref":"main"}'

@@ -21,6 +21,8 @@ class Hotel extends Model
         'description',
         'physical_address',
         'codename',
+        'location',
+        'location_description',
         'latitude',
         'longitude',
         'price',
@@ -38,10 +40,14 @@ class Hotel extends Model
     protected $translatable = [
         'description',
         'physical_address',
+        'location',
+        'location_description',
     ];
 
     protected $casts = [
         'gallery' => 'array',
+        'location' => 'array',
+        'location_description' => 'array',
         'latitude' => 'float',
         'longitude' => 'float',
     ];

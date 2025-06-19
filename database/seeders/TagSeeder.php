@@ -12,19 +12,22 @@ class TagSeeder extends Seeder
      */
     public function run(): void
     {
+        // Create tags with specific IDs to match Constants::SYSTEM_TAG_IDS
         $tags = [
-            'Villa'       => 'Вилла',
-            'Apartment'   => 'Апартаменты',
-            'Projects'    => 'Проекты',
-            'Condominium' => 'Кондоминиум',
+            1 => ['en' => 'Villa', 'ru' => 'Вилла'],
+            2 => ['en' => 'Apartment', 'ru' => 'Апартаменты'],
+            3 => ['en' => 'Projects', 'ru' => 'Проекты'],
+            4 => ['en' => 'Condominium', 'ru' => 'Кондоминиум'],
+            5 => ['en' => 'Commercial', 'ru' => 'Коммерческая'],
+            6 => ['en' => 'Land', 'ru' => 'Земельный участок'],  // land => 6
         ];
 
-        foreach ($tags as $en => $ru) {
+        foreach ($tags as $id => $names) {
             DB::table('tags')->insert([
-                'name' => json_encode([
-                    'en' => $en,
-                    'ru' => $ru,
-                ]),
+                'id' => $id,
+                'name' => json_encode($names),
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
         }
     }
