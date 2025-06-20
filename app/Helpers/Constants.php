@@ -2,6 +2,8 @@
 
 namespace App\Helpers;
 
+use App\Helpers\Enums\UserRole;
+
 class Constants
 {
     public const HOTELS_UPLOAD_PATH = 'upload/images/hotels';
@@ -26,9 +28,12 @@ class Constants
         'RU' => 'RUB',
     ];
 
-    public const ROLES = [
-        'Admin' => 'Administrator',
-        'Moderator' => 'Moderator', 
-        'Developer' => 'Developer',
-    ];
+    public static function getRoles(): array
+    {
+        return [
+            UserRole::Admin->name,
+            UserRole::Moderator->name,
+            UserRole::Developer->name,
+        ];
+    }
 }

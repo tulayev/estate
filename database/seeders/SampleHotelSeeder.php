@@ -27,17 +27,10 @@ class SampleHotelSeeder extends Seeder
                     'price' => 350000,
                     'main_image_url' => null,
                     'active' => 1,
-                    'location' => [
-                        'en' => 'Location 1',
-                        'ru' => 'Локация 1',
-                    ],
-                    'location_description' => [
-                        'en' => 'Sample location description',
-                        'ru' => 'Образцовое описание локации',
-                    ],
                     'tags' => [1],
                     'features' => [1, 2, 3],
-                    'types' => [1]
+                    'types' => [1],
+                    'locations' => [1]
                 ],
                 [
                     'title' => 'Sample Villa 2',
@@ -51,17 +44,10 @@ class SampleHotelSeeder extends Seeder
                     'price' => 400000,
                     'main_image_url' => null,
                     'active' => 1,
-                    'location' => [
-                        'en' => 'Location 2',
-                        'ru' => 'Локация 2',
-                    ],
-                    'location_description' => [
-                        'en' => 'Sample location description',
-                        'ru' => 'Образцовое описание локации',
-                    ],
                     'tags' => [1],
                     'features' => [1, 2, 3, 4, 5],
-                    'types' => [1, 2]
+                    'types' => [1, 2],
+                    'locations' => [2]
                 ],
                 [
                     'title' => 'Sample Apartment 1',
@@ -75,17 +61,10 @@ class SampleHotelSeeder extends Seeder
                     'price' => 100000,
                     'main_image_url' => null,
                     'active' => 1,
-                    'location' => [
-                        'en' => 'Location 3',
-                        'ru' => 'Локация 3',
-                    ],
-                    'location_description' => [
-                        'en' => 'Sample location description',
-                        'ru' => 'Образцовое описание локации',
-                    ],
                     'tags' => [2],
                     'features' => [1, 2, 3],
-                    'types' => [1]
+                    'types' => [1],
+                    'locations' => [3]
                 ],
                 [
                     'title' => 'Sample Project 1',
@@ -99,17 +78,10 @@ class SampleHotelSeeder extends Seeder
                     'price' => 2500000,
                     'main_image_url' => null,
                     'active' => 1,
-                    'location' => [
-                        'en' => 'Location 4',
-                        'ru' => 'Локация 4',
-                    ],
-                    'location_description' => [
-                        'en' => 'Sample location description',
-                        'ru' => 'Образцовое описание локации',
-                    ],
                     'tags' => [1, 3],
                     'features' => [1, 2, 3, 4, 5],
-                    'types' => [3, 4]
+                    'types' => [3, 4],
+                    'locations' => [4]
                 ],
                 [
                     'title' => 'Sample Condo 1',
@@ -123,17 +95,10 @@ class SampleHotelSeeder extends Seeder
                     'price' => 800000,
                     'main_image_url' => null,
                     'active' => 1,
-                    'location' => [
-                        'en' => 'Location 5',
-                        'ru' => 'Локация 5',
-                    ],
-                    'location_description' => [
-                        'en' => 'Sample location description',
-                        'ru' => 'Образцовое описание локации',
-                    ],
                     'tags' => [4],
                     'features' => [1, 2, 3],
-                    'types' => [1, 2]
+                    'types' => [1, 2],
+                    'locations' => [5]
                 ],
                 [
                     'title' => 'Sample Villa 3',
@@ -147,17 +112,10 @@ class SampleHotelSeeder extends Seeder
                     'price' => 1200000,
                     'main_image_url' => null,
                     'active' => 1,
-                    'location' => [
-                        'en' => 'Location 6',
-                        'ru' => 'Локация 6',
-                    ],
-                    'location_description' => [
-                        'en' => 'Sample location description',
-                        'ru' => 'Образцовое описание локации',
-                    ],
                     'tags' => [1],
                     'features' => [1, 2, 3, 4],
-                    'types' => [2, 3]
+                    'types' => [2, 3],
+                    'locations' => [6]
                 ],
                 [
                     'title' => 'Sample Villa 4',
@@ -171,17 +129,10 @@ class SampleHotelSeeder extends Seeder
                     'price' => 1600000,
                     'main_image_url' => null,
                     'active' => 1,
-                    'location' => [
-                        'en' => 'Location 7',
-                        'ru' => 'Локация 7',
-                    ],
-                    'location_description' => [
-                        'en' => 'Sample location description',
-                        'ru' => 'Образцовое описание локации',
-                    ],
                     'tags' => [1, 3],
                     'features' => [1, 2, 3, 4, 5],
-                    'types' => [2, 4]
+                    'types' => [2, 4],
+                    'locations' => [7]
                 ],
                 [
                     'title' => 'Sample Apartment 2',
@@ -195,17 +146,10 @@ class SampleHotelSeeder extends Seeder
                     'price' => 600000,
                     'main_image_url' => null,
                     'active' => 1,
-                    'location' => [
-                        'en' => 'Location 8',
-                        'ru' => 'Локация 8',
-                    ],
-                    'location_description' => [
-                        'en' => 'Sample location description',
-                        'ru' => 'Образцовое описание локации',
-                    ],
                     'tags' => [2, 3],
                     'features' => [1, 2, 3],
-                    'types' => [4]
+                    'types' => [4],
+                    'locations' => [8]
                 ],
                 [
                     'title' => 'Sample Villa 5',
@@ -219,17 +163,10 @@ class SampleHotelSeeder extends Seeder
                     'price' => 2800000,
                     'main_image_url' => null,
                     'active' => 1,
-                    'location' => [
-                        'en' => 'Location 9',
-                        'ru' => 'Локация 9',
-                    ],
-                    'location_description' => [
-                        'en' => 'Sample location description',
-                        'ru' => 'Образцовое описание локации',
-                    ],
                     'tags' => [1, 3],
                     'features' => [1, 2, 3, 4, 5],
-                    'types' => [3, 4, 5]
+                    'types' => [3, 4, 5],
+                    'locations' => [9]
                 ],
                 [
                     'title' => 'Sample Villa 6',
@@ -243,17 +180,10 @@ class SampleHotelSeeder extends Seeder
                     'price' => 3200000,
                     'main_image_url' => null,
                     'active' => 1,
-                    'location' => [
-                        'en' => 'Location 10',
-                        'ru' => 'Локация 10',
-                    ],
-                    'location_description' => [
-                        'en' => 'Sample location description',
-                        'ru' => 'Образцовое описание локации',
-                    ],
                     'tags' => [1, 3],
                     'features' => [1, 2, 3],
-                    'types' => [3, 4]
+                    'types' => [3, 4],
+                    'locations' => [10]
                 ],
             ];
 
@@ -265,9 +195,10 @@ class SampleHotelSeeder extends Seeder
                 $typesArray = $hotelData['types'];
                 $featuresArray = $hotelData['features'];
                 $tagsArray = $hotelData['tags'];
+                $locationsArray = $hotelData['locations'];
 
-                // Remove relationship keys before inserting
-                unset($hotelData['types'], $hotelData['features'], $hotelData['tags']);
+                // Remove relationship keys and location fields before inserting
+                unset($hotelData['types'], $hotelData['features'], $hotelData['tags'], $hotelData['locations'], $hotelData['location'], $hotelData['location_description']);
 
                 // Create the hotel record
                 $hotel = Hotel::create($hotelData);
@@ -281,6 +212,9 @@ class SampleHotelSeeder extends Seeder
                 }
                 if (!empty($tagsArray)) {
                     $hotel->tags()->attach($tagsArray);
+                }
+                if (!empty($locationsArray)) {
+                    $hotel->locations()->attach($locationsArray);
                 }
             }
         });

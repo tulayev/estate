@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
         try {
             if (!\Schema::hasTable('types') || 
                 !\Schema::hasTable('tags') || !\Schema::hasTable('features') || 
-                !\Schema::hasTable('topic_categories')) {
+                !\Schema::hasTable('topic_categories') || !\Schema::hasTable('locations')) {
                 return;
             }
         } catch (\Exception $e) {
@@ -57,9 +57,7 @@ class AppServiceProvider extends ServiceProvider
         $primary = $types->find(Constants::SYSTEM_TYPE_IDS['primary']);
         $resales = $types->find(Constants::SYSTEM_TYPE_IDS['resales']);
         $land = $tags->find(Constants::SYSTEM_TAG_IDS['land']);
-        
-        // Create empty locations collection since locations table doesn't exist
-        $locations = collect();
+        $locations = Location::all();
 
         View::composer([
                 'components.layout.listing.search',
