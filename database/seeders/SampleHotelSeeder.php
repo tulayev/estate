@@ -218,5 +218,4 @@ class SampleHotelSeeder extends Seeder
                 }
             }
         });
-    }
-}
+    }}
