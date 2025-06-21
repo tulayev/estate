@@ -53,9 +53,9 @@
                 />
             </div>
             <!-- Gradient Overlay -->
-            <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
+            <div class="absolute border-rounded inset-0 bg-gradient-to-b from-transparent to-black/35"></div>
             <!-- Tags -->
-            <div class="relative z-20">
+            <div class="relative">
                 <!-- Tags (Left side) -->
                 @if ($hotel->tags)
                     <div class="flex items-center space-x-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300">

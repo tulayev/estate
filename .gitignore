@@ -8,6 +8,7 @@
 .env
 .env.backup
 .env.production
+.env.test
 Homestead.json
 Homestead.yaml
 auth.json
@@ -25,3 +26,4 @@ yarn-error.log
 .Trashes
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
+.phpunit.result.cache

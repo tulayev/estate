@@ -36,7 +36,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $locations = Location::all();
+        // Check if tables exist before making database queries
+        try {
+            if (!\Schema::hasTable('types') || 
+                !\Schema::hasTable('tags') || !\Schema::hasTable('features') || 
+                !\Schema::hasTable('topic_categories') || !\Schema::hasTable('locations')) {
+                return;
+            }
+        } catch (\Exception $e) {
+            // Database connection failed, skip view composers
+            return;
+        }
+
         $types = Type::all();
         $tags = Tag::all();
         $features = Feature::all();
@@ -46,6 +57,7 @@ class AppServiceProvider extends ServiceProvider
         $primary = $types->find(Constants::SYSTEM_TYPE_IDS['primary']);
         $resales = $types->find(Constants::SYSTEM_TYPE_IDS['resales']);
         $land = $tags->find(Constants::SYSTEM_TAG_IDS['land']);
+        $locations = Location::all();
 
         View::composer([
                 'components.layout.listing.search',

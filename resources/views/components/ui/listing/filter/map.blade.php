@@ -146,7 +146,16 @@
 
                 const key = `${lat},${lng}`;
                 if (!this.markers[key]) {
-                    const marker = L.marker([lat, lng])
+                    // Create custom icon using the PNG image
+                    const customIcon = L.icon({
+                        iconUrl: '/assets/images/icons/location-marker-dark.png',
+                        iconSize: [32, 32], // size of the icon
+                        iconAnchor: [16, 32], // point of the icon which will correspond to marker's location
+                        popupAnchor: [0, -32], // point from which the popup should open relative to the iconAnchor
+                        tooltipAnchor: [0, -32] // point from which the tooltip should open relative to the iconAnchor
+                    });
+
+                    const marker = L.marker([lat, lng], { icon: customIcon })
                         .addTo(this.map)
                         .bindTooltip(name, {
                             permanent: true,

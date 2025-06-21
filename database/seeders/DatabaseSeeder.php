@@ -12,14 +12,18 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-//            MoonshineUserRoleSeeder::class,
-//            MoonshineUserSeeder::class,
-//            TypeSeeder::class,
-//            TagSeeder::class,
-//            FeatureSeeder::class,
-//            HotelSeeder::class,
+            MoonshineUserRoleSeeder::class,
+            MoonshineUserSeeder::class,
+            TypeSeeder::class,
+            TagSeeder::class,
+            FeatureSeeder::class,
+            LocationSeeder::class,
             TopicCategorySeeder::class,
-            TopicSeeder::class,
+            SampleContactSeeder::class,
+            SampleTopicSeeder::class,
+            SampleHotelSeeder::class,
+            SampleFloorSeeder::class,
+            SampleHotelLocationSeeder::class,
         ]);
     }
 }

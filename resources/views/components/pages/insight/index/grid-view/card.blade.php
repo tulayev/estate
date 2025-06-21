@@ -17,7 +17,7 @@
                     loading="lazy"
                 />
             </div>
-            <div class="absolute border-rounded inset-0 bg-gradient-50"></div>
+            <div class="absolute border-rounded inset-0 bg-gradient-to-b from-transparent to-black/35"></div>
             <!-- Image Top -->
             <div class="relative flex justify-between items-center z-10">
                 <div class="flex items-center space-x-2">

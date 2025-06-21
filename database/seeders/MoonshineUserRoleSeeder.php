@@ -15,8 +15,8 @@ class MoonshineUserRoleSeeder extends Seeder
     {
         $roles = [];
 
-        foreach (Constants::ROLES as $k => $v) {
-            $roles[] = ['name' => $k];
+        foreach (Constants::getRoles() as $role) {
+            $roles[] = ['name' => $role];
         }
 
         foreach ($roles as $role) {
