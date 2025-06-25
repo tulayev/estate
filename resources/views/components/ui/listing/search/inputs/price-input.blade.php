@@ -41,7 +41,7 @@
     </div>
     <!-- Dropdown -->
     <div
-        class="pt-10 px-4 pb-4 absolute top-16 bg-white border border-borderColor w-full rounded-b-[14px] shadow-lg z-50"
+        class="pt-10 px-4 pb-4 absolute top-full bg-white border border-borderColor w-full rounded-b-[14px] shadow-lg z-50"
         x-show="showInputs"
         @click.outside="closeDropdown($event)"
     >

@@ -24,7 +24,7 @@
     />
     <ul
         x-show="open && filteredLocations.length > 0"
-        class="absolute top-16 bg-white border border-borderColor w-full rounded-b-[14px] shadow-lg z-50 max-h-40 overflow-auto"
+        class="absolute top-full bg-white border border-borderColor w-full rounded-b-[14px] shadow-lg z-50 max-h-40 overflow-auto"
     >
         <template
             x-for="location in filteredLocations"

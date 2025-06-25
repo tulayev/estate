@@ -23,7 +23,7 @@
     />
     <ul
         x-show="open && filteredTypes.length > 0"
-        class="px-3 py-4 space-y-2 absolute top-16 bg-white border border-borderColor w-full rounded-b-[14px] shadow-lg z-50 max-h-28 overflow-auto"
+        class="px-3 py-4 space-y-2 absolute top-full bg-white border border-borderColor w-full rounded-b-[14px] shadow-lg z-50 max-h-28 overflow-auto"
     >
         <template
             x-for="type in filteredTypes"

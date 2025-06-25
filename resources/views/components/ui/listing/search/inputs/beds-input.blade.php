@@ -21,7 +21,7 @@
     <div
         x-show="open"
         @click.outside="open = false"
-        class="p-4 absolute top-16 bg-white border border-borderColor w-full rounded-b-[14px] shadow-lg z-50"
+        class="p-4 absolute top-full bg-white border border-borderColor w-full rounded-b-[14px] shadow-lg z-50"
     >
         <div class="flex items-center justify-between text-primary text-lg font-black">
             <button
