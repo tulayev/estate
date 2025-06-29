@@ -24,6 +24,8 @@ class Hotel extends Model
         'latitude',
         'longitude',
         'price',
+        'bedrooms',
+        'bathrooms',
         'main_image',
         'gallery',
         'main_image_url',
@@ -148,27 +150,9 @@ class Hotel extends Model
         return $this->floors()->sum('area');
     }
 
-    public function getBedroomsAttribute(): int
-    {
-        return $this->floors()->sum('bedrooms');
-    }
-
-    public function getBathroomsAttribute(): int
-    {
-        return $this->floors()->sum('bathrooms');
-    }
-
     public function getFormattedAreaAttribute(): string
     {
         return number_format($this->area, 2);
-    }
-
-    public function getFloorWithMinimumBedroomsAttribute(): ?Floor
-    {
-        return $this->floors
-            ->reject(fn ($floor) => $floor->bedrooms == 0 && $floor->bathrooms == 0)
-            ->sortBy('bedrooms')
-            ->first();
     }
 
     public function getIsLikedAttribute(): bool

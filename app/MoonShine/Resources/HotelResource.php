@@ -155,6 +155,10 @@ class HotelResource extends ModelResource
                     ->min(0)
                     ->step(0.001),
 
+                Text::make('Bedrooms', 'bedrooms'),
+
+                Text::make('Bathrooms', 'bathrooms'),
+
                 BelongsToMany::make(__('Moonshine/Objects/HotelResources.types'), 'types', 'name', resource: new TypeResource())
                     ->selectMode(),
 
@@ -220,6 +224,8 @@ class HotelResource extends ModelResource
             'latitude' => 'required|numeric|between:-90,90',
             'longitude' => 'required|numeric|between:-180,180',
             'price' => 'required|numeric|min:0|max:9999999999.999|regex:/^\d+(\.\d{1,3})?$/',
+            'bedrooms' => 'nullable|regex:/^\d+(-\d+)?$/',
+            'bathrooms' => 'nullable|regex:/^\d+(-\d+)?$/',
             'main_image' => 'nullable|image|max:2048',
             'gallery' => 'nullable|array',
             'gallery.*' => 'image|max:2048',

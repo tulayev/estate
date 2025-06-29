@@ -154,11 +154,11 @@
                         @if ($hotel->area > 0)
                             <div>
                                 <p>
-                                    📐 {{ $hotel->area }} M<sup>2</sup>
+                                    📐 {{ $hotel->formatted_area }} m<sup>2</sup>
                                 </p>
                             </div>
                         @endif
-                        @if ($hotel->bedrooms > 0)
+                        @if (!empty($hotel->bedrooms))
                             <div>
                                 <p>
                                     🛏️ {{ $hotel->bedrooms }} {{ __('general.filter_popup_bedrooms') }}

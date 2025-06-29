@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'title' => 'floor plans',
+    'title' => 'units & floor plans',
 ];

@@ -124,11 +124,8 @@
                             @if ($hotel->locations && $hotel->locations->first())
                                 <p>📍 {{ $hotel->locations->first()->name }}</p>
                             @endif
-                            @php($floorDetails = $hotel->floor_with_minimum_bedrooms)
-                            @if($floorDetails)
-                                <p>🛏️ {{ $floorDetails->bedrooms }}</p>
-                                <p>🛁 {{ $floorDetails->bathrooms }}</p>
-                            @endif
+                            <p>🛏️ {{ $hotel->bedrooms }}</p>
+                            <p>🛁 {{ $hotel->bathrooms }}</p>
                         </div>
                         <div>
                             <p>

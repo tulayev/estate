@@ -73,13 +73,10 @@
                                 <p>📍 {{ Str::limit($hotel->locations->first()->name, 10) }}</p>
                             </div>
                         @endif
-                        @php($floorDetails = $hotel->floor_with_minimum_bedrooms)
-                        @if($floorDetails)
-                            <div class="hidden md:flex justify-between space-x-6">
-                                <p>🛏️ {{ $floorDetails->bedrooms }}</p>
-                                <p>🛁 {{ $floorDetails->bathrooms }}</p>
-                            </div>
-                        @endif
+                        <div class="hidden md:flex justify-between space-x-6">
+                            <p>🛏️ {{ $hotel->bedrooms }}</p>
+                            <p>🛁 {{ $hotel->bathrooms }}</p>
+                        </div>
                     </div>
                     <div>
                         <p>
