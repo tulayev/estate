@@ -2,7 +2,6 @@
 
 namespace App\Filters;
 
-use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Hotel;
 use App\Specifications\ISpecification;
@@ -22,13 +21,10 @@ class HotelQueryBuilder
     /** @var ISpecification[] */
     private array $specs = [];
 
-    public static function for(Request $request): self
+    public static function for(Builder $query): self
     {
         $builder = new self;
-        $builder->query = Hotel::query()
-            ->with(['floors','types','tags','features','locations'])
-            ->fullSearch($request->input('title'))
-            ->active();
+        $builder->query = $query;
 
         return $builder;
     }

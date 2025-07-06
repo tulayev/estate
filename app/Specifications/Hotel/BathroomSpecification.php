@@ -7,18 +7,22 @@ use Illuminate\Database\Eloquent\Builder;
 
 class BathroomSpecification implements ISpecification
 {
-    private readonly ?float $min;
-    private readonly ?float $max;
+    private readonly ?int $min;
+    private readonly ?int $max;
 
-    public function __construct($min = null, $max = null)
+    public function __construct(?int $min = null, ?int $max = null)
     {
-        $this->min = $min;
-        $this->max = $max;
+        $this->min = is_numeric($min) ? (int)$min : null;
+        $this->max = is_numeric($max) ? (int)$max : null;
     }
 
     public function apply(Builder $query): Builder
     {
-        if (isset($this->min) && isset($this->max) && $this->min == $this->max) {
+        if (is_null($this->min) && is_null($this->max)) {
+            return $query;
+        }
+
+        if (!is_null($this->min) && !is_null($this->max) && $this->min == $this->max) {
             $value = $this->min;
 
             $query->where(function ($q) use ($value) {
@@ -26,30 +30,30 @@ class BathroomSpecification implements ISpecification
                     $q2->whereRaw('(SELECT MIN(floors.bathrooms) FROM floors WHERE floors.hotel_id = hotels.id GROUP BY floors.hotel_id) = ?', [$value])
                         ->whereRaw('(SELECT MAX(floors.bathrooms) FROM floors WHERE floors.hotel_id = hotels.id GROUP BY floors.hotel_id) = ?', [$value]);
                 })->orWhere(function ($q2) use ($value) {
-                    $q2->whereRaw('CAST(SUBSTRING_INDEX(hotels.bathrooms, "-", 1) AS DECIMAL(5,1)) <= ?', [$value])
-                        ->whereRaw('CAST(SUBSTRING_INDEX(hotels.bathrooms, "-", -1) AS DECIMAL(5,1)) >= ?', [$value]);
+                    $q2->whereRaw('CAST(SUBSTRING_INDEX(hotels.bathrooms, "-", 1) AS UNSIGNED) <= ?', [$value])
+                        ->whereRaw('CAST(SUBSTRING_INDEX(hotels.bathrooms, "-", -1) AS UNSIGNED) >= ?', [$value]);
                 });
             });
         } else {
-            if (isset($this->min)) {
+            if (!is_null($this->min)) {
                 $query->where(function ($q) {
                     $q->whereRaw(
                         '(SELECT MIN(floors.bathrooms) FROM floors WHERE floors.hotel_id = hotels.id GROUP BY floors.hotel_id) >= ?',
                         [$this->min]
                     )->orWhereRaw(
-                        'CAST(SUBSTRING_INDEX(bathrooms, "-", -1) AS DECIMAL(5,1)) >= ?',
+                        'CAST(SUBSTRING_INDEX(bathrooms, "-", -1) AS UNSIGNED) >= ?',
                         [$this->min]
                     );
                 });
             }
 
-            if (isset($this->max)) {
+            if (!is_null($this->max)) {
                 $query->where(function ($q) {
                     $q->whereRaw(
                         '(SELECT MAX(floors.bathrooms) FROM floors WHERE floors.hotel_id = hotels.id GROUP BY floors.hotel_id) <= ?',
                         [$this->max]
                     )->orWhereRaw(
-                        'CAST(SUBSTRING_INDEX(bathrooms, "-", 1) AS DECIMAL(5,1)) <= ?',
+                        'CAST(SUBSTRING_INDEX(bathrooms, "-", 1) AS UNSIGNED) <= ?',
                         [$this->max]
                     );
                 });

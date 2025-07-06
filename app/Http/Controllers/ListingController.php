@@ -143,27 +143,58 @@ class ListingController extends Controller
             ]);
         }
 
-        $query = HotelQueryBuilder::for($request)
-            ->withPrice($request->input('price_min'), $request->input('price_max'))
-            ->withBedrooms($request->input('bedrooms_min'), $request->input('bedrooms_max'))
-            ->withBathrooms($request->input('bathrooms_min'), $request->input('bathrooms_max'))
-            ->withTypes($request->input('types'))
-            ->withTags($request->input('tags'))
-            ->withLocations($request->input('locations'))
-            ->withFeatures($request->input('features'))
-            ->withIEVerified($request->input('ie_verified'))
-            ->build();
+        $builder = HotelQueryBuilder::for(
+            Hotel::query()
+                ->with(['floors','types','tags','features','locations'])
+                ->active()
+                ->fullSearch($request->input('title'))
+        );
 
-        $count = $query->count();
+        if ($request->has('ie_verified')) {
+            $builder->withIEVerified($request->input('ie_verified'));
+        }
+
+        if ($request->has('price_min') && $request->has('price_max')) {
+            $builder->withPrice($request->input('price_min'), $request->input('price_max'));
+        }
+
+        if ($request->has('bedrooms_min') && $request->has('bedrooms_max')) {
+            $builder->withBedrooms($request->input('bedrooms_min'), $request->input('bedrooms_max'));
+        }
+
+        if ($request->has('bathrooms_min') && $request->has('bathrooms_max')) {
+            $builder->withBathrooms($request->input('bathrooms_min'), $request->input('bathrooms_max'));
+        }
+
+        if ($request->filled('types')) {
+            $builder->withTypes($request->input('types'));
+        }
+
+        if ($request->filled('tags')) {
+            $builder->withTags($request->input('tags'));
+        }
+
+        if ($request->filled('locations')) {
+            $builder->withLocations($request->input('locations'));
+        }
+
+        if ($request->filled('features')) {
+            $builder->withFeatures($request->input('features'));
+        }
 
         return response()->json([
-            'count' => $count,
+            'count' => $builder->build()->get()->count(),
         ]);
     }
 
     private function getHotelsQuery(Request $request): Builder
     {
-        $builder = HotelQueryBuilder::for($request);
+        $builder = HotelQueryBuilder::for(
+            Hotel::query()
+                ->with(['floors','types','tags','features','locations'])
+                ->active()
+                ->fullSearch($request->input('title'))
+        );
 
         // Category filters (type, tag, feature)
         if ($type = $request->get('type')) {
