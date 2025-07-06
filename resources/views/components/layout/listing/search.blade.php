@@ -5,52 +5,51 @@
     class="uk-visible@s z-10 rounded-full flex justify-between items-center absolute left-1/2 -translate-x-1/2 bottom-[-25px] xl:bottom-[-30px] w-[95%] h-[50px] xl:h-[62px] px-4 bg-white dark:bg-darkPrimary"
     autocomplete="off"
 >
-        <input
-            type="hidden"
-            name="requestType"
-            value="search"
-        />
+    <input
+        type="hidden"
+        name="requestType"
+        value="search"
+    />
 
-        <div class="animate-spin-slow">
+    <div class="animate-spin-slow">
+        <img
+            src="{{ asset('assets/images/icons/circle.png') }}"
+            alt="circle"
+            class="w-6 lg:w-8 xl:w-10"
+        />
+    </div>
+
+    <x-ui.listing.search.inputs.keywords-input />
+
+    <x-ui.listing.search.inputs.type-input :types="$types" />
+
+    <x-ui.listing.search.inputs.location-input :locations="$locations" />
+
+    <x-ui.listing.search.inputs.beds-input />
+
+    <x-ui.listing.search.inputs.price-input
+        :step="1"
+        :minValue="0"
+        :maxValue="$maxPrice"
+    />
+
+    <div class="h-full flex items-center justify-end w-[8%] md:space-x-2 xxl:space-x-4">
+        <button
+            class="text-secondary text-xl md:text-3xl xxl:text-4xl font-black bg-transparent border-none outline-none"
+            type="button"
+            uk-toggle="target: #listingFilterModal"
+        >
+            +
+        </button>
+        <button type="submit">
             <img
-                src="{{ asset('assets/images/icons/circle.png') }}"
-                alt="circle"
+                src="{{ asset('assets/images/icons/search-icon.svg') }}"
+                alt="search"
                 class="w-6 lg:w-8 xl:w-10"
             />
-        </div>
-
-        <x-ui.listing.search.inputs.keywords-input />
-
-        <x-ui.listing.search.inputs.type-input :types="$types" />
-
-        <x-ui.listing.search.inputs.location-input :locations="$locations" />
-
-        <x-ui.listing.search.inputs.beds-input />
-
-        <x-ui.listing.search.inputs.price-input
-            :step="1"
-            :minValue="0"
-            :maxValue="$maxPrice"
-        />
-
-        <div class="h-full flex items-center justify-end w-[8%] md:space-x-2 xxl:space-x-4">
-            <button
-                class="text-secondary text-xl md:text-3xl xxl:text-4xl font-black bg-transparent border-none outline-none"
-                type="button"
-                uk-toggle="target: #listingFilterModal"
-            >
-                +
-            </button>
-            <button type="submit">
-                <img
-                    src="{{ asset('assets/images/icons/search-icon.svg') }}"
-                    alt="search"
-                    class="w-6 lg:w-8 xl:w-10"
-                />
-            </button>
-        </div>
-    </form>
-</div>
+        </button>
+    </div>
+</form>
 
 <!-- Filter Modal -->
 <div
@@ -126,6 +125,34 @@
 </div>
 
 <script defer>
+    document.getElementById('listingSearchForm').addEventListener('submit', function () {
+        const form = this;
+        const maxPrice = {{ $maxPrice }};
+
+        // Filter out empty or default values from all inputs
+        [...form.elements].forEach(input => {
+            const name = input.name;
+            const value = input.value.trim();
+
+            if (!name) {
+                return;
+            }
+
+            const shouldRemove =
+                value === '' ||
+                (name === 'beds' && value === '0') ||
+                (name === 'price_min' && value === '0') ||
+                (name === 'price_max' && parseInt(value) === maxPrice) ||
+                (name === 'type' && value === '') ||
+                (name === 'locations' && value === '');
+
+            if (shouldRemove) {
+                // Exclude from query string unnecessary query params
+                input.removeAttribute('name');
+            }
+        });
+    });
+
     function filtersHandler() {
         return {
             buttonTextsLocalized: {

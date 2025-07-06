@@ -1,34 +1,32 @@
 <!-- Search Form -->
-<div>
-    <form
-        id="insightSearchForm"
-        action="{{ route('pages.insight.index') }}"
-        class="uk-visible@s z-10 bg-white rounded-full flex justify-between items-center absolute left-1/2 bottom-[-25px] xl:bottom-[-30px] -translate-x-1/2 px-4 w-[95%] h-[50px] xl:h-[62px]"
-        autocomplete="off"
-    >
-        <div class="animate-spin-slow">
+<form
+    id="insightSearchForm"
+    action="{{ route('pages.insight.index') }}"
+    class="uk-visible@s z-10 bg-white rounded-full flex justify-between items-center absolute left-1/2 bottom-[-25px] xl:bottom-[-30px] -translate-x-1/2 px-4 w-[95%] h-[50px] xl:h-[62px]"
+    autocomplete="off"
+>
+    <div class="animate-spin-slow">
+        <img
+            src="{{ asset('assets/images/icons/circle.png') }}"
+            alt="circle"
+            class="w-6 lg:w-8 xl:w-10"
+        />
+    </div>
+
+    <x-ui.insight.search.inputs.title-input />
+
+    <x-ui.insight.search.inputs.topic-category-input :topicCategories="$topicCategories" />
+
+    <div class="h-full flex items-center justify-end w-[8%] space-x-4">
+        <button type="submit">
             <img
-                src="{{ asset('assets/images/icons/circle.png') }}"
-                alt="circle"
+                src="{{ asset('assets/images/icons/search-icon.svg') }}"
+                alt="search"
                 class="w-6 lg:w-8 xl:w-10"
             />
-        </div>
-
-        <x-ui.insight.search.inputs.title-input />
-
-        <x-ui.insight.search.inputs.topic-category-input :topicCategories="$topicCategories" />
-
-        <div class="h-full flex items-center justify-end w-[8%] space-x-4">
-            <button type="submit">
-                <img
-                    src="{{ asset('assets/images/icons/search-icon.svg') }}"
-                    alt="search"
-                    class="w-6 lg:w-8 xl:w-10"
-                />
-            </button>
-        </div>
-    </form>
-</div>
+        </button>
+    </div>
+</form>
 
 <!-- Filter Modal -->
 <div
@@ -79,6 +77,29 @@
 </div>
 
 <script defer>
+    document.getElementById('insightSearchForm').addEventListener('submit', function () {
+        const form = this;
+
+        // Filter out empty or default values from all inputs
+        [...form.elements].forEach(input => {
+            const name = input.name;
+            const value = input.value.trim();
+
+            if (!name) {
+                return;
+            }
+
+            const shouldRemove =
+                value === '' ||
+                (name === 'category' && value === '');
+
+            if (shouldRemove) {
+                // Exclude from query string unnecessary query params
+                input.removeAttribute('name');
+            }
+        });
+    });
+
     function filtersHandler() {
         return {
             buttonTextsLocalized: {
@@ -112,8 +133,8 @@
                     const data = await response.json();
 
                     this.resultsCount = data.count;
-                    this.buttonText = `${this.resultsCount === 0 
-                        ? this.buttonTextsLocalized[this.locale] 
+                    this.buttonText = `${this.resultsCount === 0
+                        ? this.buttonTextsLocalized[this.locale]
                         : `${this.buttonTextsLocalized[this.locale]} (${this.resultsCount})`}`;
                 } catch (error) {
                     console.error('Error updating results count:', error);
